@@ -1,5 +1,6 @@
-package de.tudarmstadt.informatik.secuso.phisedu;
+package de.tudarmstadt.informatik.secuso.phishedu;
 
+import de.tudarmstadt.informatik.secuso.phisedu.R;
 import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
