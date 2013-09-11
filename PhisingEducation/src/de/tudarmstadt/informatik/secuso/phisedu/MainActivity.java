@@ -1,4 +1,4 @@
-package de.tudarmstadt.informatik.secuso.phishedu;
+package de.tudarmstadt.informatik.secuso.phisedu;
 
 import de.tudarmstadt.informatik.secuso.phisedu.R;
 import android.os.Bundle;
