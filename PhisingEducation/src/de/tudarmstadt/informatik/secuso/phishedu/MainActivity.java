@@ -1,6 +1,6 @@
-package de.tudarmstadt.informatik.secuso.phisedu;
+package de.tudarmstadt.informatik.secuso.phishedu;
 
-import de.tudarmstadt.informatik.secuso.phisedu.R;
+import de.tudarmstadt.informatik.secuso.phishedu.R;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Activity;

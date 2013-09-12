@@ -5,7 +5,7 @@
  * should not be modified by hand.
  */
 
-package de.tudarmstadt.informatik.secuso.phisedu;
+package de.tudarmstadt.informatik.secuso.phishedu;
 
 public final class R {
     public static final class attr {
