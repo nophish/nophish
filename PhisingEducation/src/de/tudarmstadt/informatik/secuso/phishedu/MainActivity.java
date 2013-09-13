@@ -3,10 +3,12 @@ package de.tudarmstadt.informatik.secuso.phishedu;
 import de.tudarmstadt.informatik.secuso.phishedu.R;
 import android.net.Uri;
 import android.os.Bundle;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.view.Menu;
 import android.view.View;
+import android.widget.EditText;
 
 public class MainActivity extends Activity {
 
@@ -16,10 +18,19 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
     }
 
-    public void redirectToPage(View view){
-    	Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://clemens.schuhklassert.de"));
-    	startActivity(browserIntent);
-    }
+    
+	/** Called when the user clicks the send button */
+	public void goToNextActivity(View view){
+		
+		Intent intent = new Intent(this, DisplayYouDontBelieveUsActivity.class);
+		startActivity(intent);
+	}
+	
+    //to be called when browser is called
+//    public void redirectToPage(View view){
+//    	Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://clemens.schuhklassert.de"));
+//    	startActivity(browserIntent);
+//    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
