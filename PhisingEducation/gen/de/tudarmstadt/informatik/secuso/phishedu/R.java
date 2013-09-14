@@ -24,22 +24,24 @@ public final class R {
         public static final int dontbelieveus=0x7f020000;
         public static final int from=0x7f020001;
         public static final int ic_launcher=0x7f020002;
+        public static final int usawit=0x7f020003;
     }
     public static final class id {
-        public static final int action_settings=0x7f08000d;
-        public static final int buttonAbschicken=0x7f08000c;
+        public static final int action_settings=0x7f08000e;
+        public static final int buttonAbschicken=0x7f08000d;
         public static final int buttonWeiter=0x7f080002;
-        public static final int editText1=0x7f08000b;
-        public static final int edit_receiver_email=0x7f080009;
-        public static final int edit_sender_email=0x7f080007;
-        public static final int imageEmailSpoofing=0x7f080003;
+        public static final int editText1=0x7f08000c;
+        public static final int edit_receiver_email=0x7f08000a;
+        public static final int edit_sender_email=0x7f080008;
+        public static final int imageEmailSpoofing=0x7f080004;
         public static final int imageView1=0x7f080001;
-        public static final int result_text=0x7f080005;
-        public static final int textViewEmailSpoofing=0x7f080004;
+        public static final int result_text=0x7f080006;
+        public static final int textViewEmailSpoofing=0x7f080005;
         public static final int textViewYouDontBelieveUs=0x7f080000;
-        public static final int text_provide_receiver=0x7f080008;
-        public static final int text_provide_sender=0x7f080006;
-        public static final int text_text=0x7f08000a;
+        public static final int text_final_awareness_1=0x7f080003;
+        public static final int text_provide_receiver=0x7f080009;
+        public static final int text_provide_sender=0x7f080007;
+        public static final int text_text=0x7f08000b;
     }
     public static final class layout {
         public static final int activity_alert_dialog=0x7f030000;
