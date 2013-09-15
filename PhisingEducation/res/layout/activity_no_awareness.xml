@@ -25,6 +25,7 @@
         android:layout_below="@+id/textView1"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="88dp"
+        android:onClick="goToStartGameActivity"
         android:text="Zum Spiel" />
 
 </RelativeLayout>

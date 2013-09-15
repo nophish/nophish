@@ -23,13 +23,22 @@ public final class R {
     public static final class drawable {
         public static final int address_bar=0x7f020000;
         public static final int dontbelieveus=0x7f020001;
-        public static final int from=0x7f020002;
-        public static final int ic_launcher=0x7f020003;
-        public static final int usawit=0x7f020004;
-        public static final int webpagespoofing=0x7f020005;
+        public static final int emblem_library=0x7f020002;
+        public static final int from=0x7f020003;
+        public static final int ic_launcher=0x7f020004;
+        public static final int practice=0x7f020005;
+        public static final int usawit=0x7f020006;
+        public static final int webpagespoofing=0x7f020007;
     }
     public static final class id {
-        public static final int action_settings=0x7f08001c;
+        public static final int TextView01=0x7f08001b;
+        public static final int TextView02=0x7f08001c;
+        public static final int TextView03=0x7f08001d;
+        public static final int TextView04=0x7f08001e;
+        public static final int TextView05=0x7f080021;
+        public static final int TextView06=0x7f080022;
+        public static final int TextView07=0x7f08002c;
+        public static final int action_settings=0x7f080030;
         public static final int buttonAbschicken=0x7f080017;
         public static final int buttonWeiter=0x7f080002;
         public static final int button_go_to_game=0x7f080008;
@@ -43,15 +52,28 @@ public final class R {
         public static final int imageView1=0x7f080001;
         public static final int image_address_bar=0x7f08000c;
         public static final int textView1=0x7f080012;
+        public static final int textView10=0x7f08002e;
+        public static final int textView11=0x7f08002f;
+        public static final int textView2=0x7f08001f;
+        public static final int textView3=0x7f080020;
+        public static final int textView4=0x7f080023;
+        public static final int textView5=0x7f080028;
+        public static final int textView6=0x7f080029;
+        public static final int textView7=0x7f08002b;
+        public static final int textView8=0x7f08002a;
+        public static final int textView9=0x7f08002d;
         public static final int textViewEmailSpoofing=0x7f080011;
         public static final int textViewYouDontBelieveUs=0x7f080000;
+        public static final int text_domain_a=0x7f080027;
+        public static final int text_domain_b=0x7f080026;
         public static final int text_fake_websites=0x7f080004;
         public static final int text_final_awareness=0x7f080006;
         public static final int text_find_addr_bar_exercise=0x7f08000a;
         public static final int text_find_address_bar=0x7f08000b;
         public static final int text_game_intro=0x7f08000e;
+        public static final int text_http_block=0x7f080025;
         public static final int text_intro_to_game=0x7f080007;
-        public static final int text_phishing=0x7f08001b;
+        public static final int text_phishing=0x7f080024;
         public static final int text_provide_receiver=0x7f080016;
         public static final int text_provide_sender=0x7f080014;
         public static final int text_text=0x7f080019;
@@ -72,8 +94,15 @@ public final class R {
         public static final int activity_resend_email_dialog_option=0x7f030009;
         public static final int activity_result=0x7f03000a;
         public static final int activity_send_email=0x7f03000b;
-        public static final int activity_start_game=0x7f03000c;
-        public static final int activity_web_address_info=0x7f03000d;
+        public static final int activity_solution_amazon_example=0x7f03000c;
+        public static final int activity_solution_facebook_example=0x7f03000d;
+        public static final int activity_solution_google_example=0x7f03000e;
+        public static final int activity_start_game=0x7f03000f;
+        public static final int activity_web_address_examples=0x7f030010;
+        public static final int activity_web_address_faceboook_example=0x7f030011;
+        public static final int activity_web_address_google_example=0x7f030012;
+        public static final int activity_web_address_info=0x7f030013;
+        public static final int activity_web_address_second_info=0x7f030014;
     }
     public static final class menu {
         public static final int alert_dialog=0x7f070000;
@@ -88,8 +117,15 @@ public final class R {
         public static final int resend_email_dialog_option=0x7f070009;
         public static final int resend_email_option=0x7f07000a;
         public static final int send_email=0x7f07000b;
-        public static final int start_game=0x7f07000c;
-        public static final int web_address_info=0x7f07000d;
+        public static final int solution_amazon_example=0x7f07000c;
+        public static final int solution_facebook_example=0x7f07000d;
+        public static final int solution_google_example=0x7f07000e;
+        public static final int start_game=0x7f07000f;
+        public static final int web_address_examples=0x7f070010;
+        public static final int web_address_faceboook_example=0x7f070011;
+        public static final int web_address_google_example=0x7f070012;
+        public static final int web_address_info=0x7f070013;
+        public static final int web_address_second_info=0x7f070014;
     }
     public static final class string {
         public static final int action_settings=0x7f050001;
@@ -109,8 +145,15 @@ public final class R {
         public static final int title_activity_resend_email_dialog_option=0x7f05000a;
         public static final int title_activity_resend_email_option=0x7f050009;
         public static final int title_activity_send_email=0x7f050006;
+        public static final int title_activity_solution_amazon_example=0x7f050015;
+        public static final int title_activity_solution_facebook_example=0x7f050019;
+        public static final int title_activity_solution_google_example=0x7f050017;
         public static final int title_activity_start_game=0x7f05000b;
+        public static final int title_activity_web_address_examples=0x7f050014;
+        public static final int title_activity_web_address_faceboook_example=0x7f050018;
+        public static final int title_activity_web_address_google_example=0x7f050016;
         public static final int title_activity_web_address_info=0x7f050012;
+        public static final int title_activity_web_address_second_info=0x7f050013;
     }
     public static final class style {
         /** 

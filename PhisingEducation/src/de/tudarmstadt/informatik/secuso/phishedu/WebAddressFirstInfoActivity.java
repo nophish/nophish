@@ -6,25 +6,24 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 
-public class NoAwarenessActivity extends Activity {
+public class WebAddressFirstInfoActivity extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_no_awareness);
+		setContentView(R.layout.activity_web_address_info);
 	}
 
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.no_awareness, menu);
+		getMenuInflater().inflate(R.menu.web_address_info, menu);
 		return true;
 	}
 
-	public void goToStartGameActivity(View view){
-		Intent intent =  new Intent(this, StartGameActivity.class);
+	public void goToNextWebAddressInfoActivity(View view){
+		Intent intent = new Intent(this, WebAddressSecondInfoActivity.class);
 		startActivity(intent);
 	}
-
 }

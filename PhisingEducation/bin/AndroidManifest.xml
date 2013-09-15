@@ -123,11 +123,60 @@
                 android:value="de.tudarmstadt.informatik.secuso.phishedu.FindAddressBarInfoActivity" />
         </activity>
         <activity
-            android:name="de.tudarmstadt.informatik.secuso.phishedu.WebAddressInfoActivity"
+            android:name="de.tudarmstadt.informatik.secuso.phishedu.WebAddressFirstInfoActivity"
             android:label="@string/title_activity_web_address_info" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="de.tudarmstadt.informatik.secuso.phishedu.AfterWebAddressFoundActivity" />
+        </activity>
+        <activity
+            android:name="de.tudarmstadt.informatik.secuso.phishedu.WebAddressSecondInfoActivity"
+            android:label="@string/title_activity_web_address_second_info" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="de.tudarmstadt.informatik.secuso.phishedu.WebAddressFirstInfoActivity" />
+        </activity>
+        <activity
+            android:name="de.tudarmstadt.informatik.secuso.phishedu.WebAddressAmazonExampleActivity"
+            android:label="@string/title_activity_web_address_examples" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="de.tudarmstadt.informatik.secuso.phishedu.WebAddressSecondInfoActivity" />
+        </activity>
+        <activity
+            android:name="de.tudarmstadt.informatik.secuso.phishedu.SolutionAmazonExampleActivity"
+            android:label="@string/title_activity_solution_amazon_example" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="de.tudarmstadt.informatik.secuso.phishedu.WebAddressExamplesActivity" />
+        </activity>
+        <activity
+            android:name="de.tudarmstadt.informatik.secuso.phishedu.WebAddressGoogleExampleActivity"
+            android:label="@string/title_activity_web_address_google_example" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="de.tudarmstadt.informatik.secuso.phishedu.SolutionAmazonExampleActivity" />
+        </activity>
+        <activity
+            android:name="de.tudarmstadt.informatik.secuso.phishedu.SolutionGoogleExampleActivity"
+            android:label="@string/title_activity_solution_google_example" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="de.tudarmstadt.informatik.secuso.phishedu.WebAddressGoogleExampleActivity" />
+        </activity>
+        <activity
+            android:name="de.tudarmstadt.informatik.secuso.phishedu.WebAddressFaceboookExampleActivity"
+            android:label="@string/title_activity_web_address_faceboook_example" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="de.tudarmstadt.informatik.secuso.phishedu.SolutionGoogleExampleActivity" />
+        </activity>
+        <activity
+            android:name="de.tudarmstadt.informatik.secuso.phishedu.SolutionFacebookExampleActivity"
+            android:label="@string/title_activity_solution_facebook_example" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="de.tudarmstadt.informatik.secuso.phishedu.WebAddressFaceboookExampleActivity" />
         </activity>
     </application>
 
