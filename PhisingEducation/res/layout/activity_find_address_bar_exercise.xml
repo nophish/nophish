@@ -9,13 +9,13 @@
     tools:context=".FindAddressBarExerciseActivity" >
 
 <TextView
-        android:id="@+id/text_title_find_address_bar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:text="Finde die Adressleiste"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+    android:id="@+id/text_title_find_address_bar"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignParentTop="true"
+    android:layout_centerHorizontal="true"
+    android:text="Übung Adressleiste"
+    android:textAppearance="?android:attr/textAppearanceLarge" />
 
 <TextView
     android:id="@+id/text_find_addr_bar_exercise"
@@ -36,5 +36,13 @@
         android:layout_marginTop="26dp"
         android:onClick="redirectToPage"
         android:text="@string/start_button" />
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignTop="@+id/text_title_find_address_bar"
+        android:src="@drawable/desktop" />
 
 </RelativeLayout>

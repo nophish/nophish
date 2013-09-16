@@ -17,14 +17,6 @@
         android:text="Web-Adressen Beispiele"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
-    <ImageView
-        android:id="@+id/imageView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_below="@+id/textView1"
-        android:src="@drawable/emblem_library" />
-
     <Button
         android:id="@+id/button_next"
         android:layout_width="wrap_content"
@@ -34,26 +26,6 @@
         android:layout_marginBottom="26dp"
         android:onClick="goToNextExample"
         android:text="Weiter" />
-
-    <TextView
-        android:id="@+id/TextView01"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/TextView03"
-        android:layout_alignTop="@+id/imageView1"
-        android:layout_marginTop="21dp"
-        android:layout_toLeftOf="@+id/imageView1"
-        android:text="http://www."
-        android:textAppearance="?android:attr/textAppearanceMedium" />
-
-    <TextView
-        android:id="@+id/TextView03"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/imageView1"
-        android:text="https://accounts."
-        android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
         android:id="@+id/TextView02"
@@ -98,13 +70,41 @@
         android:text="/ServiceLogin"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/textView1"
+        android:layout_toLeftOf="@+id/textView1"
+        android:src="@drawable/emblem_library" />
+
+    <TextView
+        android:id="@+id/TextView01"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imageView1"
+        android:layout_marginTop="15dp"
+        android:layout_toLeftOf="@+id/TextView02"
+        android:text="http://www."
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/TextView03"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/TextView01"
+        android:layout_below="@+id/TextView02"
+        android:layout_marginTop="31dp"
+        android:text="https://accounts."
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
     <TextView
         android:id="@+id/TextView05"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/textView3"
         android:layout_below="@+id/textView3"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="28dp"
         android:text="https://secure.facebook.com/settings?tab=payments"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 

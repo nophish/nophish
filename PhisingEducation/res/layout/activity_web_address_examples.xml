@@ -16,14 +16,6 @@
         android:layout_centerHorizontal="true"
         android:text="Web-Adressen Beispiele"
         android:textAppearance="?android:attr/textAppearanceLarge" />
-
-      <ImageView
-        android:id="@+id/imageView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_below="@+id/textView1"
-        android:src="@drawable/emblem_library" />
       
     <Button
         android:id="@+id/button_next"
@@ -41,7 +33,6 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView1"
         android:layout_marginTop="14dp"
-        android:layout_toLeftOf="@+id/imageView1"
         android:text="Im Folgenden zeigen wir ein paar Web-Adressen Beispiele, bei denen der aller wichtigste Teil markiert wird."
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
@@ -54,5 +45,13 @@
         android:layout_marginTop="21dp"
         android:text="http://www.amazon.de/"
         android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/TextView04"
+        android:layout_toLeftOf="@+id/textView1"
+        android:src="@drawable/emblem_library" />
 
 </RelativeLayout>

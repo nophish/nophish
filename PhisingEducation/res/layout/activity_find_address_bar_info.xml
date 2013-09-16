@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:text="Finde die Adressleiste"
+        android:text="Übung Adressleiste"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <ImageView
@@ -43,5 +43,13 @@
         android:layout_centerHorizontal="true"
         android:text="Um im Browser an die Adressleiste zu kommen, musst du deinen Finger auf das Display legen und schnell runterziehen und loslassen, sodass die Webseite auf den Anfang der Seite gelangt und schließlich die Adressleiste erscheint."
         android:textColor="#000000" />
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/image_address_bar"
+        android:layout_alignParentLeft="true"
+        android:src="@drawable/emblem_library" />
 
 </RelativeLayout>

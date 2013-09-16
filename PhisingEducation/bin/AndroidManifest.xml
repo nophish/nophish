@@ -178,6 +178,90 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="de.tudarmstadt.informatik.secuso.phishedu.WebAddressFaceboookExampleActivity" />
         </activity>
+        <activity
+            android:name="de.tudarmstadt.informatik.secuso.phishedu.WebAddressExerciseIntroActivity"
+            android:label="@string/title_activity_web_address_exercise_intro" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="de.tudarmstadt.informatik.secuso.phishedu.SolutionFacebookExampleActivity" />
+        </activity>
+        <activity
+            android:name="de.tudarmstadt.informatik.secuso.phishedu.WebAddressExerciseOneActivity"
+            android:label="@string/title_activity_web_address_exercise_one" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="de.tudarmstadt.informatik.secuso.phishedu.WebAddressExerciseIntroActivity" />
+        </activity>
+        <activity
+            android:name="de.tudarmstadt.informatik.secuso.phishedu.WebAddressExOneHighlightWww"
+            android:label="@string/title_activity_web_address_ex_one_highlight_www" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="de.tudarmstadt.informatik.secuso.phishedu.WebAddressExerciseOneActivity" />
+        </activity>
+        <activity
+            android:name="de.tudarmstadt.informatik.secuso.phishedu.WebAddressExOneHighlightPaypalCom"
+            android:label="@string/title_activity_web_address_ex_one_highlight_paypal_com" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="de.tudarmstadt.informatik.secuso.phishedu.WebAddressExerciseIntroActivity" />
+        </activity>
+        <activity
+            android:name="de.tudarmstadt.informatik.secuso.phishedu.WebAddressExOneHighlightPath"
+            android:label="@string/title_activity_web_address_ex_one_highlight_path" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="de.tudarmstadt.informatik.secuso.phishedu.WebAddressExerciseOneActivity" />
+        </activity>
+        <activity
+            android:name="de.tudarmstadt.informatik.secuso.phishedu.WebAddressExOneWrongClickPathActivity"
+            android:label="@string/title_activity_web_address_ex_one_wrong_click_path" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="de.tudarmstadt.informatik.secuso.phishedu.WebAddressExOneHighlightPath" />
+        </activity>
+        <activity
+            android:name="de.tudarmstadt.informatik.secuso.phishedu.WebAddressExOneCorrectClickPaypalCom"
+            android:label="@string/title_activity_web_address_ex_one_correct_click_paypal_com" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="de.tudarmstadt.informatik.secuso.phishedu.WebAddressExOneHighlightPaypalCom" />
+        </activity>
+        <activity
+            android:name="de.tudarmstadt.informatik.secuso.phishedu.WebAddressExOneWrongClickWww"
+            android:label="@string/title_activity_web_address_ex_one_wrong_click_www" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="de.tudarmstadt.informatik.secuso.phishedu.WebAddressExOneHighlightWww" />
+        </activity>
+        <activity
+            android:name="de.tudarmstadt.informatik.secuso.phishedu.WebAddressExOneSolutionActivity"
+            android:label="@string/title_activity_web_address_ex_one_solution" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="de.tudarmstadt.informatik.secuso.phishedu.WebAddressExOneWrongClickPathActivity" />
+        </activity>
+        <activity
+            android:name="de.tudarmstadt.informatik.secuso.phishedu.WebAddressExTwoActivity"
+            android:label="@string/title_activity_web_address_ex_two" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="de.tudarmstadt.informatik.secuso.phishedu.WebAddressExOneSolutionActivity" />
+        </activity>
+        <activity
+            android:name="de.tudarmstadt.informatik.secuso.phishedu.NonsenseIPAddressesLessonActivity"
+            android:label="@string/title_activity_nonsense_ipaddresses_lesson" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="de.tudarmstadt.informatik.secuso.phishedu.WebAddressExTwoActivity" />
+        </activity>
+        <activity
+            android:name="de.tudarmstadt.informatik.secuso.phishedu.CongratsWebAddressesActivity"
+            android:label="@string/title_activity_congrats_web_addresses" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="de.tudarmstadt.informatik.secuso.phishedu.WebAddressExTwoActivity" />
+        </activity>
     </application>
 
 </manifest>
