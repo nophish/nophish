@@ -17,18 +17,6 @@
         android:text="Web-Adressen"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
-    <TextView
-        android:id="@+id/text_domain_b"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignRight="@+id/text_domain_a"
-        android:layout_below="@+id/text_domain_a"
-        android:background="#66CCF1"
-        android:text="web-adressen.liest."
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textColor="#000000" />
-
     <ImageView
         android:id="@+id/imageView1"
         android:layout_width="wrap_content"
@@ -38,120 +26,31 @@
         android:src="@drawable/emblem_library" />
 
     <TextView
-        android:id="@+id/TextView06"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/TextView03"
-        android:layout_alignBottom="@+id/TextView03"
-        android:layout_alignLeft="@+id/textView4"
-        android:background="#E6F1F5"
-        android:text=" / "
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textColor="#AB2848"
-        android:textStyle="bold" />
-
-    <TextView
-        android:id="@+id/textView8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/text_domain_b"
-        android:layout_below="@+id/text_domain_b"
-        android:background="#36F365"
-        android:text="der-ist-das.com"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textColor="#000000" />
-
-    <TextView
-        android:id="@+id/textView7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/button_next"
-        android:layout_alignRight="@+id/TextView03"
-        android:layout_below="@+id/text_domain_a"
-        android:background="#36F365"
-        android:text=".teil-wichtigste-"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textColor="#000000" />
-
-    <TextView
-        android:id="@+id/TextView02"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/text_domain_a"
-        android:layout_alignBottom="@+id/text_domain_a"
-        android:layout_alignParentLeft="true"
-        android:background="#E6F1F5"
-        android:text="http://"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textColor="#AB2848"
-        android:textStyle="bold" />
-
-    <TextView
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/text_domain_b"
         android:layout_below="@+id/textView1"
         android:layout_marginTop="15dp"
-        android:text="Innerhalb dem &quot;http://&quot; und &quot;/&quot; musst du ebenfalls den wichtigsten Teil erkennen können. Hierzu liest du vom dritten Slash &quot;/&quot; aus von rechts nach links."
+        android:text="Innerhalb des relevanten Teils, musst du den aller wichtigsten erkennen können. Lese hierzu den relevanten Teil rückwärts (von rechts nach links)."
         android:textAppearance="?android:attr/textAppearanceMedium" />
-
-    <TextView
-        android:id="@+id/TextView05"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/TextView06"
-        android:layout_below="@+id/textView8"
-        android:background="#FEFC9F"
-        android:text="kommt/ist_irrelevant"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textColor="#5F655B" />
-
-    <TextView
-        android:id="@+id/text_domain_a"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_below="@+id/textView4"
-        android:layout_marginTop="22dp"
-        android:layout_toRightOf="@+id/TextView02"
-        android:background="#66CCF1"
-        android:text="lasst.uns.lernen.wie.man."
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textColor="#000000" />
-
-    <TextView
-        android:id="@+id/TextView04"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/text_domain_b"
-        android:layout_toRightOf="@+id/textView8"
-        android:background="#E6F1F5"
-        android:text=" / "
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textColor="#AB2848"
-        android:textStyle="bold" />
-
-    <TextView
-        android:id="@+id/TextView03"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/TextView05"
-        android:layout_toRightOf="@+id/TextView04"
-        android:background="#FEFC9F"
-        android:text="alles-was/danach."
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textColor="#5F655B" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/TextView05"
-        android:layout_below="@+id/TextView05"
-        android:layout_marginTop="17dp"
-        android:text="Sobald beim Lesen der zweite Punkt erreicht wurde, ist der wichtigste Teil vorbei. Dieser und nur dieser gibt dir eine Aussage über die Herkunft der Webseite."
+        android:layout_alignLeft="@+id/textView4"
+        android:layout_below="@+id/imageView2"
+        android:layout_marginTop="16dp"
+        android:text="Sobald beim rückwärts Lesen der zweite Punkt erreicht wurde, ist der wichtigste Teil vorbei. Dieser und nur dieser gibt dir eine Aussage über die wahre Herkunft der Webseite."
         android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView4"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/address_two" />
 
     <Button
         android:id="@+id/button_next"

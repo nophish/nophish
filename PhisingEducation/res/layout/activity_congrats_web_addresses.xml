@@ -24,7 +24,7 @@
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/textView1"
         android:layout_marginTop="20dp"
-        android:text="Du bist so weit!\n\nIm Folgenden möchten wir dich mit Verschleierungstricks fürnWeb-Adressen bekannt machen, die von Phishern verwendet werden."
+        android:text="Du bist so weit!\n\nIm Folgenden möchten wir dich mit Verschleierungstricks für Web-Adressen bekannt machen, die von Phishern verwendet werden."
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <Button

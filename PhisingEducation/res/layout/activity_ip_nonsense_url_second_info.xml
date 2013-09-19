@@ -43,7 +43,7 @@
         android:layout_alignLeft="@+id/imageView1"
         android:layout_below="@+id/textView1"
         android:layout_marginTop="16dp"
-        android:text="Wenn der wichtigste Teil der Web-Adresse eine IP Adresse entält, solltest du misstrauisch werden. Die Web-Seite ist mit hoher Wahrscheinlichkeit gefälscht.\n\nEnthält der wichtigste Teil Namen, die keinen Sinn ergeben bzw. nichts mit der Webseite zu tun haben, sollte dies ebenfalls zu Misstrauen führen"
+        android:text="Wenn der aller wichtigste Teil der Web-Adresse eine IP Adresse enthält, solltest du misstrauisch werden. Die Web-Seite ist mit hoher Wahrscheinlichkeit gefälscht.\n\nEnthält der wichtigste Teil Namen, die keinen Sinn ergeben bzw. nichts mit dem Dienst der Webseite zu tun haben, sollte dies ebenfalls zu Misstrauen führen"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
 </RelativeLayout>

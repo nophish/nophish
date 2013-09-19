@@ -23,18 +23,19 @@ public final class R {
     public static final class drawable {
         public static final int address_bar=0x7f020000;
         public static final int address_one=0x7f020001;
-        public static final int checkmark=0x7f020002;
-        public static final int cross=0x7f020003;
-        public static final int desktop=0x7f020004;
-        public static final int dontbelieveus=0x7f020005;
-        public static final int emblem_library=0x7f020006;
-        public static final int from=0x7f020007;
-        public static final int ic_launcher=0x7f020008;
-        public static final int practice=0x7f020009;
-        public static final int smile=0x7f02000a;
-        public static final int tst=0x7f02000b;
-        public static final int usawit=0x7f02000c;
-        public static final int webpagespoofing=0x7f02000d;
+        public static final int address_two=0x7f020002;
+        public static final int checkmark=0x7f020003;
+        public static final int cross=0x7f020004;
+        public static final int desktop=0x7f020005;
+        public static final int dontbelieveus=0x7f020006;
+        public static final int emblem_library=0x7f020007;
+        public static final int from=0x7f020008;
+        public static final int ic_launcher=0x7f020009;
+        public static final int practice=0x7f02000a;
+        public static final int smile=0x7f02000b;
+        public static final int tst=0x7f02000c;
+        public static final int usawit=0x7f02000d;
+        public static final int webpagespoofing=0x7f02000e;
     }
     public static final class id {
         public static final int TextView01=0x7f080014;
@@ -44,7 +45,7 @@ public final class R {
         public static final int TextView05=0x7f080019;
         public static final int TextView06=0x7f08001a;
         public static final int TextView07=0x7f08001d;
-        public static final int action_settings=0x7f08002f;
+        public static final int action_settings=0x7f08002d;
         public static final int button1=0x7f080010;
         public static final int buttonAbschicken=0x7f080025;
         public static final int buttonWeiter=0x7f080005;
@@ -71,8 +72,6 @@ public final class R {
         public static final int textView8=0x7f08002a;
         public static final int textViewEmailSpoofing=0x7f08001f;
         public static final int textViewYouDontBelieveUs=0x7f080004;
-        public static final int text_domain_a=0x7f08002e;
-        public static final int text_domain_b=0x7f08002d;
         public static final int text_fake_websites=0x7f080008;
         public static final int text_final_awareness=0x7f08000a;
         public static final int text_find_addr_bar_exercise=0x7f08000e;
