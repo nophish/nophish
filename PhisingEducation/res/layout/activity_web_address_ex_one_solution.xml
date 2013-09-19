@@ -86,7 +86,7 @@
         android:layout_alignRight="@+id/textView1"
         android:layout_below="@+id/textView5"
         android:layout_marginTop="36dp"
-        android:text="Um den aller wichtigsten Teil der Web-Adresse zu identifizieren, fängst du ab dem dritten &quot;/&quot; an von rechts nach links zu lesen und hörst beim 2. erreichten Punkt auf."
+        android:text="Um den aller wichtigsten Teil der Web-Adresse zu identifizieren, fängst du ab dem dritten &quot;/&quot; an von rechts nach links zu lesen und hörst beim 2. erreichten Punkt auf.\n\nDiesen Teil werden wir im Folgenden immer als &quot;Domain Name&quot; bezeichnen."
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <Button
@@ -95,8 +95,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView7"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="67dp"
-        android:onClick = "goToDotDotDot"
+        android:layout_marginTop="15dp"
+        android:onClick="goToDotDotDot"
         android:text="Weiter" />
 
 </RelativeLayout>

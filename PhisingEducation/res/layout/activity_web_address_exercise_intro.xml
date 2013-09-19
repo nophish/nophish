@@ -23,7 +23,7 @@
      android:layout_height="wrap_content"
      android:layout_below="@+id/textView1"
      android:layout_marginTop="15dp"
-     android:text="Nach den vorherigen Beispielen, sollst du nun selber bestimmen, welcher Teil der folgenden Web-Adressen der aller wichtigste ist. Berühre hierzu die entsprechende Stelle."
+     android:text="Nach den vorherigen Beispielen, sollst du nun selber bestimmen, welcher Teil der folgenden Web-Adressen der aller wichtigste ist.\n\nBerühre hierzu die entsprechende Stelle."
      android:textAppearance="?android:attr/textAppearanceMedium" />
 
  <ImageView

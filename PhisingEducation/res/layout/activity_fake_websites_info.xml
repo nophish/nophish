@@ -17,21 +17,14 @@
         android:text="Phishing"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
-    <TextView
-        android:id="@+id/text_fake_websites"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/text_title_phishing"
-        android:text="Wie einfach man E-Mails fälschen kann, hast du bereits gesehen. Bei Webseiten sieht es nicht anders aus!"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
-
     <ImageView
-        android:id="@+id/imageView1"
+        android:id="@+id/imageView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/text_fake_websites"
-        android:layout_centerVertical="true"
-        android:src="@drawable/webpagespoofing" />
+        android:layout_alignTop="@+id/text_title_phishing"
+        android:layout_marginLeft="13dp"
+        android:src="@drawable/emblem_library" />
 
     <Button
         android:id="@+id/button_lets_start"
@@ -39,16 +32,26 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="47dp"
+        android:layout_marginBottom="46dp"
         android:onClick="goToGameIntro"
         android:text="Es kann los gehen" />
 
-    <ImageView
-        android:id="@+id/imageView2"
+    <TextView
+        android:id="@+id/text_fake_websites"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/text_fake_websites"
-        android:layout_alignTop="@+id/text_title_phishing"
-        android:src="@drawable/emblem_library" />
+        android:layout_below="@+id/text_title_phishing"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="13dp"
+        android:text="Wie einfach man E-Mails fälschen kann, hast du bereits gesehen. Bei Webseiten sieht es nicht anders aus!"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/text_fake_websites"
+        android:layout_centerVertical="true"
+        android:src="@drawable/webpagespoofing" />
 
 </RelativeLayout>

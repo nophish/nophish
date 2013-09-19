@@ -25,7 +25,7 @@
     android:layout_below="@+id/text_title_find_address_bar"
     android:layout_marginLeft="14dp"
     android:layout_marginTop="20dp"
-    android:text="Nun bist du an der Reihe.\n\n1. Folge dem untigen Link\n\n2. Find die Adressleiste\n\n3.Todo: Aufgabe beweist: die Adressleiiste gefunde und dass ganze URL betrachtet wurde.\n\n4. Kehre vom Browser zurück in die App"
+    android:text="Nun bist du an der Reihe.\n\n1. Folge dem untigen Link\n\n2. Warte bis die Seite vollständig geladen ist\n\n3. Finde die Adressleiste\n\n4. Gebe xyz ein."
     android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <Button

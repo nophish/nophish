@@ -7,7 +7,6 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".FindAddressBarInfoActivity" >
-    <TextView android:id="@+id/text_find_address_bar" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="28dp" android:text="Um im Browser an die Adressleiste zu kommen, musst du deinen Finger auf das Display legen und schnell runterziehen und loslassen, sodass die Webseite auf den Anfang der Seite gelangt und schließlich die Adressleiste erscheint." android:textColor="#000000"/>
 
     <TextView
         android:id="@+id/text_title_find_address_bar"
@@ -15,41 +14,34 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:text="Übung Adressleiste"
+        android:text="Adressleiste"
         android:textAppearance="?android:attr/textAppearanceLarge" />
-
-    <ImageView
-        android:id="@+id/image_address_bar"
-        android:layout_width="wrap_content"
-        android:layout_height="500dp"
-        android:layout_below="@+id/text_title_find_address_bar"
-        android:src="@drawable/address_bar" />
-
-    <Button
-        android:id="@+id/button_next"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="#000000"
-        android:onClick="goToOpenBrowserActivity"
-        android:layout_alignBottom="@+id/image_address_bar"
-        android:layout_centerHorizontal="true"
-        android:text="Weiter" />
-
-    <TextView
-        android:id="@+id/text_find_address_bar"
-        android:layout_width="220dp"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/button_next"
-        android:layout_centerHorizontal="true"
-        android:text="Um im Browser an die Adressleiste zu kommen, musst du deinen Finger auf das Display legen und schnell runterziehen und loslassen, sodass die Webseite auf den Anfang der Seite gelangt und schließlich die Adressleiste erscheint."
-        android:textColor="#000000" />
 
     <ImageView
         android:id="@+id/imageView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/image_address_bar"
         android:layout_alignParentLeft="true"
         android:src="@drawable/emblem_library" />
+
+    <Button
+        android:id="@+id/button_next"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="86dp"
+        android:background="#000000"
+        android:onClick="goToAddressBarSecondActivity"
+        android:text="Weiter" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imageView1"
+        android:layout_marginTop="42dp"
+        android:text="Bevor wir dir beibringen, wie du anhand von Web-Adressen Phishing Webseiten erkennen kannst, musst du erst einmal wissen, wie du mit deinem Smartphone an die Web-Adresse kommst."
+        android:textAppearance="?android:attr/textAppearanceMedium" />
 
 </RelativeLayout>

@@ -262,6 +262,76 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="de.tudarmstadt.informatik.secuso.phishedu.WebAddressExTwoActivity" />
         </activity>
+        <activity
+            android:name="de.tudarmstadt.informatik.secuso.phishedu.IpNonsenseUrlInfoActivity"
+            android:label="@string/title_activity_ip_nonsense_url_info" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="de.tudarmstadt.informatik.secuso.phishedu.CongratsWebAddressesActivity" />
+        </activity>
+        <activity
+            android:name="de.tudarmstadt.informatik.secuso.phishedu.IpNonsenseUrlSecondInfoActivity"
+            android:label="@string/title_activity_ip_nonsense_url_second_info" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="de.tudarmstadt.informatik.secuso.phishedu.IpNonsenseUrlInfoActivity" />
+        </activity>
+        <activity
+            android:name="de.tudarmstadt.informatik.secuso.phishedu.IpNonsenseUrlExamplesActivity"
+            android:label="@string/title_activity_ip_nonsense_url_examples" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="de.tudarmstadt.informatik.secuso.phishedu.IpNonsenseUrlSecondInfoActivity" />
+        </activity>
+        <activity
+            android:name="de.tudarmstadt.informatik.secuso.phishedu.IpNonsenseUrlExerciseActivity"
+            android:label="@string/title_activity_ip_nonsense_url_exercise" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="de.tudarmstadt.informatik.secuso.phishedu.IpNonsenseUrlExamplesActivity" />
+        </activity>
+        <activity
+            android:name="de.tudarmstadt.informatik.secuso.phishedu.IpNonsendeUrlExerciseSolutionActivity"
+            android:label="@string/title_activity_ip_nonsende_url_exercise_solution" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="de.tudarmstadt.informatik.secuso.phishedu.IpNonsenseUrlExerciseActivity" />
+        </activity>
+        <activity
+            android:name="de.tudarmstadt.informatik.secuso.phishedu.IpNonsenseUrlExerciseSecondSolution"
+            android:label="@string/title_activity_ip_nonsense_url_exercise_second_solution" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="de.tudarmstadt.informatik.secuso.phishedu.IpNonsendeUrlExerciseSolutionActivity" />
+        </activity>
+        <activity
+            android:name="de.tudarmstadt.informatik.secuso.phishedu.IpNonseUrlExerciseWrongSolutionActivity"
+            android:label="@string/title_activity_ip_nonse_url_exercise_wrong_solution" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="de.tudarmstadt.informatik.secuso.phishedu.IpNonsenseUrlExerciseActivity" />
+        </activity>
+        <activity
+            android:name="de.tudarmstadt.informatik.secuso.phishedu.IpNonsenseUrlExCorrectActivity"
+            android:label="@string/title_activity_ip_nonsense_url_ex_correct" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="de.tudarmstadt.informatik.secuso.phishedu.IpNonseUrlExerciseWrongSolutionActivity" />
+        </activity>
+        <activity
+            android:name="de.tudarmstadt.informatik.secuso.phishedu.IpNonsendeUrlExWrongActivity"
+            android:label="@string/title_activity_ip_nonsende_url_ex_wrong" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="de.tudarmstadt.informatik.secuso.phishedu.IpNonseUrlExerciseWrongSolutionActivity" />
+        </activity>
+        <activity
+            android:name="de.tudarmstadt.informatik.secuso.phishedu.FindAddressBarSecondInfoActivity"
+            android:label="@string/title_activity_find_address_bar_second_info" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="de.tudarmstadt.informatik.secuso.phishedu.FindAddressBarInfoActivity" />
+        </activity>
     </application>
 
 </manifest>

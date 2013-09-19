@@ -8,24 +8,23 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".NoAwarenessActivity" >
 
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="28dp"
-        android:text="Hier sollte ein kurzes Screen als Übergang zum Spiel erscheinen. Leider hats nicht geklappt, aber.. blablablub.. Im Spiel geht es um … "
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-
     <Button
         android:id="@+id/button_go_to_game"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView1"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="88dp"
         android:onClick="goToStartGameActivity"
         android:text="Zum Spiel" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/button_go_to_game"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="22dp"
+        android:text="Auch wenn du unsere gefälsche E-Mail leider nicht erhalten konntest, ist es dennoch sehr einfach solche Fälschungen durchzuführen.\n\nZiel dieser App ist, dich über Phishing, einer Gefahr im Internet, aufzuklären. Dein gelerntes Wissen kannst du mit Aufgaben in Schwierigkeitsgraden beweisen."
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
 </RelativeLayout>

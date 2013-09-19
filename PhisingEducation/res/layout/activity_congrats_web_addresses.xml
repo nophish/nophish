@@ -14,8 +14,34 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="34dp"
-        android:text="Glückwunsch..."
+        android:text="Herzlichen Glückwunsch"
         android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/textView1"
+        android:layout_marginTop="20dp"
+        android:text="Du bist so weit!\n\nIm Folgenden möchten wir dich mit Verschleierungstricks fürnWeb-Adressen bekannt machen, die von Phishern verwendet werden."
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <Button
+        android:id="@+id/button_next"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:onClick = "goToIPNonsenseURLInfo"
+        android:text="Weiter" />
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/button_next"
+        android:layout_toRightOf="@+id/button_next"
+        android:src="@drawable/smile" />
 
 </RelativeLayout>

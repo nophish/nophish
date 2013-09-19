@@ -19,9 +19,9 @@ public class FindAddressBarInfoActivity extends Activity {
 		
 		}
 
-
-	public void goToOpenBrowserActivity(View view){
-		Intent intent = new Intent(this, FindAddressBarExerciseActivity.class);
+	
+	public void goToAddressBarSecondActivity(View view){
+		Intent intent = new Intent(this, FindAddressBarSecondInfoActivity.class);
 		startActivity(intent);
 	}
 	
