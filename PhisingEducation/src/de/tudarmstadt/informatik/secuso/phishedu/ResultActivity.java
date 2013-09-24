@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
 import android.view.Menu;
-import android.widget.TextView;
 import android.widget.Toast;
 
 public class ResultActivity extends Activity {
