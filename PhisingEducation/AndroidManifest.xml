@@ -44,6 +44,45 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="de.tudarmstadt.informatik.secuso.phishedu.DisplayYouDontBelieveUsActivity"
+            android:label="@string/title_activity_display_you_dont_believe_us" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="de.tudarmstadt.informatik.secuso.phishedu.MainActivity" />
+        </activity>
+        <activity
+            android:name="de.tudarmstadt.informatik.secuso.phishedu.SendEmailActivity"
+            android:label="@string/title_activity_send_email" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="de.tudarmstadt.informatik.secuso.phishedu.DisplayYouDontBelieveUsActivity" />
+        </activity>
+        <activity
+            android:name="de.tudarmstadt.informatik.secuso.phishedu.AlertDialogActivity"
+            android:label="@string/title_activity_alert_dialog" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="de.tudarmstadt.informatik.secuso.phishedu.SendEmailActivity" />
+        </activity>
+        <activity
+            android:name="de.tudarmstadt.informatik.secuso.phishedu.FinalAwarenessActivity"
+            android:label="@string/title_activity_final_awareness" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="de.tudarmstadt.informatik.secuso.phishedu.AlertDialogActivity" />
+        </activity>
+        <activity
+            android:name="de.tudarmstadt.informatik.secuso.phishedu.ResendEmailOptionActivity"
+            android:label="@string/title_activity_resend_email_option" >
+        </activity>
+        <activity
+            android:name="de.tudarmstadt.informatik.secuso.phishedu.ResendEmailDialogOptionActivity"
+            android:label="@string/title_activity_resend_email_dialog_option" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="de.tudarmstadt.informatik.secuso.phishedu.AlertDialogActivity" />
+        </activity>
     </application>
 
 </manifest>
