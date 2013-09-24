@@ -1,14 +1,11 @@
 package de.tudarmstadt.informatik.secuso.phishedu;
 
 import de.tudarmstadt.informatik.secuso.phishedu.R;
-import android.net.Uri;
 import android.os.Bundle;
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.view.Menu;
 import android.view.View;
-import android.widget.EditText;
 
 public class MainActivity extends Activity {
 
