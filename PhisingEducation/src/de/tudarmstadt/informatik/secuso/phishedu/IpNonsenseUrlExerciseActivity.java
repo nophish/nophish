@@ -2,6 +2,7 @@ package de.tudarmstadt.informatik.secuso.phishedu;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
@@ -12,6 +13,7 @@ public class IpNonsenseUrlExerciseActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_ip_nonsense_url_exercise);
+		this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 	}
 
 
@@ -24,11 +26,13 @@ public class IpNonsenseUrlExerciseActivity extends Activity {
 
 	public void correctlyClicked(View view){
 		Intent intent = new Intent(this, IpNonsendeUrlExerciseSolutionActivity.class);
+		intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
 		startActivity(intent);
 	}
 	
 	public void wronglyClicked(View view){
 		Intent intent = new Intent(this, IpNonseUrlExerciseWrongSolutionActivity.class);
+		intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
 		startActivity(intent);
 	}
 

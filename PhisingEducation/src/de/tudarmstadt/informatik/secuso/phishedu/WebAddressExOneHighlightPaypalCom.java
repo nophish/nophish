@@ -8,6 +8,7 @@ import android.view.View;
 import android.support.v4.app.NavUtils;
 import android.annotation.TargetApi;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Build;
 
 public class WebAddressExOneHighlightPaypalCom extends Activity {
@@ -16,6 +17,7 @@ public class WebAddressExOneHighlightPaypalCom extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_web_address_ex_one_highlight_paypal_com);
+		this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 	}
 
 	@Override
@@ -28,22 +30,26 @@ public class WebAddressExOneHighlightPaypalCom extends Activity {
 
 	public void goToHighlightWww(View view) {
 		Intent intent = new Intent(this, WebAddressExOneHighlightWww.class);
+		intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
 		startActivity(intent);
 	}
 
 	public void goToHighlightPaypalCom(View view) {
 		Intent intent = new Intent(this,
 				WebAddressExOneHighlightPaypalCom.class);
+		intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
 		startActivity(intent);
 	}
 
 	public void goToHighlightPath(View view) {
 		Intent intent = new Intent(this, WebAddressExOneHighlightPath.class);
+		intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
 		startActivity(intent);
 	}
 	
 	public void goToCorrectClickPaypalCom(View view){
 		Intent intent = new Intent(this, WebAddressExOneCorrectClickPaypalCom.class);
+		intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
 		startActivity(intent);
 	}
 }

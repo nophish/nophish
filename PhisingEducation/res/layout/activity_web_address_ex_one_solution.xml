@@ -14,6 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="48dp"
         android:text="Web-Adressen Lösung"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
@@ -98,5 +99,21 @@
         android:layout_marginTop="28dp"
         android:onClick="goToDotDotDot"
         android:text="Weiter" />
+
+    <TextView
+        android:id="@+id/textViewScore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textViewLevel"
+        android:layout_below="@+id/textViewLevel"
+        android:text="Score 18" />
+
+    <TextView
+        android:id="@+id/textViewLevel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:text="Level 2" />
 
 </RelativeLayout>

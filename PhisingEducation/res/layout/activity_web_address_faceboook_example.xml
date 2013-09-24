@@ -14,7 +14,9 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:text="Web-Adressen Beispiele"
+        android:layout_marginTop="48dp"
+        android:text="Web-Adressen\nBeispiele"
+        android:gravity="center"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <Button
@@ -26,18 +28,6 @@
         android:layout_marginBottom="26dp"
         android:onClick="goToNextExample"
         android:text="Weiter" />
-
-    <TextView
-        android:id="@+id/TextView02"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/TextView01"
-        android:layout_alignBottom="@+id/TextView01"
-        android:layout_centerHorizontal="true"
-        android:background="#36F365"
-        android:text="amazon.de"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textColor="#000000" />
 
     <TextView
         android:id="@+id/TextView04"
@@ -70,34 +60,6 @@
         android:text="/ServiceLogin"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
-    <ImageView
-        android:id="@+id/imageView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/textView1"
-        android:layout_toLeftOf="@+id/textView1"
-        android:src="@drawable/emblem_library" />
-
-    <TextView
-        android:id="@+id/TextView01"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/imageView1"
-        android:layout_marginTop="15dp"
-        android:layout_toLeftOf="@+id/TextView02"
-        android:text="http://www."
-        android:textAppearance="?android:attr/textAppearanceMedium" />
-
-    <TextView
-        android:id="@+id/TextView03"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/TextView01"
-        android:layout_below="@+id/TextView02"
-        android:layout_marginTop="31dp"
-        android:text="https://accounts."
-        android:textAppearance="?android:attr/textAppearanceMedium" />
-
     <TextView
         android:id="@+id/TextView05"
         android:layout_width="wrap_content"
@@ -107,5 +69,61 @@
         android:layout_marginTop="28dp"
         android:text="https://secure.facebook.com/settings?tab=payments"
         android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/TextView01"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/textView1"
+        android:text="http://www."
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/TextView02"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/TextView01"
+        android:layout_alignBottom="@+id/TextView01"
+        android:layout_toRightOf="@+id/TextView01"
+        android:background="#36F365"
+        android:text="amazon.de"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#000000" />
+
+    <TextView
+        android:id="@+id/TextView03"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/TextView01"
+        android:layout_below="@+id/TextView01"
+        android:layout_marginTop="26dp"
+        android:text="https://accounts."
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignTop="@+id/textView1"
+        android:src="@drawable/emblem_library" />
+    
+      <TextView
+      android:id="@+id/textViewScore"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_alignLeft="@+id/textViewLevel"
+      android:layout_below="@+id/textViewLevel"
+      android:text="Score 20" />
+
+  
+    <TextView
+        android:id="@+id/textViewLevel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:text="Level 2" />
 
 </RelativeLayout>

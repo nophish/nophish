@@ -23,6 +23,7 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:gravity="center"
+        android:layout_marginTop="48dp"
         android:text="IP und Nonsense\nWeb-Adressen Übung"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
@@ -33,7 +34,7 @@
         android:layout_alignLeft="@+id/imageView1"
         android:layout_below="@+id/textView1"
         android:layout_marginTop="24dp"
-        android:text="Super, das war korrekt. An welchem Teil der Adresse hast du erkannt, dass es sich um eine Phishing Adresse handelt? Tippe hierzu auf den entsprechenden Teil der Web-Adresse."
+        android:text="Super, das war korrekt. Nun zeige uns bitte, an welchem Teil der Web-Adresse du erkannt hast, dass du dieser Web-Adresse nicht vertrauen kannst. Tippe den entsprechenden Teil in der Web-Adresse an."
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
@@ -43,9 +44,9 @@
         android:layout_alignBaseline="@+id/textView3"
         android:layout_alignBottom="@+id/textView3"
         android:layout_toRightOf="@+id/textView3"
-        android:text="yzi.me"
         android:clickable="true"
         android:onClick="markDomainName"
+        android:text=".pbbiainsu.me"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
@@ -62,12 +63,12 @@
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textView6"
+        android:layout_alignBottom="@+id/textView6"
         android:layout_toRightOf="@+id/textView6"
-        android:layout_alignBaseline= "@+id/textView6"
-        android:layout_alignBottom= "@+id/textView6"
-        android:text="yahhdjddjdj."
         android:clickable="true"
         android:onClick="markSubDomain"
+        android:text="tsu"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
@@ -75,11 +76,36 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView2"
-        android:layout_marginTop="67dp"
+        android:layout_marginTop="95dp"
         android:layout_toRightOf="@+id/imageView1"
-        android:text="http://"
         android:clickable="true"
         android:onClick="markHttp"
+        android:text="http://"
         android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/textView2"
+        android:layout_below="@+id/textView2"
+        android:src="@drawable/flag_green" />
+    
+      <TextView
+      android:id="@+id/textViewScore"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_alignLeft="@+id/textViewLevel"
+      android:layout_below="@+id/textViewLevel"
+      android:text="Score xx" />
+
+  
+    <TextView
+        android:id="@+id/textViewLevel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:text="Level 3" />
 
 </RelativeLayout>

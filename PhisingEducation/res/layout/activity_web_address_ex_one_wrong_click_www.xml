@@ -14,6 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="48dp"
         android:text="Web-Adressen Übung"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
@@ -77,24 +78,59 @@
         android:text="paypal.com"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
-    <TextView
-        android:id="@+id/textView7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textView5"
-        android:layout_below="@+id/textView5"
-        android:layout_marginTop="39dp"
-        android:text="Das ist leider falsch. Deine Markierung macht zwar einen wichtigen Teil der Web-Adresse aus, allerdings sagt dieser nichts über die Herkunft der Webseite aus. "
-        android:textAppearance="?android:attr/textAppearanceMedium" />
-
     <Button
         android:id="@+id/button_next"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView7"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
+        android:layout_marginBottom="50dp"
         android:onClick="goToViewSolution"
         android:text="Lösung ansehen" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView5"
+        android:layout_marginTop="47dp"
+        android:layout_toRightOf="@+id/textView4"
+        android:src="@drawable/flag_red" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView5"
+        android:layout_alignTop="@+id/imageView2"
+        android:text="Das ist leider falsch."
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView8"
+        android:layout_below="@+id/imageView2"
+        android:layout_marginTop="24dp"
+        android:text="Erinnerung: Deine Markierung macht zwar einen wichtigen Teil der Web-Adresse aus, allerdings sagt dieser nichts über die Herkunft der Webseite aus. "
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+    
+      <TextView
+      android:id="@+id/textViewScore"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_alignLeft="@+id/textViewLevel"
+      android:layout_below="@+id/textViewLevel"
+      android:text="Score 18" />
+
+  
+    <TextView
+        android:id="@+id/textViewLevel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:text="Level 2" />
 
 </RelativeLayout>

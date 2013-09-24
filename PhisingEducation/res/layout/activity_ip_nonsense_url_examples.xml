@@ -23,6 +23,7 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:gravity="center"
+        android:layout_marginTop="48dp"
         android:text="IP und Nonsense\nWeb-Adressen"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
@@ -152,5 +153,22 @@
         android:layout_marginTop="62dp"
         android:onClick="goToIPNonsenseURLExercise"
         android:text="Üben" />
+    
+        <TextView
+      android:id="@+id/textViewScore"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_alignLeft="@+id/textViewLevel"
+      android:layout_below="@+id/textViewLevel"
+      android:text="Score xx" />
+
+  
+    <TextView
+        android:id="@+id/textViewLevel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:text="Level 3" />
 
 </RelativeLayout>

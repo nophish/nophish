@@ -2,6 +2,7 @@ package de.tudarmstadt.informatik.secuso.phishedu;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
@@ -12,8 +13,8 @@ public class IpNonseUrlExerciseWrongSolutionActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_ip_nonse_url_exercise_wrong_solution);
+		this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 	}
-
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -23,15 +24,10 @@ public class IpNonseUrlExerciseWrongSolutionActivity extends Activity {
 		return true;
 	}
 
+	public void goToNextEx(View view) {
+		Intent intent = new Intent(this, IpNonsenseUrlExerciseTwoActivity.class);
+		intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+		startActivity(intent);
+	}
 
-	public void correctlyClicked(View view){
-		Intent intent = new Intent(this, IpNonsenseUrlExCorrectActivity.class);
-		startActivity(intent);
-	}
-	
-	public void wronglyClicked(View view){
-		Intent intent = new Intent(this, IpNonsendeUrlExWrongActivity.class);
-		startActivity(intent);
-		
-	}
 }

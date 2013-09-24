@@ -14,6 +14,7 @@
     android:layout_height="wrap_content"
     android:layout_alignParentTop="true"
     android:layout_centerHorizontal="true"
+    android:layout_marginTop="48dp"
     android:text="Übung Adressleiste"
     android:textAppearance="?android:attr/textAppearanceLarge" />
 
@@ -44,5 +45,22 @@
         android:layout_alignParentLeft="true"
         android:layout_alignTop="@+id/text_title_find_address_bar"
         android:src="@drawable/desktop" />
+    
+        <TextView
+      android:id="@+id/textViewScore"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_alignLeft="@+id/textViewLevel"
+      android:layout_below="@+id/textViewLevel"
+      android:text="Score 10" />
+
+  
+    <TextView
+        android:id="@+id/textViewLevel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:text="Level 1" />
 
 </RelativeLayout>

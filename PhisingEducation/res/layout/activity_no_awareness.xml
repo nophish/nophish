@@ -21,9 +21,9 @@
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/button_go_to_game"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="22dp"
+        android:layout_marginTop="28dp"
         android:text="Auch wenn du unsere gefälsche E-Mail leider nicht erhalten konntest, ist es dennoch sehr einfach solche Fälschungen durchzuführen.\n\nZiel dieser App ist, dich über Phishing, einer Gefahr im Internet, aufzuklären. Dein gelerntes Wissen kannst du mit Aufgaben in Schwierigkeitsgraden beweisen."
         android:textAppearance="?android:attr/textAppearanceLarge" />
 

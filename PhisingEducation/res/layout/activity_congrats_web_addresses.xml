@@ -14,6 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="48dp"
         android:text="Herzlichen Glückwunsch"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
@@ -27,15 +28,6 @@
         android:text="Du bist so weit!\n\nIm Folgenden möchten wir dich mit Verschleierungstricks für Web-Adressen bekannt machen, die von Phishern verwendet werden."
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
-    <Button
-        android:id="@+id/button_next"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:onClick = "goToIPNonsenseURLInfo"
-        android:text="Weiter" />
-
     <ImageView
         android:id="@+id/imageView1"
         android:layout_width="wrap_content"
@@ -43,5 +35,32 @@
         android:layout_below="@+id/button_next"
         android:layout_toRightOf="@+id/button_next"
         android:src="@drawable/smile" />
+    
+        <TextView
+      android:id="@+id/textViewScore"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_alignLeft="@+id/textViewLevel"
+      android:layout_below="@+id/textViewLevel"
+      android:text="Score 50" />
+
+  
+    <TextView
+        android:id="@+id/textViewLevel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:text="Level 2" />
+
+    <Button
+        android:id="@+id/button_next"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:onClick="goToLevelThree"
+        android:text="Weiter" />
 
 </RelativeLayout>

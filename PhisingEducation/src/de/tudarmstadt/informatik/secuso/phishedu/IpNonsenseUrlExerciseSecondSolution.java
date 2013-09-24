@@ -1,12 +1,11 @@
 package de.tudarmstadt.informatik.secuso.phishedu;
 
-import android.os.Bundle;
 import android.app.Activity;
+import android.content.Intent;
+import android.content.pm.ActivityInfo;
+import android.os.Bundle;
 import android.view.Menu;
-import android.view.MenuItem;
-import android.support.v4.app.NavUtils;
-import android.annotation.TargetApi;
-import android.os.Build;
+import android.view.View;
 
 public class IpNonsenseUrlExerciseSecondSolution extends Activity {
 
@@ -14,19 +13,9 @@ public class IpNonsenseUrlExerciseSecondSolution extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_ip_nonsense_url_exercise_second_solution);
-		// Show the Up button in the action bar.
-		setupActionBar();
+		this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 	}
 
-	/**
-	 * Set up the {@link android.app.ActionBar}, if the API is available.
-	 */
-	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
-	private void setupActionBar() {
-		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
-			getActionBar().setDisplayHomeAsUpEnabled(true);
-		}
-	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -36,21 +25,21 @@ public class IpNonsenseUrlExerciseSecondSolution extends Activity {
 		return true;
 	}
 
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		switch (item.getItemId()) {
-		case android.R.id.home:
-			// This ID represents the Home or Up button. In the case of this
-			// activity, the Up button is shown. Use NavUtils to allow users
-			// to navigate up one level in the application structure. For
-			// more details, see the Navigation pattern on Android Design:
-			//
-			// http://developer.android.com/design/patterns/navigation.html#up-vs-back
-			//
-			NavUtils.navigateUpFromSameTask(this);
-			return true;
-		}
-		return super.onOptionsItemSelected(item);
+	public void markHttp(View view){
+		Intent intent = new Intent(this, IpNonsenseUrlExerciseHighlightHttpActivity.class);
+		intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+		startActivity(intent);
 	}
-
+	
+	public void markSubDomain(View view){
+		Intent intent = new Intent(this, IpNonsenseUrlExerciseHighlightSubdomainActivity.class);
+		intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+		startActivity(intent);
+	}
+	
+	public void markDomainName(View view){
+		Intent intent = new Intent(this, IpNonsenseUrlExerciseHighlightDomainActivity.class);
+		intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+		startActivity(intent);
+	}
 }

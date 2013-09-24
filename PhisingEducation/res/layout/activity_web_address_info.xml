@@ -14,10 +14,10 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/textView2"
         android:layout_below="@+id/textView2"
-        android:background="#E6F1F5"
+        android:background="#FFFFFF"
         android:text="http://"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textColor="#AB2848"
+        android:textColor="#FF0000"
         android:textStyle="bold" />
 
     <TextView
@@ -26,6 +26,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="48dp"
         android:text="Web-Adressen"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
@@ -35,57 +36,7 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/imageView1"
         android:layout_below="@+id/textView1"
-        android:text="Der relevante Teil einer Web-Adresse befindet sich zwischen folgendem Konstrukt:"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/TextView01"
-        android:layout_alignBottom="@+id/TextView01"
-        android:layout_toRightOf="@+id/TextView01"
-        android:text="und dem nächstfolgenden"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
-
-    <TextView
-        android:id="@+id/TextView07"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/textView3"
-        android:layout_alignBottom="@+id/textView3"
-        android:layout_toRightOf="@+id/textView3"
-        android:background="#E6F1F5"
-        android:text=" / "
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textColor="#AB2848"
-        android:textStyle="bold" />
-
-    <ImageView
-        android:id="@+id/imageView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/textView2"
-        android:layout_alignParentLeft="true"
-        android:src="@drawable/emblem_library" />
-
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/TextView01"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="35dp"
-        android:src="@drawable/address_one" />
-
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/TextView01"
-        android:layout_below="@+id/imageView2"
-        android:layout_marginTop="31dp"
-        android:text="Allem, was nach diesem Konstrukt kommt, kannst du nicht vertrauen."
+        android:text="Der relevante Teil einer Web-Adresse befindet sich zwischen dem folgendem Konstrukt:"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <Button
@@ -98,4 +49,70 @@
         android:onClick="goToNextWebAddressInfoActivity"
         android:text="Weiter" />
 
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/imageView2"
+        android:layout_below="@+id/TextView01"
+        android:layout_marginTop="110dp"
+        android:text="Allem, was nach diesem Konstrukt kommt, kannst du nicht vertrauen."
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/TextView01"
+        android:layout_below="@+id/TextView01"
+        android:layout_marginTop="24dp"
+        android:src="@drawable/web_address_one" />
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/textView2"
+        android:layout_alignParentLeft="true"
+        android:src="@drawable/emblem_library" />
+    
+    
+
+    <TextView
+        android:id="@+id/TextView07"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/textView5"
+        android:layout_toRightOf="@+id/textView3"
+        android:background="#FFFFFF"
+        android:text=" / "
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#FF0000"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/textView5"
+        android:layout_toRightOf="@+id/TextView01"
+        android:text="und dem nächstfolgenden"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+  <TextView
+      android:id="@+id/textViewScore"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_alignLeft="@+id/textViewLevel"
+      android:layout_below="@+id/textViewLevel"
+      android:text="Score 20" />
+
+  
+    <TextView
+        android:id="@+id/textViewLevel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:text="Level 2" />
 </RelativeLayout>

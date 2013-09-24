@@ -17,15 +17,6 @@
         android:text="Phishing"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
-    <TextView
-        android:id="@+id/text_phishing"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/text_title_phishing"
-        android:layout_centerHorizontal="true"
-        android:text="Es gibt unterschiedlichste Tricks, um das Vertrauen von Nutzern zu gewinnen und ihnen vertrauliche Informationen zu entlocken.\n\nEin beliebter Trick ist, gefälschte Webseiten zu verwenden, die den echten täuschend ähnlich sehen.\n\nDiese können über E-Mail, SMS, Social Network Links oder sogar durch normales Surfen erreicht werden.\n\nWir wollen die helfen, Phishing Webseiten anhand ihrer Adresse zu erkennen."
-        android:textAppearance="?android:attr/textAppearanceMedium" />
-
     <Button
         android:id="@+id/button_next"
         android:layout_width="wrap_content"
@@ -35,12 +26,22 @@
         android:onClick="goToFakeWebsitesInfo"
         android:text="Weiter" />
 
+    <TextView
+        android:id="@+id/text_phishing"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/text_title_phishing"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="27dp"
+        android:text="Es gibt unterschiedlichste Tricks, um das Vertrauen von Nutzern zu gewinnen und ihnen vertrauliche Informationen zu entlocken.\n\nEin beliebter Trick ist, gefälschte Webseiten zu verwenden, die den echten täuschend ähnlich sehen.\n\nDiese können über E-Mail, SMS, Social Network Links oder sogar durch normales Surfen erreicht werden.\n\nWir wollen die helfen, Phishing Webseiten anhand ihrer Adresse zu erkennen."
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
     <ImageView
         android:id="@+id/imageView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/text_phishing"
         android:layout_alignLeft="@+id/text_phishing"
+        android:layout_alignTop="@+id/text_title_phishing"
         android:src="@drawable/emblem_library" />
 
 </RelativeLayout>

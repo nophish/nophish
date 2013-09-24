@@ -17,15 +17,6 @@
         android:text="Phishing"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/text_fake_websites"
-        android:layout_alignTop="@+id/text_title_phishing"
-        android:layout_marginLeft="13dp"
-        android:src="@drawable/emblem_library" />
-
     <Button
         android:id="@+id/button_lets_start"
         android:layout_width="wrap_content"
@@ -43,7 +34,7 @@
         android:layout_below="@+id/text_title_phishing"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="13dp"
-        android:text="Wie einfach man E-Mails fälschen kann, hast du bereits gesehen. Bei Webseiten sieht es nicht anders aus!"
+        android:text="Auch das Fälschen von Webseiten ist sehr einfach (wie bei E-Mails), wie folgender Comic zeigt."
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <ImageView
@@ -53,5 +44,13 @@
         android:layout_alignRight="@+id/text_fake_websites"
         android:layout_centerVertical="true"
         android:src="@drawable/webpagespoofing" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/text_fake_websites"
+        android:layout_alignTop="@+id/text_title_phishing"
+        android:src="@drawable/emblem_library" />
 
 </RelativeLayout>

@@ -9,24 +9,44 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".GameIntroActivity" >
 
+    <Button
+        android:id="@+id/button_play"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="26dp"
+        android:onClick="goToLevelOne"
+        android:text="Spielen" />
+
     <TextView
         android:id="@+id/text_game_intro"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="36dp"
+        android:layout_alignRight="@+id/imageView1"
         android:gravity="center"
-        android:text="Das Spiel kann los gehen!\n\n Lasse nicht zu, dass fiese Phisher dein Konto plündern!"
+        android:text="Bevor du uns noch vom Stuhl fällst vor Langeweile, lass uns das ganze ein wenig interaktiver angehen und mit dem Spiel beginnen."
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
-    <Button
-        android:id="@+id/button_play"
+    <TextView
+        android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/imageView1"
         android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:onClick="goToFindAddressBarInfo"
-        android:text="Spielen" />
+        android:layout_marginTop="62dp"
+        android:gravity="center"
+        android:text="Lasse nicht zu, dass fiese Phisher dein Konto plündern!"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/text_game_intro"
+        android:layout_marginTop="122dp"
+        android:src="@drawable/dontbelieveus" />
 
 </RelativeLayout>

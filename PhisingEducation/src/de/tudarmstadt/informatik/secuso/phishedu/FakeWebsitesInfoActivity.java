@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.view.Menu;
 import android.view.View;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import de.tudarmstadt.informatik.secuso.phishedu.R;
 
 public class FakeWebsitesInfoActivity extends Activity {
@@ -13,11 +14,13 @@ public class FakeWebsitesInfoActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_fake_websites_info);
+		this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 	}
 
 
 	public void goToGameIntro(View view){
 		Intent intent = new Intent(this, GameIntroductionActivity.class);
+		intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
 		startActivity(intent);
 	}
 

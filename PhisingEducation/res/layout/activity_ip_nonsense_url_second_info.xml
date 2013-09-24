@@ -23,6 +23,7 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:gravity="center"
+        android:layout_marginTop="48dp"
         android:text="IP und Nonsense\nWeb-Adressen"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
@@ -45,5 +46,22 @@
         android:layout_marginTop="16dp"
         android:text="Wenn der aller wichtigste Teil der Web-Adresse eine IP Adresse enthält, solltest du misstrauisch werden. Die Web-Seite ist mit hoher Wahrscheinlichkeit gefälscht.\n\nEnthält der wichtigste Teil Namen, die keinen Sinn ergeben bzw. nichts mit dem Dienst der Webseite zu tun haben, sollte dies ebenfalls zu Misstrauen führen"
         android:textAppearance="?android:attr/textAppearanceMedium" />
+    
+      <TextView
+      android:id="@+id/textViewScore"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_alignLeft="@+id/textViewLevel"
+      android:layout_below="@+id/textViewLevel"
+      android:text="Score 50" />
+
+  
+    <TextView
+        android:id="@+id/textViewLevel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:text="Level 3" />
 
 </RelativeLayout>
