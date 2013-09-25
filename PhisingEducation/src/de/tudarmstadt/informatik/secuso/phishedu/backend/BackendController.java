@@ -51,20 +51,25 @@ public class BackendController extends BroadcastReceiver implements BackendContr
 	private FrontendControllerInterface frontend;
 	private SparseArray<BackendReturn> returns=new SparseArray<BackendController.BackendReturn>();
 	private int current_call_id = 0;
-	private static BackendControllerInterface instance;
+	private static BackendController instance=new BackendController();
+	private boolean inited = false;
 	
 	private BackendController() {
 	}
 	
 	public static BackendControllerInterface getInstance(){
-		if(instance == null){
-			instance=new BackendController();
+		if(!instance.inited){
+			throw new IllegalStateException("initialize me first! Call BackendController.init()");
 		}
 		return instance;
 	}
 	
-	public void init(FrontendControllerInterface frontend){
-		this.frontend=frontend;
+	public static void init(FrontendControllerInterface frontend){
+		if(instance == null){
+			instance=new BackendController();
+		}
+		instance.frontend=frontend;
+		instance.inited=true;
 	}
 	
 	private void taskcallback(String result, int call_id){
@@ -152,7 +157,12 @@ public class BackendController extends BroadcastReceiver implements BackendContr
 
 	@Override
 	public void onReceive(Context context, Intent intent) {
-		Uri data = intent.getData();			
+		Uri data = intent.getData();	
+		if(data.getHost()=="maillink"){
+			this.frontend.MailReturned();
+		}else if(data.getHost()=="level1phinished"){
+			this.frontend.level1Finished();
+		}
 	}
 	
 }

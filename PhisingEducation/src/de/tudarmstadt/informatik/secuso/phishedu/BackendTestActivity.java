@@ -3,6 +3,7 @@ package de.tudarmstadt.informatik.secuso.phishedu;
 import java.util.LinkedHashMap;
 
 import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController;
+import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendControllerInterface;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.FrontendControllerInterface;
 
 import android.os.Bundle;
@@ -20,13 +21,14 @@ public class BackendTestActivity extends ListActivity implements FrontendControl
 	
 	private ArrayAdapter<String> adapter;
 	private LinkedHashMap<String, BackendTest> entrys;
-	private BackendController backend;
+	private BackendControllerInterface backend;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		
-		BackendController.getInstance().init(this);
+		BackendController.init(this);
+		this.backend=BackendController.getInstance();
 		
 		this.entrys = new LinkedHashMap<String, BackendTest>();
 		entrys.put("send mail", new BackendTest(){public void test(){mailSendTest();}});

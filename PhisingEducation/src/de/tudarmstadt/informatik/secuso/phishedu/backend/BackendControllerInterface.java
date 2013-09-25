@@ -4,7 +4,6 @@ public interface BackendControllerInterface {
 	void sendMail(String Subject, String from, String to);
 	void StartLevel1();
 	String[] getNextUrl();
-	void init(FrontendControllerInterface frontend);
 	int getLevel();
 	int getPoints();
 	PhishResult userClicked(boolean accptance);
