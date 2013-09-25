@@ -3,14 +3,13 @@ package de.tudarmstadt.informatik.secuso.phishedu.backend;
 import org.alexd.jsonrpc.JSONRPCClient;
 import org.alexd.jsonrpc.JSONRPCException;
 
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.util.SparseArray;
 
-public class BackendController{
-	public BackendController(BackendCallback frontend) {
-		this.frontend=frontend;
-	}
-	
+public class BackendController implements BackendControllerInterface{
 	private interface BackendReturn{
 		public void result(String result);
 	}
@@ -48,13 +47,27 @@ public class BackendController{
 		}
 	}
 	// Create client specifying JSON-RPC version 2.0
-	private BackendCallback frontend;
+	private FrontendControllerInterface frontend;
 	private SparseArray<BackendReturn> returns=new SparseArray<BackendController.BackendReturn>();
 	private int current_call_id = 0;
+	private Context context;
+	
+	public BackendController(Context context, FrontendControllerInterface frontend) {
+		this.frontend=frontend;
+		this.context=context;
+	}
+	
 	
 	private void taskcallback(String result, int call_id){
-		returns.get(call_id).result(result);
+		BackendReturn callback = returns.get(call_id);
+		if(callback != null){
+			callback.result(result);
+		}
 		returns.remove(call_id);
+	}
+	
+	private synchronized void dispatch(String method, String... params){
+		dispatch(null, method, params);
 	}
 	
 	private synchronized void dispatch(BackendReturn callback, String method, String... params){
@@ -64,11 +77,83 @@ public class BackendController{
 		task.execute(params);
 	}
 	
-	public void test(String testparam){
-		BackendReturn callback = new BackendReturn() {public void result(String result) {
-			frontend.test_returned(result);
-		}}; 
-		dispatch(callback,"testmethod", "testparam");
+	public void sendtoBrowser(Class resultActivity, String url){
+		Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+		context.startActivity(browserIntent);
+	}
+	
+	public void sendMail(String from, String to, String usermessage){
+		dispatch("sendMail", from, to, usermessage);
+	}
+
+
+	@Override
+	public void setFrontend(FrontendControllerInterface frontend) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void StartLevel1() {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public String[] getNextUrl() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	@Override
+	public void init() {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public int getLevel() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+
+	@Override
+	public int getPoints() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+
+	@Override
+	public PhishResult userClicked(boolean accptance) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	@Override
+	public PhishType getType() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	@Override
+	public boolean partClicked(int part) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+
+	@Override
+	public boolean isLevelUp() {
+		// TODO Auto-generated method stub
+		return false;
 	}
 	
 }
