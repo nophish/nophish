@@ -1,11 +1,10 @@
 package de.tudarmstadt.informatik.secuso.phishedu.backend;
 
 public interface BackendControllerInterface {
-	void setFrontend(FrontendControllerInterface frontend);
 	void sendMail(String Subject, String from, String to);
 	void StartLevel1();
 	String[] getNextUrl();
-	void init();
+	void init(FrontendControllerInterface frontend);
 	int getLevel();
 	int getPoints();
 	PhishResult userClicked(boolean accptance);

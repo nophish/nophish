@@ -7,6 +7,7 @@ import de.tudarmstadt.informatik.secuso.phishedu.backend.FrontendControllerInter
 
 import android.os.Bundle;
 import android.app.ListActivity;
+import android.content.Context;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -24,11 +25,12 @@ public class BackendTestActivity extends ListActivity implements FrontendControl
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		this.backend = new BackendController(this,this);
-		this.entrys = new LinkedHashMap<String, BackendTest>();
 		
-		entrys.put("send to browser", new BackendTest(){public void test(){browserSendTest();}});
+		BackendController.getInstance().init(this);
+		
+		this.entrys = new LinkedHashMap<String, BackendTest>();
 		entrys.put("send mail", new BackendTest(){public void test(){mailSendTest();}});
+		entrys.put("Start level 1", new BackendTest(){public void test(){leve1Test();}});
 		
 		this.adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, entrys.keySet().toArray(new String[0]));
 		// Assign adapter to List
@@ -45,7 +47,7 @@ public class BackendTestActivity extends ListActivity implements FrontendControl
 		this.backend.sendMail("cbergmann@schuhklassert.de", "cbergmann@schuhklassert.de", "This is a user message");
 	}
 
-	public void browserSendTest(){
+	public void leve1Test(){
 		this.backend.StartLevel1();
 	}
 
@@ -55,20 +57,22 @@ public class BackendTestActivity extends ListActivity implements FrontendControl
 
 	@Override
 	public void MailReturned() {
-		// TODO Auto-generated method stub
-		
+		displayToast("The Mail returned!");
 	}
 
 	@Override
 	public void level1Finished() {
-		// TODO Auto-generated method stub
-		
+		displayToast("Level 1 is completed!");
 	}
 
 	@Override
 	public void initDone() {
-		// TODO Auto-generated method stub
-		
+		displayToast("we are finished with initialization!");
+	}
+
+	@Override
+	public Context getContext() {
+		return getApplicationContext();
 	}
 
 }

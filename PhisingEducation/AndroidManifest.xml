@@ -73,7 +73,7 @@
         </activity>
         <receiver
             android:label="@string/app_name"
-            android:name=".backend.PhisheduUrlReceiver">
+            android:name=".backend.BackendController">
             
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />

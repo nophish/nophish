@@ -3,13 +3,14 @@ package de.tudarmstadt.informatik.secuso.phishedu.backend;
 import org.alexd.jsonrpc.JSONRPCClient;
 import org.alexd.jsonrpc.JSONRPCException;
 
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.util.SparseArray;
 
-public class BackendController implements BackendControllerInterface{
+public class BackendController extends BroadcastReceiver implements BackendControllerInterface {
 	private interface BackendReturn{
 		public void result(String result);
 	}
@@ -50,13 +51,21 @@ public class BackendController implements BackendControllerInterface{
 	private FrontendControllerInterface frontend;
 	private SparseArray<BackendReturn> returns=new SparseArray<BackendController.BackendReturn>();
 	private int current_call_id = 0;
-	private Context context;
+	private static BackendControllerInterface instance;
 	
-	public BackendController(Context context, FrontendControllerInterface frontend) {
-		this.frontend=frontend;
-		this.context=context;
+	private BackendController() {
 	}
 	
+	public static BackendControllerInterface getInstance(){
+		if(instance == null){
+			instance=new BackendController();
+		}
+		return instance;
+	}
+	
+	public void init(FrontendControllerInterface frontend){
+		this.frontend=frontend;
+	}
 	
 	private void taskcallback(String result, int call_id){
 		BackendReturn callback = returns.get(call_id);
@@ -77,27 +86,14 @@ public class BackendController implements BackendControllerInterface{
 		task.execute(params);
 	}
 	
-	public void sendtoBrowser(Class resultActivity, String url){
-		Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
-		context.startActivity(browserIntent);
-	}
-	
 	public void sendMail(String from, String to, String usermessage){
 		dispatch("sendMail", from, to, usermessage);
 	}
 
-
-	@Override
-	public void setFrontend(FrontendControllerInterface frontend) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
 	@Override
 	public void StartLevel1() {
-		// TODO Auto-generated method stub
-		
+		Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://clemens.schuhklassert.de"));
+		this.frontend.getContext().startActivity(browserIntent);
 	}
 
 
@@ -105,13 +101,6 @@ public class BackendController implements BackendControllerInterface{
 	public String[] getNextUrl() {
 		// TODO Auto-generated method stub
 		return null;
-	}
-
-
-	@Override
-	public void init() {
-		// TODO Auto-generated method stub
-		
 	}
 
 
@@ -154,6 +143,16 @@ public class BackendController implements BackendControllerInterface{
 	public boolean isLevelUp() {
 		// TODO Auto-generated method stub
 		return false;
+	}
+	
+	public void receivedURL(Uri uri){
+		
+	}
+
+
+	@Override
+	public void onReceive(Context context, Intent intent) {
+		Uri data = intent.getData();			
 	}
 	
 }
