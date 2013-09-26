@@ -27,8 +27,8 @@ public class BackendTestActivity extends ListActivity implements FrontendControl
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		
-		BackendController.init(this);
 		this.backend=BackendController.getInstance();
+		this.backend.init(this);
 		
 		this.entrys = new LinkedHashMap<String, BackendTest>();
 		entrys.put("send mail", new BackendTest(){public void test(){mailSendTest();}});
@@ -75,6 +75,11 @@ public class BackendTestActivity extends ListActivity implements FrontendControl
 	@Override
 	public Context getContext() {
 		return getApplicationContext();
+	}
+
+	@Override
+	public void initProgress(int percent) {
+		displayToast("init Progress:"+percent);
 	}
 
 }
