@@ -1,34 +1,38 @@
 package de.tudarmstadt.informatik.secuso.phishedu.backend;
 
 import de.tudarmstadt.informatik.secuso.phishedu.backend.networkTasks.*;
+import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 
 public class BackendController extends BroadcastReceiver implements BackendControllerInterface {
-	// Create client specifying JSON-RPC version 2.0
+	private static final String PREFS_NAME = "PhisheduState";
+	private static BackendController instance = new BackendController();
+	
 	private FrontendControllerInterface frontend;
-	private static BackendController instance=new BackendController();
 	private boolean inited = false;
 	private String[] urlCache;
+	SharedPreferences settings;
 	
-	private BackendController() {
-	}
+	private BackendController() {}
 	
 	public static BackendControllerInterface getInstance(){
 		return instance;
 	}
 	
-	private void checkinited(){
-		if(!this.inited){
+	private static void checkinited(){
+		if(instance == null || !(instance.inited)){
 			throw new IllegalStateException("initialize me first! Call backendcontroller.init()");
 		}
 	}
 	
 	public void init(FrontendControllerInterface frontend){
 		this.frontend=frontend;
-		new GetUrlsTask(this).execute(100);		
+		this.settings = this.frontend.getMasterActivity().getSharedPreferences(PREFS_NAME, 0);
+		new GetUrlsTask(instance).execute(100);		
 	}
 	
 	public void urlsReturned(String[] urls){
@@ -112,7 +116,6 @@ public class BackendController extends BroadcastReceiver implements BackendContr
 	public void receivedURL(Uri uri){
 		
 	}
-
 
 	@Override
 	public void onReceive(Context context, Intent intent) {

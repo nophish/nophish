@@ -34,7 +34,7 @@ public class GetUrlsTask extends AsyncTask<Integer, Integer, String[]>{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return null;
+		return new String[0];
 	}
 
 	protected void onProgressUpdate(Integer... progress) {

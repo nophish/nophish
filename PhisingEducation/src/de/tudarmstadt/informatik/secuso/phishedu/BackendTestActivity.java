@@ -7,6 +7,7 @@ import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendControllerInterf
 import de.tudarmstadt.informatik.secuso.phishedu.backend.FrontendControllerInterface;
 
 import android.os.Bundle;
+import android.app.Activity;
 import android.app.ListActivity;
 import android.content.Context;
 import android.view.View;
@@ -80,6 +81,11 @@ public class BackendTestActivity extends ListActivity implements FrontendControl
 	@Override
 	public void initProgress(int percent) {
 		displayToast("init Progress:"+percent);
+	}
+
+	@Override
+	public Activity getMasterActivity() {
+		return this;
 	}
 
 }
