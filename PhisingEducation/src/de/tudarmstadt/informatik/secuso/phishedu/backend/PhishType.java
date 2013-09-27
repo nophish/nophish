@@ -4,5 +4,6 @@ public enum PhishType {
 	OSN,
 	Bank,
 	//...
+	NoPhish,
 	Generic
 }
