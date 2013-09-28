@@ -5,7 +5,7 @@ import org.alexd.jsonrpc.JSONRPCException;
 
 import android.os.AsyncTask;
 
-public class SendMailTask extends AsyncTask<String, Void, String>{
+public class SendMailTask extends AsyncTask<String, Void, Boolean>{
 		
 		private String from;
 		private String to;
@@ -17,10 +17,10 @@ public class SendMailTask extends AsyncTask<String, Void, String>{
 			this.usermessage=usermessage;
 		}
 
-		protected String doInBackground(String... params) {
+		protected Boolean doInBackground(String... params) {
 			JSONRPCClient client = JSONRPCClientFactory.getClient();
 			try {
-				return client.callString("sendMail", from, to, usermessage);
+				return client.callBoolean("sendMail", from, to, usermessage);
 			} catch (JSONRPCException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

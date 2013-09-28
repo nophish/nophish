@@ -16,9 +16,11 @@ public class BackendController extends BroadcastReceiver implements BackendContr
 	
 	private FrontendControllerInterface frontend;
 	private boolean inited = false;
-	private boolean urls_loaded = false;
+	
+	//indexed by PhishUrlsTask constants
+	private String[][] phishURLCache = new String[2][];
+	
 	private boolean gamestate_loaded = false;
-	private String[] urlCache;
 	private GameProgress progress;
 	
 	/**
@@ -60,12 +62,12 @@ public class BackendController extends BroadcastReceiver implements BackendContr
 	public void init(FrontendControllerInterface frontend){
 		this.frontend=frontend;
 		this.progress = new GameProgress(this.frontend.getContext().getSharedPreferences(PREFS_NAME, 0), this.frontend.getGamesClient(),this.frontend.getAppStateClient(),this);
-		new GetUrlsTask(instance).execute(100);		
+		new GetUrlsTask(instance).execute(100,GetUrlsTask.PHISH_URLS);		
+		new GetUrlsTask(instance).execute(100,GetUrlsTask.VALID_URLS);
 	}
 	
-	public void urlsReturned(String[] urls){
-		this.urlCache=urls;
-		this.urls_loaded=true;
+	public void urlsReturned(String[] urls, int type){
+		this.phishURLCache[type]=urls;
 		this.checkInitDone();
 	}
 	
@@ -74,7 +76,7 @@ public class BackendController extends BroadcastReceiver implements BackendContr
 	}
 	
 	private void checkInitDone(){
-		if(this.urls_loaded && ((!this.progress.waitForLoad()) || this.gamestate_loaded)){
+		if(this.phishURLCache[GetUrlsTask.PHISH_URLS] != null && this.phishURLCache[GetUrlsTask.VALID_URLS] != null && ((!this.progress.waitForLoad()) || this.gamestate_loaded)){
 			this.inited=true;
 			this.frontend.initDone();
 			this.progress.StartFinished();	
@@ -100,7 +102,7 @@ public class BackendController extends BroadcastReceiver implements BackendContr
 		// TODO We have to implement a smart way of generating the URLs. For now we just give out the first cachced one.
 		this.current_parts.clear();
 		
-		String[] parts = this.urlCache[0].split("/");
+		String[] parts = this.phishURLCache[GetUrlsTask.PHISH_URLS][0].split("/");
 		for (String part : parts) {
 			this.current_parts.put(part, true);
 		}
