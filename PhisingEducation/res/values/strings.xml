@@ -5,7 +5,6 @@
     <string name="action_settings">Settings</string>
     <string name="start_button">Please click me!</string>
     <string name="hello_result">You came here by clicking a phishedu:// Link!</string>
-    <string name="title_activity_backend_test">BackendTestActivity</string>
     <string name="title_activity_display_you_dont_believe_us">DisplayYouDontBelieveUsActivity</string>
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_send_email">SendEmailActivity</string>
@@ -13,5 +12,60 @@
     <string name="title_activity_final_awareness">FinalAwarenessActivity</string>
     <string name="title_activity_resend_email_option">ResendEmailOptionActivity</string>
     <string name="title_activity_resend_email_dialog_option">ResendEmailDialogOptionActivity</string>
-
+    <string name="title_activity_start_game">StartGameActivity</string>
+    <string name="title_activity_no_awareness">NoAwarenessActivity</string>
+    <string name="title_activity_fake_websites_info">FakeWebsitesInfoActivity</string>
+    <string name="title_activity_game_intro">GameIntroActivity</string>
+    <string name="title_activity_game_introduction">GameIntroductionActivity</string>
+    <string name="title_activity_find_address_bar_info">FindAddressBarInfoActivity</string>
+    <string name="title_activity_find_address_bar_exercise">FindAddressBarExercise</string>
+    <string name="title_activity_web_address_info">WebAddressInfoActivity</string>
+    <string name="title_activity_web_address_second_info">WebAddressSecondInfoActivity</string>
+    <string name="title_activity_web_address_examples">WebAddressExamplesActivity</string>
+    <string name="title_activity_solution_amazon_example">SolutionAmazonExampleActivity</string>
+    <string name="title_activity_web_address_google_example">WebAddressGoogleExampleActivity</string>
+    <string name="title_activity_solution_google_example">SolutionGoogleExampleActivity</string>
+    <string name="title_activity_web_address_faceboook_example">WebAddressFaceboookExample</string>
+    <string name="title_activity_solution_facebook_example">SolutionFacebookExampleActivity</string>
+    <string name="title_activity_web_address_exercise_intro">WebAddressExerciseIntroActivity</string>
+    <string name="title_activity_web_address_exercise_one">WebAddressExerciseOneActivity</string>
+    <string name="title_activity_web_address_ex_one_highlight_www">WebAddressExOneHighlightWww</string>
+    <string name="title_activity_web_address_ex_one_highlight_paypal_com">WebAddressExOneHighlightPaypalCom</string>
+    <string name="title_activity_web_address_ex_one_highlight_path">WebAddressExOneHighlightPath</string>
+    <string name="title_activity_web_address_ex_one_wrong_click_path">WebAddressExOneWrongClickPathActivity</string>
+    <string name="title_activity_web_address_ex_one_correct_click_paypal_com">WebAddressExOneCorrectClickPaypalCom</string>
+    <string name="title_activity_web_address_ex_one_wrong_click_www">WebAddressExOneWrongClickWww</string>
+    <string name="title_activity_web_address_ex_one_solution">WebAddressExOneSolutionActivity</string>
+    <string name="title_activity_web_address_ex_two">WebAddressExTwoActivity</string>
+    <string name="title_activity_nonsense_ipaddresses_lesson">NonsenseIPAddressesLessonActivity</string>
+    <string name="title_activity_congrats_web_addresses">CongratsWebAddressesActivity</string>
+    <string name="title_activity_ip_nonsense_url_info">IpNonsenseUrlInfoActivity</string>
+    <string name="title_activity_ip_nonsense_url_second_info">IpNonsenseUrlSecondInfoActivity</string>
+    <string name="title_activity_ip_nonsense_url_examples">IpNonsenseUrlExamplesActivity</string>
+    <string name="title_activity_ip_nonsense_url_exercise">IpNonsenseUrlExercise</string>
+    <string name="title_activity_ip_nonsende_url_exercise_solution">IpNonsendeUrlExerciseSolutionActivity</string>
+    <string name="title_activity_ip_nonsense_url_exercise_second_solution">IpNonsenseUrlExerciseSecondSolution</string>
+    <string name="title_activity_ip_nonse_url_exercise_wrong_solution">IpNonseUrlExerciseWrongSolutionActivity</string>
+    <string name="title_activity_ip_nonsense_url_ex_correct">IpNonsenseUrlExCorrect</string>
+    <string name="title_activity_ip_nonsende_url_ex_wrong">IpNonsendeUrlExWrongActivity</string>
+    <string name="title_activity_find_address_bar_second_info">FindAddressBarSecondInfoActivity</string>
+    <string name="title_activity_email_spoofing_slide_one">E-Mail Fälschung</string>
+    <string name="title_activity_email_spoofing_slide_two">EmailSpoofingSlideTwoActivity</string>
+    <string name="title_activity_email_spoofing_slide_three">EmailSpoofingSlideThreeActivity</string>
+    <string name="title_activity_email_spoofing_slide_four">EmailSpoofingSlideFourActivity</string>
+    <string name="title_activity_email_spoofing_slide_five">EmailSpoofingSlideFiveActivity</string>
+    <string name="title_activity_level_one">LevelOneActivity</string>
+    <string name="title_activity_level_two">LevelTwoActivity</string>
+    <string name="title_activity_level_three">LevelThreeActivity</string>
+    <string name="title_activity_ip_nonsense_url_exercise_two">IpNonsenseUrlExerciseTwoActivity</string>
+    <string name="title_activity_ip_nonsense_url_exercise_highlight_http">IpNonsenseUrlExerciseHighlightHttpActivity</string>
+    <string name="title_activity_ip_nonsense_url_exercise_highlight_subdomain">IpNonsenseUrlExerciseHighlightSubdomainActivity</string>
+    <string name="title_activity_ip_nonsense_url_exercise_highlight_domain">IpNonsenseUrlExerciseHighlightDomainActivity</string>
+    <string name="title_activity_ip_nonsense_url_exercise_second_solution_wrong">IpNonsenseUrlExerciseSecondSolutionWrong</string>
+    <string name="title_activity_end_demo">EndDemoActivity</string>
+    <string name="title_activity_ip_nonsense_url_exercise_two_correct_solution">IpNonsenseUrlExerciseTwoCorrectSolution</string>
+	
+	
+	<string name="title_activity_backend_test">Backend Test</string>
+    
 </resources>
