@@ -2,20 +2,23 @@ package de.tudarmstadt.informatik.secuso.phishedu;
 
 import java.util.LinkedHashMap;
 
+import com.google.android.gms.games.GamesClient;
+import com.google.example.games.basegameutils.BaseGameActivity;
+
 import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendControllerInterface;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.FrontendControllerInterface;
 
 import android.os.Bundle;
 import android.app.Activity;
-import android.app.ListActivity;
 import android.content.Context;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
-public class BackendTestActivity extends ListActivity implements FrontendControllerInterface  {
+public class BackendTestActivity extends BaseGameActivity implements FrontendControllerInterface, View.OnClickListener  {
 	public interface BackendTest{
 		void test();
 	}
@@ -23,29 +26,56 @@ public class BackendTestActivity extends ListActivity implements FrontendControl
 	private ArrayAdapter<String> adapter;
 	private LinkedHashMap<String, BackendTest> entrys;
 	private BackendControllerInterface backend;
+	//private final ListView listview = (ListView) findViewById(R.id.);
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_backend_test);
+		findViewById(R.id.sign_in_button).setOnClickListener(this);
+	    findViewById(R.id.sign_out_button).setOnClickListener(this); 
+	    
+		entrys = new LinkedHashMap<String, BackendTest>();
+		entrys.put("send mail", new BackendTest(){public void test(){mailSendTest();}});
+		entrys.put("Start level 1", new BackendTest(){public void test(){leve1Test();}});
+		entrys.put("Show Achievements", new BackendTest(){public void test(){showAchievments();}});
+		entrys.put("Show Leaderboard Rate", new BackendTest(){public void test(){showLeaderboardRate();}});
+		entrys.put("Show Leaderboard Total", new BackendTest(){public void test(){showLeaderboardTotal();}});
+		
+		adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, entrys.keySet().toArray(new String[0]));
+		
+		final ListView listview = (ListView) findViewById(R.id.backendtestListView);
+		listview.setAdapter(this.adapter);
+		
+		listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+		      @Override
+		      public void onItemClick(AdapterView<?> parent, final View view,
+		          int position, long id) {
+		    	  entrys.get(adapter.getItem(position)).test();
+		      }
+
+		    });
 		
 		this.backend=BackendController.getInstance();
 		this.backend.init(this);
 		
-		this.entrys = new LinkedHashMap<String, BackendTest>();
-		entrys.put("send mail", new BackendTest(){public void test(){mailSendTest();}});
-		entrys.put("Start level 1", new BackendTest(){public void test(){leve1Test();}});
+		// Assign adapter to List 
 		
-		this.adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, entrys.keySet().toArray(new String[0]));
-		// Assign adapter to List
-        setListAdapter(adapter); 
 	}
 	
-	@Override
-	public void onListItemClick(ListView l, View v, int position, long id) {
-		this.entrys.get(this.adapter.getItem(position)).test();
+	public void showLeaderboardRate() {
+		startActivityForResult(getGamesClient().getLeaderboardIntent(getResources().getString(R.string.leaderboard_detection_rate)), 1);
 	}
 	
-
+	public void showLeaderboardTotal() {
+		startActivityForResult(getGamesClient().getLeaderboardIntent(getResources().getString(R.string.leaderboard_detected_phishing_urls)), 1);
+	}
+	
+	public void showAchievments() {
+		startActivityForResult(getGamesClient().getAchievementsIntent(), 0);
+	}
+	
 	protected void mailSendTest() {
 		this.backend.sendMail("cbergmann@schuhklassert.de", "cbergmann@schuhklassert.de", "This is a user message");
 	}
@@ -84,8 +114,50 @@ public class BackendTestActivity extends ListActivity implements FrontendControl
 	}
 
 	@Override
-	public Activity getMasterActivity() {
+	public BaseGameActivity getMasterActivity() {
 		return this;
+	}
+
+	@Override
+	public void onSignInFailed() {
+	    // Sign in has failed. So show the user the sign-in button.
+	    findViewById(R.id.sign_in_button).setVisibility(View.VISIBLE);
+	    findViewById(R.id.sign_out_button).setVisibility(View.GONE);
+	}
+
+	public void onSignInSucceeded() {
+	    // show sign-out button, hide the sign-in button
+	    findViewById(R.id.sign_in_button).setVisibility(View.GONE);
+	    findViewById(R.id.sign_out_button).setVisibility(View.VISIBLE);
+
+	    // (your code here: update UI, enable functionality that depends on sign in, etc)
+	}
+
+	@Override
+	public void onClick(View view) {
+	    if (view.getId() == R.id.sign_in_button) {
+	        // start the asynchronous sign in flow
+	        beginUserInitiatedSignIn();
+	    }
+	    else if (view.getId() == R.id.sign_out_button) {
+	        // sign out.
+	        signOut();
+
+	        // show sign-in button, hide the sign-out button
+	        findViewById(R.id.sign_in_button).setVisibility(View.VISIBLE);
+	        findViewById(R.id.sign_out_button).setVisibility(View.GONE);
+	    }
+	}
+	
+	@Override
+	public GamesClient getGamesClient(){
+		return super.getGamesClient();
+	}
+
+
+	@Override
+	public void onLevelChange(int level) {
+		displayToast("Level Changed:"+level);
 	}
 
 }

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Google Play game services IDs.
+Save this file as res/values/games-ids.xml in your project.
+-->
+<resources>
+  <string name="app_id">973133847745</string>
+  <string name="achievement_welcome">CgkIwbmwmqkcEAIQAQ</string>
+  <string name="achievement_search_and_rescue">CgkIwbmwmqkcEAIQAg</string>
+  <string name="achievement_know_your_poison">CgkIwbmwmqkcEAIQAw</string>
+  <string name="achievement_plakton">CgkIwbmwmqkcEAIQBA</string>
+  <string name="achievement_anchovy">CgkIwbmwmqkcEAIQBQ</string>
+  <string name="achievement_trout">CgkIwbmwmqkcEAIQBg</string>
+  <string name="achievement_tuna">CgkIwbmwmqkcEAIQBw</string>
+  <string name="achievement_whale_shark">CgkIwbmwmqkcEAIQCA</string>
+  <string name="leaderboard_detected_phishing_urls">CgkIwbmwmqkcEAIQCQ</string>
+  <string name="leaderboard_detection_rate">CgkIwbmwmqkcEAIQCw</string>
+</resources>

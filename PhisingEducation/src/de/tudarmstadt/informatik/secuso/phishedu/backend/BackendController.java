@@ -1,25 +1,22 @@
 package de.tudarmstadt.informatik.secuso.phishedu.backend;
 
-import java.util.Iterator;
 import java.util.LinkedHashMap;
-import java.util.SortedMap;
-import java.util.TreeMap;
 
 import de.tudarmstadt.informatik.secuso.phishedu.backend.networkTasks.*;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.net.Uri;
 
 public class BackendController extends BroadcastReceiver implements BackendControllerInterface {
 	private static final String PREFS_NAME = "PhisheduState";
 	private static BackendController instance = new BackendController();
+	private static final String LEVEL1_URL = "http://clemens.schuhklassert.de";
 	
 	private FrontendControllerInterface frontend;
 	private boolean inited = false;
 	private String[] urlCache;
-	private SharedPreferences settings;
+	private GameProgress progress;
 	
 	/**
 	 * This field saves the type of Phish for the current url.
@@ -45,6 +42,7 @@ public class BackendController extends BroadcastReceiver implements BackendContr
 	 * @return The singleton Object of this class
 	 */
 	public static BackendControllerInterface getInstance(){
+		
 		return instance;
 	}
 	
@@ -57,23 +55,16 @@ public class BackendController extends BroadcastReceiver implements BackendContr
 		}
 	}
 	
-	private void setPoints(int points){
-		this.settings.edit().putInt("points", points).commit();
-	}
-	
-	private void setLevel(int level){
-		this.settings.edit().putInt("level", level).commit();
-	}
-	
 	public void init(FrontendControllerInterface frontend){
 		this.frontend=frontend;
-		this.settings = this.frontend.getMasterActivity().getSharedPreferences(PREFS_NAME, 0);
+		this.progress = new GameProgress(this.frontend.getMasterActivity().getSharedPreferences(PREFS_NAME, 0), this.frontend.getGamesClient());
 		new GetUrlsTask(instance).execute(100);		
 	}
 	
 	public void urlsReturned(String[] urls){
 		this.urlCache=urls;
 		this.inited=true;
+		this.progress.StartFinished();
 		this.frontend.initDone();
 	}
 	
@@ -89,7 +80,7 @@ public class BackendController extends BroadcastReceiver implements BackendContr
 	@Override
 	public void StartLevel1() {
 		checkinited();
-		Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://clemens.schuhklassert.de"));
+		Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(LEVEL1_URL));
 		this.frontend.getContext().startActivity(browserIntent);
 	}
 
@@ -107,37 +98,65 @@ public class BackendController extends BroadcastReceiver implements BackendContr
 		return (String[]) this.current_parts.keySet().toArray();
 	}
 
-
 	@Override
 	public int getLevel() {
 		checkinited();
-		return this.settings.getInt("level", 0);
+		return this.progress.getLevel();
 	}
 
 	@Override
 	public PhishResult userClicked(boolean acceptance) {
 		checkinited();
+		PhishResult result;
 		if(this.current_type == PhishType.NoPhish || acceptance){
-			return PhishResult.NoPhish_Detected;
+			result =  PhishResult.NoPhish_Detected;
 		}else if(this.current_type == PhishType.NoPhish || !acceptance){
-			return PhishResult.NoPhish_NotDetected;
+			result =  PhishResult.NoPhish_NotDetected;
 		}else if(this.current_type != PhishType.NoPhish || acceptance){
-			this.setPoints(this.getPoints()+this.current_points[PhishResult.Phish_NotDetected.getValue()]);
-			return PhishResult.Phish_NotDetected;
+			result =  PhishResult.Phish_NotDetected;
 		}else if(this.current_type != PhishType.NoPhish || !acceptance){
-			return PhishResult.Phish_Detected;
+			result =  PhishResult.Phish_Detected;
 		}else {
 			throw new IllegalStateException("Something went horrably wrong! We should not be here.");
 		}
+		
+		if(result != PhishResult.Phish_Detected){
+			this.changePoints(result);
+		}
+		return result;
 	}
-
+	
+	private void changePoints(PhishResult result){
+		if(result == PhishResult.Phish_Detected){
+			this.progress.IncDetectedPhish();
+		}
+		int offset=this.current_points[result.getValue()];
+		this.setPoints(this.getPoints()+offset);
+	}
+	
+	private void setPoints(int points){
+		this.progress.setPoints(points);
+		if(this.progress.getPoints()>=nextLevelPoints()){
+			this.progress.setLevel(this.progress.getLevel()+1);
+			this.progress.setPoints(0);
+			this.frontend.onLevelChange(this.progress.getLevel());
+		}
+		this.progress.saveOnline();
+	}
+	
+	private void proceedlevel(){
+		this.setPoints(nextLevelPoints());
+	}
+	
+	private int nextLevelPoints(){
+		return 100;
+	}
 
 	@Override
 	public PhishType getType() {
 		checkinited();
 		return this.current_type;
 	}
-
 
 	@Override
 	public boolean partClicked(int part) {
@@ -147,22 +166,16 @@ public class BackendController extends BroadcastReceiver implements BackendContr
 		}
 		boolean clickedright = (Boolean) this.current_parts.values().toArray()[part];
 		if(clickedright){
-			this.setPoints(this.getPoints()+this.current_points[PhishResult.Phish_Detected.getValue()]);
+			changePoints(PhishResult.Phish_Detected);
+		}else{
+			changePoints(PhishResult.Phish_NotDetected);
 		}
 		return clickedright;
 	}
 
-
-	@Override
-	public boolean isLevelUp() {
-		checkinited();
-		// TODO Auto-generated method stub
-		return false;
-	}
-
 	public int getPoints(){
 		checkinited();
-		return this.settings.getInt("points", 0);
+		return this.progress.getPoints();
 	}
 	
 	@Override
@@ -171,6 +184,7 @@ public class BackendController extends BroadcastReceiver implements BackendContr
 		if(data.getHost()=="maillink"){
 			this.frontend.MailReturned();
 		}else if(data.getHost()=="level1phinished"){
+			this.proceedlevel();
 			this.frontend.level1Finished();
 		}
 	}

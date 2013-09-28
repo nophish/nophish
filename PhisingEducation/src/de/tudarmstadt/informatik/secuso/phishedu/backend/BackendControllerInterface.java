@@ -10,6 +10,5 @@ public interface BackendControllerInterface {
 	PhishResult userClicked(boolean accptance);
 	PhishType getType();
 	boolean partClicked(int part);
-	boolean isLevelUp();
 	
 }
