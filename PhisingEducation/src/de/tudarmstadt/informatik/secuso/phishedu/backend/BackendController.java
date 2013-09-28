@@ -8,13 +8,16 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 
-public class BackendController extends BroadcastReceiver implements BackendControllerInterface {
+public class BackendController extends BroadcastReceiver implements BackendControllerInterface, GameStateLoadedListener {
 	private static final String PREFS_NAME = "PhisheduState";
-	private static BackendController instance = new BackendController();
 	private static final String LEVEL1_URL = "http://clemens.schuhklassert.de";
+	
+	private static BackendController instance = new BackendController();
 	
 	private FrontendControllerInterface frontend;
 	private boolean inited = false;
+	private boolean urls_loaded = false;
+	private boolean gamestate_loaded = false;
 	private String[] urlCache;
 	private GameProgress progress;
 	
@@ -42,7 +45,6 @@ public class BackendController extends BroadcastReceiver implements BackendContr
 	 * @return The singleton Object of this class
 	 */
 	public static BackendControllerInterface getInstance(){
-		
 		return instance;
 	}
 	
@@ -57,19 +59,26 @@ public class BackendController extends BroadcastReceiver implements BackendContr
 	
 	public void init(FrontendControllerInterface frontend){
 		this.frontend=frontend;
-		this.progress = new GameProgress(this.frontend.getMasterActivity().getSharedPreferences(PREFS_NAME, 0), this.frontend.getGamesClient());
+		this.progress = new GameProgress(this.frontend.getContext().getSharedPreferences(PREFS_NAME, 0), this.frontend.getGamesClient(),this.frontend.getAppStateClient(),this);
 		new GetUrlsTask(instance).execute(100);		
 	}
 	
 	public void urlsReturned(String[] urls){
 		this.urlCache=urls;
-		this.inited=true;
-		this.progress.StartFinished();
-		this.frontend.initDone();
+		this.urls_loaded=true;
+		this.checkInitDone();
 	}
 	
 	public void urlDownloadProgress(int percent){
 		this.frontend.initProgress(percent);
+	}
+	
+	private void checkInitDone(){
+		if(this.urls_loaded && ((!this.progress.waitForLoad()) || this.gamestate_loaded)){
+			this.inited=true;
+			this.frontend.initDone();
+			this.progress.StartFinished();	
+		}
 	}
 	
 	public void sendMail(String from, String to, String usermessage){
@@ -127,25 +136,17 @@ public class BackendController extends BroadcastReceiver implements BackendContr
 	}
 	
 	private void changePoints(PhishResult result){
-		if(result == PhishResult.Phish_Detected){
-			this.progress.IncDetectedPhish();
-		}
+		this.progress.addResult(result);
 		int offset=this.current_points[result.getValue()];
-		this.setPoints(this.getPoints()+offset);
-	}
-	
-	private void setPoints(int points){
-		this.progress.setPoints(points);
+		this.progress.setPoints(this.getPoints()+offset);
 		if(this.progress.getPoints()>=nextLevelPoints()){
-			this.progress.setLevel(this.progress.getLevel()+1);
-			this.progress.setPoints(0);
-			this.frontend.onLevelChange(this.progress.getLevel());
+			this.proceedlevel();
 		}
-		this.progress.saveOnline();
 	}
-	
 	private void proceedlevel(){
-		this.setPoints(nextLevelPoints());
+		this.progress.setPoints(0);
+		this.progress.setLevel(this.progress.getLevel()+1);
+		this.frontend.onLevelChange(this.progress.getLevel());
 	}
 	
 	private int nextLevelPoints(){
@@ -182,11 +183,18 @@ public class BackendController extends BroadcastReceiver implements BackendContr
 	public void onReceive(Context context, Intent intent) {
 		Uri data = intent.getData();	
 		if(data.getHost()=="maillink"){
+			this.proceedlevel();
 			this.frontend.MailReturned();
 		}else if(data.getHost()=="level1phinished"){
 			this.proceedlevel();
 			this.frontend.level1Finished();
 		}
+	}
+
+	@Override
+	public void onGameStateLoaded() {
+		this.gamestate_loaded=true;
+		this.checkInitDone();
 	}
 	
 }

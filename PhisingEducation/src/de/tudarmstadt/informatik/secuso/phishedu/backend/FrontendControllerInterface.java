@@ -1,17 +1,20 @@
 package de.tudarmstadt.informatik.secuso.phishedu.backend;
 
+import com.google.android.gms.appstate.AppStateClient;
 import com.google.android.gms.games.GamesClient;
-import com.google.example.games.basegameutils.BaseGameActivity;
 
 import android.content.Context;
 
 public interface FrontendControllerInterface {
+	//Context functions
+	GamesClient getGamesClient();
+	AppStateClient getAppStateClient();
+	Context getContext();
+
+	//Callback functions
+	void initProgress(int percent);
+	void initDone();
 	void MailReturned();
 	void level1Finished();
-	void initDone();
-	void initProgress(int percent);
-	BaseGameActivity getMasterActivity();
-	GamesClient getGamesClient();
-	Context getContext();
 	void onLevelChange(int level);
 }
