@@ -10,7 +10,7 @@ import android.net.Uri;
 
 public class BackendController extends BroadcastReceiver implements BackendControllerInterface, GameStateLoadedListener {
 	private static final String PREFS_NAME = "PhisheduState";
-	private static final String LEVEL1_URL = "http://clemens.schuhklassert.de";
+	private static final String LEVEL1_URL = "http://api.no-phish.de/level1.php";
 	
 	private static BackendController instance = new BackendController();
 	
@@ -91,8 +91,7 @@ public class BackendController extends BroadcastReceiver implements BackendContr
 	@Override
 	public void StartLevel1() {
 		checkinited();
-		Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(LEVEL1_URL));
-		this.frontend.getContext().startActivity(browserIntent);
+		this.frontend.startBrowser(Uri.parse(LEVEL1_URL));
 	}
 
 
@@ -187,7 +186,7 @@ public class BackendController extends BroadcastReceiver implements BackendContr
 		if(data.getHost()=="maillink"){
 			this.proceedlevel();
 			this.frontend.MailReturned();
-		}else if(data.getHost()=="level1phinished"){
+		}else if(data.getHost()=="level1finished"){
 			this.proceedlevel();
 			this.frontend.level1Finished();
 		}

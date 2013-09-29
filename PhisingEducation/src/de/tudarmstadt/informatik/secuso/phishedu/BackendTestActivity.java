@@ -9,8 +9,10 @@ import com.google.example.games.basegameutils.BaseGameActivity;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.FrontendControllerInterface;
 
+import android.net.Uri;
 import android.os.Bundle;
 import android.content.Context;
+import android.content.Intent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -174,5 +176,11 @@ public class BackendTestActivity extends BaseGameActivity implements FrontendCon
 
 	public AppStateClient getAppStateClient(){
 		return super.getAppStateClient();
+	}
+
+	@Override
+	public void startBrowser(Uri url) {
+		Intent browserIntent = new Intent(Intent.ACTION_VIEW, url);
+		this.startActivity(browserIntent);
 	}
 }

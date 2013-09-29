@@ -4,6 +4,7 @@ import com.google.android.gms.appstate.AppStateClient;
 import com.google.android.gms.games.GamesClient;
 
 import android.content.Context;
+import android.net.Uri;
 
 public interface FrontendControllerInterface {
 	//Context functions
@@ -17,4 +18,5 @@ public interface FrontendControllerInterface {
 	void MailReturned();
 	void level1Finished();
 	void onLevelChange(int level);
+	void startBrowser(Uri url);
 }

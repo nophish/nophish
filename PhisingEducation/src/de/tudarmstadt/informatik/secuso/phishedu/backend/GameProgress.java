@@ -22,9 +22,11 @@ public class GameProgress implements OnStateLoadedListener{
 	
 	private static final String LEVEL =  "level";
 	private static final String APP_STARTED =  "appStarted";
+	private static final String PHISH_BEHIND = "phishBehind";
 	private static final String VALUE_PREFIX =  "value_";
 	private int[] results;
 	private int level = 0;
+	private int detected_phish_behind = 0;
 	private boolean app_started = false;
 	//Points is not saved to persistent state because the user has to start at the beginnig of the level each time the app starts.
 	private int points = 0;
@@ -55,6 +57,7 @@ public class GameProgress implements OnStateLoadedListener{
 			}
 			this.level = restore.getInt(LEVEL);
 			this.app_started = restore.getBoolean(APP_STARTED);
+			this.detected_phish_behind = restore.getInt(PHISH_BEHIND);
 		} catch (JSONException e) {
 			//This means the state was not saved before. We stay with the defaults.ö
 		}
@@ -71,16 +74,26 @@ public class GameProgress implements OnStateLoadedListener{
 	public void addResult(PhishResult result){
 		this.results[result.getValue()]+=1;
 		//update Leaderboards
-		if(result == PhishResult.Phish_Detected){
-			game_store.submitScore(Resources.getSystem().getString(R.string.leaderboard_detected_phishing_urls),this.results[result.getValue()] );
-		}
-		if(result == PhishResult.Phish_Detected || result ==  PhishResult.Phish_NotDetected){
-			//(1) always > 0 because at least one is 1 because of the if condition 
-			int total_phish = this.results[PhishResult.Phish_NotDetected.getValue()] + this.results[PhishResult.Phish_Detected.getValue()];
-			int detected_phish = this.results[PhishResult.Phish_Detected.getValue()];
-			//(2) No divByZero possible because of (1)
-			long rate = detected_phish / total_phish;
-			game_store.submitScore(Resources.getSystem().getString(R.string.leaderboard_detection_rate),rate );
+		if(game_store.isConnected()){
+			if(result == PhishResult.Phish_Detected){
+				game_store.submitScore(Resources.getSystem().getString(R.string.leaderboard_detected_phishing_urls),this.results[result.getValue()] );
+				game_store.incrementAchievement(Resources.getSystem().getString(R.string.achievement_plakton),this.detected_phish_behind+1);
+				game_store.incrementAchievement(Resources.getSystem().getString(R.string.achievement_anchovy),this.detected_phish_behind+1);
+				game_store.incrementAchievement(Resources.getSystem().getString(R.string.achievement_trout),this.detected_phish_behind+1);
+				game_store.incrementAchievement(Resources.getSystem().getString(R.string.achievement_tuna),this.detected_phish_behind+1);
+				game_store.incrementAchievement(Resources.getSystem().getString(R.string.achievement_whale_shark),this.detected_phish_behind+1);
+				this.detected_phish_behind=0;
+			}
+			if(result == PhishResult.Phish_Detected || result ==  PhishResult.Phish_NotDetected){
+				//(1) always > 0 because at least one is 1 because of the if condition 
+				int total_phish = this.results[PhishResult.Phish_NotDetected.getValue()] + this.results[PhishResult.Phish_Detected.getValue()];
+				int detected_phish = this.results[PhishResult.Phish_Detected.getValue()];
+				//(2) No divByZero possible because of (1)
+				long rate = detected_phish / total_phish;
+				game_store.submitScore(Resources.getSystem().getString(R.string.leaderboard_detection_rate),rate );
+			}
+		}else{
+			this.detected_phish_behind+=1;
 		}
 		this.saveState();
 	}
@@ -116,10 +129,6 @@ public class GameProgress implements OnStateLoadedListener{
 		if(this.level>2){
 			game_store.unlockAchievement(Resources.getSystem().getString(R.string.achievement_know_your_poison));
 		}
-		//welcome
-		//Search and rescue (level1 finished)
-		//know your poison (level2 finished)
-		//TODO implement phish achievements
 	}
 	
 	private String serializeState(){
@@ -127,6 +136,7 @@ public class GameProgress implements OnStateLoadedListener{
 		try {
 			result.put(APP_STARTED, this.app_started);
 			result.put(LEVEL, this.level);
+			result.put(PHISH_BEHIND, this.detected_phish_behind);
 			for(PhishResult value: PhishResult.values()){
 				result.put(VALUE_PREFIX+value.name(), this.results[value.getValue()]);
 			}
