@@ -8,11 +8,19 @@ import android.content.res.Resources;
 
 import com.google.android.gms.appstate.OnStateLoadedListener;
 import com.google.android.gms.games.GamesClient;
+import com.google.android.gms.games.achievement.Achievement;
 
 import com.google.android.gms.appstate.AppStateClient;
 
 import de.tudarmstadt.informatik.secuso.phishedu.R;
 
+/**
+ * This is a internal class for the backend.
+ * It holds the current state and is resposible for saving this state to persistent local storage.
+ * It also saves the state online if the user is logged in with his google+ account.
+ * @author Clemens Bergmann <cbergmann@schuhklassert.de>
+ *
+ */
 public class GameProgress implements OnStateLoadedListener{
 	private SharedPreferences local_store;
 	private GamesClient game_store;
@@ -32,7 +40,13 @@ public class GameProgress implements OnStateLoadedListener{
 	private int points = 0;
 	private GameStateLoadedListener listener;
 		
-
+	/**
+	 * This is the default constructor. 
+	 * @param local_store This is the local persistent database where we save the gamestate.
+	 * @param game_store This is the GamesClient for unlocking Achievements and Leaderboards.
+	 * @param remote_store This is the remote persistent database to save the gamestate.
+	 * @param listener
+	 */
 	public GameProgress(SharedPreferences local_store, GamesClient game_store, AppStateClient remote_store, GameStateLoadedListener listener) {
 		this.local_store=local_store;
 		this.game_store=game_store;
@@ -41,11 +55,11 @@ public class GameProgress implements OnStateLoadedListener{
 		this.loadState(this.local_store.getString(LOCAL_STORE_KEY, "{}"));
 		if(this.remote_store.isConnected()){
 		  this.remote_store.loadState(this, REMOTE_STORE_SLOT);
+		}else{
+			//If we are not connected notify the listener that we are finished loading.
+			//If we are conneted this is done in onStateLoaded()
+			this.listener.onGameStateLoaded();
 		}
-	}
-	
-	public boolean waitForLoad(){
-		return this.remote_store.isConnected();
 	}
 	
 	private void loadState(String state){
@@ -63,14 +77,11 @@ public class GameProgress implements OnStateLoadedListener{
 		}
 	}
 
-	public int DetectedPhish(){
-		return this.results[PhishResult.Phish_Detected.getValue()];
-	}
-	
-	public int getResult(PhishResult result){
-		return this.results[result.getValue()];
-	}
-	
+	/**
+	 * Add a game Result to the persistend state.
+	 * If we have google+ connected the related Achivements and leaderboards are updated as well.
+	 * @param result What kind of outcome did the user have.
+	 */
 	public void addResult(PhishResult result){
 		this.results[result.getValue()]+=1;
 		//update Leaderboards
@@ -98,21 +109,44 @@ public class GameProgress implements OnStateLoadedListener{
 		this.saveState();
 	}
 	
+	/**
+	 * Gets the currently saved points.
+	 * It is worth to mention that these are not persistently saved.
+	 * The user has to restart the given level from 0 points each time the app starts.
+	 * @return the currently saved points
+	 */
 	public int getPoints(){
 		return this.points;
 	}
+	/**
+	 * This saves the current points.
+	 * See the comment of {@link GameProgress#getPoints()} regarding persistence.
+	 * @param points the number of points for this level.
+	 */
 	public void setPoints(int points){
 		this.points=points;
 	}
 	
+	/**
+	 * This functions returns the level the user is currently in.
+	 * @return the level number.
+	 */
 	public int getLevel() {
 		return this.level;
 	}
+	/**
+	 * This Function sets the current level of the user.
+	 * @param level The current level
+	 */
 	public void setLevel(int level){
 		this.level=level;
 		this.saveState();
 	}
 
+	/**
+	 * This function is called after the app first starts.
+	 * This allows us to react to that event and unlock a {@link Achievement}
+	 */
 	public void StartFinished(){
 		this.app_started = true;
 		saveState();
@@ -147,6 +181,11 @@ public class GameProgress implements OnStateLoadedListener{
 		return "{}";
 	}
 	
+	/**
+	 * This function saves the current state persistently.
+	 * It is at least saved locally on local_store.
+	 * If we are connected to the remote_store we also save it online.
+	 */
 	public void saveState(){
 		String serialized = this.serializeState();
 		this.local_store.edit().putString(LOCAL_STORE_KEY, serialized).commit();

@@ -8,7 +8,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 
-public class BackendController extends BroadcastReceiver implements BackendControllerInterface, GameStateLoadedListener {
+/**
+ * This is the main backend logik.
+ * It is implemented as static singleton to keep state while changing activities.
+ * @author Clemens Bergmann <cbergmann@schuhklassert.de>
+ *
+ */
+public class BackendController extends BroadcastReceiver implements BackendControllerInterface, GameStateLoadedListener, UrlsLoadedListener {
 	private static final String PREFS_NAME = "PhisheduState";
 	private static final String LEVEL1_URL = "http://api.no-phish.de/level1.php";
 	
@@ -61,7 +67,7 @@ public class BackendController extends BroadcastReceiver implements BackendContr
 	
 	public void init(FrontendControllerInterface frontend){
 		this.frontend=frontend;
-		this.progress = new GameProgress(this.frontend.getContext().getSharedPreferences(PREFS_NAME, 0), this.frontend.getGamesClient(),this.frontend.getAppStateClient(),this);
+		this.progress = new GameProgress(this.frontend.getContext().getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE), this.frontend.getGamesClient(),this.frontend.getAppStateClient(),this);
 		new GetUrlsTask(instance).execute(100,GetUrlsTask.PHISH_URLS);		
 		new GetUrlsTask(instance).execute(100,GetUrlsTask.VALID_URLS);
 	}
@@ -76,7 +82,7 @@ public class BackendController extends BroadcastReceiver implements BackendContr
 	}
 	
 	private void checkInitDone(){
-		if(this.phishURLCache[GetUrlsTask.PHISH_URLS] != null && this.phishURLCache[GetUrlsTask.VALID_URLS] != null && ((!this.progress.waitForLoad()) || this.gamestate_loaded)){
+		if(this.phishURLCache[GetUrlsTask.PHISH_URLS] != null && this.phishURLCache[GetUrlsTask.VALID_URLS] != null &&  this.gamestate_loaded){
 			this.inited=true;
 			this.frontend.initDone();
 			this.progress.StartFinished();	

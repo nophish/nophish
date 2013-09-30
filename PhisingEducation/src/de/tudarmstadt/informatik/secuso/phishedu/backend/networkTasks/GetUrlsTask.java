@@ -5,18 +5,27 @@ import org.alexd.jsonrpc.JSONRPCException;
 import org.json.JSONArray;
 import org.json.JSONException;
 
-import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController;
-
 import android.os.AsyncTask;
 
+/**
+ * This Task gets URLs from the backend server.
+ * @author Clemens Bergmann <cbergmann@schuhklassert.de>
+ *
+ */
 public class GetUrlsTask extends AsyncTask<Integer, Integer, String[]>{
-	private BackendController controller;
+	private UrlsLoadedListener controller;
+	/** Static for getting Phish urls */
 	public static final int PHISH_URLS = 0;
+	/** Static for getting no-phish urls */
 	public static final int VALID_URLS = 1;
 	
 	private int type = PHISH_URLS;
 	
-	public GetUrlsTask(BackendController controller){
+	/**
+	 * This is the main constructor
+	 * @param controller The Controller that will be notified when download is finished.
+	 */
+	public GetUrlsTask(UrlsLoadedListener controller){
 		this.controller=controller;
 	}
 
