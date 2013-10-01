@@ -16,7 +16,7 @@ import android.net.Uri;
  */
 public class BackendController extends BroadcastReceiver implements BackendControllerInterface, GameStateLoadedListener, UrlsLoadedListener {
 	private static final String PREFS_NAME = "PhisheduState";
-	private static final String LEVEL1_URL = "http://api.no-phish.de/level1.php";
+	private static final String LEVEL1_URL = "https://pages.no-phish.de/level1.php";
 	
 	private static BackendController instance = new BackendController();
 	
