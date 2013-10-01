@@ -129,7 +129,9 @@ public class BackendTestActivity extends BaseGameActivity implements FrontendCon
 
 	@Override
 	public void initProgress(int percent) {
-		displayToast("init Progress:"+percent);
+		if(percent%10 == 0){
+			displayToast("init Progress:"+percent);
+		}
 	}
 
 	@Override

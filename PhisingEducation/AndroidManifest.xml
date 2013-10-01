@@ -3,21 +3,37 @@
     package="de.tudarmstadt.informatik.secuso.phishedu"
     android:versionCode="2"
     android:versionName="0.1" >
-    <uses-sdk android:minSdkVersion="8" android:targetSdkVersion="8"/>
+
+    <uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="8" />
 
     <application
         android:allowBackup="true"
-        android:debuggable="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
-        <meta-data android:name="com.google.android.gms.games.APP_ID"
-        android:value="@string/app_id" />
-        <meta-data android:name="com.google.android.gms.appstate.APP_ID"
-        android:value="@string/app_id" />
+        <meta-data
+            android:name="com.google.android.gms.games.APP_ID"
+            android:value="@string/app_id" />
+        <meta-data
+            android:name="com.google.android.gms.appstate.APP_ID"
+            android:value="@string/app_id" />
+
         <activity
             android:name="de.tudarmstadt.informatik.secuso.phishedu.MainActivity"
             android:label="@string/app_name" >
+            <category android:name="android.intent.category.DEFAULT" />
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="de.tudarmstadt.informatik.secuso.phishedu.BackendTestActivity"
+            android:label="@string/title_activity_backend_test" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -27,14 +43,6 @@
         <activity
             android:name="de.tudarmstadt.informatik.secuso.phishedu.AfterAddressBarFoundActivity"
             android:label="@string/app_name" >
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-
-                <data android:scheme="phishedu" />
-            </intent-filter>
         </activity>
         <activity
             android:name="de.tudarmstadt.informatik.secuso.phishedu.DisplayYouDontBelieveUsActivity"
@@ -438,6 +446,17 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="de.tudarmstadt.informatik.secuso.phishedu.IpNonsenseUrlExerciseHighlightDomainActivity" />
         </activity>
+
+        <receiver android:name=".backend.BackendController" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="phishedu" />
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>
