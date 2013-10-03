@@ -1,11 +1,14 @@
 package de.tudarmstadt.informatik.secuso.phishedu.backend;
 
-import java.util.LinkedHashMap;
+import java.util.ArrayList;
+
+import com.google.gson.Gson;
 
 import de.tudarmstadt.informatik.secuso.phishedu.backend.networkTasks.*;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 
 /**
@@ -15,7 +18,33 @@ import android.net.Uri;
  *
  */
 public class BackendController extends BroadcastReceiver implements BackendControllerInterface, GameStateLoadedListener, UrlsLoadedListener {
+	/**
+	 * this is for internally holding the phishing urls
+	 * @author Clemens Bergmann <cbergmann@schuhklassert.de>
+	 *
+	 */
+	private class PhishURL{
+		private String[] parts = new String[0];
+		private PhishType type = PhishType.NoPhish;
+		private int[] correctparts = new int[0];
+		/**
+		 * This stores the points the user gets for his detection.
+		 * It is indexed acording to {@link PhishResult}.
+		 */
+		private int[] points = {15,0,-10,0};
+	}
+	
+	
+	private static PhishURL deserializeURL(String serialized){
+		return new Gson().fromJson(serialized, PhishURL.class);
+	}
+	
+	private static String serializeURL(PhishURL object){
+		return new Gson().toJson(object);
+	}
+	
 	private static final String PREFS_NAME = "PhisheduState";
+	private static final String URL_CACHE_NAME ="urlcache";
 	private static final String LEVEL1_URL = "https://pages.no-phish.de/level1.php";
 	
 	private static BackendController instance = new BackendController();
@@ -23,25 +52,16 @@ public class BackendController extends BroadcastReceiver implements BackendContr
 	private FrontendControllerInterface frontend;
 	private boolean inited = false;
 	
-	//indexed by PhishUrlsTask constants
-	private String[][] phishURLCache = new String[2][];
+	//indexed by UrlType
+	private PhishURL[][] urlCache = new PhishURL[2][];
 	
 	private boolean gamestate_loaded = false;
 	private GameProgress progress;
 	
 	/**
-	 * This field saves the type of Phish for the current url.
+	 * This holds the current URL returned by the last {@link BackendControllerInterface}{@link #getNextUrl()} call
 	 */
-	private PhishType current_type = PhishType.NoPhish;
-	/**
-	 * This field saves the current URL Parts. The boolean indicates which Part is the one the user should click.
-	 */
-	private LinkedHashMap<String, Boolean> current_parts = new LinkedHashMap<String, Boolean>();
-	/**
-	 * This stores the points the user gets for his detection.
-	 * It is indexed acording to {@link PhishResult}.
-	 */
-	private int[] current_points = {15,0,-10,0};
+	private PhishURL current_url;
 	
 	/**
 	 * Private constructor for singelton.
@@ -68,12 +88,38 @@ public class BackendController extends BroadcastReceiver implements BackendContr
 	public void init(FrontendControllerInterface frontend){
 		this.frontend=frontend;
 		this.progress = new GameProgress(this.frontend.getContext().getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE), this.frontend.getGamesClient(),this.frontend.getAppStateClient(),this);
-		new GetUrlsTask(instance).execute(100,GetUrlsTask.PHISH_URLS);		
-		new GetUrlsTask(instance).execute(100,GetUrlsTask.VALID_URLS);
+		SharedPreferences url_cache = this.frontend.getContext().getSharedPreferences(URL_CACHE_NAME, Context.MODE_PRIVATE);
+		PhishType[] types = {PhishType.AnyPhish, PhishType.NoPhish};
+		for(PhishType type: types){
+		  this.urlCache[type.getValue()]=loadUrls(url_cache, type);
+		}
 	}
 	
-	public void urlsReturned(String[] urls, int type){
-		this.phishURLCache[type]=urls;
+	private void CacheUrls(SharedPreferences cache, PhishType type, PhishURL[] urls){
+		SharedPreferences.Editor editor = cache.edit();
+		for(int i=0;i<urls.length;i++){
+			editor.putString(type.toString()+"["+i+"]", serializeURL(urls[i]));
+		}
+		editor.commit();
+	}
+	
+	private PhishURL[] loadUrls(SharedPreferences cache, PhishType type){
+		//first we load the cached value if available
+		ArrayList<PhishURL> result = new ArrayList<PhishURL>();
+		for(int i=0; cache.contains(type.toString()+"["+i+"]"); i++){
+			result.add(deserializeURL(cache.getString(type.toString()+"["+i+"]", "")));
+		}
+		//then we get the value from the online store
+		new GetUrlsTask(instance).execute(100,type.getValue());
+		return result.toArray(new PhishURL[0]);
+	}
+	
+	public void urlsReturned(String[] urls, PhishType type){
+		this.urlCache[type.getValue()]=new PhishURL[urls.length];
+		for(int i=0;i<urls.length;i++){
+			this.urlCache[type.getValue()][i]=deserializeURL(urls[i]);
+		}
+		this.CacheUrls(this.frontend.getContext().getSharedPreferences(URL_CACHE_NAME, Context.MODE_PRIVATE),type, this.urlCache[type.getValue()]);
 		this.checkInitDone();
 	}
 	
@@ -82,7 +128,7 @@ public class BackendController extends BroadcastReceiver implements BackendContr
 	}
 	
 	private void checkInitDone(){
-		if(this.phishURLCache[GetUrlsTask.PHISH_URLS] != null && this.phishURLCache[GetUrlsTask.VALID_URLS] != null &&  this.gamestate_loaded){
+		if (this.urlCache[GetUrlsTask.PHISH_URLS].length >0 && this.urlCache[GetUrlsTask.VALID_URLS].length > 0 &&  this.gamestate_loaded){
 			this.inited=true;
 			this.frontend.initDone();
 			this.progress.StartFinished();	
@@ -105,13 +151,8 @@ public class BackendController extends BroadcastReceiver implements BackendContr
 	public String[] getNextUrl() {
 		checkinited();
 		// TODO We have to implement a smart way of generating the URLs. For now we just give out the first cachced one.
-		this.current_parts.clear();
-		
-		String[] parts = this.phishURLCache[GetUrlsTask.PHISH_URLS][0].split("/");
-		for (String part : parts) {
-			this.current_parts.put(part, true);
-		}
-		return (String[]) this.current_parts.keySet().toArray();
+		this.current_url=this.urlCache[GetUrlsTask.PHISH_URLS][0];
+		return (String[]) this.current_url.parts;
 	}
 
 	@Override
@@ -124,13 +165,13 @@ public class BackendController extends BroadcastReceiver implements BackendContr
 	public PhishResult userClicked(boolean acceptance) {
 		checkinited();
 		PhishResult result;
-		if(this.current_type == PhishType.NoPhish || acceptance){
+		if(this.current_url.type == PhishType.NoPhish || acceptance){
 			result =  PhishResult.NoPhish_Detected;
-		}else if(this.current_type == PhishType.NoPhish || !acceptance){
+		}else if(this.current_url.type == PhishType.NoPhish || !acceptance){
 			result =  PhishResult.NoPhish_NotDetected;
-		}else if(this.current_type != PhishType.NoPhish || acceptance){
+		}else if(this.current_url.type != PhishType.NoPhish || acceptance){
 			result =  PhishResult.Phish_NotDetected;
-		}else if(this.current_type != PhishType.NoPhish || !acceptance){
+		}else if(this.current_url.type != PhishType.NoPhish || !acceptance){
 			result =  PhishResult.Phish_Detected;
 		}else {
 			throw new IllegalStateException("Something went horrably wrong! We should not be here.");
@@ -144,7 +185,7 @@ public class BackendController extends BroadcastReceiver implements BackendContr
 	
 	private void changePoints(PhishResult result){
 		this.progress.addResult(result);
-		int offset=this.current_points[result.getValue()];
+		int offset=this.current_url.points[result.getValue()];
 		this.progress.setPoints(this.getPoints()+offset);
 		if(this.progress.getPoints()>=nextLevelPoints()){
 			this.proceedlevel();
@@ -163,16 +204,19 @@ public class BackendController extends BroadcastReceiver implements BackendContr
 	@Override
 	public PhishType getType() {
 		checkinited();
-		return this.current_type;
+		return this.current_url.type;
 	}
 
 	@Override
 	public boolean partClicked(int part) {
 		checkinited();
-		if(part < 0 || part >= this.current_parts.size()){
-			throw new IllegalArgumentException("Invalid part number");
+		boolean clickedright = false;
+		for(int correctpart:  this.current_url.correctparts){
+			if(correctpart==part){
+				clickedright=true;
+				break;
+			}
 		}
-		boolean clickedright = (Boolean) this.current_parts.values().toArray()[part];
 		if(clickedright){
 			changePoints(PhishResult.Phish_Detected);
 		}else{

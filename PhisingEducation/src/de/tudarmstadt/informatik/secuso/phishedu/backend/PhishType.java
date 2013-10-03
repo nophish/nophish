@@ -9,18 +9,37 @@ public enum PhishType {
 	/**
 	 * Online social networks
 	 */
-	OSN,
+	OSN(3),
 	/**
 	 * Finanace
 	 */
-	Bank,
+	Bank(4),
 	//...
 	/**
 	 * It was no phish
 	 */
-	NoPhish,
+	NoPhish(0),
+	/**
+	 * It is a phish but not specified
+	 */
+	AnyPhish(1),
 	/**
 	 * Something completly different
 	 */
-	Generic
+	Generic(2);
+	
+	private int value;
+
+	private PhishType(int value) {
+		this.value = value;
+	}
+	
+	/**
+	 * Get the integer value of the current result.
+	 * This is imported when using this enum for indexing arrays.
+	 * @return the integer Value of the current result
+	 */
+	public int getValue() {
+        return value;
+    }
 }
