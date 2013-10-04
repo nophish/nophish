@@ -5,7 +5,7 @@ package de.tudarmstadt.informatik.secuso.phishedu.backend;
  * @author Clemens Bergmann <cbergmann@schuhklassert.de>
  *
  */
-public enum PhishType {
+public enum PhishSiteType {
 	/**
 	 * Online social networks
 	 */
@@ -15,10 +15,6 @@ public enum PhishType {
 	 */
 	Bank(4),
 	//...
-	/**
-	 * It was no phish
-	 */
-	NoPhish(0),
 	/**
 	 * It is a phish but not specified
 	 */
@@ -30,7 +26,7 @@ public enum PhishType {
 	
 	private int value;
 
-	private PhishType(int value) {
+	private PhishSiteType(int value) {
 		this.value = value;
 	}
 	

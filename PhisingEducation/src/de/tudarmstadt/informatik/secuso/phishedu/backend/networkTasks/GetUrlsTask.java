@@ -5,7 +5,7 @@ import org.alexd.jsonrpc.JSONRPCException;
 import org.json.JSONArray;
 import org.json.JSONException;
 
-import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishType;
+import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishAttackType;
 
 import android.os.AsyncTask;
 
@@ -21,7 +21,7 @@ public class GetUrlsTask extends AsyncTask<Integer, Integer, String[]>{
 	/** Static for getting no-phish urls */
 	public static final int VALID_URLS = 1;
 	
-	private PhishType type = PhishType.NoPhish;
+	private PhishAttackType type = PhishAttackType.NoPhish;
 	
 	/**
 	 * This is the main constructor
@@ -34,8 +34,8 @@ public class GetUrlsTask extends AsyncTask<Integer, Integer, String[]>{
 	protected String[] doInBackground(Integer... params) {
 		JSONRPCClient client = JSONRPCClientFactory.getClient();
 		int count = params[0];
-		this.type = PhishType.NoPhish;
-		for(PhishType type : PhishType.values()){
+		this.type = PhishAttackType.NoPhish;
+		for(PhishAttackType type : PhishAttackType.values()){
 			if(type.getValue() == params[1]){
 				this.type=type;
 				break;
