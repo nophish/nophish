@@ -18,6 +18,9 @@ import android.net.Uri;
  *
  */
 public class BackendController extends BroadcastReceiver implements BackendControllerInterface, GameStateLoadedListener, UrlsLoadedListener {
+	public interface PhishURLInterface{
+		
+	}
 	/**
 	 * this is for internally holding the phishing urls
 	 * @author Clemens Bergmann <cbergmann@schuhklassert.de>

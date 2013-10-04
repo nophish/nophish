@@ -1,7 +1,6 @@
 package de.tudarmstadt.informatik.secuso.phishedu.backend.networkTasks;
 
 import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishAttackType;
-import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishSiteType;
 
 /**
  * This interface is for the BackendController to get notified when the {@link GetUrlsTask} is finished
