@@ -25,7 +25,7 @@ public class AwarenessEmailSpoofigImageOneFragment extends Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		View layoutView = inflater.inflate(R.layout.image_fragment_pager_relative_1, container,
+		View layoutView = inflater.inflate(R.layout.awareness_email_spoofing_fragment_pager_1, container,
 				false);
 		return layoutView;
 	}

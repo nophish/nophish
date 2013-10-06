@@ -22,10 +22,11 @@
     <Button
         android:id="@+id/awareness_button_see_for_yourself"
         android:minWidth="@dimen/btn_standard_width"
-        android:layout_alignParentBottom="true"
         android:layout_width="wrap_content"
         android:layout_height="@dimen/btn_standard_height"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/margin_bottom_btn_position"
+        android:onClick="goToEmailForm"
         android:text="@string/awareness_text_see_for_yourself" />
 
     <ImageView

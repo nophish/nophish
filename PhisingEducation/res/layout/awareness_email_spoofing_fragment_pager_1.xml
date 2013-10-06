@@ -6,7 +6,9 @@
 
     <RelativeLayout
         android:layout_width="wrap_content"
-        android:layout_height="518dp" >  
+        android:layout_height="518dp" 
+        >  
+        
         
         <ImageView
             android:id="@+id/awareness_email_spoof_start"

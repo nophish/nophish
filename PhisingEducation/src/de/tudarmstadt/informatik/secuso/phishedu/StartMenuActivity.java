@@ -60,7 +60,7 @@ public class StartMenuActivity extends Activity implements
 			public void onFinish() {
 				// set the new Content of your activity
 				StartMenuActivity.this
-						.setContentView(R.layout.start_menu_after_splash);
+						.setContentView(R.layout.start_menu);
 
 			}
 

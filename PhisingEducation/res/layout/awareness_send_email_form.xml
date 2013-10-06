@@ -1,0 +1,90 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/awareness_scrollview_send_email_form"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="518dp" 
+        tools:context=".AwarenessActivity">
+
+        <TextView
+            android:id="@+id/awareness_textfield_provide_sender"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="@dimen/margin_standard"
+            android:layout_marginRight="@dimen/margin_standard"
+            android:layout_marginTop="@dimen/margin_standard"
+            android:text="@string/awareness_text_provide_sender" />
+
+        <requestFocus />
+
+        <EditText
+            android:id="@+id/awareness_edit_receiver_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/awareness_text_provide_receiver"
+            android:layout_alignRight="@+id/awareness_textfield_provide_sender"
+            android:layout_below="@+id/awareness_text_provide_receiver"
+            android:layout_marginTop="@dimen/margin_standard"
+            android:ems="10"
+            android:hint="@string/example_email"
+            android:inputType="textEmailAddress" />
+
+        <Button
+            android:id="@+id/buttonAbschicken"
+            android:layout_width="wrap_content"
+            android:minWidth="@dimen/btn_standard_width"
+            android:layout_height="@dimen/btn_standard_height"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/margin_bottom_btn_position"
+            android:onClick="sendEmail"
+            android:text="@string/btn_send" />
+
+        <EditText
+            android:id="@+id/awareness_edit_sender_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/awareness_textfield_provide_sender"
+            android:layout_alignRight="@+id/awareness_textfield_provide_sender"
+            android:layout_below="@+id/awareness_textfield_provide_sender"
+            android:layout_marginTop="@dimen/margin_standard"
+            android:ems="10"
+            android:hint="@string/example_email"
+            android:inputType="textEmailAddress" />
+
+        <TextView
+            android:id="@+id/awareness_info_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/awareness_edit_receiver_email"
+            android:layout_below="@+id/awareness_edit_receiver_email"
+            android:layout_centerVertical="true"
+            android:layout_marginTop="@dimen/margin_large"
+            android:text="@string/awareness_edit_text" />
+
+        <EditText
+            android:id="@+id/awareness_edit_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/awareness_info_text"
+            android:layout_alignRight="@+id/awareness_edit_receiver_email"
+            android:layout_below="@+id/awareness_info_text"
+            android:layout_marginTop="@dimen/margin_standard"
+            android:ems="10"
+            android:hint="@string/hint_text" />
+
+        <TextView
+            android:id="@+id/awareness_text_provide_receiver"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/awareness_edit_sender_email"
+            android:layout_below="@+id/awareness_edit_sender_email"
+            android:layout_marginTop="@dimen/margin_large"
+            android:text="@string/awareness_text_provide_receiver" />
+
+    </RelativeLayout>
+
+</ScrollView>

@@ -91,5 +91,12 @@
     <string name="awareness_text_email_spoof_start">Willkommen zu unserer Anti-Phishing Education App. Bevor wir loslegen, werden wir dir zeigen wie einfach es ist E-Mail Absender zu fälschen. Schaue dir zunächst den folgenden Comic an.</string>
     <string name="awareness_text_you_dont_believe_us">Du denkst so einfach geht das nicht?</string>
     <string name="awareness_text_see_for_yourself">Überzeuge dich selbst</string>
-
+    <string name="awareness_text_provide_sender">Bitte gib eine beliebige E-Mail Adresse als Absender ein:</string>
+    <string name="example_email">Max@Mustermann.de</string>
+    <string name="awareness_text_provide_receiver">Und jetzt gib deine eigene E-Mail Adresse ein:</string>
+    <string name="awareness_edit_text">Hier kannst du einen kurzen Text eingeben:</string>
+	<string name="btn_send">Abschicken</string>
+	<string name="hint_text">Hier Text eingeben.</string>
+	<string name="awareness_missing_email_sender_or_receiver">Bitte Absender und Empfänger eingeben.</string>
+	<string name="awareness_invalid_email">Die Absender oder Empfänger E-Mail ist ungültig. Bitte überprüfe deine Eingaben.</string>
 </resources>
