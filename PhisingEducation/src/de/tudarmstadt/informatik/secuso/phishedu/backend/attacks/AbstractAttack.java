@@ -11,7 +11,7 @@ import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishURLInterface;
  *
  */
 public abstract class AbstractAttack implements PhishURLInterface {
-	private PhishURLInterface object;
+	protected PhishURLInterface object;
 	
 	/**
 	 * To build an attack we need a url to decorate
