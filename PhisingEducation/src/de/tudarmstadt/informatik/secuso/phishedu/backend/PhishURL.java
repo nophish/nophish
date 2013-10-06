@@ -20,7 +20,6 @@ public class PhishURL implements PhishURLInterface{
 	public String[] getParts(){return parts;}
 	public PhishSiteType getSiteType(){return this.siteType;}
 	public PhishAttackType getAttackType(){return this.attackType;}
-	public int[] getCorrectParts(){return this.correctparts;}
 	
 	public int getPoints(PhishResult result){
 		boolean correct = (result == PhishResult.NoPhish_Detected || result==PhishResult.Phish_Detected);
@@ -41,5 +40,15 @@ public class PhishURL implements PhishURLInterface{
 			throw new IllegalStateException("Something went horrably wrong! We should not be here.");
 		}
 		return result;
+	}
+	
+	@Override
+	public boolean partClicked(int part) {
+		for(int correctpart: this.correctparts){
+			if(part == correctpart ){
+				return true;
+			}
+		}
+		return false;
 	}
 }

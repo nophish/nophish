@@ -187,13 +187,7 @@ public class BackendController extends BroadcastReceiver implements BackendContr
 	@Override
 	public boolean partClicked(int part) {
 		checkinited();
-		boolean clickedright = false;
-		for(int correctpart:  this.current_url.getCorrectParts()){
-			if(correctpart==part){
-				clickedright=true;
-				break;
-			}
-		}
+		boolean clickedright = this.current_url.partClicked(part);
 		if(clickedright){
 			changePoints(PhishResult.Phish_Detected);
 		}else{

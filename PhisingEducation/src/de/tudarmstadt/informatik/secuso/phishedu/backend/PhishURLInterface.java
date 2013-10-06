@@ -8,8 +8,14 @@ package de.tudarmstadt.informatik.secuso.phishedu.backend;
  */
 public interface PhishURLInterface{
 	/**
-	 * Return the parts of the URL
-	 * @return String parts of a url. When concardinatend they build up the whole url.
+	 * Return the parts of the URL.
+	 * When concardinatend they build up the whole url.
+	 * The first 3 Parts are always defined as follows:
+	 * 0: The scheme (eg. "https:")
+	 * 1: "/"
+	 * 2: "/"
+	 * 
+	 * @return String parts of a url.
 	 */
 	public String[] getParts();
 	/**
@@ -22,11 +28,13 @@ public interface PhishURLInterface{
 	 * @return The type of attack was applyed
 	 */
 	public PhishAttackType getAttackType();
+	
 	/**
-	 * What should the user click to get the points.
-	 * @return indexes of the array returned by {@link #getParts()} that are correct.
+	 * See {@link BackendControllerInterface#partClicked(int)}
+	 * @param part See {@link BackendControllerInterface#partClicked(int)}
+	 * @return See {@link BackendControllerInterface#partClicked(int)}
 	 */
-	public int[] getCorrectParts();
+	public boolean partClicked(int part);
 	
 	/**
 	 * Get the points resulting in his selection
