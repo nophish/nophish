@@ -22,6 +22,18 @@ import android.net.Uri;
  *
  */
 public class BackendController extends BroadcastReceiver implements BackendControllerInterface, GameStateLoadedListener, UrlsLoadedListener {
+	private static final String PREFS_NAME = "PhisheduState";
+	private static final String URL_CACHE_NAME ="urlcache";
+	private static final String LEVEL1_URL = "https://pages.no-phish.de/level1.php";
+	private static final PhishAttackType[] CACHE_TYPES = {PhishAttackType.AnyPhish, PhishAttackType.NoPhish};
+	@SuppressWarnings("rawtypes")
+	private static final Class[][] phishtypesPerLevel = {
+		{IPAttack.class},
+		{IPAttack.class, PhishTankURLAttack.class},
+	};
+	private static final int POINTS_PER_LEVEL = 100;
+	private static final int URL_CACHE_SIZE = 100;
+	
 	private static PhishURL deserializeURL(String serialized){
 		return new Gson().fromJson(serialized, PhishURL.class);
 	}
@@ -29,17 +41,6 @@ public class BackendController extends BroadcastReceiver implements BackendContr
 	private static String serializeURL(PhishURL object){
 		return new Gson().toJson(object);
 	}
-	
-	private static final String PREFS_NAME = "PhisheduState";
-	private static final String URL_CACHE_NAME ="urlcache";
-	private static final String LEVEL1_URL = "https://pages.no-phish.de/level1.php";
-	private static PhishAttackType[] cacheTypes = {PhishAttackType.AnyPhish, PhishAttackType.NoPhish};
-	
-	@SuppressWarnings("rawtypes")
-	private static final Class[][] phishtypesPerLevel = {
-		{IPAttack.class},
-		{IPAttack.class, PhishTankURLAttack.class},
-	};
 	
 	private static BackendController instance = new BackendController();
 	
@@ -74,8 +75,8 @@ public class BackendController extends BroadcastReceiver implements BackendContr
 	 * Private constructor for singelton.
 	 */
 	private BackendController() {
-		this.urlCache=new PhishURL[cacheTypes.length][];
-		for(PhishAttackType type: cacheTypes){
+		this.urlCache=new PhishURL[CACHE_TYPES.length][];
+		for(PhishAttackType type: CACHE_TYPES){
 		  this.urlCache[type.getValue()]=new PhishURL[0];
 		}
 	}
@@ -101,7 +102,7 @@ public class BackendController extends BroadcastReceiver implements BackendContr
 		this.frontend=frontend;
 		this.progress = new GameProgress(this.frontend.getContext().getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE), this.frontend.getGamesClient(),this.frontend.getAppStateClient(),this);
 		SharedPreferences url_cache = this.frontend.getContext().getSharedPreferences(URL_CACHE_NAME, Context.MODE_PRIVATE);
-		for(PhishAttackType type: cacheTypes){
+		for(PhishAttackType type: CACHE_TYPES){
 		  this.urlCache[type.getValue()]=loadUrls(url_cache, type);
 		}
 	}
@@ -121,7 +122,7 @@ public class BackendController extends BroadcastReceiver implements BackendContr
 			result.add(deserializeURL(cache.getString(type.toString()+"["+i+"]", "")));
 		}
 		//then we get the value from the online store
-		new GetUrlsTask(this).execute(100,type.getValue());
+		new GetUrlsTask(this).execute(URL_CACHE_SIZE,type.getValue());
 		return result.toArray(new PhishURL[0]);
 	}
 	
@@ -212,7 +213,7 @@ public class BackendController extends BroadcastReceiver implements BackendContr
 	}
 	
 	private int nextLevelPoints(){
-		return 100;
+		return POINTS_PER_LEVEL;
 	}
 
 	@Override
