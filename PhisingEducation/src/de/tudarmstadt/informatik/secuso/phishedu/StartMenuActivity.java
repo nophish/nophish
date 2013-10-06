@@ -36,7 +36,7 @@ public class StartMenuActivity extends Activity implements
 
 		// BackendController.getInstance().init(this);
 
-		setContentView(R.layout.activity_start_menu);
+		setContentView(R.layout.splash_screen);
 		this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
 		Log.d("test", "jgfcjf2");

@@ -26,9 +26,10 @@
         android:visibility="gone" />
 
     <Button
-        android:id="@+id/button_play"
-        android:layout_width="200dp"
-        android:layout_height="40dp"
+        android:id="@+id/menu_button_play"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/btn_standard_height"
+        android:minWidth="@dimen/btn_menu_width"
         android:layout_below="@+id/sign_in_button"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="36dp"
@@ -36,49 +37,53 @@
         android:text="@string/button_play" />
 
     <Button
-        android:id="@+id/button_level_overview"
-        android:layout_width="200dp"
-        android:layout_height="40dp"
-        android:layout_below="@+id/button_play"
+        android:id="@+id/menu_button_level_overview"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/btn_standard_height"
+        android:minWidth="@dimen/btn_menu_width"
+        android:layout_below="@+id/menu_button_play"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="@dimen/margin_small"
         android:text="@string/button_level_overview" />
 
     <Button
-        android:id="@+id/button_more_info"
-        android:layout_width="200dp"
-        android:layout_height="40dp"
-        android:layout_alignLeft="@+id/button_level_overview"
-        android:layout_below="@+id/button_level_overview"
-        android:layout_marginTop="10dp"
+        android:id="@+id/menu_button_more_info"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/btn_standard_height"
+        android:minWidth="@dimen/btn_menu_width"
+        android:layout_alignLeft="@+id/menu_button_level_overview"
+        android:layout_below="@+id/menu_button_level_overview"
+        android:layout_marginTop="@dimen/margin_small"
         android:text="@string/button_more_info" />
-    
-     <Button
-        android:id="@+id/button_show_online_achievement"
-        android:layout_width="200dp"
-        android:layout_height="40dp"
-        android:layout_alignLeft="@+id/button_more_info"
-        android:layout_below="@+id/button_more_info"
-        android:layout_marginTop="10dp"
+
+    <Button
+        android:id="@+id/menu_button_show_online_achievement"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/btn_standard_height"
+        android:minWidth="@dimen/btn_menu_width"
+        android:layout_alignLeft="@+id/menu_button_more_info"
+        android:layout_below="@+id/menu_button_more_info"
+        android:layout_marginTop="@dimen/margin_small"
         android:text="@string/button_show_online_achievement" />
-     
-      <Button
-        android:id="@+id/button_show_leaderboard_rate"
-        android:layout_width="200dp"
-        android:layout_height="40dp"
-        android:layout_alignLeft="@+id/button_show_online_achievement"
-        android:layout_below="@+id/button_show_online_achievement"
-        android:layout_marginTop="10dp"
+
+    <Button
+        android:id="@+id/menu_button_show_leaderboard_rate"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/btn_standard_height"
+        android:minWidth="@dimen/btn_menu_width"
+        android:layout_alignLeft="@+id/menu_button_show_online_achievement"
+        android:layout_below="@+id/menu_button_show_online_achievement"
+        android:layout_marginTop="@dimen/margin_small"
         android:text="@string/button_show_leaderboard_rate" />
-      
-       <Button
+
+    <Button
         android:id="@+id/button_show_leaderboard_total"
-        android:layout_width="200dp"
-        android:layout_height="40dp"
-        android:layout_alignLeft="@+id/button_show_leaderboard_rate"
-        android:layout_below="@+id/button_show_leaderboard_rate"
-        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/btn_standard_height"
+        android:minWidth="@dimen/btn_menu_width"
+        android:layout_alignLeft="@+id/menu_button_show_leaderboard_rate"
+        android:layout_below="@+id/menu_button_show_leaderboard_rate"
+        android:layout_marginTop="@dimen/margin_small"
         android:text="@string/button_show_leaderboard_total" />
-      
 
 </RelativeLayout>

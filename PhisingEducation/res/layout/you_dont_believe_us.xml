@@ -9,33 +9,31 @@
     tools:context=".DisplayYouDontBelieveUsActivity" >
 
     <TextView
-        android:id="@+id/textViewYouDontBelieveUs"
+        android:id="@+id/awareness_text_you_dont_believe_us"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="62dp"
+        android:layout_marginTop="@dimen/margin_standard"
         android:gravity="center"
-        android:text="Du denkst so einfach geht das nicht?"
+        android:text="@string/awareness_text_you_dont_believe_us"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
-    <ImageView
-        android:id="@+id/imageView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textViewYouDontBelieveUs"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="73dp"
-        android:layout_marginLeft="38dp"
-        android:src="@drawable/dontbelieveus" />
-
     <Button
-        android:id="@+id/buttonWeiter"
+        android:id="@+id/awareness_button_see_for_yourself"
+        android:minWidth="@dimen/btn_standard_width"
+        android:layout_alignParentBottom="true"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/btn_standard_height"
+        android:layout_centerHorizontal="true"
+        android:text="@string/awareness_text_see_for_yourself" />
+
+    <ImageView
+        android:id="@+id/awareness_image_u_dont_believe_us"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
+        android:layout_alignLeft="@+id/awareness_text_you_dont_believe_us"
         android:layout_centerVertical="true"
-        android:onClick="goToSendEMailView"
-        android:text="Überzeuge dich selbst" />
+        android:src="@drawable/dontbelieveus" />
 
 </RelativeLayout>

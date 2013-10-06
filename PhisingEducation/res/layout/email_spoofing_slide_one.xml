@@ -26,11 +26,11 @@
         android:layout_below="@+id/title_email_spoofing"
         android:layout_marginLeft="11dp"
         android:layout_marginTop="11dp"
-        android:text="@string/text_welcome_email_spoofing"
+        android:text="@string/awareness_text_email_spoof_start"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <Button
-        android:id="@+id/button_next"
+        android:id="@+id/awareness_activity_button_next"
         android:layout_width="200dp"
         android:layout_height="40dp"
         android:layout_alignParentBottom="true"

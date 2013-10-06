@@ -5,6 +5,8 @@
     <string name="action_settings">Settings</string>
     <string name="start_button">Please click me!</string>
     <string name="hello_result">You came here by clicking a phishedu:// Link!</string>
+
+    <!-- titles -->
     <string name="title_activity_display_you_dont_believe_us">DisplayYouDontBelieveUsActivity</string>
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_send_email">SendEmailActivity</string>
@@ -65,9 +67,17 @@
     <string name="title_activity_end_demo">EndDemoActivity</string>
     <string name="title_activity_ip_nonsense_url_exercise_two_correct_solution">IpNonsenseUrlExerciseTwoCorrectSolution</string>
     <string name="title_activity_backend_test">Backend Test</string>
-    <string name="title_activity_start_menu">StartMenuActivity</string>
+    <string name="title_activity_start_menu">Anti-Phishing Education</string>
+
     <string name="title_anti_phishing">Anti-Phishing Education</string>
+    <string name="title_activity_awareness">E-Mail Fälschung</string>
+    
+    <!-- splash -->
+    <string name="title_email_spoofing">E-Mail Absender Fälschung</string>
     <string name="text_beat_phishing">Schütze dich vor fiesen Tricks!</string>
+    
+    
+    <!-- menu buttons -->
     <string name="sign_out">Sign Out</string>
     <string name="button_play">Spielen</string>
     <string name="button_level_overview">Deine Leistung</string>
@@ -75,9 +85,11 @@
     <string name="button_show_online_achievement">Deine Leistung (online)</string>
     <string name="button_show_leaderboard_rate">Leaderboard Rate (online)</string>
     <string name="button_show_leaderboard_total">Leaderboard Total (online)</string>
-    <string name="title_activity_awareness">AwarenessActivity</string>
-    <string name="title_email_spoofing">E-Mail Absender Fälschung</string>
-    <string name="text_welcome_email_spoofing">Willkommen zu unserer Anti-Phishing Education App. Bevor wir loslegen, werden wir dir zeigen wie einfach es ist E-Mail Absender zu fälschen. Schaue dir zunächst den folgenden Comic an.</string>
     <string name="button_next">Weiter</string>
+    
+    <!-- text awareness activity -->
+    <string name="awareness_text_email_spoof_start">Willkommen zu unserer Anti-Phishing Education App. Bevor wir loslegen, werden wir dir zeigen wie einfach es ist E-Mail Absender zu fälschen. Schaue dir zunächst den folgenden Comic an.</string>
+    <string name="awareness_text_you_dont_believe_us">Du denkst so einfach geht das nicht?</string>
+    <string name="awareness_text_see_for_yourself">Überzeuge dich selbst</string>
 
 </resources>

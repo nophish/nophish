@@ -9,7 +9,6 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.Menu;
-import android.widget.Button;
 
 public class AwarenessActivity extends FragmentActivity {
 
@@ -25,8 +24,6 @@ public class AwarenessActivity extends FragmentActivity {
 	        mPager = (ViewPager) findViewById(R.id.pager);
 	        mPager.setAdapter(mAdapter);
 	        
-	        Button button1 = (Button) findViewById(R.id.button1);
-
 	    }
 	 
 	    public static class MyAdapter extends FragmentPagerAdapter {

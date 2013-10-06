@@ -6,15 +6,15 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:layout_height="wrap_content" >
 
         <ImageView
-            android:id="@+id/email_spoof_two"
+            android:id="@+id/awareness_email_spoof_one"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="17dp"
+            android:layout_marginTop="@dimen/margin_small"
             android:src="@drawable/email_spoof_one" />
     </RelativeLayout>
 

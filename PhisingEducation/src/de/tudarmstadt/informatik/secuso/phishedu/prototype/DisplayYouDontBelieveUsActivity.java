@@ -18,7 +18,7 @@ public class DisplayYouDontBelieveUsActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_display_you_dont_believe_us);
+		setContentView(R.layout.you_dont_believe_us);
 		// Show the Up button in the action bar.
 		setupActionBar();
 	}

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+	<!-- standard colors -->
+	<color name="light_yellow">#facb66</color>
+	<color name="light_red">#FA8E92</color>
+	<color name="light_blue">#A6BFFD</color>
+	<color name="light_ice_blue">#A6FDFC</color>
+	<color name="light_mint_green">#A6FDCC</color>
+	<color name="light_olive_green">#ADFDA7</color>
+
+</resources>
