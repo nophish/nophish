@@ -1,10 +1,13 @@
 package de.tudarmstadt.informatik.secuso.phishedu.backend;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 
 import com.google.gson.Gson;
 
+import de.tudarmstadt.informatik.secuso.phishedu.backend.attacks.IPAttack;
+import de.tudarmstadt.informatik.secuso.phishedu.backend.attacks.PhishTankURLAttack;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.networkTasks.*;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -30,7 +33,13 @@ public class BackendController extends BroadcastReceiver implements BackendContr
 	private static final String PREFS_NAME = "PhisheduState";
 	private static final String URL_CACHE_NAME ="urlcache";
 	private static final String LEVEL1_URL = "https://pages.no-phish.de/level1.php";
-	private static PhishAttackType[] cacheTypes = {PhishAttackType.AnyPhish, PhishAttackType.NoPhish}; 
+	private static PhishAttackType[] cacheTypes = {PhishAttackType.AnyPhish, PhishAttackType.NoPhish};
+	
+	@SuppressWarnings("rawtypes")
+	private static final Class[][] phishtypesPerLevel = {
+		{IPAttack.class},
+		{IPAttack.class, PhishTankURLAttack.class},
+	};
 	
 	private static BackendController instance = new BackendController();
 	
@@ -38,20 +47,34 @@ public class BackendController extends BroadcastReceiver implements BackendContr
 	private boolean inited = false;
 	
 	//indexed by UrlType
-	private PhishURL[][] urlCache = new PhishURL[2][];
+	private PhishURL[][] urlCache;
 	
 	private boolean gamestate_loaded = false;
 	private GameProgress progress;
 	
 	/**
+	 * This function returns a Phishing url of the given type
+	 * @param type Type of Attack for the URL
+	 * @return A PhishURL of the given type
+	 */
+	public PhishURLInterface getPhishURL(PhishAttackType type){
+		if(type.getValue() >= this.urlCache.length){
+			throw new IllegalArgumentException("This phish type is not cached.");
+		}
+		Random rand = new Random();
+		return urlCache[type.getValue()][rand.nextInt(urlCache[type.getValue()].length)];
+	}
+	
+	/**
 	 * This holds the current URL returned by the last {@link BackendControllerInterface}{@link #getNextUrl()} call
 	 */
-	private PhishURL current_url;
+	private PhishURLInterface current_url;
 	
 	/**
 	 * Private constructor for singelton.
 	 */
 	private BackendController() {
+		this.urlCache=new PhishURL[cacheTypes.length][];
 		for(PhishAttackType type: cacheTypes){
 		  this.urlCache[type.getValue()]=new PhishURL[0];
 		}
@@ -61,7 +84,7 @@ public class BackendController extends BroadcastReceiver implements BackendContr
 	 * Getter for singleton.
 	 * @return The singleton Object of this class
 	 */
-	public static BackendControllerInterface getInstance(){
+	public static BackendController getInstance(){
 		return instance;
 	}
 	
@@ -135,11 +158,25 @@ public class BackendController extends BroadcastReceiver implements BackendContr
 	}
 
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public String[] getNextUrl() {
 		checkinited();
-		// TODO We have to implement a smart way of generating the URLs. For now we just give out the first cachced one.
-		this.current_url=this.urlCache[PhishAttackType.NoPhish.getValue()][0];
+		Random rand=new Random();
+		//First we decide if we want to give a phish URL or not
+		PhishURLInterface base_url=this.urlCache[PhishAttackType.NoPhish.getValue()][rand.nextInt(this.urlCache[PhishAttackType.NoPhish.getValue()].length)];
+		if(rand.nextFloat()>0.5){
+			int use_level=(this.getLevel() < phishtypesPerLevel.length) ? this.getLevel() : phishtypesPerLevel.length-1;
+			Class<? extends PhishURLInterface>[] attacks = phishtypesPerLevel[use_level];
+			Class<? extends PhishURLInterface> attack = attacks[rand.nextInt(attacks.length)];
+			try {
+				base_url=attack.getConstructor(PhishURLInterface.class).newInstance(base_url);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		this.current_url=base_url;
 		return (String[]) this.current_url.getParts();
 	}
 
