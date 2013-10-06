@@ -19,51 +19,6 @@ import android.net.Uri;
  *
  */
 public class BackendController extends BroadcastReceiver implements BackendControllerInterface, GameStateLoadedListener, UrlsLoadedListener {
-	/**
-	 * this is for internally holding the phishing urls
-	 * @author Clemens Bergmann <cbergmann@schuhklassert.de>
-	 *
-	 */
-	private class PhishURL{
-		private String[] parts = new String[0];
-		private PhishSiteType siteType = PhishSiteType.AnyPhish;
-		private PhishAttackType attackType = PhishAttackType.NoPhish;
-		private int[] correctparts = new int[0];
-		/**
-		 * This stores the points the user gets for his detection.
-		 * 0: he got it right
-		 * 1: he did not get it right
-		 */
-		private int[] points = {15,-10};
-		
-		/**
-		 * Get the points resulting in his selection
-		 * @param selected
-		 * @return
-		 */
-		private int getPoints(PhishResult result){
-			boolean correct = (result == PhishResult.NoPhish_Detected || result==PhishResult.Phish_Detected);
-			return points[correct ? 0 : 1];
-		}
-		
-		private PhishResult getResult(boolean acceptance){
-			PhishResult result;
-			if(this.attackType == PhishAttackType.NoPhish && acceptance){
-				result =  PhishResult.NoPhish_Detected;
-			}else if(this.attackType == PhishAttackType.NoPhish && !acceptance){
-				result =  PhishResult.NoPhish_NotDetected;
-			}else if(this.attackType != PhishAttackType.NoPhish && acceptance){
-				result =  PhishResult.Phish_NotDetected;
-			}else if(this.attackType != PhishAttackType.NoPhish && !acceptance){
-				result =  PhishResult.Phish_Detected;
-			}else {
-				throw new IllegalStateException("Something went horrably wrong! We should not be here.");
-			}
-			return result;
-		}
-	}
-	
-	
 	private static PhishURL deserializeURL(String serialized){
 		return new Gson().fromJson(serialized, PhishURL.class);
 	}
@@ -185,7 +140,7 @@ public class BackendController extends BroadcastReceiver implements BackendContr
 		checkinited();
 		// TODO We have to implement a smart way of generating the URLs. For now we just give out the first cachced one.
 		this.current_url=this.urlCache[PhishAttackType.NoPhish.getValue()][0];
-		return (String[]) this.current_url.parts;
+		return (String[]) this.current_url.getParts();
 	}
 
 	@Override
@@ -226,14 +181,14 @@ public class BackendController extends BroadcastReceiver implements BackendContr
 	@Override
 	public PhishSiteType getType() {
 		checkinited();
-		return this.current_url.siteType;
+		return this.current_url.getSiteType();
 	}
 
 	@Override
 	public boolean partClicked(int part) {
 		checkinited();
 		boolean clickedright = false;
-		for(int correctpart:  this.current_url.correctparts){
+		for(int correctpart:  this.current_url.getCorrectParts()){
 			if(correctpart==part){
 				clickedright=true;
 				break;
