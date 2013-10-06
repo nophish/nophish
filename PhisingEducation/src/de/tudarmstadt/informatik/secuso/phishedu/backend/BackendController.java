@@ -2,6 +2,7 @@ package de.tudarmstadt.informatik.secuso.phishedu.backend;
 
 import java.util.ArrayList;
 
+
 import com.google.gson.Gson;
 
 import de.tudarmstadt.informatik.secuso.phishedu.backend.networkTasks.*;
@@ -18,9 +19,6 @@ import android.net.Uri;
  *
  */
 public class BackendController extends BroadcastReceiver implements BackendControllerInterface, GameStateLoadedListener, UrlsLoadedListener {
-	public interface PhishURLInterface{
-		
-	}
 	/**
 	 * this is for internally holding the phishing urls
 	 * @author Clemens Bergmann <cbergmann@schuhklassert.de>
@@ -33,9 +31,36 @@ public class BackendController extends BroadcastReceiver implements BackendContr
 		private int[] correctparts = new int[0];
 		/**
 		 * This stores the points the user gets for his detection.
-		 * It is indexed acording to {@link PhishResult}.
+		 * 0: he got it right
+		 * 1: he did not get it right
 		 */
-		private int[] points = {15,0,-10,0};
+		private int[] points = {15,-10};
+		
+		/**
+		 * Get the points resulting in his selection
+		 * @param selected
+		 * @return
+		 */
+		private int getPoints(PhishResult result){
+			boolean correct = (result == PhishResult.NoPhish_Detected || result==PhishResult.Phish_Detected);
+			return points[correct ? 0 : 1];
+		}
+		
+		private PhishResult getResult(boolean acceptance){
+			PhishResult result;
+			if(this.attackType == PhishAttackType.NoPhish && acceptance){
+				result =  PhishResult.NoPhish_Detected;
+			}else if(this.attackType == PhishAttackType.NoPhish && !acceptance){
+				result =  PhishResult.NoPhish_NotDetected;
+			}else if(this.attackType != PhishAttackType.NoPhish && acceptance){
+				result =  PhishResult.Phish_NotDetected;
+			}else if(this.attackType != PhishAttackType.NoPhish && !acceptance){
+				result =  PhishResult.Phish_Detected;
+			}else {
+				throw new IllegalStateException("Something went horrably wrong! We should not be here.");
+			}
+			return result;
+		}
 	}
 	
 	
@@ -50,6 +75,7 @@ public class BackendController extends BroadcastReceiver implements BackendContr
 	private static final String PREFS_NAME = "PhisheduState";
 	private static final String URL_CACHE_NAME ="urlcache";
 	private static final String LEVEL1_URL = "https://pages.no-phish.de/level1.php";
+	private static PhishAttackType[] cacheTypes = {PhishAttackType.AnyPhish, PhishAttackType.NoPhish}; 
 	
 	private static BackendController instance = new BackendController();
 	
@@ -70,7 +96,11 @@ public class BackendController extends BroadcastReceiver implements BackendContr
 	/**
 	 * Private constructor for singelton.
 	 */
-	private BackendController() {}
+	private BackendController() {
+		for(PhishAttackType type: cacheTypes){
+		  this.urlCache[type.getValue()]=new PhishURL[0];
+		}
+	}
 	
 	/**
 	 * Getter for singleton.
@@ -93,8 +123,7 @@ public class BackendController extends BroadcastReceiver implements BackendContr
 		this.frontend=frontend;
 		this.progress = new GameProgress(this.frontend.getContext().getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE), this.frontend.getGamesClient(),this.frontend.getAppStateClient(),this);
 		SharedPreferences url_cache = this.frontend.getContext().getSharedPreferences(URL_CACHE_NAME, Context.MODE_PRIVATE);
-		PhishAttackType[] types = {PhishAttackType.AnyPhish, PhishAttackType.NoPhish};
-		for(PhishAttackType type: types){
+		for(PhishAttackType type: cacheTypes){
 		  this.urlCache[type.getValue()]=loadUrls(url_cache, type);
 		}
 	}
@@ -114,7 +143,7 @@ public class BackendController extends BroadcastReceiver implements BackendContr
 			result.add(deserializeURL(cache.getString(type.toString()+"["+i+"]", "")));
 		}
 		//then we get the value from the online store
-		new GetUrlsTask(instance).execute(100,type.getValue());
+		new GetUrlsTask(this).execute(100,type.getValue());
 		return result.toArray(new PhishURL[0]);
 	}
 	
@@ -132,7 +161,7 @@ public class BackendController extends BroadcastReceiver implements BackendContr
 	}
 	
 	private void checkInitDone(){
-		if (this.urlCache[GetUrlsTask.PHISH_URLS].length >0 && this.urlCache[GetUrlsTask.VALID_URLS].length > 0 &&  this.gamestate_loaded){
+		if (this.urlCache[PhishAttackType.NoPhish.getValue()].length >0 && this.urlCache[PhishAttackType.AnyPhish.getValue()].length > 0 &&  this.gamestate_loaded){
 			this.inited=true;
 			this.frontend.initDone();
 			this.progress.StartFinished();	
@@ -155,7 +184,7 @@ public class BackendController extends BroadcastReceiver implements BackendContr
 	public String[] getNextUrl() {
 		checkinited();
 		// TODO We have to implement a smart way of generating the URLs. For now we just give out the first cachced one.
-		this.current_url=this.urlCache[GetUrlsTask.PHISH_URLS][0];
+		this.current_url=this.urlCache[PhishAttackType.NoPhish.getValue()][0];
 		return (String[]) this.current_url.parts;
 	}
 
@@ -168,18 +197,7 @@ public class BackendController extends BroadcastReceiver implements BackendContr
 	@Override
 	public PhishResult userClicked(boolean acceptance) {
 		checkinited();
-		PhishResult result;
-		if(this.current_url.attackType == PhishAttackType.NoPhish || acceptance){
-			result =  PhishResult.NoPhish_Detected;
-		}else if(this.current_url.attackType == PhishAttackType.NoPhish || !acceptance){
-			result =  PhishResult.NoPhish_NotDetected;
-		}else if(this.current_url.attackType != PhishAttackType.NoPhish || acceptance){
-			result =  PhishResult.Phish_NotDetected;
-		}else if(this.current_url.attackType != PhishAttackType.NoPhish || !acceptance){
-			result =  PhishResult.Phish_Detected;
-		}else {
-			throw new IllegalStateException("Something went horrably wrong! We should not be here.");
-		}
+		PhishResult result=this.current_url.getResult(acceptance);
 		
 		if(result != PhishResult.Phish_Detected){
 			this.changePoints(result);
@@ -189,7 +207,7 @@ public class BackendController extends BroadcastReceiver implements BackendContr
 	
 	private void changePoints(PhishResult result){
 		this.progress.addResult(result);
-		int offset=this.current_url.points[result.getValue()];
+		int offset=this.current_url.getPoints(result);
 		this.progress.setPoints(this.getPoints()+offset);
 		if(this.progress.getPoints()>=nextLevelPoints()){
 			this.proceedlevel();

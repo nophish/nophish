@@ -37,6 +37,11 @@ public class BackendTestActivity extends BaseGameActivity implements FrontendCon
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+
+
+		BackendController.getInstance().init(this);
+		
+		
 		setContentView(R.layout.activity_backend_test);
 		findViewById(R.id.sign_in_button).setOnClickListener(this);
 		findViewById(R.id.sign_out_button).setOnClickListener(this); 
@@ -62,8 +67,6 @@ public class BackendTestActivity extends BaseGameActivity implements FrontendCon
 			}
 
 		});
-
-		BackendController.getInstance().init(this);
 
 		// Assign adapter to List 
 

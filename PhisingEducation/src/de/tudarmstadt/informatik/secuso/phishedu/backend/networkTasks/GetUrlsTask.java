@@ -16,11 +16,6 @@ import android.os.AsyncTask;
  */
 public class GetUrlsTask extends AsyncTask<Integer, Integer, String[]>{
 	private UrlsLoadedListener controller;
-	/** Static for getting Phish urls */
-	public static final int PHISH_URLS = 0;
-	/** Static for getting no-phish urls */
-	public static final int VALID_URLS = 1;
-	
 	private PhishAttackType type = PhishAttackType.NoPhish;
 	
 	/**
@@ -42,7 +37,7 @@ public class GetUrlsTask extends AsyncTask<Integer, Integer, String[]>{
 			}
 		}
 		try {
-			JSONArray result = client.callJSONArray("getURLs", count, type);
+			JSONArray result = client.callJSONArray("getURLs", count, type.getValue());
 			String[] urls = new String[result.length()];
 			for(int i=0; i<result.length(); i++){
 				urls[i]=result.getString(i);
