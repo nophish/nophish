@@ -104,7 +104,7 @@ public class BackendTestActivity extends BaseGameActivity implements FrontendCon
 	}
 
 	public void leve1Test(){
-		BackendController.getInstance().StartLevel1();
+		BackendController.getInstance().StartLevel(1);
 	}
 
 	public void urlTest(){

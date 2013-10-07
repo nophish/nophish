@@ -124,7 +124,7 @@ public class StartMenuActivity extends Activity implements
 	}
 
 	public void leve1Test() {
-		BackendController.getInstance().StartLevel1();
+		BackendController.getInstance().StartLevel(1);
 	}
 
 	@Override

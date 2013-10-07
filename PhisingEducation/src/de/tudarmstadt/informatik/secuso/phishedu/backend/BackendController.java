@@ -33,9 +33,9 @@ public class BackendController extends BroadcastReceiver implements BackendContr
 	//LEVEL 0-1 are empty because they don't 
 	@SuppressWarnings("rawtypes")
 	private static final Class[][] ATTACK_TYPES_PER_LEVEL = {
-		{},
-		{},
-		{Level2Attack.class},
+		{}, //Level0: Awareness
+		{}, //Level1: Find URLBar in Browser
+		{Level2Attack.class}, //Level2: Select Domain name
 		{IPAttack.class},
 		{IPAttack.class, PhishTankURLAttack.class},
 	};
@@ -158,9 +158,15 @@ public class BackendController extends BroadcastReceiver implements BackendContr
 	}
 
 	@Override
-	public void StartLevel1() {
+	public void StartLevel(int level) {
 		checkinited();
-		this.frontend.startBrowser(Uri.parse(LEVEL1_URL));
+		if(level == 1){
+			this.frontend.startBrowser(Uri.parse(LEVEL1_URL));
+		}else{
+			this.progress.setPoints(0);
+			this.progress.setLevel(level);
+			this.frontend.onLevelChange(this.progress.getLevel());
+		}
 	}
 
 
@@ -211,10 +217,9 @@ public class BackendController extends BroadcastReceiver implements BackendContr
 			this.proceedlevel();
 		}
 	}
+	
 	private void proceedlevel(){
-		this.progress.setPoints(0);
-		this.progress.setLevel(this.progress.getLevel()+1);
-		this.frontend.onLevelChange(this.progress.getLevel());
+		this.StartLevel(this.getLevel()+1);
 	}
 	
 	/**
@@ -268,6 +273,11 @@ public class BackendController extends BroadcastReceiver implements BackendContr
 	public void onGameStateLoaded() {
 		this.gamestate_loaded=true;
 		this.checkInitDone();
+	}
+
+	@Override
+	public int getMaxUnlockedLevel() {
+		return this.progress.getMaxUnlockedLevel();
 	}
 	
 }

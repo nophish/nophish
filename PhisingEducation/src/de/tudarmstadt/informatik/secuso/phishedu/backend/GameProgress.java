@@ -29,6 +29,7 @@ public class GameProgress implements OnStateLoadedListener{
 	private class State{
 		private int[] results;
 		private int level = 0;
+		private int unlockedLevel = 0;
 		private int detected_phish_behind = 0;
 		private boolean app_started = false;
 	}
@@ -126,6 +127,9 @@ public class GameProgress implements OnStateLoadedListener{
 	 */
 	public void setLevel(int level){
 		this.state.level=level;
+		if(level > this.state.unlockedLevel){
+			this.state.unlockedLevel=level;
+		}
 		this.saveState();
 	}
 
@@ -216,5 +220,14 @@ public class GameProgress implements OnStateLoadedListener{
 			// handle error
 		}
 		this.listener.onGameStateLoaded();
+	}
+	
+	
+	/**
+	 * This returns the maximum level the user is able to access
+	 * @return the max level
+	 */
+	public int getMaxUnlockedLevel() {
+		return this.state.unlockedLevel;
 	}
 }

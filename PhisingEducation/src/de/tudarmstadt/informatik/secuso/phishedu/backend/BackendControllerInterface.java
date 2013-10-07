@@ -20,10 +20,12 @@ public interface BackendControllerInterface {
 	 * @param usermessage Each send out mail contains a usermessage to maximize the awareness.
 	 */
 	void sendMail(String from, String to, String usermessage);
+	
 	/**
-	 * This starts level1.
+	 * This starts a level and initilizes the backend state.
+	 * @param level The level you want to start
 	 */
-	void StartLevel1();
+	void StartLevel(int level);
 	
 	/**
 	 * Get the next url and save the URL Information internally.
@@ -37,6 +39,13 @@ public interface BackendControllerInterface {
 	 * @return Current user level
 	 */
 	int getLevel();
+	
+	/**
+	 * Get the Level the user is able to play.
+	 * @return Biggest available level
+	 */
+	int getMaxUnlockedLevel();
+	
 	/**
 	 * Get how many points in the current level the user has.
 	 * 
