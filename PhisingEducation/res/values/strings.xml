@@ -115,16 +115,19 @@
     <string name="awareness_no_awareness">Leider konntest du die gefälschte E-Mail aus technischen Gründen nicht erhalten. Dennoch ist es sehr einfach solche Fälschungen durchzuführen.\n\nZiel dieser App ist, dich über Phishing, einer Gefahr im Internet, aufzuklären.</string>
     <string name="start_game">Spiel starten</string>
     <string name="awareness_resend_email">E-Mail erneut versenden</string>
-    
-    
+    <string name="awareness_text_fake_websites">Auch das Fälschen von Webseiten ist sehr einfach (wie bei E-Mails), wie folgender Comic zeigt.</string>
+
     <!-- Game Intro -->
     <string name="title_activity_intro_game">IntroGameActivity</string>
     <string name="welcome">Herzlich Willkommen</string>
     <string name="game_intro_title">Einführung</string>
     <string name="game_intro_text_1">Im Folgenden eine kleine Regel Einführung:</string>
-	<string name="game_intro_text_2">Das Spiel umfasst verschiedene Levels. Jedem Level ist jeweils eine kurze Lektion vorangestellt.</string>
-	<string name="game_intro_text_describe_lib_emblem">Symbolisiert eine Lektion.</string>
-	<string name="game_intro_text_describe_pen">Symbolisiert, dass eine Übung ansteht.</string>
+    <string name="game_intro_text_2">Das Spiel umfasst verschiedene Levels. Jedem Level ist jeweils eine kurze Lektion vorangestellt.</string>
+    <string name="game_intro_text_describe_lib_emblem">Symbolisiert eine Lektion.</string>
+    <string name="game_intro_text_describe_pen">Symbolisiert, dass eine Übung ansteht.</string>
     <string name="title_intro_phishing">Was ist Phishing</string>
     <string name="game_intro_text_phishing">Phishing ist der Versuch, Usern persönliche Daten zu entlocken.\n\nEs gibt unterschiedlichste Tricks, um das Vertrauen von Nutzern zu gewinnen und ihnen somit vertrauliche Informationen zu entlocken.\n\nEin beliebter Trick ist, gefälschte Webseiten zu verwenden, die den echten täuschend ähnlich sehen.\n\nDiese können über E-Mail, SMS, Social Network Links oder sogar durch normales Surfen erreicht werden.\n\nWir wollen dir helfen, Phishing Webseiten anhand ihrer Adresse zu erkennen.</string>
+    <string name="game_intro_text_3">Bevor du uns noch vom Stuhl fällst vor Langeweile, lass uns das ganze ein wenig interaktiver angehen und mit dem Spiel beginnen.</string>
+    <string name="game_intro_text_4">Lasse nicht zu, dass fiese Phisher dich austricksen!</string>
+
 </resources>

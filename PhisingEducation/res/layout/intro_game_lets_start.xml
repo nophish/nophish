@@ -1,4 +1,3 @@
-
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -10,43 +9,45 @@
     tools:context=".GameIntroActivity" >
 
     <Button
-        android:id="@+id/button_play"
+        android:id="@+id/intro_game_button_play"
         android:layout_width="wrap_content"
         android:layout_height="@dimen/btn_standard_height"
-        android:minWidth="@dimen/btn_standard_width"
-        android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
         android:layout_marginBottom="@dimen/margin_standard"
-        android:text="Spielen" />
+        android:minWidth="@dimen/btn_standard_width"
+        android:text="@string/button_play" />
 
     <TextView
-        android:id="@+id/text_game_intro"
+        android:id="@+id/game_intro_text_3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_alignRight="@+id/imageView1"
+        android:layout_marginTop="@dimen/margin_standard"
+        android:layout_alignRight="@+id/game_intro_image"
         android:gravity="center"
-        android:text="Bevor du uns noch vom Stuhl fällst vor Langeweile, lass uns das ganze ein wenig interaktiver angehen und mit dem Spiel beginnen."
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/imageView1"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="62dp"
-        android:gravity="center"
-        android:text="Lasse nicht zu, dass fiese Phisher dich austricksen!"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:text="@string/game_intro_text_3"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <ImageView
-        android:id="@+id/imageView1"
+        android:id="@+id/game_intro_image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
-        android:layout_alignTop="@+id/text_game_intro"
-        android:layout_marginTop="122dp"
+        android:layout_below="@+id/game_intro_text_3"
+        android:layout_marginTop="@dimen/margin_standard"
+        android:layout_centerVertical="true"
         android:src="@drawable/dontbelieveus" />
+
+    <TextView
+        android:id="@+id/game_intro_text_4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/game_intro_text_3"
+        android:layout_below="@+id/game_intro_image"
+        android:layout_marginTop="@dimen/margin_large"
+        android:text="@string/game_intro_text_4"
+        android:gravity="center"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
 
 </RelativeLayout>
