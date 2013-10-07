@@ -25,4 +25,13 @@ public class PhishTankURLAttack extends AbstractAttack {
 		return PhishAttackType.AnyPhish;
 	}	
 	
+	/**
+	 * As we don't know the structure of the url from phishTank. All parts might be phishy.
+	 */
+	@Override
+	public boolean partClicked(int part) {
+		return true;
+	}
+	
+	
 }
