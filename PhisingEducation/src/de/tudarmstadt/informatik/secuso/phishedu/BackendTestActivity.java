@@ -49,6 +49,7 @@ public class BackendTestActivity extends BaseGameActivity implements FrontendCon
 		entrys = new LinkedHashMap<String, BackendTest>();
 		entrys.put("send mail", new BackendTest(){public void test(){mailSendTest();}});
 		entrys.put("Start level 1", new BackendTest(){public void test(){leve1Test();}});
+		entrys.put("Show me a URL of level 1", new BackendTest(){public void test(){urlTest();}});
 		entrys.put("Show Achievements", new BackendTest(){public void test(){showAchievments();}});
 		entrys.put("Show Leaderboard Rate", new BackendTest(){public void test(){showLeaderboardRate();}});
 		entrys.put("Show Leaderboard Total", new BackendTest(){public void test(){showLeaderboardTotal();}});
@@ -106,7 +107,13 @@ public class BackendTestActivity extends BaseGameActivity implements FrontendCon
 		BackendController.getInstance().StartLevel1();
 	}
 
-	private void displayToast(String message) {
+	public void urlTest(){
+		BackendController.getInstance().setLevel(3);
+		displayToast(BackendController.getInstance().getNextUrl().toString());
+	}
+
+	@Override
+	public void displayToast(String message) {
 		Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
 	}
 

@@ -9,7 +9,7 @@ public class PhishURL implements PhishURLInterface{
 	private String[] parts = new String[0];
 	private PhishSiteType siteType = PhishSiteType.AnyPhish;
 	private PhishAttackType attackType = PhishAttackType.NoPhish;
-	private int[] correctparts = new int[0];
+	protected int[] correctparts = new int[0];
 	/**
 	 * This stores the points the user gets for his detection.
 	 * 0: he got it right

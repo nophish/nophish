@@ -7,6 +7,7 @@ import java.util.Random;
 import com.google.gson.Gson;
 
 import de.tudarmstadt.informatik.secuso.phishedu.backend.attacks.IPAttack;
+import de.tudarmstadt.informatik.secuso.phishedu.backend.attacks.Level2Attack;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.attacks.PhishTankURLAttack;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.networkTasks.*;
 import android.content.BroadcastReceiver;
@@ -26,8 +27,15 @@ public class BackendController extends BroadcastReceiver implements BackendContr
 	private static final String URL_CACHE_NAME ="urlcache";
 	private static final String LEVEL1_URL = "https://pages.no-phish.de/level1.php";
 	private static final PhishAttackType[] CACHE_TYPES = {PhishAttackType.AnyPhish, PhishAttackType.NoPhish};
+	//the probability that we apply an Attack on each round
+	private static final double ATTACK_THRESHOULD = 0.5;
+	//For each level we can define what Attacks are applied
+	//LEVEL 0-1 are empty because they don't 
 	@SuppressWarnings("rawtypes")
-	private static final Class[][] phishtypesPerLevel = {
+	private static final Class[][] ATTACK_TYPES_PER_LEVEL = {
+		{},
+		{},
+		{Level2Attack.class},
 		{IPAttack.class},
 		{IPAttack.class, PhishTankURLAttack.class},
 	};
@@ -38,7 +46,7 @@ public class BackendController extends BroadcastReceiver implements BackendContr
 		return new Gson().fromJson(serialized, PhishURL.class);
 	}
 	
-	private static String serializeURL(PhishURL object){
+	private static String serializeURL(PhishURLInterface object){
 		return new Gson().toJson(object);
 	}
 	
@@ -48,7 +56,7 @@ public class BackendController extends BroadcastReceiver implements BackendContr
 	private boolean inited = false;
 	
 	//indexed by UrlType
-	private PhishURL[][] urlCache;
+	private PhishURLInterface[][] urlCache;
 	
 	private boolean gamestate_loaded = false;
 	private GameProgress progress;
@@ -107,7 +115,7 @@ public class BackendController extends BroadcastReceiver implements BackendContr
 		}
 	}
 	
-	private void CacheUrls(SharedPreferences cache, PhishAttackType type, PhishURL[] urls){
+	private void CacheUrls(SharedPreferences cache, PhishAttackType type, PhishURLInterface[] urls){
 		SharedPreferences.Editor editor = cache.edit();
 		for(int i=0;i<urls.length;i++){
 			editor.putString(type.toString()+"["+i+"]", serializeURL(urls[i]));
@@ -126,11 +134,8 @@ public class BackendController extends BroadcastReceiver implements BackendContr
 		return result.toArray(new PhishURL[0]);
 	}
 	
-	public void urlsReturned(String[] urls, PhishAttackType type){
-		this.urlCache[type.getValue()]=new PhishURL[urls.length];
-		for(int i=0;i<urls.length;i++){
-			this.urlCache[type.getValue()][i]=deserializeURL(urls[i]);
-		}
+	public void urlsReturned(PhishURLInterface[] urls, PhishAttackType type){
+		this.urlCache[type.getValue()]=urls;
 		this.CacheUrls(this.frontend.getContext().getSharedPreferences(URL_CACHE_NAME, Context.MODE_PRIVATE),type, this.urlCache[type.getValue()]);
 		this.checkInitDone();
 	}
@@ -166,9 +171,9 @@ public class BackendController extends BroadcastReceiver implements BackendContr
 		Random rand=new Random();
 		//First we decide if we want to give a phish URL or not
 		PhishURLInterface base_url=this.urlCache[PhishAttackType.NoPhish.getValue()][rand.nextInt(this.urlCache[PhishAttackType.NoPhish.getValue()].length)];
-		if(rand.nextFloat()>0.5){
-			int use_level=(this.getLevel() < phishtypesPerLevel.length) ? this.getLevel() : phishtypesPerLevel.length-1;
-			Class<? extends PhishURLInterface>[] attacks = phishtypesPerLevel[use_level];
+		if(rand.nextFloat()>ATTACK_THRESHOULD){
+			int use_level=(this.getLevel() < ATTACK_TYPES_PER_LEVEL.length) ? this.getLevel() : ATTACK_TYPES_PER_LEVEL.length-1;
+			Class<? extends PhishURLInterface>[] attacks = ATTACK_TYPES_PER_LEVEL[use_level];
 			Class<? extends PhishURLInterface> attack = attacks[rand.nextInt(attacks.length)];
 			try {
 				base_url=attack.getConstructor(PhishURLInterface.class).newInstance(base_url);
@@ -210,6 +215,14 @@ public class BackendController extends BroadcastReceiver implements BackendContr
 		this.progress.setPoints(0);
 		this.progress.setLevel(this.progress.getLevel()+1);
 		this.frontend.onLevelChange(this.progress.getLevel());
+	}
+	
+	/**
+	 * This is only for testing
+	 * @param level
+	 */
+	public void setLevel(int level){
+		this.progress.setLevel(level);
 	}
 	
 	private int nextLevelPoints(){
