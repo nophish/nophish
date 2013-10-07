@@ -42,5 +42,11 @@ public class IPAttack extends AbstractAttack {
 	public PhishAttackType getAttackType() {
 		return PhishAttackType.IP;
 	}
+	
+	@Override
+	public boolean partClicked(int part) {
+		return part == 3;
+	}
+	
 
 }

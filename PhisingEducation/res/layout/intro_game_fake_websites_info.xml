@@ -8,21 +8,21 @@
     android:paddingTop="@dimen/activity_vertical_margin" >
 
     <TextView
-        android:id="@+id/text_fake_websites"
+        android:id="@+id/awareness_text_fake_websites"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="13dp"
-        android:text="Auch das Fälschen von Webseiten ist sehr einfach (wie bei E-Mails), wie folgender Comic zeigt."
+        android:layout_marginTop="@dimen/margin_standard"
+        android:text="@string/awareness_text_fake_websites"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <ImageView
-        android:id="@+id/imageView1"
+        android:id="@+id/awareness_img_fake_website"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/text_fake_websites"
-        android:layout_below="@+id/text_fake_websites"
-        android:layout_marginTop="25dp"
+        android:layout_alignLeft="@+id/awareness_text_fake_websites"
+        android:layout_below="@+id/awareness_text_fake_websites"
+        android:layout_marginTop="@dimen/margin_standard"
         android:src="@drawable/webpagespoofing" />
 
 </RelativeLayout>
