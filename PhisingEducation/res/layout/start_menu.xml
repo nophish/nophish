@@ -32,7 +32,7 @@
         android:minWidth="@dimen/btn_menu_width"
         android:layout_below="@+id/sign_in_button"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="@dimen/margin_large"
         android:onClick="startGame"
         android:text="@string/button_play" />
 
@@ -44,6 +44,7 @@
         android:layout_below="@+id/menu_button_play"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/margin_small"
+        android:onClick="showLevelOverview"
         android:text="@string/button_level_overview" />
 
     <Button
@@ -54,6 +55,7 @@
         android:layout_alignLeft="@+id/menu_button_level_overview"
         android:layout_below="@+id/menu_button_level_overview"
         android:layout_marginTop="@dimen/margin_small"
+        android:onClick="showMoreInfo"
         android:text="@string/button_more_info" />
 
     <Button

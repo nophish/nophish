@@ -21,8 +21,8 @@
             android:layout_width="@dimen/btn_standard_width"
             android:layout_height="@dimen/btn_standard_height"
             android:layout_alignParentBottom="true"
+            android:layout_marginBottom="@dimen/margin_standard"
             android:layout_centerHorizontal="true"
-            android:layout_marginBottom="@dimen/margin_small"
             android:onClick="goToYouDontBelieveUs"
             android:text="@string/button_next" />
     </RelativeLayout>

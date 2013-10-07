@@ -1,6 +1,9 @@
 package de.tudarmstadt.informatik.secuso.phishedu;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -14,7 +17,6 @@ import android.view.View;
 import android.view.View.OnTouchListener;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
-import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.Toast;
 
@@ -81,8 +83,8 @@ public class AwarenessActivity extends FragmentActivity {
 
 	public void goToEmailForm(View view) {
 		setContentView(R.layout.awareness_send_email_form);
-		ScrollView scrollview = (ScrollView) findViewById(R.id.awareness_scrollview_send_email_form);
-		scrollview.setOnTouchListener(new OnTouchListener() {
+		ScrollView sv = (ScrollView) findViewById(R.id.awareness_scrollview_send_email_form);
+		sv.setOnTouchListener(new OnTouchListener() {
 
 			@Override
 			public boolean onTouch(View view, MotionEvent event) {
@@ -98,6 +100,9 @@ public class AwarenessActivity extends FragmentActivity {
 	 */
 	public void sendEmail(View view) {
 
+		//if keyboard is not hidden, it should now be hidden.
+		hideKeyboard(view);
+		
 		// get User Input
 		mEditSender = (EditText) findViewById(R.id.awareness_edit_sender_email);
 		mEditReceiver = (EditText) findViewById(R.id.awareness_edit_receiver_email);
@@ -118,25 +123,78 @@ public class AwarenessActivity extends FragmentActivity {
 			if (!isValidEmailAddress(from)) {
 				message = getString(R.string.awareness_invalid_email);
 				displayToast(message);
-			}else{
-				//Input is OK send email
+			} else {
+				// Input is OK send email
 				// invoke Backendcontroller
-				// BackendController.getInstance().sendMail(from, to, userMessage);
-				
-				message = "E-Mail versendet.";
-				displayToast(message);
+				/*
+				 * TODO:
+				 */
+				// BackendController.getInstance().sendMail(from, to,
+				// userMessage);
+
+				// Pop up with go to E-Mail on your Smartphone
+
+				showAlertDialog();
+
 			}
 		}
 
-		
-
-		
-
-
-		
-
 	}
 
+	private void showAlertDialog() {
+		AlertDialog.Builder alertDialog = new AlertDialog.Builder(
+				AwarenessActivity.this);
+
+		// Setting Dialog Title
+		alertDialog.setTitle(getString(R.string.awareness_email_sent));
+
+		// Setting Dialog Message
+		alertDialog.setMessage(getString(R.string.awareness_alert_message));
+
+		// Setting Icon to Dialog
+		alertDialog.setIcon(R.drawable.e_mail);
+
+		// Setting erhalten Button
+		alertDialog.setPositiveButton(
+				getString(R.string.alert_btn_proceed_no_awareness),
+				new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog, int which) {
+
+						setContentView(R.layout.awareness_no_awareness);
+
+						// sollte auch hier awareness als erledigt markiert
+						// werden?
+
+					}
+
+				});
+
+		// Setting nicht erhalten Button
+		alertDialog.setNegativeButton(
+				getString(R.string.awareness_resend_email),
+				new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog, int which) {
+
+						setContentView(R.layout.awareness_send_email_form);
+
+					}
+
+				}
+
+		);
+
+		// Showing Alert Message
+		alertDialog.show();
+	}
+
+	
+	
+	public void goToGameIntro(View view){
+		Intent gameIntroIntent = new Intent(this, IntroGameActivity.class);
+		gameIntroIntent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+		startActivity(gameIntroIntent);
+	}
+	
 	private void displayToast(String message) {
 		Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG)
 				.show();

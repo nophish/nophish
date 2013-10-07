@@ -1,5 +1,9 @@
 package de.tudarmstadt.informatik.secuso.phishedu;
 
+import java.net.URI;
+import java.util.LinkedHashMap;
+
+import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -7,13 +11,21 @@ import android.content.pm.ActivityInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
+import android.widget.GridView;
+import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import com.google.android.gms.appstate.AppStateClient;
 import com.google.android.gms.games.GamesClient;
 
+import de.tudarmstadt.informatik.secuso.phishedu.BackendTestActivity.BackendTest;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.FrontendControllerInterface;
 
@@ -26,9 +38,13 @@ import de.tudarmstadt.informatik.secuso.phishedu.backend.FrontendControllerInter
 public class StartMenuActivity extends Activity implements
 		FrontendControllerInterface {
 
+	
+
 	private static final int COUNT_DOWN_INTERVAL = 1000;
 	private static final int MILLIS_IN_FUTURE = 3000;
 	private boolean didAwarenessPart = false;
+
+	
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -38,8 +54,6 @@ public class StartMenuActivity extends Activity implements
 
 		setContentView(R.layout.splash_screen);
 		this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-
-		Log.d("test", "jgfcjf2");
 
 		// display the logo during 5 seconds
 		// setContentView to activity_start_menu when finished
@@ -59,19 +73,31 @@ public class StartMenuActivity extends Activity implements
 			@Override
 			public void onFinish() {
 				// set the new Content of your activity
-				StartMenuActivity.this
-						.setContentView(R.layout.start_menu);
+				StartMenuActivity.this.setContentView(R.layout.start_menu);
 
 			}
 
 		}.start();
 	}
-	
-	
-	
-	
-	
-	
+
+	public void showLevelOverview(View view) {
+		
+		Intent levelGridIntent = new Intent(this, LevelGridActivity.class);
+		startActivity(levelGridIntent);
+		
+
+	}
+
+	public void showMoreInfo(View view) {
+
+		//start Activity showing the list view
+		Intent moreInfoIntent = new Intent(this, MoreInfoActivity.class);
+		startActivity(moreInfoIntent);
+		
+		
+
+	}
+
 
 	/**
 	 * initially game is started from awareness-part when game has been started
@@ -83,11 +109,14 @@ public class StartMenuActivity extends Activity implements
 			Intent intent = new Intent(this, AwarenessActivity.class);
 			intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
 			startActivity(intent);
+		}else{
+			//go to last screen
+			//oder always go to last seen screen
 		}
 	}
 
 	/*
-	 * 
+	 * Use these as examples for later implementation
 	 */
 	protected void mailSendTest() {
 		BackendController.getInstance().sendMail("cbergmann@schuhklassert.de",
@@ -154,5 +183,4 @@ public class StartMenuActivity extends Activity implements
 		// TODO Auto-generated method stub
 
 	}
-	
 }
