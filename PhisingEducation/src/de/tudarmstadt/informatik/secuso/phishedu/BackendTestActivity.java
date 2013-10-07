@@ -112,8 +112,8 @@ public class BackendTestActivity extends BaseGameActivity implements FrontendCon
 		displayToast(BackendController.getInstance().getNextUrl().toString());
 	}
 
-	
-	private void displayToast(String message) {
+	@Override
+	public void displayToast(String message) {
 		Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
 	}
 

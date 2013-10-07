@@ -98,7 +98,8 @@ public class StartMenuActivity extends Activity implements
 		BackendController.getInstance().StartLevel1();
 	}
 
-	private void displayToast(String message) {
+	@Override
+	public void displayToast(String message) {
 		Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT)
 				.show();
 	}
@@ -153,4 +154,5 @@ public class StartMenuActivity extends Activity implements
 		// TODO Auto-generated method stub
 
 	}
+	
 }
