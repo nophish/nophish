@@ -58,4 +58,10 @@ public interface FrontendControllerInterface {
 	 * @param url the url to show
 	 */
 	void startBrowser(Uri url);
+	
+	/**
+	 * This is for the backend to display a message to the user.
+	 * @param message The message to show to the user.
+	 */
+	void displayToast(String message);
 }

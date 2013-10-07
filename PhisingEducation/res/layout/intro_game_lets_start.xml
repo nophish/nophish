@@ -12,11 +12,11 @@
     <Button
         android:id="@+id/button_play"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textView1"
+        android:layout_height="@dimen/btn_standard_height"
+        android:minWidth="@dimen/btn_standard_width"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="26dp"
-        android:onClick="goToLevelOne"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/margin_standard"
         android:text="Spielen" />
 
     <TextView
@@ -37,7 +37,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="62dp"
         android:gravity="center"
-        android:text="Lasse nicht zu, dass fiese Phisher dein Konto plündern!"
+        android:text="Lasse nicht zu, dass fiese Phisher dich austricksen!"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <ImageView
