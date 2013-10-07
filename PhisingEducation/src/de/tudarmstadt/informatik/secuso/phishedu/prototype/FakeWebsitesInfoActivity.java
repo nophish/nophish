@@ -15,7 +15,7 @@ public class FakeWebsitesInfoActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_fake_websites_info);
+		setContentView(R.layout.intro_game_fake_websites_info);
 		this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 	}
 

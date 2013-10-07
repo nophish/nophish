@@ -1,7 +1,6 @@
 package de.tudarmstadt.informatik.secuso.phishedu.prototype;
 
 import de.tudarmstadt.informatik.secuso.phishedu.R;
-import de.tudarmstadt.informatik.secuso.phishedu.WebAddressSecondInfoActivity;
 import de.tudarmstadt.informatik.secuso.phishedu.R.layout;
 import de.tudarmstadt.informatik.secuso.phishedu.R.menu;
 import android.app.Activity;
@@ -30,8 +29,8 @@ public class WebAddressFirstInfoActivity extends Activity {
 
 
 	public void goToNextWebAddressInfoActivity(View view){
-		Intent intent = new Intent(this, WebAddressSecondInfoActivity.class);
-		intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-		startActivity(intent);
+//		Intent intent = new Intent(this, WebAddressSecondInfoActivity.class);
+//		intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+//		startActivity(intent);
 	}
 }

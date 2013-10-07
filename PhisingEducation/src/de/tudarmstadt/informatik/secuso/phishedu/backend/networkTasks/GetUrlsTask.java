@@ -5,6 +5,8 @@ import org.alexd.jsonrpc.JSONRPCException;
 import org.json.JSONArray;
 import org.json.JSONException;
 
+import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishAttackType;
+
 import android.os.AsyncTask;
 
 /**
@@ -14,12 +16,7 @@ import android.os.AsyncTask;
  */
 public class GetUrlsTask extends AsyncTask<Integer, Integer, String[]>{
 	private UrlsLoadedListener controller;
-	/** Static for getting Phish urls */
-	public static final int PHISH_URLS = 0;
-	/** Static for getting no-phish urls */
-	public static final int VALID_URLS = 1;
-	
-	private int type = PHISH_URLS;
+	private PhishAttackType type = PhishAttackType.NoPhish;
 	
 	/**
 	 * This is the main constructor
@@ -32,9 +29,15 @@ public class GetUrlsTask extends AsyncTask<Integer, Integer, String[]>{
 	protected String[] doInBackground(Integer... params) {
 		JSONRPCClient client = JSONRPCClientFactory.getClient();
 		int count = params[0];
-		this.type = params[1];
+		this.type = PhishAttackType.NoPhish;
+		for(PhishAttackType type : PhishAttackType.values()){
+			if(type.getValue() == params[1]){
+				this.type=type;
+				break;
+			}
+		}
 		try {
-			JSONArray result = client.callJSONArray("getURLs", count, type);
+			JSONArray result = client.callJSONArray("getURLs", count, type.getValue());
 			String[] urls = new String[result.length()];
 			for(int i=0; i<result.length(); i++){
 				urls[i]=result.getString(i);

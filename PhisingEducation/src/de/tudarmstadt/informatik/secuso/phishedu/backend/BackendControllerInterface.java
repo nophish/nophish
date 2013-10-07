@@ -49,7 +49,7 @@ public interface BackendControllerInterface {
 	 * What type of phish is this currently
 	 * @return type of the current phish
 	 */
-	PhishType getType();
+	PhishSiteType getType();
 	/**
 	 * This function is called when the user chooses weather this URL is a phish or not 
 	 * @param accptance true of the user thinks this is a phish. false otherwise.
