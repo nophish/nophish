@@ -1,6 +1,7 @@
 package de.tudarmstadt.informatik.secuso.phishedu.backend.networkTasks;
 
 import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishAttackType;
+import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishURLInterface;
 
 /**
  * This interface is for the BackendController to get notified when the {@link GetUrlsTask} is finished
@@ -13,7 +14,7 @@ public interface UrlsLoadedListener {
 	 * @param urls The downloaded urls
 	 * @param type The type of urls
 	 */
-	public void urlsReturned(String[] urls, PhishAttackType type);
+	public void urlsReturned(PhishURLInterface[] urls, PhishAttackType type);
 	/**
 	 * Notifies the Listener for progress. This allows us to display a progressbar.
 	 * @param percent What is the current progress.

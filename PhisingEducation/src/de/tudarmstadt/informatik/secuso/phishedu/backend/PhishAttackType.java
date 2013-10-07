@@ -14,7 +14,10 @@ public enum PhishAttackType {
 	 * Subdomains
 	 */
 	Sudomains(4),
-	//...
+	/**
+	 * The Attack for level 2 
+	 */
+	Level2Attack(5),
 	/**
 	 * It has no Attack. It is no phishing website
 	 */
