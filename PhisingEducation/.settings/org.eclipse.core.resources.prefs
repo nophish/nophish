@@ -1,3 +1,6 @@
 eclipse.preferences.version=1
-encoding//src/de/tudarmstadt/informatik/secuso/phishedu/AlertDialogActivity.java=UTF-8
-encoding//src/de/tudarmstadt/informatik/secuso/phishedu/ResendEmailDialogOptionActivity.java=UTF-8
+encoding//src/de/tudarmstadt/informatik/secuso/phishedu/AwarenessEmailSpoofigImageOneFragment.java=UTF-8
+encoding//src/de/tudarmstadt/informatik/secuso/phishedu/AwarenessEmailSpoofigImageTwoFragment.java=UTF-8
+encoding//src/de/tudarmstadt/informatik/secuso/phishedu/AwarenessEmailSpoofingImageEndFragment.java=UTF-8
+encoding//src/de/tudarmstadt/informatik/secuso/phishedu/prototype/AlertDialogActivity.java=UTF-8
+encoding//src/de/tudarmstadt/informatik/secuso/phishedu/prototype/ResendEmailDialogOptionActivity.java=UTF-8
