@@ -96,7 +96,7 @@
     <string name="url_how_phishing_works">http://computer.howstuffworks.com/phishing.htm</string>
 
     <!-- text awareness activity -->
-    <string name="awareness_text_email_spoof_start">Willkommen zu unserer Anti-Phishing Education App. Bevor wir loslegen, werden wir dir zeigen wie einfach es ist E-Mail Absender zu fälschen. Schaue dir zunächst den folgenden Comic an.</string>
+    <string name="awareness_text_email_spoof_start">SIEHE TEXT IN GOOGLEDOCS. Bevor wir loslegen, werden wir dir zeigen wie einfach es ist E-Mail Absender zu fälschen. Schaue dir zunächst den folgenden Comic an.</string>
     <string name="awareness_text_you_dont_believe_us">Du denkst so einfach geht das nicht?</string>
     <string name="awareness_text_see_for_yourself">Überzeuge dich selbst</string>
     <string name="awareness_text_provide_sender">Bitte gib eine beliebige E-Mail Adresse als Absender ein:</string>
