@@ -2,6 +2,7 @@ package de.tudarmstadt.informatik.secuso.phishedu;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +21,7 @@ public class IntroGameFragment extends Fragment {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+
 	}
 
 	@Override
@@ -28,5 +30,13 @@ public class IntroGameFragment extends Fragment {
 		View layoutView = inflater.inflate(R.layout.intro_game, container,
 				false);
 		return layoutView;
+	}
+	
+	@Override
+	public void onResume() {
+	    super.onResume();
+	    // Set title
+	    ((FragmentActivity) getActivity()).getActionBar()
+	        .setTitle(R.string.title_intro_rules);
 	}
 }

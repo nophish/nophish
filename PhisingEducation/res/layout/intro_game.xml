@@ -9,22 +9,10 @@
     tools:context=".IntroGameActivity" >
 
     <TextView
-        android:id="@+id/game_intro_welcome"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/margin_standard"
-        android:text="@string/welcome"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-
-    <TextView
         android:id="@+id/game_intro_text_1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_below="@+id/game_intro_welcome"
-        android:layout_marginTop="@dimen/margin_standard"
         android:text="@string/game_intro_text_1"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
@@ -44,16 +32,16 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/game_intro_text_2"
         android:layout_below="@+id/game_intro_text_2"
-        android:layout_marginTop="@dimen/margin_standard"
         android:layout_centerVertical="true"
+        android:layout_marginTop="@dimen/margin_standard"
         android:src="@drawable/emblem_library" />
 
     <TextView
         android:id="@+id/game_intro_text_describe_lib_emblem"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/game_intro_welcome"
         android:layout_alignTop="@+id/game_intro_img_library_emblem"
+        android:layout_centerHorizontal="true"
         android:layout_marginLeft="@dimen/margin_standard"
         android:text="@string/game_intro_text_describe_lib_emblem"
         android:textAppearance="?android:attr/textAppearanceMedium" />

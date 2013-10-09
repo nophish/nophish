@@ -6,11 +6,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.view.ViewPager;
 import android.view.Menu;
 import android.view.MotionEvent;
 import android.view.View;
@@ -29,8 +25,6 @@ import android.widget.Toast;
 public class AwarenessActivity extends FragmentActivity {
 
 	static final int ITEMS = 3;
-	MyAdapter mAdapter;
-	ViewPager mPager;
 	EditText mEditSender;
 	EditText mEditReceiver;
 	EditText mEditText;
@@ -38,36 +32,8 @@ public class AwarenessActivity extends FragmentActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.blank_layout);
+		setContentView(R.layout.awareness);
 		this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-
-		mAdapter = new MyAdapter(getSupportFragmentManager());
-		mPager = (ViewPager) findViewById(R.id.pager);
-		mPager.setAdapter(mAdapter);
-
-	}
-
-	public static class MyAdapter extends FragmentPagerAdapter {
-		public MyAdapter(FragmentManager fragmentManager) {
-			super(fragmentManager);
-		}
-
-		@Override
-		public int getCount() {
-			return ITEMS;
-		}
-
-		@Override
-		public Fragment getItem(int position) {
-			switch (position) {
-			case 0: // Fragment # 0 - This will show image
-				return AwarenessEmailSpoofigImageOneFragment.init(position);
-			case 1: // Fragment # 1 - This will show image
-				return AwarenessEmailSpoofigImageTwoFragment.init(position);
-			default:// Fragment # 3 - Will show image with button
-				return AwarenessEmailSpoofingImageEndFragment.init(position);
-			}
-		}
 	}
 
 	@Override
@@ -75,10 +41,6 @@ public class AwarenessActivity extends FragmentActivity {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
-	}
-
-	public void goToYouDontBelieveUs(View view) {
-		setContentView(R.layout.awareness_you_dont_believe_us);
 	}
 
 	public void goToEmailForm(View view) {
@@ -100,9 +62,9 @@ public class AwarenessActivity extends FragmentActivity {
 	 */
 	public void sendEmail(View view) {
 
-		//if keyboard is not hidden, it should now be hidden.
+		// if keyboard is not hidden, it should now be hidden.
 		hideKeyboard(view);
-		
+
 		// get User Input
 		mEditSender = (EditText) findViewById(R.id.awareness_edit_sender_email);
 		mEditReceiver = (EditText) findViewById(R.id.awareness_edit_receiver_email);
@@ -154,47 +116,26 @@ public class AwarenessActivity extends FragmentActivity {
 		// Setting Icon to Dialog
 		alertDialog.setIcon(R.drawable.e_mail);
 
-		// Setting erhalten Button
-		alertDialog.setPositiveButton(
-				getString(R.string.alert_btn_proceed_no_awareness),
-				new DialogInterface.OnClickListener() {
-					public void onClick(DialogInterface dialog, int which) {
-
-						setContentView(R.layout.awareness_no_awareness);
-
-						// sollte auch hier awareness als erledigt markiert
-						// werden?
-
-					}
-
-				});
-
-		// Setting nicht erhalten Button
-		alertDialog.setNegativeButton(
-				getString(R.string.awareness_resend_email),
+		// button for resend
+		alertDialog.setNeutralButton(R.string.awareness_resend_email,
 				new DialogInterface.OnClickListener() {
 					public void onClick(DialogInterface dialog, int which) {
 
 						setContentView(R.layout.awareness_send_email_form);
-
 					}
 
-				}
-
-		);
-
+				});
 		// Showing Alert Message
 		alertDialog.show();
+
 	}
 
-	
-	
-	public void goToGameIntro(View view){
+	public void goToGameIntro(View view) {
 		Intent gameIntroIntent = new Intent(this, IntroGameActivity.class);
 		gameIntroIntent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
 		startActivity(gameIntroIntent);
 	}
-	
+
 	private void displayToast(String message) {
 		Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG)
 				.show();

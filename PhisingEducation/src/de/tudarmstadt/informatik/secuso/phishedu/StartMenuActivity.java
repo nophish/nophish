@@ -50,6 +50,11 @@ public class StartMenuActivity extends Activity implements
 		startActivity(levelGridIntent);
 
 	}
+	
+	public void goToGooglePlay(View view) {
+		Intent googlePlayIntent = new Intent(this, GooglePlusSignInActivity.class);
+		startActivity(googlePlayIntent);
+	}
 
 	public void showMoreInfo(View view) {
 

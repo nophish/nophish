@@ -497,6 +497,13 @@
             android:name="de.tudarmstadt.informatik.secuso.phishedu.IntroGameActivity"
             android:label="@string/title_activity_intro_game" >
         </activity>
+        <activity
+            android:name="de.tudarmstadt.informatik.secuso.phishedu.GooglePlusSignInActivity"
+            android:label="@string/title_activity_google_plus_sign_in" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="de.tudarmstadt.informatik.secuso.phishedu.StartMenuActivity" />
+        </activity>
     </application>
 
 </manifest>

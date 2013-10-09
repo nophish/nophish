@@ -86,6 +86,9 @@
     <string name="button_next">Weiter</string>
     <string name="info_web_addresses">Mehr zu Web-Adressen</string>
     <string name="info_phishing">Mehr zu Phishing</string>
+    <string name="button_show_lectures">Lerneinheiten</string>
+    <string name="google_plus_text">Wenn du deine Spielleistung online speichern möchtest, melde dich bei Google+ an.</string>
+    <string name="button_social">Google Play</string>
 
     <!-- More Info -->
     <string name="info_apwg">Anti-Phishing Working Group</string>
@@ -96,7 +99,7 @@
     <string name="url_how_phishing_works">http://computer.howstuffworks.com/phishing.htm</string>
 
     <!-- text awareness activity -->
-    <string name="awareness_text_email_spoof_start">SIEHE TEXT IN GOOGLEDOCS. Bevor wir loslegen, werden wir dir zeigen wie einfach es ist E-Mail Absender zu fälschen. Schaue dir zunächst den folgenden Comic an.</string>
+    <string name="awareness_text_email_spoof_start">Jeder Internetbenutzer ist durch Phishing gefährdet.\n\nKriminelle, auch Phisher genannt, versuchen hierbei durch bspw. gefälschte E-mails das Vertrauen von Nutzern zu gewinnen und ihnen vertrauliche Informationen zu entlocken.\n\nAls erstes werden wir dir zeigen wie einfach es ist E-Mails zu fälschen.</string>
     <string name="awareness_text_you_dont_believe_us">Du denkst so einfach geht das nicht?</string>
     <string name="awareness_text_see_for_yourself">Überzeuge dich selbst</string>
     <string name="awareness_text_provide_sender">Bitte gib eine beliebige E-Mail Adresse als Absender ein:</string>
@@ -111,7 +114,7 @@
     <string name="title_activity_level_grid">LevelGridActivity</string>
     <string name="alert_btn_proceed_no_awareness">Überspringen</string>
     <string name="awareness_email_sent">E-Mail versandt</string>
-    <string name="awareness_alert_message">Jetzt rufe bitte deine E-Mails ab. Falls nichts angekommen ist kehre zurück in die App.</string>
+    <string name="awareness_alert_message">Jetzt rufe deine E-Mails von deinem Smartphone aus ab. Bitte beachte, dass das Ankommen von E-Mails einige Minuten dauern kann. Überprüfe auch deinen Spam-Ordner.</string>
     <string name="awareness_no_awareness">Leider konntest du die gefälschte E-Mail aus technischen Gründen nicht erhalten. Dennoch ist es sehr einfach solche Fälschungen durchzuführen.\n\nZiel dieser App ist, dich über Phishing, einer Gefahr im Internet, aufzuklären.</string>
     <string name="start_game">Spiel starten</string>
     <string name="awareness_resend_email">E-Mail erneut versenden</string>
@@ -125,9 +128,13 @@
     <string name="game_intro_text_2">Das Spiel umfasst verschiedene Levels. Jedem Level ist jeweils eine kurze Lektion vorangestellt.</string>
     <string name="game_intro_text_describe_lib_emblem">Symbolisiert eine Lektion.</string>
     <string name="game_intro_text_describe_pen">Symbolisiert, dass eine Übung ansteht.</string>
-    <string name="title_intro_phishing">Was ist Phishing</string>
+    <string name="title_intro_phishing">Was ist Phishing?</string>
+    <string name="title_intro_rules">Spielregeln</string>
+    <string name="title_intro_website_spoofing">Webseiten-Fälschung</string>
+    <string name="title_intro_lets_start">Nicht einschlafen</string>
     <string name="game_intro_text_phishing">Phishing ist der Versuch, Usern persönliche Daten zu entlocken.\n\nEs gibt unterschiedlichste Tricks, um das Vertrauen von Nutzern zu gewinnen und ihnen somit vertrauliche Informationen zu entlocken.\n\nEin beliebter Trick ist, gefälschte Webseiten zu verwenden, die den echten täuschend ähnlich sehen.\n\nDiese können über E-Mail, SMS, Social Network Links oder sogar durch normales Surfen erreicht werden.\n\nWir wollen dir helfen, Phishing Webseiten anhand ihrer Adresse zu erkennen.</string>
     <string name="game_intro_text_3">Bevor du uns noch vom Stuhl fällst vor Langeweile, lass uns das ganze ein wenig interaktiver angehen und mit dem Spiel beginnen.</string>
     <string name="game_intro_text_4">Lasse nicht zu, dass fiese Phisher dich austricksen!</string>
+    <string name="title_activity_google_plus_sign_in">GooglePlusSignInActivity</string>
 
 </resources>

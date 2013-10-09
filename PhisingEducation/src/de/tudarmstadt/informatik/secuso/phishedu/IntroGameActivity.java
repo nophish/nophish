@@ -8,6 +8,7 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.view.Menu;
 
 public class IntroGameActivity extends FragmentActivity {
@@ -20,7 +21,6 @@ public class IntroGameActivity extends FragmentActivity {
 		setContentView(R.layout.blank_layout);
 		this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 		ActionBar ab = getActionBar();
-		ab.setTitle(getString(R.string.title_intro_phishing));
 		ab.setIcon(R.drawable.emblem_library);
 
 		mAdapter = new MyAdapter(getSupportFragmentManager());
@@ -55,11 +55,5 @@ public class IntroGameActivity extends FragmentActivity {
 		}
 	}
 
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.intro_game, menu);
-		return true;
-	}
 
 }
