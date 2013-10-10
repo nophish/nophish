@@ -45,6 +45,11 @@ public class AwarenessActivity extends FragmentActivity {
 
 	public void goToEmailForm(View view) {
 		setContentView(R.layout.awareness_send_email_form);
+		
+		//make button visible
+		View b = findViewById(R.id.button_test);
+		b.setVisibility(View.VISIBLE);
+		
 		ScrollView sv = (ScrollView) findViewById(R.id.awareness_scrollview_send_email_form);
 		sv.setOnTouchListener(new OnTouchListener() {
 
@@ -55,6 +60,7 @@ public class AwarenessActivity extends FragmentActivity {
 			}
 		});
 	}
+	
 
 	/**
 	 * 
@@ -134,6 +140,10 @@ public class AwarenessActivity extends FragmentActivity {
 		Intent gameIntroIntent = new Intent(this, IntroGameActivity.class);
 		gameIntroIntent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
 		startActivity(gameIntroIntent);
+	}
+	
+	public void goToAwarenessFinal(View view){
+		setContentView(R.layout.awareness_final);
 	}
 
 	private void displayToast(String message) {

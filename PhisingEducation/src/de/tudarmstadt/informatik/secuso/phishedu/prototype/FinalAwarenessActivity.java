@@ -16,7 +16,7 @@ public class FinalAwarenessActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_final_awareness);
+		setContentView(R.layout.awareness_final);
 	}
 
 	

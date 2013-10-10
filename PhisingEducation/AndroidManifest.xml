@@ -504,6 +504,15 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="de.tudarmstadt.informatik.secuso.phishedu.StartMenuActivity" />
         </activity>
+        
+        
+        <activity
+            android:name="de.tudarmstadt.informatik.secuso.phishedu.Level1AddressBarActivity"
+            android:label="@string/title_level_1_addr_bar_activity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="de.tudarmstadt.informatik.secuso.phishedu.StartMenuActivity" />
+        </activity>
     </application>
 
 </manifest>

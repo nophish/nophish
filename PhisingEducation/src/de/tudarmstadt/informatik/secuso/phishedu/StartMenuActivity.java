@@ -30,7 +30,7 @@ public class StartMenuActivity extends Activity implements
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-		// BackendController.getInstance().init(this);
+//		 BackendController.getInstance().init(this);
 
 		setContentView(R.layout.start_menu);
 		this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
@@ -145,7 +145,8 @@ public class StartMenuActivity extends Activity implements
 
 	@Override
 	public void onLevelChange(int level) {
-		// TODO Auto-generated method stub
 
+		Intent gameIntent = new Intent(this, AwarenessActivity.class);
+		startActivity(gameIntent);
 	}
 }

@@ -9,19 +9,9 @@
     tools:context=".IntroGameActivity" >
 
     <TextView
-        android:id="@+id/game_intro_text_1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:text="@string/game_intro_text_1"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
-
-    <TextView
         android:id="@+id/game_intro_text_2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/game_intro_text_1"
-        android:layout_below="@+id/game_intro_text_1"
         android:layout_marginTop="@dimen/margin_small"
         android:text="@string/game_intro_text_2"
         android:textAppearance="?android:attr/textAppearanceMedium" />
@@ -63,5 +53,7 @@
         android:layout_alignTop="@+id/game_intro_img_desktop"
         android:text="@string/game_intro_text_describe_pen"
         android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    
 
 </RelativeLayout>

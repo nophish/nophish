@@ -93,7 +93,8 @@
             android:layout_centerHorizontal="true"
             android:layout_below="@+id/button_abschicken"
             android:layout_marginTop="@dimen/margin_standard"
-            android:onClick="goToGameIntro"
+            android:onClick="goToAwarenessFinal"
+            android:visibility="gone"
             android:text="Skip (for testing)" />
 
     </RelativeLayout>

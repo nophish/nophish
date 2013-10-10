@@ -15,5 +15,21 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     />
+    
+    <ImageView
+        android:id="@+id/game_intro_arrow_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:src="@drawable/back" />
+
+    <ImageView
+        android:id="@+id/game_intro_arrow_forward"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:src="@drawable/forward" />
 
 </RelativeLayout>

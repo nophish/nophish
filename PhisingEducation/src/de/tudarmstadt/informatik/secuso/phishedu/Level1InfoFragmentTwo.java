@@ -2,18 +2,14 @@ package de.tudarmstadt.informatik.secuso.phishedu;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 
-public class IntroGameSecurityComicFragment extends Fragment {
+public class Level1InfoFragmentTwo extends Fragment {
 
-	static IntroGameSecurityComicFragment init(int val) {
-		IntroGameSecurityComicFragment imagefragment = new IntroGameSecurityComicFragment();
+	static Level1InfoFragmentTwo init(int val) {
+		Level1InfoFragmentTwo imagefragment = new Level1InfoFragmentTwo();
 		// Supply val input as an argument.
 		Bundle args = new Bundle();
 		args.putInt("val", val);
@@ -24,15 +20,13 @@ public class IntroGameSecurityComicFragment extends Fragment {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-
 	}
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		View layoutView = inflater.inflate(
-				R.layout.intro_game_fake_websites_info, container, false);
-
+		View layoutView = inflater.inflate(R.layout.level_1_find_address_bar_info_2, container,
+				false);
 		return layoutView;
 	}
 }

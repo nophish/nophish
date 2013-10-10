@@ -70,10 +70,14 @@
     <string name="title_activity_start_menu">Anti-Phishing Education</string>
     <string name="title_anti_phishing">Anti-Phishing Education</string>
     <string name="title_activity_awareness">E-Mail Fälschung</string>
+    <string name="title_level_1_addr_bar_activity">Die Addressleiste</string>
 
     <!-- splash -->
     <string name="title_email_spoofing">E-Mail Absender Fälschung</string>
     <string name="text_beat_phishing">Schütze dich vor fiesen Tricks!</string>
+    <string name="last_page">Das ist die letzte Seite.</string>
+    <string name="first_page">Das ist die erste Seite.</string>
+    
 
     <!-- menu buttons -->
     <string name="sign_out">Sign Out</string>
@@ -119,12 +123,12 @@
     <string name="start_game">Spiel starten</string>
     <string name="awareness_resend_email">E-Mail erneut versenden</string>
     <string name="awareness_text_fake_websites">Auch das Fälschen von Webseiten ist sehr einfach (wie bei E-Mails), wie folgender Comic zeigt.</string>
+    <string name="awareness_final_text">Verblüfft? E-Mails fälschen ist also einfach! Das gilt leider nicht nur für E-Mails, sondern auch z.B. für Webseiten.</string>
 
     <!-- Game Intro -->
     <string name="title_activity_intro_game">IntroGameActivity</string>
     <string name="welcome">Herzlich Willkommen</string>
     <string name="game_intro_title">Einführung</string>
-    <string name="game_intro_text_1">Im Folgenden eine kleine Regel Einführung:</string>
     <string name="game_intro_text_2">Das Spiel umfasst verschiedene Levels. Jedem Level ist jeweils eine kurze Lektion vorangestellt.</string>
     <string name="game_intro_text_describe_lib_emblem">Symbolisiert eine Lektion.</string>
     <string name="game_intro_text_describe_pen">Symbolisiert, dass eine Übung ansteht.</string>
@@ -136,5 +140,10 @@
     <string name="game_intro_text_3">Bevor du uns noch vom Stuhl fällst vor Langeweile, lass uns das ganze ein wenig interaktiver angehen und mit dem Spiel beginnen.</string>
     <string name="game_intro_text_4">Lasse nicht zu, dass fiese Phisher dich austricksen!</string>
     <string name="title_activity_google_plus_sign_in">GooglePlusSignInActivity</string>
+
+    <!-- Level 1 - Address Bar -->
+    <string name="level_1_address_bar_title">Die Addressleiste</string>
+    <string name="level_1_find_address_bar_text_1">Bevor wir dir beibringen, wie du anhand von Web-Adressen Phishing Webseiten erkennen kannst, musst du erst einmal wissen, wie du mit deinem Smartphone an die Web-Adresse kommst.</string>
+    <string name="level_1_addr_bar_text_2">Auf der Webseite den Finger so lange herunter ziehen, bis die Adressleiste erscheint.</string>
 
 </resources>
