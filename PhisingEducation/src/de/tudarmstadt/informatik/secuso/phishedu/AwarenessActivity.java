@@ -51,6 +51,19 @@ public class AwarenessActivity extends FragmentActivity {
 		setContentView(R.layout.awareness_final_01);
 	}
 
+	public void goToAwareness02(View view) {
+		setContentView(R.layout.awareness_final_02);
+	}
+
+	public void goToAwareness03(View view) {
+		setContentView(R.layout.awareness_final_03);
+	
+	}
+
+	public void goToAwareness04(View view) {
+		setContentView(R.layout.awareness_final_04_lets_start);
+	}
+
 	public void goToEmailForm(View view) {
 		setContentView(R.layout.awareness_send_email_form);
 
@@ -116,55 +129,11 @@ public class AwarenessActivity extends FragmentActivity {
 
 	}
 
-	private void showAlertDialog() {
-		AlertDialog.Builder alertDialog = new AlertDialog.Builder(
-				AwarenessActivity.this);
-
-		// Setting Dialog Title
-		alertDialog.setTitle(getString(R.string.awareness_email_sent));
-
-		// Setting Dialog Message
-		alertDialog.setMessage(getString(R.string.awareness_alert_message));
-
-		// Setting Icon to Dialog
-		alertDialog.setIcon(R.drawable.e_mail);
-
-		// button for resend
-		alertDialog.setNeutralButton(R.string.awareness_resend_email,
-				new DialogInterface.OnClickListener() {
-					public void onClick(DialogInterface dialog, int which) {
-
-						setContentView(R.layout.awareness_send_email_form);
-					}
-
-				});
-		// Showing Alert Message
-		alertDialog.show();
-
-	}
-
-	public void goToGameIntro(View view) {
-		Intent gameIntroIntent = new Intent(this, IntroGameActivity.class);
-		gameIntroIntent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-		startActivity(gameIntroIntent);
-	}
-
-	public void goToAwareness03(View view) {
-		setContentView(R.layout.awareness_final_03);
-
-	}
-
-	public void goToAwareness02(View view) {
-		setContentView(R.layout.awareness_final_02);
-	}
-
-	public void goToAwareness04(View view) {
-		setContentView(R.layout.awareness_final_04_lets_start);
-	}
-	private void displayToast(String message) {
-		Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG)
-				.show();
-	}
+//	public void goToGameIntro(View view) {
+//		Intent gameIntroIntent = new Intent(this, IntroGameActivity.class);
+//		gameIntroIntent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+//		startActivity(gameIntroIntent);
+//	}
 
 	public void goToLetsStart(View view) {
 		setContentView(R.layout.awareness_final_04_lets_start);
@@ -178,6 +147,38 @@ public class AwarenessActivity extends FragmentActivity {
 		java.util.regex.Pattern p = java.util.regex.Pattern.compile(emailRegex);
 		java.util.regex.Matcher m = p.matcher(email);
 		return m.matches();
+	}
+
+	private void displayToast(String message) {
+		Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG)
+				.show();
+	}
+
+	private void showAlertDialog() {
+		AlertDialog.Builder alertDialog = new AlertDialog.Builder(
+				AwarenessActivity.this);
+	
+		// Setting Dialog Title
+		alertDialog.setTitle(getString(R.string.awareness_email_sent));
+	
+		// Setting Dialog Message
+		alertDialog.setMessage(getString(R.string.awareness_alert_message));
+	
+		// Setting Icon to Dialog
+		alertDialog.setIcon(R.drawable.e_mail);
+	
+		// button for resend
+		alertDialog.setNeutralButton(R.string.awareness_resend_email,
+				new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog, int which) {
+	
+						setContentView(R.layout.awareness_send_email_form);
+					}
+	
+				});
+		// Showing Alert Message
+		alertDialog.show();
+	
 	}
 
 	protected void hideKeyboard(View view) {
