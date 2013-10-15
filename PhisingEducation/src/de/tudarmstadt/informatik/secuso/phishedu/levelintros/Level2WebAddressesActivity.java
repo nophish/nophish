@@ -13,7 +13,6 @@ import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
-import android.widget.Toast;
 import de.tudarmstadt.informatik.secuso.phishedu.R;
 import de.tudarmstadt.informatik.secuso.phishedu.common.Constants;
 
@@ -49,19 +48,17 @@ public class Level2WebAddressesActivity extends FragmentActivity implements
 				// set the new Content of your activity
 
 				imgPrevious = (ImageView) findViewById(R.id.game_intro_arrow_back);
-
 				imgPrevious.setVisibility(View.INVISIBLE);
+
 				imgPrevious.setOnClickListener(new OnClickListener() {
 					public void onClick(View v) {
 						previousPage();
-						// mPager.setCurrentItem(0);
 					}
 				});
 
 				imgNext = (ImageView) findViewById(R.id.game_intro_arrow_forward);
 				imgNext.setOnClickListener(new OnClickListener() {
 					public void onClick(View v) {
-						// mPager.setCurrentItem(ITEMS - 1);
 						nextPage();
 					}
 				});
@@ -97,61 +94,59 @@ public class Level2WebAddressesActivity extends FragmentActivity implements
 
 	@Override
 	public void onPageSelected(int position) {
-		// TODO Auto-generated method stub
 
-		/*
-		 * TODO: auslageern
-		 */
-		if (position == 1) {
-			imgPrevious.setVisibility(View.VISIBLE);
-		} else if (position == mAdapter.getCount() - 1) {
-			imgNext.setVisibility(View.INVISIBLE);
-		} else {
-			imgPrevious.setVisibility(View.VISIBLE);
-			imgNext.setVisibility(View.VISIBLE);
-		}
+		checkAndHidePreviousButton(position);
+		checkAndHideNextButton(mPager.getAdapter().getCount(), position);
 
 	}
 
 	private void previousPage() {
 		int currentPage = mPager.getCurrentItem();
-
 		int previousPage = currentPage - 1;
-		if (previousPage < 0) {
-			// We can't go back anymore.
-			// Loop to the last page. If you don't want looping just
-			// return here.
-			previousPage = currentPage;
-			Toast.makeText(getApplicationContext(),
-					getString(R.string.first_page), Toast.LENGTH_SHORT).show();
-			imgPrevious.setVisibility(View.INVISIBLE);
-
-		}
-
+		checkAndHidePreviousButton(previousPage);
 		mPager.setCurrentItem(previousPage, true);
+
 	}
 
 	private void nextPage() {
 		int currentPage = mPager.getCurrentItem();
-
-		// make arrow from first page (position 1) visible
-		if (currentPage == 1) {
-			imgPrevious.setVisibility(View.VISIBLE);
-		}
-
 		int totalPages = mPager.getAdapter().getCount();
-
 		int nextPage = currentPage + 1;
-		if (nextPage >= totalPages) {
-			// We can't go forward anymore.
-			// Loop to the first page. If you don't want looping just
-			// return here.
-			nextPage = currentPage;
-			Toast.makeText(getApplicationContext(),
-					getString(R.string.last_page), Toast.LENGTH_SHORT).show();
-		}
-
+		checkAndHideNextButton(totalPages, nextPage);
 		mPager.setCurrentItem(nextPage, true);
+	}
+
+	private void checkAndHideNextButton(int totalPages, int nextPage) {
+		if (nextPage == totalPages - 1) {
+			// We can't go forward anymore.
+			// make arrow_next invisible
+			makeInvisible(imgNext);
+			makeVisible(imgPrevious);
+
+		} else {
+			// make arrow_next visible
+			makeVisible(imgNext);
+		}
+	}
+
+	private void checkAndHidePreviousButton(int previousPage) {
+		if (previousPage == 0) {
+			// We can't go back anymore.
+			// make back_arrow invisible
+			makeInvisible(imgPrevious);
+			makeVisible(imgNext);
+
+		} else {
+			makeVisible(imgPrevious);
+		}
+	}
+
+	private void makeInvisible(ImageView imageView) {
+		imageView.setVisibility(View.INVISIBLE);
+	}
+
+	private void makeVisible(ImageView imageView) {
+		imageView.setVisibility(View.VISIBLE);
 	}
 
 	public static class MyWebAddressAdapter extends FragmentPagerAdapter {

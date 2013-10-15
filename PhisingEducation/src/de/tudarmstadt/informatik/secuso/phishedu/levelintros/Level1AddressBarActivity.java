@@ -13,7 +13,6 @@ import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
-import android.widget.Toast;
 import de.tudarmstadt.informatik.secuso.phishedu.R;
 import de.tudarmstadt.informatik.secuso.phishedu.common.Constants;
 
@@ -23,10 +22,13 @@ import de.tudarmstadt.informatik.secuso.phishedu.common.Constants;
  *         Activity should only be invoked if the user has not done this part
  *         before
  */
-public class Level1AddressBarActivity extends FragmentActivity {
+public class Level1AddressBarActivity extends FragmentActivity implements
+		ViewPager.OnPageChangeListener {
 
 	private MyInfoAddressBarAdapter mAdapter;
 	private ViewPager mPager;
+	private ImageView imgNext;
+	private ImageView imgPrevious;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -49,18 +51,19 @@ public class Level1AddressBarActivity extends FragmentActivity {
 
 				setContentView(R.layout.fragment_pager);
 				// set the new Content of your activity
-				ImageView imgPrevious = (ImageView) findViewById(R.id.game_intro_arrow_back);
+				imgPrevious = (ImageView) findViewById(R.id.game_intro_arrow_back);
+				imgPrevious.setVisibility(View.INVISIBLE);
+
+				
 				imgPrevious.setOnClickListener(new OnClickListener() {
 					public void onClick(View v) {
 						previousPage();
-						// mPager.setCurrentItem(0);
 					}
 				});
 
-				ImageView imgNext = (ImageView) findViewById(R.id.game_intro_arrow_forward);
+				imgNext = (ImageView) findViewById(R.id.game_intro_arrow_forward);
 				imgNext.setOnClickListener(new OnClickListener() {
 					public void onClick(View v) {
-						// mPager.setCurrentItem(ITEMS - 1);
 						nextPage();
 					}
 				});
@@ -69,6 +72,7 @@ public class Level1AddressBarActivity extends FragmentActivity {
 						getSupportFragmentManager());
 				mPager = (ViewPager) findViewById(R.id.pager);
 				mPager.setAdapter(mAdapter);
+				mPager.setOnPageChangeListener(Level1AddressBarActivity.this);
 			}
 		}.start();
 
@@ -79,6 +83,77 @@ public class Level1AddressBarActivity extends FragmentActivity {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
+	}
+
+	@Override
+	public void onPageScrollStateChanged(int arg0) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void onPageScrolled(int arg0, float arg1, int arg2) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void onPageSelected(int position) {
+		checkAndHidePreviousButton(position);
+		checkAndHideNextButton(mPager.getAdapter().getCount(), position);
+	}
+
+	private void nextPage() {
+		int currentPage = mPager.getCurrentItem();
+		int totalPages = mPager.getAdapter().getCount();
+		int nextPage = currentPage + 1;
+
+		checkAndHideNextButton(totalPages, nextPage);
+
+		mPager.setCurrentItem(nextPage, true);
+	}
+
+	private void previousPage() {
+		int currentPage = mPager.getCurrentItem();
+		int previousPage = currentPage - 1;
+
+		checkAndHidePreviousButton(previousPage);
+
+		mPager.setCurrentItem(previousPage, true);
+
+	}
+
+	private void checkAndHideNextButton(int totalPages, int nextPage) {
+		if (nextPage == totalPages - 1) {
+			// We can't go forward anymore.
+			// make arrow_next invisible
+			makeInvisible(imgNext);
+			makeVisible(imgPrevious);
+
+		} else {
+			// make arrow_next visible
+			makeVisible(imgNext);
+		}
+	}
+
+	private void checkAndHidePreviousButton(int previousPage) {
+		if (previousPage == 0) {
+			// We can't go back anymore.
+			// make back_arrow invisible
+			makeInvisible(imgPrevious);
+			makeVisible(imgNext);
+
+		} else {
+			makeVisible(imgPrevious);
+		}
+	}
+
+	private void makeInvisible(ImageView imageView) {
+		imageView.setVisibility(View.INVISIBLE);
+	}
+
+	private void makeVisible(ImageView imageView) {
+		imageView.setVisibility(View.VISIBLE);
 	}
 
 	public static class MyInfoAddressBarAdapter extends FragmentPagerAdapter {
@@ -98,39 +173,6 @@ public class Level1AddressBarActivity extends FragmentActivity {
 			return Level1InfoFragment
 					.init(GeneralLevelIntros.level1LayoutIds[position]);
 		}
-	}
-
-	private void nextPage() {
-		int currentPage = mPager.getCurrentItem();
-		int totalPages = mPager.getAdapter().getCount();
-
-		int nextPage = currentPage + 1;
-		if (nextPage >= totalPages) {
-			// We can't go forward anymore.
-			// Loop to the first page. If you don't want looping just
-			// return here.
-			nextPage = currentPage;
-			Toast.makeText(getApplicationContext(),
-					getString(R.string.last_page), Toast.LENGTH_SHORT).show();
-		}
-
-		mPager.setCurrentItem(nextPage, true);
-	}
-
-	private void previousPage() {
-		int currentPage = mPager.getCurrentItem();
-
-		int previousPage = currentPage - 1;
-		if (previousPage < 0) {
-			// We can't go back anymore.
-			// Loop to the last page. If you don't want looping just
-			// return here.
-			previousPage = currentPage;
-			Toast.makeText(getApplicationContext(),
-					getString(R.string.first_page), Toast.LENGTH_SHORT).show();
-		}
-
-		mPager.setCurrentItem(previousPage, true);
 	}
 
 }
