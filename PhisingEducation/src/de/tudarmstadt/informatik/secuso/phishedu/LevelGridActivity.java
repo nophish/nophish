@@ -1,5 +1,9 @@
 package de.tudarmstadt.informatik.secuso.phishedu;
 
+import de.tudarmstadt.informatik.secuso.phishedu.levelintros.Level1AddressBarActivity;
+import de.tudarmstadt.informatik.secuso.phishedu.levelintros.Level2WebAddressesActivity;
+import de.tudarmstadt.informatik.secuso.phishedu.levelintros.Level3IpNonsenseActivity;
+import de.tudarmstadt.informatik.secuso.phishedu.levelintros.Level4SubdomainAddressesActivity;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Context;
@@ -111,16 +115,31 @@ public class LevelGridActivity extends Activity implements
 	public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
 		switch (position) {
 		case 0:
-			Intent intentAwareness = new Intent(this, AwarenessActivity.class);
-			startActivity(intentAwareness);
+			Intent level0 = new Intent(this, AwarenessActivity.class);
+			startActivity(level0);
 			break;
 
 		case 1:
-			Intent intentAddrBar = new Intent(this, Level1AddressBarActivity.class);
-			startActivity(intentAddrBar);
+			Intent level1 = new Intent(this, Level1AddressBarActivity.class);
+			startActivity(level1);
 			break;
+
+		case 2:
+			Intent level2 = new Intent(this, Level2WebAddressesActivity.class);
+			startActivity(level2);
+			break;
+
+		case 3:
+			Intent level3 = new Intent(this, Level3IpNonsenseActivity.class);
+			startActivity(level3);
+			break;
+			
+		case 4:
+			Intent level4 = new Intent(this, Level4SubdomainAddressesActivity.class);
+			startActivity(level4);
 		default:
 			break;
+
 		}
 	}
 

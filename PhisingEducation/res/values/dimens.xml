@@ -14,8 +14,12 @@
     <dimen name="margin_large">35dp</dimen>
     <dimen name="margin_standard">20dp</dimen>
     <dimen name="margin_small">15dp</dimen>
+    <dimen name="margin_xxsmall">5dp</dimen>
+    <dimen name="margin_xlarge">75dp</dimen>
+    <dimen name="margin_xxlarge">100dp</dimen>
 
     <!-- fontsizes -->
     <dimen name="font_size_large">35sp</dimen>
+    <dimen name="font_size_xlarge">40sp</dimen>
 
 </resources>

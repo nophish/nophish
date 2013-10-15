@@ -21,7 +21,7 @@ public class IntroGameActivity extends FragmentActivity {
 
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.blank_layout);
+		setContentView(R.layout.fragment_pager);
 		this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 		ActionBar ab = getActionBar();
 		ab.setIcon(R.drawable.emblem_library);

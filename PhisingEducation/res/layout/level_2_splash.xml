@@ -9,24 +9,34 @@
     tools:context=".LevelTwoActivity" >
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/level_2_splash_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="76dp"
+        android:layout_marginTop="@dimen/margin_xlarge"
         android:gravity="center"
-        android:text="Level 2\n\nWeb-Adressen"
+        android:text="@string/level_2_splash_text"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textSize="40dp" />
+        android:textSize="@dimen/font_size_xlarge" />
 
     <ImageView
-        android:id="@+id/imageView1"
+        android:id="@+id/level_2_splash_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/level_2_splash_text"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/margin_large"
+        android:layout_alignParentRight="true"
+        android:src="@drawable/recherche_internet" />
+
+        <TextView
+        android:id="@+id/level_2_splash_load"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_alignRight="@+id/textView1"
-        android:layout_marginBottom="66dp"
-        android:src="@drawable/recherche_internet" />
-
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/margin_standard"
+        android:text="@string/loading" />
+    
 </RelativeLayout>

@@ -28,7 +28,7 @@ public class IntroGameLetsStartFragment extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 
-		View layoutView = inflater.inflate(R.layout.intro_game_lets_start,
+		View layoutView = inflater.inflate(R.layout.awareness_final_04_lets_start,
 				container, false);
 		return layoutView;
 	}

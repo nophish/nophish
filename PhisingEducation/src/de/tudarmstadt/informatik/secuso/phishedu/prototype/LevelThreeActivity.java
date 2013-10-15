@@ -20,7 +20,7 @@ public class LevelThreeActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_level_three);
+		setContentView(R.layout.level_3_splash);
 		this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 		// display the logo during 5 secondes,
 		new CountDownTimer(5000, 1000) {
@@ -32,7 +32,7 @@ public class LevelThreeActivity extends Activity {
 			public void onFinish() {
 				// set the new Content of your activity
 				LevelThreeActivity.this
-						.setContentView(R.layout.activity_ip_nonsense_url_info);
+						.setContentView(R.layout.level_3_ip_nonsense_info_01);
 			}
 		}.start();
 	}

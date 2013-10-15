@@ -1,4 +1,4 @@
-package de.tudarmstadt.informatik.secuso.phishedu;
+package de.tudarmstadt.informatik.secuso.phishedu.levelintros;
 
 import android.app.ActionBar;
 import android.content.pm.ActivityInfo;
@@ -14,6 +14,8 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.Toast;
+import de.tudarmstadt.informatik.secuso.phishedu.R;
+import de.tudarmstadt.informatik.secuso.phishedu.common.Constants;
 
 /**
  * 
@@ -23,8 +25,6 @@ import android.widget.Toast;
  */
 public class Level1AddressBarActivity extends FragmentActivity {
 
-	private static final int COUNT_DOWN_INTERVAL = 1000;
-	private static final int MILLIS_IN_FUTURE = 3000;
 	private MyInfoAddressBarAdapter mAdapter;
 	private ViewPager mPager;
 
@@ -33,16 +33,13 @@ public class Level1AddressBarActivity extends FragmentActivity {
 		super.onCreate(savedInstanceState);
 		this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
-		
-		
-		
 		setContentView(R.layout.level_1_splash);
 		ActionBar ab = getActionBar();
-		
-		
+
 		ab.setTitle(R.string.level_1_address_bar_title);
 
-		new CountDownTimer(MILLIS_IN_FUTURE, COUNT_DOWN_INTERVAL) {
+		new CountDownTimer(Constants.MILLIS_IN_FUTURE,
+				Constants.COUNT_DOWN_INTERVAL) {
 			@Override
 			public void onTick(long millisUntilFinished) {
 			}
@@ -50,7 +47,7 @@ public class Level1AddressBarActivity extends FragmentActivity {
 			@Override
 			public void onFinish() {
 
-				setContentView(R.layout.blank_layout);
+				setContentView(R.layout.fragment_pager);
 				// set the new Content of your activity
 				ImageView imgPrevious = (ImageView) findViewById(R.id.game_intro_arrow_back);
 				imgPrevious.setOnClickListener(new OnClickListener() {
@@ -98,12 +95,8 @@ public class Level1AddressBarActivity extends FragmentActivity {
 
 		@Override
 		public Fragment getItem(int position) {
-			switch (position) {
-			case 0: // Fragment # 0 - This will show image
-				return Level1InfoFragmentOne.init(position);
-			default: // Fragment # 1 - This will show image
-				return Level1InfoFragmentTwo.init(position);
-			}
+			return Level1InfoFragment
+					.init(GeneralLevelIntros.level1LayoutIds[position]);
 		}
 	}
 
@@ -117,8 +110,8 @@ public class Level1AddressBarActivity extends FragmentActivity {
 			// Loop to the first page. If you don't want looping just
 			// return here.
 			nextPage = currentPage;
-			Toast.makeText(getApplicationContext(), getString(R.string.last_page),
-					Toast.LENGTH_SHORT).show();
+			Toast.makeText(getApplicationContext(),
+					getString(R.string.last_page), Toast.LENGTH_SHORT).show();
 		}
 
 		mPager.setCurrentItem(nextPage, true);
@@ -133,8 +126,8 @@ public class Level1AddressBarActivity extends FragmentActivity {
 			// Loop to the last page. If you don't want looping just
 			// return here.
 			previousPage = currentPage;
-			Toast.makeText(getApplicationContext(), getString(R.string.first_page),
-					Toast.LENGTH_SHORT).show();
+			Toast.makeText(getApplicationContext(),
+					getString(R.string.first_page), Toast.LENGTH_SHORT).show();
 		}
 
 		mPager.setCurrentItem(previousPage, true);

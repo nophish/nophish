@@ -1,5 +1,6 @@
 package de.tudarmstadt.informatik.secuso.phishedu;
 
+import android.app.ActionBar;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -33,6 +34,8 @@ public class AwarenessActivity extends FragmentActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.awareness);
+		ActionBar ab = getActionBar();
+		ab.setTitle(R.string.title_anti_phishing);
 		this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 	}
 
@@ -43,13 +46,18 @@ public class AwarenessActivity extends FragmentActivity {
 		return true;
 	}
 
+
+	public void goToAwareness01(View view) {
+		setContentView(R.layout.awareness_final_01);
+	}
+
 	public void goToEmailForm(View view) {
 		setContentView(R.layout.awareness_send_email_form);
-		
-		//make button visible
+
+		// make button visible
 		View b = findViewById(R.id.button_test);
 		b.setVisibility(View.VISIBLE);
-		
+
 		ScrollView sv = (ScrollView) findViewById(R.id.awareness_scrollview_send_email_form);
 		sv.setOnTouchListener(new OnTouchListener() {
 
@@ -60,7 +68,6 @@ public class AwarenessActivity extends FragmentActivity {
 			}
 		});
 	}
-	
 
 	/**
 	 * 
@@ -141,14 +148,26 @@ public class AwarenessActivity extends FragmentActivity {
 		gameIntroIntent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
 		startActivity(gameIntroIntent);
 	}
-	
-	public void goToAwarenessFinal(View view){
-		setContentView(R.layout.awareness_final);
+
+	public void goToAwareness03(View view) {
+		setContentView(R.layout.awareness_final_03);
+
 	}
 
+	public void goToAwareness02(View view) {
+		setContentView(R.layout.awareness_final_02);
+	}
+
+	public void goToAwareness04(View view) {
+		setContentView(R.layout.awareness_final_04_lets_start);
+	}
 	private void displayToast(String message) {
 		Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG)
 				.show();
+	}
+
+	public void goToLetsStart(View view) {
+		setContentView(R.layout.awareness_final_04_lets_start);
 	}
 
 	public static boolean isValidEmailAddress(String email) {

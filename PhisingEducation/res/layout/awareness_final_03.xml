@@ -14,27 +14,26 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:text="@string/awareness_final_text"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-
-    <Button
-        android:id="@+id/awareness_final_button_next"
-        android:layout_width="wrap_content"
-        android:layout_height="@dimen/btn_standard_height"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="@dimen/margin_standard"
-        android:minWidth="@dimen/btn_menu_width"
-        android:onClick="goToGameIntro"
-        android:text="@string/button_next" />
+        android:text="@string/awareness_final_text_3"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <ImageView
-        android:id="@+id/imageView1"
+        android:id="@+id/game_intro_arrow_forward"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/awareness_final"
-        android:layout_below="@+id/awareness_final"
-        android:layout_marginTop="@dimen/margin_standard"
-        android:src="@drawable/surprised" />
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:onClick="goToAwareness04"
+        android:src="@drawable/forward" />
 
+        
+    <ImageView
+        android:id="@+id/game_intro_arrow_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:onClick="goToAwareness02"
+        android:src="@drawable/back" />
+    
 </RelativeLayout>
