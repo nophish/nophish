@@ -1,9 +1,15 @@
 package de.tudarmstadt.informatik.secuso.phishedu.backend;
 
+import java.io.BufferedInputStream;
 import java.io.InputStream;
+import java.io.StringReader;
+import java.io.StringWriter;
+import java.nio.charset.Charset;
+
 
 import java.util.ArrayList;
 import java.util.Locale;
+import java.util.Scanner;
 
 import java.util.Random;
 
@@ -13,6 +19,7 @@ import com.google.android.gms.games.GamesClient;
 import com.google.example.games.basegameutils.GameHelper;
 import com.google.gson.Gson;
 
+import de.tudarmstadt.informatik.secuso.phishedu.R;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.attacks.IPAttack;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.attacks.Level2Attack;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.attacks.PhishTankURLAttack;
@@ -138,9 +145,10 @@ public class BackendController implements BackendControllerInterface, GameStateL
 		PhishURL[] urls=deserializeURLs(cache.getString(type.toString(), "[]"));
 		//If the values are still empty we load the factory defaults 
 		if(urls.length==0){
-			int resource = frontend.getContext().getResources().getIdentifier(type.toString().toLowerCase(Locale.US)+".json", "raw", frontend.getContext().getPackageName());
+			int resource = frontend.getContext().getResources().getIdentifier(type.toString().toLowerCase(Locale.US), "raw", frontend.getContext().getPackageName());
 			InputStream input = frontend.getContext().getResources().openRawResource(resource);
-			urls = (new Gson()).fromJson(input.toString(), PhishURL[].class);
+			String json = new Scanner(input,"UTF-8").useDelimiter("\\A").next();
+			urls = (new Gson()).fromJson(json, PhishURL[].class);
 		}
 		for (PhishURL phishURL : urls) {
 			result.add(phishURL);
