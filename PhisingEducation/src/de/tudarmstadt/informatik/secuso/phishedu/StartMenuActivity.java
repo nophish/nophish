@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.appstate.AppStateClient;
 import com.google.android.gms.games.GamesClient;
+import com.google.example.games.basegameutils.BaseGameActivity;
 
 import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.FrontendControllerInterface;
@@ -21,7 +22,7 @@ import de.tudarmstadt.informatik.secuso.phishedu.backend.FrontendControllerInter
  *         splash screen and afterwards a menu is displayed if the user wants to
  *         store his/her score online he/she has to sign into google+
  */
-public class StartMenuActivity extends Activity implements
+public class StartMenuActivity extends BaseGameActivity implements
 		FrontendControllerInterface {
 
 	private boolean didAwarenessPart = false;
@@ -30,7 +31,7 @@ public class StartMenuActivity extends Activity implements
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-//		 BackendController.getInstance().init(this);
+        BackendController.getInstance().init(this);
 
 		setContentView(R.layout.start_menu);
 		this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
@@ -40,6 +41,7 @@ public class StartMenuActivity extends Activity implements
 
 		// findViewById(R.id.sign_in_button).setOnClickListener(this);
 		// findViewById(R.id.sign_out_button).setOnClickListener(this);
+		BackendController.getInstance().onUrlReceive(getIntent().getData());
 	}
 
 	
@@ -88,10 +90,6 @@ public class StartMenuActivity extends Activity implements
 				"cbergmann@schuhklassert.de", "This is a user message");
 	}
 
-	public void leve1Test() {
-		BackendController.getInstance().StartLevel(1);
-	}
-
 	@Override
 	public void displayToast(String message) {
 		Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT)
@@ -133,20 +131,32 @@ public class StartMenuActivity extends Activity implements
 
 	@Override
 	public GamesClient getGamesClient() {
-		// TODO Auto-generated method stub
-		return null;
+		return this.getGamesClient();
 	}
 
 	@Override
 	public AppStateClient getAppStateClient() {
-		// TODO Auto-generated method stub
-		return null;
+		return this.getAppStateClient();
 	}
 
 	@Override
 	public void onLevelChange(int level) {
-
 		Intent gameIntent = new Intent(this, AwarenessActivity.class);
 		startActivity(gameIntent);
+	}
+
+	@Override
+	public void onSignInFailed() {
+		// Sign in has failed. So show the user the sign-in button.
+		findViewById(R.id.sign_in_button).setVisibility(View.VISIBLE);
+		findViewById(R.id.sign_out_button).setVisibility(View.GONE);
+	}
+
+	public void onSignInSucceeded() {
+		// show sign-out button, hide the sign-in button
+		findViewById(R.id.sign_in_button).setVisibility(View.GONE);
+		findViewById(R.id.sign_out_button).setVisibility(View.VISIBLE);
+
+		// (your code here: update UI, enable functionality that depends on sign in, etc)
 	}
 }
