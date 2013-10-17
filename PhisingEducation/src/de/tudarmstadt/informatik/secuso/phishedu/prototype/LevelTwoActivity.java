@@ -21,7 +21,7 @@ public class LevelTwoActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_level_two);
+		setContentView(R.layout.level_2_splash);
 		this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 		// display the logo during 5 secondes,
 		new CountDownTimer(5000, 1000) {

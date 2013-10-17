@@ -39,14 +39,10 @@
         <activity
             android:name="de.tudarmstadt.informatik.secuso.phishedu.BackendTestActivity"
             android:label="@string/title_activity_backend_test" >
-
-            <!--
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            -->
-            <intent-filter>
             </intent-filter>
         </activity>
         <activity
@@ -489,6 +485,41 @@
         <activity
             android:name="de.tudarmstadt.informatik.secuso.phishedu.IntroGameActivity"
             android:label="@string/title_activity_intro_game" >
+        </activity>
+        <activity
+            android:name="de.tudarmstadt.informatik.secuso.phishedu.GooglePlusSignInActivity"
+            android:label="@string/title_activity_google_plus_sign_in" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="de.tudarmstadt.informatik.secuso.phishedu.StartMenuActivity" />
+        </activity>
+        <activity
+            android:name="de.tudarmstadt.informatik.secuso.phishedu.levelintros.Level1AddressBarActivity"
+            android:label="@string/title_level_1_addr_bar_activity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="de.tudarmstadt.informatik.secuso.phishedu.StartMenuActivity" />
+        </activity>
+        <activity
+            android:name="de.tudarmstadt.informatik.secuso.phishedu.levelintros.Level2WebAddressesActivity"
+            android:label="@string/title_activity_level2_web_addresses" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="de.tudarmstadt.informatik.secuso.phishedu.StartMenuActivity" />
+        </activity>
+        <activity
+            android:name="de.tudarmstadt.informatik.secuso.phishedu.levelintros.Level3IpNonsenseActivity"
+            android:label="@string/title_activity_level3_ip_nonsense" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="de.tudarmstadt.informatik.secuso.phishedu.StartMenuActivity" />
+        </activity>
+        <activity
+            android:name="de.tudarmstadt.informatik.secuso.phishedu.levelintros.Level4SubdomainAddressesActivity"
+            android:label="@string/title_activity_level4_subdomain_addresses" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="de.tudarmstadt.informatik.secuso.phishedu.StartMenuActivity" />
         </activity>
     </application>
 

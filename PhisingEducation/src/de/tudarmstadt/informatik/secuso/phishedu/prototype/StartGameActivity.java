@@ -15,7 +15,7 @@ public class StartGameActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.intro_game_what_is_phishing);
+//		setContentView(R.layout.intro_game_what_is_phishing);
 		this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 	}
 

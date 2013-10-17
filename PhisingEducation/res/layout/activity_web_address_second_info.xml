@@ -42,7 +42,7 @@
         android:layout_alignLeft="@+id/imageView2"
         android:layout_below="@+id/imageView2"
         android:layout_marginTop="34dp"
-        android:text="Sobald beim rückwärts Lesen der zweite Punkt erreicht wurde, ist der wichtigste Teil vorbei. Dieser und nur dieser gibt dir eine Aussage über die wahre Herkunft der Webseite."
+        android:text="Sobald beim rückwärts Lesen der zweite Punkt erreicht wurde, ist der wichtigste Teil vorbei."
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <ImageView

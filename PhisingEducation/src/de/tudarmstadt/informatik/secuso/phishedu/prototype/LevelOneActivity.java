@@ -20,7 +20,7 @@ public class LevelOneActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_level_one);
+		setContentView(R.layout.level_1_splash);
 		this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 		// display the logo during 5 secondes,
 		new CountDownTimer(5000, 1000) {
@@ -32,7 +32,7 @@ public class LevelOneActivity extends Activity {
 			public void onFinish() {
 				// set the new Content of your activity
 				LevelOneActivity.this
-						.setContentView(R.layout.activity_find_address_bar_info);
+						.setContentView(R.layout.level_1_find_address_bar_info_1);
 			}
 		}.start();
 	}
