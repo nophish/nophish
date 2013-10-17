@@ -112,7 +112,10 @@ public class BackendController implements BackendControllerInterface, GameStateL
 	public void init(FrontendControllerInterface frontend, GameHelper gamehelper){
 		this.frontend=frontend;
 		this.gamehelper=gamehelper;
-		this.progress = new GameProgress(this.frontend.getContext().getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE), this.gamehelper.getGamesClient(),this.gamehelper.getAppStateClient(),this);
+		SharedPreferences prefs = this.frontend.getContext().getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+		GamesClient gamesclient = this.gamehelper.getGamesClient();
+		AppStateClient appstateclient = this.gamehelper.getAppStateClient();
+		this.progress = new GameProgress(prefs, gamesclient,appstateclient,this);
 		SharedPreferences url_cache = this.frontend.getContext().getSharedPreferences(URL_CACHE_NAME, Context.MODE_PRIVATE);
 		for(PhishAttackType type: CACHE_TYPES){
 		  this.urlCache[type.getValue()]=loadUrls(url_cache, type);
