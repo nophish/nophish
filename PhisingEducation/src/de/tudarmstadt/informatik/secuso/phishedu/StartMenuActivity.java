@@ -23,10 +23,16 @@ import de.tudarmstadt.informatik.secuso.phishedu.backend.FrontendControllerInter
  *         store his/her score online he/she has to sign into google+
  */
 public class StartMenuActivity extends BaseGameActivity implements
-		FrontendControllerInterface {
+		FrontendControllerInterface, View.OnClickListener {
 
 	private boolean didAwarenessPart = false;
 
+	public StartMenuActivity() {
+		// request AppStateClient and GamesClient
+		super(BaseGameActivity.CLIENT_APPSTATE | BaseGameActivity.CLIENT_GAMES);
+	}
+
+	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -39,8 +45,8 @@ public class StartMenuActivity extends BaseGameActivity implements
 		// display the logo during 5 seconds
 		// setContentView to activity_start_menu when finished
 
-		// findViewById(R.id.sign_in_button).setOnClickListener(this);
-		// findViewById(R.id.sign_out_button).setOnClickListener(this);
+		findViewById(R.id.sign_in_button).setOnClickListener(this);
+		findViewById(R.id.sign_out_button).setOnClickListener(this); 
 		BackendController.getInstance().onUrlReceive(getIntent().getData());
 	}
 
@@ -131,12 +137,12 @@ public class StartMenuActivity extends BaseGameActivity implements
 
 	@Override
 	public GamesClient getGamesClient() {
-		return this.getGamesClient();
+		return super.getGamesClient();
 	}
 
 	@Override
 	public AppStateClient getAppStateClient() {
-		return this.getAppStateClient();
+		return super.getAppStateClient();
 	}
 
 	@Override
@@ -159,4 +165,21 @@ public class StartMenuActivity extends BaseGameActivity implements
 
 		// (your code here: update UI, enable functionality that depends on sign in, etc)
 	}
+	
+	@Override
+	public void onClick(View view) {
+		if (view.getId() == R.id.sign_in_button) {
+			// start the asynchronous sign in flow
+			beginUserInitiatedSignIn();
+		}
+		else if (view.getId() == R.id.sign_out_button) {
+			// sign out.
+			signOut();
+
+			// show sign-in button, hide the sign-out button
+			findViewById(R.id.sign_in_button).setVisibility(View.VISIBLE);
+			findViewById(R.id.sign_out_button).setVisibility(View.GONE);
+		}
+	}
+
 }

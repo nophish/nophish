@@ -256,6 +256,9 @@ public class BackendController implements BackendControllerInterface, GameStateL
 	}
 	
 	public void onUrlReceive(Uri data){
+		if(data == null){
+			return;
+		}
 		if(data.getHost()=="maillink"){
 			this.proceedlevel();
 			this.frontend.MailReturned();

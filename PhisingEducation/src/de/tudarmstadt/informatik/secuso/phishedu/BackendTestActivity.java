@@ -44,9 +44,7 @@ public class BackendTestActivity extends BaseGameActivity implements FrontendCon
 		
 		
 		setContentView(R.layout.activity_backend_test);
-		findViewById(R.id.sign_in_button).setOnClickListener(this);
-		findViewById(R.id.sign_out_button).setOnClickListener(this); 
-
+		
 		entrys = new LinkedHashMap<String, BackendTest>();
 		entrys.put("send mail", new BackendTest(){public void test(){mailSendTest();}});
 		entrys.put("Start level 1", new BackendTest(){public void test(){leve1Test();}});
