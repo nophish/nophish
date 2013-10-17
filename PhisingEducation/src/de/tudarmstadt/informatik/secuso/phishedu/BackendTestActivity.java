@@ -44,7 +44,7 @@ public class BackendTestActivity extends BaseGameActivity implements FrontendCon
 		BackendController.getInstance().init(this,this.mHelper);
 		
 		
-		setContentView(R.layout.activity_backend_test);
+		setContentView(R.layout.backend_test);
 		
 		entrys = new LinkedHashMap<String, BackendTest>();
 		entrys.put("send mail", new BackendTest(){public void test(){mailSendTest();}});
