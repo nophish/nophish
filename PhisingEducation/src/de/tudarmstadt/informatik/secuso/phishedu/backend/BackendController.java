@@ -1,10 +1,10 @@
 package de.tudarmstadt.informatik.secuso.phishedu.backend;
 
 import java.util.ArrayList;
+
 import java.util.Random;
 
 
-import com.google.android.gms.appstate.AppState;
 import com.google.android.gms.appstate.AppStateClient;
 import com.google.android.gms.games.GamesClient;
 import com.google.example.games.basegameutils.GameHelper;
@@ -115,7 +115,8 @@ public class BackendController implements BackendControllerInterface, GameStateL
 		SharedPreferences prefs = this.frontend.getContext().getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
 		GamesClient gamesclient = this.gamehelper.getGamesClient();
 		AppStateClient appstateclient = this.gamehelper.getAppStateClient();
-		this.progress = new GameProgress(prefs, gamesclient,appstateclient,this);
+		Context context = this.frontend.getContext();
+		this.progress = new GameProgress(context, prefs, gamesclient,appstateclient,this);
 		SharedPreferences url_cache = this.frontend.getContext().getSharedPreferences(URL_CACHE_NAME, Context.MODE_PRIVATE);
 		for(PhishAttackType type: CACHE_TYPES){
 		  this.urlCache[type.getValue()]=loadUrls(url_cache, type);
@@ -152,6 +153,10 @@ public class BackendController implements BackendControllerInterface, GameStateL
 	}
 	
 	private void checkInitDone(){
+		//This means we already are initialized
+		if(this.inited){
+			return;
+		}
 		if (this.urlCache[PhishAttackType.NoPhish.getValue()].length >0 && this.urlCache[PhishAttackType.AnyPhish.getValue()].length > 0 &&  this.gamestate_loaded){
 			this.inited=true;
 			this.frontend.initDone();
@@ -290,13 +295,13 @@ public class BackendController implements BackendControllerInterface, GameStateL
 
 	@Override
 	public void signIn() {
-		this.checkInitDone();
+		checkinited();
 		this.gamehelper.beginUserInitiatedSignIn();
 	}
 
 	@Override
 	public void signOut() {
-		this.checkInitDone();
+		checkinited();
 		this.gamehelper.signOut();
 	}
 }

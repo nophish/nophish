@@ -1,9 +1,5 @@
 package de.tudarmstadt.informatik.secuso.phishedu.backend;
 
-import com.google.android.gms.appstate.AppStateClient;
-import com.google.android.gms.games.GamesClient;
-import com.google.example.games.basegameutils.GameHelper;
-
 import android.content.Context;
 import android.net.Uri;
 

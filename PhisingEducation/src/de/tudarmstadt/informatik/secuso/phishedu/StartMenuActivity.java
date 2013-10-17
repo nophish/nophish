@@ -209,7 +209,7 @@ public class StartMenuActivity extends BaseGameActivity implements
 		}
 	}
 	
-	public void showLeaderboardRate() {
+	public void showLeaderboardRate(View view) {
 		if(this.getGamesClient().isConnected()){
 			startActivityForResult(getGamesClient().getLeaderboardIntent(getResources().getString(R.string.leaderboard_detection_rate)), 1);
 		}else{
@@ -217,7 +217,7 @@ public class StartMenuActivity extends BaseGameActivity implements
 		}
 	}
 
-	public void showLeaderboardTotal() {
+	public void showLeaderboardTotal(View view) {
 		if(this.getGamesClient().isConnected()){
 			startActivityForResult(getGamesClient().getLeaderboardIntent(getResources().getString(R.string.leaderboard_detected_phishing_urls)), 1);
 		}else{
@@ -226,7 +226,7 @@ public class StartMenuActivity extends BaseGameActivity implements
 
 	}
 
-	public void showAchievments() {
+	public void showAchievments(View view) {
 		if(this.getGamesClient().isConnected()){
 			startActivityForResult(getGamesClient().getAchievementsIntent(), 0);
 		}else{

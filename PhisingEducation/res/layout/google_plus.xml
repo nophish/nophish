@@ -9,6 +9,14 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".StartMenuActivity" >
 
+    <TextView
+        android:id="@+id/google_plus_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_standard"
+        android:text="@string/google_plus_text"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+    
     <!-- sign-in button -->
 
     <com.google.android.gms.common.SignInButton
@@ -18,15 +26,18 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
-    <!-- sign-out button -->
-
     <Button
-        android:id="@+id/sign_out_button"
+        android:id="@+id/button_show_online_achievement"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/sign_out"
-        android:visibility="gone" />
-
+        android:layout_height="@dimen/btn_standard_height"
+        android:layout_below="@+id/sign_in_button"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/margin_large"
+        android:minWidth="@dimen/btn_menu_width"
+        android:text="@string/button_show_online_achievement"
+        android:visibility="gone"
+        android:onClick="showAchievments" />
+    
     <Button
         android:id="@+id/button_show_leaderboard_rate"
         android:layout_width="wrap_content"
@@ -51,24 +62,17 @@
         android:visibility="gone"
         android:onClick="showLeaderboardTotal" />
 
+    
+
+    <!-- sign-out button -->
+    
     <Button
-        android:id="@+id/button_show_online_achievement"
+        android:id="@+id/sign_out_button"
         android:layout_width="wrap_content"
         android:layout_height="@dimen/btn_standard_height"
-        android:layout_below="@+id/sign_in_button"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/margin_large"
         android:minWidth="@dimen/btn_menu_width"
-        android:text="@string/button_show_online_achievement"
-        android:visibility="gone"
-        android:onClick="showAchievments" />
-
-    <TextView
-        android:id="@+id/google_plus_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_standard"
-        android:text="@string/google_plus_text"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
-
+        android:layout_below="@+id/button_show_leaderboard_total"
+        android:text="@string/sign_out"
+        android:visibility="gone" />
+    
 </RelativeLayout>
