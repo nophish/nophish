@@ -14,6 +14,7 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import com.google.gson.Gson;
 
 import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishAttackType;
+import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishURL;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishURLInterface;
 
 import android.os.AsyncTask;
@@ -52,7 +53,7 @@ public class GetUrlsTask extends AsyncTask<Integer, Integer, PhishURLInterface[]
 				ByteArrayOutputStream out = new ByteArrayOutputStream();
 				response.getEntity().writeTo(out);
 				out.close();
-				PhishURLInterface[] result = new Gson().fromJson(out.toString(), PhishURLInterface[].class);
+				PhishURL[] result = new Gson().fromJson(out.toString(), PhishURL[].class);
 				if(result.length > count){
 					result = Arrays.copyOf(result, count);
 				}

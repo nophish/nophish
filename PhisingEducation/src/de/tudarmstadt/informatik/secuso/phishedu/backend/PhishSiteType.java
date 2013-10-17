@@ -7,22 +7,24 @@ package de.tudarmstadt.informatik.secuso.phishedu.backend;
  */
 public enum PhishSiteType {
 	/**
-	 * Online social networks
-	 */
-	OSN(3),
-	/**
-	 * Finanace
-	 */
-	Bank(4),
-	//...
-	/**
 	 * It is a phish but not specified
 	 */
 	AnyPhish(1),
 	/**
 	 * Something completly different
 	 */
-	Generic(2);
+	Generic(2),
+	
+	Social(3),
+	Financial(4), //including PaymentServices
+	Shopping(5), //including Auction
+	ISP(6),
+	Gaming(7),
+	Government(8),
+	Information(9), //e.g. News
+	Communication(10),
+	JobMarket(11),
+	DataExchange(12);
 	
 	private int value;
 

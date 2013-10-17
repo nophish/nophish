@@ -25,7 +25,7 @@ import android.net.Uri;
 public class BackendController extends BroadcastReceiver implements BackendControllerInterface, GameStateLoadedListener, UrlsLoadedListener {
 	private static final String PREFS_NAME = "PhisheduState";
 	private static final String URL_CACHE_NAME ="urlcache";
-	private static final String LEVEL1_URL = "https://pages.no-phish.de/level1.php";
+	private static final String LEVEL1_URL = "https://pages.no-phish.de/level1.php#bottom";
 	private static final PhishAttackType[] CACHE_TYPES = {PhishAttackType.AnyPhish, PhishAttackType.NoPhish};
 	//the probability that we apply an Attack on each round
 	private static final double ATTACK_THRESHOULD = 0.5;
@@ -83,9 +83,9 @@ public class BackendController extends BroadcastReceiver implements BackendContr
 	 * Private constructor for singelton.
 	 */
 	private BackendController() {
-		this.urlCache=new PhishURL[CACHE_TYPES.length][];
+		this.urlCache=new PhishURLInterface[CACHE_TYPES.length][];
 		for(PhishAttackType type: CACHE_TYPES){
-		  this.urlCache[type.getValue()]=new PhishURL[0];
+		  this.urlCache[type.getValue()]=new PhishURLInterface[0];
 		}
 	}
 	
@@ -123,15 +123,15 @@ public class BackendController extends BroadcastReceiver implements BackendContr
 		editor.commit();
 	}
 	
-	private PhishURL[] loadUrls(SharedPreferences cache, PhishAttackType type){
+	private PhishURLInterface[] loadUrls(SharedPreferences cache, PhishAttackType type){
 		//first we load the cached value if available
-		ArrayList<PhishURL> result = new ArrayList<PhishURL>();
+		ArrayList<PhishURLInterface> result = new ArrayList<PhishURLInterface>();
 		for(int i=0; cache.contains(type.toString()+"["+i+"]"); i++){
 			result.add(deserializeURL(cache.getString(type.toString()+"["+i+"]", "")));
 		}
 		//then we get the value from the online store
 		new GetUrlsTask(this).execute(URL_CACHE_SIZE,type.getValue());
-		return result.toArray(new PhishURL[0]);
+		return result.toArray(new PhishURLInterface[0]);
 	}
 	
 	public void urlsReturned(PhishURLInterface[] urls, PhishAttackType type){
@@ -259,7 +259,11 @@ public class BackendController extends BroadcastReceiver implements BackendContr
 	
 	@Override
 	public void onReceive(Context context, Intent intent) {
-		Uri data = intent.getData();	
+		Uri data = intent.getData();
+		this.onUrlReceive(data);
+	}
+	
+	public void onUrlReceive(Uri data){
 		if(data.getHost()=="maillink"){
 			this.proceedlevel();
 			this.frontend.MailReturned();

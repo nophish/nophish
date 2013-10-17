@@ -1,5 +1,6 @@
 package de.tudarmstadt.informatik.secuso.phishedu;
 
+import java.util.Arrays;
 import java.util.LinkedHashMap;
 
 import com.google.android.gms.appstate.AppStateClient;
@@ -109,7 +110,7 @@ public class BackendTestActivity extends BaseGameActivity implements FrontendCon
 
 	public void urlTest(){
 		BackendController.getInstance().setLevel(3);
-		displayToast(BackendController.getInstance().getNextUrl().toString());
+		displayToast(Arrays.deepToString(BackendController.getInstance().getNextUrl()));
 	}
 
 	@Override
