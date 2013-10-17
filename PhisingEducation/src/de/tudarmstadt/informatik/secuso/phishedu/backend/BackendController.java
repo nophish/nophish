@@ -1,6 +1,9 @@
 package de.tudarmstadt.informatik.secuso.phishedu.backend;
 
+import java.io.InputStream;
+
 import java.util.ArrayList;
+import java.util.Locale;
 
 import java.util.Random;
 
@@ -44,11 +47,11 @@ public class BackendController implements BackendControllerInterface, GameStateL
 	private static final int POINTS_PER_LEVEL = 100;
 	private static final int URL_CACHE_SIZE = 100;
 	
-	private static PhishURL deserializeURL(String serialized){
-		return new Gson().fromJson(serialized, PhishURL.class);
+	private static PhishURL[] deserializeURLs(String serialized){
+		return new Gson().fromJson(serialized, PhishURL[].class);
 	}
 	
-	private static String serializeURL(PhishURLInterface object){
+	private static String serializeURLs(PhishURLInterface[] object){
 		return new Gson().toJson(object);
 	}
 	
@@ -125,17 +128,22 @@ public class BackendController implements BackendControllerInterface, GameStateL
 	
 	private void CacheUrls(SharedPreferences cache, PhishAttackType type, PhishURLInterface[] urls){
 		SharedPreferences.Editor editor = cache.edit();
-		for(int i=0;i<urls.length;i++){
-			editor.putString(type.toString()+"["+i+"]", serializeURL(urls[i]));
-		}
+		editor.putString(type.toString(), serializeURLs(urls));
 		editor.commit();
 	}
 	
 	private PhishURLInterface[] loadUrls(SharedPreferences cache, PhishAttackType type){
 		//first we load the cached value if available
 		ArrayList<PhishURLInterface> result = new ArrayList<PhishURLInterface>();
-		for(int i=0; cache.contains(type.toString()+"["+i+"]"); i++){
-			result.add(deserializeURL(cache.getString(type.toString()+"["+i+"]", "")));
+		PhishURL[] urls=deserializeURLs(cache.getString(type.toString(), "[]"));
+		//If the values are still empty we load the factory defaults 
+		if(urls.length==0){
+			int resource = frontend.getContext().getResources().getIdentifier(type.toString().toLowerCase(Locale.US)+".json", "raw", frontend.getContext().getPackageName());
+			InputStream input = frontend.getContext().getResources().openRawResource(resource);
+			urls = (new Gson()).fromJson(input.toString(), PhishURL[].class);
+		}
+		for (PhishURL phishURL : urls) {
+			result.add(phishURL);
 		}
 		//then we get the value from the online store
 		new GetUrlsTask(this).execute(URL_CACHE_SIZE,type.getValue());
