@@ -6,6 +6,7 @@ import java.util.LinkedHashMap;
 import com.google.android.gms.appstate.AppStateClient;
 import com.google.android.gms.games.GamesClient;
 import com.google.example.games.basegameutils.BaseGameActivity;
+import com.google.example.games.basegameutils.GameHelper;
 
 import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.FrontendControllerInterface;
@@ -40,7 +41,7 @@ public class BackendTestActivity extends BaseGameActivity implements FrontendCon
 		super.onCreate(savedInstanceState);
 
 
-		BackendController.getInstance().init(this);
+		BackendController.getInstance().init(this,this.mHelper);
 		
 		
 		setContentView(R.layout.activity_backend_test);

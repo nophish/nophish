@@ -493,7 +493,7 @@
             android:label="@string/title_activity_intro_game" >
         </activity>
         <activity
-            android:name="de.tudarmstadt.informatik.secuso.phishedu.GooglePlusSignInActivity"
+            android:name="de.tudarmstadt.informatik.secuso.phishedu.GooglePlusActivity"
             android:label="@string/title_activity_google_plus_sign_in" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

@@ -1,5 +1,7 @@
 package de.tudarmstadt.informatik.secuso.phishedu.backend;
 
+import com.google.example.games.basegameutils.GameHelper;
+
 import android.net.Uri;
 
 /**
@@ -12,8 +14,9 @@ public interface BackendControllerInterface {
 	 * This function must be called directly before the first start of the app.
 	 * It will register the caller with the backend for callbacks.
 	 * @param frontend
+	 * @param gamehelper
 	 */
-	void init(FrontendControllerInterface frontend);
+	void init(FrontendControllerInterface frontend, GameHelper gamehelper);
 	
 	/**
 	 * This function sends a Mail to a custom Mail Adress-
@@ -79,5 +82,14 @@ public interface BackendControllerInterface {
 	 * @param data The recept URI
 	 */
 	void onUrlReceive(Uri data);
+	
+	/**
+	 * The user clicks on the Google+ signin button.
+	 */
+	void signIn();
+	/**
+	 * The user clicks on the Google+ signout button.
+	 */
+	void signOut();
 	
 }

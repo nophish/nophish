@@ -12,6 +12,7 @@ import android.widget.Toast;
 import com.google.android.gms.appstate.AppStateClient;
 import com.google.android.gms.games.GamesClient;
 import com.google.example.games.basegameutils.BaseGameActivity;
+import com.google.example.games.basegameutils.GameHelper;
 
 import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.FrontendControllerInterface;
@@ -22,22 +23,16 @@ import de.tudarmstadt.informatik.secuso.phishedu.backend.FrontendControllerInter
  *         splash screen and afterwards a menu is displayed if the user wants to
  *         store his/her score online he/she has to sign into google+
  */
-public class StartMenuActivity extends BaseGameActivity implements
-		FrontendControllerInterface, View.OnClickListener {
+public class StartMenuActivity extends Activity implements
+		FrontendControllerInterface{
 
 	private boolean didAwarenessPart = false;
-
-	public StartMenuActivity() {
-		// request AppStateClient and GamesClient
-		super(BaseGameActivity.CLIENT_APPSTATE | BaseGameActivity.CLIENT_GAMES);
-	}
-
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-
-        BackendController.getInstance().init(this);
+		
+        BackendController.getInstance().init(this,GooglePlusActivity.getInstance().getGameHelper());
 
 		setContentView(R.layout.start_menu);
 		this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
@@ -45,22 +40,16 @@ public class StartMenuActivity extends BaseGameActivity implements
 		// display the logo during 5 seconds
 		// setContentView to activity_start_menu when finished
 
-		findViewById(R.id.sign_in_button).setOnClickListener(this);
-		findViewById(R.id.sign_out_button).setOnClickListener(this); 
 		BackendController.getInstance().onUrlReceive(getIntent().getData());
 	}
 
-	
-
 	public void showLevelOverview(View view) {
-
 		Intent levelGridIntent = new Intent(this, LevelGridActivity.class);
 		startActivity(levelGridIntent);
-
 	}
 	
 	public void goToGooglePlay(View view) {
-		Intent googlePlayIntent = new Intent(this, GooglePlusSignInActivity.class);
+		Intent googlePlayIntent = new Intent(this, GooglePlusActivity.class);
 		startActivity(googlePlayIntent);
 	}
 
@@ -136,50 +125,8 @@ public class StartMenuActivity extends BaseGameActivity implements
 	}
 
 	@Override
-	public GamesClient getGamesClient() {
-		return super.getGamesClient();
-	}
-
-	@Override
-	public AppStateClient getAppStateClient() {
-		return super.getAppStateClient();
-	}
-
-	@Override
 	public void onLevelChange(int level) {
 		Intent gameIntent = new Intent(this, AwarenessActivity.class);
 		startActivity(gameIntent);
 	}
-
-	@Override
-	public void onSignInFailed() {
-		// Sign in has failed. So show the user the sign-in button.
-		findViewById(R.id.sign_in_button).setVisibility(View.VISIBLE);
-		findViewById(R.id.sign_out_button).setVisibility(View.GONE);
-	}
-
-	public void onSignInSucceeded() {
-		// show sign-out button, hide the sign-in button
-		findViewById(R.id.sign_in_button).setVisibility(View.GONE);
-		findViewById(R.id.sign_out_button).setVisibility(View.VISIBLE);
-
-		// (your code here: update UI, enable functionality that depends on sign in, etc)
-	}
-	
-	@Override
-	public void onClick(View view) {
-		if (view.getId() == R.id.sign_in_button) {
-			// start the asynchronous sign in flow
-			beginUserInitiatedSignIn();
-		}
-		else if (view.getId() == R.id.sign_out_button) {
-			// sign out.
-			signOut();
-
-			// show sign-in button, hide the sign-out button
-			findViewById(R.id.sign_in_button).setVisibility(View.VISIBLE);
-			findViewById(R.id.sign_out_button).setVisibility(View.GONE);
-		}
-	}
-
 }

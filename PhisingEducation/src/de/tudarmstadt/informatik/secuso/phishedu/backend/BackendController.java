@@ -4,6 +4,10 @@ import java.util.ArrayList;
 import java.util.Random;
 
 
+import com.google.android.gms.appstate.AppState;
+import com.google.android.gms.appstate.AppStateClient;
+import com.google.android.gms.games.GamesClient;
+import com.google.example.games.basegameutils.GameHelper;
 import com.google.gson.Gson;
 
 import de.tudarmstadt.informatik.secuso.phishedu.backend.attacks.IPAttack;
@@ -51,6 +55,7 @@ public class BackendController implements BackendControllerInterface, GameStateL
 	private static BackendController instance = new BackendController();
 	
 	private FrontendControllerInterface frontend;
+	private GameHelper gamehelper;
 	private boolean inited = false;
 	
 	//indexed by UrlType
@@ -104,9 +109,10 @@ public class BackendController implements BackendControllerInterface, GameStateL
 		}
 	}
 	
-	public void init(FrontendControllerInterface frontend){
+	public void init(FrontendControllerInterface frontend, GameHelper gamehelper){
 		this.frontend=frontend;
-		this.progress = new GameProgress(this.frontend.getContext().getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE), this.frontend.getGamesClient(),this.frontend.getAppStateClient(),this);
+		this.gamehelper=gamehelper;
+		this.progress = new GameProgress(this.frontend.getContext().getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE), this.gamehelper.getGamesClient(),this.gamehelper.getAppStateClient(),this);
 		SharedPreferences url_cache = this.frontend.getContext().getSharedPreferences(URL_CACHE_NAME, Context.MODE_PRIVATE);
 		for(PhishAttackType type: CACHE_TYPES){
 		  this.urlCache[type.getValue()]=loadUrls(url_cache, type);
@@ -278,5 +284,16 @@ public class BackendController implements BackendControllerInterface, GameStateL
 	public int getMaxUnlockedLevel() {
 		return this.progress.getMaxUnlockedLevel();
 	}
-	
+
+	@Override
+	public void signIn() {
+		this.checkInitDone();
+		this.gamehelper.beginUserInitiatedSignIn();
+	}
+
+	@Override
+	public void signOut() {
+		this.checkInitDone();
+		this.gamehelper.signOut();
+	}
 }
