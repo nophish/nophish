@@ -1,5 +1,7 @@
 package de.tudarmstadt.informatik.secuso.phishedu.backend;
 
+import android.net.Uri;
+
 /**
  * This is the interface that the backend presents to the frontend.
  * @author Clemens Bergmann <cbergmann@schuhklassert.de>
@@ -71,5 +73,11 @@ public interface BackendControllerInterface {
 	 * @return true of the user clicked the correct part. False otherwise
 	 */
 	boolean partClicked(int part);
+	
+	/**
+	 * When the main activity receives an URI via an Indent pass it to this function so that the backend can handle it.
+	 * @param data The recept URI
+	 */
+	void onUrlReceive(Uri data);
 	
 }

@@ -10,9 +10,7 @@ import de.tudarmstadt.informatik.secuso.phishedu.backend.attacks.IPAttack;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.attacks.Level2Attack;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.attacks.PhishTankURLAttack;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.networkTasks.*;
-import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 
@@ -22,7 +20,7 @@ import android.net.Uri;
  * @author Clemens Bergmann <cbergmann@schuhklassert.de>
  *
  */
-public class BackendController extends BroadcastReceiver implements BackendControllerInterface, GameStateLoadedListener, UrlsLoadedListener {
+public class BackendController implements BackendControllerInterface, GameStateLoadedListener, UrlsLoadedListener {
 	private static final String PREFS_NAME = "PhisheduState";
 	private static final String URL_CACHE_NAME ="urlcache";
 	private static final String LEVEL1_URL = "https://pages.no-phish.de/level1.php#bottom";
@@ -255,12 +253,6 @@ public class BackendController extends BroadcastReceiver implements BackendContr
 	public int getPoints(){
 		checkinited();
 		return this.progress.getPoints();
-	}
-	
-	@Override
-	public void onReceive(Context context, Intent intent) {
-		Uri data = intent.getData();
-		this.onUrlReceive(data);
 	}
 	
 	public void onUrlReceive(Uri data){
