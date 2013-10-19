@@ -22,9 +22,11 @@
     <com.google.android.gms.common.SignInButton
         android:id="@+id/sign_in_button"
         android:layout_below="@+id/google_plus_text"
-        android:layout_marginTop="@dimen/margin_standard"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="@dimen/btn_standard_height"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/margin_large"
+        android:minWidth="@dimen/btn_menu_width" />
 
     <Button
         android:id="@+id/button_show_online_achievement"
