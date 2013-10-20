@@ -1,12 +1,6 @@
 package de.tudarmstadt.informatik.secuso.phishedu.backend;
 
-import java.io.BufferedInputStream;
 import java.io.InputStream;
-import java.io.StringReader;
-import java.io.StringWriter;
-import java.nio.charset.Charset;
-
-
 import java.util.ArrayList;
 import java.util.Locale;
 import java.util.Scanner;
@@ -19,10 +13,11 @@ import com.google.android.gms.games.GamesClient;
 import com.google.example.games.basegameutils.GameHelper;
 import com.google.gson.Gson;
 
-import de.tudarmstadt.informatik.secuso.phishedu.R;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.attacks.IPAttack;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.attacks.Level2Attack;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.attacks.PhishTankURLAttack;
+import de.tudarmstadt.informatik.secuso.phishedu.backend.generator.KeepGenerator;
+import de.tudarmstadt.informatik.secuso.phishedu.backend.generator.SudomainGenerator;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.networkTasks.*;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -44,12 +39,16 @@ public class BackendController implements BackendControllerInterface, GameStateL
 	//For each level we can define what Attacks are applied
 	//LEVEL 0-1 are empty because they don't 
 	@SuppressWarnings("rawtypes")
-	private static final Class[][] ATTACK_TYPES_PER_LEVEL = {
+	private static Class[][] ATTACK_TYPES_PER_LEVEL = {
 		{}, //Level0: Awareness
 		{}, //Level1: Find URLBar in Browser
 		{Level2Attack.class}, //Level2: Select Domain name
 		{IPAttack.class},
 		{IPAttack.class, PhishTankURLAttack.class},
+	};
+	@SuppressWarnings("rawtypes")
+	private static Class[][] GENERATORS_PER_LEVEL = {
+		{SudomainGenerator.class, KeepGenerator.class}, //Currently we use the same generators for all levels
 	};
 	private static final int POINTS_PER_LEVEL = 100;
 	private static final int URL_CACHE_SIZE = 100;
@@ -100,6 +99,7 @@ public class BackendController implements BackendControllerInterface, GameStateL
 		for(PhishAttackType type: CACHE_TYPES){
 		  this.urlCache[type.getValue()]=new PhishURLInterface[0];
 		}
+		
 	}
 	
 	/**
@@ -202,22 +202,30 @@ public class BackendController implements BackendControllerInterface, GameStateL
 	@Override
 	public String[] getNextUrl() {
 		checkinited();
-		Random rand=new Random();
-		//First we decide if we want to give a phish URL or not
-		PhishURLInterface base_url=this.urlCache[PhishAttackType.NoPhish.getValue()][rand.nextInt(this.urlCache[PhishAttackType.NoPhish.getValue()].length)];
-		if(rand.nextFloat()>ATTACK_THRESHOULD){
-			int use_level=(this.getLevel() < ATTACK_TYPES_PER_LEVEL.length) ? this.getLevel() : ATTACK_TYPES_PER_LEVEL.length-1;
-			Class<? extends PhishURLInterface>[] attacks = ATTACK_TYPES_PER_LEVEL[use_level];
-			Class<? extends PhishURLInterface> attack = attacks[rand.nextInt(attacks.length)];
-			try {
-				base_url=attack.getConstructor(PhishURLInterface.class).newInstance(base_url);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
+		//First we choose a random start URL
+		PhishURLInterface base_url=getPhishURL(PhishAttackType.NoPhish);
+		//then we decorate the URL with a generator
+		base_url=decorateUrl(base_url, GENERATORS_PER_LEVEL, getLevel());
+		//Lastly we might apply a attack
+		if(new Random().nextFloat()>ATTACK_THRESHOULD){
+			base_url=decorateUrl(base_url, ATTACK_TYPES_PER_LEVEL, getLevel());
 		}
 		
 		this.current_url=base_url;
 		return (String[]) this.current_url.getParts();
+	}
+	
+	private PhishURLInterface decorateUrl(PhishURLInterface base_url, Class<? extends AbstractUrlDecorator>[][] options, int level){
+		Random rand=new Random();
+		int use_level=Math.min(level, options.length-1);
+		Class<? extends AbstractUrlDecorator>[] attacks = options[use_level];
+		Class<? extends AbstractUrlDecorator> attack = attacks[rand.nextInt(attacks.length)];
+		try {
+			base_url=attack.getConstructor(PhishURLInterface.class).newInstance(base_url);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return base_url;
 	}
 
 	@Override
