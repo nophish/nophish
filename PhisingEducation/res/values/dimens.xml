@@ -18,6 +18,8 @@
     <dimen name="margin_xlarge">75dp</dimen>
     <dimen name="margin_xxlarge">100dp</dimen>
 
+    <!-- height -->
+	<dimen name="height_large">540dp</dimen>
     <!-- fontsizes -->
     <dimen name="font_size_large">35sp</dimen>
     <dimen name="font_size_xlarge">40sp</dimen>

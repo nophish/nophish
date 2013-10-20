@@ -29,6 +29,7 @@ public class Level1AddressBarActivity extends FragmentActivity implements
 	private ViewPager mPager;
 	private ImageView imgNext;
 	private ImageView imgPrevious;
+	private ActionBar ab;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -36,9 +37,9 @@ public class Level1AddressBarActivity extends FragmentActivity implements
 		this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
 		setContentView(R.layout.level_1_splash);
-		ActionBar ab = getActionBar();
 
-		ab.setTitle(R.string.level_1_address_bar_title);
+		ab = getActionBar();
+		ab.setTitle(R.string.level_1_title);
 
 		new CountDownTimer(Constants.MILLIS_IN_FUTURE,
 				Constants.COUNT_DOWN_INTERVAL) {
@@ -49,12 +50,15 @@ public class Level1AddressBarActivity extends FragmentActivity implements
 			@Override
 			public void onFinish() {
 
+				ab.setTitle(R.string.level_1);
+				ab.setSubtitle(R.string.level_1_address_bar_subtitle_1);
+				ab.setIcon(R.drawable.emblem_library);
+
 				setContentView(R.layout.fragment_pager);
 				// set the new Content of your activity
 				imgPrevious = (ImageView) findViewById(R.id.game_intro_arrow_back);
 				imgPrevious.setVisibility(View.INVISIBLE);
 
-				
 				imgPrevious.setOnClickListener(new OnClickListener() {
 					public void onClick(View v) {
 						previousPage();
@@ -101,6 +105,22 @@ public class Level1AddressBarActivity extends FragmentActivity implements
 	public void onPageSelected(int position) {
 		checkAndHidePreviousButton(position);
 		checkAndHideNextButton(mPager.getAdapter().getCount(), position);
+
+		// adjust actionbar title
+		adjustActionBarTitle(position);
+	}
+
+	private void adjustActionBarTitle(int position) {
+		ab.setTitle(getString(R.string.level_1));
+
+		switch (position) {
+		case 0:
+			ab.setSubtitle(R.string.level_1_address_bar_subtitle_1);
+			break;
+		default:
+			ab.setSubtitle(R.string.level_1_address_bar_subtitle_2);
+			break;
+		}
 	}
 
 	private void nextPage() {
