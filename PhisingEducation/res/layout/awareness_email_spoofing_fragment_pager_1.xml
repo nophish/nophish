@@ -28,7 +28,7 @@
             android:layout_marginTop="@dimen/margin_standard"
             android:layout_marginLeft="@dimen/margin_small"
             android:layout_marginRight="@dimen/margin_small"
-            android:text="@string/awareness_text_email_spoof_start"
+            android:text="@string/awareness_text_what_is_phishing"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
     </RelativeLayout>

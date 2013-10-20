@@ -4,7 +4,6 @@ import android.app.ActionBar;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
@@ -33,7 +32,7 @@ public class AwarenessActivity extends FragmentActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.awareness);
+		setContentView(R.layout.awareness_01);
 		ActionBar ab = getActionBar();
 		ab.setTitle(R.string.title_anti_phishing);
 		this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
@@ -47,23 +46,31 @@ public class AwarenessActivity extends FragmentActivity {
 	}
 
 
-	public void goToAwareness01(View view) {
+	public void goToAwarenessFinal01(View view) {
 		setContentView(R.layout.awareness_final_01);
 	}
 
-	public void goToAwareness02(View view) {
+	public void goToAwarenessFinal02(View view) {
 		setContentView(R.layout.awareness_final_02);
 	}
 
-	public void goToAwareness03(View view) {
+	public void goToAwarenessFinal03(View view) {
 		setContentView(R.layout.awareness_final_03);
 	
 	}
 
-	public void goToAwareness04(View view) {
+	public void goToAwarenessFinal04(View view) {
 		setContentView(R.layout.awareness_final_04_lets_start);
 	}
 
+	public void goToAwareness01(View view){
+		setContentView(R.layout.awareness_01);
+	}
+	
+	public void goToAwareness02(View view){
+		setContentView(R.layout.awareness_02);
+	}
+	
 	public void goToEmailForm(View view) {
 		setContentView(R.layout.awareness_send_email_form);
 
@@ -129,11 +136,6 @@ public class AwarenessActivity extends FragmentActivity {
 
 	}
 
-//	public void goToGameIntro(View view) {
-//		Intent gameIntroIntent = new Intent(this, IntroGameActivity.class);
-//		gameIntroIntent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-//		startActivity(gameIntroIntent);
-//	}
 
 	public void goToLetsStart(View view) {
 		setContentView(R.layout.awareness_final_04_lets_start);

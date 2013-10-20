@@ -63,7 +63,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:onClick="goToAwareness03"
+        android:onClick="goToAwarenessFinal03"
         android:src="@drawable/forward" />
 
         
@@ -73,7 +73,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:onClick="goToAwareness01"
+        android:onClick="goToAwarenessFinal01"
         android:src="@drawable/back" />
     
 </RelativeLayout>

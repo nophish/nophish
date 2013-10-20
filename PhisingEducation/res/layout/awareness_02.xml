@@ -16,10 +16,8 @@
         android:layout_marginLeft="@dimen/margin_small"
         android:layout_marginRight="@dimen/margin_small"
         android:layout_marginTop="@dimen/margin_standard"
-        android:text="@string/awareness_text_email_spoof_start"
+        android:text="@string/awareness_everybody_can_phish"
         android:textAppearance="?android:attr/textAppearanceMedium" />
-
-
 
     <ImageView
         android:id="@+id/game_intro_arrow_forward"
@@ -27,7 +25,16 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:onClick="goToEmailForm"
+        android:onClick= "goToEmailForm"
         android:src="@drawable/forward" />
+
+    <ImageView
+        android:id="@+id/game_intro_arrow_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:onClick="goToAwareness01"
+        android:src="@drawable/back" />
 
 </RelativeLayout>
