@@ -81,8 +81,9 @@
     <!-- menu buttons -->
     <string name="sign_out">Sign Out</string>
     <string name="button_play">Spielen</string>
-    <string name="button_level_overview">Deine Leistung</string>
-    <string name="button_more_info">Mehr über Phishing</string>
+    <string name="button_level_overview">Level-Überblick</string>
+    <string name="button_more_info">Mehr Informationen</string>
+    <string name="button_about">Über uns</string>
     <string name="button_show_online_achievement">Deine Leistung (online)</string>
     <string name="button_show_leaderboard_rate">Leaderboard Rate (online)</string>
     <string name="button_show_leaderboard_total">Leaderboard Total (online)</string>
