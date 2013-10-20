@@ -1,18 +1,30 @@
 package de.tudarmstadt.informatik.secuso.phishedu.backend;
 
+import java.io.BufferedInputStream;
+import java.io.InputStream;
+import java.io.StringReader;
+import java.io.StringWriter;
+import java.nio.charset.Charset;
+
+
 import java.util.ArrayList;
+import java.util.Locale;
+import java.util.Scanner;
+
 import java.util.Random;
 
 
+import com.google.android.gms.appstate.AppStateClient;
+import com.google.android.gms.games.GamesClient;
+import com.google.example.games.basegameutils.GameHelper;
 import com.google.gson.Gson;
 
+import de.tudarmstadt.informatik.secuso.phishedu.R;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.attacks.IPAttack;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.attacks.Level2Attack;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.attacks.PhishTankURLAttack;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.networkTasks.*;
-import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 
@@ -22,10 +34,10 @@ import android.net.Uri;
  * @author Clemens Bergmann <cbergmann@schuhklassert.de>
  *
  */
-public class BackendController extends BroadcastReceiver implements BackendControllerInterface, GameStateLoadedListener, UrlsLoadedListener {
+public class BackendController implements BackendControllerInterface, GameStateLoadedListener, UrlsLoadedListener {
 	private static final String PREFS_NAME = "PhisheduState";
 	private static final String URL_CACHE_NAME ="urlcache";
-	private static final String LEVEL1_URL = "https://pages.no-phish.de/level1.php";
+	private static final String LEVEL1_URL = "https://pages.no-phish.de/level1.php#bottom";
 	private static final PhishAttackType[] CACHE_TYPES = {PhishAttackType.AnyPhish, PhishAttackType.NoPhish};
 	//the probability that we apply an Attack on each round
 	private static final double ATTACK_THRESHOULD = 0.5;
@@ -42,17 +54,18 @@ public class BackendController extends BroadcastReceiver implements BackendContr
 	private static final int POINTS_PER_LEVEL = 100;
 	private static final int URL_CACHE_SIZE = 100;
 	
-	private static PhishURL deserializeURL(String serialized){
-		return new Gson().fromJson(serialized, PhishURL.class);
+	private static PhishURL[] deserializeURLs(String serialized){
+		return new Gson().fromJson(serialized, PhishURL[].class);
 	}
 	
-	private static String serializeURL(PhishURLInterface object){
+	private static String serializeURLs(PhishURLInterface[] object){
 		return new Gson().toJson(object);
 	}
 	
 	private static BackendController instance = new BackendController();
 	
 	private FrontendControllerInterface frontend;
+	private GameHelper gamehelper;
 	private boolean inited = false;
 	
 	//indexed by UrlType
@@ -83,9 +96,9 @@ public class BackendController extends BroadcastReceiver implements BackendContr
 	 * Private constructor for singelton.
 	 */
 	private BackendController() {
-		this.urlCache=new PhishURL[CACHE_TYPES.length][];
+		this.urlCache=new PhishURLInterface[CACHE_TYPES.length][];
 		for(PhishAttackType type: CACHE_TYPES){
-		  this.urlCache[type.getValue()]=new PhishURL[0];
+		  this.urlCache[type.getValue()]=new PhishURLInterface[0];
 		}
 	}
 	
@@ -106,9 +119,14 @@ public class BackendController extends BroadcastReceiver implements BackendContr
 		}
 	}
 	
-	public void init(FrontendControllerInterface frontend){
+	public void init(FrontendControllerInterface frontend, GameHelper gamehelper){
 		this.frontend=frontend;
-		this.progress = new GameProgress(this.frontend.getContext().getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE), this.frontend.getGamesClient(),this.frontend.getAppStateClient(),this);
+		this.gamehelper=gamehelper;
+		SharedPreferences prefs = this.frontend.getContext().getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+		GamesClient gamesclient = this.gamehelper.getGamesClient();
+		AppStateClient appstateclient = this.gamehelper.getAppStateClient();
+		Context context = this.frontend.getContext();
+		this.progress = new GameProgress(context, prefs, gamesclient,appstateclient,this);
 		SharedPreferences url_cache = this.frontend.getContext().getSharedPreferences(URL_CACHE_NAME, Context.MODE_PRIVATE);
 		for(PhishAttackType type: CACHE_TYPES){
 		  this.urlCache[type.getValue()]=loadUrls(url_cache, type);
@@ -117,21 +135,27 @@ public class BackendController extends BroadcastReceiver implements BackendContr
 	
 	private void CacheUrls(SharedPreferences cache, PhishAttackType type, PhishURLInterface[] urls){
 		SharedPreferences.Editor editor = cache.edit();
-		for(int i=0;i<urls.length;i++){
-			editor.putString(type.toString()+"["+i+"]", serializeURL(urls[i]));
-		}
+		editor.putString(type.toString(), serializeURLs(urls));
 		editor.commit();
 	}
 	
-	private PhishURL[] loadUrls(SharedPreferences cache, PhishAttackType type){
+	private PhishURLInterface[] loadUrls(SharedPreferences cache, PhishAttackType type){
 		//first we load the cached value if available
-		ArrayList<PhishURL> result = new ArrayList<PhishURL>();
-		for(int i=0; cache.contains(type.toString()+"["+i+"]"); i++){
-			result.add(deserializeURL(cache.getString(type.toString()+"["+i+"]", "")));
+		ArrayList<PhishURLInterface> result = new ArrayList<PhishURLInterface>();
+		PhishURL[] urls=deserializeURLs(cache.getString(type.toString(), "[]"));
+		//If the values are still empty we load the factory defaults 
+		if(urls.length==0){
+			int resource = frontend.getContext().getResources().getIdentifier(type.toString().toLowerCase(Locale.US), "raw", frontend.getContext().getPackageName());
+			InputStream input = frontend.getContext().getResources().openRawResource(resource);
+			String json = new Scanner(input,"UTF-8").useDelimiter("\\A").next();
+			urls = (new Gson()).fromJson(json, PhishURL[].class);
+		}
+		for (PhishURL phishURL : urls) {
+			result.add(phishURL);
 		}
 		//then we get the value from the online store
 		new GetUrlsTask(this).execute(URL_CACHE_SIZE,type.getValue());
-		return result.toArray(new PhishURL[0]);
+		return result.toArray(new PhishURLInterface[0]);
 	}
 	
 	public void urlsReturned(PhishURLInterface[] urls, PhishAttackType type){
@@ -145,6 +169,10 @@ public class BackendController extends BroadcastReceiver implements BackendContr
 	}
 	
 	private void checkInitDone(){
+		//This means we already are initialized
+		if(this.inited){
+			return;
+		}
 		if (this.urlCache[PhishAttackType.NoPhish.getValue()].length >0 && this.urlCache[PhishAttackType.AnyPhish.getValue()].length > 0 &&  this.gamestate_loaded){
 			this.inited=true;
 			this.frontend.initDone();
@@ -257,9 +285,10 @@ public class BackendController extends BroadcastReceiver implements BackendContr
 		return this.progress.getPoints();
 	}
 	
-	@Override
-	public void onReceive(Context context, Intent intent) {
-		Uri data = intent.getData();	
+	public void onUrlReceive(Uri data){
+		if(data == null){
+			return;
+		}
 		if(data.getHost()=="maillink"){
 			this.proceedlevel();
 			this.frontend.MailReturned();
@@ -279,5 +308,16 @@ public class BackendController extends BroadcastReceiver implements BackendContr
 	public int getMaxUnlockedLevel() {
 		return this.progress.getMaxUnlockedLevel();
 	}
-	
+
+	@Override
+	public void signIn() {
+		checkinited();
+		this.gamehelper.beginUserInitiatedSignIn();
+	}
+
+	@Override
+	public void signOut() {
+		checkinited();
+		this.gamehelper.signOut();
+	}
 }

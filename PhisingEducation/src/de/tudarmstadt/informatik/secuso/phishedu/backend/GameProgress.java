@@ -1,7 +1,8 @@
 package de.tudarmstadt.informatik.secuso.phishedu.backend;
 
+import android.content.Context;
+
 import android.content.SharedPreferences;
-import android.content.res.Resources;
 
 import com.google.android.gms.appstate.OnStateLoadedListener;
 import com.google.android.gms.games.GamesClient;
@@ -20,6 +21,7 @@ import de.tudarmstadt.informatik.secuso.phishedu.R;
  *
  */
 public class GameProgress implements OnStateLoadedListener{
+	private Context context;
 	private SharedPreferences local_store;
 	private GamesClient game_store;
 	private AppStateClient remote_store;
@@ -39,13 +41,15 @@ public class GameProgress implements OnStateLoadedListener{
 	private State state;
 
 	/**
-	 * This is the default constructor. 
+	 * This is the default constructor.
+	 * @param context We need this for getting the resources for the achievements 
 	 * @param local_store This is the local persistent database where we save the gamestate.
 	 * @param game_store This is the GamesClient for unlocking Achievements and Leaderboards.
 	 * @param remote_store This is the remote persistent database to save the gamestate.
 	 * @param listener
 	 */
-	public GameProgress(SharedPreferences local_store, GamesClient game_store, AppStateClient remote_store, GameStateLoadedListener listener) {
+	public GameProgress(Context context, SharedPreferences local_store, GamesClient game_store, AppStateClient remote_store, GameStateLoadedListener listener) {
+		this.context=context;
 		this.local_store=local_store;
 		this.game_store=game_store;
 		this.remote_store=remote_store;
@@ -74,12 +78,12 @@ public class GameProgress implements OnStateLoadedListener{
 		//update Leaderboards
 		if(game_store.isConnected()){
 			if(result == PhishResult.Phish_Detected){
-				game_store.submitScore(Resources.getSystem().getString(R.string.leaderboard_detected_phishing_urls),this.state.results[result.getValue()] );
-				game_store.incrementAchievement(Resources.getSystem().getString(R.string.achievement_plakton),this.state.detected_phish_behind+1);
-				game_store.incrementAchievement(Resources.getSystem().getString(R.string.achievement_anchovy),this.state.detected_phish_behind+1);
-				game_store.incrementAchievement(Resources.getSystem().getString(R.string.achievement_trout),this.state.detected_phish_behind+1);
-				game_store.incrementAchievement(Resources.getSystem().getString(R.string.achievement_tuna),this.state.detected_phish_behind+1);
-				game_store.incrementAchievement(Resources.getSystem().getString(R.string.achievement_whale_shark),this.state.detected_phish_behind+1);
+				game_store.submitScore(context.getResources().getString(R.string.leaderboard_detected_phishing_urls),this.state.results[result.getValue()] );
+				game_store.incrementAchievement(context.getResources().getString(R.string.achievement_plakton),this.state.detected_phish_behind+1);
+				game_store.incrementAchievement(context.getResources().getString(R.string.achievement_anchovy),this.state.detected_phish_behind+1);
+				game_store.incrementAchievement(context.getResources().getString(R.string.achievement_trout),this.state.detected_phish_behind+1);
+				game_store.incrementAchievement(context.getResources().getString(R.string.achievement_tuna),this.state.detected_phish_behind+1);
+				game_store.incrementAchievement(context.getResources().getString(R.string.achievement_whale_shark),this.state.detected_phish_behind+1);
 				this.state.detected_phish_behind=0;
 			}
 			if(result == PhishResult.Phish_Detected || result ==  PhishResult.Phish_NotDetected){
@@ -88,7 +92,7 @@ public class GameProgress implements OnStateLoadedListener{
 				int detected_phish = this.state.results[PhishResult.Phish_Detected.getValue()];
 				//(2) No divByZero possible because of (1)
 				long rate = detected_phish / total_phish;
-				game_store.submitScore(Resources.getSystem().getString(R.string.leaderboard_detection_rate),rate );
+				game_store.submitScore(context.getResources().getString(R.string.leaderboard_detection_rate),rate );
 			}
 		}else{
 			this.state.detected_phish_behind+=1;
@@ -145,13 +149,13 @@ public class GameProgress implements OnStateLoadedListener{
 	private void unlockAchievements(){
 		//unlock Achievements
 		if(this.state.app_started){
-			game_store.unlockAchievement(Resources.getSystem().getString(R.string.achievement_welcome));
+			game_store.unlockAchievement(context.getResources().getString(R.string.achievement_welcome));
 		}
 		if(this.state.level>1){
-			game_store.unlockAchievement(Resources.getSystem().getString(R.string.achievement_search_and_rescue));
+			game_store.unlockAchievement(context.getResources().getString(R.string.achievement_search_and_rescue));
 		}
 		if(this.state.level>2){
-			game_store.unlockAchievement(Resources.getSystem().getString(R.string.achievement_know_your_poison));
+			game_store.unlockAchievement(context.getResources().getString(R.string.achievement_know_your_poison));
 		}
 	}
 

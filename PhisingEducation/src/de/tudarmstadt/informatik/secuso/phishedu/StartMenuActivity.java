@@ -11,9 +11,12 @@ import android.widget.Toast;
 
 import com.google.android.gms.appstate.AppStateClient;
 import com.google.android.gms.games.GamesClient;
+import com.google.example.games.basegameutils.BaseGameActivity;
+import com.google.example.games.basegameutils.GameHelper;
 
 import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.FrontendControllerInterface;
+import de.tudarmstadt.informatik.secuso.phishedu.prototype.FindAddressBarExerciseActivity;
 
 /**
  * 
@@ -21,16 +24,21 @@ import de.tudarmstadt.informatik.secuso.phishedu.backend.FrontendControllerInter
  *         splash screen and afterwards a menu is displayed if the user wants to
  *         store his/her score online he/she has to sign into google+
  */
-public class StartMenuActivity extends Activity implements
-		FrontendControllerInterface {
+public class StartMenuActivity extends BaseGameActivity implements
+		FrontendControllerInterface, View.OnClickListener{
 
 	private boolean didAwarenessPart = false;
-
+	
+	public StartMenuActivity() {
+		// request AppStateClient and GamesClient
+		super(BaseGameActivity.CLIENT_APPSTATE | BaseGameActivity.CLIENT_GAMES);
+	}
+	
+	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-
-//		 BackendController.getInstance().init(this);
+		BackendController.getInstance().init(this,this.mHelper);
 
 		setContentView(R.layout.start_menu);
 		this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
@@ -38,22 +46,37 @@ public class StartMenuActivity extends Activity implements
 		// display the logo during 5 seconds
 		// setContentView to activity_start_menu when finished
 
-		// findViewById(R.id.sign_in_button).setOnClickListener(this);
-		// findViewById(R.id.sign_out_button).setOnClickListener(this);
+		BackendController.getInstance().onUrlReceive(getIntent().getData());
 	}
 
-	
-
 	public void showLevelOverview(View view) {
-
 		Intent levelGridIntent = new Intent(this, LevelGridActivity.class);
 		startActivity(levelGridIntent);
-
 	}
 	
 	public void goToGooglePlay(View view) {
-		Intent googlePlayIntent = new Intent(this, GooglePlusSignInActivity.class);
-		startActivity(googlePlayIntent);
+		setContentView(R.layout.google_plus);
+		
+		findViewById(R.id.sign_in_button).setOnClickListener(this);
+		findViewById(R.id.sign_out_button).setOnClickListener(this);
+		
+		if (this.getGamesClient().isConnected()) {
+			// show sign-in button, hide the sign-out button
+			findViewById(R.id.sign_in_button).setVisibility(View.GONE);
+			findViewById(R.id.sign_out_button).setVisibility(View.VISIBLE);
+			
+			findViewById(R.id.button_show_leaderboard_rate).setVisibility(View.VISIBLE);
+			findViewById(R.id.button_show_leaderboard_total).setVisibility(View.VISIBLE);
+			findViewById(R.id.button_show_online_achievement).setVisibility(View.VISIBLE);
+		}else{
+			// show sign-in button, hide the sign-out button
+			findViewById(R.id.sign_in_button).setVisibility(View.VISIBLE);
+			findViewById(R.id.sign_out_button).setVisibility(View.GONE);
+			
+			findViewById(R.id.button_show_leaderboard_rate).setVisibility(View.GONE);
+			findViewById(R.id.button_show_leaderboard_total).setVisibility(View.GONE);
+			findViewById(R.id.button_show_online_achievement).setVisibility(View.GONE);
+		}
 	}
 
 	public void showMoreInfo(View view) {
@@ -86,10 +109,6 @@ public class StartMenuActivity extends Activity implements
 	protected void mailSendTest() {
 		BackendController.getInstance().sendMail("cbergmann@schuhklassert.de",
 				"cbergmann@schuhklassert.de", "This is a user message");
-	}
-
-	public void leve1Test() {
-		BackendController.getInstance().StartLevel(1);
 	}
 
 	@Override
@@ -132,21 +151,96 @@ public class StartMenuActivity extends Activity implements
 	}
 
 	@Override
-	public GamesClient getGamesClient() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public AppStateClient getAppStateClient() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public void onLevelChange(int level) {
-
 		Intent gameIntent = new Intent(this, AwarenessActivity.class);
 		startActivity(gameIntent);
 	}
+
+	@Override
+	public void onSignInFailed() {
+		if(!onGooglePlus()){
+			return; //we are not in googleplus view
+		}
+		
+		// Sign in has failed. So show the user the sign-in button.
+		findViewById(R.id.sign_in_button).setVisibility(View.VISIBLE);
+		findViewById(R.id.sign_out_button).setVisibility(View.GONE);
+		
+		findViewById(R.id.button_show_leaderboard_rate).setVisibility(View.GONE);
+		findViewById(R.id.button_show_leaderboard_total).setVisibility(View.GONE);
+		findViewById(R.id.button_show_online_achievement).setVisibility(View.GONE);
+	}
+
+	public void onSignInSucceeded() {
+		if(!onGooglePlus()){
+			return; //we are not in googleplus view
+		}
+		// show sign-out button, hide the sign-in button
+		findViewById(R.id.sign_in_button).setVisibility(View.GONE);
+		findViewById(R.id.sign_out_button).setVisibility(View.VISIBLE);
+		
+		findViewById(R.id.button_show_leaderboard_rate).setVisibility(View.VISIBLE);
+		findViewById(R.id.button_show_leaderboard_total).setVisibility(View.VISIBLE);
+		findViewById(R.id.button_show_online_achievement).setVisibility(View.VISIBLE);
+
+		// (your code here: update UI, enable functionality that depends on sign in, etc)
+	}
+	private boolean onGooglePlus(){
+		return findViewById(R.id.sign_in_button) != null;
+	}
+	
+	@Override
+	public void onClick(View view) {
+		if (view.getId() == R.id.sign_in_button) {
+			// start the asynchronous sign in flow
+			BackendController.getInstance().signIn();
+		}
+		else if (view.getId() == R.id.sign_out_button) {
+			// sign out.
+			BackendController.getInstance().signOut();
+
+			// show sign-in button, hide the sign-out button
+			findViewById(R.id.sign_in_button).setVisibility(View.VISIBLE);
+			findViewById(R.id.sign_out_button).setVisibility(View.GONE);
+			
+			findViewById(R.id.button_show_leaderboard_rate).setVisibility(View.GONE);
+			findViewById(R.id.button_show_leaderboard_total).setVisibility(View.GONE);
+			findViewById(R.id.button_show_online_achievement).setVisibility(View.GONE);
+		}
+	}
+	
+	public void showLeaderboardRate(View view) {
+		if(this.getGamesClient().isConnected()){
+			startActivityForResult(getGamesClient().getLeaderboardIntent(getResources().getString(R.string.leaderboard_detection_rate)), 1);
+		}else{
+			displayToast("not connected");
+		}
+	}
+
+	public void showLeaderboardTotal(View view) {
+		if(this.getGamesClient().isConnected()){
+			startActivityForResult(getGamesClient().getLeaderboardIntent(getResources().getString(R.string.leaderboard_detected_phishing_urls)), 1);
+		}else{
+			displayToast("not connected");
+		}
+
+	}
+
+	public void showAchievments(View view) {
+		if(this.getGamesClient().isConnected()){
+			startActivityForResult(getGamesClient().getAchievementsIntent(), 0);
+		}else{
+			displayToast("not connected");
+		}
+	}
+	
+	@Override
+	public void onBackPressed(){
+		if(onGooglePlus()){
+			setContentView(R.layout.start_menu);
+		}else {
+			super.onBackPressed();
+		}
+	}
+
 }
