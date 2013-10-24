@@ -16,6 +16,7 @@ import com.google.gson.Gson;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.attacks.IPAttack;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.attacks.Level2Attack;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.attacks.PhishTankURLAttack;
+import de.tudarmstadt.informatik.secuso.phishedu.backend.generator.HTTPGenerator;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.generator.KeepGenerator;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.generator.SudomainGenerator;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.networkTasks.*;
@@ -204,6 +205,10 @@ public class BackendController implements BackendControllerInterface, GameStateL
 		checkinited();
 		//First we choose a random start URL
 		PhishURLInterface base_url=getPhishURL(PhishAttackType.NoPhish);
+		//In the first few level we only use https urls
+		if(getLevel() <= 9){
+			base_url=new HTTPGenerator(base_url);
+		}
 		//then we decorate the URL with a generator
 		base_url=decorateUrl(base_url, GENERATORS_PER_LEVEL, getLevel());
 		//Lastly we might apply a attack
@@ -266,7 +271,7 @@ public class BackendController implements BackendControllerInterface, GameStateL
 		this.progress.setLevel(level);
 	}
 	
-	private int nextLevelPoints(){
+	public int nextLevelPoints(){
 		return POINTS_PER_LEVEL;
 	}
 
