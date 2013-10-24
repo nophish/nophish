@@ -1,6 +1,5 @@
 package de.tudarmstadt.informatik.secuso.phishedu;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
@@ -9,14 +8,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
-import com.google.android.gms.appstate.AppStateClient;
-import com.google.android.gms.games.GamesClient;
 import com.google.example.games.basegameutils.BaseGameActivity;
-import com.google.example.games.basegameutils.GameHelper;
 
 import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.FrontendControllerInterface;
-import de.tudarmstadt.informatik.secuso.phishedu.prototype.FindAddressBarExerciseActivity;
 
 /**
  * 
@@ -42,9 +37,6 @@ public class StartMenuActivity extends BaseGameActivity implements
 
 		setContentView(R.layout.start_menu);
 		this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-
-		// display the logo during 5 seconds
-		// setContentView to activity_start_menu when finished
 
 		BackendController.getInstance().onUrlReceive(getIntent().getData());
 	}

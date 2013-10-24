@@ -13,10 +13,11 @@
         android:id="@+id/menu_button_level_overview"
         android:layout_width="wrap_content"
         android:layout_height="@dimen/btn_standard_height"
-        android:minWidth="@dimen/btn_standard_width"
         android:layout_below="@+id/menu_button_play"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/margin_small"
+        android:background="@drawable/button_grey"
+        android:minWidth="@dimen/btn_standard_width"
         android:onClick="showLevelOverview"
         android:text="@string/button_level_overview" />
 
@@ -27,6 +28,7 @@
         android:layout_alignLeft="@+id/menu_button_level_overview"
         android:layout_below="@+id/menu_button_level_overview"
         android:layout_marginTop="@dimen/margin_small"
+        android:background="@drawable/button_grey"
         android:minWidth="@dimen/btn_standard_width"
         android:text="@string/button_show_lectures" />
 
@@ -36,7 +38,8 @@
         android:layout_height="@dimen/btn_standard_height"
         android:layout_alignLeft="@+id/menu_button_level_overview"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="84dp"
+        android:layout_marginTop="@dimen/margin_large"
+        android:background="@drawable/button_green"
         android:minWidth="@dimen/btn_standard_width"
         android:onClick="startGame"
         android:text="@string/button_play" />
@@ -48,18 +51,31 @@
         android:layout_alignLeft="@+id/menu_button_social"
         android:layout_below="@+id/menu_button_social"
         android:layout_marginTop="@dimen/margin_large"
+        android:background="@drawable/button_grey"
         android:minWidth="@dimen/btn_standard_width"
         android:onClick="showMoreInfo"
         android:text="@string/button_more_info" />
 
     <Button
+        android:id="@+id/menu_button_about"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/btn_standard_height"
+        android:layout_below="@+id/menu_button_more_info"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/margin_small"
+        android:background="@drawable/button_grey"
+        android:minWidth="@dimen/btn_standard_width"
+        android:text="@string/button_about" />
+
+    <Button
         android:id="@+id/menu_button_social"
         android:layout_width="wrap_content"
         android:layout_height="@dimen/btn_standard_height"
-        android:minWidth="@dimen/btn_standard_width"
         android:layout_below="@+id/menu_button_show_lectures"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/margin_small"
+        android:background="@drawable/button_grey"
+        android:minWidth="@dimen/btn_standard_width"
         android:onClick="goToGooglePlay"
         android:text="@string/button_social" />
 
