@@ -8,24 +8,18 @@ import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishURLInterface;
  * @author Clemens Bergmann <cbergmann@schuhklassert.de>
  *
  */
-public class SudomainGenerator extends BaseGenerator {
+public class HTTPGenerator extends BaseGenerator {
 
 	/**
 	 * See {@link BaseGenerator#BaseGenerator(PhishURLInterface)}
 	 * @param object See {@link BaseGenerator#BaseGenerator(PhishURLInterface)}
 	 */
-	public SudomainGenerator(PhishURLInterface object) {super(object);}
+	public HTTPGenerator(PhishURLInterface object) {super(object);}
 	
 	@Override
 	public String[] getParts(){
 		String[] parts = this.object.getParts();
+		parts[0]="http:";
 		return parts;
 	}
-	
-	@Override
-	public boolean partClicked(int part) {
-		return part == 3;
-	}
-	
-
 }

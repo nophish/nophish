@@ -1,8 +1,8 @@
 package de.tudarmstadt.informatik.secuso.phishedu.backend.generator;
 
+import de.tudarmstadt.informatik.secuso.phishedu.backend.AbstractUrlDecorator;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishAttackType;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishURLInterface;
-import de.tudarmstadt.informatik.secuso.phishedu.backend.attacks.AbstractAttack;
 
 /**
  * This is the Base Class of all Generators.
@@ -10,7 +10,7 @@ import de.tudarmstadt.informatik.secuso.phishedu.backend.attacks.AbstractAttack;
  * @author Clemens Bergmann <cbergmann@schuhklassert.de>
  *
  */
-public class BaseGenerator extends AbstractAttack {
+public class BaseGenerator extends AbstractUrlDecorator {
 
 	/**
 	 * To build an Generator we need a url to decorate
@@ -22,8 +22,6 @@ public class BaseGenerator extends AbstractAttack {
 	
 	@Override
 	public PhishAttackType getAttackType() {
-		return PhishAttackType.IP;
+		return PhishAttackType.NoPhish;
 	}
-	
-
 }
