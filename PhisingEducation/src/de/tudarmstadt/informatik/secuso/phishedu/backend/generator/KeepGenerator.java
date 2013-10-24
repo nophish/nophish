@@ -8,11 +8,11 @@ import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishURLInterface;
  * @author Clemens Bergmann <cbergmann@schuhklassert.de>
  *
  */
-public class KeepGenerator extends AbstractGenerator {
+public class KeepGenerator extends BaseGenerator {
 
 	/**
-	 * See {@link AbstractGenerator#AbstractGenerator(PhishURLInterface)}
-	 * @param object See {@link AbstractGenerator#AbstractGenerator(PhishURLInterface)}
+	 * See {@link BaseGenerator#BaseGenerator(PhishURLInterface)}
+	 * @param object See {@link BaseGenerator#BaseGenerator(PhishURLInterface)}
 	 */
 	public KeepGenerator(PhishURLInterface object) {super(object);}
 
