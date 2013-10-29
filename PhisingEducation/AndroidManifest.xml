@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="de.tudarmstadt.informatik.secuso.phishedu"
-    android:versionCode="4"
-    android:versionName="0.2.1" >
+    android:versionCode="6"
+    android:versionName="0.3.1" >
 
     <uses-sdk
         android:minSdkVersion="14"
@@ -39,14 +39,10 @@
         <activity
             android:name="de.tudarmstadt.informatik.secuso.phishedu.BackendTestActivity"
             android:label="@string/title_activity_backend_test" >
-
-            <!--
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            -->
-            <intent-filter>
             </intent-filter>
         </activity>
         <activity
@@ -456,17 +452,6 @@
                 android:value="de.tudarmstadt.informatik.secuso.phishedu.IpNonsenseUrlExerciseHighlightDomainActivity" />
         </activity>
 
-        <receiver android:name="de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController" >
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-
-                <data android:scheme="phishedu" />
-            </intent-filter>
-        </receiver>
-
         <activity
             android:name="de.tudarmstadt.informatik.secuso.phishedu.StartMenuActivity"
             android:label="@string/title_activity_start_menu" >
@@ -474,6 +459,12 @@
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <intent-filter>
+              <action android:name="android.intent.action.VIEW" />
+              <category android:name="android.intent.category.DEFAULT" />
+              <category android:name="android.intent.category.BROWSABLE" />
+              <data android:scheme="phishedu" />
             </intent-filter>
         </activity>
         <activity
@@ -500,6 +491,41 @@
         <activity
             android:name="de.tudarmstadt.informatik.secuso.phishedu.IntroGameActivity"
             android:label="@string/title_activity_intro_game" >
+        </activity>
+        <activity
+            android:name="de.tudarmstadt.informatik.secuso.phishedu.GooglePlusActivity"
+            android:label="@string/title_activity_google_plus_sign_in" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="de.tudarmstadt.informatik.secuso.phishedu.StartMenuActivity" />
+        </activity>
+        <activity
+            android:name="de.tudarmstadt.informatik.secuso.phishedu.levelintros.Level1AddressBarActivity"
+            android:label="@string/title_level_1_addr_bar_activity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="de.tudarmstadt.informatik.secuso.phishedu.StartMenuActivity" />
+        </activity>
+        <activity
+            android:name="de.tudarmstadt.informatik.secuso.phishedu.levelintros.Level2WebAddressesActivity"
+            android:label="@string/title_activity_level2_web_addresses" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="de.tudarmstadt.informatik.secuso.phishedu.StartMenuActivity" />
+        </activity>
+        <activity
+            android:name="de.tudarmstadt.informatik.secuso.phishedu.levelintros.Level3IpNonsenseActivity"
+            android:label="@string/title_activity_level3_ip_nonsense" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="de.tudarmstadt.informatik.secuso.phishedu.StartMenuActivity" />
+        </activity>
+        <activity
+            android:name="de.tudarmstadt.informatik.secuso.phishedu.levelintros.Level4SubdomainAddressesActivity"
+            android:label="@string/title_activity_level4_subdomain_addresses" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="de.tudarmstadt.informatik.secuso.phishedu.StartMenuActivity" />
         </activity>
     </application>
 

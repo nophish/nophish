@@ -6,23 +6,31 @@ package de.tudarmstadt.informatik.secuso.phishedu.backend;
  *
  */
 public enum PhishSiteType {
-	/**
-	 * Online social networks
-	 */
-	OSN(3),
-	/**
-	 * Finanace
-	 */
-	Bank(4),
-	//...
-	/**
-	 * It is a phish but not specified
-	 */
+	/** It is a phish but not specified */
 	AnyPhish(1),
-	/**
-	 * Something completly different
-	 */
-	Generic(2);
+	/** Something completly different */
+	Generic(2),
+	
+	/** e.g. Facebook, G+ */
+	Social(3),
+	/** e.g. Banking, Paypal */
+	Financial(4), //including PaymentServices
+	/** e.g. ebay, amazon */
+	Shopping(5), //including Auction
+	/** e.g. Telekom, Unitymedia */
+	ISP(6),
+	/** e.g. WOW */
+	Gaming(7),
+	/** e.g. Finanzamt, Ausweisapp */
+	Government(8),
+	/** e.g. News */
+	Information(9),
+	/** e.g. Messenger, ICQ*/
+	Communication(10),
+	/** e.g. Xing */
+	JobMarket(11),
+	/** e.g. Dropbox, G-Drive */
+	DataExchange(12);
 	
 	private int value;
 

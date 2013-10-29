@@ -1,8 +1,5 @@
 package de.tudarmstadt.informatik.secuso.phishedu.backend;
 
-import com.google.android.gms.appstate.AppStateClient;
-import com.google.android.gms.games.GamesClient;
-
 import android.content.Context;
 import android.net.Uri;
 
@@ -15,21 +12,11 @@ import android.net.Uri;
 public interface FrontendControllerInterface {
 	//Context functions
 	/**
-	 * For acchievements and leaderboards we need the gamesClient
-	 * @return the gamesclient of the main activity.
-	 */
-	GamesClient getGamesClient();
-	/**
-	 * For the remote store of the game state we need the remote store.
-	 * @return the client to save gamestate to
-	 */
-	AppStateClient getAppStateClient();
-	/**
 	 * For the local store of the game state we need the local store
 	 * @return the curren gameContext
 	 */
 	Context getContext();
-
+	
 	//Callback functions
 	/**
 	 * This function is called while init continues.
@@ -64,4 +51,5 @@ public interface FrontendControllerInterface {
 	 * @param message The message to show to the user.
 	 */
 	void displayToast(String message);
+	
 }

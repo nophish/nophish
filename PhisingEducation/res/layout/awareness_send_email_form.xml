@@ -34,7 +34,7 @@
             android:inputType="textEmailAddress" />
 
         <Button
-            android:id="@+id/buttonAbschicken"
+            android:id="@+id/button_abschicken"
             android:layout_width="wrap_content"
             android:minWidth="@dimen/btn_standard_width"
             android:layout_height="@dimen/btn_standard_height"
@@ -84,6 +84,18 @@
             android:layout_below="@+id/awareness_edit_sender_email"
             android:layout_marginTop="@dimen/margin_large"
             android:text="@string/awareness_text_provide_receiver" />
+
+        <Button
+            android:id="@+id/button_test"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/btn_standard_height"
+            android:minWidth="@dimen/btn_standard_width"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/button_abschicken"
+            android:layout_marginTop="@dimen/margin_standard"
+            android:onClick="goToAwarenessFinal01"
+            android:visibility="gone"
+            android:text="Skip (for testing)" />
 
     </RelativeLayout>
 

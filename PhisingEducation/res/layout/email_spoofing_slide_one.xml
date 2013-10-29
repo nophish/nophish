@@ -26,7 +26,7 @@
         android:layout_below="@+id/title_email_spoofing"
         android:layout_marginLeft="11dp"
         android:layout_marginTop="11dp"
-        android:text="@string/awareness_text_email_spoof_start"
+        android:text="@string/awareness_text_what_is_phishing"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <Button

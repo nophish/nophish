@@ -1,10 +1,12 @@
 package de.tudarmstadt.informatik.secuso.phishedu;
 
+import java.util.Arrays;
 import java.util.LinkedHashMap;
 
 import com.google.android.gms.appstate.AppStateClient;
 import com.google.android.gms.games.GamesClient;
 import com.google.example.games.basegameutils.BaseGameActivity;
+import com.google.example.games.basegameutils.GameHelper;
 
 import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.FrontendControllerInterface;
@@ -39,13 +41,11 @@ public class BackendTestActivity extends BaseGameActivity implements FrontendCon
 		super.onCreate(savedInstanceState);
 
 
-		BackendController.getInstance().init(this);
+		BackendController.getInstance().init(this,this.mHelper);
 		
 		
-		setContentView(R.layout.activity_backend_test);
-		findViewById(R.id.sign_in_button).setOnClickListener(this);
-		findViewById(R.id.sign_out_button).setOnClickListener(this); 
-
+		setContentView(R.layout.backend_test);
+		
 		entrys = new LinkedHashMap<String, BackendTest>();
 		entrys.put("send mail", new BackendTest(){public void test(){mailSendTest();}});
 		entrys.put("Start level 1", new BackendTest(){public void test(){leve1Test();}});
@@ -109,7 +109,7 @@ public class BackendTestActivity extends BaseGameActivity implements FrontendCon
 
 	public void urlTest(){
 		BackendController.getInstance().setLevel(3);
-		displayToast(BackendController.getInstance().getNextUrl().toString());
+		displayToast(Arrays.deepToString(BackendController.getInstance().getNextUrl()));
 	}
 
 	@Override

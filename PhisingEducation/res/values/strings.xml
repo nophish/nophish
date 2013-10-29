@@ -70,22 +70,29 @@
     <string name="title_activity_start_menu">Anti-Phishing Education</string>
     <string name="title_anti_phishing">Anti-Phishing Education</string>
     <string name="title_activity_awareness">E-Mail Fälschung</string>
+    <string name="title_level_1_addr_bar_activity">Die Addressleiste</string>
 
     <!-- splash -->
     <string name="title_email_spoofing">E-Mail Absender Fälschung</string>
     <string name="text_beat_phishing">Schütze dich vor fiesen Tricks!</string>
+    <string name="last_page">Das ist die letzte Seite.</string>
+    <string name="first_page">Das ist die erste Seite.</string>
 
     <!-- menu buttons -->
     <string name="sign_out">Sign Out</string>
     <string name="button_play">Spielen</string>
-    <string name="button_level_overview">Deine Leistung</string>
-    <string name="button_more_info">Mehr über Phishing</string>
+    <string name="button_level_overview">Level-Überblick</string>
+    <string name="button_more_info">Mehr Informationen</string>
+    <string name="button_about">Über uns</string>
     <string name="button_show_online_achievement">Deine Leistung (online)</string>
     <string name="button_show_leaderboard_rate">Leaderboard Rate (online)</string>
     <string name="button_show_leaderboard_total">Leaderboard Total (online)</string>
     <string name="button_next">Weiter</string>
     <string name="info_web_addresses">Mehr zu Web-Adressen</string>
     <string name="info_phishing">Mehr zu Phishing</string>
+    <string name="button_show_lectures">Lerneinheiten</string>
+    <string name="google_plus_text">Wenn du deine Spielleistung online speichern möchtest, melde dich bei Google+ an.</string>
+    <string name="button_social">Google Play</string>
 
     <!-- More Info -->
     <string name="info_apwg">Anti-Phishing Working Group</string>
@@ -96,7 +103,9 @@
     <string name="url_how_phishing_works">http://computer.howstuffworks.com/phishing.htm</string>
 
     <!-- text awareness activity -->
-    <string name="awareness_text_email_spoof_start">Willkommen zu unserer Anti-Phishing Education App. Bevor wir loslegen, werden wir dir zeigen wie einfach es ist E-Mail Absender zu fälschen. Schaue dir zunächst den folgenden Comic an.</string>
+    <string name="awareness_text_what_is_phishing"><b>Was ist Phishing?</b>\nJeder Internetbenutzer ist durch Phishing gefährdet. Hinter diesen Angriffen stecken Kriminelle (auch Phisher oder Hacker genannt). Sie schicken dir Nachrichten beispielsweise in Form einer E-Mail, die für dich zunächst aussieht wie eine E-Mail von einer Personen oder Institution, der du vertraust. Die E-Mail sieht aus als wäre sie z.B. von Amazon, von Facebook oder deiner Bank verschickt worden. Ziel der Kriminellen ist es an Daten von dir zu kommen, um damit beispielsweise Überweisungen von deinem Konto tätigen zu können, in deinem Namen einzukaufen oder deine Freunde zu kontaktieren. </string>
+    <string name="awareness_i_know_phishing"><b>Ich weiß grundsätzlich, was Phishing ist.</b></string>
+    <string name="awareness_everybody_can_phish"><b>Jeder kann phishen!</b>\nUm dir zu verdeutlichen, dass auch du gefährdet bist, wollen wir dir zeigen, wie einfach es ist E-Mails im Namen einer anderen Person oder Institution zu verschicken.</string>
     <string name="awareness_text_you_dont_believe_us">Du denkst so einfach geht das nicht?</string>
     <string name="awareness_text_see_for_yourself">Überzeuge dich selbst</string>
     <string name="awareness_text_provide_sender">Bitte gib eine beliebige E-Mail Adresse als Absender ein:</string>
@@ -111,23 +120,122 @@
     <string name="title_activity_level_grid">LevelGridActivity</string>
     <string name="alert_btn_proceed_no_awareness">Überspringen</string>
     <string name="awareness_email_sent">E-Mail versandt</string>
-    <string name="awareness_alert_message">Jetzt rufe bitte deine E-Mails ab. Falls nichts angekommen ist kehre zurück in die App.</string>
+    <string name="awareness_alert_message">Jetzt rufe deine E-Mails von deinem Smartphone aus ab. Bitte beachte, dass das Ankommen von E-Mails einige Minuten dauern kann. Überprüfe auch deinen Spam-Ordner.</string>
     <string name="awareness_no_awareness">Leider konntest du die gefälschte E-Mail aus technischen Gründen nicht erhalten. Dennoch ist es sehr einfach solche Fälschungen durchzuführen.\n\nZiel dieser App ist, dich über Phishing, einer Gefahr im Internet, aufzuklären.</string>
     <string name="start_game">Spiel starten</string>
     <string name="awareness_resend_email">E-Mail erneut versenden</string>
     <string name="awareness_text_fake_websites">Auch das Fälschen von Webseiten ist sehr einfach (wie bei E-Mails), wie folgender Comic zeigt.</string>
+    <string name="awareness_final_text"><b>Was hast du jetzt schon gelernt?</b>\nDu hast es selber erlebt und gesehen wie einfach es ist, den Absender einer E-Mail zu fälschen. Außerdem hast du auch gelernt, dass man durch das Klicken auf Links, nicht zwingend auf die Webseite geleitet wird, wo man glaubt, dass man hin geleitet wird. Du hast auch gesehen, dass eine Webseite zwar korrekt aussehen kann, dies aber eine Kopie ist. Daher ist es wichtig, dass du die Adresse prüfst, bevor du Daten eingibst.</string>
+    <string name="awareness_final_text_2">Dies ist übrigens auch dann wichtig, wenn du nicht in einer E-Mail auf einen Link klickst, sondern generell wenn du auf einen Link klickst (z.B. auf einer anderen Web-Seite, aus einer SMS oder eine Nachricht bei Facebook oder Twitter).</string>
+    <string name="awareness_what_do_i_learn_here"><b>Was lerne ich hier?</b>\nWie du die Überprüfung der Adressen von Webseiten durchführen kannst, lernst du mit dieser App. Da es unterschiedlich schwierig zu erkennende Angriffe gibt, haben wir die Aufgaben auch in unterschiedliche Level unterteilt.\n\nJedes Level besteht aus zwei Teilen:</string>
+    <string name="awareness_final_text_3"><b>Bemerkung:</b> Wir möchten dich an dieser Stelle darauf hinweisen, dass wir dich mit dieser App gegen eine sehr verbreitete Form des Phishings helfen zu schützen. Leider gibt es auch noch andere Formen des Phishings. Wenn du hierzu mehr wissen möchtest, dann ….</string>
+    <string name="awareness_final_text_4_lets_start"><b>Los geht\'s!</b>\nBevor du uns noch vom Stuhl fällst vor Langeweile, lass uns das Ganze ein wenig interaktiver angehen und mit dem Spiel in Level 1 beginnen.</string>
 
     <!-- Game Intro -->
     <string name="title_activity_intro_game">IntroGameActivity</string>
     <string name="welcome">Herzlich Willkommen</string>
     <string name="game_intro_title">Einführung</string>
-    <string name="game_intro_text_1">Im Folgenden eine kleine Regel Einführung:</string>
     <string name="game_intro_text_2">Das Spiel umfasst verschiedene Levels. Jedem Level ist jeweils eine kurze Lektion vorangestellt.</string>
-    <string name="game_intro_text_describe_lib_emblem">Symbolisiert eine Lektion.</string>
-    <string name="game_intro_text_describe_pen">Symbolisiert, dass eine Übung ansteht.</string>
-    <string name="title_intro_phishing">Was ist Phishing</string>
+    <string name="game_intro_text_describe_lib_emblem">Einführung und Erklärung</string>
+    <string name="game_intro_text_describe_pen">Aufgaben zum Punkte sammeln</string>
+    <string name="title_intro_phishing">Was ist Phishing?</string>
+    <string name="title_intro_rules">Spielregeln</string>
+    <string name="title_intro_website_spoofing">Webseiten-Fälschung</string>
+    <string name="title_intro_lets_start">Nicht einschlafen</string>
     <string name="game_intro_text_phishing">Phishing ist der Versuch, Usern persönliche Daten zu entlocken.\n\nEs gibt unterschiedlichste Tricks, um das Vertrauen von Nutzern zu gewinnen und ihnen somit vertrauliche Informationen zu entlocken.\n\nEin beliebter Trick ist, gefälschte Webseiten zu verwenden, die den echten täuschend ähnlich sehen.\n\nDiese können über E-Mail, SMS, Social Network Links oder sogar durch normales Surfen erreicht werden.\n\nWir wollen dir helfen, Phishing Webseiten anhand ihrer Adresse zu erkennen.</string>
-    <string name="game_intro_text_3">Bevor du uns noch vom Stuhl fällst vor Langeweile, lass uns das ganze ein wenig interaktiver angehen und mit dem Spiel beginnen.</string>
     <string name="game_intro_text_4">Lasse nicht zu, dass fiese Phisher dich austricksen!</string>
+    <string name="title_activity_google_plus_sign_in">GooglePlusSignInActivity</string>
+
+    <!-- Level 1 - ADRESSLEISTE -->
+    <string name="level_1_title">Die Adressleiste</string>
+    <string name="level_1_address_bar_subtitle_1">Einführung Adressleiste</string>
+    <string name="level_1_address_bar_subtitle_2">Wo finde ich die Adressleiste?</string>
+    <string name="level_1">Level 1</string>
+    <string name="level_1_find_address_bar_text_1">Bevor wir dir beibringen, wie du anhand von Web-Adressen Phishing Webseiten erkennen kannst, musst du erst einmal wissen, wie du mit deinem Smartphone an die Web-Adresse kommst. Dazu sind zwei Sachen wichtig:\n\n1) Wo finde ich die Adressleiste?\n2) Wie schaue ich mir die Web-Adresse vollständig an?</string>
+    <string name="level_1_addr_bar_text_2">Viele Web-Seiten sind so umfangreich, dass die eigentliche Web-Seite auf dem ganzen Display angezeigt wird und daher die Adressleiste nicht zu sehen ist.\n\nDu kannst aber auf der Web-Seite den Finger so lange, und eventuell mehrmals, herunter ziehen, bis du oben angekommen bist und die Adressleiste erscheint. 
+        
+    </string>
+    <string name="title_activity_level2_web_addresses">Level2WebAddressesActivity</string>
+    <string name="level_1_splash_text">Level 1\n\nAdressleiste</string>
+    <string name="loading">Loading ...</string>
+
+    <!-- LEVEL 2 - WEB-ADRESSEN -->
+    <string name="level_2_splash_text">Level 2\n\nWeb-Adressen</string>
+    <string name="level_1_web_address_title">Web-Adressen</string>
+    <string name="level_2_web_address_text_1">Als nächestes musst du lernen, wie man Web-Adressen interpretiert. So kann bspw. eine Web-Adresse aussehen:</string>
+    <string name="level_2_example_url_1">http://online-banking.bank.de/kontostand/heute/</string>
+    <string name="level_2_example_http">http://</string>
+    <string name="level_2_example_after_http">online-banking.bank.de</string>
+    <string name="level_2_example_path">/kontostand/heute/</string>
+    <string name="level_2_web_address_text_http">Dieser Teil beschreibt die technische Methode mit der du die Web-Seite ansprichst.</string>
+    <string name="level_2_web_address_path_text_3">Der Teil <b>nach dem dritten Slash \"/\"</b> sagt, über was du mit der Web-Seite sprichst.</string>
+    <string name="level_2_how_text">TECHNISCHE METHODE</string>
+    <string name="level_2_about_text">WORÜBER</string>
+    <string name="level_2_with_whom_text">MIT WEM</string>
+    <string name="level_2_web_address_domain_text_4">Der Teil <b>zwischen \"http://\"</b> und <b>dem dritten Slash \"/\"</b> sagt, mit wem du auf dieser Web-Seite sprichst.</string>
+    <string name="level_2_web_address_domain_text_5">Der \"Mit Wem\" Teil wird durch Punkte in Blöcke eingeteilt.</string>
+    <string name="level_2_domain_online_banking">online-banking</string>
+    <string name="level_2_domain_bank">bank</string>
+    <string name="level_2_domain_de">de</string>
+    <string name="level_2_dot">.</string>
+    <string name="level_2_domain_first_block"><b>Merke:</b> Diese Blöcke werden von rechts nach links gelesen.\nDer erste Block beschreibt das Land.</string>
+    <string name="level_2_domain_second_block">Der zweite Block beschreibt das Unternehmen, mit dem du redest.</string>
+    <string name="level_2_subdomain_blocks">Ab dem dritten Block, beschreiben alle restlichen Blöcke (es können auch mehr sein) Untereinheiten des Unternehmens.</string>
+    <string name="level_2_most_important_blocks">Die wichtigsten zwei Blöcke einer Web-Adresse sind die ersten zwei im \"Mit Wem\" Teil</string>
+    <string name="level_2_domain_http_online_banking">http://online-banking</string>
+    <string name="level_2_fazit">Du sprichst auf "http://"Du sprichst \nüber den "kontostand" von "heute"\nDu sprichst mit dem Unternehmen "bank" in Deutschland\nDu sprichst mit der Untereinheit "online-banking"</string>
+    <string name="level_2_web_address_text_example_1">Im Folgenden zeigen wir Web-Adressen Beispiele, bei dem der wichtigste Teil markiert wird. Zu erst kannst du dir selber überlegen, was richtig ist.</string>
+    <string name="level_2_example_amazon">http://www.amazon.de</string>
+    <string name="level_2_example_amazon_http_and_after">http://www.</string>
+    <string name="level_2_example_amazon_domain">amazon.de</string>
+    <string name="level_2_web_address_text_example_2">Wir werden dir valide und gefälschte Web-Adressen zeigen.</string>
+    <string name="level_2_meaning_checkmark">Du kannst der Web-Adresse vertrauen.</string>
+    <string name="level_2_meaning_cross">Die Web-Adresse ist gefälscht.</string>
+    <string name="level_2_example_amazon_fake">http://www.amazon.fake.de\n/login/amazon</string>
+    <string name="level_2_example_amazon_fake_http">http://www.amazon.</string>
+    <string name="level_2_example_amazon_fake_domain">fake.com</string>
+    <string name="level_2_example_amazon_fake_path">/login/amazon</string>
+    <string name="level_2_example_googlemail_1">https://accounts.google.com\n/ServiceLogin</string>
+    <string name="level_2_example_googlemail_http">https://accounts.</string>
+    <string name="level_2_example_googlemail_domain">google.com</string>
+    <string name="level_2_example_googlemail_path">/ServiceLogin</string>
+    <string name="level_2_example_googlemail_fake">https://my-site.de/google.de</string>
+    <string name="level_2_example_googlemail_fake_http">https://</string>
+    <string name="level_2_example_googlemail_fake_domain">my-site.de</string>
+    <string name="level_2_example_googlemail_fake_path">/google.de</string>
+    <string name="level_2_example_facebook_fake">https://secure.login.de\n/settings?tab=payments\n/facebook.de/</string>
+    <string name="level_2_example_facebook_fake_http">https://secure.</string>
+    <string name="level_2_example_facebook_fake_domain">login.de</string>
+    <string name="level_2_example_facebook_fake_path">/settings?tab=payments\n/facebook.de/</string>
+    <string name="level_2_country">LAND</string>
+    <string name="level_2_company">UNTERNEHMEN</string>
+    <string name="level_2_company_components">UNTEREINHEITEN DES UNTERNEHMENS</string>
+    <string name="level_2_most_important">WICHTIGSTER TEIL</string>
+
+    <!-- LEVEL 3 IP AND NONSENSE -->
+    <string name="level_3_text_ip_and_home_address">Genau so wie unsere Häuser durch Straßen-Namen adressiert werden, werden Netzwerk-Computer mit sogenannten IP Addressen identifiziert.</string>
+    <string name="level_3_img_descr_home">Haus-Adresse</string>
+    <string name="level_3_img_descr_computer">IP-Adresse</string>
+    <string name="level_3_example_ip">Beispiel: 192.168.10.15</string>
+    <string name="level_3_text_ip_definition">Eine IP Adresse besteht aus einer Serie von 4 Zahlen, die durch Punkte getrennt werden.</string>
+    <string name="level_3_text_dont_trust_ip">Wenn der aller wichtigste Teil der Web-Adresse eine IP Adresse enthält, solltest du misstrauisch werden. Die Web-Seite ist mit hoher Wahrscheinlichkeit gefälscht.</string>
+    <string name="level_3_text_dont_trust_nonsense">Enthält der wichtigste Teil Namen, die keinen Sinn ergeben bzw. nichts mit dem Dienst der Webseite zu tun haben, sollte dies ebenfalls zu Misstrauen führen.</string>
+    <string name="level_3_ip_example">http://<b>198.162.10.02</b>/secure-login</string>
+    <string name="level_3_nonsense_example">http://secure-login.<b>grfsn.de</b>/facebook.de</string>
+    <string name="title_activity_level3_ip_nonsense">IP- und Nonsense Adressen</string>
+    <string name="level_3_splash_text">Level 3\n\n IP- und Nonsense</string>
+
+    <!-- LEVEL 4 SUBDOMAIN -->
+    <string name="level_4_splash_text">Level 4\n\nUnternehmen\nund Untereinheiten</string>
+    <string name="level_4_text_reminder_subdomain"><b>Erinnerung:</b> Der Teil zwischen <i>http://</i> und dem dritten <i>Slash /</i> beschreibt mit wem du sprichst. Dieser Teil ist in Blöcke unterteilt und wird von rechts nach links gelesen. Ab dem dritten Block werden Untereinheiten des Unternehmens beschrieben.</string>
+    <string name="level_4_http">http://</string>
+    <string name="level_4_subdomain_misuse">MISSBRAUCH DER UNTEREINHEITEN</string>
+    <string name="level_4_text_subdomain_misuse">Jeder kann die Untereinheiten in der Web-Adresse nennen wie er möchte.\n\nPhisher könnten euch bekannte Namen und Firmen in ihrer Untereinheit verwenden, um euch zu täuschen.</string>
+    <string name="level_4_subdomain_google">google.de</string>
+    <string name="level_4_domain_eine_seite">eine-seite</string>
+    <string name="level_4_some_path">/update-account/</string>
+    <string name="level_4_text_dont_trust_subdomains">Vertraue <b>nicht</b> den Untereinheiten einer Web-Adresse. Schaue immer auch auf den wichtigsten Teil! Im Beispiel unten ist der täuschende Teil der Web-Adresse hervorgehoben.</string>
+    <string name="level_4_subdomain_example">http://<b>login.gmail.com</b>.safe-login.de/update.account</string>
+    <string name="title_activity_level4_subdomain_addresses">Missbrauch der Untereinheiten</string>
 
 </resources>

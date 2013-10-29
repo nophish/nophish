@@ -1,23 +1,25 @@
 package de.tudarmstadt.informatik.secuso.phishedu;
 
-import android.os.Bundle;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.os.Bundle;
 import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
-import android.widget.Toast;
-import android.widget.AdapterView.OnItemClickListener;
-import android.support.v4.app.NavUtils;
+import de.tudarmstadt.informatik.secuso.phishedu.levelintros.Level1AddressBarActivity;
+import de.tudarmstadt.informatik.secuso.phishedu.levelintros.Level2WebAddressesActivity;
+import de.tudarmstadt.informatik.secuso.phishedu.levelintros.Level3IpNonsenseActivity;
+import de.tudarmstadt.informatik.secuso.phishedu.levelintros.Level4SubdomainAddressesActivity;
 
-public class LevelGridActivity extends Activity {
+public class LevelGridActivity extends Activity implements
+		AdapterView.OnItemClickListener {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -31,18 +33,49 @@ public class LevelGridActivity extends Activity {
 
 		GridView gridview = (GridView) findViewById(R.id.gridview);
 		gridview.setAdapter(new ImageAdapter(this));
+		gridview.setOnItemClickListener(this);
 
-		gridview.setOnItemClickListener(new OnItemClickListener() {
-			public void onItemClick(AdapterView<?> parent, View v,
-					int position, long id) {
-				Toast.makeText(LevelGridActivity.this, "Level " + position,
-						Toast.LENGTH_SHORT).show();
-			}
-		});
-		
-		
 	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.level_grid, menu);
+		return true;
+	}
+
+	@Override
+	public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
+		switch (position) {
+		case 0:
+			Intent level0 = new Intent(this, AwarenessActivity.class);
+			startActivity(level0);
+			break;
 	
+		case 1:
+			Intent level1 = new Intent(this, Level1AddressBarActivity.class);
+			startActivity(level1);
+			break;
+	
+		case 2:
+			Intent level2 = new Intent(this, Level2WebAddressesActivity.class);
+			startActivity(level2);
+			break;
+	
+		case 3:
+			Intent level3 = new Intent(this, Level3IpNonsenseActivity.class);
+			startActivity(level3);
+			break;
+			
+		case 4:
+			Intent level4 = new Intent(this, Level4SubdomainAddressesActivity.class);
+			startActivity(level4);
+		default:
+			break;
+	
+		}
+	}
+
 	private class ImageAdapter extends BaseAdapter {
 		private Context mContext;
 
@@ -99,15 +132,5 @@ public class LevelGridActivity extends Activity {
 				R.drawable.rect, R.drawable.rect, R.drawable.rect,
 				R.drawable.rect };
 	}
-	
-
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.level_grid, menu);
-		return true;
-	}
-
 
 }

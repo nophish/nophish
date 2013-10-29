@@ -1,5 +1,9 @@
 package de.tudarmstadt.informatik.secuso.phishedu.backend;
 
+import com.google.example.games.basegameutils.GameHelper;
+
+import android.net.Uri;
+
 /**
  * This is the interface that the backend presents to the frontend.
  * @author Clemens Bergmann <cbergmann@schuhklassert.de>
@@ -10,8 +14,9 @@ public interface BackendControllerInterface {
 	 * This function must be called directly before the first start of the app.
 	 * It will register the caller with the backend for callbacks.
 	 * @param frontend
+	 * @param gamehelper
 	 */
-	void init(FrontendControllerInterface frontend);
+	void init(FrontendControllerInterface frontend, GameHelper gamehelper);
 	
 	/**
 	 * This function sends a Mail to a custom Mail Adress-
@@ -72,4 +77,24 @@ public interface BackendControllerInterface {
 	 */
 	boolean partClicked(int part);
 	
+	/**
+	 * When the main activity receives an URI via an Indent pass it to this function so that the backend can handle it.
+	 * @param data The recept URI
+	 */
+	void onUrlReceive(Uri data);
+	
+	/**
+	 * The user clicks on the Google+ signin button.
+	 */
+	void signIn();
+	/**
+	 * The user clicks on the Google+ signout button.
+	 */
+	void signOut();
+	
+	/**
+	 * Returns the number of points that must be reached in this level to proceed to the next.
+	 * @return Number of points...
+	 */
+	public int nextLevelPoints();
 }
