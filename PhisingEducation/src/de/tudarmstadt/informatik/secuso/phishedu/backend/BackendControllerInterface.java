@@ -97,4 +97,9 @@ public interface BackendControllerInterface {
 	 */
 	void signOut();
 	
+	/**
+	 * Returns the number of points that must be reached in this level to proceed to the next.
+	 * @return Number of points...
+	 */
+	public int nextLevelPoints();
 }

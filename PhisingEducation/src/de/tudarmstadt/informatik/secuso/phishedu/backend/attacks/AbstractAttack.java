@@ -12,14 +12,6 @@ import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishURLInterface;
  *
  */
 public abstract class AbstractAttack extends AbstractUrlDecorator {
-	protected PhishURLInterface object;
-	
-	/**
-	 * This constructor takes a random Valid URL and decorates it.
-	 */
-	public AbstractAttack(){
-		this.object=BackendController.getInstance().getPhishURL(PhishAttackType.NoPhish);
-	}
 	
 	/**
 	 * To build an attack we need a url to decorate
