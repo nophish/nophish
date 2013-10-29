@@ -101,6 +101,7 @@
     <string name="url_apwg">http://www.antiphishing.org</string>
     <string name="url_securitycomic">http://www.securitycartoon.com</string>
     <string name="url_how_phishing_works">http://computer.howstuffworks.com/phishing.htm</string>
+    <string name="title_activity_more_info">Links zu Phishing</string>
 
     <!-- text awareness activity -->
     <string name="awareness_text_what_is_phishing"><b>Was ist Phishing?</b>\nJeder Internetbenutzer ist durch Phishing gefährdet. Hinter diesen Angriffen stecken Kriminelle (auch Phisher oder Hacker genannt). Sie schicken dir Nachrichten beispielsweise in Form einer E-Mail, die für dich zunächst aussieht wie eine E-Mail von einer Personen oder Institution, der du vertraust. Die E-Mail sieht aus als wäre sie z.B. von Amazon, von Facebook oder deiner Bank verschickt worden. Ziel der Kriminellen ist es an Daten von dir zu kommen, um damit beispielsweise Überweisungen von deinem Konto tätigen zu können, in deinem Namen einzukaufen oder deine Freunde zu kontaktieren. </string>
@@ -116,7 +117,6 @@
     <string name="hint_text">Hier Text eingeben.</string>
     <string name="awareness_missing_email_sender_or_receiver">Bitte Absender und Empfänger eingeben.</string>
     <string name="awareness_invalid_email">Die Absender oder Empfänger E-Mail ist ungültig. Bitte überprüfe deine Eingaben.</string>
-    <string name="title_activity_more_info">Mehr über Phishing</string>
     <string name="title_activity_level_grid">LevelGridActivity</string>
     <string name="alert_btn_proceed_no_awareness">Überspringen</string>
     <string name="awareness_email_sent">E-Mail versandt</string>
@@ -152,9 +152,7 @@
     <string name="level_1_address_bar_subtitle_2">Wo finde ich die Adressleiste?</string>
     <string name="level_1">Level 1</string>
     <string name="level_1_find_address_bar_text_1">Bevor wir dir beibringen, wie du anhand von Web-Adressen Phishing Webseiten erkennen kannst, musst du erst einmal wissen, wie du mit deinem Smartphone an die Web-Adresse kommst. Dazu sind zwei Sachen wichtig:\n\n1) Wo finde ich die Adressleiste?\n2) Wie schaue ich mir die Web-Adresse vollständig an?</string>
-    <string name="level_1_addr_bar_text_2">Viele Web-Seiten sind so umfangreich, dass die eigentliche Web-Seite auf dem ganzen Display angezeigt wird und daher die Adressleiste nicht zu sehen ist.\n\nDu kannst aber auf der Web-Seite den Finger so lange, und eventuell mehrmals, herunter ziehen, bis du oben angekommen bist und die Adressleiste erscheint. 
-        
-    </string>
+    <string name="level_1_addr_bar_text_2">Viele Web-Seiten sind so umfangreich, dass die eigentliche Web-Seite auf dem ganzen Display angezeigt wird und daher die Adressleiste nicht zu sehen ist.\n\nDu kannst aber auf der Web-Seite den Finger so lange, und eventuell mehrmals, herunter ziehen, bis du oben angekommen bist und die Adressleiste erscheint. </string>
     <string name="title_activity_level2_web_addresses">Level2WebAddressesActivity</string>
     <string name="level_1_splash_text">Level 1\n\nAdressleiste</string>
     <string name="loading">Loading ...</string>
@@ -237,5 +235,9 @@
     <string name="level_4_text_dont_trust_subdomains">Vertraue <b>nicht</b> den Untereinheiten einer Web-Adresse. Schaue immer auch auf den wichtigsten Teil! Im Beispiel unten ist der täuschende Teil der Web-Adresse hervorgehoben.</string>
     <string name="level_4_subdomain_example">http://<b>login.gmail.com</b>.safe-login.de/update.account</string>
     <string name="title_activity_level4_subdomain_addresses">Missbrauch der Untereinheiten</string>
+    <string name="title_activity_urltask">Phish oder kein Phish?</string>
 
+    <!-- TASKS AND SOLUTION SCREENS FROM LEVEL 3 -->
+    <string name="url_task_description">Entscheide über die folgenden Web-Adressen, ob du ihnen vertraust (Häkchen antippen) oder ob hier ein Phishing-Angriff vorliegt (Kreuz antippen).</string>
+	<string name="url">Beispiel URL</string>
 </resources>

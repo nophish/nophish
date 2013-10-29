@@ -131,6 +131,7 @@ public class BackendController implements BackendControllerInterface, GameStateL
 		for(PhishAttackType type: CACHE_TYPES){
 		  this.urlCache[type.getValue()]=loadUrls(url_cache, type);
 		}
+		checkInitDone();
 	}
 	
 	private void CacheUrls(SharedPreferences cache, PhishAttackType type, PhishURLInterface[] urls){
@@ -186,15 +187,16 @@ public class BackendController implements BackendControllerInterface, GameStateL
 	}
 
 	@Override
-	public void StartLevel(int level) {
+	public void startLevel(int level) {
 		checkinited();
-		if(level == 1){
-			this.frontend.startBrowser(Uri.parse(LEVEL1_URL));
-		}else{
-			this.progress.setPoints(0);
-			this.progress.setLevel(level);
-			this.frontend.onLevelChange(this.progress.getLevel());
-		}
+		this.progress.setPoints(0);
+		this.progress.setLevel(level);
+		this.frontend.onLevelChange(this.progress.getLevel());
+	}
+	
+	@Override
+	public void redirectToLevel1URL(){
+		this.frontend.startBrowser(Uri.parse(LEVEL1_URL));
 	}
 
 
@@ -250,12 +252,8 @@ public class BackendController implements BackendControllerInterface, GameStateL
 		int offset=this.current_url.getPoints(result);
 		this.progress.setPoints(this.getPoints()+offset);
 		if(this.progress.getPoints()>=nextLevelPoints()){
-			this.proceedlevel();
+			this.frontend.levelFinished(this.getLevel());
 		}
-	}
-	
-	private void proceedlevel(){
-		this.StartLevel(this.getLevel()+1);
 	}
 	
 	/**
@@ -294,15 +292,15 @@ public class BackendController implements BackendControllerInterface, GameStateL
 	}
 	
 	public void onUrlReceive(Uri data){
+		checkinited();
 		if(data == null){
 			return;
 		}
-		if(data.getHost()=="maillink"){
-			this.proceedlevel();
-			this.frontend.MailReturned();
-		}else if(data.getHost()=="level1finished"){
-			this.proceedlevel();
-			this.frontend.level1Finished();
+		String host = data.getHost();
+		if(host.equals("maillink")){
+			this.frontend.levelFinished(0);
+		}else if(host.equals("level1finished")){
+			this.frontend.levelFinished(1);
 		}
 	}
 

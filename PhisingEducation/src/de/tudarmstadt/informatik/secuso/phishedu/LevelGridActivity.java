@@ -13,6 +13,7 @@ import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
+import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController;
 import de.tudarmstadt.informatik.secuso.phishedu.levelintros.Level1AddressBarActivity;
 import de.tudarmstadt.informatik.secuso.phishedu.levelintros.Level2WebAddressesActivity;
 import de.tudarmstadt.informatik.secuso.phishedu.levelintros.Level3IpNonsenseActivity;
@@ -46,34 +47,7 @@ public class LevelGridActivity extends Activity implements
 
 	@Override
 	public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
-		switch (position) {
-		case 0:
-			Intent level0 = new Intent(this, AwarenessActivity.class);
-			startActivity(level0);
-			break;
-	
-		case 1:
-			Intent level1 = new Intent(this, Level1AddressBarActivity.class);
-			startActivity(level1);
-			break;
-	
-		case 2:
-			Intent level2 = new Intent(this, Level2WebAddressesActivity.class);
-			startActivity(level2);
-			break;
-	
-		case 3:
-			Intent level3 = new Intent(this, Level3IpNonsenseActivity.class);
-			startActivity(level3);
-			break;
-			
-		case 4:
-			Intent level4 = new Intent(this, Level4SubdomainAddressesActivity.class);
-			startActivity(level4);
-		default:
-			break;
-	
-		}
+		BackendController.getInstance().startLevel(position+1);
 	}
 
 	private class ImageAdapter extends BaseAdapter {
@@ -110,7 +84,7 @@ public class LevelGridActivity extends Activity implements
 			if (convertView == null) { // if it's not recycled, initialize some
 										// attributes
 				imageView = new ImageView(mContext);
-				imageView.setLayoutParams(new GridView.LayoutParams(170, 170));
+				imageView.setLayoutParams(new GridView.LayoutParams(190, 190));
 				imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
 				imageView.setPadding(8, 8, 8, 8);
 			} else {

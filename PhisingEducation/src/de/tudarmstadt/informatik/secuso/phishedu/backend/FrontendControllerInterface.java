@@ -27,14 +27,7 @@ public interface FrontendControllerInterface {
 	 * This function is called when the game can start.
 	 */
 	void initDone();
-	/**
-	 * This function is called when we see a click to the mail.
-	 */
-	void MailReturned();
-	/**
-	 * this is the last call after the level1is completed
-	 */
-	void level1Finished();
+	
 	/**
 	 * This function is called from the backend when we change Level.
 	 * @param level the new level
@@ -52,4 +45,10 @@ public interface FrontendControllerInterface {
 	 */
 	void displayToast(String message);
 	
+	/**
+	 * Whenever a level is finished this function is called by the backend.
+	 * Whenever you are finished with this task call {@link BackendControllerInterface#startNextLevel()}
+	 * @param level the finished level
+	 */
+	void levelFinished(int level);
 }

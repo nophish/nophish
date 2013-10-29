@@ -30,7 +30,12 @@ public interface BackendControllerInterface {
 	 * This starts a level and initilizes the backend state.
 	 * @param level The level you want to start
 	 */
-	void StartLevel(int level);
+	void startLevel(int level);
+	
+	/**
+	 * This function start the browser at the leve1 URL
+	 */
+	public void redirectToLevel1URL();
 	
 	/**
 	 * Get the next url and save the URL Information internally.

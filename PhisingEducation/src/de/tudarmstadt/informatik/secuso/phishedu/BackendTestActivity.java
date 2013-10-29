@@ -1,12 +1,12 @@
 package de.tudarmstadt.informatik.secuso.phishedu;
 
 import java.util.Arrays;
+
 import java.util.LinkedHashMap;
 
 import com.google.android.gms.appstate.AppStateClient;
 import com.google.android.gms.games.GamesClient;
 import com.google.example.games.basegameutils.BaseGameActivity;
-import com.google.example.games.basegameutils.GameHelper;
 
 import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.FrontendControllerInterface;
@@ -100,11 +100,11 @@ public class BackendTestActivity extends BaseGameActivity implements FrontendCon
 	}
 
 	protected void mailSendTest() {
-		BackendController.getInstance().sendMail("cbergmann@schuhklassert.de", "cbergmann@schuhklassert.de", "This is a user message");
+		BackendController.getInstance().sendMail("gamze.canova@googlemail.com", "gamze.canova@googlemail.com", "This is a user message");
 	}
 
 	public void leve1Test(){
-		BackendController.getInstance().StartLevel(1);
+		BackendController.getInstance().startLevel(1);
 	}
 
 	public void urlTest(){
@@ -115,16 +115,6 @@ public class BackendTestActivity extends BaseGameActivity implements FrontendCon
 	@Override
 	public void displayToast(String message) {
 		Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
-	}
-
-	@Override
-	public void MailReturned() {
-		displayToast("The Mail returned!");
-	}
-
-	@Override
-	public void level1Finished() {
-		displayToast("Level 1 is completed!");
 	}
 
 	@Override
@@ -194,5 +184,10 @@ public class BackendTestActivity extends BaseGameActivity implements FrontendCon
 	public void startBrowser(Uri url) {
 		Intent browserIntent = new Intent(Intent.ACTION_VIEW, url);
 		this.startActivity(browserIntent);
+	}
+
+	@Override
+	public void levelFinished(int level) {
+		displayToast("Level Finished:"+level);
 	}
 }

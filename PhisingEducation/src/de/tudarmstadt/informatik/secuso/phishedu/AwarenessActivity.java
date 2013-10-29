@@ -1,5 +1,6 @@
 package de.tudarmstadt.informatik.secuso.phishedu;
 
+import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController;
 import android.app.ActionBar;
 import android.app.AlertDialog;
 import android.content.Context;
@@ -124,8 +125,7 @@ public class AwarenessActivity extends FragmentActivity {
 				/*
 				 * TODO:
 				 */
-				// BackendController.getInstance().sendMail(from, to,
-				// userMessage);
+				BackendController.getInstance().sendMail(from, to, userMessage);
 
 				// Pop up with go to E-Mail on your Smartphone
 
