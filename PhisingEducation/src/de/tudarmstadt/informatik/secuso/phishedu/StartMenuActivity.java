@@ -13,7 +13,8 @@ import com.google.example.games.basegameutils.BaseGameActivity;
 
 import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.FrontendControllerInterface;
-import de.tudarmstadt.informatik.secuso.phishedu.levelintros.Level1AddressBarActivity;
+import de.tudarmstadt.informatik.secuso.phishedu.common.Constants;
+import de.tudarmstadt.informatik.secuso.phishedu.levelintros.GeneralLevelActivity;
 
 /**
  * 
@@ -26,8 +27,8 @@ public class StartMenuActivity extends BaseGameActivity implements
 	
 	@SuppressWarnings("rawtypes")
 	private static final Class[] ACTIVITYS_PER_LEVEL = {
-			AwarenessActivity.class,
-			Level1AddressBarActivity.class
+			AwarenessActivity.class, //the first level is soemething special
+			GeneralLevelActivity.class //The others are mainly the same
 	};
 	
 	public StartMenuActivity() {
@@ -138,8 +139,9 @@ public class StartMenuActivity extends BaseGameActivity implements
 	public void onLevelChange(int level) {
 		
 		int real_level = Math.min(level,ACTIVITYS_PER_LEVEL.length-1);
-		Intent awarenessIntent = new Intent(this, ACTIVITYS_PER_LEVEL[real_level]);
-		startActivity(awarenessIntent);
+		Intent levelIntent = new Intent(this, ACTIVITYS_PER_LEVEL[real_level]);
+		levelIntent.getExtras().putInt(Constants.LEVEL_EXTRA_STRING, level);
+		startActivity(levelIntent);
 	}
 
 	@Override

@@ -1,9 +1,20 @@
 package de.tudarmstadt.informatik.secuso.phishedu.levelintros;
 
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import de.tudarmstadt.informatik.secuso.phishedu.R;
+import de.tudarmstadt.informatik.secuso.phishedu.SwipeActivity;
+import de.tudarmstadt.informatik.secuso.phishedu.common.Constants;
 
-public class GeneralLevelIntros {
-
+/**
+ * 
+ * @author Gamze Canova This class covers the awareness part of the app This
+ *         Activity should only be invoked if the user has not done this part
+ *         before
+ */
+public class GeneralLevelActivity extends SwipeActivity {
 	public static final int[][] levelLayoutIds = {
 		{}, //level0 does not have standard layouts
 		{
@@ -32,5 +43,24 @@ public class GeneralLevelIntros {
 			R.layout.level_4_subdomain_03
 		}
 	};
+	
+	public int level=1;
+	
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		this.level=getIntent().getIntExtra(Constants.LEVEL_EXTRA_STRING,0);
+	}
+	
+	@Override
+	protected int getPageCount() {
+		return levelLayoutIds[level].length;
+	}
+
+	@Override
+	protected View getPage(int page, LayoutInflater inflater,
+			ViewGroup container, Bundle savedInstanceState) {
+		return inflater.inflate(levelLayoutIds[this.level][page],	container, false);
+	}
 
 }
