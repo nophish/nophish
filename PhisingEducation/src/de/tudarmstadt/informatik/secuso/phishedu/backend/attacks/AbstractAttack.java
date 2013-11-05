@@ -1,9 +1,6 @@
 package de.tudarmstadt.informatik.secuso.phishedu.backend.attacks;
 
 import de.tudarmstadt.informatik.secuso.phishedu.backend.AbstractUrlDecorator;
-
-import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController;
-import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishAttackType;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishURLInterface;
 
 /**
