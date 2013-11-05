@@ -47,7 +47,7 @@ public class StartMenuActivity extends BaseGameActivity implements
 	}
 
 	public void showLevelOverview(View view) {
-		Intent levelGridIntent = new Intent(this, LevelGridActivity.class);
+		Intent levelGridIntent = new Intent(this, LevelSelectorActivity.class);
 		startActivity(levelGridIntent);
 	}
 

@@ -23,5 +23,7 @@
     <!-- fontsizes -->
     <dimen name="font_size_large">35sp</dimen>
     <dimen name="font_size_xlarge">40sp</dimen>
+    <dimen name="leveicon_corner">50dp</dimen>
+    <dimen name="leveicon_textsize">150dp</dimen>
 
 </resources>

@@ -483,7 +483,7 @@
                 android:value="de.tudarmstadt.informatik.secuso.phishedu.StartMenuActivity" />
         </activity>
         <activity
-            android:name="de.tudarmstadt.informatik.secuso.phishedu.LevelGridActivity"
+            android:name="de.tudarmstadt.informatik.secuso.phishedu.LevelSelectorActivity"
             android:label="@string/title_activity_level_grid" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

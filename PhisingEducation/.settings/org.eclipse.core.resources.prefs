@@ -1,7 +1,8 @@
 eclipse.preferences.version=1
 encoding//src/de/tudarmstadt/informatik/secuso/phishedu/AwarenessActivity.java=UTF-8
-encoding//src/de/tudarmstadt/informatik/secuso/phishedu/LevelGridActivity.java=UTF-8
+encoding//src/de/tudarmstadt/informatik/secuso/phishedu/LevelSelectorActivity.java=UTF-8
 encoding//src/de/tudarmstadt/informatik/secuso/phishedu/StartMenuActivity.java=UTF-8
+encoding//src/de/tudarmstadt/informatik/secuso/phishedu/SwipeActivity.java=UTF-8
 encoding//src/de/tudarmstadt/informatik/secuso/phishedu/levelintros/Level1AddressBarActivity.java=UTF-8
 encoding//src/de/tudarmstadt/informatik/secuso/phishedu/levelintros/Level1InfoFragment.java=UTF-8
 encoding//src/de/tudarmstadt/informatik/secuso/phishedu/levelintros/Level2InfoFragment.java=UTF-8
