@@ -1,6 +1,5 @@
 package de.tudarmstadt.informatik.secuso.phishedu;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
@@ -84,7 +83,6 @@ public class StartMenuActivity extends BaseGameActivity implements
 	}
 
 	public void showMoreInfo(View view) {
-
 		// start Activity showing the list view
 		Intent moreInfoIntent = new Intent(this, MoreInfoActivity.class);
 		startActivity(moreInfoIntent);
@@ -252,7 +250,6 @@ public class StartMenuActivity extends BaseGameActivity implements
 
 	@Override
 	public void levelFinished(int level) {
-		
 		//TODO Erfolgsscreen
 		BackendController.getInstance().startLevel(level+1);
 	}
