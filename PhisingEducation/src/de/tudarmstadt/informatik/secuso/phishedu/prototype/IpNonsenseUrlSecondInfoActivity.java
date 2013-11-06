@@ -15,7 +15,7 @@ public class IpNonsenseUrlSecondInfoActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.level_3_ip_nonsense_info_02);
+		setContentView(R.layout.level_03_intro_01);
 		this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 	}
 

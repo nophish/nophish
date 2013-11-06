@@ -5,10 +5,10 @@ import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController;
 public class LevelFinishedActivity extends LevelIntroActivity {
 	protected static int[][] levelLayoutIds = {
 		{
-			R.layout.awareness_final_01,
-			R.layout.awareness_final_02,
-			R.layout.awareness_final_03,
-			R.layout.awareness_final_04_lets_start
+			R.layout.level_00_finish_00,
+			R.layout.level_00_finish_01,
+			R.layout.level_00_finish_02,
+			R.layout.level_00_finish_03
 		}
 	};
 	

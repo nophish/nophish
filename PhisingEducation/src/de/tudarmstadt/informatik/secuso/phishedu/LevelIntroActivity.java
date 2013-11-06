@@ -19,29 +19,29 @@ public class LevelIntroActivity extends SwipeActivity {
 	protected static int[][] levelLayoutIds = {
 		{}, //level0 does not have standard layouts
 		{
-			R.layout.level_1_find_address_bar_info_1,
-			R.layout.level_1_find_address_bar_info_2
+			R.layout.level_01_intro_00,
+			R.layout.level_01_intro_01
 		},{
-			R.layout.level_2_web_addresses_01,
-			R.layout.level_2_web_addresses_02,
-			R.layout.level_2_web_addresses_03,
-			R.layout.level_2_web_addresses_04,
-			R.layout.level_2_web_addresses_05,
-			R.layout.level_2_web_addresses_06,
-			R.layout.level_2_web_addresses_07,
-			R.layout.level_2_web_addresses_08,
-			R.layout.level_2_web_addresses_09,
-			R.layout.level_2_web_addresses_10,
-			R.layout.level_2_web_addresses_11_a,
-			R.layout.level_2_web_addresses_12_a 
+			R.layout.level_02_intro_00,
+			R.layout.level_02_intro_01,
+			R.layout.level_02_intro_02,
+			R.layout.level_02_intro_03,
+			R.layout.level_02_intro_04,
+			R.layout.level_02_intro_05,
+			R.layout.level_02_intro_06,
+			R.layout.level_02_intro_07,
+			R.layout.level_02_intro_08,
+			R.layout.level_02_intro_09,
+			R.layout.level_02_intro_10,
+			R.layout.level_02_intro_11 
 		},{
-			R.layout.level_3_ip_nonsense_info_01,
-			R.layout.level_3_ip_nonsense_info_02,
-			R.layout.level_3_ip_nonsense_info_03
+			R.layout.level_03_intro_00,
+			R.layout.level_03_intro_01,
+			R.layout.level_03_intro_02
 		},{
-			R.layout.level_4_subdomain_01, 
-			R.layout.level_4_subdomain_02,
-			R.layout.level_4_subdomain_03
+			R.layout.level_04_intro_00, 
+			R.layout.level_04_intro_01,
+			R.layout.level_04_intro_02
 		}
 	};
 	

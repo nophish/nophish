@@ -30,9 +30,9 @@ import android.widget.Toast;
 public class AwarenessActivity extends SwipeActivity {
 
 	protected static final int[] levelLayoutIds = {
-		R.layout.awareness_01,
-		R.layout.awareness_02,
-		R.layout.awareness_send_email_form,
+		R.layout.level_00_intro_00,
+		R.layout.level_00_intro_01,
+		R.layout.level_00_intro_02,
 	};
 	
 	@Override
@@ -132,7 +132,7 @@ public class AwarenessActivity extends SwipeActivity {
 				new DialogInterface.OnClickListener() {
 					public void onClick(DialogInterface dialog, int which) {
 	
-						setContentView(R.layout.awareness_send_email_form);
+						setContentView(R.layout.level_00_intro_02);
 					}
 	
 				});

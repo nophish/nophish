@@ -15,7 +15,7 @@ public class FindAddressBarSecondInfoActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.level_1_find_address_bar_info_2);
+		setContentView(R.layout.level_01_intro_01);
 		this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 	}
 

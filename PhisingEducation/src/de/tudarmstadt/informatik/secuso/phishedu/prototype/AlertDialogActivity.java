@@ -21,7 +21,7 @@ public class AlertDialogActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.awareness_send_email_form);
+		setContentView(R.layout.level_00_intro_02);
 
 		AlertDialog.Builder alertDialog = new AlertDialog.Builder(
 				AlertDialogActivity.this);

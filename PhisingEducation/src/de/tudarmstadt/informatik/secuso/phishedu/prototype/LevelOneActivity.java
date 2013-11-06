@@ -32,7 +32,7 @@ public class LevelOneActivity extends Activity {
 			public void onFinish() {
 				// set the new Content of your activity
 				LevelOneActivity.this
-						.setContentView(R.layout.level_1_find_address_bar_info_1);
+						.setContentView(R.layout.level_01_intro_00);
 			}
 		}.start();
 	}

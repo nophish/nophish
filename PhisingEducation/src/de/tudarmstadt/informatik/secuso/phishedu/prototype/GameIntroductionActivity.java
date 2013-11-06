@@ -19,7 +19,7 @@ public class GameIntroductionActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.awareness_final_04_lets_start);
+		setContentView(R.layout.level_00_finish_03);
 		this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 	}
 

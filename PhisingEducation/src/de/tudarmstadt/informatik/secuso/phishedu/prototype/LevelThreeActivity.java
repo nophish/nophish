@@ -32,7 +32,7 @@ public class LevelThreeActivity extends Activity {
 			public void onFinish() {
 				// set the new Content of your activity
 				LevelThreeActivity.this
-						.setContentView(R.layout.level_3_ip_nonsense_info_01);
+						.setContentView(R.layout.level_03_intro_00);
 			}
 		}.start();
 	}
