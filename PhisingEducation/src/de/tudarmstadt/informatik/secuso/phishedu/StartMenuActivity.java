@@ -12,8 +12,6 @@ import com.google.example.games.basegameutils.BaseGameActivity;
 
 import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.FrontendControllerInterface;
-import de.tudarmstadt.informatik.secuso.phishedu.common.Constants;
-import de.tudarmstadt.informatik.secuso.phishedu.levelintros.GeneralLevelActivity;
 
 /**
  * 
@@ -27,7 +25,7 @@ public class StartMenuActivity extends BaseGameActivity implements
 	@SuppressWarnings("rawtypes")
 	private static final Class[] ACTIVITYS_PER_LEVEL = {
 			AwarenessActivity.class, //the first level is soemething special
-			GeneralLevelActivity.class //The others are mainly the same
+			LevelIntroActivity.class //The others are mainly the same
 	};
 	
 	public StartMenuActivity() {

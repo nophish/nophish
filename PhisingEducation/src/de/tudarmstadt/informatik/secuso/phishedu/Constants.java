@@ -1,4 +1,4 @@
-package de.tudarmstadt.informatik.secuso.phishedu.common;
+package de.tudarmstadt.informatik.secuso.phishedu;
 
 public class Constants {
 	public static final int COUNT_DOWN_INTERVAL = 1000;
