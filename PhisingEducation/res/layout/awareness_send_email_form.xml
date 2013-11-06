@@ -93,8 +93,7 @@
             android:layout_centerHorizontal="true"
             android:layout_below="@+id/button_abschicken"
             android:layout_marginTop="@dimen/margin_standard"
-            android:onClick="goToAwarenessFinal01"
-            android:visibility="gone"
+            android:onClick="skipSendEmail"
             android:text="Skip (for testing)" />
 
     </RelativeLayout>

@@ -24,8 +24,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_below="@+id/game_intro_text_3"
-        android:layout_marginTop="@dimen/margin_standard"
         android:layout_centerVertical="true"
+        android:layout_marginTop="@dimen/margin_standard"
         android:src="@drawable/dontbelieveus" />
 
     <TextView
@@ -35,26 +35,8 @@
         android:layout_alignLeft="@+id/game_intro_text_3"
         android:layout_below="@+id/game_intro_image"
         android:layout_marginTop="@dimen/margin_large"
-        android:text="@string/game_intro_text_4"
         android:gravity="center"
+        android:text="@string/game_intro_text_4"
         android:textAppearance="?android:attr/textAppearanceMedium" />
-
-    
-    <ImageView
-        android:id="@+id/game_intro_arrow_back"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:onClick="goToAwarenessFinal03"
-        android:src="@drawable/back" />
-
-    <ImageView
-        android:id="@+id/game_intro_arrow_forward"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:src="@drawable/forward" />
 
 </RelativeLayout>

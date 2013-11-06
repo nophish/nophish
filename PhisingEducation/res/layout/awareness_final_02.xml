@@ -57,23 +57,4 @@
         android:text="@string/game_intro_text_describe_pen"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
-    <ImageView
-        android:id="@+id/game_intro_arrow_forward"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:onClick="goToAwarenessFinal03"
-        android:src="@drawable/forward" />
-
-        
-    <ImageView
-        android:id="@+id/game_intro_arrow_back"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:onClick="goToAwarenessFinal01"
-        android:src="@drawable/back" />
-    
 </RelativeLayout>

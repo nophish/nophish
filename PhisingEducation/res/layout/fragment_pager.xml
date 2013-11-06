@@ -32,4 +32,12 @@
         android:layout_alignParentRight="true"
         android:src="@drawable/forward" />
 
+    <Button
+        android:id="@+id/game_intro_start_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/pager"
+        android:layout_alignTop="@+id/game_intro_arrow_forward"
+        android:text="Start Level" />
+
 </RelativeLayout>

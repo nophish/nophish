@@ -1,5 +1,7 @@
 package de.tudarmstadt.informatik.secuso.phishedu;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -12,15 +14,17 @@ import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.ImageView;
 
 public abstract class SwipeActivity extends FragmentActivity implements
 		ViewPager.OnPageChangeListener{
 	
-	private SwipePageAdapter mAdapter;
-	private ViewPager mPager;
-	private ImageView imgNext;
-	private ImageView imgPrevious;
+	protected SwipePageAdapter mAdapter;
+	protected ViewPager mPager;
+	protected ImageView imgNext;
+	protected ImageView imgPrevious;
+	protected Button bStartLevel;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +49,9 @@ public abstract class SwipeActivity extends FragmentActivity implements
 				nextPage();
 			}
 		});
+		
+		bStartLevel = (Button) findViewById(R.id.game_intro_start_button);
+		bStartLevel.setVisibility(View.INVISIBLE);
 
 		mAdapter = new SwipePageAdapter(getSupportFragmentManager());
 		mPager = (ViewPager) findViewById(R.id.pager);
@@ -80,9 +87,10 @@ public abstract class SwipeActivity extends FragmentActivity implements
 
 	}
 
-	private void checkAndHideButtons(int totalPages, int nextPage) {
+	protected void checkAndHideButtons(int totalPages, int nextPage) {
 		imgNext.setVisibility(View.VISIBLE);
 		imgPrevious.setVisibility(View.VISIBLE);
+		bStartLevel.setVisibility(View.INVISIBLE);
 		if (nextPage == totalPages - 1) {
 			imgNext.setVisibility(View.INVISIBLE);
 		}
@@ -111,7 +119,7 @@ public abstract class SwipeActivity extends FragmentActivity implements
 	
 	protected abstract int getPageCount();
 	
-	protected abstract View getPage(int level, LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState);
+	protected abstract View getPage(int page, LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState);
 	
 	@Override
 	public void onPageScrollStateChanged(int arg0) {
@@ -155,8 +163,12 @@ public abstract class SwipeActivity extends FragmentActivity implements
 		}
 	}
 	
-	public void onClickPage(int page){
+	protected void onClickPage(int page){
 		
+	}
+	
+	protected Class<? extends Activity> getLevelActivity(){
+		return URLTaskActivity.class;
 	}
 	
 	private class clickListener implements View.OnClickListener{

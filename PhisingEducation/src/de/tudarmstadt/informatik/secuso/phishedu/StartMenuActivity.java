@@ -133,10 +133,9 @@ public class StartMenuActivity extends BaseGameActivity implements
 
 	@Override
 	public void onLevelChange(int level) {
-		
 		int real_level = Math.min(level,ACTIVITYS_PER_LEVEL.length-1);
 		Intent levelIntent = new Intent(this, ACTIVITYS_PER_LEVEL[real_level]);
-		levelIntent.getExtras().putInt(Constants.LEVEL_EXTRA_STRING, level);
+		levelIntent.putExtra(Constants.LEVEL_EXTRA_STRING, level);
 		startActivity(levelIntent);
 	}
 
@@ -248,8 +247,9 @@ public class StartMenuActivity extends BaseGameActivity implements
 
 	@Override
 	public void levelFinished(int level) {
-		//TODO Erfolgsscreen
-		BackendController.getInstance().startLevel(level+1);
+		Intent levelIntent = new Intent(this, LevelFinishedActivity.class);
+		levelIntent.putExtra(Constants.LEVEL_EXTRA_STRING, level);
+		startActivity(levelIntent);
 	}
 
 }

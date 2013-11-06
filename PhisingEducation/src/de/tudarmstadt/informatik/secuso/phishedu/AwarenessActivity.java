@@ -5,13 +5,17 @@ import android.app.ActionBar;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
+import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ScrollView;
@@ -23,73 +27,31 @@ import android.widget.Toast;
  *         Activity should only be invoked if the user has not done this part
  *         before
  */
-public class AwarenessActivity extends FragmentActivity {
+public class AwarenessActivity extends SwipeActivity {
 
-	static final int ITEMS = 3;
-	EditText mEditSender;
-	EditText mEditReceiver;
-	EditText mEditText;
-
+	protected static final int[] levelLayoutIds = {
+		R.layout.awareness_01,
+		R.layout.awareness_02,
+		R.layout.awareness_send_email_form,
+	};
+	
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.awareness_01);
-		ActionBar ab = getActionBar();
-		ab.setTitle(R.string.title_anti_phishing);
-		this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+	protected int getPageCount() {
+		return levelLayoutIds.length;
 	}
 
 	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.main, menu);
-		return true;
+	protected View getPage(int page, LayoutInflater inflater,
+			ViewGroup container, Bundle savedInstanceState) {
+		return inflater.inflate(levelLayoutIds[page],	container, false);
 	}
 
-
-	public void goToAwarenessFinal01(View view) {
-		setContentView(R.layout.awareness_final_01);
-	}
-
-	public void goToAwarenessFinal02(View view) {
-		setContentView(R.layout.awareness_final_02);
-	}
-
-	public void goToAwarenessFinal03(View view) {
-		setContentView(R.layout.awareness_final_03);
-	
-	}
-
-	public void goToAwarenessFinal04(View view) {
-		setContentView(R.layout.awareness_final_04_lets_start);
-	}
-
-	public void goToAwareness01(View view){
-		setContentView(R.layout.awareness_01);
+	public void skipSendEmail(View view){
+		Intent levelIntent = new Intent(this, LevelFinishedActivity.class);
+		levelIntent.putExtra(Constants.LEVEL_EXTRA_STRING, 0);
+		startActivity(levelIntent);
 	}
 	
-	public void goToAwareness02(View view){
-		setContentView(R.layout.awareness_02);
-	}
-	
-	public void goToEmailForm(View view) {
-		setContentView(R.layout.awareness_send_email_form);
-
-		// make button visible
-		View b = findViewById(R.id.button_test);
-		b.setVisibility(View.VISIBLE);
-
-		ScrollView sv = (ScrollView) findViewById(R.id.awareness_scrollview_send_email_form);
-		sv.setOnTouchListener(new OnTouchListener() {
-
-			@Override
-			public boolean onTouch(View view, MotionEvent event) {
-				hideKeyboard(view);
-				return false;
-			}
-		});
-	}
-
 	/**
 	 * 
 	 * @param view
@@ -100,9 +62,9 @@ public class AwarenessActivity extends FragmentActivity {
 		hideKeyboard(view);
 
 		// get User Input
-		mEditSender = (EditText) findViewById(R.id.awareness_edit_sender_email);
-		mEditReceiver = (EditText) findViewById(R.id.awareness_edit_receiver_email);
-		mEditText = (EditText) findViewById(R.id.awareness_edit_text);
+		EditText mEditSender = (EditText) findViewById(R.id.awareness_edit_sender_email);
+		EditText mEditReceiver = (EditText) findViewById(R.id.awareness_edit_receiver_email);
+		EditText mEditText = (EditText) findViewById(R.id.awareness_edit_text);
 
 		String from = mEditSender.getText().toString();
 		String to = mEditReceiver.getText().toString();
@@ -136,10 +98,6 @@ public class AwarenessActivity extends FragmentActivity {
 
 	}
 
-
-	public void goToLetsStart(View view) {
-		setContentView(R.layout.awareness_final_04_lets_start);
-	}
 
 	public static boolean isValidEmailAddress(String email) {
 		boolean stricterFilter = true;
@@ -188,4 +146,5 @@ public class AwarenessActivity extends FragmentActivity {
 		in.hideSoftInputFromWindow(view.getWindowToken(),
 				InputMethodManager.HIDE_NOT_ALWAYS);
 	}
+	
 }
