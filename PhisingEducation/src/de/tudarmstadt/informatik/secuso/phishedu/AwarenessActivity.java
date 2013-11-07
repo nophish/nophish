@@ -30,8 +30,6 @@ import android.widget.Toast;
 public class AwarenessActivity extends SwipeActivity {
 
 	protected static final int[] levelLayoutIds = {
-		R.layout.level_00_intro_00,
-		R.layout.level_00_intro_01,
 		R.layout.level_00_intro_02,
 	};
 	

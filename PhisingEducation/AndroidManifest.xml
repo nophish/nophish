@@ -44,6 +44,14 @@
             android:label="@string/title_activity_awareness" >
         </activity>
         <activity
+            android:name="de.tudarmstadt.informatik.secuso.phishedu.ConsequencesActivity"
+            android:label="@string/title_activity_awareness" >
+        </activity>
+        <activity
+            android:name="de.tudarmstadt.informatik.secuso.phishedu.OversafeActivity"
+            android:label="@string/title_activity_awareness" >
+        </activity>
+        <activity
             android:name="de.tudarmstadt.informatik.secuso.phishedu.MoreInfoActivity"
             android:label="@string/title_activity_more_info" >
             <meta-data
@@ -70,6 +78,14 @@
         </activity>
         <activity
             android:name="de.tudarmstadt.informatik.secuso.phishedu.LevelFinishedActivity"
+            android:label="@string/title_level_finished" >
+        </activity>
+        <activity
+            android:name="de.tudarmstadt.informatik.secuso.phishedu.YouAreCorrectActivity"
+            android:label="@string/title_level_finished" >
+        </activity>
+        <activity
+            android:name="de.tudarmstadt.informatik.secuso.phishedu.YouGuessedActivity"
             android:label="@string/title_level_finished" >
         </activity>
         <activity

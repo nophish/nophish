@@ -1,8 +1,12 @@
 package de.tudarmstadt.informatik.secuso.phishedu;
 
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController;
 
-public class LevelFinishedActivity extends CategorySwipeActivity {
+public class LevelFinishedActivity extends SwipeActivity {
 	protected static int[][] levelLayoutIds = {
 		{
 			R.layout.level_00_finish_00,
@@ -12,29 +16,33 @@ public class LevelFinishedActivity extends CategorySwipeActivity {
 		}
 	};
 	
-	int level;
+	int real_level=0;
+	int index_leve=0;
 	
-	protected int[][] getLayouts(){
-		return levelLayoutIds;
-	}
-	
-	@Override
-	protected void checkAndHideButtons(int totalPages, int nextPage) {
-		super.checkAndHideButtons(totalPages, nextPage);
-	}
-	
-	protected void onStartClick(){
-		BackendController.getInstance().startLevel(level+1);
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		this.real_level = getIntent().getIntExtra(Constants.LEVEL_EXTRA_STRING,0);
+		this.index_leve=Math.min(real_level,levelLayoutIds.length-1);
 	}
 
-	@Override
-	protected int getCategory() {
-		return this.level;
+	protected void onStartClick(){
+		BackendController.getInstance().startLevel(real_level+1);
 	}
 
 	@Override
 	protected String startButtonText() {
-		return "Weiter zu Level "+(level+1);
+		return "Weiter zu Level "+(real_level+1);
+	}
+
+	@Override
+	protected int getPageCount() {
+		return this.levelLayoutIds[index_leve].length;
+	}
+
+	@Override
+	protected View getPage(int page, LayoutInflater inflater,
+			ViewGroup container, Bundle savedInstanceState) {
+		return inflater.inflate(this.levelLayoutIds[index_leve][page], container);
 	}
 	
 }

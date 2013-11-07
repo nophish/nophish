@@ -1,37 +1,22 @@
 package de.tudarmstadt.informatik.secuso.phishedu;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController;
 
-public class YouGuessedActivity extends CategorySwipeActivity {
+public class YouGuessedActivity extends SwipeActivity {
 	
 	//int level; is used as index for the consequences type
 	
-	protected static int[][] consequencesLayoutIds = {
-		{
-			R.layout.consequences_social
-		}
+	protected static int[] consequencesLayoutIds = {
+		R.layout.you_guessed
 	};
-	
-	int type;
-	
-	protected int[][] getLayouts(){
-		return consequencesLayoutIds;
-	}
-	
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		this.type=getIntent().getIntExtra(Constants.TYPE_EXTRA_STRING,0);
-	}
 	
 	protected void onStartClick(){
 		setResult(RESULT_OK);
 		finish();
-	}
-
-	@Override
-	protected int getCategory() {
-		return this.type;
 	}
 
 	@Override
@@ -46,5 +31,17 @@ public class YouGuessedActivity extends CategorySwipeActivity {
 	public void onBackPressed() {
 		return;
 	}
-	
+
+	@Override
+	protected int getPageCount() {
+		return consequencesLayoutIds.length;
+	}
+
+	@Override
+	protected View getPage(int page, LayoutInflater inflater,
+			ViewGroup container, Bundle savedInstanceState) {
+		return inflater.inflate(consequencesLayoutIds[page], container);
+	}
+
+		
 }

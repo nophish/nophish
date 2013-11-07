@@ -22,12 +22,6 @@ import de.tudarmstadt.informatik.secuso.phishedu.backend.FrontendControllerInter
 public class StartMenuActivity extends BaseGameActivity implements
 		FrontendControllerInterface, View.OnClickListener {
 	
-	@SuppressWarnings("rawtypes")
-	private static final Class[] ACTIVITYS_PER_LEVEL = {
-			AwarenessActivity.class, //the first level is soemething special
-			LevelIntroActivity.class //The others are mainly the same
-	};
-	
 	public StartMenuActivity() {
 		// request AppStateClient and GamesClient
 		super(BaseGameActivity.CLIENT_APPSTATE | BaseGameActivity.CLIENT_GAMES);
@@ -133,8 +127,7 @@ public class StartMenuActivity extends BaseGameActivity implements
 
 	@Override
 	public void onLevelChange(int level) {
-		int real_level = Math.min(level,ACTIVITYS_PER_LEVEL.length-1);
-		Intent levelIntent = new Intent(this, ACTIVITYS_PER_LEVEL[real_level]);
+		Intent levelIntent = new Intent(this, LevelIntroActivity.class);
 		levelIntent.putExtra(Constants.LEVEL_EXTRA_STRING, level);
 		startActivity(levelIntent);
 	}

@@ -1,33 +1,38 @@
 package de.tudarmstadt.informatik.secuso.phishedu;
 
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
-public class YouAreCorrectActivity extends CategorySwipeActivity {
+
+public class YouAreCorrectActivity extends SwipeActivity {
 	
 	//int level; is used as index for the consequences type
 	
-	protected static int[][] consequencesLayoutIds = {
-		{
-			R.layout.you_are_correct
-		}
+	protected static int[] consequencesLayoutIds = {
+		R.layout.you_are_correct
 	};
 	
-	protected int[][] getLayouts(){
-		return consequencesLayoutIds;
-	}
-		
 	protected void onStartClick(){
 		setResult(RESULT_OK);
 		finish();
 	}
 
 	@Override
-	protected int getCategory() {
-		return 0;
+	protected String startButtonText() {
+		return "Nächste URL";
 	}
 
 	@Override
-	protected String startButtonText() {
-		return "Nächste URL";
+	protected int getPageCount() {
+		return consequencesLayoutIds.length;
+	}
+
+	@Override
+	protected View getPage(int page, LayoutInflater inflater,
+			ViewGroup container, Bundle savedInstanceState) {
+		return inflater.inflate(consequencesLayoutIds[page], container);
 	}
 	
 }

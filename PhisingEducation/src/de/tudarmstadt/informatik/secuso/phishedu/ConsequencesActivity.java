@@ -1,9 +1,12 @@
 package de.tudarmstadt.informatik.secuso.phishedu;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController;
 
-public class ConsequencesActivity extends CategorySwipeActivity {
+public class ConsequencesActivity extends SwipeActivity {
 	
 	//int level; is used as index for the consequences type
 	
@@ -15,13 +18,10 @@ public class ConsequencesActivity extends CategorySwipeActivity {
 	
 	int type;
 	
-	protected int[][] getLayouts(){
-		return consequencesLayoutIds;
-	}
-	
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		this.type=getIntent().getIntExtra(Constants.TYPE_EXTRA_STRING,0);
+		int want_type = getIntent().getIntExtra(Constants.TYPE_EXTRA_STRING,0);
+		this.type=Math.min(want_type,consequencesLayoutIds.length-1);
 	}
 	
 	protected void onStartClick(){
@@ -30,13 +30,19 @@ public class ConsequencesActivity extends CategorySwipeActivity {
 	}
 
 	@Override
-	protected int getCategory() {
-		return this.type;
+	protected String startButtonText() {
+		return "Nächster Versuch";
 	}
 
 	@Override
-	protected String startButtonText() {
-		return "Nächster Versuch";
+	protected int getPageCount() {
+		return consequencesLayoutIds[this.type].length;
+	}
+
+	@Override
+	protected View getPage(int page, LayoutInflater inflater,
+			ViewGroup container, Bundle savedInstanceState) {
+		return inflater.inflate(consequencesLayoutIds[this.type][page], container);
 	}
 	
 }

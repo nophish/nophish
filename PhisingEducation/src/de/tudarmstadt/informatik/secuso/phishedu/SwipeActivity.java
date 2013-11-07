@@ -51,6 +51,13 @@ public abstract class SwipeActivity extends FragmentActivity implements
 		});
 		
 		bStartLevel = (Button) findViewById(R.id.game_intro_start_button);
+		bStartLevel.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				onStartClick();				
+			}
+		});
+		bStartLevel.setText(this.startButtonText());
 		bStartLevel.setVisibility(View.INVISIBLE);
 
 		mAdapter = new SwipePageAdapter(getSupportFragmentManager());
@@ -84,7 +91,6 @@ public abstract class SwipeActivity extends FragmentActivity implements
 		checkAndHideButtons(totalPages, previousPage);
 
 		mPager.setCurrentItem(previousPage, true);
-
 	}
 
 	protected void checkAndHideButtons(int totalPages, int nextPage) {
@@ -93,6 +99,9 @@ public abstract class SwipeActivity extends FragmentActivity implements
 		bStartLevel.setVisibility(View.INVISIBLE);
 		if (nextPage == totalPages - 1) {
 			imgNext.setVisibility(View.INVISIBLE);
+			if(this.startButtonText()!=null){
+			  bStartLevel.setVisibility(View.VISIBLE);
+			}
 		}
 		if (nextPage == 0 ) {
 			imgPrevious.setVisibility(View.INVISIBLE);
@@ -117,21 +126,11 @@ public abstract class SwipeActivity extends FragmentActivity implements
 		}
 	}
 	
-	protected abstract int getPageCount();
-	
-	protected abstract View getPage(int page, LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState);
-	
 	@Override
-	public void onPageScrollStateChanged(int arg0) {
-		// TODO Auto-generated method stub
-		
-	}
+	public void onPageScrollStateChanged(int arg0) {}
 
 	@Override
-	public void onPageScrolled(int arg0, float arg1, int arg2) {
-		// TODO Auto-generated method stub
-		
-	}
+	public void onPageScrolled(int arg0, float arg1, int arg2) {}
 
 	@Override
 	public void onPageSelected(int position) {
@@ -139,6 +138,7 @@ public abstract class SwipeActivity extends FragmentActivity implements
 	}
 	
 	public static class SwipeFragment extends Fragment{
+		
 		/**
 		 * 
 		 */
@@ -163,13 +163,6 @@ public abstract class SwipeActivity extends FragmentActivity implements
 		}
 	}
 	
-	protected void onClickPage(int page){
-		
-	}
-	
-	protected Class<? extends Activity> getLevelActivity(){
-		return URLTaskActivity.class;
-	}
 	
 	private class clickListener implements View.OnClickListener{
         private int page;
@@ -183,4 +176,14 @@ public abstract class SwipeActivity extends FragmentActivity implements
 		}
 		
 	}
+	
+	protected abstract int getPageCount();
+	protected abstract View getPage(int page, LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState);
+	
+	protected void onClickPage(int page){}
+	protected void onStartClick(){}
+	protected String startButtonText(){
+		return null;
+	}
+	
 }
