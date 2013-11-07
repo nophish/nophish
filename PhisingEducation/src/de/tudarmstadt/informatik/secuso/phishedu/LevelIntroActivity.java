@@ -60,7 +60,7 @@ public class LevelIntroActivity extends CategorySwipeActivity {
 	
 	protected void onStartClick(){
 		Intent levelIntent = new Intent(this, URLTaskActivity.class);
-		levelIntent.putExtra(Constants.LEVEL_EXTRA_STRING, this.getCategory());
+		levelIntent.putExtra(Constants.LEVEL_EXTRA_STRING, this.level);
 		startActivity(levelIntent);
 	}
 

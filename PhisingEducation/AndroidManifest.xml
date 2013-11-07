@@ -72,6 +72,10 @@
             android:name="de.tudarmstadt.informatik.secuso.phishedu.LevelFinishedActivity"
             android:label="@string/title_level_finished" >
         </activity>
+        <activity
+            android:name="de.tudarmstadt.informatik.secuso.phishedu.ProofActivity"
+            android:label="@string/title_activity_proof" >
+        </activity>
     </application>
 
 </manifest>

@@ -65,6 +65,7 @@ public class URLTaskActivity extends Activity {
 			followActivity=OversafeActivity.class;
 			break;
 		case Phish_Detected:
+			followActivity=ProofActivity.class;
 			break;
 		case Phish_NotDetected:
 			followActivity=ConsequencesActivity.class;

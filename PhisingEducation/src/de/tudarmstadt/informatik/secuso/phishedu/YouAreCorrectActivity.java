@@ -1,7 +1,5 @@
 package de.tudarmstadt.informatik.secuso.phishedu;
 
-import android.os.Bundle;
-import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController;
 
 public class YouAreCorrectActivity extends CategorySwipeActivity {
 	
