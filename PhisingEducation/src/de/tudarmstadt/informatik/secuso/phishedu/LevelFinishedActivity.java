@@ -2,7 +2,7 @@ package de.tudarmstadt.informatik.secuso.phishedu;
 
 import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController;
 
-public class LevelFinishedActivity extends LevelIntroActivity {
+public class LevelFinishedActivity extends CategorySwipeActivity {
 	protected static int[][] levelLayoutIds = {
 		{
 			R.layout.level_00_finish_00,
@@ -12,6 +12,8 @@ public class LevelFinishedActivity extends LevelIntroActivity {
 		}
 	};
 	
+	int level;
+	
 	protected int[][] getLayouts(){
 		return levelLayoutIds;
 	}
@@ -19,11 +21,20 @@ public class LevelFinishedActivity extends LevelIntroActivity {
 	@Override
 	protected void checkAndHideButtons(int totalPages, int nextPage) {
 		super.checkAndHideButtons(totalPages, nextPage);
-		bStartLevel.setText("Weiter zu Level "+(level+1));
 	}
 	
 	protected void onStartClick(){
 		BackendController.getInstance().startLevel(level+1);
+	}
+
+	@Override
+	protected int getCategory() {
+		return this.level;
+	}
+
+	@Override
+	protected String startButtonText() {
+		return "Weiter zu Level "+(level+1);
 	}
 	
 }

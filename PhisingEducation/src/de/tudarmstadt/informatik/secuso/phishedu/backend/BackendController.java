@@ -219,6 +219,11 @@ public class BackendController implements BackendControllerInterface, GameStateL
 		}
 		
 		this.current_url=base_url;
+		return getUrl();
+	}
+	
+	@Override
+	public String[] getUrl(){
 		return (String[]) this.current_url.getParts();
 	}
 	

@@ -42,6 +42,13 @@ public interface BackendControllerInterface {
 	 * @return A set of strings that (concardinated) make up the URL
 	 */
 	String[] getNextUrl();
+	
+	/**
+	 * Get the current url returned by the last {@link BackendControllerInterface#getNextUrl()} call.
+	 * @return A set of strings that (concardinated) make up the URL
+	 */
+	String[] getUrl();
+	
 	/**
 	 * Get the current level of the user.
 	 * This is the level the user is currently in.

@@ -30,6 +30,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
+        android:onClick="clickAccept"
         android:src="@drawable/checkmark" />
 
     <ImageView
@@ -38,6 +39,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
+        android:onClick="clickDecline"
         android:src="@drawable/cross" />
 
 </RelativeLayout>
