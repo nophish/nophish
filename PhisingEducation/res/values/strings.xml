@@ -104,15 +104,15 @@
     <string name="title_activity_more_info">Links zu Phishing</string>
 
     <!-- text awareness activity -->
-    <string name="awareness_text_what_is_phishing"><b>Was ist Phishing?</b>\nJeder Internetbenutzer ist durch Phishing gefährdet. Hinter diesen Angriffen stecken Kriminelle (auch Phisher oder Hacker genannt). Sie schicken dir Nachrichten beispielsweise in Form einer E-Mail, die für dich zunächst aussieht wie eine E-Mail von einer Personen oder Institution, der du vertraust. Die E-Mail sieht aus als wäre sie z.B. von Amazon, von Facebook oder deiner Bank verschickt worden. Ziel der Kriminellen ist es an Daten von dir zu kommen, um damit beispielsweise Überweisungen von deinem Konto tätigen zu können, in deinem Namen einzukaufen oder deine Freunde zu kontaktieren. </string>
-    <string name="awareness_i_know_phishing"><b>Ich weiß grundsätzlich, was Phishing ist.</b></string>
-    <string name="awareness_everybody_can_phish"><b>Jeder kann phishen!</b>\nUm dir zu verdeutlichen, dass auch du gefährdet bist, wollen wir dir zeigen, wie einfach es ist E-Mails im Namen einer anderen Person oder Institution zu verschicken.</string>
+    <string name="awareness_text_what_is_phishing"><b>Was ist Phishing?</b>\n\"Phishing\" ist eine Wortschöpfung, die eine Kombination der zwei englischen Begriffe \"fishing\" (angeln) und \"phreaking\" (hacken) darstellt. Der Begriff steht für den Versuch, verschiedene Daten von Internetbenutzern zu \"angeln\". Diese Daten können Passwörter, Kontodaten, Kreditkartendaten, TANs aber auch jegliche andere Art von Daten sein.\nJeder Internetbenutzer ist durch \"Phishing\" gefährdet. Hinter diesen Angriffen stecken Betrüger (auch \"Phishe\" oder \"Hacker\" genannt).\nSie schicken dir Nachrichten, bspw. in Form von E-Mails, die für dich zunächst aussehen wie Nachrichten von Personen oder Institutionen, denen du vertraust. Es wird der Eindruck erweckt, als wäre die E-Mail z.B. von Amazon, von Facebook oder von deiner Bank verschickt worden.\nZiel der Betrüger ist es, an Daten von dir zu kommen, um damit beispielsweise dein Konto zu plündern, in deinem Namen einzukaufen oder deine Freunde zu kontaktieren.\n\n\n</string>
+    <string name="awareness_everybody_can_phish"><b>Jeder kann phishen!</b>\nUm dir zu verdeutlichen, dass auch du gefährdet bist, wollen wir dir zeigen, wie einfach es ist, gefälschte E-Mails im Namen einer anderen Person oder Institution zu verschicken.</string>
     <string name="awareness_text_you_dont_believe_us">Du denkst so einfach geht das nicht?</string>
     <string name="awareness_text_see_for_yourself">Überzeuge dich selbst</string>
-    <string name="awareness_text_provide_sender">Bitte gib eine beliebige E-Mail Adresse als Absender ein:</string>
+    <string name="awareness_text_provide_sender"><b>Schicke dir selber eine E-Mail von einem beliebigen Absender</b>\n\nVon wem soll die E-Mail kommen*: </string>
     <string name="example_email">Max@Mustermann.de</string>
-    <string name="awareness_text_provide_receiver">Und jetzt gib deine eigene E-Mail Adresse ein:</string>
-    <string name="awareness_edit_text">Hier kannst du einen kurzen Text eingeben:</string>
+    <string name="awareness_text_provide_receiver">Deine E-Mail Adresse:</string>
+    <string name="awareness_edit_text">Hier kannst du einen beliebigen Text eingeben, der in  der E-Mail erscheinen soll:</string>
+    <string name="awareness_email_hint">*Hinweis: Bitte gebe an dieser Stelle eine möglichst authentische (oder bereits existierende) E-Mail Adresse ein, die als Absender erscheinen soll.</string>
     <string name="btn_send">Abschicken</string>
     <string name="hint_text">Hier Text eingeben.</string>
     <string name="awareness_missing_email_sender_or_receiver">Bitte Absender und Empfänger eingeben.</string>

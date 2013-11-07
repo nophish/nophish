@@ -23,7 +23,11 @@
     <!-- fontsizes -->
     <dimen name="font_size_large">35sp</dimen>
     <dimen name="font_size_xlarge">40sp</dimen>
+    
+    <!-- icons -->
+   
     <dimen name="leveicon_corner">50dp</dimen>
     <dimen name="leveicon_textsize">150dp</dimen>
-
+    <dimen name="icon_book_write">30dp</dimen>
+    
 </resources>
