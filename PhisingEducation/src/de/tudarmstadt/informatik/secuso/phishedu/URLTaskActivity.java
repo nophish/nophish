@@ -23,6 +23,10 @@ public class URLTaskActivity extends Activity {
 		setContentView(R.layout.urltask_task);
 
 		urlText = (TextView) findViewById(R.id.url_task_url);
+		nextURL();
+	}
+	
+	private void nextURL(){
 		String[] urlArray = BackendController.getInstance().getNextUrl();
 
 		// build string from array
@@ -52,11 +56,13 @@ public class URLTaskActivity extends Activity {
 
 	private void clicked(boolean acceptance){
 		PhishResult result = BackendController.getInstance().userClicked(acceptance);
-		Class followActivity=URLTaskActivity.class;
+		Class followActivity=ConsequencesActivity.class;
 		switch(result){
 		case NoPhish_Detected:
+			followActivity=YouAreCorrectActivity.class;
 			break;
 		case NoPhish_NotDetected:
+			followActivity=OversafeActivity.class;
 			break;
 		case Phish_Detected:
 			break;
@@ -67,7 +73,13 @@ public class URLTaskActivity extends Activity {
 		Intent levelIntent = new Intent(this, followActivity);
 		levelIntent.putExtra(Constants.LEVEL_EXTRA_STRING, this.level);
 		levelIntent.putExtra(Constants.TYPE_EXTRA_STRING, BackendController.getInstance().getType().getValue());
-		startActivity(levelIntent);
+		startActivityForResult(levelIntent, 1);
+	}
+	
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		super.onActivityResult(requestCode, resultCode, data);
+		nextURL();
 	}
 
 }

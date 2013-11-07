@@ -241,5 +241,9 @@
     <string name="url_task_description">Entscheide über die folgenden Web-Adressen, ob du ihnen vertraust (Häkchen antippen) oder ob hier ein Phishing-Angriff vorliegt (Kreuz antippen).</string>
 	<string name="url">Beispiel URL</string>
 	<string name="title_level_finished">Level finished</string>
+	
+	
 	<string name="consequrences_social">These are the horroble consequences</string>
+	<string name="oversafe">You identified a Valid URL as phishing. This is safe.</string>
+	<string name="you_are_correct">This is indeed a valid URL.</string>
 </resources>

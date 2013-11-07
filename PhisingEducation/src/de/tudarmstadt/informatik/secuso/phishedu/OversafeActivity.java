@@ -3,27 +3,20 @@ package de.tudarmstadt.informatik.secuso.phishedu;
 import android.os.Bundle;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController;
 
-public class ConsequencesActivity extends CategorySwipeActivity {
+public class OversafeActivity extends CategorySwipeActivity {
 	
 	//int level; is used as index for the consequences type
 	
 	protected static int[][] consequencesLayoutIds = {
 		{
-			R.layout.consequences_social
+			R.layout.oversafe
 		}
 	};
-	
-	int type;
 	
 	protected int[][] getLayouts(){
 		return consequencesLayoutIds;
 	}
-	
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		this.type=getIntent().getIntExtra(Constants.TYPE_EXTRA_STRING,0);
-	}
-	
+		
 	protected void onStartClick(){
 		setResult(RESULT_OK);
 		finish();
@@ -31,12 +24,12 @@ public class ConsequencesActivity extends CategorySwipeActivity {
 
 	@Override
 	protected int getCategory() {
-		return this.type;
+		return 0;
 	}
 
 	@Override
 	protected String startButtonText() {
-		return "Nächster Versuch";
+		return "Nächste URL";
 	}
 	
 }
