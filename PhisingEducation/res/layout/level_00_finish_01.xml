@@ -19,8 +19,8 @@
 
     <ImageView
         android:id="@+id/game_intro_img_library_emblem"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/icon_book_write"
+        android:layout_height="@dimen/icon_book_write"
         android:layout_alignLeft="@+id/awareness_final"
         android:layout_below="@+id/awareness_final"
         android:layout_centerVertical="true"
@@ -40,8 +40,8 @@
 
     <ImageView
         android:id="@+id/game_intro_img_desktop"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/icon_book_write"
+        android:layout_height="@dimen/icon_book_write"
         android:layout_alignLeft="@+id/game_intro_img_library_emblem"
         android:layout_below="@+id/game_intro_img_library_emblem"
         android:layout_marginTop="@dimen/margin_standard"

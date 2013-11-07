@@ -39,7 +39,8 @@
             android:minWidth="@dimen/btn_standard_width"
             android:layout_height="@dimen/btn_standard_height"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="@dimen/margin_bottom_btn_position"
+            android:layout_below="@+id/awareness_email_hint"
+            android:layout_marginTop="@dimen/margin_large"
             android:onClick="sendEmail"
             android:text="@string/btn_send" />
 
@@ -61,6 +62,7 @@
             android:layout_height="wrap_content"
             android:layout_alignLeft="@+id/awareness_edit_receiver_email"
             android:layout_below="@+id/awareness_edit_receiver_email"
+            android:layout_marginRight="@dimen/margin_standard"
             android:layout_centerVertical="true"
             android:layout_marginTop="@dimen/margin_large"
             android:text="@string/awareness_edit_text" />
@@ -95,6 +97,15 @@
             android:layout_marginTop="@dimen/margin_standard"
             android:onClick="skipSendEmail"
             android:text="Skip (for testing)" />
+
+        <TextView
+            android:id="@+id/awareness_email_hint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/awareness_edit_text"
+            android:layout_below="@+id/awareness_edit_text"
+            android:layout_marginTop="@dimen/margin_large"
+            android:text="@string/awareness_email_hint" />
 
     </RelativeLayout>
 
