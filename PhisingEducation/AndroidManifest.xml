@@ -44,7 +44,7 @@
             android:label="@string/title_activity_awareness" >
         </activity>
         <activity
-            android:name="de.tudarmstadt.informatik.secuso.phishedu.ConsequencesActivity"
+            android:name="de.tudarmstadt.informatik.secuso.phishedu.YouAreWrongActivity"
             android:label="@string/title_activity_awareness" >
         </activity>
         <activity

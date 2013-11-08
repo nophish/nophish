@@ -29,5 +29,6 @@
     <dimen name="leveicon_corner">50dp</dimen>
     <dimen name="leveicon_textsize">150dp</dimen>
     <dimen name="icon_book_write">30dp</dimen>
+    <dimen name="security_icons">100dp</dimen>
     
 </resources>

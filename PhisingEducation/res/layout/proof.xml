@@ -16,15 +16,32 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="26dp"
         android:onClick="onDoneClick"
-        android:text="I am Sure" />
+        android:text="@string/button_verify" />
+
+    <TextView
+        android:id="@+id/phish_proof_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:text="@string/phish_proof"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
         android:id="@+id/url"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/done_botton"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="99dp"
-        android:text="TextView" />
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:text="@string/url"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <ImageView
+        android:id="@+id/security_low"
+        android:layout_width="@dimen/security_icons"
+        android:layout_height="@dimen/security_icons"
+        android:layout_below="@+id/url"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/security_low" />
 
 </RelativeLayout>
