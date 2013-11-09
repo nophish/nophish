@@ -161,7 +161,8 @@
     <string name="level_01_intro_03_text_01">Wie schaue ich mir die Webadresse vollständig an?\n\nDies hat zur Folge, dass die Webadresse markiert wird und du das Ende der Webadresse siehst.</string>
     <string name="level_01_intro_03_text_02">Jetzt musst du die Webadresse mit dem Finger nach rechts ziehen (ggf. mehrmals), bis du am Anfang der Webadresse angelangt bist.</string>
     <string name="level_01_intro_03_text_03">Durch das nach links und rechts Ziehen, kannst du dir die gesamte Webadresse anschauen.\n\n\n</string>
-    
+    <string name="level_01_exercise_text_01">Nun bist du an der Reihe:\n\n1. Klicke auf den Button \"Klicke hier\", um eine Übungswebseite zu öffnen.\n\n2. Warte bis die Webseite vollständig geladen ist.\n\n3. Löse die Aufgabe auf der Webseite. Wenn du die Aufgabe gelöst hast, wirst du automatisch zur App zurückgeleitet.</string>
+    <string name="level_01_exercise_button_click_here">Klicke hier</string>
     <string name="title_activity_level2_web_addresses">Level2WebAddressesActivity</string>
     <string name="level_1_splash_text">Level 1\n\nAdressleiste</string>
     <string name="loading">Loading ...</string>
@@ -169,11 +170,19 @@
     <!-- LEVEL 2 - WEB-ADRESSEN -->
     <string name="level_2_splash_text">Level 2\n\nWeb-Adressen</string>
     <string name="level_1_web_address_title">Web-Adressen</string>
-    <string name="level_2_web_address_text_1">Als nächestes musst du lernen, wie man Web-Adressen interpretiert. So kann bspw. eine Web-Adresse aussehen:</string>
-    <string name="level_2_example_url_1">http://online-banking.bank.de/kontostand/heute/</string>
-    <string name="level_2_example_http">http://</string>
-    <string name="level_2_example_after_http">online-banking.bank.de</string>
-    <string name="level_2_example_path">/kontostand/heute/</string>
+    <string name="level_02_intro_00_text_01">Einführung Webadressen\n\nUm anhand von Webadressen eine gefälschte Webseite zu erkennen, ist es wichtig, den Aufbau einer Webadresse zu verstehen. In den folgenden Levels wirst du dies nach und nach lernen.\n\nZunächst ein Beispiel, wie eine Webadresse aussehen kann:</string>
+    <string name="level_02_intro_01_text_01">Was sind die wichtigen Bestandteile einer Webadresse?\n\nWebadressen sind sehr komplex. Aus diesem Grund möchten wir alles möglichst vereinfacht erklären. Hierzu betrachten wir die Webseite, die du besuchst von nun an als deinen \"Gesprächspartner\". Bereits in der Webadresse erfährst du (wie in einem Gespräch) die ersten wichtigen Informationen.\n\nDie folgende Grafik fasst zusammen, was die einzelnen Bestandteile einer Webadresse über das Gespräch aussagen.</string>
+    <string name="level_02_intro_01_text_02">Der grün hinterlegte Bereich stellt die Sicherheitsstufe des Gespräches dar. Eine Alternative zu \"http://\" ist \"https://\". Was der Unterschied ist, wirst du in einem fortgeschrittenen Level erfahren. Der rot hinterlegte Bereich gibt dir Informationen über deinen Gesprächspartner und der blau hinterlegte Bereich verrät dir das Gesprächsthema.
+        
+    </string>
+    <string name="http">http://</string>
+    <string name="http_description">Sicherheits-\nstufe</string>
+    <string name="domain">abo.spiegel.de</string>
+    <string name="domain_description">Informationen über\nGesprächspartner selbst</string>
+    <string name="path">/spiegel-digital</string>
+    <string name="path_description">Gesprächs-\nthema</string>
+    
+    <string name="level_02_intro_00_text_02_url">http://abo.spiegel.de/spiegel-digital</string>
     <string name="level_2_web_address_text_http">Dieser Teil beschreibt die technische Methode mit der du die Web-Seite ansprichst.</string>
     <string name="level_2_web_address_path_text_3">Der Teil <b>nach dem dritten Slash \"/\"</b> sagt, über was du mit der Web-Seite sprichst.</string>
     <string name="level_2_how_text">TECHNISCHE METHODE</string>
