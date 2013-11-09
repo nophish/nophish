@@ -30,5 +30,7 @@
     <dimen name="leveicon_textsize">150dp</dimen>
     <dimen name="icon_book_write">30dp</dimen>
     <dimen name="security_icons">100dp</dimen>
+    <dimen name="website_screenshot_height_large">500dp</dimen>
+    <dimen name="website_screenshot_height_small">200dp</dimen>
     
 </resources>
