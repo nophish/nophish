@@ -19,10 +19,14 @@
     <dimen name="margin_xxlarge">100dp</dimen>
     <dimen name="margin_xxxlarge">300dp</dimen>
 
+    <!-- padding -->
+    <dimen name="mini_padding">2dp</dimen>
+    <dimen name="padding">5dp</dimen>
+
     <!-- height -->
     <dimen name="height_large">540dp</dimen>
     <!-- fontsizes -->
-    <dimen name="font_size_large">35sp</dimen>
+    <dimen name="font_size_large">30sp</dimen>
     <dimen name="font_size_xlarge">40sp</dimen>
 
     <!-- icons -->

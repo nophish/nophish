@@ -23,7 +23,7 @@
         android:layout_alignBottom="@+id/level_2_domain_blocks_8"
         android:layout_centerHorizontal="true"
         android:layout_toRightOf="@+id/level_2_domain_blocks_8"
-        android:text="@string/level_2_dot"
+        android:text="@string/dot"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textSize="@dimen/font_size_large"
         android:textStyle="bold" />
@@ -36,7 +36,7 @@
         android:layout_alignBottom="@+id/level_2_domain_bank_8"
         android:layout_centerHorizontal="true"
         android:layout_toRightOf="@+id/level_2_domain_bank_8"
-        android:text="@string/level_2_dot"
+        android:text="@string/dot"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textSize="@dimen/font_size_large"
         android:textStyle="bold" />
@@ -61,7 +61,7 @@
         android:layout_centerVertical="true"
         android:text="@string/level_4_http"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textColor="@color/grey" />
+        android:textColor="@color/grey_" />
 
     <TextView
         android:id="@+id/level_2_domain_blocks_8"
@@ -96,7 +96,7 @@
         android:layout_toRightOf="@+id/level_2_domain_dot_8_b"
         android:background="@drawable/background_textview"
         android:padding="@dimen/margin_xxsmall"
-        android:text="@string/level_2_domain_de"
+        android:text="@string/domain_de"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
@@ -107,6 +107,6 @@
         android:layout_below="@+id/level_4_http"
         android:text="@string/level_2_example_path"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textColor="@color/grey" />
+        android:textColor="@color/grey_" />
 
 </RelativeLayout>

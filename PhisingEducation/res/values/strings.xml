@@ -166,67 +166,58 @@
     <string name="title_activity_level2_web_addresses">Level2WebAddressesActivity</string>
     <string name="level_1_splash_text">Level 1\n\nAdressleiste</string>
     <string name="loading">Loading ...</string>
-
+    <string name="linebreaks">\n\n\n</string>
     <!-- LEVEL 2 - WEB-ADRESSEN -->
-    <string name="level_2_splash_text">Level 2\n\nWeb-Adressen</string>
     <string name="level_1_web_address_title">Web-Adressen</string>
+    <string name="level_2_splash_text">Level 2\n\nWeb-Adressen</string>
     <string name="level_02_intro_00_text_01">Einführung Webadressen\n\nUm anhand von Webadressen eine gefälschte Webseite zu erkennen, ist es wichtig, den Aufbau einer Webadresse zu verstehen. In den folgenden Levels wirst du dies nach und nach lernen.\n\nZunächst ein Beispiel, wie eine Webadresse aussehen kann:</string>
-    <string name="level_02_intro_01_text_01">Was sind die wichtigen Bestandteile einer Webadresse?\n\nWebadressen sind sehr komplex. Aus diesem Grund möchten wir alles möglichst vereinfacht erklären. Hierzu betrachten wir die Webseite, die du besuchst von nun an als deinen \"Gesprächspartner\". Bereits in der Webadresse erfährst du (wie in einem Gespräch) die ersten wichtigen Informationen.\n\nDie folgende Grafik fasst zusammen, was die einzelnen Bestandteile einer Webadresse über das Gespräch aussagen.</string>
-    <string name="level_02_intro_01_text_02">Der grün hinterlegte Bereich stellt die Sicherheitsstufe des Gespräches dar. Eine Alternative zu \"http://\" ist \"https://\". Was der Unterschied ist, wirst du in einem fortgeschrittenen Level erfahren. Der rot hinterlegte Bereich gibt dir Informationen über deinen Gesprächspartner und der blau hinterlegte Bereich verrät dir das Gesprächsthema.
-        
-    </string>
+    <string name="level_02_intro_00_text_02_url">http://abo.spiegel.de/spiegel-digital</string>
+    <string name="level_02_intro_01_text_01">Was sind die wichtigen Bestandteile einer Webadresse?\n\nWebadressen sind sehr komplex. Aus diesem Grund möchten wir alles möglichst vereinfacht erklären. Hierzu betrachten wir die Webseite, die du besuchst von nun an als deinen \"Gesprächspartner\". Bereits in der Webadresse erfährst du (wie in einem Gespräch) die ersten wichtigen Informationen.</string>
+    <string name="level_02_intro_02_text_01">Was sind die wichtigen Bestandteile einer Webadresse?\n\nDie folgende Grafik fasst zusammen, was die einzelnen Bestandteile einer Webadresse über das Gespräch aussagen.</string>
+    <string name="level_02_intro_02_text_02">Der grün hinterlegte Bereich stellt die Sicherheitsstufe des Gespräches dar. Eine Alternative zu \"http://\" ist \"https://\". Was der Unterschied ist, wirst du in einem fortgeschrittenen Level erfahren. Der rot hinterlegte Bereich gibt dir Informationen über deinen Gesprächspartner und der blau hinterlegte Bereich verrät dir das Gesprächsthema.\n\n\n</string>
+    <string name="level_02_intro_03_text_01">Fokus - Info über Gesprächspartner selbst\n\nIn diesem und in den nächsten paar Levels werden wir uns hauptsächlich mit dem rot hinterlegten Bestandteil der Webadresse beschäftigen, da es sehr wichtig ist, zu wissen, wer dein Gesprächspartner ist!\n\nDer Bereich zwischen \""http://\" und dem dritten Slash \"/\" gibt dir also Informationen über deinen Gesprächspartner, sprich über die Webseite. Die restlichen Bereiche kannst du erst einmal ignorieren.</string>
+    <string name="level_02_intro_04_text_01">Aufbau dieses Bereiches\n\nDieser Bereich wird durch Punkte in einzelne Blöcke eingeteilt.\n\nMerke: Diese Blöcke werden von recht nach links gelesen.</string>
+    <string name="level_02_intro_05_text_01">Angaben zum Standort\n\nDer erste Block (von rechts) verrät dir den \"Standort\" deines Gesprächspartners. In diesem Fall \"de\" für Deutschland.</string>
+    <string name="level_02_intro_06_text_01">Angaben zum Unternehmen\n\nDer zweite Block (von rechts) sagt dir, zu welchem \"Unternehmen\"" dein Gesprächspartner gehört.</string>
+    <string name="level_02_intro_07_text_01">Weitere Angaben\n\nAb dem dritten Block (von rechts), beschreiben alle restlichen Blöcke (es können auch mehrere sein) verschiedene \"Abteilungen\" des Unternehmens deines Gesprächspartners.</string>
+    <string name="level_02_intro_08_text_01">Zusammenfassung\n\nDie wichtigsten zwei Blöcke einer Webadresse sind die ersten zwei Blöcke (von rechts betrachtet)  im Bereich \"Information über Gesprächspartner\". Wir nennen ihn \"Wer-Bereich\" (Unternehmen + Standort). Dieser Bereich muss von jedem Gesprächspartner, d.h. jeder Webseite, registriert werden. Bereits registrierte Namen können nicht noch einmal registriert werden. Diese zwei Blöcke sagen dir, wer dein Gesprächspartner tatsächlich ist, daher solltest du diese immer identifizieren und prüfen.</string>
+    <string name="level_02_intro_08_domain_description">Wer-Bereich\n(Unternehmen + Standort)</string>
+    <string name="level_02_intro_08_subdomain_description">Abteilungen</string>
+    <string name="level_02_intro_09_text_01">Beispiele\n\nIm Folgenden zeigen wir ein paar Beispiele für Webadressen. Überlege dir zunächst selbst, welcher Bereich in den angegebenen Webadressen der Wer-Bereich ist. Überprüfe im Anschluss deine Ergebnisse, indem du fortfährst.</string>
+    
+    <string name="level_02_example_amazon">http://www.amazon.de</string>
+    <string name="level_02_example_googlemail">https://mail.google.com/mail/?shva=1#inbox</string>
+    <string name="level_02_example_ebay">http://pages.ebay.de/help/sell/quick-listing-tool.html</string>
+    <string name="level_02_example_facebook">https://secure.facebook.com/settings?tab=payments</string>
+ 
+    <string name="level_02_example_amazon_01">http://www.</string>
+    <string name="level_02_example_amazon_02">amazon.de</string>
+    <string name="level_02_example_gmail_01">https://mail.</string>
+    <string name="level_02_example_gmail_02">google.com</string>
+    <string name="level_02_example_gmail_03">/mail/</string>
+    <string name="level_02_example_gmail_04">?shva=1#inbox</string>
+    <string name="level_02_example_ebay_01">http://pages.</string>
+    <string name="level_02_example_ebay_02">ebay.de</string>
+    <string name="level_02_example_ebay_03">/help/sell/</string>
+    <string name="level_02_example_ebay_04">quick-listing-tool.html</string>
+    <string name="level_02_example_facebook_01">https://secure.</string>
+    <string name="level_02_example_facebook_02">facebook.com</string>
+    <string name="level_02_example_facebook_03">/</string>
+    <string name="level_02_example_facebook_04">settings?tab=payments</string>
+    <string name="level_02_exercise_text_01">Nun bist du an der Reihe:\n\nNach den vorherigen Beispielen, sollst du nun selber den Wer-Bereich der folgenden Webadressen bestimmen.\n\nBerühre hierzu die entsprechende Stelle und klicke auf \"Überprüfen\", wenn deine Antwort überprüft werden soll.</string>    
+    
     <string name="http">http://</string>
     <string name="http_description">Sicherheits-\nstufe</string>
     <string name="domain">abo.spiegel.de</string>
+    <string name="domain_spiegel">spiegel</string>
+    <string name="subdomain">abo</string>
     <string name="domain_description">Informationen über\nGesprächspartner selbst</string>
     <string name="path">/spiegel-digital</string>
+    <string name="path_dot_dot_dot">/...</string>
     <string name="path_description">Gesprächs-\nthema</string>
+    <string name="domain_de">de</string>
+    <string name="dot">.</string>
     
-    <string name="level_02_intro_00_text_02_url">http://abo.spiegel.de/spiegel-digital</string>
-    <string name="level_2_web_address_text_http">Dieser Teil beschreibt die technische Methode mit der du die Web-Seite ansprichst.</string>
-    <string name="level_2_web_address_path_text_3">Der Teil <b>nach dem dritten Slash \"/\"</b> sagt, über was du mit der Web-Seite sprichst.</string>
-    <string name="level_2_how_text">TECHNISCHE METHODE</string>
-    <string name="level_2_about_text">WORÜBER</string>
-    <string name="level_2_with_whom_text">MIT WEM</string>
-    <string name="level_2_web_address_domain_text_4">Der Teil <b>zwischen \"http://\"</b> und <b>dem dritten Slash \"/\"</b> sagt, mit wem du auf dieser Web-Seite sprichst.</string>
-    <string name="level_2_web_address_domain_text_5">Der \"Mit Wem\" Teil wird durch Punkte in Blöcke eingeteilt.</string>
-    <string name="level_2_domain_online_banking">online-banking</string>
-    <string name="level_2_domain_bank">bank</string>
-    <string name="level_2_domain_de">de</string>
-    <string name="level_2_dot">.</string>
-    <string name="level_2_domain_first_block"><b>Merke:</b> Diese Blöcke werden von rechts nach links gelesen.\nDer erste Block beschreibt das Land.</string>
-    <string name="level_2_domain_second_block">Der zweite Block beschreibt das Unternehmen, mit dem du redest.</string>
-    <string name="level_2_subdomain_blocks">Ab dem dritten Block, beschreiben alle restlichen Blöcke (es können auch mehr sein) Untereinheiten des Unternehmens.</string>
-    <string name="level_2_most_important_blocks">Die wichtigsten zwei Blöcke einer Web-Adresse sind die ersten zwei im \"Mit Wem\" Teil</string>
-    <string name="level_2_domain_http_online_banking">http://online-banking</string>
-    <string name="level_2_fazit">Du sprichst auf "http://"Du sprichst \nüber den "kontostand" von "heute"\nDu sprichst mit dem Unternehmen "bank" in Deutschland\nDu sprichst mit der Untereinheit "online-banking"</string>
-    <string name="level_2_web_address_text_example_1">Im Folgenden zeigen wir Web-Adressen Beispiele, bei dem der wichtigste Teil markiert wird. Zu erst kannst du dir selber überlegen, was richtig ist.</string>
-    <string name="level_2_example_amazon">http://www.amazon.de</string>
-    <string name="level_2_example_amazon_http_and_after">http://www.</string>
-    <string name="level_2_example_amazon_domain">amazon.de</string>
-    <string name="level_2_web_address_text_example_2">Wir werden dir valide und gefälschte Web-Adressen zeigen.</string>
-    <string name="level_2_meaning_checkmark">Du kannst der Web-Adresse vertrauen.</string>
-    <string name="level_2_meaning_cross">Die Web-Adresse ist gefälscht.</string>
-    <string name="level_2_example_amazon_fake">http://www.amazon.fake.de\n/login/amazon</string>
-    <string name="level_2_example_amazon_fake_http">http://www.amazon.</string>
-    <string name="level_2_example_amazon_fake_domain">fake.com</string>
-    <string name="level_2_example_amazon_fake_path">/login/amazon</string>
-    <string name="level_2_example_googlemail_1">https://accounts.google.com\n/ServiceLogin</string>
-    <string name="level_2_example_googlemail_http">https://accounts.</string>
-    <string name="level_2_example_googlemail_domain">google.com</string>
-    <string name="level_2_example_googlemail_path">/ServiceLogin</string>
-    <string name="level_2_example_googlemail_fake">https://my-site.de/google.de</string>
-    <string name="level_2_example_googlemail_fake_http">https://</string>
-    <string name="level_2_example_googlemail_fake_domain">my-site.de</string>
-    <string name="level_2_example_googlemail_fake_path">/google.de</string>
-    <string name="level_2_example_facebook_fake">https://secure.login.de\n/settings?tab=payments\n/facebook.de/</string>
-    <string name="level_2_example_facebook_fake_http">https://secure.</string>
-    <string name="level_2_example_facebook_fake_domain">login.de</string>
-    <string name="level_2_example_facebook_fake_path">/settings?tab=payments\n/facebook.de/</string>
-    <string name="level_2_country">LAND</string>
-    <string name="level_2_company">UNTERNEHMEN</string>
-    <string name="level_2_company_components">UNTEREINHEITEN DES UNTERNEHMENS</string>
-    <string name="level_2_most_important">WICHTIGSTER TEIL</string>
 
     <!-- LEVEL 3 IP AND NONSENSE -->
     <string name="level_3_text_ip_and_home_address">Genau so wie unsere Häuser durch Straßen-Namen adressiert werden, werden Netzwerk-Computer mit sogenannten IP Addressen identifiziert.</string>

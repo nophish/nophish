@@ -101,7 +101,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/level_02_intro_01_http_02"
             android:layout_marginTop="@dimen/margin_standard"
-            android:text="@string/level_02_intro_01_text_02"
+            android:text="@string/level_02_intro_02_text_02"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
     </RelativeLayout>
