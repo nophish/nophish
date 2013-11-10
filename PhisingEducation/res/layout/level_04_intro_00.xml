@@ -49,7 +49,6 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/margin_xlarge"
         android:gravity="center"
-        android:text="@string/level_2_company_components"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textStyle="bold" />
 
@@ -72,7 +71,6 @@
         android:layout_toRightOf="@+id/level_4_http"
         android:background="@drawable/background_highlight"
         android:padding="@dimen/margin_xxsmall"
-        android:text="@string/level_2_domain_online_banking"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
@@ -84,7 +82,6 @@
         android:layout_toRightOf="@+id/level_2_domain_dot_8"
         android:background="@drawable/background_textview"
         android:padding="@dimen/margin_xxsmall"
-        android:text="@string/level_2_domain_bank"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
@@ -105,7 +102,6 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/level_4_http"
         android:layout_below="@+id/level_4_http"
-        android:text="@string/level_2_example_path"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColor="@color/grey_" />
 
