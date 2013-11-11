@@ -12,8 +12,8 @@
         android:id="@+id/level_3_text_top"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_small"
-        android:text="@string/level_4_text_dont_trust_subdomains"
+        android:layout_marginTop="@dimen/margin_standard"
+        android:text="@string/level_3_text_dont_trust_nonsense"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
@@ -23,7 +23,7 @@
         android:layout_below="@+id/level_3_text_top"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/margin_large"
-        android:text="@string/level_4_subdomain_example"
+        android:text="@string/level_3_nonsense_example"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <ImageView
