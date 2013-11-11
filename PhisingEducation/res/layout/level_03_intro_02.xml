@@ -9,30 +9,92 @@
     tools:context=".IpNonsenseUrlSecondInfoActivity" >
 
     <TextView
-        android:id="@+id/level_3_text_top"
+        android:id="@+id/level_03_intro_02_text_01"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_small"
-        android:text="@string/level_4_text_dont_trust_subdomains"
+        android:text="@string/level_03_intro_02_text_01"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
-        android:id="@+id/level_3_text_example"
+        android:id="@+id/dot_02"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/level_3_text_top"
+        android:layout_alignBaseline="@+id/domain_01"
+        android:layout_alignBottom="@+id/domain_01"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/margin_large"
-        android:text="@string/level_4_subdomain_example"
+        android:layout_marginLeft="@dimen/margin_xxsmall"
+        android:layout_toRightOf="@+id/domain_01"
+        android:text="@string/dot"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textSize="@dimen/font_size_large"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/http"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="@dimen/margin_xxxxlarge"
+        android:text="@string/http"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="@color/grey" />
+
+    <TextView
+        android:id="@+id/dot_01"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/subdomain"
+        android:layout_alignBottom="@+id/subdomain"
+        android:layout_marginLeft="@dimen/margin_xxsmall"
+        android:layout_toRightOf="@+id/subdomain"
+        android:text="@string/dot"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textSize="@dimen/font_size_large"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/subdomain"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/http"
+        android:layout_alignBottom="@+id/http"
+        android:layout_marginLeft="@dimen/margin_xxsmall"
+        android:layout_toRightOf="@+id/http"
+        android:background="@color/light_red"
+        android:text="@string/subdomain"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
-    <ImageView
-        android:id="@+id/level_3_img_stop"
+    <TextView
+        android:id="@+id/domain_02"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/level_3_text_example"
-        android:layout_below="@+id/level_3_text_example"
-        android:layout_marginTop="@dimen/margin_large"
-        android:src="@drawable/stop" />
+        android:layout_alignBaseline="@+id/dot_02"
+        android:layout_alignBottom="@+id/dot_02"
+        android:layout_marginLeft="@dimen/margin_xxsmall"
+        android:layout_toRightOf="@+id/dot_02"
+        android:text="@string/domain_de"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/path"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/domain_01"
+        android:layout_marginLeft="@dimen/margin_xxsmall"
+        android:layout_toRightOf="@+id/domain_02"
+        android:text="@string/path_dot_dot_dot"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="@color/grey" />
+
+    <TextView
+        android:id="@+id/domain_01"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/dot_01"
+        android:layout_alignBottom="@+id/dot_01"
+        android:layout_marginLeft="@dimen/margin_xxsmall"
+        android:layout_toRightOf="@+id/dot_01"
+        android:text="@string/domain_spiegel"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
 
 </RelativeLayout>

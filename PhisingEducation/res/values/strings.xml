@@ -218,8 +218,27 @@
     <string name="domain_de">de</string>
     <string name="dot">.</string>
     
+    <!-- LEVEL 3 SUBDOMAIN -->
+    <string name="new_attack">Neuer Angriff</string>
+    <string name="slash">/</string>
+    
+    <string name="level_4_splash_text">Level 4\n\nUnternehmen\nund Untereinheiten</string>
+  	<string name="level_03_intro_00_text_01">Angriff durch bekannte Namen im Bereich der Abteilungen\n\nPhisher verwenden Täuschungsmanöver, um Webadressen vertrauenswürdig aussehen zu lassen, obwohl sie das nicht sind.\n\nDu wirst nach und nach lernen, mit welchen Tricks sie versuchen, dich hinters Licht zu führen.\n\nIn diesem Level beschäftigen wir uns mit der Verwendung von bekannten Namen im Bereich der Abteilungen einer Webadresse.</string>
+    <string name="level_03_intro_01_text_01">Zur Erinnerung\n\nDer Bereich zwischen \"http://\" und dem dritten Slash \"/\" gibt dir Informationen über deinen Gesprächspartner, d.h. über die Webseite.\n\nDieser Bereich wird durch Punkte in Blöcke eingeteilt und die Blöcke werden von rechts nach links gelesen.</string>
+    <string name="level_03_intro_02_text_01">Benennung von Abteilungen\n\nDer wichtigste Wer-Bereich einer Webadresse muss auch vom Phisher registriert werden und bereits registrierte Namen können nicht noch einmal registriert werden. Den Bereich der Abteilungen (hellrosa hinterlegt) einer Webadresse kann allerdings jeder nennen, wie er möchte.</string>
+    <string name="level_03_intro_03_text_01">Erkennen von Angriffen</string>
+    <string name="level_03_intro_03_text_02">Phisher können problemlos bekannte Namen in ihren Abteilungen verwenden, um euch zu täuschen. Verlasse dich also nicht auf diesen Bereich. Schaue dir auch immer die wichtigsten zwei Blöcke der Webadresse an, den Wer-Bereich. Enthält der Bereich der Abteilungen dir bekannte Namen und entspricht der Wer-Bereich aber nicht dem Unternehmen deines Gesprächspartners, dann gebe hier keine Daten ein!\n\nUnten ist ein Beispiel für eine Phishing Webadresse, die dieses Prinzip anwendet. In dem Beispiel ist dein Gesprächspartner phishers-seite.de (rot hinterlegt). Das ist der wichtigste Wer-Bereich der Webadresse. Dein Gesprächspartner ist nicht google.com (hellrosa hinterlegt)! google.com ist hier nur der Name einer Abteilung des Unternehmens phishers-seite.de. Dieser Bereich hat damit keine Relevanz für deine Untersuchung der Webadresse. Das ist auch der Grund, warum wir Webadressen von rechts nach links lesen:  der Wer-Bereich ist wichtiger als die Abteilung!</string>
+    <string name="level_03_intro_03_subdomain">google.com.</string>
+    <string name="level_03_intro_03_domain">phishers-seite.de</string>
+    <string name="level_03_intro_03_path">search/online+banking+postbank/</string>
+    
+    <string name="level_4_http">http://</string>
+    <string name="level_4_subdomain_google">google.de</string>
+    <string name="level_4_domain_eine_seite">eine-seite</string>
+    <string name="level_4_some_path">/update-account/</string>
+    
 
-    <!-- LEVEL 3 IP AND NONSENSE -->
+    <!-- LEVEL 4 IP -->
     <string name="level_3_text_ip_and_home_address">Genau so wie unsere Häuser durch Straßen-Namen adressiert werden, werden Netzwerk-Computer mit sogenannten IP Addressen identifiziert.</string>
     <string name="level_3_img_descr_home">Haus-Adresse</string>
     <string name="level_3_img_descr_computer">IP-Adresse</string>
@@ -232,20 +251,7 @@
     <string name="title_activity_level3_ip_nonsense">IP- und Nonsense Adressen</string>
     <string name="level_3_splash_text">Level 3\n\n IP- und Nonsense</string>
 
-    <!-- LEVEL 4 SUBDOMAIN -->
-    <string name="level_4_splash_text">Level 4\n\nUnternehmen\nund Untereinheiten</string>
-    <string name="level_4_text_reminder_subdomain"><b>Erinnerung:</b> Der Teil zwischen <i>http://</i> und dem dritten <i>Slash /</i> beschreibt mit wem du sprichst. Dieser Teil ist in Blöcke unterteilt und wird von rechts nach links gelesen. Ab dem dritten Block werden Untereinheiten des Unternehmens beschrieben.</string>
-    <string name="level_4_http">http://</string>
-    <string name="level_4_subdomain_misuse">MISSBRAUCH DER UNTEREINHEITEN</string>
-    <string name="level_4_text_subdomain_misuse">Jeder kann die Untereinheiten in der Web-Adresse nennen wie er möchte.\n\nPhisher könnten euch bekannte Namen und Firmen in ihrer Untereinheit verwenden, um euch zu täuschen.</string>
-    <string name="level_4_subdomain_google">google.de</string>
-    <string name="level_4_domain_eine_seite">eine-seite</string>
-    <string name="level_4_some_path">/update-account/</string>
-    <string name="level_4_text_dont_trust_subdomains">Vertraue <b>nicht</b> den Untereinheiten einer Web-Adresse. Schaue immer auch auf den wichtigsten Teil! Im Beispiel unten ist der täuschende Teil der Web-Adresse hervorgehoben.</string>
-    <string name="level_4_subdomain_example">http://<b>login.gmail.com</b>.safe-login.de/update.account</string>
-    <string name="title_activity_level4_subdomain_addresses">Missbrauch der Untereinheiten</string>
-    <string name="title_activity_urltask">Phish oder kein Phish?</string>
-
+    
     <!-- TASKS AND SOLUTION SCREENS FROM LEVEL 3 -->
     <string name="url_task_description">Entscheide über die folgenden Webadressen, ob du ihnen vertraust (Häkchen antippen) oder ob hier ein Phishing-Angriff vorliegt (Kreuz antippen).</string>
     <string name="url">Beispiel URL</string>
