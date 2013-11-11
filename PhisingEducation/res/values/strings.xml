@@ -72,7 +72,8 @@
     <string name="title_activity_awareness">E-Mail Fälschung</string>
     <string name="title_level_1_addr_bar_activity">Die Addressleiste</string>
     <string name="title_activity_level_grid">LevelGridActivity</string>
-
+	<string name="title_activity_urltask">Übung</string>
+    
     <!-- splash -->
     <string name="title_email_spoofing">E-Mail Absender Fälschung</string>
     <string name="text_beat_phishing">Schütze dich vor fiesen Tricks!</string>
@@ -217,36 +218,40 @@
     <string name="path_description">Gesprächs-\nthema</string>
     <string name="domain_de">de</string>
     <string name="dot">.</string>
-    
-    <!-- LEVEL 3 SUBDOMAIN -->
     <string name="new_attack">Neuer Angriff</string>
     <string name="slash">/</string>
+    <string name="reminder">Zur Erinnerung - Webadressen</string>
+    <string name="former_attacks">Bisherige Angriffe</string>
+    <string name="reminder_subdomain">1.) Enthält der Bereich der Abteilungen dir bekannte Namen und entspricht der Wer-Bereich aber nicht dem Unternehmen deines Gesprächspartners, dann gebe hier keine Daten ein.</string>
+    
+    
+    <!-- LEVEL 3 SUBDOMAIN -->
     
     <string name="level_4_splash_text">Level 4\n\nUnternehmen\nund Untereinheiten</string>
   	<string name="level_03_intro_00_text_01">Angriff durch bekannte Namen im Bereich der Abteilungen\n\nPhisher verwenden Täuschungsmanöver, um Webadressen vertrauenswürdig aussehen zu lassen, obwohl sie das nicht sind.\n\nDu wirst nach und nach lernen, mit welchen Tricks sie versuchen, dich hinters Licht zu führen.\n\nIn diesem Level beschäftigen wir uns mit der Verwendung von bekannten Namen im Bereich der Abteilungen einer Webadresse.</string>
     <string name="level_03_intro_01_text_01">Zur Erinnerung\n\nDer Bereich zwischen \"http://\" und dem dritten Slash \"/\" gibt dir Informationen über deinen Gesprächspartner, d.h. über die Webseite.\n\nDieser Bereich wird durch Punkte in Blöcke eingeteilt und die Blöcke werden von rechts nach links gelesen.</string>
     <string name="level_03_intro_02_text_01">Benennung von Abteilungen\n\nDer wichtigste Wer-Bereich einer Webadresse muss auch vom Phisher registriert werden und bereits registrierte Namen können nicht noch einmal registriert werden. Den Bereich der Abteilungen (hellrosa hinterlegt) einer Webadresse kann allerdings jeder nennen, wie er möchte.</string>
-    <string name="level_03_intro_03_text_01">Erkennen von Angriffen</string>
-    <string name="level_03_intro_03_text_02">Phisher können problemlos bekannte Namen in ihren Abteilungen verwenden, um euch zu täuschen. Verlasse dich also nicht auf diesen Bereich. Schaue dir auch immer die wichtigsten zwei Blöcke der Webadresse an, den Wer-Bereich. Enthält der Bereich der Abteilungen dir bekannte Namen und entspricht der Wer-Bereich aber nicht dem Unternehmen deines Gesprächspartners, dann gebe hier keine Daten ein!\n\nUnten ist ein Beispiel für eine Phishing Webadresse, die dieses Prinzip anwendet. In dem Beispiel ist dein Gesprächspartner phishers-seite.de (rot hinterlegt). Das ist der wichtigste Wer-Bereich der Webadresse. Dein Gesprächspartner ist nicht google.com (hellrosa hinterlegt)! google.com ist hier nur der Name einer Abteilung des Unternehmens phishers-seite.de. Dieser Bereich hat damit keine Relevanz für deine Untersuchung der Webadresse. Das ist auch der Grund, warum wir Webadressen von rechts nach links lesen:  der Wer-Bereich ist wichtiger als die Abteilung!</string>
+    <string name="recognize_attacks">Erkennen von Angriffen</string>
+    <string name="level_03_intro_03_text_02">Phisher können problemlos bekannte Namen in ihren Abteilungen verwenden, um euch zu täuschen. Verlasse dich also nicht auf diesen Bereich. Schaue dir auch immer die wichtigsten zwei Blöcke der Webadresse an, den Wer-Bereich. Enthält der Bereich der Abteilungen dir bekannte Namen und entspricht der Wer-Bereich aber nicht dem Unternehmen deines Gesprächspartners, dann gebe hier keine Daten ein!\n\nUnten ist ein Beispiel für eine Phishing-Webadresse, die dieses Prinzip anwendet. In dem Beispiel ist dein Gesprächspartner phisher-seite.de (rot hinterlegt). Das ist der wichtigste Wer-Bereich der Webadresse. Dein Gesprächspartner ist nicht google.com (hellrosa hinterlegt)! google.com ist hier nur der Name einer Abteilung des Unternehmens phisher-seite.de. Dieser Bereich hat damit keine Relevanz für deine Untersuchung der Webadresse. Das ist auch der Grund, warum wir Webadressen von rechts nach links lesen:  der Wer-Bereich ist wichtiger als die Abteilung!</string>
     <string name="level_03_intro_03_subdomain">google.com.</string>
-    <string name="level_03_intro_03_domain">phishers-seite.de</string>
+    <string name="level_03_intro_03_domain">phisher-seite.de</string>
     <string name="level_03_intro_03_path">search/online+banking+postbank/</string>
-    
-    <string name="level_4_http">http://</string>
-    <string name="level_4_subdomain_google">google.de</string>
-    <string name="level_4_domain_eine_seite">eine-seite</string>
-    <string name="level_4_some_path">/update-account/</string>
     
 
     <!-- LEVEL 4 IP -->
-    <string name="level_3_text_ip_and_home_address">Genau so wie unsere Häuser durch Straßen-Namen adressiert werden, werden Netzwerk-Computer mit sogenannten IP Addressen identifiziert.</string>
-    <string name="level_3_img_descr_home">Haus-Adresse</string>
-    <string name="level_3_img_descr_computer">IP-Adresse</string>
-    <string name="level_3_example_ip">Beispiel: 192.168.10.15</string>
-    <string name="level_3_text_ip_definition">Eine IP Adresse besteht aus einer Serie von 4 Zahlen, die durch Punkte getrennt werden.</string>
+    <string name="level_04_intro_00_text_01">Angriff durch IP-Adresse anstelle des Wer-Bereiches\n\nEin weiterer Trick dich hinters Licht zu führen, ist die Verwendung von IP-Adressen statt Begriffen im Wer-Bereich der Webadresse. Mit dieser Art des Angriffs beschäftigen wir uns in diesem Level.</string>
+    <string name="level_04_intro_01_text_01">Was sind IP-Adressen?\n\nGenau so wie unsere Häuser durch Straßennamen adressiert werden, werden Computer im Internet mit sogenannten IP-Adressen identifiziert.</string>
+    <string name="level_04_intro_01_text_02">Eine IP-Adresse ist eine 4-stellige Zahlenfolge, die durch Punkte getrennt wird.</string>
+    <string name="level_04_intro_01_example_ip">Beispiel: 192.168.10.15</string>
+    <string name="level_04_intro_01_img_descr_computer">IP-Adresse</string>
+    <string name="level_04_intro_01_img_descr_house">Hausadresse</string>
+   
+    <string name="level_04_intro_03_text_02">Enthält der Bereich zwischen \"http://\" und dem dritten Slash \"/\" eine IP-Adresse (4-stellige Zahlenfolge durch Punkte getrennt) anstelle des Wer-Bereiches, dann gebe hier keine Daten ein!\n\nBeispiel für eine Phishing-Webadresse, die dieses Prinzip anwendet: </string>
+    <string name="level_04_intro_03_example_ip">192.168.160.02</string>
+    <string name="level_04_intro_03_example_ip_path">/secure-login</string>	
+    
     <string name="level_3_text_dont_trust_ip">Wenn der aller wichtigste Teil der Web-Adresse eine IP Adresse enthält, solltest du misstrauisch werden. Die Web-Seite ist mit hoher Wahrscheinlichkeit gefälscht.</string>
     <string name="level_3_text_dont_trust_nonsense">Enthält der wichtigste Teil Namen, die keinen Sinn ergeben bzw. nichts mit dem Dienst der Webseite zu tun haben, sollte dies ebenfalls zu Misstrauen führen.</string>
-    <string name="level_3_ip_example">http://<b>198.162.10.02</b>/secure-login</string>
     <string name="level_3_nonsense_example">http://secure-login.<b>grfsn.de</b>/facebook.de</string>
     <string name="title_activity_level3_ip_nonsense">IP- und Nonsense Adressen</string>
     <string name="level_3_splash_text">Level 3\n\n IP- und Nonsense</string>
