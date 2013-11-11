@@ -195,7 +195,7 @@
     <string name="level_02_example_gmail_01">https://mail.</string>
     <string name="level_02_example_gmail_02">google.com</string>
     <string name="level_02_example_gmail_03">/mail/</string>
-    <string name="level_02_example_gmail_04">?shva=1#inbox</string>
+    <string name="level_02_example_googlemail_04">?shva=1#inbox</string>
     <string name="level_02_example_ebay_01">http://pages.</string>
     <string name="level_02_example_ebay_02">ebay.de</string>
     <string name="level_02_example_ebay_03">/help/sell/</string>
