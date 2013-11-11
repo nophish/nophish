@@ -76,7 +76,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/level_02_intro_example_gmail_01"
-            android:text="@string/level_02_example_googlemail_04"
+            android:text="@string/level_02_example_gmail_04"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <TextView
