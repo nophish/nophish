@@ -56,7 +56,7 @@ public class URLTaskActivity extends Activity {
 
 	private void clicked(boolean acceptance){
 		PhishResult result = BackendController.getInstance().userClicked(acceptance);
-		Class followActivity=ConsequencesActivity.class;
+		Class followActivity=YouAreWrongActivity.class;
 		switch(result){
 		case NoPhish_Detected:
 			followActivity=YouAreCorrectActivity.class;
@@ -68,7 +68,7 @@ public class URLTaskActivity extends Activity {
 			followActivity=ProofActivity.class;
 			break;
 		case Phish_NotDetected:
-			followActivity=ConsequencesActivity.class;
+			followActivity=YouAreWrongActivity.class;
 			break;
 		}
 		Intent levelIntent = new Intent(this, followActivity);

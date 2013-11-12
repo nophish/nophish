@@ -6,22 +6,22 @@ import android.view.View;
 import android.view.ViewGroup;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController;
 
-public class ConsequencesActivity extends SwipeActivity {
+public class YouAreWrongActivity extends SwipeActivity {
 	
 	//int level; is used as index for the consequences type
 	
 	protected static int[][] consequencesLayoutIds = {
 		{
-			R.layout.consequences_social
+			R.layout.you_are_wrong
 		}
 	};
 	
 	int type;
 	
 	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
 		int want_type = getIntent().getIntExtra(Constants.TYPE_EXTRA_STRING,0);
 		this.type=Math.min(want_type,consequencesLayoutIds.length-1);
-		super.onCreate(savedInstanceState);
 	}
 	
 	protected void onStartClick(){
@@ -31,7 +31,7 @@ public class ConsequencesActivity extends SwipeActivity {
 
 	@Override
 	protected String startButtonText() {
-		return "Nächster Versuch";
+		return "N??chster Versuch";
 	}
 
 	@Override

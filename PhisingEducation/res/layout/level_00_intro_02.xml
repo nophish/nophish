@@ -10,14 +10,14 @@
         tools:context=".AwarenessActivity">
 
         <TextView
-            android:id="@+id/awareness_textfield_provide_sender"
+            android:id="@+id/level_00_intro_02_text_01"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_marginLeft="@dimen/margin_standard"
             android:layout_marginRight="@dimen/margin_standard"
             android:layout_marginTop="@dimen/margin_standard"
-            android:text="@string/awareness_text_provide_sender" />
+            android:text="@string/level_00_intro_02_text_01" />
 
         <requestFocus />
 
@@ -26,7 +26,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignLeft="@+id/awareness_text_provide_receiver"
-            android:layout_alignRight="@+id/awareness_textfield_provide_sender"
+            android:layout_alignRight="@+id/level_00_intro_02_text_01"
             android:layout_below="@+id/awareness_text_provide_receiver"
             android:layout_marginTop="@dimen/margin_standard"
             android:ems="10"
@@ -48,9 +48,9 @@
             android:id="@+id/awareness_edit_sender_email"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/awareness_textfield_provide_sender"
-            android:layout_alignRight="@+id/awareness_textfield_provide_sender"
-            android:layout_below="@+id/awareness_textfield_provide_sender"
+            android:layout_alignLeft="@+id/level_00_intro_02_text_01"
+            android:layout_alignRight="@+id/level_00_intro_02_text_01"
+            android:layout_below="@+id/level_00_intro_02_text_01"
             android:layout_marginTop="@dimen/margin_standard"
             android:ems="10"
             android:hint="@string/example_email"
@@ -60,8 +60,8 @@
             android:id="@+id/awareness_info_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/awareness_edit_receiver_email"
-            android:layout_below="@+id/awareness_edit_receiver_email"
+            android:layout_alignLeft="@+id/level_00_intro_02_text_02"
+            android:layout_below="@+id/level_00_intro_02_text_02"
             android:layout_marginRight="@dimen/margin_standard"
             android:layout_centerVertical="true"
             android:layout_marginTop="@dimen/margin_large"
@@ -72,7 +72,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignLeft="@+id/awareness_info_text"
-            android:layout_alignRight="@+id/awareness_edit_receiver_email"
+            android:layout_alignRight="@+id/level_00_intro_02_text_02"
             android:layout_below="@+id/awareness_info_text"
             android:layout_marginTop="@dimen/margin_standard"
             android:ems="10"

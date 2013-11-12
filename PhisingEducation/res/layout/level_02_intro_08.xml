@@ -1,106 +1,142 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/level_02_intro_08_sv"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin" >
+    android:layout_height="match_parent" >
 
-    <TextView
-        android:id="@+id/level_2_web_address_text_9"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_small"
-        android:text="@string/level_2_web_address_domain_text_5"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
-
-    <TextView
-        android:id="@+id/level_2_domain_blocks_9"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_centerVertical="true"
-        android:text="@string/level_2_domain_http_online_banking"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
-
-    <TextView
-        android:id="@+id/level_2_domain_dot_9"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/level_2_domain_blocks_9"
-        android:layout_alignBaseline="@+id/level_2_domain_blocks_9"
-        android:layout_toRightOf="@+id/level_2_domain_blocks_9"
-        android:layout_centerHorizontal="true"
-        android:text="@string/level_2_dot"
-        android:textSize="@dimen/font_size_large"
-        android:textStyle="bold"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
-
-    <TextView
-        android:id="@+id/level_2_domain_bank_9"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/level_2_domain_dot_9"
-        android:layout_alignBottom="@+id/level_2_domain_dot_9"
-        android:layout_toRightOf="@+id/level_2_domain_dot_9"
-        android:text="@string/level_2_domain_bank"
-        android:background="@drawable/background_highlight"
-        android:padding="@dimen/margin_xxsmall"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
-    
-    <TextView
-        android:id="@+id/level_2_domain_dot_9_b"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/level_2_domain_bank_9"
-        android:layout_alignBaseline="@+id/level_2_domain_bank_9"
-        android:layout_toRightOf="@+id/level_2_domain_bank_9"
-        android:layout_centerHorizontal="true"
-        android:text="@string/level_2_dot"
-        android:textSize="@dimen/font_size_large"
-        android:textStyle="bold"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
-    
-        <TextView
-        android:id="@+id/level_2_domain_de_8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/level_2_domain_dot_9_b"
-        android:layout_alignBottom="@+id/level_2_domain_dot_9_b"
-        android:layout_toRightOf="@+id/level_2_domain_dot_9_b"
-        android:text="@string/level_2_domain_de"
-        android:background="@drawable/background_highlight"
-        android:padding="@dimen/margin_xxsmall"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin" >
 
         <TextView
-            android:id="@+id/level_2_web_address_text_9_b"
+            android:id="@+id/level_02_intro_08_text_01"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/level_2_web_address_text_9"
-            android:layout_below="@+id/level_2_web_address_text_9"
-            android:layout_marginTop="@dimen/margin_large"
-            android:text="@string/level_2_most_important_blocks"
+            android:text="@string/level_02_intro_08_text_01"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <TextView
-            android:id="@+id/level_2_example_text_path_9"
+            android:id="@+id/dot_02"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/level_2_domain_blocks_9"
-            android:layout_below="@+id/level_2_domain_bank_9"
-            android:text="@string/level_2_example_path"
+            android:layout_alignBaseline="@+id/domain_01"
+            android:layout_alignBottom="@+id/domain_01"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="@dimen/margin_xxsmall"
+            android:layout_toRightOf="@+id/domain_01"
+            android:text="@string/dot"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textSize="@dimen/font_size_large"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/http"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/level_02_intro_08_text_01"
+            android:layout_marginTop="@dimen/margin_xlarge"
+            android:text="@string/http"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/grey" />
+
+        <TextView
+            android:id="@+id/path"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/domain_02"
+            android:layout_alignBottom="@+id/domain_02"
+            android:layout_marginLeft="@dimen/margin_xxsmall"
+            android:layout_toRightOf="@+id/domain_02"
+            android:text="@string/path_dot_dot_dot"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/grey" />
+
+        <TextView
+            android:id="@+id/dot_01"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/subdomain"
+            android:layout_alignBottom="@+id/subdomain"
+            android:layout_marginLeft="@dimen/margin_xxsmall"
+            android:layout_toRightOf="@+id/subdomain"
+            android:text="@string/dot"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textSize="@dimen/font_size_large"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/subdomain"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/http"
+            android:layout_alignBottom="@+id/http"
+            android:layout_marginLeft="@dimen/margin_xxsmall"
+            android:layout_toRightOf="@+id/http"
+            android:background="@color/light_red"
+            android:text="@string/subdomain"
             android:textAppearance="?android:attr/textAppearanceMedium" />
-        
-       <TextView
-        android:id="@+id/level_2_most_important"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/level_2_domain_blocks_9"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/margin_xlarge"
-        android:text="@string/level_2_most_important"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textStyle="bold" />
-</RelativeLayout>
+
+        <TextView
+            android:id="@+id/domain_02"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/dot_02"
+            android:layout_alignBottom="@+id/dot_02"
+            android:layout_marginLeft="@dimen/margin_xxsmall"
+            android:layout_toRightOf="@+id/dot_02"
+            android:background="@color/red"
+            android:text="@string/domain_de"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/domain_01"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/dot_01"
+            android:layout_alignBottom="@+id/dot_01"
+            android:layout_marginLeft="@dimen/margin_xxsmall"
+            android:layout_toRightOf="@+id/dot_01"
+            android:background="@color/red"
+            android:text="@string/domain_spiegel"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/level_02_intro_08_domain_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/subdomain"
+            android:layout_marginBottom="@dimen/margin_small"
+            android:layout_toRightOf="@+id/http"
+            android:background="@color/red"
+            android:gravity="center"
+            android:padding="@dimen/mini_padding"
+            android:text="@string/level_02_intro_08_domain_description"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/level_02_intro_08_subdomain_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/http"
+            android:layout_marginTop="@dimen/margin_small"
+            android:background="@color/light_red"
+            android:gravity="center"
+            android:padding="@dimen/padding"
+            android:text="@string/level_02_intro_08_subdomain_description"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/linebreaks"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/level_02_intro_08_subdomain_description"
+            android:text="@string/linebreaks"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+    </RelativeLayout>
+
+</ScrollView>

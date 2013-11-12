@@ -1,61 +1,109 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/level_02_intro_01_sv"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin" >
+    android:layout_height="match_parent" >
 
-    <TextView
-        android:id="@+id/level_2_web_address_text_2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_small"
-        android:text="@string/level_2_web_address_text_http"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin" >
 
-    <TextView
-        android:id="@+id/level_2_example_after_http"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/level_2_web_address_url_example_2"
-        android:layout_alignBottom="@+id/level_2_web_address_url_example_2"
-        android:layout_toRightOf="@+id/level_2_web_address_url_example_2"
-        android:text="@string/level_2_example_after_http"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        <TextView
+            android:id="@+id/level_02_intro_01_text_01"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_small"
+            android:text="@string/level_02_intro_01_text_01"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
 
-    <TextView
-        android:id="@+id/level_2_web_address_url_example_2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_centerVertical="true"
-        android:background="@drawable/background_textview"
-        android:padding="@dimen/margin_xxsmall"
-        android:text="@string/level_2_example_http"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textStyle="bold" />
+        <TextView
+            android:id="@+id/level_02_intro_01_domain_01"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/level_02_intro_01_http_01"
+            android:layout_alignBottom="@+id/level_02_intro_01_http_01"
+            android:layout_toRightOf="@+id/level_02_intro_01_http_01"
+            android:background="@color/red"
+            android:text="@string/domain"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
 
-    <TextView
-        android:id="@+id/level_2_example_text_path"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/level_2_web_address_url_example_2"
-        android:layout_below="@+id/level_2_web_address_url_example_2"
-        android:text="@string/level_2_example_path"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        <TextView
+            android:id="@+id/level_02_intro_01_path_01"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/level_02_intro_01_domain_01"
+            android:layout_alignBottom="@+id/level_02_intro_01_domain_01"
+            android:layout_toRightOf="@+id/level_02_intro_01_domain_01"
+            android:background="@color/blue"
+            android:text="@string/path"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
 
-    <TextView
-        android:id="@+id/level_2_how"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/level_2_example_text_path"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/margin_xlarge"
-        android:text="@string/level_2_how_text"
-        android:textStyle="bold"
-        android:gravity="center"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        <TextView
+            android:id="@+id/level_02_intro_01_domain_02"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/level_02_intro_01_http_01"
+            android:layout_below="@+id/level_02_intro_01_text_01"
+            android:layout_marginLeft="@dimen/margin_standard"
+            android:layout_marginTop="@dimen/margin_standard"
+            android:background="@color/red"
+            android:gravity="center"
+            android:padding="@dimen/margin_xxsmall"
+            android:text="@string/domain_description"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
 
-</RelativeLayout>
+        <TextView
+            android:id="@+id/level_02_intro_01_http_01"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/level_02_intro_01_text_01"
+            android:layout_below="@+id/level_02_intro_01_domain_02"
+            android:layout_marginTop="@dimen/margin_small"
+            android:background="@color/green"
+            android:gravity="center"
+            android:text="@string/http"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/level_02_intro_01_http_02"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/level_02_intro_01_domain_01"
+            android:layout_marginTop="@dimen/margin_small"
+            android:background="@color/green"
+            android:gravity="center"
+            android:padding="@dimen/margin_xxsmall"
+            android:text="@string/http_description"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/level_02_intro_01_path_02"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/level_02_intro_01_http_02"
+            android:layout_alignBottom="@+id/level_02_intro_01_http_02"
+            android:layout_alignRight="@+id/level_02_intro_01_path_01"
+            android:layout_toRightOf="@+id/level_02_intro_01_domain_01"
+            android:background="@color/blue"
+            android:gravity="center"
+            android:padding="@dimen/margin_xxsmall"
+            android:text="@string/path_description"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/level_02_intro_01_text_02"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/level_02_intro_01_http_02"
+            android:layout_marginTop="@dimen/margin_standard"
+            android:text="@string/level_02_intro_02_text_02"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    </RelativeLayout>
+
+</ScrollView>
