@@ -20,8 +20,7 @@ public class LevelIntroActivity extends SwipeActivity {
 		{
 			R.layout.level_00_intro_00,
 			R.layout.level_00_intro_01
-		}, //level0 does not have standard layouts
-		{
+		},{
 			R.layout.level_01_intro_00,
 			R.layout.level_01_intro_01
 		},{
@@ -53,9 +52,9 @@ public class LevelIntroActivity extends SwipeActivity {
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
 		this.real_level=getIntent().getIntExtra(Constants.LEVEL_EXTRA_STRING,0);
 		this.index_level=Math.min(this.real_level, levelLayoutIds.length-1);
+		super.onCreate(savedInstanceState);
 	}
 
 	protected void onStartClick(){

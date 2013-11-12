@@ -61,6 +61,8 @@ public class LevelSelectorActivity extends SwipeActivity implements
 	
 	@Override
 	public void onClickPage(int page) {
-		BackendController.getInstance().startLevel(page);
+		if(page <= BackendController.getInstance().getMaxUnlockedLevel()){
+			BackendController.getInstance().startLevel(page);	
+		}
 	};
 }

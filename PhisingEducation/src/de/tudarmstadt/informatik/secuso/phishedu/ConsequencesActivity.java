@@ -19,9 +19,9 @@ public class ConsequencesActivity extends SwipeActivity {
 	int type;
 	
 	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
 		int want_type = getIntent().getIntExtra(Constants.TYPE_EXTRA_STRING,0);
 		this.type=Math.min(want_type,consequencesLayoutIds.length-1);
+		super.onCreate(savedInstanceState);
 	}
 	
 	protected void onStartClick(){
