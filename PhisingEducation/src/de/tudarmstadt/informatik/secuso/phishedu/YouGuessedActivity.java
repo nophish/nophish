@@ -40,7 +40,7 @@ public class YouGuessedActivity extends SwipeActivity {
 	@Override
 	protected View getPage(int page, LayoutInflater inflater,
 			ViewGroup container, Bundle savedInstanceState) {
-		return inflater.inflate(consequencesLayoutIds[page], container);
+		return inflater.inflate(consequencesLayoutIds[page], container, false);
 	}
 
 		

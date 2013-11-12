@@ -42,7 +42,7 @@ public class YouAreWrongActivity extends SwipeActivity {
 	@Override
 	protected View getPage(int page, LayoutInflater inflater,
 			ViewGroup container, Bundle savedInstanceState) {
-		return inflater.inflate(consequencesLayoutIds[this.type][page], container);
+		return inflater.inflate(consequencesLayoutIds[this.type][page], container, false);
 	}
 	
 }

@@ -17,11 +17,11 @@ public class LevelFinishedActivity extends SwipeActivity {
 	};
 	
 	int real_level=0;
-	int index_leve=0;
+	int index_level=0;
 	
 	protected void onCreate(Bundle savedInstanceState) {
 		this.real_level = getIntent().getIntExtra(Constants.LEVEL_EXTRA_STRING,0);
-		this.index_leve=Math.min(real_level,levelLayoutIds.length-1);
+		this.index_level=Math.min(real_level,levelLayoutIds.length-1);
 		super.onCreate(savedInstanceState);
 	}
 
@@ -36,13 +36,13 @@ public class LevelFinishedActivity extends SwipeActivity {
 
 	@Override
 	protected int getPageCount() {
-		return this.levelLayoutIds[index_leve].length;
+		return this.levelLayoutIds[index_level].length;
 	}
 
 	@Override
 	protected View getPage(int page, LayoutInflater inflater,
 			ViewGroup container, Bundle savedInstanceState) {
-		return inflater.inflate(this.levelLayoutIds[index_leve][page], container);
+		return inflater.inflate(this.levelLayoutIds[index_level][page], container, false);
 	}
 	
 }
