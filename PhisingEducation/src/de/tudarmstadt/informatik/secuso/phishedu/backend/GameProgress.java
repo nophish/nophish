@@ -44,7 +44,7 @@ public class GameProgress implements OnStateLoadedListener{
 		 * @return if the state is valid true, otherwise false
 		 */
 		private boolean validate(){
-			return state.results != null;
+			return this.results != null;
 		}	
 		
 	}

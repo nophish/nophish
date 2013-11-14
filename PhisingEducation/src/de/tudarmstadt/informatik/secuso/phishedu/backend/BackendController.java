@@ -53,56 +53,56 @@ public class BackendController implements BackendControllerInterface, GameStateL
 	};
 	private static final int POINTS_PER_LEVEL = 100;
 	private static final int URL_CACHE_SIZE = 100;
-	
+
 	private static PhishURL[] deserializeURLs(String serialized){
 		return new Gson().fromJson(serialized, PhishURL[].class);
 	}
-	
+
 	private static String serializeURLs(PhishURLInterface[] object){
 		return new Gson().toJson(object);
 	}
-	
+
 	private static BackendController instance = new BackendController();
-	
+
 	private FrontendControllerInterface frontend;
 	private GameHelper gamehelper;
 	private boolean inited = false;
-	
+
 	//indexed by UrlType
 	private PhishURLInterface[][] urlCache;
-	
+
 	private boolean gamestate_loaded = false;
 	private GameProgress progress;
-	
+
 	/**
 	 * This function returns a Phishing url of the given type
 	 * @param type Type of Attack for the URL
 	 * @return A PhishURL of the given type
 	 */
 	public PhishURLInterface getPhishURL(PhishAttackType type){
-		if(type.getValue() >= this.urlCache.length){
+		if(type.getValue() >= this.urlCache.length || this.urlCache[type.getValue()].length == 0){
 			throw new IllegalArgumentException("This phish type is not cached.");
 		}
 		Random rand = new Random();
 		return urlCache[type.getValue()][rand.nextInt(urlCache[type.getValue()].length)];
 	}
-	
+
 	/**
 	 * This holds the current URL returned by the last {@link BackendControllerInterface}{@link #getNextUrl()} call
 	 */
 	private PhishURLInterface current_url;
-	
+
 	/**
 	 * Private constructor for singelton.
 	 */
 	private BackendController() {
 		this.urlCache=new PhishURLInterface[CACHE_TYPES.length][];
 		for(PhishAttackType type: CACHE_TYPES){
-		  this.urlCache[type.getValue()]=new PhishURLInterface[0];
+			this.urlCache[type.getValue()]=new PhishURLInterface[0];
 		}
-		
+
 	}
-	
+
 	/**
 	 * Getter for singleton.
 	 * @return The singleton Object of this class
@@ -110,7 +110,7 @@ public class BackendController implements BackendControllerInterface, GameStateL
 	public static BackendController getInstance(){
 		return instance;
 	}
-	
+
 	/**
 	 * Check if the singleton is inited. If not it will throw a IllegalStateException;
 	 */
@@ -119,7 +119,7 @@ public class BackendController implements BackendControllerInterface, GameStateL
 			throw new IllegalStateException("initialize me first! Call backendcontroller.init()");
 		}
 	}
-	
+
 	public void init(FrontendControllerInterface frontend, GameHelper gamehelper){
 		this.frontend=frontend;
 		this.gamehelper=gamehelper;
@@ -130,20 +130,19 @@ public class BackendController implements BackendControllerInterface, GameStateL
 		this.progress = new GameProgress(context, prefs, gamesclient,appstateclient,this);
 		SharedPreferences url_cache = this.frontend.getContext().getSharedPreferences(URL_CACHE_NAME, Context.MODE_PRIVATE);
 		for(PhishAttackType type: CACHE_TYPES){
-		  this.urlCache[type.getValue()]=loadUrls(url_cache, type);
+			loadUrls(url_cache, type);
 		}
 		checkInitDone();
 	}
-	
+
 	private void CacheUrls(SharedPreferences cache, PhishAttackType type, PhishURLInterface[] urls){
 		SharedPreferences.Editor editor = cache.edit();
 		editor.putString(type.toString(), serializeURLs(urls));
 		editor.commit();
 	}
-	
-	private PhishURLInterface[] loadUrls(SharedPreferences cache, PhishAttackType type){
+
+	private void loadUrls(SharedPreferences cache, PhishAttackType type){
 		//first we load the cached value if available
-		ArrayList<PhishURLInterface> result = new ArrayList<PhishURLInterface>();
 		PhishURL[] urls=deserializeURLs(cache.getString(type.toString(), "[]"));
 		//If the values are still empty we load the factory defaults 
 		if(urls.length==0){
@@ -152,26 +151,35 @@ public class BackendController implements BackendControllerInterface, GameStateL
 			String json = new Scanner(input,"UTF-8").useDelimiter("\\A").next();
 			urls = (new Gson()).fromJson(json, PhishURL[].class);
 		}
-		for (PhishURL phishURL : urls) {
+		this.setURLs(type, urls);
+		//then we get the value from the online store
+		new GetUrlsTask(this).execute(URL_CACHE_SIZE,type.getValue());
+	}
+
+	private void setURLs(PhishAttackType type, PhishURLInterface[] urls){
+		ArrayList<PhishURLInterface> result = new ArrayList<PhishURLInterface>();
+		for (PhishURLInterface phishURL : urls) {
 			if(phishURL.validate()){
 				result.add(phishURL);	
 			}
 		}
-		//then we get the value from the online store
-		new GetUrlsTask(this).execute(URL_CACHE_SIZE,type.getValue());
-		return result.toArray(new PhishURLInterface[0]);
+		if(result.size()>0){
+			this.urlCache[type.getValue()] = result.toArray(new PhishURLInterface[0]);
+		}
 	}
-	
+
 	public void urlsReturned(PhishURLInterface[] urls, PhishAttackType type){
-		this.urlCache[type.getValue()]=urls;
-		this.CacheUrls(this.frontend.getContext().getSharedPreferences(URL_CACHE_NAME, Context.MODE_PRIVATE),type, this.urlCache[type.getValue()]);
-		this.checkInitDone();
+		if(urls.length > 0){
+			this.setURLs(type, urls);
+			this.CacheUrls(this.frontend.getContext().getSharedPreferences(URL_CACHE_NAME, Context.MODE_PRIVATE),type, this.urlCache[type.getValue()]);
+			this.checkInitDone();
+		}
 	}
-	
+
 	public void urlDownloadProgress(int percent){
 		this.frontend.initProgress(percent);
 	}
-	
+
 	private void checkInitDone(){
 		//This means we already are initialized
 		if(this.inited){
@@ -183,7 +191,7 @@ public class BackendController implements BackendControllerInterface, GameStateL
 			this.progress.StartFinished();	
 		}
 	}
-	
+
 	public void sendMail(String from, String to, String usermessage){
 		checkinited();
 		new SendMailTask(from, to, usermessage).execute();
@@ -196,7 +204,7 @@ public class BackendController implements BackendControllerInterface, GameStateL
 		this.progress.setLevel(level);
 		this.frontend.onLevelChange(this.progress.getLevel());
 	}
-	
+
 	@Override
 	public void redirectToLevel1URL(){
 		this.frontend.startBrowser(Uri.parse(LEVEL1_URL));
@@ -219,16 +227,16 @@ public class BackendController implements BackendControllerInterface, GameStateL
 		if(new Random().nextFloat()>ATTACK_THRESHOULD){
 			base_url=decorateUrl(base_url, ATTACK_TYPES_PER_LEVEL, getLevel());
 		}
-		
+
 		this.current_url=base_url;
 		return getUrl();
 	}
-	
+
 	@Override
 	public String[] getUrl(){
 		return (String[]) this.current_url.getParts();
 	}
-	
+
 	private PhishURLInterface decorateUrl(PhishURLInterface base_url, Class<? extends AbstractUrlDecorator>[][] options, int level){
 		Random rand=new Random();
 		int use_level=Math.min(level, options.length-1);
@@ -252,13 +260,13 @@ public class BackendController implements BackendControllerInterface, GameStateL
 	public PhishResult userClicked(boolean acceptance) {
 		checkinited();
 		PhishResult result=this.current_url.getResult(acceptance);
-		
+
 		if(result != PhishResult.Phish_Detected){
 			this.changePoints(result);
 		}
 		return result;
 	}
-	
+
 	private void changePoints(PhishResult result){
 		this.progress.addResult(result);
 		int offset=this.current_url.getPoints(result);
@@ -267,7 +275,7 @@ public class BackendController implements BackendControllerInterface, GameStateL
 			this.frontend.levelFinished(this.getLevel());
 		}
 	}
-	
+
 	/**
 	 * This is only for testing
 	 * @param level
@@ -275,7 +283,7 @@ public class BackendController implements BackendControllerInterface, GameStateL
 	public void setLevel(int level){
 		this.progress.setLevel(level);
 	}
-	
+
 	public int nextLevelPoints(){
 		return POINTS_PER_LEVEL;
 	}
@@ -302,7 +310,7 @@ public class BackendController implements BackendControllerInterface, GameStateL
 		checkinited();
 		return this.progress.getPoints();
 	}
-	
+
 	public void onUrlReceive(Uri data){
 		checkinited();
 		if(data == null){
