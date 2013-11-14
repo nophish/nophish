@@ -49,4 +49,10 @@ public interface PhishURLInterface{
 	 * @return Result depending on the acceptance
 	 */
 	public PhishResult getResult(boolean acceptance);
+	
+	/**
+	 * As this URL is serialized we implement a way of checking if the deserialized version is correct in respect of our current data model.
+	 * @return true if this is a valid URL, false otherwise;
+	 */
+	public boolean validate();
 }

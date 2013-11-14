@@ -153,7 +153,9 @@ public class BackendController implements BackendControllerInterface, GameStateL
 			urls = (new Gson()).fromJson(json, PhishURL[].class);
 		}
 		for (PhishURL phishURL : urls) {
-			result.add(phishURL);
+			if(phishURL.validate()){
+				result.add(phishURL);	
+			}
 		}
 		//then we get the value from the online store
 		new GetUrlsTask(this).execute(URL_CACHE_SIZE,type.getValue());

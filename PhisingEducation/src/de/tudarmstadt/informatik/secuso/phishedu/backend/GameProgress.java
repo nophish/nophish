@@ -29,16 +29,29 @@ public class GameProgress implements OnStateLoadedListener{
 	private static final String LOCAL_STORE_KEY = "gamestate";
 
 	private class State{
-		private int[] results;
-		private int level = 0;
-		private int unlockedLevel = 0;
-		private int detected_phish_behind = 0;
-		private boolean app_started = false;
+		public State(){
+			this.results = new int[4];
+		}
+		public int[] results = {0,0,0,0};
+		public int level = 0;
+		public int unlockedLevel = 0;
+		public int detected_phish_behind = 0;
+		public boolean app_started = false;
+
+		
+		/**
+		 * This function checks a loaded state for validity
+		 * @return if the state is valid true, otherwise false
+		 */
+		private boolean validate(){
+			return state.results != null;
+		}	
+		
 	}
 	//Points is not saved to persistent state because the user has to start at the beginnig of the level each time the app starts.
 	private int points = 0;
 	private GameStateLoadedListener listener;
-	private State state;
+	private State state = new State();
 
 	/**
 	 * This is the default constructor.
@@ -65,7 +78,10 @@ public class GameProgress implements OnStateLoadedListener{
 	}
 
 	private void loadState(String state){
-		this.state = this.deserializeState(state);
+		State newState = this.deserializeState(state);
+		if(newState.validate()){
+			this.state=newState;
+		}
 	}
 
 	/**

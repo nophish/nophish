@@ -56,5 +56,13 @@ public abstract class AbstractUrlDecorator implements PhishURLInterface {
 	public boolean partClicked(int part) {
 		return this.object.partClicked(part);
 	}
+	
+	/**
+	 * We don't allw overwrite on the validate function
+	 */
+	@Override
+	public final boolean validate() {
+		return this.object.validate();
+	}
 
 }

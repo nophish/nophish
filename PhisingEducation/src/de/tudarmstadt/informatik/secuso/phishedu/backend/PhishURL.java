@@ -21,6 +21,10 @@ public class PhishURL implements PhishURLInterface{
 	public PhishSiteType getSiteType(){return this.siteType;}
 	public PhishAttackType getAttackType(){return this.attackType;}
 	
+	public final boolean validate(){
+		return this.points[0] > 0; //if we get no points on success we can not progress.
+	}
+	
 	public int getPoints(PhishResult result){
 		boolean correct = (result == PhishResult.NoPhish_Detected || result==PhishResult.Phish_Detected);
 		return points[correct ? 0 : 1];
