@@ -250,12 +250,14 @@
     <string name="level_04_intro_03_example_ip">192.168.160.02</string>
     <string name="level_04_intro_03_example_ip_path">/secure-login</string>	
     
-    <string name="level_3_text_dont_trust_ip">Wenn der aller wichtigste Teil der Web-Adresse eine IP Adresse enthält, solltest du misstrauisch werden. Die Web-Seite ist mit hoher Wahrscheinlichkeit gefälscht.</string>
-    <string name="level_3_text_dont_trust_nonsense">Enthält der wichtigste Teil Namen, die keinen Sinn ergeben bzw. nichts mit dem Dienst der Webseite zu tun haben, sollte dies ebenfalls zu Misstrauen führen.</string>
-    <string name="level_3_nonsense_example">http://secure-login.<b>grfsn.de</b>/facebook.de</string>
-    <string name="title_activity_level3_ip_nonsense">IP- und Nonsense Adressen</string>
     <string name="level_3_splash_text">Level 3\n\n IP- und Nonsense</string>
 
+    
+    <!-- LEVEL 5 - NONSENSE DOMAINS -->
+    <string name="level_05_intro_00_text_01">Angriff durch bezugslose oder schwachsinnige Namen im Wer-Bereich\n\nEin weiterer Trick ist die Verwendung von bezugslosen oder gar schwachsinnigen Namen im Wer-Bereich einer Webadresse. Mit dieser Art des Angriffs beschäftigen wir uns in diesem Level.
+        
+    </string>
+    
     
     <!-- TASKS AND SOLUTION SCREENS FROM LEVEL 3 -->
     <string name="url_task_description">Entscheide über die folgenden Webadressen, ob du ihnen vertraust (Häkchen antippen) oder ob hier ein Phishing-Angriff vorliegt (Kreuz antippen).</string>
