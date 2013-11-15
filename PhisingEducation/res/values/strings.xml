@@ -72,8 +72,8 @@
     <string name="title_activity_awareness">E-Mail Fälschung</string>
     <string name="title_level_1_addr_bar_activity">Die Addressleiste</string>
     <string name="title_activity_level_grid">LevelGridActivity</string>
-	<string name="title_activity_urltask">Übung</string>
-    
+    <string name="title_activity_urltask">Übung</string>
+
     <!-- splash -->
     <string name="title_email_spoofing">E-Mail Absender Fälschung</string>
     <string name="text_beat_phishing">Schütze dich vor fiesen Tricks!</string>
@@ -185,12 +185,10 @@
     <string name="level_02_intro_08_domain_description">Wer-Bereich\n(Unternehmen + Standort)</string>
     <string name="level_02_intro_08_subdomain_description">Abteilungen</string>
     <string name="level_02_intro_09_text_01">Beispiele\n\nIm Folgenden zeigen wir ein paar Beispiele für Webadressen. Überlege dir zunächst selbst, welcher Bereich in den angegebenen Webadressen der Wer-Bereich ist. Überprüfe im Anschluss deine Ergebnisse, indem du fortfährst.</string>
-    
     <string name="level_02_example_amazon">http://www.amazon.de</string>
     <string name="level_02_example_googlemail">https://mail.google.com/mail/?shva=1#inbox</string>
     <string name="level_02_example_ebay">http://pages.ebay.de/help/sell/quick-listing-tool.html</string>
     <string name="level_02_example_facebook">https://secure.facebook.com/settings?tab=payments</string>
- 
     <string name="level_02_example_amazon_01">http://www.</string>
     <string name="level_02_example_amazon_02">amazon.de</string>
     <string name="level_02_example_gmail_01">https://mail.</string>
@@ -205,8 +203,7 @@
     <string name="level_02_example_facebook_02">facebook.com</string>
     <string name="level_02_example_facebook_03">/</string>
     <string name="level_02_example_facebook_04">settings?tab=payments</string>
-    <string name="level_02_exercise_text_01">Nun bist du an der Reihe:\n\nNach den vorherigen Beispielen, sollst du nun selber den Wer-Bereich der folgenden Webadressen bestimmen.\n\nBerühre hierzu die entsprechende Stelle und klicke auf \"Überprüfen\", wenn deine Antwort überprüft werden soll.</string>    
-    
+    <string name="level_02_exercise_text_01">Nun bist du an der Reihe:\n\nNach den vorherigen Beispielen, sollst du nun selber den Wer-Bereich der folgenden Webadressen bestimmen.\n\nBerühre hierzu die entsprechende Stelle und klicke auf \"Überprüfen\", wenn deine Antwort überprüft werden soll.</string>
     <string name="http">http://</string>
     <string name="http_description">Sicherheits-\nstufe</string>
     <string name="domain">abo.spiegel.de</string>
@@ -222,13 +219,13 @@
     <string name="slash">/</string>
     <string name="reminder">Zur Erinnerung - Webadressen</string>
     <string name="former_attacks">Bisherige Angriffe</string>
-    <string name="reminder_subdomain">1.) Enthält der Bereich der Abteilungen dir bekannte Namen und entspricht der Wer-Bereich aber nicht dem Unternehmen deines Gesprächspartners, dann gebe hier keine Daten ein.</string>
-    
-    
+    <string name="reminder_subdomain">1.) Enthält der Bereich der Abteilungen dir bekannte Namen und entspricht der Wer-Bereich aber nicht dem Unternehmen deines Gesprächspartners, dann gebe hier keine Daten ein!</string>
+    <string name="reminder_ip">2.) Enthält der Bereich zwischen \"http://\" und dem dritten Slash \"/\" eine IP-Adresse (4-stellige Zahlenfolge, durch Punkte getrennt) anstelle des Wer-Bereiches, dann gebe hier keine Daten ein!</string>
+
     <!-- LEVEL 3 SUBDOMAIN -->
-    
+
     <string name="level_4_splash_text">Level 4\n\nUnternehmen\nund Untereinheiten</string>
-  	<string name="level_03_intro_00_text_01">Angriff durch bekannte Namen im Bereich der Abteilungen\n\nPhisher verwenden Täuschungsmanöver, um Webadressen vertrauenswürdig aussehen zu lassen, obwohl sie das nicht sind.\n\nDu wirst nach und nach lernen, mit welchen Tricks sie versuchen, dich hinters Licht zu führen.\n\nIn diesem Level beschäftigen wir uns mit der Verwendung von bekannten Namen im Bereich der Abteilungen einer Webadresse.</string>
+    <string name="level_03_intro_00_text_01">Angriff durch bekannte Namen im Bereich der Abteilungen\n\nPhisher verwenden Täuschungsmanöver, um Webadressen vertrauenswürdig aussehen zu lassen, obwohl sie das nicht sind.\n\nDu wirst nach und nach lernen, mit welchen Tricks sie versuchen, dich hinters Licht zu führen.\n\nIn diesem Level beschäftigen wir uns mit der Verwendung von bekannten Namen im Bereich der Abteilungen einer Webadresse.</string>
     <string name="level_03_intro_01_text_01">Zur Erinnerung\n\nDer Bereich zwischen \"http://\" und dem dritten Slash \"/\" gibt dir Informationen über deinen Gesprächspartner, d.h. über die Webseite.\n\nDieser Bereich wird durch Punkte in Blöcke eingeteilt und die Blöcke werden von rechts nach links gelesen.</string>
     <string name="level_03_intro_02_text_01">Benennung von Abteilungen\n\nDer wichtigste Wer-Bereich einer Webadresse muss auch vom Phisher registriert werden und bereits registrierte Namen können nicht noch einmal registriert werden. Den Bereich der Abteilungen (hellrosa hinterlegt) einer Webadresse kann allerdings jeder nennen, wie er möchte.</string>
     <string name="recognize_attacks">Erkennen von Angriffen</string>
@@ -236,7 +233,6 @@
     <string name="level_03_intro_03_subdomain">google.com.</string>
     <string name="level_03_intro_03_domain">phisher-seite.de</string>
     <string name="level_03_intro_03_path">search/online+banking+postbank/</string>
-    
 
     <!-- LEVEL 4 IP -->
     <string name="level_04_intro_00_text_01">Angriff durch IP-Adresse anstelle des Wer-Bereiches\n\nEin weiterer Trick dich hinters Licht zu führen, ist die Verwendung von IP-Adressen statt Begriffen im Wer-Bereich der Webadresse. Mit dieser Art des Angriffs beschäftigen wir uns in diesem Level.</string>
@@ -245,20 +241,23 @@
     <string name="level_04_intro_01_example_ip">Beispiel: 192.168.10.15</string>
     <string name="level_04_intro_01_img_descr_computer">IP-Adresse</string>
     <string name="level_04_intro_01_img_descr_house">Hausadresse</string>
-   
     <string name="level_04_intro_03_text_02">Enthält der Bereich zwischen \"http://\" und dem dritten Slash \"/\" eine IP-Adresse (4-stellige Zahlenfolge durch Punkte getrennt) anstelle des Wer-Bereiches, dann gebe hier keine Daten ein!\n\nBeispiel für eine Phishing-Webadresse, die dieses Prinzip anwendet: </string>
     <string name="level_04_intro_03_example_ip">192.168.160.02</string>
-    <string name="level_04_intro_03_example_ip_path">/secure-login</string>	
-    
+    <string name="level_04_intro_03_example_ip_path">/secure-login</string>
     <string name="level_3_splash_text">Level 3\n\n IP- und Nonsense</string>
 
-    
     <!-- LEVEL 5 - NONSENSE DOMAINS -->
-    <string name="level_05_intro_00_text_01">Angriff durch bezugslose oder schwachsinnige Namen im Wer-Bereich\n\nEin weiterer Trick ist die Verwendung von bezugslosen oder gar schwachsinnigen Namen im Wer-Bereich einer Webadresse. Mit dieser Art des Angriffs beschäftigen wir uns in diesem Level.
-        
-    </string>
-    
-    
+    <string name="level_05_intro_00_text_01">Angriff durch bezugslose oder schwachsinnige Namen im Wer-Bereich\n\nEin weiterer Trick ist die Verwendung von bezugslosen oder gar schwachsinnigen Namen im Wer-Bereich einer Webadresse. Mit dieser Art des Angriffs beschäftigen wir uns in diesem Level.</string>
+    <string name="level_05_intro_02_text_02">Der wichtigste Wer-Bereich einer Webadresse muss auch vom Phisher registriert werden. Schaue dir also auch immer die wichtigsten zwei Blöcke der Webadresse an, den Wer-Bereich. </string>
+    <string name="level_05_intro_02_text_03">Enthält der Wer-Bereich Namen, die keinen Sinn ergeben oder nichts mit dem Dienst bzw. Unternehmen deines Gesprächspartners zu tun haben, dann gebe hier keine Daten ein!\n\nUnten sind zwei Beispiele für Phishing-Webadressen, die dieses Prinzip anwenden. In den Beispielen ist dein Gesprächspartner jeweils hsezis.de bzw. badcat.com (rot hinterlegt). Das sind jeweils die wichtigsten Wer-Bereiche der Webadressen. Diese geben augenscheinlich keinen Sinn!</string>
+    <string name="level_05_intro_02_nonsense_01">secure-login.mail.google.</string>
+    <string name="level_05_intro_02_nonsense_02">com.</string>
+    <string name="level_05_intro_02_nonsense_03">hsezis.de</string>
+    <string name="level_05_intro_02_nonsense_04">/update-account</string>
+    <string name="level_05_intro_02_nonsense_05">secure-login.mail.google.</string>
+    <string name="level_05_intro_02_nonsense_06">badcat.com</string>
+    <string name="level_05_intro_02_nonsense_07">/login</string>
+
     <!-- TASKS AND SOLUTION SCREENS FROM LEVEL 3 -->
     <string name="url_task_description">Entscheide über die folgenden Webadressen, ob du ihnen vertraust (Häkchen antippen) oder ob hier ein Phishing-Angriff vorliegt (Kreuz antippen).</string>
     <string name="url">Beispiel URL</string>
