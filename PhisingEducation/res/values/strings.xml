@@ -106,7 +106,7 @@
     <string name="title_activity_more_info">Links zu Phishing</string>
 
     <!-- text awareness activity -->
-    <string name="level_00_intro_00_text_01">Was ist Phishing?\n\"Phishing\" ist eine Wortschöpfung, die eine Kombination der zwei englischen Begriffe \"fishing\" (angeln) und \"phreaking\" (hacken) darstellt. Der Begriff steht für den Versuch, verschiedene Daten von Internetbenutzern zu \"angeln\". Diese Daten können Passwörter, Kontodaten, Kreditkartendaten, TANs aber auch jegliche andere Art von Daten sein.\n\nJeder Internetbenutzer ist durch \"Phishing\" gefährdet. Hinter diesen Angriffen stecken Betrüger (auch \"Phishe\" oder \"Hacker\" genannt).Sie schicken dir Nachrichten, bspw. in Form von E-Mails, die für dich zunächst aussehen wie Nachrichten von Personen oder Institutionen, denen du vertraust. Es wird der Eindruck erweckt, als wäre die E-Mail z.B. von Amazon, von Facebook oder von deiner Bank verschickt worden.\n\nZiel der Betrüger ist es, an Daten von dir zu kommen, um damit beispielsweise dein Konto zu plündern, in deinem Namen einzukaufen oder deine Freunde zu kontaktieren.\n\n\n</string>
+    <string name="level_00_intro_00_text_01">Was ist Phishing?\n\"Phishing\" ist eine Wortschöpfung, die eine Kombination der zwei englischen Begriffe \"phreaking\" (hacken) und \"fishing\" (angeln) darstellt. Der Begriff steht für den Versuch, verschiedene Daten von Internetbenutzern zu \"angeln\". Diese Daten können Passwörter, Kontodaten, Kreditkartendaten, TANs aber auch jegliche andere Art von Daten sein.\n\nJeder Internetbenutzer ist durch \"Phishing\" gefährdet. Hinter diesen Angriffen stecken Betrüger (auch \"Phishe\" oder \"Hacker\" genannt).Sie schicken dir Nachrichten, bspw. in Form von E-Mails, die für dich zunächst aussehen wie Nachrichten von Personen oder Institutionen, denen du vertraust. Es wird der Eindruck erweckt, als wäre die E-Mail z.B. von Amazon, von Facebook oder von deiner Bank verschickt worden.\n\nZiel der Betrüger ist es, an Daten von dir zu kommen, um damit beispielsweise dein Konto zu plündern, in deinem Namen einzukaufen oder deine Freunde zu kontaktieren.\n\n\n</string>
     <string name="level_00_intro_01_text_01">Jeder kann phishen!\n\nUm dir zu verdeutlichen, dass auch du gefährdet bist, wollen wir dir zeigen, wie einfach es ist, gefälschte E-Mails im Namen einer anderen Person oder Institution zu verschicken.</string>
     <string name="level_00_intro_02_text_01"><b>Schicke dir selber eine E-Mail von einem beliebigen Absender</b>\n\nVon wem soll die E-Mail kommen*: </string>
     <string name="example_email">Max@Mustermann.de</string>
@@ -222,6 +222,7 @@
     <string name="reminder_subdomain">1.) Enthält der Bereich der Abteilungen dir bekannte Namen und entspricht der Wer-Bereich aber nicht dem Unternehmen deines Gesprächspartners, dann gebe hier keine Daten ein!</string>
     <string name="reminder_ip">2.) Enthält der Bereich zwischen \"http://\" und dem dritten Slash \"/\" eine IP-Adresse (4-stellige Zahlenfolge, durch Punkte getrennt) anstelle des Wer-Bereiches, dann gebe hier keine Daten ein!</string>
     <string name="reminder_nonsense">3.) Enthält der Wer-Bereich Namen, die keinen Sinn ergeben oder nichts mit dem Dienst bzw. Unternehmen deines Gesprächspartners zu tun haben, dann gebe hier keine Daten ein! </string>
+    <string name="reminder_sounding_trustworthy">4.) Enthält der Wer-Bereich Namen, die vertrauenswürdig klingen, aber dennoch nichts mit dem Unternehmen deines Gesprächspartners zu tun haben, dann gebe hier keine Daten ein! </string>
 
     <!-- LEVEL 3 SUBDOMAIN -->
 
@@ -263,12 +264,15 @@
     <string name="level_06_intro_00_text_01">Angriff durch vertrauenswürdig klingende Namen im Wer-Bereich\n\nEin weiterer Trick dich hinters Licht zu führen, ist die Verwendung von vertrauenswürdig klingenden Namen im Wer-Bereich einer Webadresse. Mit dieser Art des Angriffs beschäftigen wir uns in diesem Level.</string>
     <string name="level_06_intro_02_text_02">Der wichtigste Wer-Bereich einer Webadresse muss auch vom Phisher registriert werden. Schaue dir also auch immer die wichtigsten zwei Blöcke der Webadresse an, den Wer-Bereich.</string>
     <string name="level_06_intro_02_text_03">Enthält der Wer-Bereich Namen, die vertrauenswürdig klingen, aber dennoch nichts mit dem Unternehmen deines Gesprächspartners zu tun haben, dann gebe hier keine Daten ein!\n\nUnten ist ein Beispiel für eine Phishing-Webadresse, die dieses Prinzip anwendet. In dem Beispiel ist dein Gesprächspartner security-update.de (rot hinterlegt). Das ist der wichtigste Wer-Bereich der Webadresse. Gebe hier keine Daten ein, auch wenn die Webadresse vertrauenswürdig klingt!</string>
-	<string name="level_06_intro_02_sounding_trustworthy_01">mircrosoft.com.</string>
-   	<string name="level_06_intro_02_sounding_trustworthy_02">security-</string>
-   	<string name="level_06_intro_02_sounding_trustworthy_03">update.de</string>
-   	<string name="level_06_intro_02_sounding_trustworthy_04">/update</string>
-   	
-	
+    <string name="level_06_intro_02_sounding_trustworthy_01">mircrosoft.com.</string>
+    <string name="level_06_intro_02_sounding_trustworthy_02">security-</string>
+    <string name="level_06_intro_02_sounding_trustworthy_03">update.de</string>
+    <string name="level_06_intro_02_sounding_trustworthy_04">/update</string>
+
+    <!-- LEVEL 7 - SIMILAR DOMAINS -->
+    <string name="level_07_intro_00_text_01">Angriff durch ähnliche Namen im Wer-Bereich\n\nEin weiterer Trick dich hinters Licht zu führen, ist die Verwendung von Namen im Wer-Bereich, die dem Namen des dir vertrauten Unternehmens sehr ähnlich sind. Mit dieser Art des Angriffs beschäftigen wir uns in diesem Level.</string>
+	<string name="level_07_intro_02_text_01">Der Angriff\n\nDer wichtigste Wer-Bereich einer Webadresse muss auch vom Phisher registriert werden. Dieser kann hierbei Namen für diesen Bereich verwenden, die dir vertrauten Namen von Unternehmen sehr ähnlich sind. Dabei hat er verschiedene Möglichkeiten, die wir dir in diesem Level erläutern werden.</string>
+    
     <!-- TASKS AND SOLUTION SCREENS FROM LEVEL 3 -->
     <string name="url_task_description">Entscheide über die folgenden Webadressen, ob du ihnen vertraust (Häkchen antippen) oder ob hier ein Phishing-Angriff vorliegt (Kreuz antippen).</string>
     <string name="url">Beispiel URL</string>
