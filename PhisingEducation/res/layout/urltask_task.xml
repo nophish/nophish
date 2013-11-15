@@ -7,13 +7,50 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".URLTaskActivity" >
+    
+    <TextView
+        android:id="@+id/points_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/points"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+    <TextView
+        android:id="@+id/points_delim"
+        android:layout_toRightOf="@id/points_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=": "
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+    <TextView
+        android:id="@+id/points"
+        android:layout_toRightOf="@id/points_delim"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="100"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+    <TextView
+        android:id="@+id/points_delim2"
+        android:layout_toRightOf="@id/points"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="/"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+    <TextView
+        android:id="@+id/points_goal"
+        android:layout_toRightOf="@id/points_delim2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="100"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
         android:id="@+id/url_task_description"
+        android:layout_below="@id/points_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/url_task_description"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_marginTop="@dimen/margin_standard" />
 
     <TextView
         android:id="@+id/url_task_url"

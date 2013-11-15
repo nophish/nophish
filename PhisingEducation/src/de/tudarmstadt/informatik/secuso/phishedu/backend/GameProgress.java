@@ -131,6 +131,10 @@ public class GameProgress implements OnStateLoadedListener{
 	 * @param points the number of points for this level.
 	 */
 	public void setPoints(int points){
+		//we only allow positive points
+		if(points < 0 ){
+			points = 0;
+		}
 		this.points=points;
 	}
 
