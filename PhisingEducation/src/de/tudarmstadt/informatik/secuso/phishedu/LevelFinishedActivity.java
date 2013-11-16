@@ -1,5 +1,6 @@
 package de.tudarmstadt.informatik.secuso.phishedu;
 
+import android.app.ActionBar;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,6 +8,7 @@ import android.view.ViewGroup;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController;
 
 public class LevelFinishedActivity extends SwipeActivity {
+	ActionBar ab;
 	protected static int[][] levelLayoutIds = {
 		{
 			R.layout.level_00_finish_00,
@@ -42,7 +44,24 @@ public class LevelFinishedActivity extends SwipeActivity {
 	@Override
 	protected View getPage(int page, LayoutInflater inflater,
 			ViewGroup container, Bundle savedInstanceState) {
+		setPageTitle(page);
 		return inflater.inflate(this.levelLayoutIds[index_level][page], container, false);
+	}
+	
+	private void setPageTitle(int page) {
+		ab = getActionBar();
+		String title; 
+		switch (index_level) {
+		case 0:
+			title = getString(R.string.title_anti_phishing);
+			break;
+		default:
+			title = "BLUBB";
+			break;
+
+		}
+		
+		ab.setTitle(title);
 	}
 	
 }

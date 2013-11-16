@@ -29,6 +29,10 @@ import android.widget.Toast;
  */
 public class AwarenessActivity extends SwipeActivity {
 
+	private static String from;
+	private static String to;
+	private static String userMessage;
+	
 	protected static final int[] levelLayoutIds = {
 		R.layout.level_00_intro_02,
 	};
@@ -64,21 +68,21 @@ public class AwarenessActivity extends SwipeActivity {
 		EditText mEditReceiver = (EditText) findViewById(R.id.awareness_edit_receiver_email);
 		EditText mEditText = (EditText) findViewById(R.id.awareness_edit_text);
 
-		String from = mEditSender.getText().toString();
-		String to = mEditReceiver.getText().toString();
-		String userMessage = mEditText.getText().toString();
+		from = mEditSender.getText().toString();
+		to = mEditReceiver.getText().toString();
+		userMessage = mEditText.getText().toString();
 
-		String message;
+		String toastMsg;
 
 		// check if all is there (at least sender and receiver)
 		if (from.trim().equals("") || to.trim().equals("")) {
-			message = getString(R.string.awareness_missing_email_sender_or_receiver);
-			displayToast(message);
+			toastMsg = getString(R.string.awareness_missing_email_sender_or_receiver);
+			displayToast(toastMsg);
 		} else {
 			// check whether email format is valid
-			if (!isValidEmailAddress(from)) {
-				message = getString(R.string.awareness_invalid_email);
-				displayToast(message);
+			if (!(isValidEmailAddress(from))||!(isValidEmailAddress(to)) ) {
+				toastMsg = getString(R.string.awareness_invalid_email);
+				displayToast(toastMsg);
 			} else {
 				// Input is OK send email
 				// invoke Backendcontroller
@@ -127,10 +131,18 @@ public class AwarenessActivity extends SwipeActivity {
 	
 		// button for resend
 		alertDialog.setNeutralButton(R.string.awareness_resend_email,
+				
 				new DialogInterface.OnClickListener() {
 					public void onClick(DialogInterface dialog, int which) {
 	
 						setContentView(R.layout.level_00_intro_02);
+						EditText mEditSender = (EditText) findViewById(R.id.awareness_edit_sender_email);
+						EditText mEditReceiver = (EditText) findViewById(R.id.awareness_edit_receiver_email);
+						EditText mEditText = (EditText) findViewById(R.id.awareness_edit_text);
+						
+						mEditSender.setText(AwarenessActivity.from);
+						mEditReceiver.setText(AwarenessActivity.to);
+						mEditText.setText(AwarenessActivity.userMessage);
 					}
 	
 				});
