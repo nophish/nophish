@@ -31,7 +31,7 @@ public class YouAreWrongActivity extends SwipeActivity {
 
 	@Override
 	protected String startButtonText() {
-		return "N??chster Versuch";
+		return "Nächster Versuch";
 	}
 
 	@Override

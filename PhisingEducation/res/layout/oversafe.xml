@@ -16,7 +16,7 @@
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/oversafe_url"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/url_task_no_phish_detected_as_phish"

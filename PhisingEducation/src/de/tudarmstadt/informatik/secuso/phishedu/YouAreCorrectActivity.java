@@ -1,9 +1,12 @@
 package de.tudarmstadt.informatik.secuso.phishedu;
 
+import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController;
 import android.os.Bundle;
+import android.text.SpannableStringBuilder;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 
 public class YouAreCorrectActivity extends SwipeActivity {
@@ -32,7 +35,23 @@ public class YouAreCorrectActivity extends SwipeActivity {
 	@Override
 	protected View getPage(int page, LayoutInflater inflater,
 			ViewGroup container, Bundle savedInstanceState) {
-		return inflater.inflate(consequencesLayoutIds[page], container, false);
+		
+		View view =inflater.inflate(consequencesLayoutIds[page], container, false);
+		TextView urlText = (TextView) view.findViewById(R.id.your_are_correct_02);
+		setUrlText(urlText);
+		return view;
+	}
+
+	private void setUrlText(TextView urlText) {
+		String[] urlParts = BackendController.getInstance().getUrl();
+		StringBuilder builder = new StringBuilder();
+		
+		for(int i=0; i< urlParts.length; i++){
+			String urlpart = urlParts[i];
+			builder.append(urlpart);
+		}
+		
+		urlText.setText(builder.toString());
 	}
 	
 }

@@ -298,7 +298,7 @@
     <string name="title_level_finished">Level finished</string>
     <string name="you_are_wrong">Falsch! Du wurdest ausgetrickst. Das ist eine gefälschte Webadresse.</string>
     <string name="oversafe">Diese Webadresse ist nicht gefälscht. Ihr kannst du ruhig vertrauen. Wenn man sich unsicher ist, ist es allerdings besser auf Nummer sicher zu gehen und keine Daten einzugeben.\n\nIn solchen Fällen ist es sinnvoll, das entsprechende Unternehmen zu kontaktieren und dort nach der Vertrauenswürdigkeit der verdächtigen Webadresse zu fragen.</string>
-    <string name="you_are_correct">This is indeed a valid URL.</string>
+    <string name="you_are_correct">Vertrauenswürdige Webadresse\n\nGut gemacht. Diese Webadresse ist nicht gefälscht, ihr kannst du vertrauen.</string>
     <string name="you_guessed">Leider konntest du uns nicht zeigen, mit welcher Stelle der Phisher versucht hat, dich hinters Licht zu führen. Aus diesem Grund müssen wir davon ausgehen, dass du in dieser Runde nur geraten hast. Es gibt keine Punte für dich.</string>
     <string name="title_activity_proof">ProofActivity</string>
     <string name="button_verify">Überprüfen</string>
