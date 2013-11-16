@@ -1,28 +1,52 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/oversafe_sv"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin" >
+    android:layout_height="match_parent" >
 
-    <TextView
-        android:id="@+id/url_task_no_phish_detected_as_phish"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:text="@string/oversafe"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin" >
 
-    <TextView
-        android:id="@+id/oversafe_url"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/url_task_no_phish_detected_as_phish"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/margin_large"
-        android:text="@string/url"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        <TextView
+            android:id="@+id/url_task_no_phish_detected_as_phish"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:text="@string/oversafe_01"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
 
-</RelativeLayout>
+        <TextView
+            android:id="@+id/oversafe_url"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/url_task_no_phish_detected_as_phish"
+            android:layout_marginTop="@dimen/margin_standard"
+            android:text="@string/url"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <ImageView
+            android:id="@+id/oversafe_image"
+            android:layout_width="@dimen/security_icons"
+            android:layout_height="@dimen/security_icons"
+            android:layout_below="@+id/oversafe_url"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/padlock" />
+
+        <TextView
+            android:id="@+id/oversafe_02"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/url_task_no_phish_detected_as_phish"
+            android:layout_marginTop="@dimen/margin_standard"
+            android:layout_below="@+id/oversafe_image"
+            android:text="@string/oversafe_02"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+    </RelativeLayout>
+
+</ScrollView>
