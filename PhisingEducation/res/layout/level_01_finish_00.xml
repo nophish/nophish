@@ -1,5 +1,5 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/level_00_finish_00_sv"
+    android:id="@+id/level_01_finish_00_sv"
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
@@ -12,32 +12,31 @@
         android:paddingTop="@dimen/activity_vertical_margin" >
 
         <TextView
-            android:id="@+id/level_00_finish_00_text_01"
+            android:id="@+id/level_01_finish_00_text_01"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:text="@string/level_00_finish_00_text_01"
+            android:text="@string/level_01_finish_00_text_01"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <ImageView
-            android:id="@+id/level_00_finish_00_image"
-            android:layout_width="@dimen/smiley_icons"
-            android:layout_height="@dimen/smiley_icons"
-            android:layout_alignRight="@+id/level_00_finish_00_text_01"
-            android:layout_below="@+id/level_00_finish_00_text_01"
-            android:layout_marginTop="@dimen/margin_standard"
-            android:src="@drawable/surprised" />
-
-        <TextView
-            android:id="@+id/level_00_finish_00_text_02"
+            android:id="@+id/level_01_award"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/level_00_finish_00_text_01"
-            android:layout_below="@+id/level_00_finish_00_image"
-            android:layout_marginTop="@dimen/margin_large"
-            android:text="@string/level_00_finish_00_text_02"
+            android:layout_alignLeft="@+id/level_01_finish_00_text_01"
+            android:layout_below="@+id/level_01_finish_00_text_01"
+            android:layout_marginTop="@dimen/margin_standard"
+            android:src="@drawable/medal" />
+
+        <TextView
+            android:id="@+id/level_01_finish_00_text_02"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/level_01_award"
+            android:layout_below="@+id/level_01_award"
+            android:layout_marginTop="@dimen/margin_standard"
+            android:text="@string/level_01_finish_00_text_02"
             android:textAppearance="?android:attr/textAppearanceMedium" />
+
     </RelativeLayout>
 
 </ScrollView>

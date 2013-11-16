@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController;
 
 public class LevelFinishedActivity extends SwipeActivity {
@@ -15,6 +16,12 @@ public class LevelFinishedActivity extends SwipeActivity {
 			R.layout.level_00_finish_06,
 			R.layout.level_00_finish_07,
 			R.layout.level_00_finish_08
+		},
+		{
+			R.layout.level_01_finish_00,
+		},
+		{
+			R.layout.level_02_finish_00,
 		}
 	};
 	
@@ -24,6 +31,7 @@ public class LevelFinishedActivity extends SwipeActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		this.real_level = getIntent().getIntExtra(Constants.LEVEL_EXTRA_STRING,0);
 		this.index_level=Math.min(real_level,levelLayoutIds.length-1);
+		
 		super.onCreate(savedInstanceState);
 	}
 
@@ -44,23 +52,20 @@ public class LevelFinishedActivity extends SwipeActivity {
 	@Override
 	protected View getPage(int page, LayoutInflater inflater,
 			ViewGroup container, Bundle savedInstanceState) {
-		setPageTitle(page);
+		setTitles();
 		return inflater.inflate(this.levelLayoutIds[index_level][page], container, false);
 	}
 	
-	private void setPageTitle(int page) {
+	private void setTitles() {
 		ab = getActionBar();
-		String title; 
-		switch (index_level) {
-		case 0:
-			title = getString(R.string.title_anti_phishing);
-			break;
-		default:
-			title = "BLUBB";
-			break;
-
-		}
+		String title = getString(Constants.levelTitlesIds[this.real_level]);
+		String subtitle = getString(Constants.levelSubtitlesIds[this.real_level]);
 		
+		if(!title.equals(subtitle)){
+			//if subtitle and title are different, subtitle is set
+			ab.setSubtitle(subtitle);
+		}
+		//title is set in anyway
 		ab.setTitle(title);
 	}
 	

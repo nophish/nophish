@@ -2,10 +2,15 @@ package de.tudarmstadt.informatik.secuso.phishedu;
 
 import android.app.ActionBar;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import de.tudarmstadt.informatik.secuso.phishedu.R;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController;
 
@@ -17,15 +22,19 @@ import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController;
  */
 public class LevelIntroActivity extends SwipeActivity {
 	private ActionBar ab;
+	
 
 	protected static int[][] levelLayoutIds = {
 			{ R.layout.level_00_intro_00, 
 			  R.layout.level_00_intro_01 
 			},
-			{ R.layout.level_01_intro_00, 
+			{ 
+			  R.layout.level_01_splash,
+			  R.layout.level_01_intro_00, 
 			  R.layout.level_01_intro_01 
 			},
-			{ R.layout.level_02_intro_00, 
+			{ R.layout.level_02_splash,
+			  R.layout.level_02_intro_00, 
 			  R.layout.level_02_intro_01,
 			  R.layout.level_02_intro_02, 
 			  R.layout.level_02_intro_03,
@@ -37,13 +46,19 @@ public class LevelIntroActivity extends SwipeActivity {
 			  R.layout.level_02_intro_09,
 			  R.layout.level_02_intro_10, 
 			},
-			{ R.layout.level_04_intro_01, 
-			  R.layout.level_04_intro_02, 
-			},
-			{ R.layout.level_03_intro_00, 
+			
+			{ R.layout.level_03_splash,
+			  R.layout.level_03_intro_00, 
 			  R.layout.level_03_intro_01,
-			  R.layout.level_03_intro_02 
-			} };
+			  R.layout.level_03_intro_02,
+			  R.layout.level_03_intro_03
+			}, 
+			{ R.layout.level_04_splash,
+			  R.layout.level_04_intro_01, 
+			  R.layout.level_04_intro_02, 
+			  R.layout.level_04_intro_03
+			}
+			};
 
 
 	public int real_level = 0;
@@ -54,6 +69,7 @@ public class LevelIntroActivity extends SwipeActivity {
 		this.real_level = getIntent().getIntExtra(Constants.LEVEL_EXTRA_STRING,
 				0);
 		this.index_level = Math.min(this.real_level, levelLayoutIds.length - 1);
+		
 		super.onCreate(savedInstanceState);
 	}
 
@@ -85,24 +101,23 @@ public class LevelIntroActivity extends SwipeActivity {
 	protected View getPage(int page, LayoutInflater inflater,
 			ViewGroup container, Bundle savedInstanceState) {
 
-		setPageTitle(page);
+		setTitles();
+		
 		return inflater.inflate(this.levelLayoutIds[this.index_level][page],
 				container, false);
 	}
 
-	private void setPageTitle(int page) {
+	
+	private void setTitles() {
 		ab = getActionBar();
-		String title; 
-		switch (index_level) {
-		case 0:
-			title = getString(R.string.title_anti_phishing);
-			break;
-		default:
-			title = "BLUBB";
-			break;
-
-		}
+		String title = getString(Constants.levelTitlesIds[this.real_level]);
+		String subtitle = getString(Constants.levelSubtitlesIds[this.real_level]);
 		
+		if(!title.equals(subtitle)){
+			//if subtitle and title are different, subtitle is set
+			ab.setSubtitle(subtitle);
+		}
+		//title is set in anyway
 		ab.setTitle(title);
 	}
 

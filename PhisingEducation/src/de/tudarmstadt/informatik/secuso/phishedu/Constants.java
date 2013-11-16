@@ -6,5 +6,22 @@ public class Constants {
 	public static final String LEVEL_EXTRA_STRING = "level";
 	public static final String TYPE_EXTRA_STRING = "result";
 	public static final String ARG_PAGE_NUMBER = "page";
+	
+	protected static final int[] levelTitlesIds = {
+		R.string.title_anti_phishing,
+		R.string.level_title_01,
+		R.string.level_title_02,
+		R.string.level_title_03,
+		R.string.level_title_04
+
+	};
+
+	protected static final int[] levelSubtitlesIds = {
+		R.string.title_anti_phishing,
+		R.string.level_subtitle_01,
+		R.string.level_subtitle_02,
+		R.string.level_subtitle_03,
+		R.string.level_subtitle_04
+	};
 
 }
