@@ -1,6 +1,7 @@
 package de.tudarmstadt.informatik.secuso.phishedu;
 
 import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController;
+import android.app.ActionBar;
 import android.os.Bundle;
 import android.text.SpannableStringBuilder;
 import android.view.LayoutInflater;
@@ -39,6 +40,7 @@ public class YouAreCorrectActivity extends SwipeActivity {
 		View view =inflater.inflate(consequencesLayoutIds[page], container, false);
 		TextView urlText = (TextView) view.findViewById(R.id.your_are_correct_02);
 		setUrlText(urlText);
+		setTitle();
 		return view;
 	}
 
@@ -52,6 +54,11 @@ public class YouAreCorrectActivity extends SwipeActivity {
 		}
 		
 		urlText.setText(builder.toString());
+	}
+	
+	private void setTitle(){
+		ActionBar ab = getActionBar();
+		ab.setTitle(getString(R.string.correct));
 	}
 	
 }

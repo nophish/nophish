@@ -238,8 +238,6 @@
     <string name="reminder_ip">2.) Enthält der Bereich zwischen \"http://\" und dem dritten Slash \"/\" eine IP-Adresse (4-stellige Zahlenfolge, durch Punkte getrennt) anstelle des Wer-Bereiches, dann gebe hier keine Daten ein!</string>
     <string name="reminder_nonsense">3.) Enthält der Wer-Bereich Namen, die keinen Sinn ergeben oder nichts mit dem Dienst bzw. Unternehmen deines Gesprächspartners zu tun haben, dann gebe hier keine Daten ein! </string>
     <string name="reminder_sounding_trustworthy">4.) Enthält der Wer-Bereich Namen, die vertrauenswürdig klingen, aber dennoch nichts mit dem Unternehmen deines Gesprächspartners zu tun haben, dann gebe hier keine Daten ein! </string>
-
-    
     <string name="level_finished"><b>Geschafft!</b>\n\nGratulation! Du hast das Level erfolgreich abgeschlossen. Auf zum nächsten Level!</string>
     <!-- LEVEL 3 SUBDOMAIN -->
 
@@ -305,4 +303,6 @@
     <string name="button_verify">Überprüfen</string>
     <string name="attack_reminder">Erinnerung: Vertraue nicht..</string>
 
+    <string name="oversafe">Übervorsicht</string>
+    <string name="correct">Korrekt</string>
 </resources>

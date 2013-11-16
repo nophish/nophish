@@ -1,6 +1,7 @@
 package de.tudarmstadt.informatik.secuso.phishedu;
 
 import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController;
+import android.app.ActionBar;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -35,6 +36,7 @@ public class OversafeActivity extends SwipeActivity {
 			ViewGroup container, Bundle savedInstanceState) {
 		View view =inflater.inflate(consequencesLayoutIds[page], container, false);
 		TextView urlText = (TextView) view.findViewById(R.id.oversafe_url);
+		setTitle();
 		setUrlText(urlText);
 		return view;	}
 	
@@ -49,5 +51,10 @@ public class OversafeActivity extends SwipeActivity {
 		}
 		
 		urlText.setText(builder.toString());
+	}
+	
+	private void setTitle(){
+		ActionBar ab = getActionBar();
+		ab.setTitle(getString(R.string.oversafe));
 	}
 }
