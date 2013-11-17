@@ -34,7 +34,7 @@ public class LevelFinishedActivity extends SwipeActivity {
 	int index_level=0;
 	
 	protected void onCreate(Bundle savedInstanceState) {
-		this.real_level = getIntent().getIntExtra(Constants.LEVEL_EXTRA_STRING,0);
+		this.real_level = getIntent().getIntExtra(Constants.EXTRA_LEVEL,0);
 		this.index_level=Math.min(real_level,levelLayoutIds.length-1);
 		
 		super.onCreate(savedInstanceState);

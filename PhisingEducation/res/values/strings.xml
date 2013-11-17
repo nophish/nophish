@@ -307,6 +307,7 @@
     <string name="oversafe_02">In solchen Fällen ist es sinnvoll, das entsprechende Unternehmen zu kontaktieren und dort nach der Vertrauenswürdigkeit der verdächtigen Webadresse zu fragen.</string>
     <string name="you_are_correct">Vertrauenswürdige Webadresse\n\nGut gemacht. Diese Webadresse ist nicht gefälscht, ihr kannst du vertrauen.</string>
     <string name="you_guessed">Leider konntest du uns nicht zeigen, mit welcher Stelle der Phisher versucht hat, dich hinters Licht zu führen. Aus diesem Grund müssen wir davon ausgehen, dass du in dieser Runde nur geraten hast. Es gibt keine Punte für dich.</string>
+    <string name="you_found_the_phish">Du hast den Phish erkannt. Herzlichen Glückwunsch. Du bist jetzt etwas sicherer.</string>
     <string name="title_activity_proof">ProofActivity</string>
     <string name="exercise">Übung</string>
     <string name="button_verify">Überprüfen</string>
@@ -316,6 +317,7 @@
     <string name="no_phish">Das ist kein Phish</string>
     <string name="wrong">Falsch</string>
     <string name="phish">Das ist ein Phish</string>
+    <string name="select_part">Du musst einen Teil der URL auswählen.</string>
     <string name="level_03_reminder">Enthält der Bereich der Abteilungen dir bekannte Namen und entspricht der Wer-Bereich aber nicht dem Unternehmen deines Gesprächspartners, dann gebe hier keine Daten ein!</string>
     <string name="level_04_reminder">Enthält der Bereich zwischen \"http://\" und dem dritten Slash \"/\" eine IP-Adresse (4-stellige Zahlenfolge, durch Punkte getrennt) anstelle des Wer-Bereiches, dann gebe hier keine Daten ein!</string>
     <string name="level_05_reminder">Enthält der Wer-Bereich Namen, die keinen Sinn ergeben oder nichts mit dem Dienst bzw. Unternehmen deines Gesprächspartners zu tun haben, dann gebe hier keine Daten ein! </string>

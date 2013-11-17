@@ -22,7 +22,7 @@ public class URLTaskActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		this.level=getIntent().getIntExtra(Constants.LEVEL_EXTRA_STRING,0);
+		this.level=getIntent().getIntExtra(Constants.EXTRA_LEVEL,0);
 		
 		setContentView(R.layout.urltask_task);
 
@@ -73,24 +73,14 @@ public class URLTaskActivity extends Activity {
 
 	private void clicked(boolean acceptance){
 		PhishResult result = BackendController.getInstance().userClicked(acceptance);
-		Class followActivity=YouAreWrongActivity.class;
-		switch(result){
-		case NoPhish_Detected:
-			followActivity=YouAreCorrectActivity.class;
-			break;
-		case NoPhish_NotDetected:
-			followActivity=OversafeActivity.class;
-			break;
-		case Phish_Detected:
-			followActivity=ProofActivity.class;
-			break;
-		case Phish_NotDetected:
-			followActivity=YouAreWrongActivity.class;
-			break;
+		Class followActivity=ResultActivity.class;
+		if(result == PhishResult.Phish_Detected){
+			followActivity = ProofActivity.class;
 		}
 		Intent levelIntent = new Intent(this, followActivity);
-		levelIntent.putExtra(Constants.LEVEL_EXTRA_STRING, this.level);
-		levelIntent.putExtra(Constants.TYPE_EXTRA_STRING, BackendController.getInstance().getType().getValue());
+		levelIntent.putExtra(Constants.EXTRA_RESULT, result.getValue());
+		levelIntent.putExtra(Constants.EXTRA_LEVEL, this.level);
+		levelIntent.putExtra(Constants.EXTRA_TYPE, BackendController.getInstance().getType().getValue());
 		startActivityForResult(levelIntent, 1);
 	}
 	

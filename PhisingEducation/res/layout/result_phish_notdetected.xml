@@ -19,12 +19,12 @@
         android:id="@+id/security_low"
         android:layout_width="@dimen/security_icons"
         android:layout_height="@dimen/security_icons"
-        android:layout_below="@+id/phish_not_detected_url"
+        android:layout_below="@+id/url"
         android:layout_centerHorizontal="true"
         android:src="@drawable/security_low" />
 
     <TextView
-        android:id="@+id/phish_not_detected_url"
+        android:id="@+id/url"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/phish_not_detected_text"

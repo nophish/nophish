@@ -6,7 +6,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".YouAreCorrectActivity" >
+    tools:context=".ResultActivity" >
 
     <TextView
         android:id="@+id/your_are_correct_01"
@@ -14,11 +14,11 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:text="@string/you_are_correct"
+        android:text="@string/you_found_the_phish"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
-        android:id="@+id/your_are_correct_02"
+        android:id="@+id/url"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
@@ -30,7 +30,7 @@
         android:id="@+id/your_are_correct_image"
         android:layout_width="@dimen/security_icons"
         android:layout_height="@dimen/security_icons"
-        android:layout_below="@+id/your_are_correct_02"
+        android:layout_below="@+id/url"
         android:layout_centerHorizontal="true"
         android:src="@drawable/security_high" />
 

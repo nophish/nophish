@@ -128,7 +128,7 @@ public class StartMenuActivity extends BaseGameActivity implements
 	@Override
 	public void onLevelChange(int level) {
 		Intent levelIntent = new Intent(this, LevelIntroActivity.class);
-		levelIntent.putExtra(Constants.LEVEL_EXTRA_STRING, level);
+		levelIntent.putExtra(Constants.EXTRA_LEVEL, level);
 		startActivity(levelIntent);
 	}
 
@@ -241,7 +241,7 @@ public class StartMenuActivity extends BaseGameActivity implements
 	@Override
 	public void levelFinished(int level) {
 		Intent levelIntent = new Intent(this, LevelFinishedActivity.class);
-		levelIntent.putExtra(Constants.LEVEL_EXTRA_STRING, level);
+		levelIntent.putExtra(Constants.EXTRA_LEVEL, level);
 		startActivity(levelIntent);
 	}
 

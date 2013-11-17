@@ -38,4 +38,16 @@ public enum PhishResult {
 	public int getValue() {
         return value;
     }
+	
+	/**
+	 * always gets the maximum of all possible values
+	 * @return
+	 */
+	public static int getMax(){
+		int max=-1;
+		for (PhishResult this_result : PhishResult.values()) {
+			max=Math.max(max, this_result.getValue());
+		}
+		return max;
+	}
 }

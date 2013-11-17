@@ -1,6 +1,7 @@
 package de.tudarmstadt.informatik.secuso.phishedu;
 
 import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController;
+import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishResult;
 import android.os.Bundle;
 import android.app.ActionBar;
 import android.app.Activity;
@@ -13,9 +14,10 @@ import android.text.style.ClickableSpan;
 import android.view.Menu;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class ProofActivity extends Activity {
-	int selectedPart=0;
+	int selectedPart=-1;
 	int level=0;
 
 	@Override
@@ -24,7 +26,7 @@ public class ProofActivity extends Activity {
 		setContentView(R.layout.proof);
 		setTitles();
 		
-		this.level=getIntent().getIntExtra(Constants.LEVEL_EXTRA_STRING,0);
+		this.level=getIntent().getIntExtra(Constants.EXTRA_LEVEL,0);
 		
 		String[] urlparts = BackendController.getInstance().getUrl();
 		SpannableStringBuilder builder = new SpannableStringBuilder();
@@ -39,8 +41,8 @@ public class ProofActivity extends Activity {
 			builder.setSpan(span, wordstart, wordend, 0);
 		}
 		TextView url = (TextView) findViewById(R.id.url);
-		url.setText(builder);
 		url.setMovementMethod(LinkMovementMethod.getInstance());
+		url.setText(builder);
 	}
 	
 	private void setTitles() {
@@ -67,6 +69,9 @@ public class ProofActivity extends Activity {
 			super.updateDrawState(ds);
 			ds.setColor(Color.BLACK);
 			ds.setUnderlineText(false);
+			if(this.activity.selectedPart==this.part){
+				ds.bgColor=Color.LTGRAY;
+			}
 		}
 	}
 
@@ -78,16 +83,19 @@ public class ProofActivity extends Activity {
 	}
 	
 	public void onDoneClick(View view){
-		boolean clicked_right = BackendController.getInstance().partClicked(selectedPart);
-		Class followActivity;
-		if(clicked_right){
-			followActivity=YouAreCorrectActivity.class;
-		}else{
-			followActivity=YouGuessedActivity.class;
+		if(selectedPart==-1){
+		  Toast.makeText(getApplicationContext(), getResources().getString(R.string.select_part) , Toast.LENGTH_SHORT).show();
+		  return;
 		}
-		Intent levelIntent = new Intent(this, followActivity);
-		levelIntent.putExtra(Constants.LEVEL_EXTRA_STRING, this.level);
-		levelIntent.putExtra(Constants.TYPE_EXTRA_STRING, BackendController.getInstance().getType().getValue());
+		boolean clicked_right = BackendController.getInstance().partClicked(selectedPart);
+		int result = PhishResult.Phish_Detected.getValue();
+		if(!clicked_right){
+			result = ResultActivity.RESULT_GUESSED;
+		}
+		Intent levelIntent = new Intent(this, ResultActivity.class);
+		levelIntent.putExtra(Constants.EXTRA_RESULT, result);
+		levelIntent.putExtra(Constants.EXTRA_LEVEL, this.level);
+		levelIntent.putExtra(Constants.EXTRA_TYPE, BackendController.getInstance().getType().getValue());
 		startActivityForResult(levelIntent, 1);
 	}
 	

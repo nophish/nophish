@@ -76,7 +76,7 @@ public class LevelIntroActivity extends SwipeActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		this.real_level = getIntent().getIntExtra(Constants.LEVEL_EXTRA_STRING,
+		this.real_level = getIntent().getIntExtra(Constants.EXTRA_LEVEL,
 				0);
 		this.index_level = Math.min(this.real_level, levelLayoutIds.length - 1);
 
@@ -86,13 +86,13 @@ public class LevelIntroActivity extends SwipeActivity {
 	protected void onStartClick() {
 		if (this.real_level == 0) {
 			Intent levelIntent = new Intent(this, AwarenessActivity.class);
-			levelIntent.putExtra(Constants.LEVEL_EXTRA_STRING, this.real_level);
+			levelIntent.putExtra(Constants.EXTRA_LEVEL, this.real_level);
 			startActivity(levelIntent);
 		} else if (this.real_level == 1) {
 			BackendController.getInstance().redirectToLevel1URL();
 		} else {
 			Intent levelIntent = new Intent(this, URLTaskActivity.class);
-			levelIntent.putExtra(Constants.LEVEL_EXTRA_STRING, this.real_level);
+			levelIntent.putExtra(Constants.EXTRA_LEVEL, this.real_level);
 			startActivity(levelIntent);
 		}
 	}
