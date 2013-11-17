@@ -155,7 +155,6 @@
             android:layout_height="wrap_content"
             android:layout_alignLeft="@+id/level_05_warning"
             android:layout_below="@+id/level_05_warning"
-            android:layout_marginTop="@dimen/margin_small"
             android:text="@string/reminder_subdomain"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 

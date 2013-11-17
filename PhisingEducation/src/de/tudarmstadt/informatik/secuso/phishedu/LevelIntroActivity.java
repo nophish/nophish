@@ -31,7 +31,8 @@ public class LevelIntroActivity extends SwipeActivity {
 			{ 
 				R.layout.level_01_splash,
 				R.layout.level_01_intro_00,
-				R.layout.level_01_intro_01 
+				R.layout.level_01_intro_01,
+				R.layout.level_01_exercise
 				},
 			{ 
 				R.layout.level_02_splash, 
@@ -132,6 +133,7 @@ public class LevelIntroActivity extends SwipeActivity {
 		if (this.real_level > 0) {
 			ab.setIcon(getResources().getDrawable(R.drawable.emblem_library));
 		}
+		
 	}
 
 }
