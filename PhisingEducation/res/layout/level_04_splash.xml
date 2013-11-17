@@ -25,7 +25,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/margin_standard"
         android:gravity="center"
-        android:text="@string/level_subtitle_04"
+        android:text="@string/level_04_splash_subtitle"
         android:textSize="@dimen/font_size_large" />
 
     <ImageView

@@ -52,5 +52,4 @@ public class YouAreCorrectActivity extends SwipeActivity {
 
 
 	}
-	
 }

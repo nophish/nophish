@@ -64,5 +64,6 @@ public class YouAreWrongActivity extends SwipeActivity {
 		ab.setIcon(getResources().getDrawable(R.drawable.desktop));
 
 	}
+	
 
 }

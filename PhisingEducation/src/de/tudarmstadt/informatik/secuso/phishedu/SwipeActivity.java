@@ -108,6 +108,18 @@ public abstract class SwipeActivity extends FragmentActivity implements ViewPage
 			imgPrevious.setVisibility(View.INVISIBLE);
 		}
 	}
+	
+	protected void setUrlText(TextView urlText) {
+		String[] urlParts = BackendController.getInstance().getUrl();
+		StringBuilder builder = new StringBuilder();
+		
+		for(int i=0; i< urlParts.length; i++){
+			String urlpart = urlParts[i];
+			builder.append(urlpart);
+		}
+		
+		urlText.setText(builder.toString());
+	}
 
 	private class SwipePageAdapter extends FragmentPagerAdapter {
 		public SwipePageAdapter(FragmentManager fragmentManager) {
@@ -129,17 +141,6 @@ public abstract class SwipeActivity extends FragmentActivity implements ViewPage
 		}
 	}
 	
-	protected void setUrlText(TextView urlText) {
-		String[] urlParts = BackendController.getInstance().getUrl();
-		StringBuilder builder = new StringBuilder();
-		
-		for(int i=0; i< urlParts.length; i++){
-			String urlpart = urlParts[i];
-			builder.append(urlpart);
-		}
-		
-		urlText.setText(builder.toString());
-	}
 
 	@Override
 	public void onPageScrollStateChanged(int arg0) {}

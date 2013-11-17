@@ -118,6 +118,10 @@
     <string name="level_subtitle_04">IP-Adressen</string>
     <string name="level_subtitle_05">Bezugslose/schwachsinnige Namen</string>
     <string name="level_subtitle_06">Vertrauenswürdig klingende Namen</string>
+    <string name="level_03_splash_subtitle">Bekannte Namen im Bereich der Abteilungen</string>
+    <string name="level_04_splash_subtitle">IP-Adresse anstelle des Wer-Bereiches</string>
+    <string name="level_05_splash_subtitle">Bezugslose oder schwachsinnige Namen im Wer-Bereich</string>
+    <string name="level_06_splash_subtitle">Vertrauenswürdig klingende Namen im Wer-Bereich</string>
 
     <!-- text awareness activity -->
     <string name="level_00_intro_00_text_01">Was ist Phishing?\n\"Phishing\" ist eine Wortschöpfung, die eine Kombination der zwei englischen Begriffe \"phreaking\" (hacken) und \"fishing\" (angeln) darstellt. Der Begriff steht für den Versuch, verschiedene Daten von Internetbenutzern zu \"angeln\". Diese Daten können Passwörter, Kontodaten, Kreditkartendaten, TANs aber auch jegliche andere Art von Daten sein.\n\nJeder Internetbenutzer ist durch \"Phishing\" gefährdet. Hinter diesen Angriffen stecken Betrüger (auch \"Phishe\" oder \"Hacker\" genannt).Sie schicken dir Nachrichten, bspw. in Form von E-Mails, die für dich zunächst aussehen wie Nachrichten von Personen oder Institutionen, denen du vertraust. Es wird der Eindruck erweckt, als wäre die E-Mail z.B. von Amazon, von Facebook oder von deiner Bank verschickt worden.\n\nZiel der Betrüger ist es, an Daten von dir zu kommen, um damit beispielsweise dein Konto zu plündern, in deinem Namen einzukaufen oder deine Freunde zu kontaktieren.\n\n\n</string>
