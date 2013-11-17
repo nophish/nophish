@@ -16,7 +16,8 @@
             android:id="@+id/level_07_intro_01_reminder"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_standard"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
             android:text="@string/reminder"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
@@ -351,8 +352,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/reminder_example_sounding_trustworthy"
-            android:text="@string/level_06_intro_02_sounding_trustworthy_03"
             android:background="@color/red"
+            android:text="@string/level_06_intro_02_sounding_trustworthy_03"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <TextView
@@ -364,7 +365,6 @@
             android:layout_toRightOf="@+id/reminder_example_sounding_trustworthy_03"
             android:text="@string/level_06_intro_02_sounding_trustworthy_04"
             android:textAppearance="?android:attr/textAppearanceMedium" />
-
     </RelativeLayout>
 
 </ScrollView>

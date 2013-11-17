@@ -16,7 +16,8 @@
             android:id="@+id/level_02_intro_03_text_01"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_small"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
             android:text="@string/level_02_intro_03_text_01"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
@@ -39,8 +40,8 @@
             android:layout_alignBottom="@+id/level_02_intro_01_domain_01"
             android:layout_toRightOf="@+id/level_02_intro_01_domain_01"
             android:text="@string/path"
-            android:textColor="@color/grey"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/grey" />
 
         <TextView
             android:id="@+id/level_02_intro_01_domain_02"
@@ -75,7 +76,6 @@
             android:layout_below="@+id/level_02_intro_01_http_01"
             android:text="@string/linebreaks"
             android:textAppearance="?android:attr/textAppearanceMedium" />
-        
     </RelativeLayout>
 
 </ScrollView>

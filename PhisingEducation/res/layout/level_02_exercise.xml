@@ -7,12 +7,12 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin" >
 
-
     <TextView
         android:id="@+id/level_02_exercise_text_01"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_standard"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
         android:text="@string/level_02_exercise_text_01"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
@@ -30,10 +30,10 @@
         android:id="@+id/level_02_exercise_button"
         android:layout_width="wrap_content"
         android:layout_height="@dimen/btn_standard_height"
-        android:minWidth="@dimen/btn_standard_width"
         android:layout_below="@+id/level_02_exercise_url"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/margin_large"
+        android:minWidth="@dimen/btn_standard_width"
         android:text="@string/button_verify" />
 
 </RelativeLayout>

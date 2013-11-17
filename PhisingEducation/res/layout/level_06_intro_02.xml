@@ -15,6 +15,8 @@
             android:id="@+id/level_06_intro_02_text_01"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
             android:text="@string/recognize_attacks"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
@@ -74,8 +76,8 @@
             android:layout_alignBaseline="@+id/level_06_intro_02_sounding_trustworthy_01"
             android:layout_alignBottom="@+id/level_06_intro_02_sounding_trustworthy_01"
             android:layout_toRightOf="@+id/level_06_intro_02_sounding_trustworthy_01"
-            android:text="@string/level_06_intro_02_sounding_trustworthy_02"
             android:background="@color/red"
+            android:text="@string/level_06_intro_02_sounding_trustworthy_02"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <ImageView
@@ -92,8 +94,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/level_06_intro_02_http_01"
-            android:text="@string/level_06_intro_02_sounding_trustworthy_03"
             android:background="@color/red"
+            android:text="@string/level_06_intro_02_sounding_trustworthy_03"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <TextView
@@ -103,9 +105,8 @@
             android:layout_below="@+id/level_06_intro_02_sounding_trustworthy_01"
             android:layout_toRightOf="@+id/level_06_intro_02_sounding_trustworthy_03"
             android:text="@string/level_06_intro_02_sounding_trustworthy_04"
-            android:textColor="@color/grey"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
-
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/grey" />
     </RelativeLayout>
 
 </ScrollView>
