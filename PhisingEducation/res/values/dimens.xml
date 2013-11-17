@@ -39,7 +39,7 @@
     <dimen name="icon_medium">35dp</dimen>
     <dimen name="security_icons">100dp</dimen>
     <dimen name="smiley_icons">100dp</dimen>
-    <dimen name="website_screenshot_height_large">500dp</dimen>
+    <dimen name="website_screenshot_height_large">300dp</dimen>
     <dimen name="website_screenshot_height_small">200dp</dimen>
     <dimen name="website_screenshot_height_xsmall">100dp</dimen>
 
