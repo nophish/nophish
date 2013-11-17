@@ -2,6 +2,7 @@ package de.tudarmstadt.informatik.secuso.phishedu;
 
 import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController;
 import android.os.Bundle;
+import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
@@ -21,6 +22,8 @@ public class ProofActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.proof);
+		setTitles();
+		
 		this.level=getIntent().getIntExtra(Constants.LEVEL_EXTRA_STRING,0);
 		
 		String[] urlparts = BackendController.getInstance().getUrl();
@@ -40,6 +43,12 @@ public class ProofActivity extends Activity {
 		url.setMovementMethod(LinkMovementMethod.getInstance());
 	}
 	
+	private void setTitles() {
+		ActionBar ab = getActionBar();
+		ab.setTitle(R.string.correct);
+		ab.setSubtitle(getString(R.string.phish));
+	}
+
 	private class ClickSpan extends ClickableSpan{
 		int part;
 		ProofActivity activity;

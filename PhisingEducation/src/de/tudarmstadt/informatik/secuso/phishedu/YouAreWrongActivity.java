@@ -1,5 +1,6 @@
 package de.tudarmstadt.informatik.secuso.phishedu;
 
+import android.app.ActionBar;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -43,11 +44,23 @@ public class YouAreWrongActivity extends SwipeActivity {
 	@Override
 	protected View getPage(int page, LayoutInflater inflater,
 			ViewGroup container, Bundle savedInstanceState) {
+		
 		View view = inflater.inflate(consequencesLayoutIds[this.type][page], container, false);
+		
+		setTitle();
+		
 		TextView urlText = (TextView) view.findViewById(R.id.phish_not_detected_url);
 		setUrlText(urlText);
+		
+		TextView reminderText = (TextView) view.findViewById(R.id.phish_not_detected_reminder);
+		//TODO: reminderText needs to be set according to attack type
 		return view;
 	}
 	
+	private void setTitle(){
+		ActionBar ab = getActionBar();
+		ab.setTitle(getString(R.string.wrong));
+		ab.setSubtitle(getString(R.string.phish));
+	}
 
 }

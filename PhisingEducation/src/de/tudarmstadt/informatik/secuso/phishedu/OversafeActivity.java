@@ -44,5 +44,7 @@ public class OversafeActivity extends SwipeActivity {
 	private void setTitle(){
 		ActionBar ab = getActionBar();
 		ab.setTitle(getString(R.string.oversafe));
+		ab.setSubtitle(getString(R.string.no_phish));
+
 	}
 }

@@ -110,11 +110,15 @@
     <string name="level_title_02">Level 2</string>
     <string name="level_title_03">Level 3</string>
     <string name="level_title_04">Level 4</string>
+    <string name="level_title_05">Level 5</string>
+    <string name="level_title_06">Level 6</string>
     <string name="level_subtitle_01">Die Adressleiste</string>
     <string name="level_subtitle_02">Einführung in Webadressen</string>
     <string name="level_subtitle_03">Bekannte Namen im Bereich der Abteilungen</string>
-    <string name="level_subtitle_04">IP Adresse anstelle des Wer Bereiches</string>
-
+    <string name="level_subtitle_04">IP Adresse anstelle des Wer-Bereiches</string>	
+    <string name="level_subtitle_05">Bezugslose oder schwachsinnige Namen im Wer-Bereich</string>
+    <string name="level_subtitle_06">Vertrauenswürdig klingende Namen im Wer-Bereich</string>
+    
     <!-- text awareness activity -->
     <string name="level_00_intro_00_text_01">Was ist Phishing?\n\"Phishing\" ist eine Wortschöpfung, die eine Kombination der zwei englischen Begriffe \"phreaking\" (hacken) und \"fishing\" (angeln) darstellt. Der Begriff steht für den Versuch, verschiedene Daten von Internetbenutzern zu \"angeln\". Diese Daten können Passwörter, Kontodaten, Kreditkartendaten, TANs aber auch jegliche andere Art von Daten sein.\n\nJeder Internetbenutzer ist durch \"Phishing\" gefährdet. Hinter diesen Angriffen stecken Betrüger (auch \"Phishe\" oder \"Hacker\" genannt).Sie schicken dir Nachrichten, bspw. in Form von E-Mails, die für dich zunächst aussehen wie Nachrichten von Personen oder Institutionen, denen du vertraust. Es wird der Eindruck erweckt, als wäre die E-Mail z.B. von Amazon, von Facebook oder von deiner Bank verschickt worden.\n\nZiel der Betrüger ist es, an Daten von dir zu kommen, um damit beispielsweise dein Konto zu plündern, in deinem Namen einzukaufen oder deine Freunde zu kontaktieren.\n\n\n</string>
     <string name="level_00_intro_01_text_01">Jeder kann phishen!\n\nUm dir zu verdeutlichen, dass auch du gefährdet bist, wollen wir dir zeigen, wie einfach es ist, gefälschte E-Mails im Namen einer anderen Person oder Institution zu verschicken.</string>
@@ -295,7 +299,7 @@
     <string name="phish_proof">Korrekt. Die Webadresse ist gefälscht. Du bist nicht auf den Phisher reingefallen, sehr gut.\n\nNun zeige uns bitte, an welcher Stelle der Phisher versucht hat, dich hinters Licht zu führen. Klicke hierzu den entsprechenden Bereich der Webadresse an.</string>
     <string name="title_level_finished">Level finished</string>
     <string name="you_are_wrong">Falsch! Du wurdest ausgetrickst. Das ist eine gefälschte Webadresse.</string>
-    <string name="oversafe_01">Vorsicht ist besser als Nachsicht\n\nDiese Webadresse ist nicht gefälscht. Ihr kannst du ruhig vertrauen. Wenn man sich unsicher ist, ist es allerdings besser auf Nummer sicher zu gehen und keine Daten einzugeben.</string>
+    <string name="oversafe_01">Vorsicht ist besser als Nachsicht\n\nDiese Webadresse ist nicht gefälscht. Ihr kannst du ruhig vertrauen. Wenn man sich unsicher ist, ist es allerdings besser übervorsichtig zu sein und keine Daten einzugeben.</string>
     <string name="oversafe_02">In solchen Fällen ist es sinnvoll, das entsprechende Unternehmen zu kontaktieren und dort nach der Vertrauenswürdigkeit der verdächtigen Webadresse zu fragen.</string>
     <string name="you_are_correct">Vertrauenswürdige Webadresse\n\nGut gemacht. Diese Webadresse ist nicht gefälscht, ihr kannst du vertrauen.</string>
     <string name="you_guessed">Leider konntest du uns nicht zeigen, mit welcher Stelle der Phisher versucht hat, dich hinters Licht zu führen. Aus diesem Grund müssen wir davon ausgehen, dass du in dieser Runde nur geraten hast. Es gibt keine Punte für dich.</string>
@@ -305,4 +309,7 @@
 
     <string name="oversafe">Übervorsicht</string>
     <string name="correct">Korrekt</string>
+    <string name="no_phish">Das ist kein Phish</string>
+    <string name="wrong">Falsch</string>
+    <string name="phish">Das ist ein Phish</string>
 </resources>

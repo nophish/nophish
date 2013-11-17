@@ -47,6 +47,8 @@ public class YouAreCorrectActivity extends SwipeActivity {
 	private void setTitle(){
 		ActionBar ab = getActionBar();
 		ab.setTitle(getString(R.string.correct));
+		ab.setSubtitle(getString(R.string.no_phish));
+
 	}
 	
 }

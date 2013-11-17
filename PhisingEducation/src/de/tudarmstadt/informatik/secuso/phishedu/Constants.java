@@ -12,7 +12,9 @@ public class Constants {
 		R.string.level_title_01,
 		R.string.level_title_02,
 		R.string.level_title_03,
-		R.string.level_title_04
+		R.string.level_title_04,
+		R.string.level_title_05,
+		R.string.level_title_06
 
 	};
 
@@ -21,7 +23,10 @@ public class Constants {
 		R.string.level_subtitle_01,
 		R.string.level_subtitle_02,
 		R.string.level_subtitle_03,
-		R.string.level_subtitle_04
+		R.string.level_subtitle_04,
+		R.string.level_subtitle_05,
+		R.string.level_subtitle_06
+
 	};
 
 }
