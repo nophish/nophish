@@ -44,18 +44,6 @@ public class YouAreCorrectActivity extends SwipeActivity {
 		return view;
 	}
 
-	private void setUrlText(TextView urlText) {
-		String[] urlParts = BackendController.getInstance().getUrl();
-		StringBuilder builder = new StringBuilder();
-		
-		for(int i=0; i< urlParts.length; i++){
-			String urlpart = urlParts[i];
-			builder.append(urlpart);
-		}
-		
-		urlText.setText(builder.toString());
-	}
-	
 	private void setTitle(){
 		ActionBar ab = getActionBar();
 		ab.setTitle(getString(R.string.correct));

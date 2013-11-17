@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController;
 
 public class YouAreWrongActivity extends SwipeActivity {
@@ -42,7 +43,11 @@ public class YouAreWrongActivity extends SwipeActivity {
 	@Override
 	protected View getPage(int page, LayoutInflater inflater,
 			ViewGroup container, Bundle savedInstanceState) {
-		return inflater.inflate(consequencesLayoutIds[this.type][page], container, false);
+		View view = inflater.inflate(consequencesLayoutIds[this.type][page], container, false);
+		TextView urlText = (TextView) view.findViewById(R.id.phish_not_detected_url);
+		setUrlText(urlText);
+		return view;
 	}
 	
+
 }

@@ -1,5 +1,6 @@
 package de.tudarmstadt.informatik.secuso.phishedu;
 
+import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -14,6 +15,7 @@ import android.view.ViewGroup;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 
 public abstract class SwipeActivity extends FragmentActivity implements ViewPager.OnPageChangeListener
@@ -125,6 +127,18 @@ public abstract class SwipeActivity extends FragmentActivity implements ViewPage
 			frag.setArguments(args);
 			return frag;
 		}
+	}
+	
+	protected void setUrlText(TextView urlText) {
+		String[] urlParts = BackendController.getInstance().getUrl();
+		StringBuilder builder = new StringBuilder();
+		
+		for(int i=0; i< urlParts.length; i++){
+			String urlpart = urlParts[i];
+			builder.append(urlpart);
+		}
+		
+		urlText.setText(builder.toString());
 	}
 
 	@Override
