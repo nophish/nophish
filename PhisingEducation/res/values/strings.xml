@@ -115,10 +115,10 @@
     <string name="level_subtitle_01">Die Adressleiste</string>
     <string name="level_subtitle_02">Einführung in Webadressen</string>
     <string name="level_subtitle_03">Bereich der Abteilungen</string>
-    <string name="level_subtitle_04">IP-Adressen</string>	
+    <string name="level_subtitle_04">IP-Adressen</string>
     <string name="level_subtitle_05">Bezugslose/schwachsinnige Namen</string>
     <string name="level_subtitle_06">Vertrauenswürdig klingende Namen</string>
-    
+
     <!-- text awareness activity -->
     <string name="level_00_intro_00_text_01">Was ist Phishing?\n\"Phishing\" ist eine Wortschöpfung, die eine Kombination der zwei englischen Begriffe \"phreaking\" (hacken) und \"fishing\" (angeln) darstellt. Der Begriff steht für den Versuch, verschiedene Daten von Internetbenutzern zu \"angeln\". Diese Daten können Passwörter, Kontodaten, Kreditkartendaten, TANs aber auch jegliche andere Art von Daten sein.\n\nJeder Internetbenutzer ist durch \"Phishing\" gefährdet. Hinter diesen Angriffen stecken Betrüger (auch \"Phishe\" oder \"Hacker\" genannt).Sie schicken dir Nachrichten, bspw. in Form von E-Mails, die für dich zunächst aussehen wie Nachrichten von Personen oder Institutionen, denen du vertraust. Es wird der Eindruck erweckt, als wäre die E-Mail z.B. von Amazon, von Facebook oder von deiner Bank verschickt worden.\n\nZiel der Betrüger ist es, an Daten von dir zu kommen, um damit beispielsweise dein Konto zu plündern, in deinem Namen einzukaufen oder deine Freunde zu kontaktieren.\n\n\n</string>
     <string name="level_00_intro_01_text_01">Jeder kann phishen!\n\nUm dir zu verdeutlichen, dass auch du gefährdet bist, wollen wir dir zeigen, wie einfach es ist, gefälschte E-Mails im Namen einer anderen Person oder Institution zu verschicken.</string>
@@ -307,10 +307,18 @@
     <string name="exercise">Übung</string>
     <string name="button_verify">Überprüfen</string>
     <string name="attack_reminder">Erinnerung: Vertraue nicht..</string>
-
     <string name="oversafe">Übervorsicht</string>
     <string name="correct">Korrekt</string>
     <string name="no_phish">Das ist kein Phish</string>
     <string name="wrong">Falsch</string>
     <string name="phish">Das ist ein Phish</string>
+    <string name="level_03_reminder">Enthält der Bereich der Abteilungen dir bekannte Namen und entspricht der Wer-Bereich aber nicht dem Unternehmen deines Gesprächspartners, dann gebe hier keine Daten ein!</string>
+    <string name="level_04_reminder">Enthält der Bereich zwischen \"http://\" und dem dritten Slash \"/\" eine IP-Adresse (4-stellige Zahlenfolge, durch Punkte getrennt) anstelle des Wer-Bereiches, dann gebe hier keine Daten ein!</string>
+    <string name="level_05_reminder">Enthält der Wer-Bereich Namen, die keinen Sinn ergeben oder nichts mit dem Dienst bzw. Unternehmen deines Gesprächspartners zu tun haben, dann gebe hier keine Daten ein! </string>
+    <string name="level_06_reminder">Enthält der Wer-Bereich Namen, die vertrauenswürdig klingen, aber dennoch nichts mit dem Unternehmen deines Gesprächspartners zu tun haben, dann gebe hier keine Daten ein! </string>
+    <string name="level_07_reminder">TODO</string>
+    <string name="level_08_reminder">TODO</string>
+    <string name="level_09_reminder">TODO</string>
+    <string name="level_10_reminder">TODO</string>
+
 </resources>
