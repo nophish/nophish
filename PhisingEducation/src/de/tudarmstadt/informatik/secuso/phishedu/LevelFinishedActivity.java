@@ -13,6 +13,11 @@ public class LevelFinishedActivity extends SwipeActivity {
 	protected static int[][] levelLayoutIds = {
 		{
 			R.layout.level_00_finish_00,
+			R.layout.level_00_finish_01,
+			R.layout.level_00_finish_02,
+			R.layout.level_00_finish_03,
+			R.layout.level_00_finish_04,
+			R.layout.level_00_finish_05,
 			R.layout.level_00_finish_06,
 			R.layout.level_00_finish_07,
 			R.layout.level_00_finish_08
