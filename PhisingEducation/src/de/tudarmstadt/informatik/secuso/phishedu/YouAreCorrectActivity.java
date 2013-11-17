@@ -48,6 +48,8 @@ public class YouAreCorrectActivity extends SwipeActivity {
 		ActionBar ab = getActionBar();
 		ab.setTitle(getString(R.string.correct));
 		ab.setSubtitle(getString(R.string.no_phish));
+		ab.setIcon(getResources().getDrawable(R.drawable.desktop));
+
 
 	}
 	

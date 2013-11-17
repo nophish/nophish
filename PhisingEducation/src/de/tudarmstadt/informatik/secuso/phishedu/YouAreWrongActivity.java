@@ -61,6 +61,8 @@ public class YouAreWrongActivity extends SwipeActivity {
 		ActionBar ab = getActionBar();
 		ab.setTitle(getString(R.string.wrong));
 		ab.setSubtitle(getString(R.string.phish));
+		ab.setIcon(getResources().getDrawable(R.drawable.desktop));
+
 	}
 
 }

@@ -4,6 +4,7 @@ import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishResult;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.networkTasks.GetUrlsTask;
 import android.os.Bundle;
+import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
 import android.text.TextUtils.StringSplitter;
@@ -29,8 +30,17 @@ public class URLTaskActivity extends Activity {
 		pointsText = (TextView) findViewById(R.id.points);
 		pointsGoalText = (TextView) findViewById(R.id.points_goal);
 		nextURL();
+		setTitles();
 	}
 	
+	private void setTitles() {
+		ActionBar ab = getActionBar();
+		
+		ab.setTitle(Constants.levelTitlesIds[BackendController.getInstance().getLevel()]);
+		ab.setSubtitle(getString(R.string.exercise));
+		ab.setIcon(getResources().getDrawable(R.drawable.desktop));
+	}
+
 	private void nextURL(){
 		String[] urlArray = BackendController.getInstance().getNextUrl();
 

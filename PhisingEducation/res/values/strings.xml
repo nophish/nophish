@@ -114,10 +114,10 @@
     <string name="level_title_06">Level 6</string>
     <string name="level_subtitle_01">Die Adressleiste</string>
     <string name="level_subtitle_02">Einführung in Webadressen</string>
-    <string name="level_subtitle_03">Bekannte Namen im Bereich der Abteilungen</string>
-    <string name="level_subtitle_04">IP Adresse anstelle des Wer-Bereiches</string>	
-    <string name="level_subtitle_05">Bezugslose oder schwachsinnige Namen im Wer-Bereich</string>
-    <string name="level_subtitle_06">Vertrauenswürdig klingende Namen im Wer-Bereich</string>
+    <string name="level_subtitle_03">Bereich der Abteilungen</string>
+    <string name="level_subtitle_04">IP-Adressen</string>	
+    <string name="level_subtitle_05">Bezugslose/schwachsinnige Namen</string>
+    <string name="level_subtitle_06">Vertrauenswürdig klingende Namen</string>
     
     <!-- text awareness activity -->
     <string name="level_00_intro_00_text_01">Was ist Phishing?\n\"Phishing\" ist eine Wortschöpfung, die eine Kombination der zwei englischen Begriffe \"phreaking\" (hacken) und \"fishing\" (angeln) darstellt. Der Begriff steht für den Versuch, verschiedene Daten von Internetbenutzern zu \"angeln\". Diese Daten können Passwörter, Kontodaten, Kreditkartendaten, TANs aber auch jegliche andere Art von Daten sein.\n\nJeder Internetbenutzer ist durch \"Phishing\" gefährdet. Hinter diesen Angriffen stecken Betrüger (auch \"Phishe\" oder \"Hacker\" genannt).Sie schicken dir Nachrichten, bspw. in Form von E-Mails, die für dich zunächst aussehen wie Nachrichten von Personen oder Institutionen, denen du vertraust. Es wird der Eindruck erweckt, als wäre die E-Mail z.B. von Amazon, von Facebook oder von deiner Bank verschickt worden.\n\nZiel der Betrüger ist es, an Daten von dir zu kommen, um damit beispielsweise dein Konto zu plündern, in deinem Namen einzukaufen oder deine Freunde zu kontaktieren.\n\n\n</string>
@@ -304,6 +304,7 @@
     <string name="you_are_correct">Vertrauenswürdige Webadresse\n\nGut gemacht. Diese Webadresse ist nicht gefälscht, ihr kannst du vertrauen.</string>
     <string name="you_guessed">Leider konntest du uns nicht zeigen, mit welcher Stelle der Phisher versucht hat, dich hinters Licht zu führen. Aus diesem Grund müssen wir davon ausgehen, dass du in dieser Runde nur geraten hast. Es gibt keine Punte für dich.</string>
     <string name="title_activity_proof">ProofActivity</string>
+    <string name="exercise">Übung</string>
     <string name="button_verify">Überprüfen</string>
     <string name="attack_reminder">Erinnerung: Vertraue nicht..</string>
 

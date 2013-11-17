@@ -47,6 +47,8 @@ public class ProofActivity extends Activity {
 		ActionBar ab = getActionBar();
 		ab.setTitle(R.string.correct);
 		ab.setSubtitle(getString(R.string.phish));
+		ab.setIcon(getResources().getDrawable(R.drawable.desktop));
+
 	}
 
 	private class ClickSpan extends ClickableSpan{
