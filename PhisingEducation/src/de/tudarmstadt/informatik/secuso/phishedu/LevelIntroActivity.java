@@ -69,7 +69,16 @@ public class LevelIntroActivity extends SwipeActivity {
 				R.layout.level_06_splash,	
 				R.layout.level_06_intro_00, 
 				R.layout.level_06_intro_01,
-				R.layout.level_06_intro_02 } };
+				R.layout.level_06_intro_02 },
+				{ 
+					R.layout.level_07_splash,	
+					R.layout.level_07_intro_00, 
+					R.layout.level_07_intro_01,
+					R.layout.level_07_intro_02,
+					R.layout.level_07_intro_03,
+					R.layout.level_07_intro_04,
+					R.layout.level_07_intro_05,
+					R.layout.level_07_intro_06} };
 
 	public int real_level = 0;
 	public int index_level = 0;
