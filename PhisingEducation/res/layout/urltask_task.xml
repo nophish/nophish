@@ -8,27 +8,29 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".URLTaskActivity" >
 
+    <!-- URLS -->
+    
     <TextView
-        android:id="@+id/points_text"
+        android:id="@+id/urls_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/margin_text"
         android:layout_marginTop="@dimen/margin_text"
-        android:text="@string/points"
+        android:text="@string/URLs"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
         android:id="@+id/points_delim"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/points_text"
-        android:layout_alignBottom="@+id/points_text"
-        android:layout_toRightOf="@+id/points_text"
+        android:layout_alignBaseline="@+id/urls_text"
+        android:layout_alignBottom="@+id/urls_text"
+        android:layout_toRightOf="@+id/urls_text"
         android:text=": "
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
-        android:id="@+id/points"
+        android:id="@+id/urls"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/points_delim"
@@ -41,14 +43,14 @@
         android:id="@+id/points_delim2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/points"
-        android:layout_alignBottom="@+id/points"
-        android:layout_toRightOf="@+id/points"
+        android:layout_alignBaseline="@+id/urls"
+        android:layout_alignBottom="@+id/urls"
+        android:layout_toRightOf="@+id/urls"
         android:text="/"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
-        android:id="@+id/points_goal"
+        android:id="@+id/urls_goal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/points_delim2"
@@ -57,6 +59,58 @@
         android:text="100"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
+    <!-- Phishes -->
+    
+    <TextView
+        android:id="@+id/phishes_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_text"
+        android:layout_marginTop="@dimen/margin_text"
+        android:layout_toRightOf="@id/urls_goal"
+        android:text="@string/phishes"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/phishes_delim"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/urls_text"
+        android:layout_alignBottom="@+id/urls_text"
+        android:layout_toRightOf="@+id/phishes_text"
+        android:text=": "
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/phishes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/points_delim"
+        android:layout_alignBottom="@+id/points_delim"
+        android:layout_toRightOf="@+id/phishes_delim"
+        android:text="100"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/phishes_delim2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/urls"
+        android:layout_alignBottom="@+id/urls"
+        android:layout_toRightOf="@+id/phishes"
+        android:text="/"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/phishes_goal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/points_delim2"
+        android:layout_alignBottom="@+id/points_delim2"
+        android:layout_toRightOf="@+id/phishes_delim2"
+        android:text="100"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+    
     <TextView
         android:id="@+id/url_task_url"
         android:layout_width="wrap_content"
@@ -90,8 +144,8 @@
         android:id="@+id/url_task_description"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/points_text"
-        android:layout_below="@+id/points_text"
+        android:layout_alignLeft="@+id/urls_text"
+        android:layout_below="@+id/urls_text"
         android:layout_marginRight="@dimen/margin_text"
         android:layout_marginTop="@dimen/margin_standard"
         android:text="@string/url_task_description"

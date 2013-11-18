@@ -37,8 +37,8 @@ public class GameProgress implements OnStateLoadedListener{
 		public int unlockedLevel = 0;
 		public int detected_phish_behind = 0;
 		public boolean app_started = false;
-
-		
+		public int points = 0;
+			
 		/**
 		 * This function checks a loaded state for validity
 		 * @return if the state is valid true, otherwise false
@@ -48,11 +48,32 @@ public class GameProgress implements OnStateLoadedListener{
 		}	
 		
 	}
-	//Points is not saved to persistent state because the user has to start at the beginnig of the level each time the app starts.
-	private int points = 0;
+	
+	private int[] level_results = {0,0,0,0};
+	
 	private GameStateLoadedListener listener;
 	private State state = new State();
-
+	
+	/**
+	 * This returns the number of Phish URLS the user detected
+	 * @return the number of Phish URLs the user Detected
+	 */
+	public int getDetectedPhish(){
+		return this.level_results[PhishResult.Phish_Detected.getValue()];
+	}
+	
+	/**
+	 * Get the number of URLs the user decided on.
+	 * @return Number of URLs the user decided on.
+	 */
+	public int getDoneUrls(){
+		int sum=0;
+		for (int result : this.level_results) {
+			sum+=result;
+		}
+		return sum;
+	}
+	
 	/**
 	 * This is the default constructor.
 	 * @param context We need this for getting the resources for the achievements 
@@ -90,6 +111,7 @@ public class GameProgress implements OnStateLoadedListener{
 	 * @param result What kind of outcome did the user have.
 	 */
 	public void addResult(PhishResult result){
+		this.level_results[result.getValue()]+=1;
 		this.state.results[result.getValue()]+=1;
 		//update Leaderboards
 		if(game_store.isConnected()){
@@ -111,7 +133,9 @@ public class GameProgress implements OnStateLoadedListener{
 				game_store.submitScore(context.getResources().getString(R.string.leaderboard_detection_rate),rate );
 			}
 		}else{
-			this.state.detected_phish_behind+=1;
+			if(result == PhishResult.Phish_Detected){
+				this.state.detected_phish_behind+=1;
+			}
 		}
 		this.saveState();
 	}
@@ -123,7 +147,7 @@ public class GameProgress implements OnStateLoadedListener{
 	 * @return the currently saved points
 	 */
 	public int getPoints(){
-		return this.points;
+		return this.state.points;
 	}
 	/**
 	 * This saves the current points.
@@ -135,7 +159,7 @@ public class GameProgress implements OnStateLoadedListener{
 		if(points < 0 ){
 			points = 0;
 		}
-		this.points=points;
+		this.state.points=points;
 	}
 
 	/**
@@ -147,6 +171,7 @@ public class GameProgress implements OnStateLoadedListener{
 	}
 	/**
 	 * This Function sets the current level of the user.
+	 * It also resets level specific counters
 	 * @param level The current level
 	 */
 	public void setLevel(int level){
@@ -154,6 +179,7 @@ public class GameProgress implements OnStateLoadedListener{
 		if(level > this.state.unlockedLevel){
 			this.state.unlockedLevel=level;
 		}
+		this.level_results=new int[4];
 		this.saveState();
 	}
 

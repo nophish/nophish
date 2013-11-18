@@ -105,8 +105,32 @@ public interface BackendControllerInterface {
 	void signOut();
 	
 	/**
-	 * Returns the number of points that must be reached in this level to proceed to the next.
-	 * @return Number of points...
+	 * How many URLs must the user answer in this Level
+	 * @return An Integer representing the number of URLs in this level
 	 */
-	public int nextLevelPoints();
+	public int levelURLs();
+	
+	/**
+	 * How Many Phishes are in this level
+	 * @return The number of Phishes in this level
+	 */
+	public int levelPhishes();
+	
+	/**
+	 * How many phishes do you have to find to get to the next Level
+	 * @return needed phishes for level completion
+	 */
+	public int nextLevelPhishes();
+	
+	/**
+	 * How Many URLs has the user found.
+	 * @return how many urls has the user seen.
+	 */
+	public int doneURLs();
+	
+	/**
+	 * 
+	 * @return How many phishes has the user found.
+	 */
+	public int foundPhishes();
 }

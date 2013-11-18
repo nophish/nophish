@@ -41,7 +41,7 @@ public enum PhishResult {
 	
 	/**
 	 * always gets the maximum of all possible values
-	 * @return
+	 * @return The maximum of all Values.
 	 */
 	public static int getMax(){
 		int max=-1;

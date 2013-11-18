@@ -1,13 +1,12 @@
 package de.tudarmstadt.informatik.secuso.phishedu;
 
 import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController;
+
 import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishResult;
-import de.tudarmstadt.informatik.secuso.phishedu.backend.networkTasks.GetUrlsTask;
 import android.os.Bundle;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
-import android.text.TextUtils.StringSplitter;
 import android.view.Menu;
 import android.view.View;
 import android.widget.TextView;
@@ -15,8 +14,10 @@ import android.widget.TextView;
 public class URLTaskActivity extends Activity {
 
 	private TextView urlText;
-	private TextView pointsText;
-	private TextView pointsGoalText;
+	private TextView urlsText;
+	private TextView urlsGoalText;
+	private TextView phishesText;
+	private TextView phishesGoalText;
 	private int level;
 
 	@Override
@@ -27,8 +28,10 @@ public class URLTaskActivity extends Activity {
 		setContentView(R.layout.urltask_task);
 
 		urlText = (TextView) findViewById(R.id.url_task_url);
-		pointsText = (TextView) findViewById(R.id.points);
-		pointsGoalText = (TextView) findViewById(R.id.points_goal);
+		urlsText = (TextView) findViewById(R.id.urls);
+		urlsGoalText = (TextView) findViewById(R.id.urls_goal);
+		phishesText = (TextView) findViewById(R.id.phishes);
+		phishesGoalText = (TextView) findViewById(R.id.phishes_goal);
 		nextURL();
 		setTitles();
 	}
@@ -52,8 +55,10 @@ public class URLTaskActivity extends Activity {
 		}
 
 		urlText.setText(sb.toString());
-		pointsText.setText(Integer.toString(BackendController.getInstance().getPoints()));
-		pointsGoalText.setText(Integer.toString(BackendController.getInstance().nextLevelPoints()));
+		urlsText.setText(Integer.toString(BackendController.getInstance().doneURLs()));
+		urlsGoalText.setText(Integer.toString(BackendController.getInstance().levelURLs()));
+		phishesText.setText(Integer.toString(BackendController.getInstance().foundPhishes()));
+		phishesGoalText.setText(Integer.toString(BackendController.getInstance().levelPhishes()));
 	}
 
 	@Override
