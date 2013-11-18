@@ -1,13 +1,12 @@
 package de.tudarmstadt.informatik.secuso.phishedu;
 
 import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController;
+
 import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishResult;
-import de.tudarmstadt.informatik.secuso.phishedu.backend.networkTasks.GetUrlsTask;
 import android.os.Bundle;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
-import android.text.TextUtils.StringSplitter;
 import android.view.Menu;
 import android.view.View;
 import android.widget.TextView;
@@ -15,20 +14,24 @@ import android.widget.TextView;
 public class URLTaskActivity extends Activity {
 
 	private TextView urlText;
-	private TextView pointsText;
-	private TextView pointsGoalText;
+	private TextView urlsText;
+	private TextView urlsGoalText;
+	private TextView phishesText;
+	private TextView phishesGoalText;
 	private int level;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		this.level=getIntent().getIntExtra(Constants.LEVEL_EXTRA_STRING,0);
+		this.level=getIntent().getIntExtra(Constants.EXTRA_LEVEL,0);
 		
 		setContentView(R.layout.urltask_task);
 
 		urlText = (TextView) findViewById(R.id.url_task_url);
-		pointsText = (TextView) findViewById(R.id.points);
-		pointsGoalText = (TextView) findViewById(R.id.points_goal);
+		urlsText = (TextView) findViewById(R.id.urls);
+		urlsGoalText = (TextView) findViewById(R.id.urls_goal);
+		phishesText = (TextView) findViewById(R.id.phishes);
+		phishesGoalText = (TextView) findViewById(R.id.phishes_goal);
 		nextURL();
 		setTitles();
 	}
@@ -52,8 +55,10 @@ public class URLTaskActivity extends Activity {
 		}
 
 		urlText.setText(sb.toString());
-		pointsText.setText(Integer.toString(BackendController.getInstance().getPoints()));
-		pointsGoalText.setText(Integer.toString(BackendController.getInstance().nextLevelPoints()));
+		urlsText.setText(Integer.toString(BackendController.getInstance().doneURLs()));
+		urlsGoalText.setText(Integer.toString(BackendController.getInstance().levelURLs()));
+		phishesText.setText(Integer.toString(BackendController.getInstance().foundPhishes()));
+		phishesGoalText.setText(Integer.toString(BackendController.getInstance().levelPhishes()));
 	}
 
 	@Override
@@ -73,24 +78,14 @@ public class URLTaskActivity extends Activity {
 
 	private void clicked(boolean acceptance){
 		PhishResult result = BackendController.getInstance().userClicked(acceptance);
-		Class followActivity=YouAreWrongActivity.class;
-		switch(result){
-		case NoPhish_Detected:
-			followActivity=YouAreCorrectActivity.class;
-			break;
-		case NoPhish_NotDetected:
-			followActivity=OversafeActivity.class;
-			break;
-		case Phish_Detected:
-			followActivity=ProofActivity.class;
-			break;
-		case Phish_NotDetected:
-			followActivity=YouAreWrongActivity.class;
-			break;
+		Class followActivity=ResultActivity.class;
+		if(result == PhishResult.Phish_Detected){
+			followActivity = ProofActivity.class;
 		}
 		Intent levelIntent = new Intent(this, followActivity);
-		levelIntent.putExtra(Constants.LEVEL_EXTRA_STRING, this.level);
-		levelIntent.putExtra(Constants.TYPE_EXTRA_STRING, BackendController.getInstance().getType().getValue());
+		levelIntent.putExtra(Constants.EXTRA_RESULT, result.getValue());
+		levelIntent.putExtra(Constants.EXTRA_LEVEL, this.level);
+		levelIntent.putExtra(Constants.EXTRA_TYPE, BackendController.getInstance().getType().getValue());
 		startActivityForResult(levelIntent, 1);
 	}
 	

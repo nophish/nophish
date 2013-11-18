@@ -51,8 +51,8 @@ public class BackendController implements BackendControllerInterface, GameStateL
 	private static Class[][] GENERATORS_PER_LEVEL = {
 		{SudomainGenerator.class, KeepGenerator.class}, //Currently we use the same generators for all levels
 	};
-	private static final int POINTS_PER_LEVEL = 100;
 	private static final int URL_CACHE_SIZE = 100;
+	private static final double LEVEL_DISTANCE = 1.5;
 
 	private static PhishURL[] deserializeURLs(String serialized){
 		return new Gson().fromJson(serialized, PhishURL[].class);
@@ -200,7 +200,6 @@ public class BackendController implements BackendControllerInterface, GameStateL
 	@Override
 	public void startLevel(int level) {
 		checkinited();
-		this.progress.setPoints(0);
 		this.progress.setLevel(level);
 		this.frontend.onLevelChange(this.progress.getLevel());
 	}
@@ -260,7 +259,6 @@ public class BackendController implements BackendControllerInterface, GameStateL
 	public PhishResult userClicked(boolean acceptance) {
 		checkinited();
 		PhishResult result=this.current_url.getResult(acceptance);
-
 		if(result != PhishResult.Phish_Detected){
 			this.changePoints(result);
 		}
@@ -270,10 +268,10 @@ public class BackendController implements BackendControllerInterface, GameStateL
 	private void changePoints(PhishResult result){
 		this.progress.addResult(result);
 		int offset=this.current_url.getPoints(result);
+		//with this function we ensure that the user gets more points per level
+		//This ensures that there is no point in running the same level multiple times to collect points
+		offset*=Math.pow(LEVEL_DISTANCE, this.getLevel());
 		this.progress.setPoints(this.getPoints()+offset);
-		if(this.progress.getPoints()>=nextLevelPoints()){
-			this.frontend.levelFinished(this.getLevel());
-		}
 	}
 
 	/**
@@ -282,10 +280,6 @@ public class BackendController implements BackendControllerInterface, GameStateL
 	 */
 	public void setLevel(int level){
 		this.progress.setLevel(level);
-	}
-
-	public int nextLevelPoints(){
-		return POINTS_PER_LEVEL;
 	}
 
 	@Override
@@ -345,5 +339,35 @@ public class BackendController implements BackendControllerInterface, GameStateL
 	public void signOut() {
 		checkinited();
 		this.gamehelper.signOut();
+	}
+
+	@Override
+	public int levelURLs() {
+		checkinited();
+		return 10+(2*this.getLevel());
+	}
+
+	@Override
+	public int levelPhishes() {
+		checkinited();
+		return levelURLs()/2;
+	}
+
+	@Override
+	public int doneURLs() {
+		checkinited();
+		return this.progress.getDoneUrls();
+	}
+
+	@Override
+	public int foundPhishes() {
+		checkinited();
+		return this.progress.getDetectedPhish();
+	}
+
+	@Override
+	public int nextLevelPhishes() {
+		checkinited();
+		return levelPhishes()-2;
 	}
 }

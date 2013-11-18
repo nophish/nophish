@@ -3,9 +3,10 @@ package de.tudarmstadt.informatik.secuso.phishedu;
 public class Constants {
 	public static final int COUNT_DOWN_INTERVAL = 1000;
 	public static final int MILLIS_IN_FUTURE = 2500;
-	public static final String LEVEL_EXTRA_STRING = "level";
-	public static final String TYPE_EXTRA_STRING = "result";
+	public static final String EXTRA_LEVEL = "level";
+	public static final String EXTRA_TYPE = "type";
 	public static final String ARG_PAGE_NUMBER = "page";
+	public static final String EXTRA_RESULT = "result";
 	
 	protected static final int[] levelTitlesIds = {
 		R.string.title_anti_phishing,

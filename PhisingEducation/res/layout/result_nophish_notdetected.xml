@@ -21,7 +21,7 @@
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <TextView
-            android:id="@+id/oversafe_url"
+            android:id="@+id/url"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
@@ -34,7 +34,7 @@
             android:id="@+id/oversafe_image"
             android:layout_width="@dimen/security_icons"
             android:layout_height="@dimen/security_icons"
-            android:layout_below="@+id/oversafe_url"
+            android:layout_below="@+id/url"
             android:layout_centerHorizontal="true"
             android:src="@drawable/padlock" />
 
