@@ -20,10 +20,14 @@ public class ResultActivity extends SwipeActivity {
 	
 	protected static int[] resultLayoutIDs;
 	private int result = PhishResult.Phish_Detected.getValue();
+	private int site_type = 0;
+	private int attack_type = 0;
 	
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		this.result=getIntent().getIntExtra(Constants.EXTRA_RESULT,0);
+		this.site_type=getIntent().getIntExtra(Constants.EXTRA_SITE_TYPE,0);
+		this.attack_type=getIntent().getIntExtra(Constants.EXTRA_ATTACK_TYPE,0);
 		setTitle();
 	}
 	

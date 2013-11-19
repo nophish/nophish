@@ -305,9 +305,15 @@ public class BackendController implements BackendControllerInterface, GameStateL
 	}
 
 	@Override
-	public PhishSiteType getType() {
+	public PhishSiteType getSiteType() {
 		checkinited();
 		return this.current_url.getSiteType();
+	}
+	
+	@Override
+	public PhishAttackType getAttackType() {
+		checkinited();
+		return this.current_url.getAttackType();
 	}
 
 	@Override
