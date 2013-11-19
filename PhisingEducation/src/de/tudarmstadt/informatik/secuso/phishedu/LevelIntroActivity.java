@@ -4,6 +4,7 @@ import android.app.ActionBar;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.v4.app.NavUtils;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -143,6 +144,15 @@ public class LevelIntroActivity extends SwipeActivity {
 			ab.setIcon(getResources().getDrawable(R.drawable.emblem_library));
 		}
 		
+	}
+	
+	/**
+	 * User is getting back to the main menu from the introductionary texts.
+	 */
+	@Override
+	public void onBackPressed() {
+		NavUtils.navigateUpFromSameTask(this);
+		return;		
 	}
 
 }

@@ -134,8 +134,6 @@ public class AwarenessActivity extends SwipeActivity {
 				
 				new DialogInterface.OnClickListener() {
 					public void onClick(DialogInterface dialog, int which) {
-	
-						setContentView(R.layout.level_00_intro_02);
 						EditText mEditSender = (EditText) findViewById(R.id.awareness_edit_sender_email);
 						EditText mEditReceiver = (EditText) findViewById(R.id.awareness_edit_receiver_email);
 						EditText mEditText = (EditText) findViewById(R.id.awareness_edit_text);
@@ -143,6 +141,8 @@ public class AwarenessActivity extends SwipeActivity {
 						mEditSender.setText(AwarenessActivity.from);
 						mEditReceiver.setText(AwarenessActivity.to);
 						mEditText.setText(AwarenessActivity.userMessage);
+						
+						dialog.dismiss();
 					}
 	
 				});

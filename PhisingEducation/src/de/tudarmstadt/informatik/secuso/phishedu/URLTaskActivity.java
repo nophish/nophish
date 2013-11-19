@@ -6,11 +6,14 @@ import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishResult;
 import android.os.Bundle;
 import android.app.ActionBar;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v4.app.NavUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 
 public class URLTaskActivity extends Activity {
@@ -91,16 +94,47 @@ public class URLTaskActivity extends Activity {
 		super.onActivityResult(requestCode, resultCode, data);
 		nextURL();
 	}
+	
+	private void levelCanceldWarning(){
+		AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
+	
+		// Setting Dialog Title
+		alertDialog.setTitle(getString(R.string.level_cancel_title));
+	
+		// Setting Dialog Message
+		alertDialog.setMessage(getString(R.string.level_cancel_text));
+	
+		alertDialog.setPositiveButton(R.string.level_cancel_positive_button, new DialogInterface.OnClickListener() {
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				NavUtils.navigateUpFromSameTask(URLTaskActivity.this);
+			}
+		});
+		
+		alertDialog.setNegativeButton(R.string.level_cancel_negative_button, new DialogInterface.OnClickListener() {
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				dialog.cancel();
+			}
+		});
+		
+		// Showing Alert Message
+		alertDialog.show();
+	}
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 	    switch (item.getItemId()) {
 	    // Respond to the action bar's Up/Home button
 	    case android.R.id.home:
-	        NavUtils.navigateUpFromSameTask(this);
+	    	levelCanceldWarning();
 	        return true;
 	    }
 	    return super.onOptionsItemSelected(item);
 	}
 
+	@Override
+	public void onBackPressed() {
+		levelCanceldWarning();
+	}
 }

@@ -179,16 +179,6 @@ public abstract class SwipeActivity extends FragmentActivity implements ViewPage
 		}
 
 	}
-
-	@Override
-	public void onBackPressed() {
-		if(mPager.getCurrentItem()==0){
-			super.onBackPressed();
-		}else{
-			previousPage();
-		}
-
-	}
 	
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {

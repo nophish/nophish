@@ -74,4 +74,12 @@ public class LevelFinishedActivity extends SwipeActivity {
 		ab.setTitle(title);
 	}
 	
+
+	/**
+	 * after finishing a level the user is not allowed to go back
+	 */
+	@Override
+	public void onBackPressed() {
+		return;		
+	}
 }

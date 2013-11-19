@@ -1,5 +1,6 @@
 package de.tudarmstadt.informatik.secuso.phishedu;
 
+import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
@@ -241,7 +242,8 @@ public class StartMenuActivity extends BaseGameActivity implements
 		if (onGooglePlus()) {
 			setContentView(R.layout.start_menu);
 		} else {
-			super.onBackPressed();
+			//exit the app when pressing back in the main menu
+			finish();
 		}
 	}
 
@@ -258,4 +260,5 @@ public class StartMenuActivity extends BaseGameActivity implements
 		BackendController.getInstance().restartLevel();
 	}
 
+	
 }

@@ -112,6 +112,12 @@ public class ProofActivity extends Activity {
 	    }
 	    return super.onOptionsItemSelected(item);
 	}
-
-
+	
+	/**
+	 * Disable back button so he can not guess again.
+	 */
+	@Override
+	public void onBackPressed() {
+		return;
+	}
 }

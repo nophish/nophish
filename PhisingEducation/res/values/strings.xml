@@ -327,6 +327,10 @@
 
     <!-- TASKS AND SOLUTION SCREENS FROM LEVEL 3 -->
     <string name="URLs">URLs</string>
+    <string name="level_cancel_title">Level abbrechen?</string>
+    <string name="level_cancel_text">Wenn du diese Seite verlässt wird dein Spielstand für dieses Level nicht gespeichert. Bist du dir sicher?</string>
+    <string name="level_cancel_positive_button">Level Verlassen</string>
+    <string name="level_cancel_negative_button">Weiterspielen</string>
     <string name="level_failed">Du hast leider das Level Nicht geschafft. Wir fangen nochmal von vorne an.</string>
     <string name="phishes">phishes</string>
     <string name="url_task_description">Entscheide über die folgenden Webadressen, ob du ihnen vertraust (Häkchen antippen) oder ob hier ein Phishing-Angriff vorliegt (Kreuz antippen).</string>
