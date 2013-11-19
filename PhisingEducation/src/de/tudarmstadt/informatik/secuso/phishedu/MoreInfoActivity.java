@@ -4,6 +4,7 @@ import java.util.LinkedHashMap;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
@@ -25,6 +26,8 @@ public class MoreInfoActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		getActionBar().setDisplayHomeAsUpEnabled(true);
+		this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
 		setContentView(R.layout.more_info_list_view);
 
@@ -49,8 +52,6 @@ public class MoreInfoActivity extends Activity {
 			}
 
 		});
-
-		getActionBar().setDisplayHomeAsUpEnabled(true);
 	}
 	
 	private void openLink(String url) {

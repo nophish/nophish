@@ -31,7 +31,6 @@ public abstract class SwipeActivity extends FragmentActivity implements ViewPage
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		getActionBar().setDisplayHomeAsUpEnabled(true);
-
 		this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
 		setContentView(R.layout.fragment_pager);

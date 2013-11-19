@@ -3,6 +3,7 @@ package de.tudarmstadt.informatik.secuso.phishedu;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
@@ -10,6 +11,7 @@ import android.text.SpannableStringBuilder;
 import android.text.TextPaint;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
@@ -26,11 +28,21 @@ public class ProofActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		getActionBar().setDisplayHomeAsUpEnabled(true);
+		this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 		
 		setContentView(R.layout.proof);
-		setTitles();
 		
 		this.level=getIntent().getIntExtra(Constants.EXTRA_LEVEL,0);
+		
+		if(level == 2){
+			TextView text = (TextView) findViewById(R.id.phish_proof_text);
+			text.setText(R.string.level_02_task);
+			
+			ImageView image = (ImageView) findViewById(R.id.phish_proop_icon);
+			image.setVisibility(View.INVISIBLE);
+		}
+		
+		setTitles();
 		
 		String[] urlparts = BackendController.getInstance().getUrl();
 		SpannableStringBuilder builder = new SpannableStringBuilder();
@@ -47,14 +59,7 @@ public class ProofActivity extends Activity {
 		TextView url = (TextView) findViewById(R.id.url);
 		url.setMovementMethod(LinkMovementMethod.getInstance());
 		url.setText(builder);
-		
-		if(level == 2){
-			TextView text = (TextView) findViewById(R.id.phish_proof_text);
-			text.setText(R.string.level_02_task);
-			
-			ImageView image = (ImageView) findViewById(R.id.phish_proop_icon);
-			image.setVisibility(View.INVISIBLE);
-		}
+		url.setHighlightColor(Color.LTGRAY);
 	}
 	
 	private void setTitles() {
@@ -81,13 +86,11 @@ public class ProofActivity extends Activity {
 			super.updateDrawState(ds);
 			ds.setColor(Color.BLACK);
 			ds.setUnderlineText(false);
-			if(this.activity.selectedPart==this.part){
-				ds.bgColor=Color.LTGRAY;
-			}
 		}
 	}
 	
 	public void onDoneClick(View view){
+		Log.i("SelectedPart", Integer.toString(selectedPart));
 		if(selectedPart==-1){
 		  Toast.makeText(getApplicationContext(), getResources().getString(R.string.select_part) , Toast.LENGTH_SHORT).show();
 		  return;
