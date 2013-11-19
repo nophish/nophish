@@ -81,6 +81,13 @@ public class StartMenuActivity extends BaseGameActivity implements
 
 	}
 
+	public void showAbout(View view) {
+		// start Activity showing the list view
+		Intent aboutIntent = new Intent(this, AboutActivity.class);
+		startActivity(aboutIntent);
+
+	}
+
 	/**
 	 * initially game is started from awareness-part when game has been started
 	 * once - Button text should change to Continue game state should be loaded

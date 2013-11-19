@@ -8,7 +8,6 @@
 
     <!-- titles -->
     <string name="title_activity_display_you_dont_believe_us">DisplayYouDontBelieveUsActivity</string>
-    <string name="hello_world">Hello world!</string>
     <string name="title_activity_send_email">SendEmailActivity</string>
     <string name="title_activity_alert_dialog">AlertDialogActivity</string>
     <string name="title_activity_final_awareness">FinalAwarenessActivity</string>
@@ -106,6 +105,9 @@
     <string name="url_how_phishing_works">http://computer.howstuffworks.com/phishing.htm</string>
     <string name="title_activity_more_info">Links zu Phishing</string>
 
+    <!-- About -->
+    <string name="about_text">Lorem ipsum about about..</string>
+    
     <!-- LEVEL TITLES -->
     <string name="level_title_01">Level 1</string>
     <string name="level_title_02">Level 2</string>
@@ -355,5 +357,6 @@
     <string name="level_08_reminder">TODO</string>
     <string name="level_09_reminder">TODO</string>
     <string name="level_10_reminder">TODO</string>
+    <string name="title_activity_about">About</string>
 
 </resources>

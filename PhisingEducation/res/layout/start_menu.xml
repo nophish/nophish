@@ -80,6 +80,7 @@
             android:layout_marginTop="@dimen/margin_small"
             android:background="@drawable/button_grey"
             android:minWidth="@dimen/btn_standard_width"
+            android:onClick="showAbout"
             android:text="@string/button_about" />
 
     </RelativeLayout>

@@ -21,8 +21,10 @@
         <meta-data
             android:name="com.google.android.gms.appstate.APP_ID"
             android:value="@string/app_id" />
-        <meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version" />
-        
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
         <activity
             android:name="de.tudarmstadt.informatik.secuso.phishedu.StartMenuActivity"
             android:label="@string/title_activity_start_menu" >
@@ -80,6 +82,13 @@
         <activity
             android:name="de.tudarmstadt.informatik.secuso.phishedu.ProofActivity"
             android:label="@string/title_activity_proof" >
+        </activity>
+        <activity
+            android:name="de.tudarmstadt.informatik.secuso.phishedu.AboutActivity"
+            android:label="@string/title_activity_about" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="de.tudarmstadt.informatik.secuso.phishedu.StartMenuActivity" />
         </activity>
     </application>
 
