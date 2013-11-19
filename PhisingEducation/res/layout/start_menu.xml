@@ -14,29 +14,15 @@
         android:paddingTop="@dimen/activity_vertical_margin"
         tools:context=".StartMenuActivity" >
 
-        <Button
-            android:id="@+id/menu_button_level_overview"
+        <TextView
+            android:id="@+id/start_menu_text"
             android:layout_width="wrap_content"
-            android:layout_height="@dimen/btn_standard_height"
-            android:layout_below="@+id/menu_button_play"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="@dimen/margin_small"
-            android:background="@drawable/button_grey"
-            android:minWidth="@dimen/btn_standard_width"
-            android:onClick="showLevelOverview"
-            android:text="@string/button_level_overview" />
-
-        <Button
-            android:id="@+id/menu_button_show_lectures"
-            android:layout_width="wrap_content"
-            android:layout_height="@dimen/btn_standard_height"
-            android:layout_alignLeft="@+id/menu_button_level_overview"
-            android:layout_below="@+id/menu_button_level_overview"
-            android:layout_marginTop="@dimen/margin_small"
-            android:background="@drawable/button_grey"
-            android:minWidth="@dimen/btn_standard_width"
-            android:text="@string/button_show_lectures" />
-
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:text="@string/start_menu"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+        
         <Button
             android:id="@+id/menu_button_play"
             android:layout_width="wrap_content"
@@ -48,6 +34,30 @@
             android:minWidth="@dimen/btn_standard_width"
             android:onClick="startGame"
             android:text="@string/button_play" />
+        
+        <Button
+            android:id="@+id/menu_button_level_overview"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/btn_standard_height"
+            android:layout_below="@+id/menu_button_play"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/margin_small"
+            android:background="@drawable/button_grey"
+            android:minWidth="@dimen/btn_standard_width"
+            android:onClick="showLevelOverview"
+            android:text="@string/button_level_overview" />
+        
+        <Button
+            android:id="@+id/menu_button_social"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/btn_standard_height"
+            android:layout_below="@+id/menu_button_level_overview"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/margin_small"
+            android:background="@drawable/button_grey"
+            android:minWidth="@dimen/btn_standard_width"
+            android:onClick="goToGooglePlay"
+            android:text="@string/button_social" />
 
         <Button
             android:id="@+id/menu_button_more_info"
@@ -72,26 +82,6 @@
             android:minWidth="@dimen/btn_standard_width"
             android:text="@string/button_about" />
 
-        <Button
-            android:id="@+id/menu_button_social"
-            android:layout_width="wrap_content"
-            android:layout_height="@dimen/btn_standard_height"
-            android:layout_below="@+id/menu_button_show_lectures"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="@dimen/margin_small"
-            android:background="@drawable/button_grey"
-            android:minWidth="@dimen/btn_standard_width"
-            android:onClick="goToGooglePlay"
-            android:text="@string/button_social" />
-
-        <TextView
-            android:id="@+id/start_menu_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:text="@string/start_menu"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
     </RelativeLayout>
 
 </ScrollView>
