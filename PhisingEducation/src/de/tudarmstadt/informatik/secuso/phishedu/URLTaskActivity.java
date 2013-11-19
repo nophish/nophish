@@ -1,21 +1,19 @@
 package de.tudarmstadt.informatik.secuso.phishedu;
 
-import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController;
-
-import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishResult;
-import android.os.Bundle;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.TextView;
+import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController;
+import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishResult;
 
 public class URLTaskActivity extends Activity {
 

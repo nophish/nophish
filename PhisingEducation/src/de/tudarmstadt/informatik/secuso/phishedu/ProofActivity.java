@@ -1,22 +1,21 @@
 package de.tudarmstadt.informatik.secuso.phishedu;
 
-import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController;
-import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishResult;
-import android.os.Bundle;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
+import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.text.SpannableStringBuilder;
 import android.text.TextPaint;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
+import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController;
+import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishResult;
 
 public class ProofActivity extends Activity {
 	int selectedPart=-1;

@@ -193,7 +193,6 @@
     <string name="level_01_finish_00_text_02"><b>Wichtig:</b> Überprüfe die Webadressen genau so, wie wir es dir in diesem Level gezeigt haben, denn alle anderen Webadressen, die du siehst, könnten gefälscht sein. Gewöhne dir also an, die Webadressen immer auf diese Weise zu überprüfen, insbesondere dann, wenn du eine unerwartete E-Mail mit einem Link erhältst.</string>
     <string name="title_activity_level2_web_addresses">Level2WebAddressesActivity</string>
     <string name="level_1_splash_text">Level 1\n\nAdressleiste</string>
-    <string name="loading">Loading ...</string>
     <string name="linebreaks">\n\n\n</string>
 
     <!-- LEVEL 2 - WEB-ADRESSEN -->
@@ -240,7 +239,7 @@
     <string name="subdomain">abo</string>
     <string name="domain_description">Informationen über\nGesprächspartner selbst</string>
     <string name="path">/spiegel-digital</string>
-    <string name="path_dot_dot_dot">/...</string>
+    <string name="path_dot_dot_dot">/&#8230;</string>
     <string name="path_description">Gesprächs-\nthema</string>
     <string name="domain_de">de</string>
     <string name="dot">.</string>

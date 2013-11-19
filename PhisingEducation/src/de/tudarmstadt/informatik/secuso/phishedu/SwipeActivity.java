@@ -1,6 +1,5 @@
 package de.tudarmstadt.informatik.secuso.phishedu;
 
-import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -10,14 +9,14 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.NavUtils;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController;
 
 
 public abstract class SwipeActivity extends FragmentActivity implements ViewPager.OnPageChangeListener

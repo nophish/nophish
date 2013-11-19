@@ -1,16 +1,12 @@
 package de.tudarmstadt.informatik.secuso.phishedu;
 
-import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController;
-import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishResult;
 import android.app.ActionBar;
 import android.os.Bundle;
-import android.text.SpannableStringBuilder;
-import android.text.method.LinkMovementMethod;
-import android.text.style.ClickableSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishResult;
 
 
 public class ResultActivity extends SwipeActivity {

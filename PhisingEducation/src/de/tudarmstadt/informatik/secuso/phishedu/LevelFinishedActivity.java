@@ -1,11 +1,11 @@
 package de.tudarmstadt.informatik.secuso.phishedu;
 
 import android.app.ActionBar;
+
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController;
 
 public class LevelFinishedActivity extends SwipeActivity {
