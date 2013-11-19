@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.app.NavUtils;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
@@ -46,6 +48,8 @@ public class StartMenuActivity extends BaseGameActivity implements
 
 	public void goToGooglePlay(View view) {
 		setContentView(R.layout.google_plus);
+		getActionBar().setDisplayHomeAsUpEnabled(true);
+		getActionBar().setHomeButtonEnabled(true);
 
 		findViewById(R.id.sign_in_button).setOnClickListener(this);
 		findViewById(R.id.sign_out_button).setOnClickListener(this);
@@ -73,6 +77,12 @@ public class StartMenuActivity extends BaseGameActivity implements
 			findViewById(R.id.button_show_online_achievement).setVisibility(
 					View.GONE);
 		}
+	}
+	
+	public void goToStartMenu() {
+		setContentView(R.layout.start_menu);
+		getActionBar().setHomeButtonEnabled(false);
+		getActionBar().setDisplayHomeAsUpEnabled(false);
 	}
 
 	public void showMoreInfo(View view) {
@@ -240,7 +250,7 @@ public class StartMenuActivity extends BaseGameActivity implements
 	@Override
 	public void onBackPressed() {
 		if (onGooglePlus()) {
-			setContentView(R.layout.start_menu);
+			goToStartMenu();
 		} else {
 			//exit the app when pressing back in the main menu
 			finish();
@@ -260,5 +270,15 @@ public class StartMenuActivity extends BaseGameActivity implements
 		BackendController.getInstance().restartLevel();
 	}
 
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+	    switch (item.getItemId()) {
+	    // Respond to the action bar's Up/Home button
+	    case android.R.id.home:
+	        goToStartMenu();
+	        return true;
+	    }
+	    return super.onOptionsItemSelected(item);
+	}
 	
 }
