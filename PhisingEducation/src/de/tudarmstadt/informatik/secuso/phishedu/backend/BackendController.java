@@ -16,7 +16,6 @@ import com.google.gson.Gson;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.attacks.IPAttack;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.attacks.Level2Attack;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.attacks.PhishTankURLAttack;
-import de.tudarmstadt.informatik.secuso.phishedu.backend.generator.HTTPGenerator;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.generator.KeepGenerator;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.generator.SudomainGenerator;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.networkTasks.*;
@@ -31,12 +30,11 @@ import android.net.Uri;
  *
  */
 public class BackendController implements BackendControllerInterface, GameStateLoadedListener, UrlsLoadedListener {
+	//constants
 	private static final String PREFS_NAME = "PhisheduState";
 	private static final String URL_CACHE_NAME ="urlcache";
 	private static final String LEVEL1_URL = "https://pages.no-phish.de/level1.php#bottom";
 	private static final PhishAttackType[] CACHE_TYPES = {PhishAttackType.AnyPhish, PhishAttackType.NoPhish};
-	//the probability that we apply an Attack on each round
-	private static final double ATTACK_THRESHOULD = 0.5;
 	//For each level we can define what Attacks are applied
 	//LEVEL 0-1 are empty because they don't 
 	@SuppressWarnings("rawtypes")
@@ -54,6 +52,21 @@ public class BackendController implements BackendControllerInterface, GameStateL
 	private static final int URL_CACHE_SIZE = 100;
 	private static final double LEVEL_DISTANCE = 1.5;
 
+	private static Random random = new Random();
+	
+	//singleton instance
+	private static BackendController instance = new BackendController();
+
+	//instance variables
+	private FrontendControllerInterface frontend;
+	private GameHelper gamehelper;
+	private boolean inited = false;
+	//indexed by UrlType
+	private PhishURLInterface[][] urlCache;
+	private boolean gamestate_loaded = false;
+	private GameProgress progress;
+	
+
 	private static PhishURL[] deserializeURLs(String serialized){
 		return new Gson().fromJson(serialized, PhishURL[].class);
 	}
@@ -61,19 +74,7 @@ public class BackendController implements BackendControllerInterface, GameStateL
 	private static String serializeURLs(PhishURLInterface[] object){
 		return new Gson().toJson(object);
 	}
-
-	private static BackendController instance = new BackendController();
-
-	private FrontendControllerInterface frontend;
-	private GameHelper gamehelper;
-	private boolean inited = false;
-
-	//indexed by UrlType
-	private PhishURLInterface[][] urlCache;
-
-	private boolean gamestate_loaded = false;
-	private GameProgress progress;
-
+	
 	/**
 	 * This function returns a Phishing url of the given type
 	 * @param type Type of Attack for the URL
@@ -83,8 +84,7 @@ public class BackendController implements BackendControllerInterface, GameStateL
 		if(type.getValue() >= this.urlCache.length || this.urlCache[type.getValue()].length == 0){
 			throw new IllegalArgumentException("This phish type is not cached.");
 		}
-		Random rand = new Random();
-		return urlCache[type.getValue()][rand.nextInt(urlCache[type.getValue()].length)];
+		return urlCache[type.getValue()][random.nextInt(urlCache[type.getValue()].length)];
 	}
 
 	/**
@@ -203,27 +203,50 @@ public class BackendController implements BackendControllerInterface, GameStateL
 		this.progress.setLevel(level);
 		this.frontend.onLevelChange(this.progress.getLevel());
 	}
+	
+	@Override
+	public void restartLevel(){
+		this.startLevel(this.getLevel());
+	}
 
 	@Override
 	public void redirectToLevel1URL(){
 		this.frontend.startBrowser(Uri.parse(LEVEL1_URL));
 	}
-
-
+	
 	@SuppressWarnings("unchecked")
 	@Override
 	public String[] getNextUrl() {
 		checkinited();
+		int remaining_urls = this.levelURLs()-this.progress.getDoneUrls();
+		int remaining_phish = this.levelPhishes()-this.progress.getPresentedPhish();
+		int remaining_phish_to_level = this.nextLevelPhishes() - this.progress.getDetectedPhish();
+		//We might have failed the level
+		//Either by going out of URLs or by going out of options to detect phish 
+		if( remaining_urls <= 0 || remaining_phish<remaining_phish_to_level){
+			this.frontend.levelFailed(this.getLevel());
+		}
+
+		//we have to decide whether we want to present a phish or not
+		boolean present_phish=false;
+		if(remaining_phish > 0){
+			present_phish=random.nextBoolean();
+		}
+		//we save up one phish for the last two URLs
+		if(remaining_phish == 1 && remaining_urls>2){
+			present_phish=false;
+		}
+		//if we did not display the saved phish in the second last try we have to do it in the last
+		if(remaining_phish == 1 && remaining_urls == 1){
+			present_phish=true;
+		}
+		
 		//First we choose a random start URL
 		PhishURLInterface base_url=getPhishURL(PhishAttackType.NoPhish);
-		//In the first few level we only use https urls
-		if(getLevel() <= 9){
-			base_url=new HTTPGenerator(base_url);
-		}
 		//then we decorate the URL with a generator
 		base_url=decorateUrl(base_url, GENERATORS_PER_LEVEL, getLevel());
 		//Lastly we might apply a attack
-		if(new Random().nextFloat()>ATTACK_THRESHOULD){
+		if(present_phish){
 			base_url=decorateUrl(base_url, ATTACK_TYPES_PER_LEVEL, getLevel());
 		}
 
@@ -237,10 +260,9 @@ public class BackendController implements BackendControllerInterface, GameStateL
 	}
 
 	private PhishURLInterface decorateUrl(PhishURLInterface base_url, Class<? extends AbstractUrlDecorator>[][] options, int level){
-		Random rand=new Random();
 		int use_level=Math.min(level, options.length-1);
 		Class<? extends AbstractUrlDecorator>[] attacks = options[use_level];
-		Class<? extends AbstractUrlDecorator> attack = attacks[rand.nextInt(attacks.length)];
+		Class<? extends AbstractUrlDecorator> attack = attacks[random.nextInt(attacks.length)];
 		try {
 			base_url=attack.getConstructor(PhishURLInterface.class).newInstance(base_url);
 		} catch (Exception e) {
@@ -294,6 +316,9 @@ public class BackendController implements BackendControllerInterface, GameStateL
 		boolean clickedright = this.current_url.partClicked(part);
 		if(clickedright){
 			changePoints(PhishResult.Phish_Detected);
+			if(this.foundPhishes()>= this.nextLevelPhishes()){
+				this.frontend.levelFinished(this.getLevel());
+			}
 		}else{
 			changePoints(PhishResult.Phish_NotDetected);
 		}

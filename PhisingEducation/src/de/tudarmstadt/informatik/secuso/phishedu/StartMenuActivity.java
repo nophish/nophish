@@ -245,4 +245,10 @@ public class StartMenuActivity extends BaseGameActivity implements
 		startActivity(levelIntent);
 	}
 
+	@Override
+	public void levelFailed(int level) {
+		displayToast(getString(R.string.level_failed));
+		BackendController.getInstance().restartLevel();
+	}
+
 }

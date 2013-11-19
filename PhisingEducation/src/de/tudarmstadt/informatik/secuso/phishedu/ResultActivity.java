@@ -63,7 +63,6 @@ public class ResultActivity extends SwipeActivity {
 	@Override
 	protected View getPage(int page, LayoutInflater inflater,
 			ViewGroup container, Bundle savedInstanceState) {
-		
 		View view =inflater.inflate(resultLayoutIDs[this.result], container, false);
 		TextView urlText = (TextView) view.findViewById(R.id.url);
 		setUrlText(urlText);

@@ -133,4 +133,9 @@ public interface BackendControllerInterface {
 	 * @return How many phishes has the user found.
 	 */
 	public int foundPhishes();
+	
+	/**
+	 * This function restarts the current Level
+	 */
+	public void restartLevel();
 }

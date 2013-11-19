@@ -298,6 +298,7 @@
 
     <!-- TASKS AND SOLUTION SCREENS FROM LEVEL 3 -->
     <string name="URLs">URLs</string>
+    <string name="level_failed">Du hast leider das Level Nicht geschafft. Wir fangen nochmal von vorne an.</string>
     <string name="phishes">phishes</string>
     <string name="url_task_description">Entscheide über die folgenden Webadressen, ob du ihnen vertraust (Häkchen antippen) oder ob hier ein Phishing-Angriff vorliegt (Kreuz antippen).</string>
     <string name="url">Beispiel URL</string>

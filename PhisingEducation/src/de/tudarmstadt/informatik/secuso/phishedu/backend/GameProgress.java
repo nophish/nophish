@@ -63,6 +63,14 @@ public class GameProgress implements OnStateLoadedListener{
 	}
 	
 	/**
+	 * This function returns the total count of phishURLs the User saw.
+	 * @return the number of PhishURLs the user saw.
+	 */
+	public int getPresentedPhish(){
+		return this.level_results[PhishResult.Phish_Detected.getValue()]+this.level_results[PhishResult.Phish_NotDetected.getValue()];
+	}
+	
+	/**
 	 * Get the number of URLs the user decided on.
 	 * @return Number of URLs the user decided on.
 	 */
