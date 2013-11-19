@@ -11,6 +11,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v4.app.NavUtils;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
@@ -95,21 +96,41 @@ public class URLTaskActivity extends Activity {
 		nextURL();
 	}
 	
-	private void levelCanceldWarning(){
-		AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
+	private void levelRestartWarning(){
+		levelCanceldWarning(true);
+	}
 	
+	private void levelCanceldWarning(){
+		levelCanceldWarning(false);
+	}
+	
+	private class CanceldWarningClickListener implements DialogInterface.OnClickListener{
+		private boolean restart;
+		
+		public CanceldWarningClickListener(boolean restart){
+			this.restart=restart;
+		}
+		
+		@Override
+		public void onClick(DialogInterface dialog, int which) {
+			if(this.restart){
+				BackendController.getInstance().restartLevel();
+			}else{
+				NavUtils.navigateUpFromSameTask(URLTaskActivity.this);
+			}
+		}
+	}
+	
+	private void levelCanceldWarning(final boolean restart){
+		AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
+		
 		// Setting Dialog Title
 		alertDialog.setTitle(getString(R.string.level_cancel_title));
 	
 		// Setting Dialog Message
 		alertDialog.setMessage(getString(R.string.level_cancel_text));
 	
-		alertDialog.setPositiveButton(R.string.level_cancel_positive_button, new DialogInterface.OnClickListener() {
-			@Override
-			public void onClick(DialogInterface dialog, int which) {
-				NavUtils.navigateUpFromSameTask(URLTaskActivity.this);
-			}
-		});
+		alertDialog.setPositiveButton(R.string.level_cancel_positive_button, new CanceldWarningClickListener(restart));
 		
 		alertDialog.setNegativeButton(R.string.level_cancel_negative_button, new DialogInterface.OnClickListener() {
 			@Override
@@ -129,6 +150,9 @@ public class URLTaskActivity extends Activity {
 	    case android.R.id.home:
 	    	levelCanceldWarning();
 	        return true;
+	    case R.id.restart_level:
+	    	levelRestartWarning();
+	    	return true;
 	    }
 	    return super.onOptionsItemSelected(item);
 	}
@@ -136,5 +160,13 @@ public class URLTaskActivity extends Activity {
 	@Override
 	public void onBackPressed() {
 		levelCanceldWarning();
+	}
+	
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+	    // Inflate the menu items for use in the action bar
+	    MenuInflater inflater = getMenuInflater();
+	    inflater.inflate(R.menu.urltask_menu, menu);
+	    return super.onCreateOptionsMenu(menu);
 	}
 }
