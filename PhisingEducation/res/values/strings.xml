@@ -231,6 +231,7 @@
     <string name="level_02_example_facebook_03">/</string>
     <string name="level_02_example_facebook_04">settings?tab=payments</string>
     <string name="level_02_exercise_text_01">Nun bist du an der Reihe:\n\nNach den vorherigen Beispielen, sollst du nun selber den Wer-Bereich der folgenden Webadressen bestimmen.\n\nBerühre hierzu die entsprechende Stelle und klicke auf \"Überprüfen\", wenn deine Antwort überprüft werden soll.</string>
+    <string name="level_02_task">Tippe nun den Wer-Bereich der folgenden Webadressen an.</string>
     <string name="http">http://</string>
     <string name="www">www.</string>
     <string name="http_description">Sicherheits-\nstufe</string>

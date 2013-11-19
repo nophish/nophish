@@ -88,17 +88,18 @@ public class LevelIntroActivity extends SwipeActivity {
 	}
 
 	protected void onStartClick() {
+		Class next_activity= URLTaskActivity.class;
 		if (this.real_level == 0) {
-			Intent levelIntent = new Intent(this, AwarenessActivity.class);
-			levelIntent.putExtra(Constants.EXTRA_LEVEL, this.real_level);
-			startActivity(levelIntent);
+			next_activity=AwarenessActivity.class;
 		} else if (this.real_level == 1) {
 			BackendController.getInstance().redirectToLevel1URL();
-		} else {
-			Intent levelIntent = new Intent(this, URLTaskActivity.class);
-			levelIntent.putExtra(Constants.EXTRA_LEVEL, this.real_level);
-			startActivity(levelIntent);
+		} else if (this.real_level == 2) {
+			//in Level 2 we skip the URLTaskActivity because they are all valid URLs
+			next_activity=ProofActivity.class;
 		}
+		Intent levelIntent = new Intent(this, next_activity);
+		levelIntent.putExtra(Constants.EXTRA_LEVEL, this.real_level);
+		startActivity(levelIntent);
 	}
 
 	@Override

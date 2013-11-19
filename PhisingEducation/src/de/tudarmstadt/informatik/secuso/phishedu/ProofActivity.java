@@ -12,6 +12,7 @@ import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController;
@@ -46,6 +47,14 @@ public class ProofActivity extends Activity {
 		TextView url = (TextView) findViewById(R.id.url);
 		url.setMovementMethod(LinkMovementMethod.getInstance());
 		url.setText(builder);
+		
+		if(level == 2){
+			TextView text = (TextView) findViewById(R.id.phish_proof_text);
+			text.setText(R.string.level_02_task);
+			
+			ImageView image = (ImageView) findViewById(R.id.phish_proop_icon);
+			image.setVisibility(View.INVISIBLE);
+		}
 	}
 	
 	private void setTitles() {
