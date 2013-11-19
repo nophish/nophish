@@ -33,7 +33,7 @@ public class LevelSelectorActivity extends SwipeActivity implements
 
 	@Override
 	protected int getPageCount() {
-		return 3;
+		return Math.min(Constants.levelTitlesIds.length, Constants.levelSubtitlesIds.length);
 	}
 
 	@Override
@@ -53,9 +53,14 @@ public class LevelSelectorActivity extends SwipeActivity implements
 			button.setBackgroundDrawable(getResources().getDrawable(R.drawable.levelicon_inactive_bg));
 			layoutView.findViewById(R.id.levelbutton_padlock).setVisibility(View.VISIBLE);
 			layoutView.findViewById(R.id.levelbutton_tick).setVisibility(View.INVISIBLE);
-		}		
+		}
 		TextView levelnumber = (TextView) layoutView.findViewById(R.id.levelbutton_text);
 		levelnumber.setText(Integer.toString(level));
+		TextView levelTitle = (TextView) layoutView.findViewById(R.id.level_title);
+		levelTitle.setText(Constants.levelTitlesIds[level]);
+		TextView levelDescription = (TextView) layoutView.findViewById(R.id.level_description);
+		levelDescription.setText(Constants.levelSubtitlesIds[level]);
+		
 		return layoutView;
 	}
 	
