@@ -26,6 +26,7 @@ public class LevelSelectorActivity extends SwipeActivity implements
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		getActionBar().setDisplayHomeAsUpEnabled(true);
 		
 		ActionBar ab = getActionBar();
 		ab.setTitle("Level Überblick");

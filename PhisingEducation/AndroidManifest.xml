@@ -30,7 +30,6 @@
             android:label="@string/title_activity_start_menu" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
             <intent-filter>
@@ -44,48 +43,72 @@
         </activity>
         <activity
             android:name="de.tudarmstadt.informatik.secuso.phishedu.AwarenessActivity"
-            android:label="@string/title_activity_awareness" >
+            android:label="@string/title_activity_awareness"
+            android:parentActivityName="de.tudarmstadt.informatik.secuso.phishedu.StartMenuActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="de.tudarmstadt.informatik.secuso.phishedu.StartMenuActivity" />
         </activity>
         <activity
             android:name="de.tudarmstadt.informatik.secuso.phishedu.MoreInfoActivity"
-            android:label="@string/title_activity_more_info" >
+            android:label="@string/title_activity_more_info"
+            android:parentActivityName="de.tudarmstadt.informatik.secuso.phishedu.StartMenuActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="de.tudarmstadt.informatik.secuso.phishedu.StartMenuActivity" />
         </activity>
         <activity
             android:name="de.tudarmstadt.informatik.secuso.phishedu.LevelSelectorActivity"
-            android:label="@string/title_activity_level_grid" >
+            android:label="@string/title_activity_level_grid"
+            android:parentActivityName="de.tudarmstadt.informatik.secuso.phishedu.StartMenuActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="de.tudarmstadt.informatik.secuso.phishedu.StartMenuActivity" />
         </activity>
         <activity
             android:name="de.tudarmstadt.informatik.secuso.phishedu.LevelIntroActivity"
-            android:label="@string/title_level_1_addr_bar_activity" >
+            android:label="@string/title_level_1_addr_bar_activity"
+            android:parentActivityName="de.tudarmstadt.informatik.secuso.phishedu.StartMenuActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="de.tudarmstadt.informatik.secuso.phishedu.StartMenuActivity" />
         </activity>
         <activity
             android:name="de.tudarmstadt.informatik.secuso.phishedu.URLTaskActivity"
-            android:label="@string/title_activity_urltask" >
+            android:label="@string/title_activity_urltask"
+            android:parentActivityName="de.tudarmstadt.informatik.secuso.phishedu.StartMenuActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="de.tudarmstadt.informatik.secuso.phishedu.StartMenuActivity" />
         </activity>
         <activity
             android:name="de.tudarmstadt.informatik.secuso.phishedu.LevelFinishedActivity"
-            android:label="@string/title_level_finished" >
+            android:label="@string/title_level_finished"
+            android:parentActivityName="de.tudarmstadt.informatik.secuso.phishedu.StartMenuActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="de.tudarmstadt.informatik.secuso.phishedu.StartMenuActivity" />
         </activity>
         <activity
             android:name="de.tudarmstadt.informatik.secuso.phishedu.ResultActivity"
-            android:label="@string/title_level_finished" >
+            android:label="@string/title_level_finished"
+            android:parentActivityName="de.tudarmstadt.informatik.secuso.phishedu.StartMenuActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="de.tudarmstadt.informatik.secuso.phishedu.StartMenuActivity" />
         </activity>
         <activity
             android:name="de.tudarmstadt.informatik.secuso.phishedu.ProofActivity"
-            android:label="@string/title_activity_proof" >
+            android:label="@string/title_activity_proof"
+            android:parentActivityName="de.tudarmstadt.informatik.secuso.phishedu.StartMenuActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="de.tudarmstadt.informatik.secuso.phishedu.StartMenuActivity" />
         </activity>
         <activity
             android:name="de.tudarmstadt.informatik.secuso.phishedu.AboutActivity"
-            android:label="@string/title_activity_about" >
+            android:label="@string/title_activity_about"
+            android:parentActivityName="de.tudarmstadt.informatik.secuso.phishedu.StartMenuActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="de.tudarmstadt.informatik.secuso.phishedu.StartMenuActivity" />
