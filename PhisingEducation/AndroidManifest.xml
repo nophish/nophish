@@ -112,6 +112,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="de.tudarmstadt.informatik.secuso.phishedu.StartMenuActivity" />
         </activity>
+        <activity
+            android:name="de.tudarmstadt.informatik.secuso.phishedu.FindAddressBarActivity"
+            android:label="@string/title_activity_find_address_bar"
+            android:parentActivityName="de.tudarmstadt.informatik.secuso.phishedu.StartMenuActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="de.tudarmstadt.informatik.secuso.phishedu.StartMenuActivity" />
+        </activity>
     </application>
 
 </manifest>
