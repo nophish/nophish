@@ -1,24 +1,17 @@
 package de.tudarmstadt.informatik.secuso.phishedu;
 
 import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController;
-import android.app.ActionBar;
+
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.ActivityInfo;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
-import android.widget.ScrollView;
 import android.widget.Toast;
 
 /**
@@ -134,8 +127,6 @@ public class AwarenessActivity extends SwipeActivity {
 				
 				new DialogInterface.OnClickListener() {
 					public void onClick(DialogInterface dialog, int which) {
-	
-						setContentView(R.layout.level_00_intro_02);
 						EditText mEditSender = (EditText) findViewById(R.id.awareness_edit_sender_email);
 						EditText mEditReceiver = (EditText) findViewById(R.id.awareness_edit_receiver_email);
 						EditText mEditText = (EditText) findViewById(R.id.awareness_edit_text);
@@ -143,6 +134,8 @@ public class AwarenessActivity extends SwipeActivity {
 						mEditSender.setText(AwarenessActivity.from);
 						mEditReceiver.setText(AwarenessActivity.to);
 						mEditText.setText(AwarenessActivity.userMessage);
+						
+						dialog.dismiss();
 					}
 	
 				});

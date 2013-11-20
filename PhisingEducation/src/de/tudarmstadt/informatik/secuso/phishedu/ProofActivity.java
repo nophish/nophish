@@ -1,20 +1,24 @@
 package de.tudarmstadt.informatik.secuso.phishedu;
 
-import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController;
-import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishResult;
-import android.os.Bundle;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.graphics.Color;
+import android.os.Bundle;
+import android.support.v4.app.NavUtils;
 import android.text.SpannableStringBuilder;
 import android.text.TextPaint;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
-import android.view.Menu;
+import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController;
+import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishResult;
 
 public class ProofActivity extends Activity {
 	int selectedPart=-1;
@@ -23,10 +27,22 @@ public class ProofActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		getActionBar().setDisplayHomeAsUpEnabled(true);
+		this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+		
 		setContentView(R.layout.proof);
-		setTitles();
 		
 		this.level=getIntent().getIntExtra(Constants.EXTRA_LEVEL,0);
+		
+		if(level == 2){
+			TextView text = (TextView) findViewById(R.id.phish_proof_text);
+			text.setText(R.string.level_02_task);
+			
+			ImageView image = (ImageView) findViewById(R.id.phish_proop_icon);
+			image.setVisibility(View.INVISIBLE);
+		}
+		
+		setTitles();
 		
 		String[] urlparts = BackendController.getInstance().getUrl();
 		SpannableStringBuilder builder = new SpannableStringBuilder();
@@ -43,6 +59,7 @@ public class ProofActivity extends Activity {
 		TextView url = (TextView) findViewById(R.id.url);
 		url.setMovementMethod(LinkMovementMethod.getInstance());
 		url.setText(builder);
+		url.setHighlightColor(Color.LTGRAY);
 	}
 	
 	private void setTitles() {
@@ -69,20 +86,11 @@ public class ProofActivity extends Activity {
 			super.updateDrawState(ds);
 			ds.setColor(Color.BLACK);
 			ds.setUnderlineText(false);
-			if(this.activity.selectedPart==this.part){
-				ds.bgColor=Color.LTGRAY;
-			}
 		}
-	}
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.proof, menu);
-		return true;
 	}
 	
 	public void onDoneClick(View view){
+		Log.i("SelectedPart", Integer.toString(selectedPart));
 		if(selectedPart==-1){
 		  Toast.makeText(getApplicationContext(), getResources().getString(R.string.select_part) , Toast.LENGTH_SHORT).show();
 		  return;
@@ -95,7 +103,8 @@ public class ProofActivity extends Activity {
 		Intent levelIntent = new Intent(this, ResultActivity.class);
 		levelIntent.putExtra(Constants.EXTRA_RESULT, result);
 		levelIntent.putExtra(Constants.EXTRA_LEVEL, this.level);
-		levelIntent.putExtra(Constants.EXTRA_TYPE, BackendController.getInstance().getType().getValue());
+		levelIntent.putExtra(Constants.EXTRA_SITE_TYPE, BackendController.getInstance().getSiteType().getValue());
+		levelIntent.putExtra(Constants.EXTRA_ATTACK_TYPE, BackendController.getInstance().getAttackType().getValue());
 		startActivityForResult(levelIntent, 1);
 	}
 	
@@ -104,5 +113,23 @@ public class ProofActivity extends Activity {
 		super.onActivityResult(requestCode, resultCode, data);
 		finish();
 	}
-
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+	    switch (item.getItemId()) {
+	    // Respond to the action bar's Up/Home button
+	    case android.R.id.home:
+	        NavUtils.navigateUpFromSameTask(this);
+	        return true;
+	    }
+	    return super.onOptionsItemSelected(item);
+	}
+	
+	/**
+	 * Disable back button so he can not guess again.
+	 */
+	@Override
+	public void onBackPressed() {
+		return;
+	}
 }

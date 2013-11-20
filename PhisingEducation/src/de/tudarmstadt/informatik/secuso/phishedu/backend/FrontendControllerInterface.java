@@ -33,6 +33,7 @@ public interface FrontendControllerInterface {
 	 * @param level the new level
 	 */
 	void onLevelChange(int level);
+	
 	/**
 	 * Start a browser and show the given URL
 	 * @param url the url to show
@@ -51,4 +52,13 @@ public interface FrontendControllerInterface {
 	 * @param level the finished level
 	 */
 	void levelFinished(int level);
+	
+	/**
+	 * This function is called whenever the user failed on a level.
+	 * This means he was not able to detect enough Phishing URLs.
+	 * The UI should display a message stating this fact and call {@link BackendController#startLevel(int)}
+	 * This will (after initialization) result in a new Call to {@link FrontendControllerInterface#onLevelChange(int)} 
+	 * @param level
+	 */
+	void levelFailed(int level);
 }

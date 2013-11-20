@@ -1,21 +1,22 @@
 package de.tudarmstadt.informatik.secuso.phishedu;
 
-import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.NavUtils;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
-import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController;
 
 
 public abstract class SwipeActivity extends FragmentActivity implements ViewPager.OnPageChangeListener
@@ -29,7 +30,7 @@ public abstract class SwipeActivity extends FragmentActivity implements ViewPage
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-
+		getActionBar().setDisplayHomeAsUpEnabled(true);
 		this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
 		setContentView(R.layout.fragment_pager);
@@ -67,13 +68,6 @@ public abstract class SwipeActivity extends FragmentActivity implements ViewPage
 		bStartLevel.setText(this.startButtonText());
 
 		checkAndHideButtons(0);
-	}
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.level_grid, menu);
-		return true;
 	}
 
 	private void nextPage() {
@@ -183,17 +177,18 @@ public abstract class SwipeActivity extends FragmentActivity implements ViewPage
 		}
 
 	}
-
+	
 	@Override
-	public void onBackPressed() {
-		if(mPager.getCurrentItem()==0){
-			super.onBackPressed();
-		}else{
-			previousPage();
-		}
-
+	public boolean onOptionsItemSelected(MenuItem item) {
+	    switch (item.getItemId()) {
+	    // Respond to the action bar's Up/Home button
+	    case android.R.id.home:
+	        NavUtils.navigateUpFromSameTask(this);
+	        return true;
+	    }
+	    return super.onOptionsItemSelected(item);
 	}
-
+	
 	protected abstract int getPageCount();
 	protected abstract View getPage(int page, LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState);
 

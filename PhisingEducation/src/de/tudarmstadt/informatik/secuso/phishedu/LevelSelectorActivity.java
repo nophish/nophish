@@ -1,24 +1,13 @@
 package de.tudarmstadt.informatik.secuso.phishedu;
 
-import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController;
 import android.app.ActionBar;
-import android.content.pm.ActivityInfo;
-import android.opengl.Visibility;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.support.v4.widget.SimpleCursorAdapter.ViewBinder;
 import android.view.LayoutInflater;
-import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
+import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController;
 
 public class LevelSelectorActivity extends SwipeActivity implements
 		ViewPager.OnPageChangeListener {
@@ -26,6 +15,7 @@ public class LevelSelectorActivity extends SwipeActivity implements
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		getActionBar().setDisplayHomeAsUpEnabled(true);
 		
 		ActionBar ab = getActionBar();
 		ab.setTitle("Level Überblick");
@@ -33,7 +23,7 @@ public class LevelSelectorActivity extends SwipeActivity implements
 
 	@Override
 	protected int getPageCount() {
-		return 3;
+		return Math.min(Constants.levelTitlesIds.length, Constants.levelSubtitlesIds.length);
 	}
 
 	@Override
@@ -53,9 +43,14 @@ public class LevelSelectorActivity extends SwipeActivity implements
 			button.setBackgroundDrawable(getResources().getDrawable(R.drawable.levelicon_inactive_bg));
 			layoutView.findViewById(R.id.levelbutton_padlock).setVisibility(View.VISIBLE);
 			layoutView.findViewById(R.id.levelbutton_tick).setVisibility(View.INVISIBLE);
-		}		
+		}
 		TextView levelnumber = (TextView) layoutView.findViewById(R.id.levelbutton_text);
 		levelnumber.setText(Integer.toString(level));
+		TextView levelTitle = (TextView) layoutView.findViewById(R.id.level_title);
+		levelTitle.setText(Constants.levelTitlesIds[level]);
+		TextView levelDescription = (TextView) layoutView.findViewById(R.id.level_description);
+		levelDescription.setText(Constants.levelSubtitlesIds[level]);
+		
 		return layoutView;
 	}
 	

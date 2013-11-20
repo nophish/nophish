@@ -2,16 +2,11 @@ package de.tudarmstadt.informatik.secuso.phishedu;
 
 import android.app.ActionBar;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.support.v4.view.ViewPager;
-import android.util.Log;
+import android.support.v4.app.NavUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import de.tudarmstadt.informatik.secuso.phishedu.R;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController;
 
 /**
@@ -93,17 +88,15 @@ public class LevelIntroActivity extends SwipeActivity {
 	}
 
 	protected void onStartClick() {
+		Class next_activity= URLTaskActivity.class;
 		if (this.real_level == 0) {
-			Intent levelIntent = new Intent(this, AwarenessActivity.class);
-			levelIntent.putExtra(Constants.EXTRA_LEVEL, this.real_level);
-			startActivity(levelIntent);
+			next_activity=AwarenessActivity.class;
 		} else if (this.real_level == 1) {
 			BackendController.getInstance().redirectToLevel1URL();
-		} else {
-			Intent levelIntent = new Intent(this, URLTaskActivity.class);
-			levelIntent.putExtra(Constants.EXTRA_LEVEL, this.real_level);
-			startActivity(levelIntent);
 		}
+		Intent levelIntent = new Intent(this, next_activity);
+		levelIntent.putExtra(Constants.EXTRA_LEVEL, this.real_level);
+		startActivity(levelIntent);
 	}
 
 	@Override
@@ -143,6 +136,15 @@ public class LevelIntroActivity extends SwipeActivity {
 			ab.setIcon(getResources().getDrawable(R.drawable.emblem_library));
 		}
 		
+	}
+	
+	/**
+	 * User is getting back to the main menu from the introductionary texts.
+	 */
+	@Override
+	public void onBackPressed() {
+		NavUtils.navigateUpFromSameTask(this);
+		return;		
 	}
 
 }

@@ -1,15 +1,20 @@
 package de.tudarmstadt.informatik.secuso.phishedu;
 
-import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController;
-
-import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishResult;
-import android.os.Bundle;
 import android.app.ActionBar;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
+import android.os.Bundle;
+import android.support.v4.app.NavUtils;
 import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController;
+import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishResult;
 
 public class URLTaskActivity extends Activity {
 
@@ -23,8 +28,11 @@ public class URLTaskActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		getActionBar().setDisplayHomeAsUpEnabled(true);
+		this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
 		this.level=getIntent().getIntExtra(Constants.EXTRA_LEVEL,0);
-		
+
 		setContentView(R.layout.urltask_task);
 
 		urlText = (TextView) findViewById(R.id.url_task_url);
@@ -34,11 +42,18 @@ public class URLTaskActivity extends Activity {
 		phishesGoalText = (TextView) findViewById(R.id.phishes_goal);
 		nextURL();
 		setTitles();
+
+		//In Level 2 we don't need to check if it is a phish
+		if(level == 2){
+			Intent levelIntent = new Intent(this, ProofActivity.class);
+			levelIntent.putExtra(Constants.EXTRA_LEVEL, this.level);
+			startActivityForResult(levelIntent, 1);
+		}
 	}
 	
 	private void setTitles() {
 		ActionBar ab = getActionBar();
-		
+
 		ab.setTitle(Constants.levelTitlesIds[BackendController.getInstance().getLevel()]);
 		ab.setSubtitle(getString(R.string.exercise));
 		ab.setIcon(getResources().getDrawable(R.drawable.desktop));
@@ -61,13 +76,6 @@ public class URLTaskActivity extends Activity {
 		phishesGoalText.setText(Integer.toString(BackendController.getInstance().levelPhishes()));
 	}
 
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.urltask, menu);
-		return true;
-	}
-
 	public void clickAccept(View view){
 		clicked(true);
 	}
@@ -85,14 +93,88 @@ public class URLTaskActivity extends Activity {
 		Intent levelIntent = new Intent(this, followActivity);
 		levelIntent.putExtra(Constants.EXTRA_RESULT, result.getValue());
 		levelIntent.putExtra(Constants.EXTRA_LEVEL, this.level);
-		levelIntent.putExtra(Constants.EXTRA_TYPE, BackendController.getInstance().getType().getValue());
+		levelIntent.putExtra(Constants.EXTRA_SITE_TYPE, BackendController.getInstance().getSiteType().getValue());
+		levelIntent.putExtra(Constants.EXTRA_ATTACK_TYPE, BackendController.getInstance().getAttackType().getValue());
 		startActivityForResult(levelIntent, 1);
 	}
-	
+
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		super.onActivityResult(requestCode, resultCode, data);
 		nextURL();
 	}
 
+	private void levelRestartWarning(){
+		levelCanceldWarning(true);
+	}
+
+	private void levelCanceldWarning(){
+		levelCanceldWarning(false);
+	}
+
+	private class CanceldWarningClickListener implements DialogInterface.OnClickListener{
+		private boolean restart;
+
+		public CanceldWarningClickListener(boolean restart){
+			this.restart=restart;
+		}
+
+		@Override
+		public void onClick(DialogInterface dialog, int which) {
+			if(this.restart){
+				BackendController.getInstance().restartLevel();
+			}else{
+				NavUtils.navigateUpFromSameTask(URLTaskActivity.this);
+			}
+		}
+	}
+
+	private void levelCanceldWarning(final boolean restart){
+		AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
+
+		// Setting Dialog Title
+		alertDialog.setTitle(getString(R.string.level_cancel_title));
+
+		// Setting Dialog Message
+		alertDialog.setMessage(getString(R.string.level_cancel_text));
+
+		alertDialog.setPositiveButton(R.string.level_cancel_positive_button, new CanceldWarningClickListener(restart));
+
+		alertDialog.setNegativeButton(R.string.level_cancel_negative_button, new DialogInterface.OnClickListener() {
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				dialog.cancel();
+			}
+		});
+
+		// Showing Alert Message
+		alertDialog.show();
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+		// Respond to the action bar's Up/Home button
+		case android.R.id.home:
+			levelCanceldWarning();
+			return true;
+		case R.id.restart_level:
+			levelRestartWarning();
+			return true;
+		}
+		return super.onOptionsItemSelected(item);
+	}
+
+	@Override
+	public void onBackPressed() {
+		levelCanceldWarning();
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu items for use in the action bar
+		MenuInflater inflater = getMenuInflater();
+		inflater.inflate(R.menu.urltask_menu, menu);
+		return super.onCreateOptionsMenu(menu);
+	}
 }

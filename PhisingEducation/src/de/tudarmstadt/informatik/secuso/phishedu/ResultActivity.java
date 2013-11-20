@@ -1,16 +1,12 @@
 package de.tudarmstadt.informatik.secuso.phishedu;
 
-import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController;
-import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishResult;
 import android.app.ActionBar;
 import android.os.Bundle;
-import android.text.SpannableStringBuilder;
-import android.text.method.LinkMovementMethod;
-import android.text.style.ClickableSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishResult;
 
 
 public class ResultActivity extends SwipeActivity {
@@ -20,10 +16,14 @@ public class ResultActivity extends SwipeActivity {
 	
 	protected static int[] resultLayoutIDs;
 	private int result = PhishResult.Phish_Detected.getValue();
+	private int site_type = 0;
+	private int attack_type = 0;
 	
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		this.result=getIntent().getIntExtra(Constants.EXTRA_RESULT,0);
+		this.site_type=getIntent().getIntExtra(Constants.EXTRA_SITE_TYPE,0);
+		this.attack_type=getIntent().getIntExtra(Constants.EXTRA_ATTACK_TYPE,0);
 		setTitle();
 	}
 	
@@ -63,7 +63,6 @@ public class ResultActivity extends SwipeActivity {
 	@Override
 	protected View getPage(int page, LayoutInflater inflater,
 			ViewGroup container, Bundle savedInstanceState) {
-		
 		View view =inflater.inflate(resultLayoutIDs[this.result], container, false);
 		TextView urlText = (TextView) view.findViewById(R.id.url);
 		setUrlText(urlText);

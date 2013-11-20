@@ -2,13 +2,12 @@
 <resources>
 
     <string name="app_name">Phishing Education</string>
-    <string name="action_settings">Settings</string>
+    <string name="action_restart">Restart</string>
     <string name="start_button">Please click me!</string>
     <string name="hello_result">You came here by clicking a phishedu:// Link!</string>
 
     <!-- titles -->
     <string name="title_activity_display_you_dont_believe_us">DisplayYouDontBelieveUsActivity</string>
-    <string name="hello_world">Hello world!</string>
     <string name="title_activity_send_email">SendEmailActivity</string>
     <string name="title_activity_alert_dialog">AlertDialogActivity</string>
     <string name="title_activity_final_awareness">FinalAwarenessActivity</string>
@@ -106,6 +105,9 @@
     <string name="url_how_phishing_works">http://computer.howstuffworks.com/phishing.htm</string>
     <string name="title_activity_more_info">Links zu Phishing</string>
 
+    <!-- About -->
+    <string name="about_text">Lorem ipsum about about..</string>
+    
     <!-- LEVEL TITLES -->
     <string name="level_title_01">Level 1</string>
     <string name="level_title_02">Level 2</string>
@@ -194,7 +196,6 @@
     <string name="level_01_finish_00_text_02"><b>Wichtig:</b> Überprüfe die Webadressen genau so, wie wir es dir in diesem Level gezeigt haben, denn alle anderen Webadressen, die du siehst, könnten gefälscht sein. Gewöhne dir also an, die Webadressen immer auf diese Weise zu überprüfen, insbesondere dann, wenn du eine unerwartete E-Mail mit einem Link erhältst.</string>
     <string name="title_activity_level2_web_addresses">Level2WebAddressesActivity</string>
     <string name="level_1_splash_text">Level 1\n\nAdressleiste</string>
-    <string name="loading">Loading ...</string>
     <string name="linebreaks">\n\n\n</string>
 
     <!-- LEVEL 2 - WEB-ADRESSEN -->
@@ -233,6 +234,7 @@
     <string name="level_02_example_facebook_03">/</string>
     <string name="level_02_example_facebook_04">settings?tab=payments</string>
     <string name="level_02_exercise_text_01">Nun bist du an der Reihe:\n\nNach den vorherigen Beispielen, sollst du nun selber den Wer-Bereich der folgenden Webadressen bestimmen.\n\nBerühre hierzu die entsprechende Stelle und klicke auf \"Überprüfen\", wenn deine Antwort überprüft werden soll.</string>
+    <string name="level_02_task">Tippe nun den Wer-Bereich der folgenden Webadressen an.</string>
     <string name="http">http://</string>
     <string name="www">www.</string>
     <string name="http_description">Sicherheits-\nstufe</string>
@@ -241,7 +243,7 @@
     <string name="subdomain">abo</string>
     <string name="domain_description">Informationen über\nGesprächspartner selbst</string>
     <string name="path">/spiegel-digital</string>
-    <string name="path_dot_dot_dot">/...</string>
+    <string name="path_dot_dot_dot">/&#8230;</string>
     <string name="path_description">Gesprächs-\nthema</string>
     <string name="domain_de">de</string>
     <string name="dot">.</string>
@@ -331,6 +333,11 @@
 
     <!-- TASKS AND SOLUTION SCREENS FROM LEVEL 3 -->
     <string name="URLs">URLs</string>
+    <string name="level_cancel_title">Level abbrechen?</string>
+    <string name="level_cancel_text">Wenn du diese Seite verlässt wird dein Spielstand für dieses Level nicht gespeichert. Bist du dir sicher?</string>
+    <string name="level_cancel_positive_button">Level Verlassen</string>
+    <string name="level_cancel_negative_button">Weiterspielen</string>
+    <string name="level_failed">Du hast leider das Level Nicht geschafft. Wir fangen nochmal von vorne an.</string>
     <string name="phishes">phishes</string>
     <string name="url_task_description">Entscheide über die folgenden Webadressen, ob du ihnen vertraust (Häkchen antippen) oder ob hier ein Phishing-Angriff vorliegt (Kreuz antippen).</string>
     <string name="url">Beispiel URL</string>
@@ -360,5 +367,6 @@
     <string name="level_08_reminder">TODO</string>
     <string name="level_09_reminder">TODO</string>
     <string name="level_10_reminder">TODO</string>
+    <string name="title_activity_about">About</string>
 
 </resources>

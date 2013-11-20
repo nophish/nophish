@@ -72,10 +72,17 @@ public interface BackendControllerInterface {
 	 */
 	int getPoints();
 	/**
-	 * What type of phish is this currently
-	 * @return type of the current phish
+	 * What type of site is this currently
+	 * @return sitetype of the current phish
 	 */
-	PhishSiteType getType();
+	PhishSiteType getSiteType();
+	
+	/**
+	 * What type of attack is this currently
+	 * @return attacktype of the current phish
+	 */
+	PhishAttackType getAttackType();
+	
 	/**
 	 * This function is called when the user chooses weather this URL is a phish or not 
 	 * @param accptance true of the user thinks this is a phish. false otherwise.
@@ -133,4 +140,9 @@ public interface BackendControllerInterface {
 	 * @return How many phishes has the user found.
 	 */
 	public int foundPhishes();
+	
+	/**
+	 * This function restarts the current Level
+	 */
+	public void restartLevel();
 }

@@ -15,4 +15,13 @@
         android:text="@string/you_guessed"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
+    <TextView
+        android:id="@+id/url"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/you_guessed"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/margin_large"
+        android:text="@string/url"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 </RelativeLayout>
