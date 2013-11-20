@@ -264,7 +264,7 @@
             android:layout_alignLeft="@+id/reminder_nonsense"
             android:layout_below="@+id/reminder_nonsense"
             android:layout_marginTop="@dimen/margin_xxsmall"
-            android:text="@string/http"
+            android:text="@string/https"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <TextView
@@ -322,7 +322,7 @@
             android:layout_alignLeft="@+id/reminder_sounding_trustworthy"
             android:layout_below="@+id/reminder_sounding_trustworthy"
             android:layout_marginTop="@dimen/margin_xxsmall"
-            android:text="@string/http"
+            android:text="@string/https"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <TextView
