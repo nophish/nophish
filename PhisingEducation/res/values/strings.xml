@@ -256,6 +256,9 @@
     <string name="reminder_ip">2.) Enthält der Bereich zwischen \"http://\" und dem dritten Slash \"/\" eine IP-Adresse (4-stellige Zahlenfolge, durch Punkte getrennt) anstelle des Wer-Bereiches, dann gebe hier keine Daten ein!</string>
     <string name="reminder_nonsense">3.) Enthält der Wer-Bereich Namen, die keinen Sinn ergeben oder nichts mit dem Dienst bzw. Unternehmen deines Gesprächspartners zu tun haben, dann gebe hier keine Daten ein! </string>
     <string name="reminder_sounding_trustworthy">4.) Enthält der Wer-Bereich Namen, die vertrauenswürdig klingen, aber dennoch nichts mit dem Unternehmen deines Gesprächspartners zu tun haben, dann gebe hier keine Daten ein! </string>
+    <string name="reminder_brand_in_domain">5.) Enthält der Wer-Bereich nur eine ähnliche Abwandlung des dir bisher vertrauten Wer-Bereiches, dann gebe hier keine Daten ein!</string>
+    <string name="reminder_typo">6.) Enthält der Wer-Bereich einen Tippfehler, dann gebe hier keine Daten ein!</string>
+    <string name="reminder_typosquat">7.) Enthält der Wer-Bereich einen Buchstabendreher, dann gebe hier keine Daten ein!</string>
     <string name="level_finished"><b>Geschafft!</b>\n\nGratulation! Du hast das Level erfolgreich abgeschlossen. Auf zum nächsten Level!</string>
     <!-- LEVEL 3 SUBDOMAIN -->
 
@@ -331,6 +334,20 @@
 
     <!-- LEVEL 8 - similar characters/digits in domain -->
     <string name="level_08_intro_00_text_01"><b>Angriff durch ähnliche Zeichen im Wer-Bereich</b>\n\nEin weiterer Trick dich hinters Licht zu führen, ist das Ersetzen von Buchstaben im Wer-Bereich durch andere sehr ähnlich aussehende Zeichen oder Zahlen. Mit dieser Art des Angriffs beschäftigen wir uns in diesem Level.</string>
+    <string name="level_08_intro_02_text_02">Der wichtigste Wer-Bereich einer Webadresse muss auch vom Phisher registriert werden.</string>
+    <string name="level_08_intro_02_text_03">Der Phisher kann hierbei Buchstaben im dir vertrauten Namen mit anderen ähnlichen Zeichen oder Zahlen ersetzen, sodass der Wer-Bereich fast identisch zum dir vertrauten Namen aussieht. Schaue dir also immer die wichtigsten zwei Blöcke der Webadresse an, den Wer-Bereich. Enthält der Wer-Bereich Ersetzungen von Buchstaben durch andere ähnliche Zeichen oder Zahlen, dann <b>gebe hier keine Daten ein!</b>\n\nBeispiele für Phishing-Webadressen, die dieses Prinzip anwenden:     </string>
+    <string name="level_08_intro_02_text_04">Ein \"w\" wird durch 2x \"v\" ersetzt:</string>
+    <string name="level_08_intro_02_text_05">Ein \"l\" wird druch einem \"i\" ersetzt:</string>
+    <string name="level_08_intro_02_text_06">Ein \"l\" wird durch einer \"1\" ersetzt:</string>
+    <string name="level_08_intro_02_vvetter">vvetter.com</string>
+    <string name="level_08_intro_02_path_01">/wetter_</string>
+    <string name="level_08_intro_02_path_02">aktuell/?code=EUDE</string>
+    <string name="level_08_intro_02_googie">googie.de</string>
+    <string name="level_08_intro_02_path_03">/services</string>
+    <string name="level_08_intro_02_path_04">/?fg=1</string>
+    <string name="level_08_intro_02_paypa1">paypa1.com</string>
+    <string name="level_08_intro_02_path_05">/de/weba</string>
+    <string name="level_08_intro_02_path_06">pps/mpp/privatkunden</string>
 
     <!-- TASKS AND SOLUTION SCREENS FROM LEVEL 3 -->
     <string name="URLs">Versuche:</string>
