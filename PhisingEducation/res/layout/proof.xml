@@ -37,7 +37,7 @@
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <ImageView
-        android:id="@+id/phish_proop_icon"
+        android:id="@+id/phish_proof_icon"
         android:layout_width="@dimen/security_icons"
         android:layout_height="@dimen/security_icons"
         android:layout_below="@+id/url"

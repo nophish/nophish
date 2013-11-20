@@ -55,18 +55,18 @@ public class URLTaskActivity extends Activity {
 
 	}
 
-
-
 	private void setUrlSize() {
 		TextView url = (TextView) findViewById(R.id.url_task_url);
 		float textSize = url.getTextSize();
-		
+
 		switch (level) {
 		case 0:
-			//should not reach this code, as urltask is called beginning from level 2
+			// should not reach this code, as urltask is called beginning from
+			// level 2
 			break;
 		case 1:
-			//should not reach this code, as urltask is called beginning from level 2
+			// should not reach this code, as urltask is called beginning from
+			// level 2
 			break;
 		case 2:
 			textSize = 25;
@@ -92,8 +92,6 @@ public class URLTaskActivity extends Activity {
 		}
 		url.setTextSize(textSize);
 	}
-
-
 
 	private void setTitles() {
 		ActionBar ab = getActionBar();
@@ -231,5 +229,15 @@ public class URLTaskActivity extends Activity {
 		MenuInflater inflater = getMenuInflater();
 		inflater.inflate(R.menu.urltask_menu, menu);
 		return super.onCreateOptionsMenu(menu);
+	}
+
+	@Override
+	protected void onStart() {
+		super.onStart();
+		if (level == 2) {
+			Intent levelIntent = new Intent(this, ProofActivity.class);
+			levelIntent.putExtra(Constants.EXTRA_LEVEL, this.level);
+			startActivityForResult(levelIntent, 1);
+		}
 	}
 }

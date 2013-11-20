@@ -64,7 +64,7 @@
             android:layout_alignLeft="@+id/level_07_intro_04_text_02"
             android:layout_below="@+id/level_07_intro_04_text_02"
             android:layout_marginTop="@dimen/margin_standard"
-            android:text="@string/http"
+            android:text="@string/https"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="@color/grey" />
 
