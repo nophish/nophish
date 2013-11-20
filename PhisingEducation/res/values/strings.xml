@@ -333,15 +333,16 @@
     <string name="level_08_intro_00_text_01"><b>Angriff durch ähnliche Zeichen im Wer-Bereich</b>\n\nEin weiterer Trick dich hinters Licht zu führen, ist das Ersetzen von Buchstaben im Wer-Bereich durch andere sehr ähnlich aussehende Zeichen oder Zahlen. Mit dieser Art des Angriffs beschäftigen wir uns in diesem Level.</string>
 
     <!-- TASKS AND SOLUTION SCREENS FROM LEVEL 3 -->
-    <string name="URLs">URLs</string>
+    <string name="URLs">Versuche:</string>
     <string name="level_cancel_title">Level abbrechen?</string>
     <string name="level_cancel_text">Wenn du diese Seite verlässt wird dein Spielstand für dieses Level nicht gespeichert. Bist du dir sicher?</string>
     <string name="level_cancel_positive_button">Level verlassen</string>
     <string name="level_cancel_negative_button">Weiterspielen</string>
     <string name="level_failed">Du hast leider das Level nicht geschafft. Wir fangen nochmal von vorne an.</string>
-    <string name="phishes">Phishe</string>
+    <string name="phishes">Phishe:</string>
     <string name="url_task_description">Entscheide über die folgenden Webadressen, ob du ihnen vertraust (Häkchen antippen) oder ob hier ein Phishing-Angriff vorliegt (Kreuz antippen).</string>
     <string name="url">Beispiel URL</string>
+    <string name="score">Punkte:</string>
     <string name="phish_proof"><b>Gefälschte Webadresse</b>\n\nKorrekt, die Webadresse ist gefälscht.\nNun zeige uns, an welcher Stelle der Phisher versucht hat, dich hinters Licht zu führen. Klicke hierzu den entsprechenden Bereich der Webadresse an.</string>
     <string name="title_level_finished">Level geschafft</string>
     <string name="you_are_wrong"><b>Gefälschte Webadresse</b>\n\nFalsch! Du wurdest ausgetrickst. Das ist eine gefälschte Webadresse.</string>
