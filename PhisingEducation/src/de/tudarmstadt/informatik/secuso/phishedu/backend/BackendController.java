@@ -1,6 +1,7 @@
 package de.tudarmstadt.informatik.secuso.phishedu.backend;
 
 import java.io.InputStream;
+import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.Locale;
 import java.util.Scanner;
@@ -46,8 +47,8 @@ public class BackendController implements BackendControllerInterface, GameStateL
 		{IPAttack.class, PhishTankURLAttack.class},
 	};
 	@SuppressWarnings("rawtypes")
-	private static Class[][] GENERATORS_PER_LEVEL = {
-		{SudomainGenerator.class, KeepGenerator.class}, //Currently we use the same generators for all levels
+	private static Class[] GENERATORS = {
+		SudomainGenerator.class, KeepGenerator.class, //Currently we use the same generators for all levels
 	};
 	private static final int URL_CACHE_SIZE = 100;
 	private static final double LEVEL_DISTANCE = 1.5;
@@ -218,9 +219,14 @@ public class BackendController implements BackendControllerInterface, GameStateL
 	@Override
 	public String[] getNextUrl() {
 		checkinited();
+		if(getLevel() <= 1){
+			//Level 0 and 1 do not have repeats
+			throw new IllegalStateException("This function is not defined for level 0 and 1 as these do not need URLs");
+		}
 		int remaining_urls = this.levelURLs()-this.progress.getDoneUrls();
 		int remaining_phish = this.levelPhishes()-this.progress.getPresentedPhish();
 		int remaining_phish_to_level = this.nextLevelPhishes() - this.progress.getDetectedPhish();
+		int remaining_repeats = this.levelRepeats() - this.progress.getPresentedRepeats();
 		//We might have failed the level
 		//Either by going out of URLs or by going out of options to detect phish 
 		if( remaining_urls <= 0 || remaining_phish<remaining_phish_to_level){
@@ -244,14 +250,37 @@ public class BackendController implements BackendControllerInterface, GameStateL
 		//First we choose a random start URL
 		PhishURLInterface base_url=getPhishURL(PhishAttackType.NoPhish);
 		//then we decorate the URL with a generator
-		base_url=decorateUrl(base_url, GENERATORS_PER_LEVEL, getLevel());
+		base_url=decorateUrl(base_url, GENERATORS[random.nextInt(GENERATORS.length)], getLevel());
 		//Lastly we might apply a attack
 		if(present_phish){
-			base_url=decorateUrl(base_url, ATTACK_TYPES_PER_LEVEL, getLevel());
+			boolean present_repeat = false;
+			if(remaining_urls <= remaining_repeats){
+				//we have to present a repeat
+				present_repeat = true;
+			}else if( remaining_repeats > 0 ){
+				//we might present a repeat
+				present_repeat = random.nextBoolean();
+			}
+			Class<? extends AbstractUrlDecorator> attack;
+			int index_level = Math.min(getLevel(), ATTACK_TYPES_PER_LEVEL.length-1);
+			if(present_repeat){
+				index_level = random.nextInt(index_level-1);
+				//level 0 and 1 do not have attacks
+				index_level = Math.max(2, index_level);
+			}
+			Class<? extends AbstractUrlDecorator>[] level_attacks = ATTACK_TYPES_PER_LEVEL[index_level];
+			attack=level_attacks[random.nextInt(level_attacks.length)];
+			
+			base_url=decorateUrl(base_url, attack, getLevel());
 		}
 
 		this.current_url=base_url;
 		return getUrl();
+	}
+	
+	
+	private int levelRepeats(){
+		return (int) Math.ceil(this.levelPhishes()/3);
 	}
 
 	@Override
@@ -259,12 +288,9 @@ public class BackendController implements BackendControllerInterface, GameStateL
 		return (String[]) this.current_url.getParts();
 	}
 
-	private PhishURLInterface decorateUrl(PhishURLInterface base_url, Class<? extends AbstractUrlDecorator>[][] options, int level){
-		int use_level=Math.min(level, options.length-1);
-		Class<? extends AbstractUrlDecorator>[] attacks = options[use_level];
-		Class<? extends AbstractUrlDecorator> attack = attacks[random.nextInt(attacks.length)];
+	private PhishURLInterface decorateUrl(PhishURLInterface base_url, Class<? extends AbstractUrlDecorator> decorator, int level){
 		try {
-			base_url=attack.getConstructor(PhishURLInterface.class).newInstance(base_url);
+			base_url=decorator.getConstructor(PhishURLInterface.class).newInstance(base_url);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

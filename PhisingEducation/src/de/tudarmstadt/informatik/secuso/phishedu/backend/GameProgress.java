@@ -53,6 +53,22 @@ public class GameProgress implements OnStateLoadedListener{
 	
 	private GameStateLoadedListener listener;
 	private State state = new State();
+	private int presented_repeats = 0;
+	
+	/**
+	 * Increment the number of presented Repeats
+	 */
+	public void incPresentedRepeats(){
+		this.presented_repeats++;
+	}
+	
+	/**
+	 * Get the number of repeats we presented to the user in this level
+	 * @return Then number of repeated Attacks we presented to the user.
+	 */
+	public int getPresentedRepeats(){
+		return presented_repeats;
+	}
 	
 	/**
 	 * This returns the number of Phish URLS the user detected
@@ -188,6 +204,7 @@ public class GameProgress implements OnStateLoadedListener{
 			this.state.unlockedLevel=level;
 		}
 		this.level_results=new int[4];
+		this.presented_repeats=0;
 		this.saveState();
 	}
 
