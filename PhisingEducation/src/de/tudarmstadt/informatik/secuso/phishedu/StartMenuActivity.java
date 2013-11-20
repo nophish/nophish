@@ -104,7 +104,7 @@ public class StartMenuActivity extends BaseGameActivity implements
 	public void startGame(View view) {
 		int level = BackendController.getInstance().getLevel();
 		//TODO remove after testing
-		level = 3;
+		level = 7;
 		BackendController.getInstance().startLevel(level);
 	}
 
