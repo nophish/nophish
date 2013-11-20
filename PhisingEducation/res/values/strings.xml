@@ -114,6 +114,7 @@
     <string name="level_title_05">Level 5</string>
     <string name="level_title_06">Level 6</string>
     <string name="level_title_07">Level 7</string>
+    <string name="level_title_08">Level 8</string>
     <string name="level_subtitle_01">Die Adressleiste</string>
     <string name="level_subtitle_02">Einführung in Webadressen</string>
     <string name="level_subtitle_03">Bereich der Abteilungen</string>
@@ -121,11 +122,13 @@
     <string name="level_subtitle_05">Bezugslose/schwachsinnige Namen</string>
     <string name="level_subtitle_06">Vertrauenswürdig klingende Namen</string>
     <string name="level_subtitle_07">Ähnliche Namen im Wer-Bereich</string>
+    <string name="level_subtitle_08">Ähnliche Zeichen im Wer-Bereich</string>
     <string name="level_03_splash_subtitle">Bekannte Namen im Bereich der Abteilungen</string>
     <string name="level_04_splash_subtitle">IP-Adresse anstelle des Wer-Bereiches</string>
     <string name="level_05_splash_subtitle">Bezugslose oder schwachsinnige Namen im Wer-Bereich</string>
     <string name="level_06_splash_subtitle">Vertrauenswürdig klingende Namen im Wer-Bereich</string>
     <string name="level_07_splash_subtitle">Ähnliche Namen im Wer-Bereich</string>
+    <string name="level_08_splash_subtitle">Ähnliche Zeichen im Wer-Bereich</string>
 
     <!-- text awareness activity -->
     <string name="level_00_intro_00_text_01"><b>Was ist Phishing?</b>\n\n\"Phishing\" ist eine Wortschöpfung, die eine Kombination der zwei englischen Begriffe \"phreaking\" (hacken) und \"fishing\" (angeln) darstellt. Der Begriff steht für den Versuch, verschiedene Daten von Internetbenutzern zu \"angeln\". Diese Daten können Passwörter, Kontodaten, Kreditkartendaten, TANs aber auch jegliche andere Art von Daten sein.\n\nJeder Internetbenutzer ist durch \"Phishing\" gefährdet. Hinter diesen Angriffen stecken Betrüger (auch \"Phishe\" oder \"Hacker\" genannt).Sie schicken dir Nachrichten, bspw. in Form von E-Mails, die für dich zunächst aussehen wie Nachrichten von Personen oder Institutionen, denen du vertraust. Es wird der Eindruck erweckt, als wäre die E-Mail z.B. von Amazon, von Facebook oder von deiner Bank verschickt worden.\n\nZiel der Betrüger ist es, an Daten von dir zu kommen, um damit beispielsweise dein Konto zu plündern, in deinem Namen einzukaufen oder deine Freunde zu kontaktieren.\n\n\n</string>
@@ -322,6 +325,9 @@
     <string name="level_07_intro_06_text_02">1.) Enthält der Wer-Bereich nur eine ähnliche Abwandlung des dir bisher vertrauten Wer-Bereiches, dann <b>gebe hier keine Daten ein!</b></string>
     <string name="level_07_intro_06_text_03">2.) Enthält der Wer-Bereich einen Tippfehler, dann <b>gebe hier keine Daten ein!</b></string>
     <string name="level_07_intro_06_text_04">3.) Enthält der Wer-Bereich einen Buchstabendreher, <b>dann gebe hier keine Daten ein!</b></string>
+
+    <!-- LEVEL 8 - similar characters/digits in domain -->
+    <string name="level_08_intro_00_text_01"><b>Angriff durch ähnliche Zeichen im Wer-Bereich</b>\n\nEin weiterer Trick dich hinters Licht zu führen, ist das Ersetzen von Buchstaben im Wer-Bereich durch andere sehr ähnlich aussehende Zeichen oder Zahlen. Mit dieser Art des Angriffs beschäftigen wir uns in diesem Level.</string>
 
     <!-- TASKS AND SOLUTION SCREENS FROM LEVEL 3 -->
     <string name="URLs">URLs</string>
