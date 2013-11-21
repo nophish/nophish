@@ -86,13 +86,16 @@ public class LevelIntroActivity extends SwipeActivity {
 		super.onCreate(savedInstanceState);
 	}
 
+	public void onStartClick(View view){
+		this.onStartClick();
+	}
+	
 	protected void onStartClick() {
 		Class next_activity= URLTaskActivity.class;
 		if (this.real_level == 0) {
 			next_activity=AwarenessActivity.class;
 		} else if (this.real_level == 1) {
 			next_activity=FindAddressBarActivity.class;
-			BackendController.getInstance().redirectToLevel1URL();
 		}
 		Intent levelIntent = new Intent(this, next_activity);
 		levelIntent.putExtra(Constants.EXTRA_LEVEL, this.real_level);

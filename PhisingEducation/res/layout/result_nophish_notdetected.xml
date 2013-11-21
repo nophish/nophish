@@ -11,12 +11,14 @@
         android:paddingRight="@dimen/activity_horizontal_margin"
         android:paddingTop="@dimen/activity_vertical_margin" >
 
+        <include layout="@layout/score_fragment"
+        android:id="@+id/score_relative" />
+        
         <TextView
             android:id="@+id/url_task_no_phish_detected_as_phish"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
+            android:layout_below="@id/score_relative"
             android:text="@string/oversafe_01"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 

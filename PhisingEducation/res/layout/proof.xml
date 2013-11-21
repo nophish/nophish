@@ -7,7 +7,20 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".ProofActivity" >
+    
+    <include layout="@layout/score_fragment"
+        android:id="@+id/score_relative" />
 
+    <TextView
+        android:id="@+id/phish_proof_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_text"
+        android:layout_marginTop="@dimen/margin_text"
+        android:layout_below="@+id/score_relative"
+        android:text="@string/phish_proof"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+    
     <Button
         android:id="@+id/done_botton"
         android:layout_width="wrap_content"
@@ -17,15 +30,6 @@
         android:layout_marginBottom="26dp"
         android:onClick="onDoneClick"
         android:text="@string/button_verify" />
-
-    <TextView
-        android:id="@+id/phish_proof_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/margin_text"
-        android:layout_marginTop="@dimen/margin_text"
-        android:text="@string/phish_proof"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
         android:id="@+id/url"

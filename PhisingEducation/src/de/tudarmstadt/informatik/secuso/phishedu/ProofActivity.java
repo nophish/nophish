@@ -20,7 +20,7 @@ import android.widget.Toast;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishResult;
 
-public class ProofActivity extends Activity {
+public class ProofActivity extends PhishBaseActivity {
 	int selectedPart = -1;
 	int level = 0;
 
@@ -31,6 +31,7 @@ public class ProofActivity extends Activity {
 		this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
 		setContentView(R.layout.proof);
+		updateScore();
 
 		this.level = getIntent().getIntExtra(Constants.EXTRA_LEVEL, 0);
 

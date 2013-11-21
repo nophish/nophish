@@ -19,7 +19,7 @@ import android.widget.TextView;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController;
 
 
-public abstract class SwipeActivity extends FragmentActivity implements ViewPager.OnPageChangeListener
+public abstract class SwipeActivity extends PhishBaseActivity implements ViewPager.OnPageChangeListener
 {
 
 	protected ViewPager mPager;
@@ -34,6 +34,7 @@ public abstract class SwipeActivity extends FragmentActivity implements ViewPage
 		this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
 		setContentView(R.layout.fragment_pager);
+		updateScore();
 		
 		mPager= (ViewPager) findViewById(R.id.pager);
 		

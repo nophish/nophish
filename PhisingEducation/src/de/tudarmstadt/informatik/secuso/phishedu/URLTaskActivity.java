@@ -16,13 +16,9 @@ import android.widget.TextView;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishResult;
 
-public class URLTaskActivity extends Activity {
+public class URLTaskActivity extends PhishBaseActivity {
 
 	private TextView urlText;
-	private TextView urlsText;
-	private TextView urlsGoalText;
-	private TextView phishesText;
-	private TextView phishesGoalText;
 	private int level;
 
 	@Override
@@ -34,12 +30,9 @@ public class URLTaskActivity extends Activity {
 		this.level = getIntent().getIntExtra(Constants.EXTRA_LEVEL, 0);
 
 		setContentView(R.layout.urltask_task);
+		updateScore();
 
 		urlText = (TextView) findViewById(R.id.url_task_url);
-		urlsText = (TextView) findViewById(R.id.urls);
-		urlsGoalText = (TextView) findViewById(R.id.urls_goal);
-		phishesText = (TextView) findViewById(R.id.phishes);
-		phishesGoalText = (TextView) findViewById(R.id.phishes_goal);
 		nextURL();
 		setTitles();
 
@@ -97,7 +90,7 @@ public class URLTaskActivity extends Activity {
 		ActionBar ab = getActionBar();
 
 		ab.setTitle(Constants.levelTitlesIds[BackendController.getInstance()
-				.getLevel()]);
+		                                     .getLevel()]);
 		ab.setSubtitle(getString(R.string.exercise));
 		ab.setIcon(getResources().getDrawable(R.drawable.desktop));
 	}
@@ -113,14 +106,7 @@ public class URLTaskActivity extends Activity {
 		}
 
 		urlText.setText(sb.toString());
-		urlsText.setText(Integer.toString(BackendController.getInstance()
-				.doneURLs()));
-		urlsGoalText.setText(Integer.toString(BackendController.getInstance()
-				.levelURLs()));
-		phishesText.setText(Integer.toString(BackendController.getInstance()
-				.foundPhishes()));
-		phishesGoalText.setText(Integer.toString(BackendController
-				.getInstance().levelPhishes()));
+		updateScore();
 	}
 
 	public void clickAccept(View view) {
@@ -163,7 +149,7 @@ public class URLTaskActivity extends Activity {
 	}
 
 	private class CanceldWarningClickListener implements
-			DialogInterface.OnClickListener {
+	DialogInterface.OnClickListener {
 		private boolean restart;
 
 		public CanceldWarningClickListener(boolean restart) {
@@ -194,11 +180,11 @@ public class URLTaskActivity extends Activity {
 
 		alertDialog.setNegativeButton(R.string.level_cancel_negative_button,
 				new DialogInterface.OnClickListener() {
-					@Override
-					public void onClick(DialogInterface dialog, int which) {
-						dialog.cancel();
-					}
-				});
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				dialog.cancel();
+			}
+		});
 
 		// Showing Alert Message
 		alertDialog.show();

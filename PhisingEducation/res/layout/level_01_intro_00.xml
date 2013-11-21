@@ -33,6 +33,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/margin_large"
         android:minWidth="@dimen/btn_standard_width"
+        android:onClick="onStartClick"
         android:text="@string/level_01_intro_00_button_01" />
 
 </RelativeLayout>

@@ -8,118 +8,20 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".URLTaskActivity" >
 
+    <include layout="@layout/score_fragment"
+        android:id="@+id/score_relative" />  
     <!-- URLS -->
 
-    <RelativeLayout
-        android:id="@+id/score_relative"
+	<TextView
+        android:id="@+id/url_task_description"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/url_task_check_mark"
-        android:layout_alignRight="@+id/url_task_cross"
-        android:background="@drawable/background_highlight"
-        android:padding="@dimen/padding_score" >
-
-        <TextView
-            android:id="@+id/urls_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/URLs"
-            android:textStyle="bold"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
-
-        <TextView
-            android:id="@+id/urls"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/urls_text"
-            android:text="100"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
-
-        <TextView
-            android:id="@+id/points_delim2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/urls"
-            android:layout_alignBottom="@+id/urls"
-            android:layout_toRightOf="@+id/urls"
-            android:text="/"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
-
-        <TextView
-            android:id="@+id/urls_goal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/points_delim2"
-            android:layout_alignBottom="@+id/points_delim2"
-            android:layout_toRightOf="@+id/points_delim2"
-            android:text="100"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
-
-        <!-- Phishes -->
-
-        <TextView
-            android:id="@+id/phishes_delim2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/urls"
-            android:layout_alignBottom="@+id/urls"
-            android:layout_toRightOf="@+id/phishes"
-            android:text="/"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
-
-        <TextView
-            android:id="@+id/phishes_goal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/points_delim2"
-            android:layout_alignBottom="@+id/points_delim2"
-            android:layout_toRightOf="@+id/phishes_delim2"
-            android:text="100"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
-
-        <TextView
-            android:id="@+id/phishes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/phishes_text"
-            android:layout_below="@+id/phishes_text"
-            android:text="100"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
-
-        <!-- total score -->
-        
-        <TextView
-            android:id="@+id/score"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/score_text"
-            android:layout_below="@+id/score_text"
-            android:text="100"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
-
-        <TextView
-            android:id="@+id/score_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/urls_text"
-            android:layout_alignBottom="@+id/urls_text"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="@dimen/margin_small"
-            android:text="@string/score"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/phishes_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_above="@+id/phishes_delim2"
-            android:layout_centerHorizontal="true"
-            android:text="@string/phishes"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textStyle="bold" />
-
-    </RelativeLayout>
+        android:layout_alignLeft="@+id/score_relative"
+        android:layout_below="@+id/score_relative"
+        android:layout_marginRight="@dimen/margin_text"
+        android:layout_marginTop="@dimen/margin_standard"
+        android:text="@string/url_task_description"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
         android:id="@+id/url_task_url"
@@ -150,15 +52,5 @@
         android:onClick="clickDecline"
         android:src="@drawable/cross" />
 
-    <TextView
-        android:id="@+id/url_task_description"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/score_relative"
-        android:layout_below="@+id/score_relative"
-        android:layout_marginRight="@dimen/margin_text"
-        android:layout_marginTop="@dimen/margin_standard"
-        android:text="@string/url_task_description"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
-
+    
 </RelativeLayout>

@@ -34,7 +34,7 @@ public class ResultActivity extends SwipeActivity {
 		resultLayoutIDs[PhishResult.NoPhish_Detected.getValue()] = R.layout.result_nophish_detected;
 		resultLayoutIDs[PhishResult.Phish_NotDetected.getValue()] = R.layout.result_phish_notdetected;
 		resultLayoutIDs[PhishResult.NoPhish_NotDetected.getValue()] = R.layout.result_nophish_notdetected;
-		resultLayoutIDs[RESULT_GUESSED] = R.layout.you_guessed;
+		resultLayoutIDs[RESULT_GUESSED] = R.layout.result_you_guessed;
 	}
 
 	protected void onStartClick() {
@@ -67,6 +67,7 @@ public class ResultActivity extends SwipeActivity {
 				false);
 		TextView urlText = (TextView) view.findViewById(R.id.url);
 		setUrlText(urlText);
+		updateScore(view);
 		return view;
 	}
 
