@@ -7,6 +7,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.example.games.basegameutils.BaseGameActivity;
@@ -36,6 +37,11 @@ public class StartMenuActivity extends BaseGameActivity implements
 		setContentView(R.layout.start_menu);
 		this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
+		if(BackendController.getInstance().getMaxUnlockedLevel()>0){
+			TextView startbutton = (TextView) findViewById(R.id.menu_button_play);
+			startbutton.setText(R.string.button_play_on);
+		}
+		
 		BackendController.getInstance().onUrlReceive(getIntent().getData());
 	}
 
