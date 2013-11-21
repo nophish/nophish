@@ -17,6 +17,7 @@ import com.google.gson.Gson;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.attacks.IPAttack;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.attacks.Level2Attack;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.attacks.PhishTankURLAttack;
+import de.tudarmstadt.informatik.secuso.phishedu.backend.generator.HTTPGenerator;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.generator.KeepGenerator;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.generator.SudomainGenerator;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.networkTasks.*;
@@ -43,12 +44,14 @@ public class BackendController implements BackendControllerInterface, GameStateL
 		{}, //Level0: Awareness
 		{}, //Level1: Find URLBar in Browser
 		{Level2Attack.class}, //Level2: Select Domain name
+		{}, //Level3: 
 		{IPAttack.class},
-		{IPAttack.class, PhishTankURLAttack.class},
 	};
 	@SuppressWarnings("rawtypes")
 	private static Class[] GENERATORS = {
-		SudomainGenerator.class, KeepGenerator.class, //Currently we use the same generators for all levels
+		//Currently we use the same generators for all levels
+		SudomainGenerator.class,
+		KeepGenerator.class,
 	};
 	private static final int URL_CACHE_SIZE = 100;
 	private static final double LEVEL_DISTANCE = 1.5;

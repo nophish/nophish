@@ -6,30 +6,30 @@ package de.tudarmstadt.informatik.secuso.phishedu.backend;
  *
  */
 public enum PhishAttackType {
-	/**
-	 * IP
-	 */
-	IP(3),
-	/**
-	 * Subdomains
-	 */
-	Sudomains(4),
-	/**
-	 * The Attack for level 2 
-	 */
-	Level2Attack(5),
-	/**
-	 * It has no Attack. It is no phishing website
-	 */
+	/** It has no Attack. It is no phishing website */
 	NoPhish(0),
-	/**
-	 * It is a phish but not specified
-	 */
+	/** It is a phish but not specified */
 	AnyPhish(1),
-	/**
-	 * Something completly different
-	 */
-	Generic(2);
+	/** The Attack for level 2 */
+	Level2Attack(2),
+	/** Subdomains */
+	Sudomains(3),
+	/** IP */
+	IP(4),
+	/** Nonsense Attack */
+	Nonsense(5),
+	/** unrelated Attack */
+	Unrelated(6),
+	/** misleading */
+	Misleading(7),
+	/** homographic */
+	Homographic(8),
+	/** Hostname in Path */
+	HostInPath(9),
+	/** https -> http */
+	HTTP(10),
+	/** Something completly different */
+	Generic(Integer.MAX_VALUE);
 	
 	private int value;
 
