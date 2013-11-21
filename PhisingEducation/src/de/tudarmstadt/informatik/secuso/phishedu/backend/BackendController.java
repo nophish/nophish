@@ -1,13 +1,14 @@
 package de.tudarmstadt.informatik.secuso.phishedu.backend;
 
 import java.io.InputStream;
-import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.Locale;
+import java.util.Random;
 import java.util.Scanner;
 
-import java.util.Random;
-
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.net.Uri;
 
 import com.google.android.gms.appstate.AppStateClient;
 import com.google.android.gms.games.GamesClient;
@@ -16,14 +17,12 @@ import com.google.gson.Gson;
 
 import de.tudarmstadt.informatik.secuso.phishedu.backend.attacks.IPAttack;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.attacks.Level2Attack;
-import de.tudarmstadt.informatik.secuso.phishedu.backend.attacks.PhishTankURLAttack;
-import de.tudarmstadt.informatik.secuso.phishedu.backend.generator.HTTPGenerator;
+import de.tudarmstadt.informatik.secuso.phishedu.backend.attacks.SubdomainAttack;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.generator.KeepGenerator;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.generator.SudomainGenerator;
-import de.tudarmstadt.informatik.secuso.phishedu.backend.networkTasks.*;
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.net.Uri;
+import de.tudarmstadt.informatik.secuso.phishedu.backend.networkTasks.GetUrlsTask;
+import de.tudarmstadt.informatik.secuso.phishedu.backend.networkTasks.SendMailTask;
+import de.tudarmstadt.informatik.secuso.phishedu.backend.networkTasks.UrlsLoadedListener;
 
 /**
  * This is the main backend logik.
@@ -44,7 +43,7 @@ public class BackendController implements BackendControllerInterface, GameStateL
 		{}, //Level0: Awareness
 		{}, //Level1: Find URLBar in Browser
 		{Level2Attack.class}, //Level2: Select Domain name
-		{}, //Level3: 
+		{SubdomainAttack.class}, //Level3: 
 		{IPAttack.class},
 	};
 	@SuppressWarnings("rawtypes")
