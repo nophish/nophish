@@ -249,12 +249,15 @@ public class BackendController implements BackendControllerInterface, GameStateL
 		
 		//First we choose a random start URL
 		PhishURLInterface base_url=getPhishURL(PhishAttackType.NoPhish);
-		//then we decorate the URL with a generator
+		//then we decorate the URL with a random generator
 		base_url=decorateUrl(base_url, GENERATORS[random.nextInt(GENERATORS.length)], getLevel());
 		//Lastly we might apply a attack
 		if(present_phish){
 			boolean present_repeat = false;
-			if(remaining_urls <= remaining_repeats){
+			if(getLevel() < 4){
+				//Up until level 4 we don't repeat because levels 0-2 are special. 
+				present_repeat = false;
+			}else if(remaining_urls <= remaining_repeats){
 				//we have to present a repeat
 				present_repeat = true;
 			}else if( remaining_repeats > 0 ){
@@ -264,13 +267,15 @@ public class BackendController implements BackendControllerInterface, GameStateL
 			Class<? extends AbstractUrlDecorator> attack;
 			int index_level = Math.min(getLevel(), ATTACK_TYPES_PER_LEVEL.length-1);
 			if(present_repeat){
-				index_level = random.nextInt(index_level-1);
-				//level 0 and 1 do not have attacks
-				index_level = Math.max(2, index_level);
+				//select a random earlier Level 
+				//"-3" is to prevent levels 0-2 from being repeated
+				//"+1" is to prevent "repeating" the current level
+				index_level -= random.nextInt(index_level-3)+1;
 			}
+			//choose a random attack from the selected Level
 			Class<? extends AbstractUrlDecorator>[] level_attacks = ATTACK_TYPES_PER_LEVEL[index_level];
 			attack=level_attacks[random.nextInt(level_attacks.length)];
-			
+			//decorate the current url with this attack
 			base_url=decorateUrl(base_url, attack, getLevel());
 		}
 

@@ -17,13 +17,7 @@ public class Level2Attack extends AbstractAttack {
 	 * @param object See {@link AbstractAttack#AbstractAttack(PhishURLInterface)}
 	 */
 	public Level2Attack(PhishURLInterface object) {super(object);}
-	
-	@Override
-	public String[] getParts(){
-		String[] parts = this.object.getParts();
-		return parts;
-	}
-	
+		
 	@Override
 	public boolean partClicked(int part) {
 		return part == 3;
