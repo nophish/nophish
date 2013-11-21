@@ -32,13 +32,14 @@ public class PhishURL implements PhishURLInterface{
 	
 	public PhishResult getResult(boolean acceptance){
 		PhishResult result;
-		if(this.getAttackType() == PhishAttackType.NoPhish && acceptance){
+		PhishAttackType attacktype = getAttackType();
+		if(attacktype == PhishAttackType.NoPhish && acceptance){
 			result =  PhishResult.NoPhish_Detected;
-		}else if(this.getAttackType() == PhishAttackType.NoPhish && !acceptance){
+		}else if(attacktype == PhishAttackType.NoPhish && !acceptance){
 			result =  PhishResult.NoPhish_NotDetected;
-		}else if(this.getAttackType() != PhishAttackType.NoPhish && acceptance){
+		}else if(attacktype != PhishAttackType.NoPhish && acceptance){
 			result =  PhishResult.Phish_NotDetected;
-		}else if(this.getAttackType() != PhishAttackType.NoPhish && !acceptance){
+		}else if(attacktype != PhishAttackType.NoPhish && !acceptance){
 			result =  PhishResult.Phish_Detected;
 		}else {
 			throw new IllegalStateException("Something went horrably wrong! We should not be here.");

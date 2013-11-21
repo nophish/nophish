@@ -38,7 +38,7 @@ public class MisleadingAttack extends AbstractAttack {
 	@Override
 	public String[] getParts() {
 		String[] parts = super.getParts();
-		List<String> adder = Arrays.asList(parts);
+		ArrayList<String> adder = new ArrayList<String>(Arrays.asList(parts));
 		String hostname=adder.remove(3);
 		String[] hostparts = hostname.split("\\.");
 		hostparts[hostparts.length-2]+=DOMAIN_ADDITIONS[new Random().nextInt(DOMAIN_ADDITIONS.length)];

@@ -2,6 +2,7 @@ package de.tudarmstadt.informatik.secuso.phishedu.backend.generator;
 
 import de.tudarmstadt.informatik.secuso.phishedu.backend.AbstractUrlDecorator;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishAttackType;
+import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishResult;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishURLInterface;
 
 /**
@@ -23,5 +24,14 @@ public class BaseGenerator extends AbstractUrlDecorator {
 	@Override
 	public PhishAttackType getAttackType() {
 		return PhishAttackType.NoPhish;
+	}
+
+	@Override
+	public PhishResult getResult(boolean acceptance) {
+		if(acceptance){
+			return PhishResult.NoPhish_Detected;
+		}else{
+			return PhishResult.NoPhish_NotDetected;
+		}
 	}
 }

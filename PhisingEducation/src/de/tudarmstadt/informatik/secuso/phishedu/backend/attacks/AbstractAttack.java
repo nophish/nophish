@@ -1,6 +1,8 @@
 package de.tudarmstadt.informatik.secuso.phishedu.backend.attacks;
 
 import de.tudarmstadt.informatik.secuso.phishedu.backend.AbstractUrlDecorator;
+import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishAttackType;
+import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishResult;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishURLInterface;
 
 /**
@@ -16,6 +18,15 @@ public abstract class AbstractAttack extends AbstractUrlDecorator {
 	 */
 	public AbstractAttack(PhishURLInterface object){
 		this.object=object;
+	}
+	
+	@Override
+	public PhishResult getResult(boolean acceptance) {
+		if(acceptance){
+			return PhishResult.Phish_NotDetected;
+		}else{
+			return PhishResult.Phish_Detected;
+		}
 	}
 
 }

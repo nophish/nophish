@@ -40,17 +40,12 @@ public abstract class AbstractUrlDecorator implements PhishURLInterface {
 	}
 
 	@Override
-	public abstract PhishAttackType getAttackType();
-
-	@Override
 	public int getPoints(PhishResult result) {
 		return this.object.getPoints(result);
 	}
 
 	@Override
-	public PhishResult getResult(boolean acceptance) {
-		return this.object.getResult(acceptance);
-	}
+	public abstract PhishResult getResult(boolean acceptance);
 	
 	@Override
 	public boolean partClicked(int part) {

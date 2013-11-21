@@ -10,13 +10,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 public class PhishBaseActivity extends FragmentActivity {
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		updateScore();
-	}
-	
-    protected void updateScore(){
+	protected void updateScore(){
     	updateScore(findViewById(R.id.score_relative));
     }
 	
