@@ -23,7 +23,7 @@ import de.tudarmstadt.informatik.secuso.phishedu.backend.FrontendControllerInter
  */
 public class StartMenuActivity extends BaseGameActivity implements
 		FrontendControllerInterface, View.OnClickListener {
-	
+
 	public StartMenuActivity() {
 		// request AppStateClient and GamesClient
 		super(BaseGameActivity.CLIENT_APPSTATE | BaseGameActivity.CLIENT_GAMES);
@@ -82,7 +82,7 @@ public class StartMenuActivity extends BaseGameActivity implements
 					View.GONE);
 		}
 	}
-	
+
 	public void goToStartMenu() {
 		setContentView(R.layout.start_menu);
 		getActionBar().setHomeButtonEnabled(false);
@@ -254,7 +254,7 @@ public class StartMenuActivity extends BaseGameActivity implements
 		if (onGooglePlus()) {
 			goToStartMenu();
 		} else {
-			//exit the app when pressing back in the main menu
+			// exit the app when pressing back in the main menu
 			finish();
 		}
 	}
@@ -274,13 +274,13 @@ public class StartMenuActivity extends BaseGameActivity implements
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-	    switch (item.getItemId()) {
-	    // Respond to the action bar's Up/Home button
-	    case android.R.id.home:
-	        goToStartMenu();
-	        return true;
-	    }
-	    return super.onOptionsItemSelected(item);
+		switch (item.getItemId()) {
+		// Respond to the action bar's Up/Home button
+		case android.R.id.home:
+			goToStartMenu();
+			return true;
+		}
+		return super.onOptionsItemSelected(item);
 	}
-	
+
 }

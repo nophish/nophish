@@ -24,6 +24,7 @@
     <!-- padding -->
     <dimen name="mini_padding">2dp</dimen>
     <dimen name="padding">5dp</dimen>
+    <dimen name="padding_score">8dp</dimen>
 
     <!-- height -->
     <dimen name="height_large">540dp</dimen>

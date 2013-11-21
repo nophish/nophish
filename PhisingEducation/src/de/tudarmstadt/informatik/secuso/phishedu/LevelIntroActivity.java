@@ -27,7 +27,6 @@ public class LevelIntroActivity extends SwipeActivity {
 				R.layout.level_01_splash,
 				R.layout.level_01_intro_00,
 				R.layout.level_01_intro_01,
-				R.layout.level_01_exercise
 				},
 			{ 
 				R.layout.level_02_splash, 
@@ -92,6 +91,7 @@ public class LevelIntroActivity extends SwipeActivity {
 		if (this.real_level == 0) {
 			next_activity=AwarenessActivity.class;
 		} else if (this.real_level == 1) {
+			next_activity=FindAddressBarActivity.class;
 			BackendController.getInstance().redirectToLevel1URL();
 		}
 		Intent levelIntent = new Intent(this, next_activity);

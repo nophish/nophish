@@ -1,6 +1,6 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/level_05_intro_01_sv"
+    android:id="@+id/level_08_intro_01_sv"
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
@@ -13,7 +13,7 @@
         android:paddingTop="@dimen/activity_vertical_margin" >
 
         <TextView
-            android:id="@+id/level_06_intro_01_reminder"
+            android:id="@+id/level_08_intro_01_reminder"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
@@ -40,7 +40,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
-            android:layout_below="@+id/level_06_intro_01_reminder"
+            android:layout_below="@+id/level_08_intro_01_reminder"
             android:layout_marginTop="@dimen/margin_xlarge"
             android:text="@string/http"
             android:textAppearance="?android:attr/textAppearanceMedium"
@@ -304,6 +304,225 @@
             android:layout_alignBottom="@+id/reminder_example_nonsense_03"
             android:layout_toRightOf="@+id/reminder_example_nonsense_03"
             android:text="@string/level_05_intro_02_nonsense_04"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/reminder_sounding_trustworthy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/reminder_example_nonsense_02"
+            android:layout_marginTop="@dimen/margin_standard"
+            android:text="@string/reminder_sounding_trustworthy"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/reminder_example_sounding_trustworthy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/reminder_sounding_trustworthy"
+            android:layout_below="@+id/reminder_sounding_trustworthy"
+            android:layout_marginTop="@dimen/margin_xxsmall"
+            android:text="@string/https"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/reminder_example_sounding_trustworthy_01"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/reminder_example_sounding_trustworthy"
+            android:layout_alignBottom="@+id/reminder_example_sounding_trustworthy"
+            android:layout_toRightOf="@+id/reminder_example_sounding_trustworthy"
+            android:text="@string/level_06_intro_02_sounding_trustworthy_01"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/reminder_example_sounding_trustworthy_02"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/reminder_example_sounding_trustworthy_01"
+            android:layout_alignBottom="@+id/reminder_example_sounding_trustworthy_01"
+            android:layout_toRightOf="@+id/reminder_example_sounding_trustworthy_01"
+            android:background="@color/red"
+            android:text="@string/level_06_intro_02_sounding_trustworthy_02"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/reminder_example_sounding_trustworthy_03"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/reminder_example_sounding_trustworthy"
+            android:background="@color/red"
+            android:text="@string/level_06_intro_02_sounding_trustworthy_03"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/reminder_example_sounding_trustworthy_04"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/reminder_example_sounding_trustworthy_03"
+            android:layout_alignBottom="@+id/reminder_example_sounding_trustworthy_03"
+            android:layout_toRightOf="@+id/reminder_example_sounding_trustworthy_03"
+            android:text="@string/level_06_intro_02_sounding_trustworthy_04"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/reminder_brand_in_domain"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/reminder_example_sounding_trustworthy_03"
+            android:layout_marginTop="@dimen/margin_standard"
+            android:text="@string/reminder_brand_in_domain"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/reminder_example_brand_in_domain_http"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/reminder_brand_in_domain"
+            android:layout_below="@+id/reminder_brand_in_domain"
+            android:layout_marginTop="@dimen/margin_xxsmall"
+            android:text="@string/http"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/reminder_example_brand_in_domain_www"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/reminder_example_brand_in_domain_http"
+            android:layout_alignBottom="@+id/reminder_example_brand_in_domain_http"
+            android:layout_toRightOf="@+id/reminder_example_brand_in_domain_http"
+            android:text="@string/www"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/reminder_example_brand_in_domain_facebook_login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/reminder_example_brand_in_domain_www"
+            android:layout_alignBottom="@+id/reminder_example_brand_in_domain_www"
+            android:layout_toRightOf="@+id/reminder_example_brand_in_domain_www"
+            android:background="@color/red"
+            android:text="@string/level_07_intro_03_facebook_login"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/reminder_example_brand_in_domain_path_01"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/reminder_example_brand_in_domain_facebook_login"
+            android:layout_alignBottom="@+id/reminder_example_brand_in_domain_facebook_login"
+            android:layout_toRightOf="@+id/reminder_example_brand_in_domain_facebook_login"
+            android:text="@string/slash"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/grey" />
+
+        <TextView
+            android:id="@+id/reminder_typo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/reminder_example_brand_in_domain_http"
+            android:layout_marginTop="@dimen/margin_standard"
+            android:text="@string/reminder_typo"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/reminder_example_typo_http"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/reminder_typo"
+            android:layout_below="@+id/reminder_typo"
+            android:layout_marginTop="@dimen/margin_xxsmall"
+            android:text="@string/https"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/reminder_example_typo_www"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/reminder_example_typo_http"
+            android:layout_alignBottom="@+id/reminder_example_typo_http"
+            android:layout_toRightOf="@+id/reminder_example_typo_http"
+            android:text="@string/www"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/reminder_example_typo_fracebook"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/reminder_example_typo_www"
+            android:layout_alignBottom="@+id/reminder_example_typo_www"
+            android:layout_toRightOf="@+id/reminder_example_typo_www"
+            android:background="@color/red"
+            android:text="@string/level_07_intro_04_fracebook"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/reminder_example_typo_path"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/reminder_example_typo_fracebook"
+            android:layout_alignBottom="@+id/reminder_example_typo_fracebook"
+            android:layout_toRightOf="@+id/reminder_example_typo_fracebook"
+            android:text="@string/level_07_intro_04_path"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/reminder_typoaquat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/reminder_example_typo_http"
+            android:layout_marginTop="@dimen/margin_standard"
+            android:text="@string/reminder_typosquat"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/reminder_example_typoaquat_http"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/reminder_typoaquat"
+            android:layout_below="@+id/reminder_typoaquat"
+            android:layout_marginTop="@dimen/margin_xxsmall"
+            android:text="@string/http"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/reminder_example_typoaquat_www"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/reminder_example_typoaquat_http"
+            android:layout_alignBottom="@+id/reminder_example_typoaquat_http"
+            android:layout_toRightOf="@+id/reminder_example_typoaquat_http"
+            android:text="@string/www"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/reminder_example_typoaquat_mircosoft"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/reminder_example_typoaquat_www"
+            android:layout_alignBottom="@+id/reminder_example_typoaquat_www"
+            android:layout_toRightOf="@+id/reminder_example_typoaquat_www"
+            android:background="@color/red"
+            android:text="@string/level_07_intro_05_mircosoft"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+        
+        
+        <TextView
+            android:id="@+id/reminder_example_typoaquat_path_01"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/reminder_example_typoaquat_mircosoft"
+            android:layout_alignBottom="@+id/reminder_example_typoaquat_mircosoft"
+            android:layout_toRightOf="@+id/reminder_example_typoaquat_mircosoft"
+            android:text="@string/level_07_intro_05_path_01"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+        
+        <TextView
+            android:id="@+id/reminder_example_typoaquat_path_02"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/reminder_example_typoaquat_path_01"
+            android:text="@string/level_07_intro_05_path_02"
             android:textAppearance="?android:attr/textAppearanceMedium" />
     </RelativeLayout>
 

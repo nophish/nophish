@@ -31,7 +31,7 @@ public class URLTaskActivity extends Activity {
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 		this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
-		this.level=getIntent().getIntExtra(Constants.EXTRA_LEVEL,0);
+		this.level = getIntent().getIntExtra(Constants.EXTRA_LEVEL, 0);
 
 		setContentView(R.layout.urltask_task);
 
@@ -43,23 +43,66 @@ public class URLTaskActivity extends Activity {
 		nextURL();
 		setTitles();
 
-		//In Level 2 we don't need to check if it is a phish
-		if(level == 2){
+		// In Level 2 we don't need to check if it is a phish
+		if (level == 2) {
 			Intent levelIntent = new Intent(this, ProofActivity.class);
 			levelIntent.putExtra(Constants.EXTRA_LEVEL, this.level);
 			startActivityForResult(levelIntent, 1);
 		}
+
+		// set size of shown url depending on level
+		setUrlSize();
+
 	}
-	
+
+	private void setUrlSize() {
+		TextView url = (TextView) findViewById(R.id.url_task_url);
+		float textSize = url.getTextSize();
+
+		switch (level) {
+		case 0:
+			// should not reach this code, as urltask is called beginning from
+			// level 2
+			break;
+		case 1:
+			// should not reach this code, as urltask is called beginning from
+			// level 2
+			break;
+		case 2:
+			textSize = 25;
+			break;
+
+		case 3:
+			textSize = 25;
+			break;
+		case 4:
+			textSize = 20;
+			break;
+		case 5:
+			textSize = 18;
+			break;
+		case 6:
+			textSize = 15;
+			break;
+		case 7:
+			textSize = 13;
+			break;
+		default:
+			break;
+		}
+		url.setTextSize(textSize);
+	}
+
 	private void setTitles() {
 		ActionBar ab = getActionBar();
 
-		ab.setTitle(Constants.levelTitlesIds[BackendController.getInstance().getLevel()]);
+		ab.setTitle(Constants.levelTitlesIds[BackendController.getInstance()
+				.getLevel()]);
 		ab.setSubtitle(getString(R.string.exercise));
 		ab.setIcon(getResources().getDrawable(R.drawable.desktop));
 	}
 
-	private void nextURL(){
+	private void nextURL() {
 		String[] urlArray = BackendController.getInstance().getNextUrl();
 
 		// build string from array
@@ -70,31 +113,38 @@ public class URLTaskActivity extends Activity {
 		}
 
 		urlText.setText(sb.toString());
-		urlsText.setText(Integer.toString(BackendController.getInstance().doneURLs()));
-		urlsGoalText.setText(Integer.toString(BackendController.getInstance().levelURLs()));
-		phishesText.setText(Integer.toString(BackendController.getInstance().foundPhishes()));
-		phishesGoalText.setText(Integer.toString(BackendController.getInstance().levelPhishes()));
+		urlsText.setText(Integer.toString(BackendController.getInstance()
+				.doneURLs()));
+		urlsGoalText.setText(Integer.toString(BackendController.getInstance()
+				.levelURLs()));
+		phishesText.setText(Integer.toString(BackendController.getInstance()
+				.foundPhishes()));
+		phishesGoalText.setText(Integer.toString(BackendController
+				.getInstance().levelPhishes()));
 	}
 
-	public void clickAccept(View view){
+	public void clickAccept(View view) {
 		clicked(true);
 	}
 
-	public void clickDecline(View view){
+	public void clickDecline(View view) {
 		clicked(false);
 	}
 
-	private void clicked(boolean acceptance){
-		PhishResult result = BackendController.getInstance().userClicked(acceptance);
-		Class followActivity=ResultActivity.class;
-		if(result == PhishResult.Phish_Detected){
+	private void clicked(boolean acceptance) {
+		PhishResult result = BackendController.getInstance().userClicked(
+				acceptance);
+		Class followActivity = ResultActivity.class;
+		if (result == PhishResult.Phish_Detected) {
 			followActivity = ProofActivity.class;
 		}
 		Intent levelIntent = new Intent(this, followActivity);
 		levelIntent.putExtra(Constants.EXTRA_RESULT, result.getValue());
 		levelIntent.putExtra(Constants.EXTRA_LEVEL, this.level);
-		levelIntent.putExtra(Constants.EXTRA_SITE_TYPE, BackendController.getInstance().getSiteType().getValue());
-		levelIntent.putExtra(Constants.EXTRA_ATTACK_TYPE, BackendController.getInstance().getAttackType().getValue());
+		levelIntent.putExtra(Constants.EXTRA_SITE_TYPE, BackendController
+				.getInstance().getSiteType().getValue());
+		levelIntent.putExtra(Constants.EXTRA_ATTACK_TYPE, BackendController
+				.getInstance().getAttackType().getValue());
 		startActivityForResult(levelIntent, 1);
 	}
 
@@ -104,32 +154,33 @@ public class URLTaskActivity extends Activity {
 		nextURL();
 	}
 
-	private void levelRestartWarning(){
+	private void levelRestartWarning() {
 		levelCanceldWarning(true);
 	}
 
-	private void levelCanceldWarning(){
+	private void levelCanceldWarning() {
 		levelCanceldWarning(false);
 	}
 
-	private class CanceldWarningClickListener implements DialogInterface.OnClickListener{
+	private class CanceldWarningClickListener implements
+			DialogInterface.OnClickListener {
 		private boolean restart;
 
-		public CanceldWarningClickListener(boolean restart){
-			this.restart=restart;
+		public CanceldWarningClickListener(boolean restart) {
+			this.restart = restart;
 		}
 
 		@Override
 		public void onClick(DialogInterface dialog, int which) {
-			if(this.restart){
+			if (this.restart) {
 				BackendController.getInstance().restartLevel();
-			}else{
+			} else {
 				NavUtils.navigateUpFromSameTask(URLTaskActivity.this);
 			}
 		}
 	}
 
-	private void levelCanceldWarning(final boolean restart){
+	private void levelCanceldWarning(final boolean restart) {
 		AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
 
 		// Setting Dialog Title
@@ -138,14 +189,16 @@ public class URLTaskActivity extends Activity {
 		// Setting Dialog Message
 		alertDialog.setMessage(getString(R.string.level_cancel_text));
 
-		alertDialog.setPositiveButton(R.string.level_cancel_positive_button, new CanceldWarningClickListener(restart));
+		alertDialog.setPositiveButton(R.string.level_cancel_positive_button,
+				new CanceldWarningClickListener(restart));
 
-		alertDialog.setNegativeButton(R.string.level_cancel_negative_button, new DialogInterface.OnClickListener() {
-			@Override
-			public void onClick(DialogInterface dialog, int which) {
-				dialog.cancel();
-			}
-		});
+		alertDialog.setNegativeButton(R.string.level_cancel_negative_button,
+				new DialogInterface.OnClickListener() {
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						dialog.cancel();
+					}
+				});
 
 		// Showing Alert Message
 		alertDialog.show();
@@ -176,5 +229,15 @@ public class URLTaskActivity extends Activity {
 		MenuInflater inflater = getMenuInflater();
 		inflater.inflate(R.menu.urltask_menu, menu);
 		return super.onCreateOptionsMenu(menu);
+	}
+
+	@Override
+	protected void onStart() {
+		super.onStart();
+		if (level == 2) {
+			Intent levelIntent = new Intent(this, ProofActivity.class);
+			levelIntent.putExtra(Constants.EXTRA_LEVEL, this.level);
+			startActivityForResult(levelIntent, 1);
+		}
 	}
 }

@@ -84,7 +84,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/level_07_intro_06_text_03"
             android:layout_marginTop="@dimen/margin_xxsmall"
-            android:text="@string/http"
+            android:text="@string/https"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <TextView
