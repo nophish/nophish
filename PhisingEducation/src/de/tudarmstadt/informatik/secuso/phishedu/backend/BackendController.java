@@ -15,9 +15,14 @@ import com.google.android.gms.games.GamesClient;
 import com.google.example.games.basegameutils.GameHelper;
 import com.google.gson.Gson;
 
+import de.tudarmstadt.informatik.secuso.phishedu.backend.attacks.HTTPAttack;
+import de.tudarmstadt.informatik.secuso.phishedu.backend.attacks.HomoglyphicAttac;
+import de.tudarmstadt.informatik.secuso.phishedu.backend.attacks.HostInPathAttack;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.attacks.IPAttack;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.attacks.Level2Attack;
+import de.tudarmstadt.informatik.secuso.phishedu.backend.attacks.MisleadingAttack;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.attacks.SubdomainAttack;
+import de.tudarmstadt.informatik.secuso.phishedu.backend.attacks.TypoAttack;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.generator.KeepGenerator;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.generator.SudomainGenerator;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.networkTasks.GetUrlsTask;
@@ -40,11 +45,17 @@ public class BackendController implements BackendControllerInterface, GameStateL
 	//LEVEL 0-1 are empty because they don't 
 	@SuppressWarnings("rawtypes")
 	private static Class[][] ATTACK_TYPES_PER_LEVEL = {
-		{}, //Level0: Awareness
-		{}, //Level1: Find URLBar in Browser
-		{Level2Attack.class}, //Level2: Select Domain name
-		{SubdomainAttack.class}, //Level3: 
-		{IPAttack.class},
+		{}, //Level 0: Awareness
+		{}, //Level 1: Find URLBar in Browser
+		{Level2Attack.class}, //Level 2
+		{SubdomainAttack.class}, //Level 3 
+		{IPAttack.class}, //Level 4
+		{IPAttack.class}, //TODO: Level 5
+		{IPAttack.class}, //TODO: Level 6 
+		{MisleadingAttack.class,TypoAttack.class}, //Level 7
+		{HomoglyphicAttac.class}, //Level 8
+		{HostInPathAttack.class}, //Level 9
+		{HTTPAttack.class} //Level 10
 	};
 	@SuppressWarnings("rawtypes")
 	private static Class[] GENERATORS = {

@@ -13,13 +13,13 @@ import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishURLInterface;
  * @author Clemens Bergmann <cbergmann@schuhklassert.de>
  *
  */
-public class typoAttack extends AbstractAttack {
+public class TypoAttack extends AbstractAttack {
 	
 	/**
 	 * This constructor is required because of the implementation in {@link BackendController#getNextUrl()}
 	 * @param object This Parmeter is discarded. It is replaced by a PhishTank URL
 	 */
-	public typoAttack(PhishURLInterface object) {
+	public TypoAttack(PhishURLInterface object) {
 		super(object);
 	}
 
