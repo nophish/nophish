@@ -13,34 +13,44 @@ import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishURLInterface;
  * @author Clemens Bergmann <cbergmann@schuhklassert.de>
  *
  */
-public class MisleadingAttack extends AbstractAttack {
-	int attackpos=0;
-	private static final String[] DOMAIN_ADDITIONS={
-		"-login",
-		"-secure",
-		"-accounts"
-	};
+public class typoAttack extends AbstractAttack {
+	
 	/**
 	 * This constructor is required because of the implementation in {@link BackendController#getNextUrl()}
 	 * @param object This Parmeter is discarded. It is replaced by a PhishTank URL
 	 */
-	public MisleadingAttack(PhishURLInterface object) {
+	public typoAttack(PhishURLInterface object) {
 		super(object);
 	}
 
 	@Override
 	public PhishAttackType getAttackType() {
-		return PhishAttackType.Sudomains;
+		return PhishAttackType.Typo;
 	}
 	
 	@Override
 	public String[] getParts() {
 		String[] parts = super.getParts();
 		ArrayList<String> adder = new ArrayList<String>(Arrays.asList(parts));
-		String hostname=adder.remove(3);
-		String[] hostparts = hostname.split("\\.");
-		hostparts[hostparts.length-2]+=DOMAIN_ADDITIONS[new Random().nextInt(DOMAIN_ADDITIONS.length)];
-		adder.addAll(3, Arrays.asList(hostparts));
+		String domain = adder.remove(3);
+		int attackpos = new Random().nextInt(domain.length()-1);
+		switch (new Random().nextInt(2)) {
+		case 0:
+			//swap
+			String find = domain.substring(attackpos, attackpos+1);
+			String replace = find.charAt(1)+""+find.charAt(0);
+			domain=domain.replace(find, replace);
+			break;
+
+		default:
+			//copy char
+			String first = domain.substring(0,attackpos);
+			String last = domain.substring(attackpos);
+			domain=first+first.charAt(first.length()-1)+last;
+			break;
+		}
+		
+		adder.add(3, domain.toString());
 		return adder.toArray(new String[0]);
 	}
 	

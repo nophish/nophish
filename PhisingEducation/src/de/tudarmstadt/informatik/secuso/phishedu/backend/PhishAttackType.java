@@ -23,11 +23,13 @@ public enum PhishAttackType {
 	/** misleading */
 	Misleading(7),
 	/** homographic */
-	Homographic(8),
+	Homoglyphic(8),
 	/** Hostname in Path */
 	HostInPath(9),
 	/** https -> http */
 	HTTP(10),
+	/** typo */
+	Typo(11),
 	/** Something completly different */
 	Generic(Integer.MAX_VALUE);
 	
