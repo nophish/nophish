@@ -2,7 +2,6 @@ package de.tudarmstadt.informatik.secuso.phishedu.backend.attacks;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Random;
 
 import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishAttackType;
@@ -14,6 +13,10 @@ import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishURLInterface;
  *
  */
 public class HomoglyphicAttac extends AbstractAttack {
+	/**
+	 * The replacements.
+	 * The form is {match,replace}
+	 */
 	public static final String[][] REPLACEMENTS={
 			{"w","vv"},
 			{"l","1"},

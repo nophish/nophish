@@ -13,38 +13,34 @@ import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishURLInterface;
  * @author Clemens Bergmann <cbergmann@schuhklassert.de>
  *
  */
-public class SubdomainAttack extends AbstractAttack {
-	
-	protected static final String[] PHISHER_DOMAINS ={
-		"phisher.com",
-		"phisher.de",
-		"fischerei.com"
-	};
+public class HostInPathAttack extends SubdomainAttack {
 	
 	/**
 	 * This constructor is required because of the implementation in {@link BackendController#getNextUrl()}
 	 * @param object This Parmeter is discarded. It is replaced by a PhishTank URL
 	 */
-	public SubdomainAttack(PhishURLInterface object) {
+	public HostInPathAttack(PhishURLInterface object) {
 		super(object);
 	}
 
 	@Override
 	public PhishAttackType getAttackType() {
-		return PhishAttackType.Sudomains;
+		return PhishAttackType.HostInPath;
 	}
 	
 	@Override
 	public String[] getParts() {
 		String[] parts = super.getParts();
+		String domain = parts[3];
+		parts[3]=PHISHER_DOMAINS[new Random().nextInt(PHISHER_DOMAINS.length)];
 		ArrayList<String> adder = new ArrayList<String>(Arrays.asList(parts));
-		adder.add(4, "."+PHISHER_DOMAINS[new Random().nextInt(PHISHER_DOMAINS.length)]);
+		adder.add(5,domain);
 		return adder.toArray(new String[0]);
 	}
 	
 	@Override
 	public boolean partClicked(int part) {
-		return part==3;
+		return part==5;
 	}
 	
 	
