@@ -50,6 +50,9 @@ public class GameProgress implements OnStateLoadedListener{
 	}
 	
 	private int[] level_results = {0,0,0,0};
+	//This is for saving the points per level. 
+	//Once the level is done the points get commited to the persistend state.
+	private int level_points;
 	
 	private GameStateLoadedListener listener;
 	private State state = new State();
@@ -166,13 +169,29 @@ public class GameProgress implements OnStateLoadedListener{
 
 	/**
 	 * Gets the currently saved points.
-	 * It is worth to mention that these are not persistently saved.
-	 * The user has to restart the given level from 0 points each time the app starts.
+	 * These are the total points of the user. They only change when the user successfully finishes a level.
 	 * @return the currently saved points
 	 */
 	public int getPoints(){
 		return this.state.points;
 	}
+	
+	/**
+	 * This function returns the points the user gained in this level.
+	 * @return The Points in this level
+	 */
+	public int getLevelPoints(){
+		return this.level_points;
+	}
+	
+	/**
+	 * Save the level Points to the persistend state.
+	 */
+	public void commitPoints(){
+		this.state.points+=this.level_points;
+		saveState();
+	}
+	
 	/**
 	 * This saves the current points.
 	 * See the comment of {@link GameProgress#getPoints()} regarding persistence.
@@ -183,7 +202,7 @@ public class GameProgress implements OnStateLoadedListener{
 		if(points < 0 ){
 			points = 0;
 		}
-		this.state.points=points;
+		this.level_points=points;
 	}
 
 	/**
@@ -205,6 +224,7 @@ public class GameProgress implements OnStateLoadedListener{
 		}
 		this.level_results=new int[4];
 		this.presented_repeats=0;
+		this.level_points=0;
 		this.saveState();
 	}
 
@@ -269,6 +289,7 @@ public class GameProgress implements OnStateLoadedListener{
 		State resolved_game = new State();
 		resolved_game.level= Math.max(local_game.level, server_game.level);
 		resolved_game.app_started = local_game.app_started || server_game.app_started;
+		resolved_game.points = Math.max(local_game.points, server_game.points);
 		for(PhishResult value: PhishResult.values()){
 			resolved_game.results[value.getValue()]=Math.max(local_game.results[value.getValue()], server_game.results[value.getValue()]);
 		}

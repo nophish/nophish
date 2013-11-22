@@ -337,6 +337,7 @@ public class BackendController implements BackendControllerInterface, GameStateL
 		//with this function we ensure that the user gets more points per level
 		//This ensures that there is no point in running the same level multiple times to collect points
 		offset*=Math.pow(LEVEL_DISTANCE, this.getLevel());
+		this.frontend.displayToast(Integer.toString(offset));
 		this.progress.setPoints(this.getPoints()+offset);
 	}
 
@@ -367,12 +368,17 @@ public class BackendController implements BackendControllerInterface, GameStateL
 		if(clickedright){
 			changePoints(PhishResult.Phish_Detected);
 			if(this.foundPhishes()>= this.nextLevelPhishes()){
-				this.frontend.levelFinished(this.getLevel());
+				this.levelFinished(this.getLevel());
 			}
 		}else{
 			changePoints(PhishResult.Phish_NotDetected);
 		}
 		return clickedright;
+	}
+	
+	private void levelFinished(int level){
+		this.progress.commitPoints();
+		this.frontend.levelFinished(this.getLevel());
 	}
 
 	public int getPoints(){
