@@ -13,6 +13,20 @@ import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishResult;
 public class ResultActivity extends SwipeActivity {
 	public static int RESULT_GUESSED = PhishResult.getMax() + 1;
 
+	// Misleading(7)
+	// domain abwandlung
+	// Homoglyphic(8),
+	// HostInPath(9),
+	// HTTP(10),
+	// Typo(11),tippfehler, buchstabendreher
+
+	protected static int[] reminderIDs = { R.string.level_03_reminder,
+			R.string.level_04_reminder, R.string.level_05_reminder,
+			R.string.level_06_reminder,
+			// zusammenfassen: zusammenfassen: face-login, typo, typosqaut
+			R.string.level_07_reminder, R.string.level_08_reminder,
+			R.string.level_09_reminder, R.string.level_10_reminder };
+
 	// int level; is used as index for the consequences type
 
 	protected static int[] resultLayoutIDs;
@@ -70,6 +84,7 @@ public class ResultActivity extends SwipeActivity {
 		// if result == result_nophish_notdetected -> virbration feedback
 		if (this.result == PhishResult.Phish_NotDetected.getValue()) {
 			vibrate();
+			setReminderText(view);
 		}
 		TextView urlText = (TextView) view.findViewById(R.id.url);
 		setUrlText(urlText);
@@ -78,6 +93,18 @@ public class ResultActivity extends SwipeActivity {
 		return view;
 	}
 
+	private void setReminderText(View view) {
+		TextView reminderText = (TextView) view
+				.findViewById(R.id.phish_not_detected_reminder);
+
+		int indexReminder = attack_type - 3;
+		if (indexReminder == 8) {
+			indexReminder = 4;
+		}
+		if (indexReminder >= 0) {
+			reminderText.setText(reminderIDs[indexReminder]);
+		}
+	}
 
 	private void vibrate() {
 		// make phone vibrate

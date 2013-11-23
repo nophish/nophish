@@ -381,14 +381,24 @@
     <string name="wrong">Falsch</string>
     <string name="phish">Das ist ein Phish</string>
     <string name="select_part">Du musst einen Teil der Webadresse durch Klicken auswählen.</string>
-    <string name="level_03_reminder">Enthält der Bereich der Abteilungen dir bekannte Namen und entspricht der Wer-Bereich aber nicht dem Unternehmen deines Gesprächspartners, dann gebe hier keine Daten ein!</string>
-    <string name="level_04_reminder">Enthält der Bereich zwischen \"http://\" und dem dritten Slash \"/\" eine IP-Adresse (4-stellige Zahlenfolge, durch Punkte getrennt) anstelle des Wer-Bereiches, dann gebe hier keine Daten ein!</string>
-    <string name="level_05_reminder">Enthält der Wer-Bereich Namen, die keinen Sinn ergeben oder nichts mit dem Dienst bzw. Unternehmen deines Gesprächspartners zu tun haben, dann gebe hier keine Daten ein! </string>
-    <string name="level_06_reminder">Enthält der Wer-Bereich Namen, die vertrauenswürdig klingen, aber dennoch nichts mit dem Unternehmen deines Gesprächspartners zu tun haben, dann gebe hier keine Daten ein! </string>
-    <string name="level_07_reminder">TODO</string>
-    <string name="level_08_reminder">TODO</string>
-    <string name="level_09_reminder">TODO</string>
-    <string name="level_10_reminder">TODO</string>
+    <!-- subdomain -->
+    <string name="level_03_reminder"><b>Erinnerung:</b> Enthält der Bereich der Abteilungen dir bekannte Namen und entspricht der Wer-Bereich aber nicht dem Unternehmen deines Gesprächspartners, dann gebe hier keine Daten ein!</string>
+    <!-- ip -->
+    <string name="level_04_reminder"><b>Erinnerung:</b> Enthält der Bereich zwischen \"http://\" und dem dritten Slash \"/\" eine IP-Adresse (4-stellige Zahlenfolge, durch Punkte getrennt) anstelle des Wer-Bereiches, dann gebe hier keine Daten ein!</string>
+    <!-- nonsense -->
+    <string name="level_05_reminder"><b>Erinnerung:</b> Enthält der Wer-Bereich Namen, die keinen Sinn ergeben oder nichts mit dem Dienst bzw. Unternehmen deines Gesprächspartners zu tun haben, dann gebe hier keine Daten ein! </string>
+    <!-- unrelated but trustworthy -->
+    <string name="level_06_reminder"><b>Erinnerung:</b> Enthält der Wer-Bereich Namen, die vertrauenswürdig klingen, aber dennoch nichts mit dem Unternehmen deines Gesprächspartners zu tun haben, dann gebe hier keine Daten ein! </string>
+    <!-- misleading (facebook-login) -->
+    <string name="level_07_reminder"><b>Erinnerung:</b> Typo + Buchstabendreher + buchstabendreher</string>
+    <!-- homographic -->
+    <string name="level_08_reminder"><b>Erinnerung:</b> homographic</string>
+    <!-- hostname in path -->
+    <string name="level_09_reminder"><b>Erinnerung:</b> hostname in path</string>
+    <!-- http/https -->
+    <string name="level_10_reminder"><b>Erinnerung:</b> http/https</string>
+   
+    
     <string name="title_activity_about">About</string>
     <string name="title_activity_find_address_bar">Die Adressleiste</string>
     <string name="action_settings">Settings</string>
