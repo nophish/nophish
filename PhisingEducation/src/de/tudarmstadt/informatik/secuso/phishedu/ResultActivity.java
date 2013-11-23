@@ -7,25 +7,19 @@ import android.os.Vibrator;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
+import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishResult;
 
 public class ResultActivity extends SwipeActivity {
 	public static int RESULT_GUESSED = PhishResult.getMax() + 1;
 
-	// Misleading(7)
-	// domain abwandlung
-	// Homoglyphic(8),
-	// HostInPath(9),
-	// HTTP(10),
-	// Typo(11),tippfehler, buchstabendreher
-
 	protected static int[] reminderIDs = { R.string.level_03_reminder,
 			R.string.level_04_reminder, R.string.level_05_reminder,
-			R.string.level_06_reminder,
-			// zusammenfassen: zusammenfassen: face-login, typo, typosqaut
-			R.string.level_07_reminder, R.string.level_08_reminder,
-			R.string.level_09_reminder, R.string.level_10_reminder };
+			R.string.level_06_reminder, R.string.level_07_reminder,
+			R.string.level_08_reminder, R.string.level_09_reminder,
+			R.string.level_10_reminder };
 
 	// int level; is used as index for the consequences type
 
@@ -86,11 +80,37 @@ public class ResultActivity extends SwipeActivity {
 			vibrate();
 			setReminderText(view);
 		}
+		if (BackendController.getInstance().getLevel() == 2) {
+			setLevel2Texts(view);
+		}
 		TextView urlText = (TextView) view.findViewById(R.id.url);
 		setUrlText(urlText);
 		urlText.setTextSize(25);
 		updateScore(view);
 		return view;
+	}
+
+	private void setLevel2Texts(View view) {
+		TextView resultText;
+		if (this.result == RESULT_GUESSED) {
+			// change text
+			resultText = (TextView) view.findViewById(R.id.you_guessed_01);
+			resultText.setText(R.string.level_02_you_are_wrong);
+			// make second text disappear
+			TextView resultTextToHide = (TextView) view
+					.findViewById(R.id.you_guessed_02);
+			resultTextToHide.setVisibility(View.INVISIBLE);
+
+			vibrate();
+
+			// change smile to not smiling
+			ImageView image = (ImageView) view
+					.findViewById(R.id.feedback_smiley);
+			image.setImageResource(R.drawable.small_smiley_not_smile);
+		} else if (this.result == PhishResult.Phish_Detected.getValue()) {
+			resultText = (TextView) view.findViewById(R.id.your_are_correct_01);
+			resultText.setText(R.string.level_02_you_are_correct);
+		}
 	}
 
 	private void setReminderText(View view) {

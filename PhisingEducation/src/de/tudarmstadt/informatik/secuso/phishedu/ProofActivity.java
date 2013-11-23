@@ -2,6 +2,7 @@ package de.tudarmstadt.informatik.secuso.phishedu;
 
 import android.app.ActionBar;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.Color;
@@ -39,6 +40,9 @@ public class ProofActivity extends PhishBaseActivity {
 			TextView text = (TextView) findViewById(R.id.phish_proof_text);
 			text.setText(R.string.level_02_task);
 
+			TextView textToHide = (TextView) findViewById(R.id.phish_proof_text_02);
+			textToHide.setVisibility(View.INVISIBLE);
+			
 			ImageView image = (ImageView) findViewById(R.id.feedback_smiley);
 			image.setVisibility(View.INVISIBLE);
 		}
@@ -89,6 +93,9 @@ public class ProofActivity extends PhishBaseActivity {
 
 		public void onClick(View widget) {
 			this.activity.selectedPart = this.part;
+			String[] urlparts = BackendController.getInstance().getUrl();
+			Toast.makeText(getApplicationContext(), "Ausgewählt: "
+					+ urlparts[part], Toast.LENGTH_LONG).show();;
 		}
 
 		@Override
