@@ -1,7 +1,9 @@
 package de.tudarmstadt.informatik.secuso.phishedu;
 
 import android.app.ActionBar;
+import android.content.Context;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -65,12 +67,22 @@ public class ResultActivity extends SwipeActivity {
 			ViewGroup container, Bundle savedInstanceState) {
 		View view = inflater.inflate(resultLayoutIDs[this.result], container,
 				false);
+		// if result == result_nophish_notdetected -> virbration feedback
+		if (this.result == PhishResult.Phish_NotDetected.getValue()) {
+			vibrate();
+		}
 		TextView urlText = (TextView) view.findViewById(R.id.url);
 		setUrlText(urlText);
 		updateScore(view);
 		return view;
 	}
 
+	private void vibrate() {
+		// make phone vibrate
+		Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+		v.vibrate(500);
+
+	}
 
 	private void setTitle() {
 		ActionBar ab = getActionBar();
