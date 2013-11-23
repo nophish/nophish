@@ -27,6 +27,8 @@ public class LevelIntroActivity extends SwipeActivity {
 				R.layout.level_01_splash,
 				R.layout.level_01_intro_00,
 				R.layout.level_01_intro_01,
+				R.layout.level_01_intro_02,
+				R.layout.level_01_intro_03
 				},
 			{ 
 				R.layout.level_02_splash, 

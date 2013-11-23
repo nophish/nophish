@@ -58,10 +58,10 @@ public class ProofActivity extends PhishBaseActivity {
 			builder.setSpan(span, wordstart, wordend, 0);
 		}
 		TextView url = (TextView) findViewById(R.id.url);
-		url.setMovementMethod(LinkMovementMethod.getInstance());
 		url.setText(builder);
-		url.setTextSize(25);
+		url.setMovementMethod(LinkMovementMethod.getInstance());
 		url.setHighlightColor(Color.LTGRAY);
+		url.setTextSize(25);
 	}
 
 	private void setTitles() {

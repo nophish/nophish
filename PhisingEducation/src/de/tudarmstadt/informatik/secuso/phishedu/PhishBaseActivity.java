@@ -24,7 +24,6 @@ public class PhishBaseActivity extends FragmentActivity {
 			TextView urlsGoalText = (TextView) scores.findViewById(R.id.urls_goal);
 			TextView phishesText = (TextView) scores.findViewById(R.id.phishes);
 			TextView phishesGoalText = (TextView) scores.findViewById(R.id.phishes_goal);
-			TextView scoreText = (TextView) scores.findViewById(R.id.score);
 
 			urlsText.setText(Integer.toString(BackendController.getInstance()
 					.doneURLs()));
@@ -34,7 +33,6 @@ public class PhishBaseActivity extends FragmentActivity {
 					.foundPhishes()));
 			phishesGoalText.setText(Integer.toString(BackendController
 					.getInstance().levelPhishes()));
-			scoreText.setText(Integer.toString(BackendController.getInstance().getPoints()));
 		}
 	}
 }
