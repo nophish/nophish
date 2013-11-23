@@ -11,7 +11,7 @@
     <dimen name="margin_bottom_btn_position">380dp</dimen>
 
     <!-- margins -->
-    <dimen name="margin_text">10dp</dimen>
+    <dimen name="margin_text">13dp</dimen>
     <dimen name="margin_large">35dp</dimen>
     <dimen name="margin_standard">20dp</dimen>
     <dimen name="margin_small">15dp</dimen>
@@ -38,6 +38,7 @@
     <dimen name="leveicon_textsize">150dp</dimen>
     <dimen name="icon_small">30dp</dimen>
     <dimen name="icon_medium">35dp</dimen>
+    <dimen name="smiley_icons">90dp</dimen>
     <dimen name="security_icons">100dp</dimen>
     <dimen name="smiley_icons">100dp</dimen>
     <dimen name="website_screenshot_height_large">300dp</dimen>

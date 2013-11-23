@@ -93,7 +93,6 @@
         android:layout_alignBaseline="@+id/urls_text"
         android:layout_alignBottom="@+id/urls_text"
         android:layout_alignParentRight="true"
-        android:layout_marginRight="@dimen/margin_small"
         android:text="@string/score"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textStyle="bold" />

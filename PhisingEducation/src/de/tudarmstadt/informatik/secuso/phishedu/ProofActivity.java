@@ -39,7 +39,7 @@ public class ProofActivity extends PhishBaseActivity {
 			TextView text = (TextView) findViewById(R.id.phish_proof_text);
 			text.setText(R.string.level_02_task);
 
-			ImageView image = (ImageView) findViewById(R.id.phish_proof_icon);
+			ImageView image = (ImageView) findViewById(R.id.feedback_smiley);
 			image.setVisibility(View.INVISIBLE);
 		}
 
@@ -60,6 +60,7 @@ public class ProofActivity extends PhishBaseActivity {
 		TextView url = (TextView) findViewById(R.id.url);
 		url.setMovementMethod(LinkMovementMethod.getInstance());
 		url.setText(builder);
+		url.setTextSize(25);
 		url.setHighlightColor(Color.LTGRAY);
 	}
 

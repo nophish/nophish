@@ -11,9 +11,10 @@
         android:paddingRight="@dimen/activity_horizontal_margin"
         android:paddingTop="@dimen/activity_vertical_margin" >
 
-        <include layout="@layout/score_fragment"
-        android:id="@+id/score_relative" />
-        
+        <include
+            android:id="@+id/score_relative"
+            layout="@layout/score_fragment" />
+
         <TextView
             android:id="@+id/url_task_no_phish_detected_as_phish"
             android:layout_width="wrap_content"
@@ -23,32 +24,33 @@
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <TextView
-            android:id="@+id/url"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_below="@id/url_task_no_phish_detected_as_phish"
-            android:layout_marginTop="@dimen/margin_standard"
-            android:text="@string/url"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
-
-        <ImageView
-            android:id="@+id/oversafe_image"
-            android:layout_width="@dimen/security_icons"
-            android:layout_height="@dimen/security_icons"
-            android:layout_below="@+id/url"
-            android:layout_centerHorizontal="true"
-            android:src="@drawable/padlock" />
-
-        <TextView
             android:id="@+id/oversafe_02"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignLeft="@+id/url_task_no_phish_detected_as_phish"
+            android:layout_below="@+id/url"
             android:layout_marginTop="@dimen/margin_standard"
-            android:layout_below="@+id/oversafe_image"
             android:text="@string/oversafe_02"
             android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <ImageView
+            android:id="@+id/feedback_smiley"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignRight="@+id/score_relative"
+            android:layout_below="@+id/url_task_no_phish_detected_as_phish"
+            android:src="@drawable/small_smiley_o" />
+
+        <TextView
+            android:id="@+id/url"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/feedback_smiley"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/margin_small"
+            android:text="@string/url"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
     </RelativeLayout>
 
 </ScrollView>
