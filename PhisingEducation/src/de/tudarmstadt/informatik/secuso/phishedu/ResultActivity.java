@@ -5,6 +5,9 @@ import android.content.Context;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -124,6 +127,28 @@ public class ResultActivity extends SwipeActivity {
 		if (indexReminder >= 0) {
 			reminderText.setText(reminderIDs[indexReminder]);
 		}
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu items for use in the action bar
+		MenuInflater inflater = getMenuInflater();
+		inflater.inflate(R.menu.urltask_menu, menu);
+		return super.onCreateOptionsMenu(menu);
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+		// Respond to the action bar's Up/Home button
+		case android.R.id.home:
+			levelCanceldWarning();
+			return true;
+		case R.id.restart_level:
+			levelRestartWarning();
+			return true;
+		}
+		return super.onOptionsItemSelected(item);
 	}
 
 	private void vibrate() {

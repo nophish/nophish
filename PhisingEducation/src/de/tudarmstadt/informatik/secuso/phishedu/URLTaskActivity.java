@@ -90,7 +90,7 @@ public class URLTaskActivity extends PhishBaseActivity {
 		ActionBar ab = getActionBar();
 
 		ab.setTitle(Constants.levelTitlesIds[BackendController.getInstance()
-		                                     .getLevel()]);
+				.getLevel()]);
 		ab.setSubtitle(getString(R.string.exercise));
 		ab.setIcon(getResources().getDrawable(R.drawable.desktop));
 	}
@@ -138,56 +138,6 @@ public class URLTaskActivity extends PhishBaseActivity {
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		super.onActivityResult(requestCode, resultCode, data);
 		nextURL();
-	}
-
-	private void levelRestartWarning() {
-		levelCanceldWarning(true);
-	}
-
-	private void levelCanceldWarning() {
-		levelCanceldWarning(false);
-	}
-
-	private class CanceldWarningClickListener implements
-	DialogInterface.OnClickListener {
-		private boolean restart;
-
-		public CanceldWarningClickListener(boolean restart) {
-			this.restart = restart;
-		}
-
-		@Override
-		public void onClick(DialogInterface dialog, int which) {
-			if (this.restart) {
-				BackendController.getInstance().restartLevel();
-			} else {
-				NavUtils.navigateUpFromSameTask(URLTaskActivity.this);
-			}
-		}
-	}
-
-	private void levelCanceldWarning(final boolean restart) {
-		AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
-
-		// Setting Dialog Title
-		alertDialog.setTitle(getString(R.string.level_cancel_title));
-
-		// Setting Dialog Message
-		alertDialog.setMessage(getString(R.string.level_cancel_text));
-
-		alertDialog.setPositiveButton(R.string.level_cancel_positive_button,
-				new CanceldWarningClickListener(restart));
-
-		alertDialog.setNegativeButton(R.string.level_cancel_negative_button,
-				new DialogInterface.OnClickListener() {
-			@Override
-			public void onClick(DialogInterface dialog, int which) {
-				dialog.cancel();
-			}
-		});
-
-		// Showing Alert Message
-		alertDialog.show();
 	}
 
 	@Override
