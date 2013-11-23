@@ -54,7 +54,7 @@ public class LevelFinishedActivity extends SwipeActivity {
 
 	private void setScoreText(View view) {
 
-		if (index_level > 0) {
+		if (index_level > 1) {
 			TextView tv = (TextView) view.findViewById(R.id.total_score);
 			int score = BackendController.getInstance().getPoints();
 			tv.setText(Integer.toString(score));
