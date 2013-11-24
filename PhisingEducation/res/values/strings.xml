@@ -118,6 +118,7 @@
     <string name="level_title_06">Level 6</string>
     <string name="level_title_07">Level 7</string>
     <string name="level_title_08">Level 8</string>
+    <string name="level_title_09">Level 9</string>
     <string name="level_subtitle_01">Die Adressleiste</string>
     <string name="level_subtitle_02">Einführung in Webadressen</string>
     <string name="level_subtitle_03">Bereich der Abteilungen</string>
@@ -126,12 +127,14 @@
     <string name="level_subtitle_06">Vertrauenswürdig klingende Namen</string>
     <string name="level_subtitle_07">Ähnliche Namen im Wer-Bereich</string>
     <string name="level_subtitle_08">Ähnliche Zeichen im Wer-Bereich</string>
+    <string name="level_subtitle_09">Bereich des Gesprächsthemas</string>
     <string name="level_03_splash_subtitle">Bekannte Namen im Bereich der Abteilungen</string>
     <string name="level_04_splash_subtitle">IP-Adresse anstelle des Wer-Bereiches</string>
     <string name="level_05_splash_subtitle">Bezugslose oder schwachsinnige Namen im Wer-Bereich</string>
     <string name="level_06_splash_subtitle">Vertrauenswürdig klingende Namen im Wer-Bereich</string>
     <string name="level_07_splash_subtitle">Ähnliche Namen im Wer-Bereich</string>
     <string name="level_08_splash_subtitle">Ähnliche Zeichen im Wer-Bereich</string>
+    <string name="level_09_splash_subtitle">Bekannte Namen im Gesprächsthema-Bereich</string>
 
     <!-- text awareness activity -->
     <string name="level_00_intro_00_text_01"><b>Was ist Phishing?</b>\n\n\"Phishing\" ist eine Wortschöpfung, die eine Kombination der zwei englischen Begriffe \"phreaking\" (hacken) und \"fishing\" (angeln) darstellt. Der Begriff steht für den Versuch, verschiedene Daten von Internetbenutzern zu \"angeln\". Diese Daten können Passwörter, Kontodaten, Kreditkartendaten, TANs aber auch jegliche andere Art von Daten sein.\n\nJeder Internetbenutzer ist durch \"Phishing\" gefährdet. Hinter diesen Angriffen stecken Betrüger (auch \"Phishe\" oder \"Hacker\" genannt).Sie schicken dir Nachrichten, bspw. in Form von E-Mails, die für dich zunächst aussehen wie Nachrichten von Personen oder Institutionen, denen du vertraust. Es wird der Eindruck erweckt, als wäre die E-Mail z.B. von Amazon, von Facebook oder von deiner Bank verschickt worden.\n\nZiel der Betrüger ist es, an Daten von dir zu kommen, um damit beispielsweise dein Konto zu plündern, in deinem Namen einzukaufen oder deine Freunde zu kontaktieren.</string>
@@ -262,7 +265,10 @@
     <string name="reminder_brand_in_domain">5.) Enthält der Wer-Bereich nur eine ähnliche Abwandlung des dir bisher vertrauten Wer-Bereiches, dann gebe hier keine Daten ein!</string>
     <string name="reminder_typo">6.) Enthält der Wer-Bereich einen Tippfehler, dann gebe hier keine Daten ein!</string>
     <string name="reminder_typosquat">7.) Enthält der Wer-Bereich einen Buchstabendreher, dann gebe hier keine Daten ein!</string>
+    <string name="reminder_similar_chars">8.) Enthält der Wer-Bereich Ersetzungen von Buchstaben durch andere ähnliche Zeichen oder Zahlen, dann gebe hier keine Daten ein! </string>
+    <string name="reminder_deceiving_path">9.) Enthält der Bereich des Gesprächsthemas dir bekannte Namen oder Webadressen und entspricht der Wer-Bereich aber nicht dem Unternehmen deines Gesprächspartners, dann gebe hier keine Daten ein!</string>
     <string name="level_finished"><b>Geschafft!</b>\n\nGratulation! Du hast das Level erfolgreich abgeschlossen. Auf zum nächsten Level!</string>
+
     <!-- LEVEL 3 SUBDOMAIN -->
 
     <string name="level_4_splash_text">Level 4\n\nUnternehmen\nund Untereinheiten</string>
@@ -352,6 +358,21 @@
     <string name="level_08_intro_02_path_05">/de/weba</string>
     <string name="level_08_intro_02_path_06">pps/mpp/privatkunden</string>
 
+    <!-- LEVEL 9 - deceiving path part -->
+    <string name="level_09_intro_00_text_01"><b>Angriff durch Verwendung von bekannten Namen im Gesprächsthema</b>\n\nEin weiterer Trick dich hinters Licht zu führen, ist bekannte Namen, im Gesprächsthema zu verwenden. Mit dieser Art des Angriffs beschäftigen wir uns in diesem Level.</string>
+    <string name="level_09_intro_02_text_01"><b>Bereich des Gesprächsthemas</b>\n\nNun möchten wir uns mit einem anderen Bereich der Webadresse beschäftigen, dem Gesprächsthema.\n\nDer Bereich <b>nach dem dritten Slash \"/\"</b> sagt dir, über was du mit deinem Gesprächspartner, also der Webseite, sprichst.</string>
+    <string name="level_09_intro_02_before_path">http://abo.spiegel.de/</string>
+    <string name="level_09_intro_02_path">spiegel-digital</string>
+    <string name="level_09_intro_03_text_02">Dieser Bereich liegt in der Hand des Phishers. Er kann also den Bereich des Gesprächsthemas nennen, wie er möchte.</string>
+    <string name="level_09_intro_03_text_03">Er kann darin auch dir bekannte Namen oder sogar ganze Webadressen einbauen. Schaue dir also immer auch die wichtigsten zwei Blöcke einer Webadresse, den Wer-Bereich, an, um zu überprüfen, wer dein Gesprächspartner tatsächlich ist. Vertraue nicht dem Bereich des Gesprächsthemas. Enthält der Bereich des Gesprächsthemas dir bekannte Namen oder Webadressen und entspricht der Wer-Bereich aber nicht dem Unternehmen deines Gesprächspartners, dann <b>gebe hier keine Daten ein!</b>\n\nUnten ist ein Beispiel für eine Phishing-Webadresse, die dieses Prinzip anwendet. In dem Beispiel ist dein Gesprächspartner phisher.de (rot hinterlegt). Das ist der wichtigste Wer-Bereich der Webadresse. Dein Gesprächspartner ist nicht google.com (blau hinterlegt). google.com ist hier ein Teil des Gesprächsthemas. <b>Dieser Bereich hat damit keine Relevanz für deine Untersuchung der Webadresse.</b></string>
+    <string name="level_09_intro_03_phisher">phisher.de</string>
+    <string name="level_09_intro_03_path_01">/mail.</string>
+    <string name="level_09_intro_03_path_02">google.com</string>
+    <string name="level_09_intro_03_path_03">/login</string>
+
+    <!-- LEVEL 10 - https and http -->
+    <string name="level_10_intro_00_text_01"><b>Die Sicherheitsstufe des Gespräches\n\n</b>Gespräche mit Unternehmen, d.h. Webseiten, können verschiedene Sicherheitsstufen haben. Der erste Bereich einer Webadresse gibt dir Informationen über die Sicherheitsstufe. In diesem Level beschäftigen wir uns mit diesem Bereich.</string>
+
     <!-- TASKS AND SOLUTION SCREENS FROM LEVEL 3 -->
     <string name="URLs">Versuche:</string>
     <string name="level_cancel_title">Level abbrechen?</string>
@@ -399,8 +420,6 @@
     <string name="level_09_reminder"><b>Erinnerung:</b> hostname in path</string>
     <!-- http/https -->
     <string name="level_10_reminder"><b>Erinnerung:</b> http/https</string>
-   
-    
     <string name="title_activity_about">About</string>
     <string name="title_activity_find_address_bar">Die Adressleiste</string>
     <string name="action_settings">Settings</string>
@@ -408,8 +427,8 @@
     <string name="number">10</string>
     <string name="title">Title</string>
     <string name="level_description">Level Description</string>
-    
-     <!-- CONTENT DESCRIPTIONS FOR ACCESSIBILITY -->
+
+    <!-- CONTENT DESCRIPTIONS FOR ACCESSIBILITY -->
     <string name="content_desc_back_button">Button Zurück</string>
     <string name="content_desc_forward_button">Button Weiter</string>
     <string name="content_desc_sign_in_button">Button Einloggen</string>
