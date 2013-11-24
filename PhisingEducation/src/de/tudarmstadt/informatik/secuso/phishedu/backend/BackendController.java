@@ -79,7 +79,7 @@ public class BackendController implements BackendControllerInterface, GameStateL
 	private PhishURLInterface[][] urlCache;
 	private boolean gamestate_loaded = false;
 	private GameProgress progress;
-	private boolean user_wants_to_play_on = false;
+	private Boolean user_wants_to_play_on = false;
 	
 
 	private static PhishURL[] deserializeURLs(String serialized){
@@ -373,8 +373,8 @@ public class BackendController implements BackendControllerInterface, GameStateL
 		if(clickedright){
 			changePoints(PhishResult.Phish_Detected);
 			if(this.foundPhishes()>= this.nextLevelPhishes()){
-				if(!user_wants_to_play_on){
-					//TODO: ask_him
+				if(user_wants_to_play_on==null){
+					user_wants_to_play_on=frontend.askUserFinish();
 				}
 				if(!user_wants_to_play_on){
 				  this.levelFinished(this.getLevel());

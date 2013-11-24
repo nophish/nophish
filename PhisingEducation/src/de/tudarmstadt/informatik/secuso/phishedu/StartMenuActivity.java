@@ -1,6 +1,8 @@
 package de.tudarmstadt.informatik.secuso.phishedu;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.net.Uri;
@@ -281,6 +283,50 @@ public class StartMenuActivity extends BaseGameActivity implements
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
+	}
+	
+	private Boolean user_wants_finish=null;
+
+	@Override
+	public boolean askUserFinish() {
+		AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
+
+		// Setting Dialog Title
+		alertDialog.setTitle(getString(R.string.level_continue_title));
+
+		// Setting Dialog Message
+		alertDialog.setMessage(getString(R.string.level_contiue_text));
+
+		alertDialog.setPositiveButton(R.string.level_continue_positive_button,new DialogInterface.OnClickListener() {
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				user_wants_finish=true;
+			}
+		});
+
+		alertDialog.setNegativeButton(R.string.level_continue_negative_button,
+				new DialogInterface.OnClickListener() {
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				user_wants_finish=false;
+			}
+		});
+		
+		user_wants_finish=null;
+
+		// Showing Alert Message
+		alertDialog.show();
+		
+		while(user_wants_finish==null){
+			//TODO: This must be possible smarter.
+			try {
+				Thread.sleep(100);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return this.user_wants_finish;
 	}
 
 }

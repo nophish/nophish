@@ -61,4 +61,10 @@ public interface FrontendControllerInterface {
 	 * @param level
 	 */
 	void levelFailed(int level);
+	
+	/**
+	 * Ask the user if She wants to finish the level after finding enught fish.
+	 * @return True if the user clicked the positive Button. False otherwise.
+	 */
+	boolean askUserFinish();
 }
