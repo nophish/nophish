@@ -79,6 +79,7 @@ public class BackendController implements BackendControllerInterface, GameStateL
 	private PhishURLInterface[][] urlCache;
 	private boolean gamestate_loaded = false;
 	private GameProgress progress;
+	private boolean user_wants_to_play_on = false;
 	
 
 	private static PhishURL[] deserializeURLs(String serialized){
@@ -243,7 +244,11 @@ public class BackendController implements BackendControllerInterface, GameStateL
 		//We might have failed the level
 		//Either by going out of URLs or by going out of options to detect phish 
 		if( remaining_urls <= 0 || remaining_phish<remaining_phish_to_level){
-			this.frontend.levelFailed(this.getLevel());
+			if(this.foundPhishes() >= this.nextLevelPhishes()){
+			  this.levelFinished(this.getLevel());
+			}else{
+			  this.frontend.levelFailed(this.getLevel());
+			}
 		}
 
 		//we have to decide whether we want to present a phish or not
@@ -368,7 +373,12 @@ public class BackendController implements BackendControllerInterface, GameStateL
 		if(clickedright){
 			changePoints(PhishResult.Phish_Detected);
 			if(this.foundPhishes()>= this.nextLevelPhishes()){
-				this.levelFinished(this.getLevel());
+				if(!user_wants_to_play_on){
+					//TODO: ask_him
+				}
+				if(!user_wants_to_play_on){
+				  this.levelFinished(this.getLevel());
+				}
 			}
 		}else{
 			changePoints(PhishResult.Phish_NotDetected);
