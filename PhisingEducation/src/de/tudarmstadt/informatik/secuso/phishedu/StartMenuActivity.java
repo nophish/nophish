@@ -270,8 +270,15 @@ public class StartMenuActivity extends BaseGameActivity implements
 
 	@Override
 	public void levelFailed(int level) {
-		displayToast(getString(R.string.level_failed));
-		BackendController.getInstance().restartLevel();
+		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		builder.setTitle(R.string.level_failed_title);
+		builder.setMessage(R.string.level_failed_text);
+		builder.setNeutralButton(R.string.level_failed_button, new DialogInterface.OnClickListener() {
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				BackendController.getInstance().restartLevel();
+			}
+		});
 	}
 
 	@Override

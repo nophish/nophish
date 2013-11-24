@@ -352,6 +352,9 @@
 
     <!-- TASKS AND SOLUTION SCREENS FROM LEVEL 3 -->
     <string name="URLs">Versuche:</string>
+    <string name="level_failed_title">Level nicht bestanden!</string>
+    <string name="level_failed_text">Leider konntest du nicht genügend Punkte sammeln um das Level zu bestehen. Das Level wird jetzt neu gestartet.</string>
+    <string name="level_failed_button">Level neu starten</string>
     <string name="level_cancel_title">Level abbrechen?</string>
     <string name="level_cancel_text">Wenn du diese Seite verlässt wird dein Spielstand für dieses Level nicht gespeichert. Bist du dir sicher?</string>
     <string name="level_cancel_positive_button">Level verlassen</string>
@@ -360,7 +363,6 @@
     <string name="level_contiue_text">Du hast genug Phishing Adressen erkannt um ins nächste Level zu kommen! Willst du weiterspielen um weitere Punkte zu sammeln oder willst du zum nächsten Level?</string>
     <string name="level_continue_positive_button">Weiterspielen</string>
     <string name="level_continue_negative_button">Level abschließen</string>
-    
     <string name="level_failed">Du hast leider das Level nicht geschafft. Wir fangen nochmal von vorne an.</string>
     <string name="phishes">Phishe:</string>
     <string name="url_task_description">Entscheide über die folgenden Webadressen, ob du ihnen vertraust (Häkchen antippen) oder ob hier ein Phishing-Angriff vorliegt (Kreuz antippen).</string>
