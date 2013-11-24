@@ -9,23 +9,23 @@
     tools:context=".LevelIntroActivity" >
 
     <TextView
-        android:id="@+id/level_09_title"
+        android:id="@+id/level_10_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:text="@string/level_title_09"
+        android:text="@string/level_title_10"
         android:textSize="@dimen/font_size_xlarge" />
 
     <TextView
-        android:id="@+id/level_subtitle_09"
+        android:id="@+id/level_subtitle_10"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/level_09_title"
+        android:layout_below="@+id/level_10_title"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/margin_standard"
         android:gravity="center"
-        android:text="@string/level_09_splash_subtitle"
+        android:text="@string/level_10_splash_subtitle"
         android:textSize="@dimen/font_size_large" />
 
     <ImageView
@@ -34,7 +34,7 @@
         android:layout_height="@dimen/security_icons"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:contentDescription="@string/content_desc_one"
-        android:src="@drawable/social_balloon" />
+        android:contentDescription="@string/content_desc_security_level_high"
+        android:src="@drawable/security_policies" />
 
 </RelativeLayout>
