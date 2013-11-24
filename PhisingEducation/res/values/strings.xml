@@ -134,7 +134,7 @@
     <string name="level_08_splash_subtitle">Ähnliche Zeichen im Wer-Bereich</string>
 
     <!-- text awareness activity -->
-    <string name="level_00_intro_00_text_01"><b>Was ist Phishing?</b>\n\n\"Phishing\" ist eine Wortschöpfung, die eine Kombination der zwei englischen Begriffe \"phreaking\" (hacken) und \"fishing\" (angeln) darstellt. Der Begriff steht für den Versuch, verschiedene Daten von Internetbenutzern zu \"angeln\". Diese Daten können Passwörter, Kontodaten, Kreditkartendaten, TANs aber auch jegliche andere Art von Daten sein.\n\nJeder Internetbenutzer ist durch \"Phishing\" gefährdet. Hinter diesen Angriffen stecken Betrüger (auch \"Phishe\" oder \"Hacker\" genannt).Sie schicken dir Nachrichten, bspw. in Form von E-Mails, die für dich zunächst aussehen wie Nachrichten von Personen oder Institutionen, denen du vertraust. Es wird der Eindruck erweckt, als wäre die E-Mail z.B. von Amazon, von Facebook oder von deiner Bank verschickt worden.\n\nZiel der Betrüger ist es, an Daten von dir zu kommen, um damit beispielsweise dein Konto zu plündern, in deinem Namen einzukaufen oder deine Freunde zu kontaktieren.\n\n\n</string>
+    <string name="level_00_intro_00_text_01"><b>Was ist Phishing?</b>\n\n\"Phishing\" ist eine Wortschöpfung, die eine Kombination der zwei englischen Begriffe \"phreaking\" (hacken) und \"fishing\" (angeln) darstellt. Der Begriff steht für den Versuch, verschiedene Daten von Internetbenutzern zu \"angeln\". Diese Daten können Passwörter, Kontodaten, Kreditkartendaten, TANs aber auch jegliche andere Art von Daten sein.\n\nJeder Internetbenutzer ist durch \"Phishing\" gefährdet. Hinter diesen Angriffen stecken Betrüger (auch \"Phishe\" oder \"Hacker\" genannt).Sie schicken dir Nachrichten, bspw. in Form von E-Mails, die für dich zunächst aussehen wie Nachrichten von Personen oder Institutionen, denen du vertraust. Es wird der Eindruck erweckt, als wäre die E-Mail z.B. von Amazon, von Facebook oder von deiner Bank verschickt worden.\n\nZiel der Betrüger ist es, an Daten von dir zu kommen, um damit beispielsweise dein Konto zu plündern, in deinem Namen einzukaufen oder deine Freunde zu kontaktieren.</string>
     <string name="level_00_intro_01_text_01"><b>Jeder kann phishen!</b>\n\nUm dir zu verdeutlichen, dass auch du gefährdet bist, wollen wir dir zeigen, wie einfach es ist, gefälschte E-Mails im Namen einer anderen Person oder Institution zu verschicken.</string>
     <string name="level_00_intro_02_text_01"><b>Schicke dir selber eine E-Mail von einem beliebigen Absender</b></string>
     <string name="level_00_intro_02_text_02">Von wem soll die E-Mail kommen*:</string>
@@ -153,7 +153,7 @@
     <string name="awareness_resend_email">E-Mail nicht erhalten</string>
     <string name="awareness_text_fake_websites">Auch das Fälschen von Webseiten ist sehr einfach (wie bei E-Mails), wie folgender Comic zeigt.</string>
     <string name="level_00_finish_00_text_01"><b>Was hast du jetzt schon gelernt?</b>\n\n(1) Du hast es selber erlebt und gesehen, wie einfach es ist, den Absender einer E-Mail zu fälschen. Entsprechend vorsichtig solltest du bei der Einschätzung der Vertrauenswürdigkeit von E-Mails sein. Dies gilt insbesondere, wenn diese einen Link enthalten. Nicht nur bei Links, die dir bekannt zu sein scheinen, sondern auch bei solchen, die bspw. “Hier Klicken” heißen, solltest du vorsichtig sein.</string>
-    <string name="level_00_finish_00_text_02">(2) Du hast auch gelernt, dass man durch das Klicken auf Links nicht zwingend auf die Webadresse geführt wird, die im Link angegeben ist.\n\n\n</string>
+    <string name="level_00_finish_00_text_02">(2) Du hast auch gelernt, dass man durch das Klicken auf Links nicht zwingend auf die Webadresse geführt wird, die im Link angegeben ist.</string>
     <string name="level_00_finish_01_text_01"><b>Übrigens, das gilt nicht nur für E-Mails!</b>\n\nGefahren lauern nicht nur hinter Links in E-Mails, sondern generell immer, wenn du auf einen Link klickst (bspw. auf einer anderen Webseite, in einer SMS oder in Nachrichten bei Facebook oder Twitter).</string>
     <string name="level_00_finish_02_text_01"><b>Webadressen und Webseitenkopien erstellen kann jeder!</b>\n\nEine Webadresse kann heutzutage jeder anlegen. Eine identische Kopie einer Webseite dort anzuzeigen, bringt fast keinen Aufwand und auch fast keine Kosten mit sich. D.h., wenn du auf einer Webseite landest, kann die angezeigte Webseite zwar auf den ersten Blick korrekt aussehen, ist aber in Wirklichkeit die Kopie einer vertrauten Webseite, die angelegt wurde, um dir zu schaden.</string>
     <string name="level_00_finish_03_text_01"><b>Original</b>\n\nIm Folgenden zeigen wir dir einen Ausschnitt der <b>originalen</b> Webseite von Facebook. An der Webadresse (grün umrandet) kann man erkennen, dass es sich bei dieser Webseite um das Original handelt.</string>
@@ -190,7 +190,7 @@
     <string name="level_01_intro_02_text_01"><b>Wie schaue ich mir die Webadresse vollständig an?</b>\n\nSobald die Adressleiste erscheint, siehst du leider nicht immer die vollständige Webadresse, da sie oft zu lang ist. Allerdings ist es sehr wichtig, diese als Ganzes zu betrachten.\n\nUm dir die gesamte Webadresse ansehen zu können, musst du mit dem Finger den Adresstext antippen.</string>
     <string name="level_01_intro_03_text_01"><b>Wie schaue ich mir die Webadresse vollständig an?</b>\n\nDies hat zur Folge, dass die Webadresse markiert wird und du das Ende der Webadresse siehst.</string>
     <string name="level_01_intro_03_text_02">Jetzt musst du die Webadresse mit dem Finger nach rechts ziehen (ggf. mehrmals), bis du am Anfang der Webadresse angelangt bist.</string>
-    <string name="level_01_intro_03_text_03">Durch das nach links und rechts Ziehen, kannst du dir die gesamte Webadresse anschauen.\n\n\n</string>
+    <string name="level_01_intro_03_text_03">Durch das nach links und rechts Ziehen, kannst du dir die gesamte Webadresse anschauen.</string>
     <string name="level_01_exercise_text_01">Nun bist du an der Reihe:\n\n1. Klicke auf den Button \"Klicke hier\", um eine Übungswebseite zu öffnen.\n\n2. Warte bis die Webseite vollständig geladen ist.\n\n3. Löse die Aufgabe auf der Webseite. Wenn du die Aufgabe gelöst hast, wirst du automatisch zur App zurückgeleitet.</string>
     <string name="level_01_exercise_button_click_here">Klicke hier</string>
     <string name="level_01_finish_00_text_01"><b>Geschafft!</b>\n\nGratulation! Du hast Level 1 erfolgreich abgeschlossen.</string>
@@ -206,7 +206,7 @@
     <string name="level_02_intro_00_text_02_url">http://abo.spiegel.de/spiegel-digital</string>
     <string name="level_02_intro_01_text_01"><b>Was sind die wichtigen Bestandteile einer Webadresse?</b>\n\nWebadressen sind sehr komplex. Aus diesem Grund möchten wir alles möglichst vereinfacht erklären. Hierzu betrachten wir die Webseite, die du besuchst von nun an als deinen \"Gesprächspartner\". Bereits in der Webadresse erfährst du (wie in einem Gespräch) die ersten wichtigen Informationen.</string>
     <string name="level_02_intro_02_text_01"><b>Was sind die wichtigen Bestandteile einer Webadresse?</b>\n\nDie folgende Grafik fasst zusammen, was die einzelnen Bestandteile einer Webadresse über das Gespräch aussagen.</string>
-    <string name="level_02_intro_02_text_02">Der grün hinterlegte Bereich stellt die Sicherheitsstufe des Gespräches dar. Eine Alternative zu \"http://\" ist \"https://\". Was der Unterschied ist, wirst du in einem fortgeschrittenen Level erfahren. Der rot hinterlegte Bereich gibt dir Informationen über deinen Gesprächspartner und der blau hinterlegte Bereich verrät dir das Gesprächsthema.\n\n\n</string>
+    <string name="level_02_intro_02_text_02">Der grün hinterlegte Bereich stellt die Sicherheitsstufe des Gespräches dar. Eine Alternative zu \"http://\" ist \"https://\". Was der Unterschied ist, wirst du in einem fortgeschrittenen Level erfahren. Der rot hinterlegte Bereich gibt dir Informationen über deinen Gesprächspartner und der blau hinterlegte Bereich verrät dir das Gesprächsthema.</string>
     <string name="level_02_intro_03_text_01"><b>Fokus - Info über Gesprächspartner selbst</b>\n\nIn diesem und in den nächsten paar Levels werden wir uns hauptsächlich mit dem rot hinterlegten Bestandteil der Webadresse beschäftigen, da es sehr wichtig ist, zu wissen, wer dein Gesprächspartner ist!\n\nDer Bereich <b>zwischen \""http://\" und dem dritten Slash \"/\"</b> gibt dir also Informationen über deinen Gesprächspartner, sprich über die Webseite. Die restlichen Bereiche kannst du erst einmal ignorieren.</string>
     <string name="level_02_intro_04_text_01"><b>Aufbau dieses Bereiches</b>\n\nDieser Bereich wird durch Punkte in einzelne Blöcke eingeteilt.\n\n<b>Merke:</b> Diese Blöcke werden von recht nach links gelesen.</string>
     <string name="level_02_intro_05_text_01"><b>Angaben zum Standort</b>\n\nDer erste Block (von rechts) verrät dir den \"Standort\" deines Gesprächspartners. In diesem Fall \"de\" für Deutschland.</string>
@@ -325,7 +325,7 @@
     <string name="level_07_intro_04_text_04">Der wichtigste Wer-Bereich einer Webadresse muss auch vom Phisher registriert werden.	</string>
     <string name="level_07_intro_04_fracebook">fracebook.com</string>
     <string name="level_07_intro_04_path">/login</string>
-    <string name="level_07_intro_05_text_03">3. Buchstabendreher im Wer-Bereich</string>
+    <string name="level_07_intro_05_text_03"><b>3. Buchstabendreher im Wer-Bereich</b></string>
     <string name="level_07_intro_05_text_02">Der Phisher kann hierbei einfach einen Buchstabendreher in dir vertraute Wer-Bereiche einbauen und diesen Namen mit Buchstabendreher dann registrieren. Schaue dir also immer die wichtigsten zwei Blöcke der Webadresse, den Wer-Bereich, <b>ganz genau</b> an, denn Buchstabendreher sind schwer zu erkennen. Enthält der Wer-Bereich einen Buchstabendreher, dann <b>gebe hier keine Daten ein!</b>\n\nUnten ist ein Beispiel für eine Phishing-Webadresse, die dieses Prinzip anwendet. In dem Beispiel ist dein Gesprächspartner mircosoft.com (rot hinterlegt). <b>Der Wer-Bereich enthält einen Buchstabendreher.</b></string>
     <string name="level_07_intro_05_mircosoft">mircosoft.com</string>
     <string name="level_07_intro_05_path_01">/en-us</string>
@@ -405,5 +405,59 @@
     <string name="title_activity_find_address_bar">Die Adressleiste</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
+    <string name="number">10</string>
+    <string name="title">Title</string>
+    <string name="level_description">Level Description</string>
+    
+     <!-- CONTENT DESCRIPTIONS FOR ACCESSIBILITY -->
+    <string name="content_desc_back_button">Button Zurück</string>
+    <string name="content_desc_forward_button">Button Weiter</string>
+    <string name="content_desc_sign_in_button">Button Einloggen</string>
+    <string name="content_desc_sign_out_button">Button Ausloggen</string>
+    <string name="content_desc_show_online_achievement_button">Button Zeige Online-Achievements</string>
+    <string name="content_desc_show_leaderboardrate_button">Button Zeige Online-Leaderboard-Rate</string>
+    <string name="content_desc_show_leaderboard_button">Button Zeige Online-Leaderboard</string>
+    <string name="content_desc_facebook_screenshot_original">Facebook Screenshot - original</string>
+    <string name="content_desc_facebook_screenshot_fake">Facebook Screenshot - fake</string>
+    <string name="content_desc_security_shield_green">Sicherheitsschutzschild - grün</string>
+    <string name="content_desc_symbol_book">Buch</string>
+    <string name="content_desc_symbol_pen">Stift</string>
+    <string name="content_desc_smiley_bored">Gelangweiltes Gesicht</string>
+    <string name="content_desc_button_send">ButtonAbschicken</string>
+    <string name="content_desc_medal">Orden</string>
+    <string name="content_desc_addr_bar">Adressleiste</string>
+    <string name="content_desc_i_know_that_btn">Button das kann ich schon</string>
+    <string name="content_desc_suprised">Verblüfftes Gesicht</string>
+    <string name="content_desc_find_addr_bar">Screenshot Webseite mit Adressleiste</string>
+    <string name="content_desc_click_addr_bar">Adresstext antippen</string>
+    <string name="content_desc_slide_to_right">Adresse nach rechts schieben</string>
+    <string name="content_desc_start_of_address">Angekommen am Anfang der Webadresse</string>
+    <string name="content_desc_click_here_button">Button klicke hier</string>
+    <string name="content_desc_arrow_up_de">Pfeil zeigt auf \"de\"</string>
+    <string name="content_desc_arrow_up_spiegel">Pfeil zeigt auf \"spiegel\"</string>
+    <string name="content_desc_arrow_up_abo">Pfeil zeigt auf \"abo\"</string>
+    <string name="content_desc_globe">Globus</string>
+    <string name="content_desc_attention">Achtung</string>
+    <string name="content_desc_puzzle_units">Puzzleteile</string>
+    <string name="content_desc_house">Haus</string>
+    <string name="content_desc_computer">Computer</string>
+    <string name="content_desc_confused_pinguin">Verwirrter Pinguin</string>
+    <string name="content_desc_innocent_looking_smiley_angel">Unschuldig aussehender Smiley-Engel</string>
+    <string name="content_desc_twitter_logo">Ein Twitterlogo</string>
+    <string name="content_desc_one">Zahl Eins</string>
+    <string name="content_desc_seven">Zahl Sieben</string>
+    <string name="content_desc_padlock">Vorhängeschloss</string>
+    <string name="content_desc_tik">Häkchen</string>
+    <string name="content_desc_verify">Button Überprüfen</string>
+    <string name="content_desc_play">Button Spielen</string>
+    <string name="content_desc_level_overview">Button Level-Überblick</string>
+    <string name="content_desc_google_play">Button Google Play</string>
+    <string name="content_desc_more_info">Button Mehr Informationen</string>
+    <string name="content_desc_about">Button Über Uns</string>
+    <string name="content_desc_cross">Kreuz</string>
+    <string name="content_desc_smiling_face">Lächelndes Gesicht</string>
+    <string name="content_desc_o_face">Neutrales Gesicht</string>
+    <string name="content_desc_sad_face">Trauriges Gesicht</string>
+    <string name="content_desc_disappointed_face">Enttäuschtes Gesicht</string>
 
 </resources>

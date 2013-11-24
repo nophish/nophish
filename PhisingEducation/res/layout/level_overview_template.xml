@@ -17,6 +17,7 @@
             android:layout_height="100dp"
             android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
+            android:contentDescription="@string/content_desc_tik"
             android:src="@drawable/tick" />
         <ImageView
             android:id="@+id/levelbutton_padlock"
@@ -24,6 +25,7 @@
             android:layout_height="100dp"
             android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
+            android:contentDescription="@string/content_desc_padlock"
             android:src="@drawable/padlock" />
 
         <TextView
@@ -32,7 +34,7 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
-            android:text="1"
+            android:text="@string/number"
             android:textSize="@dimen/leveicon_textsize"/>
 
     </RelativeLayout>
@@ -44,7 +46,7 @@
         android:layout_above="@+id/levelbutton"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="36dp"
-        android:text="LevelTitle"
+        android:text="@string/title"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TextView
@@ -54,7 +56,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="42dp"
-        android:text="levelbeschreibung"
+        android:text="@string/level_description"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
 </RelativeLayout>

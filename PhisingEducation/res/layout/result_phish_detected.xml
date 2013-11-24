@@ -1,41 +1,49 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/result_phish_detected_sv"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".ResultActivity" >
+    android:fadeScrollbars="false" >
 
-    <include
-        android:id="@+id/score_relative"
-        layout="@layout/score_fragment" />
-
-    <TextView
-        android:id="@+id/your_are_correct_01"
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/score_relative"
-        android:text="@string/you_found_the_phish"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        tools:context=".ResultActivity" >
 
-    <TextView
-        android:id="@+id/url"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/feedback_smiley"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/margin_small"
-        android:text="@string/url"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        <include
+            android:id="@+id/score_relative"
+            layout="@layout/score_fragment" />
 
-    <ImageView
-        android:id="@+id/feedback_smiley"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/score_relative"
-        android:layout_below="@+id/your_are_correct_01"
-        android:src="@drawable/small_smiley_smile" />
+        <TextView
+            android:id="@+id/your_are_correct_01"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/score_relative"
+            android:text="@string/you_found_the_phish"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
 
-</RelativeLayout>
+        <TextView
+            android:id="@+id/url"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/feedback_smiley"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/margin_small"
+            android:text="@string/url"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <ImageView
+            android:id="@+id/feedback_smiley"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignRight="@+id/score_relative"
+            android:layout_below="@+id/your_are_correct_01"
+            android:contentDescription="@string/content_desc_smiling_face"
+            android:src="@drawable/small_smiley_smile" />
+    </RelativeLayout>
+
+</ScrollView>

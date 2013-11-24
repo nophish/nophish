@@ -34,6 +34,7 @@
         android:layout_height="@dimen/security_icons"
         android:layout_alignParentLeft="true"
         android:layout_alignParentBottom="true"
+        android:contentDescription="@string/content_desc_twitter_logo"
         android:src="@drawable/twitter" />
 
     <ImageView
@@ -42,6 +43,7 @@
         android:layout_height="@dimen/security_icons"
         android:layout_alignBottom="@+id/imageView1"
         android:layout_alignLeft="@+id/imageView1"
+        android:contentDescription="@string/content_desc_twitter_logo"
         android:layout_marginBottom="57dp"
         android:layout_marginLeft="44dp"
         android:src="@drawable/twitter_" />

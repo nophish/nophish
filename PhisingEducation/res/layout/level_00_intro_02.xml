@@ -2,7 +2,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/awareness_scrollview_send_email_form"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent"
+    android:fadeScrollbars="false" >
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -73,6 +74,7 @@
             android:layout_marginBottom="65dp"
             android:minWidth="@dimen/btn_standard_width"
             android:onClick="sendEmail"
+            android:contentDescription="@string/content_desc_button_send"
             android:text="@string/btn_send" />
 
         <TextView

@@ -108,6 +108,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/dot_02"
         android:layout_toRightOf="@+id/http"
+        android:contentDescription="@string/content_desc_arrow_up_abo"
         android:src="@drawable/up" />
 
 </RelativeLayout>

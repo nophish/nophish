@@ -23,7 +23,7 @@
         android:layout_alignBottom="@+id/urls"
         android:layout_alignTop="@+id/urls"
         android:layout_toRightOf="@+id/urls"
-        android:text="/"
+        android:text="@string/slash"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
@@ -33,7 +33,7 @@
         android:layout_alignBaseline="@+id/points_delim2"
         android:layout_alignBottom="@+id/points_delim2"
         android:layout_toRightOf="@+id/points_delim2"
-        android:text="100"
+        android:text="@string/number"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <!-- Phishes -->
@@ -48,7 +48,7 @@
         android:layout_alignBottom="@+id/urls_text"
         android:layout_toRightOf="@+id/urls_text"
         android:layout_marginLeft="@dimen/margin_xxsmall"
-        android:text="100"
+        android:text="@string/number"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
@@ -71,7 +71,7 @@
         android:layout_alignBottom="@+id/phishes_text"
         android:layout_toRightOf="@+id/phishes_text"
         android:layout_marginLeft="@dimen/margin_xxsmall"
-        android:text="100"
+        android:text="@string/number"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
@@ -79,7 +79,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@+id/phishes"
-        android:text="/"
+        android:text="@string/slash"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
@@ -89,7 +89,7 @@
         android:layout_alignBaseline="@+id/delim2"
         android:layout_alignBottom="@+id/delim2"
         android:layout_toRightOf="@+id/delim2"
-        android:text="100"
+        android:text="@string/number"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
 </RelativeLayout>
