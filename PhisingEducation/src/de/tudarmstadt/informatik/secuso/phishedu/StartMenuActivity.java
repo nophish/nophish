@@ -279,6 +279,7 @@ public class StartMenuActivity extends BaseGameActivity implements
 				BackendController.getInstance().restartLevel();
 			}
 		});
+		builder.show();
 	}
 
 	@Override
