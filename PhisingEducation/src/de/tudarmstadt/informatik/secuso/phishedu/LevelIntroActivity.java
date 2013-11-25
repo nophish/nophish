@@ -29,7 +29,10 @@ public class LevelIntroActivity extends SwipeActivity {
 			// level 3
 			// TODO: auslagern in strings.xml
 			{ "http://", "google.com.", "phishers-seite.de", "/search" },
-			{ "http://", "192.168.160.02", "/secure-login" }
+			{ "http://", "192.168.160.02", "/secure-login" },
+			{ "https://secure-login.mail.google.com.", "hsezis.de",
+					"/update-account", "http://secure-login.mail.google.com.",
+					"badcat.com", "/login" }
 
 	};
 
@@ -163,22 +166,24 @@ public class LevelIntroActivity extends SwipeActivity {
 
 		// we are in level 3, i.e. index = 0
 		if (exampleIndex == 0) {
-			setLevel3Spans(url);
-		} 
-		//examples where only domain is highlighted
-		//there is only 1 example then
-		else if(url.length == 3) {
-			setOtherSpans(url);
-		}
-		TextView tv1 = (TextView) view.findViewById(R.id.example_01);
-		if (tv1 != null) {
-			tv1.setText(strBuilder);
+			setLevel3Spans(url, view);
+		} else {
+			setOtherSpans(url, view);
 		}
 
 	}
 
-	private void setOtherSpans(String[] url) {
+	private void setOtherSpans(String[] url, View view) {
+
+		// at start clear string builder
+		strBuilder.clear();
 		for (int i = 0; i < url.length; i++) {
+
+			int spanIndex = (i%3);
+			if (spanIndex == 0) {
+				strBuilder.clear();
+				strBuilder.clearSpans();
+			}
 
 			String part = url[i];
 			// 0 at the beginning
@@ -186,7 +191,7 @@ public class LevelIntroActivity extends SwipeActivity {
 			wordEnd = wordStart + part.length();
 			strBuilder.append(part);
 
-			if (i == 1) {
+			if (spanIndex == 1) {
 				// make background red
 				final BackgroundColorSpan bgc = new BackgroundColorSpan(
 						Color.rgb(255, 102, 102));
@@ -198,10 +203,25 @@ public class LevelIntroActivity extends SwipeActivity {
 				strBuilder.setSpan(fgc, wordStart, wordEnd, 0);
 
 			}
+
+			// example 1 needs to be set
+			if (i == 2) {
+				TextView tv1 = (TextView) view.findViewById(R.id.example_01);
+				if (tv1 != null) {
+					tv1.setText(strBuilder);
+				}
+			}
+			if (i == 5) {
+				// example 2 needs to be set
+				TextView tv2 = (TextView) view.findViewById(R.id.example_02);
+				if (tv2 != null) {
+					tv2.setText(strBuilder);
+				}
+			}
 		}
 	}
 
-	private void setLevel3Spans(String[] url) {
+	private void setLevel3Spans(String[] url, View view) {
 		for (int i = 0; i < url.length; i++) {
 
 			String part = url[i];
@@ -227,6 +247,11 @@ public class LevelIntroActivity extends SwipeActivity {
 				strBuilder.setSpan(fgc, wordStart, wordEnd, 0);
 
 			}
+		}
+
+		TextView tv1 = (TextView) view.findViewById(R.id.example_01);
+		if (tv1 != null) {
+			tv1.setText(strBuilder);
 		}
 	}
 }

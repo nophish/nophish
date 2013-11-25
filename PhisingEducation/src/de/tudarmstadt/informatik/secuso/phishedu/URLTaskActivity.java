@@ -7,11 +7,13 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.NavUtils;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.HorizontalScrollView;
 import android.widget.TextView;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishResult;
@@ -174,7 +176,29 @@ public class URLTaskActivity extends PhishBaseActivity {
 			Intent levelIntent = new Intent(this, ProofActivity.class);
 			levelIntent.putExtra(Constants.EXTRA_LEVEL, this.level);
 			startActivityForResult(levelIntent, 1);
+		} else {
+			sendScrollToRight();
 		}
+	}
 
+	private void sendScrollToRight() {
+		final Handler handler = new Handler();
+		final HorizontalScrollView hsv = (HorizontalScrollView) findViewById(R.id.url_horizintal_sv);
+
+		new Thread(new Runnable() {
+			@Override
+			public void run() {
+				try {
+					Thread.sleep(5);
+				} catch (InterruptedException e) {
+				}
+				handler.post(new Runnable() {
+					@Override
+					public void run() {
+						hsv.fullScroll(View.FOCUS_RIGHT);
+					}
+				});
+			}
+		}).start();
 	}
 }

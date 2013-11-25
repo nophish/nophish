@@ -1,5 +1,5 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/level_05_intro_02_sv"
+    android:id="@+id/recognize_attack"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fadeScrollbars="false" >
@@ -50,24 +50,13 @@
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <TextView
-            android:id="@+id/level_05_intro_02_http_01"
+            android:id="@+id/example_01"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignLeft="@+id/level_05_intro_02_text_03"
             android:layout_below="@+id/level_05_intro_02_text_03"
             android:layout_marginTop="@dimen/margin_standard"
-            android:text="@string/https"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="@color/grey" />
-
-        <TextView
-            android:id="@+id/level_05_intro_02_nonsense_01"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/level_05_intro_02_http_01"
-            android:layout_alignBottom="@+id/level_05_intro_02_http_01"
-            android:layout_toRightOf="@+id/level_05_intro_02_http_01"
-            android:text="@string/level_05_intro_02_nonsense_01"
+            android:text="@string/url"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <ImageView
@@ -81,71 +70,13 @@
             android:src="@drawable/dialog_warning" />
 
         <TextView
-            android:id="@+id/level_05_intro_02_nonsense_02"
+            android:id="@+id/example_02"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/level_05_intro_02_http_01"
-            android:text="@string/level_05_intro_02_nonsense_02"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
-
-        <TextView
-            android:id="@+id/level_05_intro_02_nonsense_03"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/level_05_intro_02_http_01"
-            android:layout_toRightOf="@+id/level_05_intro_02_nonsense_02"
-            android:background="@color/red"
-            android:text="@string/level_05_intro_02_nonsense_03"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
-
-        <TextView
-            android:id="@+id/level_05_intro_02_nonsense_04"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/level_05_intro_02_nonsense_01"
-            android:layout_toRightOf="@+id/level_05_intro_02_nonsense_03"
-            android:text="@string/level_05_intro_02_nonsense_04"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="@color/grey" />
-
-        <TextView
-            android:id="@+id/level_05_intro_02_http_02"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/level_05_intro_02_nonsense_02"
+            android:layout_below="@+id/example_01"
             android:layout_marginTop="@dimen/margin_small"
-            android:text="@string/http"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="@color/grey" />
-
-        <TextView
-            android:id="@+id/level_05_intro_02_nonsense_05"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/level_05_intro_02_http_02"
-            android:layout_alignBottom="@+id/level_05_intro_02_http_02"
-            android:layout_toRightOf="@+id/level_05_intro_02_http_02"
-            android:text="@string/level_05_intro_02_nonsense_05"
+            android:text="@string/url"
             android:textAppearance="?android:attr/textAppearanceMedium" />
-
-        <TextView
-            android:id="@+id/level_05_intro_02_nonsense_06"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/level_05_intro_02_http_02"
-            android:background="@color/red"
-            android:text="@string/level_05_intro_02_nonsense_06"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
-
-        <TextView
-            android:id="@+id/level_05_intro_02_nonsense_07"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/level_05_intro_02_nonsense_05"
-            android:layout_toRightOf="@+id/level_05_intro_02_nonsense_06"
-            android:text="@string/level_05_intro_02_nonsense_07"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="@color/grey" />
     </RelativeLayout>
 
 </ScrollView>
