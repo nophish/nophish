@@ -1,13 +1,9 @@
 package de.tudarmstadt.informatik.secuso.phishedu;
 
-import android.app.ActionBar;
-import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
-import android.support.v4.app.NavUtils;
+import android.support.v7.app.ActionBar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -24,7 +20,7 @@ public class URLTaskActivity extends PhishBaseActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		getActionBar().setDisplayHomeAsUpEnabled(true);
+		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 		this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
 		this.level = getIntent().getIntExtra(Constants.EXTRA_LEVEL, 0);
@@ -87,7 +83,7 @@ public class URLTaskActivity extends PhishBaseActivity {
 	}
 
 	private void setTitles() {
-		ActionBar ab = getActionBar();
+		ActionBar ab = getSupportActionBar();
 
 		ab.setTitle(Constants.levelTitlesIds[BackendController.getInstance()
 		                                     .getLevel()]);
@@ -142,52 +138,6 @@ public class URLTaskActivity extends PhishBaseActivity {
 
 	private void levelRestartWarning() {
 		levelCanceldWarning(true);
-	}
-
-	private void levelCanceldWarning() {
-		levelCanceldWarning(false);
-	}
-
-	private class CanceldWarningClickListener implements
-	DialogInterface.OnClickListener {
-		private boolean restart;
-
-		public CanceldWarningClickListener(boolean restart) {
-			this.restart = restart;
-		}
-
-		@Override
-		public void onClick(DialogInterface dialog, int which) {
-			if (this.restart) {
-				BackendController.getInstance().restartLevel();
-			} else {
-				NavUtils.navigateUpFromSameTask(URLTaskActivity.this);
-			}
-		}
-	}
-
-	private void levelCanceldWarning(final boolean restart) {
-		AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
-
-		// Setting Dialog Title
-		alertDialog.setTitle(getString(R.string.level_cancel_title));
-
-		// Setting Dialog Message
-		alertDialog.setMessage(getString(R.string.level_cancel_text));
-
-		alertDialog.setPositiveButton(R.string.level_cancel_positive_button,
-				new CanceldWarningClickListener(restart));
-
-		alertDialog.setNegativeButton(R.string.level_cancel_negative_button,
-				new DialogInterface.OnClickListener() {
-			@Override
-			public void onClick(DialogInterface dialog, int which) {
-				dialog.cancel();
-			}
-		});
-
-		// Showing Alert Message
-		alertDialog.show();
 	}
 
 	@Override
