@@ -1,9 +1,9 @@
 package de.tudarmstadt.informatik.secuso.phishedu;
 
-import android.app.ActionBar;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
+import android.support.v7.app.ActionBar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -123,7 +123,7 @@ public class LevelIntroActivity extends SwipeActivity {
 	}
 
 	private void setTitles() {
-		ab = getActionBar();
+		ab = getSupportActionBar();
 		String title = getString(Constants.levelTitlesIds[this.real_level]);
 		String subtitle = getString(Constants.levelSubtitlesIds[this.real_level]);
 

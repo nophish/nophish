@@ -34,7 +34,7 @@ public class AwarenessActivity extends SwipeActivity {
 	protected int getPageCount() {
 		return levelLayoutIds.length;
 	}
-
+	
 	@Override
 	protected View getPage(int page, LayoutInflater inflater,
 			ViewGroup container, Bundle savedInstanceState) {

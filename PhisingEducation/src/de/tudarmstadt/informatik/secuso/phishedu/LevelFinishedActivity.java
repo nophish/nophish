@@ -1,8 +1,7 @@
 package de.tudarmstadt.informatik.secuso.phishedu;
 
-import android.app.ActionBar;
-
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -62,7 +61,7 @@ public class LevelFinishedActivity extends SwipeActivity {
 	}
 	
 	private void setTitles() {
-		ab = getActionBar();
+		ab = getSupportActionBar();
 		String title = getString(Constants.levelTitlesIds[this.real_level]);
 		String subtitle = getString(Constants.levelSubtitlesIds[this.real_level]);
 		
@@ -73,7 +72,6 @@ public class LevelFinishedActivity extends SwipeActivity {
 		//title is set in anyway
 		ab.setTitle(title);
 	}
-	
 
 	/**
 	 * after finishing a level the user is not allowed to go back

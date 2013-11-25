@@ -1,7 +1,6 @@
 package de.tudarmstadt.informatik.secuso.phishedu;
 
 import android.app.ActionBar;
-import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.Color;
@@ -27,7 +26,7 @@ public class ProofActivity extends PhishBaseActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		getActionBar().setDisplayHomeAsUpEnabled(true);
+		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 		this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
 		setContentView(R.layout.proof);
@@ -65,7 +64,7 @@ public class ProofActivity extends PhishBaseActivity {
 
 	private void setTitles() {
 
-		ActionBar ab = getActionBar();
+		android.support.v7.app.ActionBar ab = getSupportActionBar();
 		if (level != 2) {
 			ab.setTitle(R.string.correct);
 			ab.setSubtitle(getString(R.string.phish));

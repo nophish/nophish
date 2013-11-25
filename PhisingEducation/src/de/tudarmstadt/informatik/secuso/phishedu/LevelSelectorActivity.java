@@ -1,8 +1,8 @@
 package de.tudarmstadt.informatik.secuso.phishedu;
 
-import android.app.ActionBar;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.ActionBar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,10 +15,9 @@ public class LevelSelectorActivity extends SwipeActivity implements
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		getActionBar().setDisplayHomeAsUpEnabled(true);
+		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 		
-		ActionBar ab = getActionBar();
-		ab.setTitle("Level Überblick");
+		getSupportActionBar().setTitle("Level Überblick");
 	}
 
 	@Override

@@ -23,7 +23,7 @@ import de.tudarmstadt.informatik.secuso.phishedu.backend.FrontendControllerInter
  *         splash screen and afterwards a menu is displayed if the user wants to
  *         store his/her score online he/she has to sign into google+
  */
-public class StartMenuActivity extends BaseGameActivity implements
+public class StartMenuActivity extends PhishBaseGameActivity implements
 		FrontendControllerInterface, View.OnClickListener {
 
 	public StartMenuActivity() {
@@ -54,8 +54,8 @@ public class StartMenuActivity extends BaseGameActivity implements
 
 	public void goToGooglePlay(View view) {
 		setContentView(R.layout.google_plus);
-		getActionBar().setDisplayHomeAsUpEnabled(true);
-		getActionBar().setHomeButtonEnabled(true);
+		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+		getSupportActionBar().setHomeButtonEnabled(true);
 
 		findViewById(R.id.sign_in_button).setOnClickListener(this);
 		findViewById(R.id.sign_out_button).setOnClickListener(this);
@@ -87,8 +87,8 @@ public class StartMenuActivity extends BaseGameActivity implements
 
 	public void goToStartMenu() {
 		setContentView(R.layout.start_menu);
-		getActionBar().setHomeButtonEnabled(false);
-		getActionBar().setDisplayHomeAsUpEnabled(false);
+		getSupportActionBar().setHomeButtonEnabled(false);
+		getSupportActionBar().setDisplayHomeAsUpEnabled(false);
 	}
 
 	public void showMoreInfo(View view) {

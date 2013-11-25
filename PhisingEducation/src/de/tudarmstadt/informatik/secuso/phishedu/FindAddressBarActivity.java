@@ -1,12 +1,9 @@
 package de.tudarmstadt.informatik.secuso.phishedu;
 
-import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController;
 import android.os.Bundle;
-import android.app.ActionBar;
-import android.app.Activity;
-import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.View;
+import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController;
 
 public class FindAddressBarActivity extends PhishBaseActivity {
 
@@ -18,7 +15,7 @@ public class FindAddressBarActivity extends PhishBaseActivity {
 	}
 
 	private void setTitles() {
-		ActionBar ab = getActionBar();
+		android.support.v7.app.ActionBar ab = getSupportActionBar();
 
 		ab.setTitle(Constants.levelTitlesIds[BackendController.getInstance()
 				.getLevel()]);

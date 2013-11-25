@@ -1,7 +1,7 @@
 package de.tudarmstadt.informatik.secuso.phishedu;
 
-import android.app.ActionBar;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -73,7 +73,7 @@ public class ResultActivity extends SwipeActivity {
 
 
 	private void setTitle() {
-		ActionBar ab = getActionBar();
+		ActionBar ab = getSupportActionBar();
 		if (this.result == PhishResult.Phish_Detected.getValue()
 				|| this.result == PhishResult.NoPhish_Detected.getValue()) {
 			ab.setTitle(getString(R.string.correct));
