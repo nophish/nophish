@@ -175,5 +175,6 @@ public class URLTaskActivity extends PhishBaseActivity {
 			levelIntent.putExtra(Constants.EXTRA_LEVEL, this.level);
 			startActivityForResult(levelIntent, 1);
 		}
+
 	}
 }

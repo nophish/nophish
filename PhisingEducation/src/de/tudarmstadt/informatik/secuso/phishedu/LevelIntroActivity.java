@@ -26,9 +26,10 @@ public class LevelIntroActivity extends SwipeActivity {
 	SpannableStringBuilder strBuilder = new SpannableStringBuilder();
 	int wordStart, wordEnd;
 	protected static String[][] exampleUrlPartId = {
-	// level 3
-	// TODO: auslagern in strings.xml
-	{ "http://", "google.com.", "phishers-seite.de", "/search" }
+			// level 3
+			// TODO: auslagern in strings.xml
+			{ "http://", "google.com.", "phishers-seite.de", "/search" },
+			{ "http://", "192.168.160.02", "/secure-login" }
 
 	};
 
@@ -63,19 +64,12 @@ public class LevelIntroActivity extends SwipeActivity {
 			{ R.layout.level_09_splash, R.layout.level_09_intro_00,
 					R.layout.level_09_intro_01, R.layout.level_09_intro_02,
 					R.layout.level_09_intro_03 },
-					{
-						R.layout.level_10_splash,
-						R.layout.level_10_intro_00,
-						R.layout.level_10_intro_01,
-						R.layout.level_10_intro_02,
-						R.layout.level_10_intro_03,
-						R.layout.level_10_intro_04,
-						R.layout.level_10_intro_05,
-						R.layout.level_10_intro_06,
-						R.layout.level_10_intro_07,
-						R.layout.level_10_intro_08,
-						R.layout.level_10_intro_09,
-					}};
+			{ R.layout.level_10_splash, R.layout.level_10_intro_00,
+					R.layout.level_10_intro_01, R.layout.level_10_intro_02,
+					R.layout.level_10_intro_03, R.layout.level_10_intro_04,
+					R.layout.level_10_intro_05, R.layout.level_10_intro_06,
+					R.layout.level_10_intro_07, R.layout.level_10_intro_08,
+					R.layout.level_10_intro_09, } };
 
 	public int real_level = 0;
 	public int index_level = 0;
@@ -169,37 +163,70 @@ public class LevelIntroActivity extends SwipeActivity {
 
 		// we are in level 3, i.e. index = 0
 		if (exampleIndex == 0) {
-			for (int i = 0; i < url.length; i++) {
-
-				String part = url[i];
-				// 0 at the beginning
-				wordStart = strBuilder.length();
-				wordEnd = wordStart + part.length();
-				strBuilder.append(part);
-
-				if (i == 1) {
-					// make background light red
-					final BackgroundColorSpan bgc = new BackgroundColorSpan(
-							Color.rgb(255, 178, 170));
-					strBuilder.setSpan(bgc, wordStart, wordEnd, 0);
-				} else if (i == 2) {
-					// make background red
-					final BackgroundColorSpan bgc = new BackgroundColorSpan(
-							Color.rgb(255, 102, 102));
-					strBuilder.setSpan(bgc, wordStart, wordEnd, 0);
-				} else {
-					// make foregroundcolor grey
-					final ForegroundColorSpan fgc = new ForegroundColorSpan(
-							Color.rgb(204, 204, 204));
-					strBuilder.setSpan(fgc, wordStart, wordEnd, 0);
-
-				}
-			}
-			TextView tv1 = (TextView) view.findViewById(R.id.example_01);
-			if (tv1 != null) {
-				tv1.setText(strBuilder);
-			}
+			setLevel3Spans(url);
+		} 
+		//examples where only domain is highlighted
+		//there is only 1 example then
+		else if(url.length == 3) {
+			setOtherSpans(url);
+		}
+		TextView tv1 = (TextView) view.findViewById(R.id.example_01);
+		if (tv1 != null) {
+			tv1.setText(strBuilder);
 		}
 
+	}
+
+	private void setOtherSpans(String[] url) {
+		for (int i = 0; i < url.length; i++) {
+
+			String part = url[i];
+			// 0 at the beginning
+			wordStart = strBuilder.length();
+			wordEnd = wordStart + part.length();
+			strBuilder.append(part);
+
+			if (i == 1) {
+				// make background red
+				final BackgroundColorSpan bgc = new BackgroundColorSpan(
+						Color.rgb(255, 102, 102));
+				strBuilder.setSpan(bgc, wordStart, wordEnd, 0);
+			} else {
+				// make foregroundcolor grey
+				final ForegroundColorSpan fgc = new ForegroundColorSpan(
+						Color.rgb(204, 204, 204));
+				strBuilder.setSpan(fgc, wordStart, wordEnd, 0);
+
+			}
+		}
+	}
+
+	private void setLevel3Spans(String[] url) {
+		for (int i = 0; i < url.length; i++) {
+
+			String part = url[i];
+			// 0 at the beginning
+			wordStart = strBuilder.length();
+			wordEnd = wordStart + part.length();
+			strBuilder.append(part);
+
+			if (i == 1) {
+				// make background light red
+				final BackgroundColorSpan bgc = new BackgroundColorSpan(
+						Color.rgb(255, 178, 170));
+				strBuilder.setSpan(bgc, wordStart, wordEnd, 0);
+			} else if (i == 2) {
+				// make background red
+				final BackgroundColorSpan bgc = new BackgroundColorSpan(
+						Color.rgb(255, 102, 102));
+				strBuilder.setSpan(bgc, wordStart, wordEnd, 0);
+			} else {
+				// make foregroundcolor grey
+				final ForegroundColorSpan fgc = new ForegroundColorSpan(
+						Color.rgb(204, 204, 204));
+				strBuilder.setSpan(fgc, wordStart, wordEnd, 0);
+
+			}
+		}
 	}
 }

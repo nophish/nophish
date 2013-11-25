@@ -15,7 +15,7 @@ public class Constants {
 			R.string.level_title_04, R.string.level_title_05,
 			R.string.level_title_06, R.string.level_title_07,
 			R.string.level_title_08, R.string.level_title_09,
-			R.string.level_title_10};
+			R.string.level_title_10 };
 
 	protected static final int[] levelSubtitlesIds = {
 			R.string.title_anti_phishing, R.string.level_subtitle_01,
@@ -23,6 +23,6 @@ public class Constants {
 			R.string.level_subtitle_04, R.string.level_subtitle_05,
 			R.string.level_subtitle_06, R.string.level_subtitle_07,
 			R.string.level_subtitle_08, R.string.level_subtitle_09,
-			R.string.level_subtitle_10};
+			R.string.level_subtitle_10 };
 
 }
