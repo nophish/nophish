@@ -137,8 +137,8 @@
     <string name="level_07_splash_subtitle">Ähnliche Namen im Wer-Bereich</string>
     <string name="level_08_splash_subtitle">Ähnliche Zeichen im Wer-Bereich</string>
     <string name="level_09_splash_subtitle">Bekannte Namen im Gesprächsthema-Bereich</string>
-	<string name="level_10_splash_subtitle">Der Bereich der Sicherheitsstufe</string>
-    
+    <string name="level_10_splash_subtitle">Der Bereich der Sicherheitsstufe</string>
+
     <!-- text awareness activity -->
     <string name="level_00_intro_00_text_01"><b>Was ist Phishing?</b>\n\n\"Phishing\" ist eine Wortschöpfung, die eine Kombination der zwei englischen Begriffe \"phreaking\" (hacken) und \"fishing\" (angeln) darstellt. Der Begriff steht für den Versuch, verschiedene Daten von Internetbenutzern zu \"angeln\". Diese Daten können Passwörter, Kontodaten, Kreditkartendaten, TANs aber auch jegliche andere Art von Daten sein.\n\nJeder Internetbenutzer ist durch \"Phishing\" gefährdet. Hinter diesen Angriffen stecken Betrüger (auch \"Phishe\" oder \"Hacker\" genannt).Sie schicken dir Nachrichten, bspw. in Form von E-Mails, die für dich zunächst aussehen wie Nachrichten von Personen oder Institutionen, denen du vertraust. Es wird der Eindruck erweckt, als wäre die E-Mail z.B. von Amazon, von Facebook oder von deiner Bank verschickt worden.\n\nZiel der Betrüger ist es, an Daten von dir zu kommen, um damit beispielsweise dein Konto zu plündern, in deinem Namen einzukaufen oder deine Freunde zu kontaktieren.</string>
     <string name="level_00_intro_01_text_01"><b>Jeder kann phishen!</b>\n\nUm dir zu verdeutlichen, dass auch du gefährdet bist, wollen wir dir zeigen, wie einfach es ist, gefälschte E-Mails im Namen einer anderen Person oder Institution zu verschicken.</string>
@@ -491,5 +491,8 @@
     <string name="content_desc_sad_face">Trauriges Gesicht</string>
     <string name="content_desc_disappointed_face">Enttäuschtes Gesicht</string>
     <string name="content_desc_speech_balloon_amazon">Sprechblase mit Amazon-Logo</string>
-	<string name="content_desc_security_level_high">Sicherheitsmann</string>
+    <string name="content_desc_security_level_high">Sicherheitsmann</string>
+    <string name="content_desc_swipe_left">Nach links swipen</string>
+    <string name="content_desc_swipe_right">Nach rechts swipen</string>
+
 </resources>

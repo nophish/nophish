@@ -26,15 +26,22 @@
         android:text="@string/url_task_description"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
-    <TextView
-        android:id="@+id/url_task_url"
+    <HorizontalScrollView
+        android:id="@+id/url_horizintal_sv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/feedback_smiley"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/margin_small"
-        android:text="@string/url"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:gravity="center"
+        android:layout_marginTop="@dimen/margin_small" >
+
+        <TextView
+            android:id="@+id/url_task_url"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/padding"
+            android:text="sakjalkjdkjdslkjdsalkjaslkjsalkasjlkdasjlkdjaslkjdasljkds"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+    </HorizontalScrollView>
 
     <ImageView
         android:id="@+id/url_task_check_mark"
@@ -42,8 +49,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:onClick="clickAccept"
         android:contentDescription="@string/content_desc_tik"
+        android:onClick="clickAccept"
         android:src="@drawable/checkmark" />
 
     <ImageView
@@ -52,8 +59,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:onClick="clickDecline"
         android:contentDescription="@string/content_desc_cross"
+        android:onClick="clickDecline"
         android:src="@drawable/cross" />
 
     <ImageView
@@ -64,5 +71,23 @@
         android:layout_below="@+id/url_task_description"
         android:src="@drawable/small_smiley_smile"
         android:visibility="invisible" />
+
+    <ImageView
+        android:id="@+id/swipe_right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/swipe_left"
+        android:layout_toRightOf="@+id/swipe_left"
+        android:contentDescription="@string/content_desc_swipe_right"
+        android:src="@drawable/swipe_right" />
+
+    <ImageView
+        android:id="@+id/swipe_left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/url_horizintal_sv"
+        android:layout_toRightOf="@+id/url_task_check_mark"
+        android:contentDescription="@string/content_desc_swipe_left"
+        android:src="@drawable/swipe_left" />
 
 </RelativeLayout>
