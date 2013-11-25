@@ -108,6 +108,7 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/domain_01"
         android:layout_below="@+id/dot_02"
+        android:contentDescription="@string/content_desc_arrow_up_spiegel"
         android:src="@drawable/up" />
 
 </RelativeLayout>

@@ -34,6 +34,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
+        android:contentDescription="@string/content_desc_puzzle_units"
         android:src="@drawable/organizational_unit" />
 
 </RelativeLayout>

@@ -14,8 +14,57 @@ public class PhishBaseActivity extends ActionBarActivity {
 	protected void updateScore(){
     	updateScore(findViewById(R.id.score_relative));
     }
+		
+	protected void updateScore(View view){
+		if(view == null){
+			return;
+		}
+		RelativeLayout scores = (RelativeLayout) view.findViewById(R.id.score_relative);
+		if(scores != null){
+			TextView urlsText = (TextView) scores.findViewById(R.id.urls);
+			TextView urlsGoalText = (TextView) scores.findViewById(R.id.urls_goal);
+			TextView phishesText = (TextView) scores.findViewById(R.id.phishes);
+			TextView phishesGoalText = (TextView) scores.findViewById(R.id.phishes_goal);
+
+			urlsText.setText(Integer.toString(BackendController.getInstance()
+					.doneURLs()));
+			urlsGoalText.setText(Integer.toString(BackendController.getInstance()
+					.levelURLs()));
+			phishesText.setText(Integer.toString(BackendController.getInstance()
+					.foundPhishes()));
+			phishesGoalText.setText(Integer.toString(BackendController
+					.getInstance().levelPhishes()));
+		}
+	}
 	
-	protected void levelCanceldWarning(final boolean restart) {
+	
+	protected void levelRestartWarning() {
+		levelCanceldWarning(true);
+	}
+
+	protected void levelCanceldWarning() {
+		levelCanceldWarning(false);
+	}
+
+	private class CanceldWarningClickListener implements
+	DialogInterface.OnClickListener {
+		private boolean restart;
+
+		public CanceldWarningClickListener(boolean restart) {
+			this.restart = restart;
+		}
+
+		@Override
+		public void onClick(DialogInterface dialog, int which) {
+			if (this.restart) {
+				BackendController.getInstance().restartLevel();
+			} else {
+				NavUtils.navigateUpFromSameTask(PhishBaseActivity.this);
+			}
+		}
+	}
+	
+	private void levelCanceldWarning(final boolean restart) {
 		AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
 
 		// Setting Dialog Title
@@ -37,51 +86,5 @@ public class PhishBaseActivity extends ActionBarActivity {
 
 		// Showing Alert Message
 		alertDialog.show();
-	}
-	
-	private class CanceldWarningClickListener implements
-	DialogInterface.OnClickListener {
-		private boolean restart;
-
-		public CanceldWarningClickListener(boolean restart) {
-			this.restart = restart;
-		}
-
-		@Override
-		public void onClick(DialogInterface dialog, int which) {
-			if (this.restart) {
-				BackendController.getInstance().restartLevel();
-			} else {
-				NavUtils.navigateUpFromSameTask(PhishBaseActivity.this);
-			}
-		}
-	}
-	
-	protected void levelCanceldWarning() {
-		levelCanceldWarning(false);
-	}
-	
-	protected void updateScore(View view){
-		if(view == null){
-			return;
-		}
-		RelativeLayout scores = (RelativeLayout) view.findViewById(R.id.score_relative);
-		if(scores != null){
-			TextView urlsText = (TextView) scores.findViewById(R.id.urls);
-			TextView urlsGoalText = (TextView) scores.findViewById(R.id.urls_goal);
-			TextView phishesText = (TextView) scores.findViewById(R.id.phishes);
-			TextView phishesGoalText = (TextView) scores.findViewById(R.id.phishes_goal);
-			TextView scoreText = (TextView) scores.findViewById(R.id.score);
-
-			urlsText.setText(Integer.toString(BackendController.getInstance()
-					.doneURLs()));
-			urlsGoalText.setText(Integer.toString(BackendController.getInstance()
-					.levelURLs()));
-			phishesText.setText(Integer.toString(BackendController.getInstance()
-					.foundPhishes()));
-			phishesGoalText.setText(Integer.toString(BackendController
-					.getInstance().levelPhishes()));
-			scoreText.setText(Integer.toString(BackendController.getInstance().getPoints()));
-		}
 	}
 }

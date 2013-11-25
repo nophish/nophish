@@ -1,11 +1,12 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/level_07_intro_06_sv"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent"
+    android:fadeScrollbars="false" >
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:paddingBottom="@dimen/activity_vertical_margin"
         android:paddingLeft="@dimen/activity_horizontal_margin"
         android:paddingRight="@dimen/activity_horizontal_margin"
@@ -107,7 +108,7 @@
             android:background="@color/red"
             android:text="@string/level_07_intro_04_fracebook"
             android:textAppearance="?android:attr/textAppearanceMedium" />
-        
+
         <TextView
             android:id="@+id/level_07_intro_06_path_02"
             android:layout_width="wrap_content"
@@ -117,8 +118,7 @@
             android:layout_toRightOf="@+id/level_07_intro_06_fracebook"
             android:text="@string/level_07_intro_04_path"
             android:textAppearance="?android:attr/textAppearanceMedium" />
-        
-        
+
         <TextView
             android:id="@+id/level_07_intro_06_text_04"
             android:layout_width="wrap_content"
@@ -127,7 +127,7 @@
             android:layout_marginTop="@dimen/margin_standard"
             android:text="@string/level_07_intro_06_text_04"
             android:textAppearance="?android:attr/textAppearanceMedium" />
-        
+
         <TextView
             android:id="@+id/level_07_intro_06_http_03"
             android:layout_width="wrap_content"
@@ -136,7 +136,7 @@
             android:layout_marginTop="@dimen/margin_xxsmall"
             android:text="@string/http"
             android:textAppearance="?android:attr/textAppearanceMedium" />
-        
+
         <TextView
             android:id="@+id/level_07_intro_06_www_03"
             android:layout_width="wrap_content"
@@ -146,7 +146,7 @@
             android:layout_toRightOf="@+id/level_07_intro_06_http_03"
             android:text="@string/www"
             android:textAppearance="?android:attr/textAppearanceMedium" />
-        
+
         <TextView
             android:id="@+id/level_07_intro_06_mircosoft"
             android:layout_width="wrap_content"
@@ -157,7 +157,7 @@
             android:background="@color/red"
             android:text="@string/level_07_intro_05_mircosoft"
             android:textAppearance="?android:attr/textAppearanceMedium" />
-        
+
         <TextView
             android:id="@+id/level_07_intro_06_path_03"
             android:layout_width="wrap_content"
@@ -167,8 +167,7 @@
             android:layout_toRightOf="@+id/level_07_intro_06_mircosoft"
             android:text="@string/level_07_intro_05_path_01"
             android:textAppearance="?android:attr/textAppearanceMedium" />
-        
-        
+
         <TextView
             android:id="@+id/level_07_intro_06_path_04"
             android:layout_width="wrap_content"

@@ -4,10 +4,13 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
+import android.os.Handler;
+import android.support.v4.app.NavUtils;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.HorizontalScrollView;
 import android.widget.TextView;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishResult;
@@ -86,7 +89,7 @@ public class URLTaskActivity extends PhishBaseActivity {
 		ActionBar ab = getSupportActionBar();
 
 		ab.setTitle(Constants.levelTitlesIds[BackendController.getInstance()
-		                                     .getLevel()]);
+				.getLevel()]);
 		ab.setSubtitle(getString(R.string.exercise));
 		ab.setIcon(getResources().getDrawable(R.drawable.desktop));
 	}
@@ -136,10 +139,6 @@ public class URLTaskActivity extends PhishBaseActivity {
 		nextURL();
 	}
 
-	private void levelRestartWarning() {
-		levelCanceldWarning(true);
-	}
-
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
@@ -174,6 +173,29 @@ public class URLTaskActivity extends PhishBaseActivity {
 			Intent levelIntent = new Intent(this, ProofActivity.class);
 			levelIntent.putExtra(Constants.EXTRA_LEVEL, this.level);
 			startActivityForResult(levelIntent, 1);
+		} else {
+			sendScrollToRight();
 		}
+	}
+
+	private void sendScrollToRight() {
+		final Handler handler = new Handler();
+		final HorizontalScrollView hsv = (HorizontalScrollView) findViewById(R.id.url_horizintal_sv);
+
+		new Thread(new Runnable() {
+			@Override
+			public void run() {
+				try {
+					Thread.sleep(5);
+				} catch (InterruptedException e) {
+				}
+				handler.post(new Runnable() {
+					@Override
+					public void run() {
+						hsv.fullScroll(View.FOCUS_RIGHT);
+					}
+				});
+			}
+		}).start();
 	}
 }

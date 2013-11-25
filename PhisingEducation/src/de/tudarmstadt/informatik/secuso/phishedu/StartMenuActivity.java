@@ -39,11 +39,11 @@ public class StartMenuActivity extends PhishBaseGameActivity implements
 		setContentView(R.layout.start_menu);
 		this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
-		if(BackendController.getInstance().getMaxUnlockedLevel()>0){
+		if (BackendController.getInstance().getMaxUnlockedLevel() > 0) {
 			TextView startbutton = (TextView) findViewById(R.id.menu_button_play);
 			startbutton.setText(R.string.button_play_on);
 		}
-		
+
 		BackendController.getInstance().onUrlReceive(getIntent().getData());
 	}
 

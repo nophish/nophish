@@ -34,6 +34,7 @@
         android:layout_height="@dimen/security_icons"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
+        android:contentDescription="@string/content_desc_one"
         android:src="@drawable/number_one" />
 
     <ImageView
@@ -43,6 +44,7 @@
         android:layout_alignBaseline="@+id/imageView1"
         android:layout_alignBottom="@+id/imageView1"
         android:layout_toRightOf="@+id/imageView1"
+        android:contentDescription="@string/content_desc_seven"
         android:src="@drawable/number_seven" />
 
 </RelativeLayout>

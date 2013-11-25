@@ -1,16 +1,16 @@
 package de.tudarmstadt.informatik.secuso.phishedu;
 
-import android.app.ActionBar;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.v4.app.NavUtils;
 import android.text.SpannableStringBuilder;
 import android.text.TextPaint;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
@@ -38,7 +38,10 @@ public class ProofActivity extends PhishBaseActivity {
 			TextView text = (TextView) findViewById(R.id.phish_proof_text);
 			text.setText(R.string.level_02_task);
 
-			ImageView image = (ImageView) findViewById(R.id.phish_proof_icon);
+			TextView textToHide = (TextView) findViewById(R.id.phish_proof_text_02);
+			textToHide.setVisibility(View.INVISIBLE);
+			
+			ImageView image = (ImageView) findViewById(R.id.feedback_smiley);
 			image.setVisibility(View.INVISIBLE);
 		}
 
@@ -57,9 +60,10 @@ public class ProofActivity extends PhishBaseActivity {
 			builder.setSpan(span, wordstart, wordend, 0);
 		}
 		TextView url = (TextView) findViewById(R.id.url);
-		url.setMovementMethod(LinkMovementMethod.getInstance());
 		url.setText(builder);
+		url.setMovementMethod(LinkMovementMethod.getInstance());
 		url.setHighlightColor(Color.LTGRAY);
+		url.setTextSize(25);
 	}
 
 	private void setTitles() {
@@ -87,6 +91,9 @@ public class ProofActivity extends PhishBaseActivity {
 
 		public void onClick(View widget) {
 			this.activity.selectedPart = this.part;
+			String[] urlparts = BackendController.getInstance().getUrl();
+			Toast.makeText(getApplicationContext(), "Ausgewählt: "
+					+ urlparts[part], Toast.LENGTH_LONG).show();;
 		}
 
 		@Override
@@ -132,12 +139,22 @@ public class ProofActivity extends PhishBaseActivity {
 		switch (item.getItemId()) {
 		// Respond to the action bar's Up/Home button
 		case android.R.id.home:
-			NavUtils.navigateUpFromSameTask(this);
+			levelCanceldWarning();
+			return true;
+		case R.id.restart_level:
+			levelRestartWarning();
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
 	}
 
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu items for use in the action bar
+		MenuInflater inflater = getMenuInflater();
+		inflater.inflate(R.menu.urltask_menu, menu);
+		return super.onCreateOptionsMenu(menu);
+	}
 	/**
 	 * Disable back button so he can not guess again.
 	 */
