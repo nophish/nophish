@@ -4,10 +4,11 @@ import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController;
 import android.os.Bundle;
 import android.app.ActionBar;
 import android.app.Activity;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.View;
 
-public class FindAddressBarActivity extends Activity {
+public class FindAddressBarActivity extends PhishBaseActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -21,8 +22,7 @@ public class FindAddressBarActivity extends Activity {
 
 		ab.setTitle(Constants.levelTitlesIds[BackendController.getInstance()
 				.getLevel()]);
-		ab.setSubtitle(getString(R.string.exercise));
-		ab.setIcon(getResources().getDrawable(R.drawable.desktop));		
+		ab.setSubtitle(getString(R.string.exercise));		
 	}
 
 	@Override

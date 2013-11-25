@@ -8,13 +8,14 @@ import android.content.pm.ActivityInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
+import android.support.v7.app.ActionBarActivity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-public class MoreInfoActivity extends Activity {
+public class MoreInfoActivity extends ActionBarActivity {
 
 	public interface MoreInfo {
 		void pressed();

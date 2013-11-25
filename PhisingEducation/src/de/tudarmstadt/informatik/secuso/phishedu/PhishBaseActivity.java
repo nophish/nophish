@@ -1,15 +1,13 @@
 package de.tudarmstadt.informatik.secuso.phishedu;
 
-import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController;
-import android.app.Activity;
-import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.support.v7.app.ActionBarActivity;
 import android.view.View;
-import android.view.View.OnLayoutChangeListener;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController;
 
-public class PhishBaseActivity extends FragmentActivity {
+public class PhishBaseActivity extends ActionBarActivity {
 	protected void updateScore(){
     	updateScore(findViewById(R.id.score_relative));
     }

@@ -5,8 +5,9 @@ import android.app.Activity;
 import android.content.pm.ActivityInfo;
 import android.view.MenuItem;
 import android.support.v4.app.NavUtils;
+import android.support.v7.app.ActionBarActivity;
 
-public class AboutActivity extends Activity {
+public class AboutActivity extends PhishBaseActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
