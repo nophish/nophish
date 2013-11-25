@@ -29,10 +29,11 @@ public class LevelIntroActivity extends SwipeActivity {
 			// level 3
 			// TODO: auslagern in strings.xml
 			{ "http://", "google.com.", "phishers-seite.de", "/search" },
-			{ "http://", "192.168.160.02", "/secure-login" },
-			{ "https://secure-login.mail.google.com.", "hsezis.de",
-					"/update-account", "http://secure-login.mail.google.com.",
-					"badcat.com", "/login" }
+			{ "http://", "", "192.168.160.02", "/secure-login" },
+			{ "https://", "secure-login.mail.google.com.", "hsezis.de",
+					"/update-account", "http://",
+					"secure-login.mail.google.com.", "badcat.com", "/login" },
+			{ "https://", "microsoft.com.", "security-update.de", "/update" }
 
 	};
 
@@ -163,23 +164,18 @@ public class LevelIntroActivity extends SwipeActivity {
 
 		int exampleIndex = BackendController.getInstance().getLevel() - 3;
 		String[] url = exampleUrlPartId[exampleIndex];
-
-		// we are in level 3, i.e. index = 0
-		if (exampleIndex == 0) {
-			setLevel3Spans(url, view);
-		} else {
-			setOtherSpans(url, view);
-		}
+		setSpans(url, view);
 
 	}
 
-	private void setOtherSpans(String[] url, View view) {
+	private void setSpans(String[] url, View view) {
+		int exampleIndex = BackendController.getInstance().getLevel() - 3;
 
 		// at start clear string builder
 		strBuilder.clear();
 		for (int i = 0; i < url.length; i++) {
 
-			int spanIndex = (i%3);
+			int spanIndex = (i % 4);
 			if (spanIndex == 0) {
 				strBuilder.clear();
 				strBuilder.clearSpans();
@@ -191,27 +187,37 @@ public class LevelIntroActivity extends SwipeActivity {
 			wordEnd = wordStart + part.length();
 			strBuilder.append(part);
 
-			if (spanIndex == 1) {
+			if (spanIndex == 1 && exampleIndex == 0) {
+				// we are in level 3, subdomain needs to be marked
+				// make background light red
+				final BackgroundColorSpan bgc = new BackgroundColorSpan(
+						Color.rgb(255, 178, 170));
+				strBuilder.setSpan(bgc, wordStart, wordEnd, 0);
+			} else if (spanIndex == 2) {
 				// make background red
 				final BackgroundColorSpan bgc = new BackgroundColorSpan(
 						Color.rgb(255, 102, 102));
 				strBuilder.setSpan(bgc, wordStart, wordEnd, 0);
-			} else {
+			} else if (spanIndex == 0 || spanIndex == 3) {
 				// make foregroundcolor grey
 				final ForegroundColorSpan fgc = new ForegroundColorSpan(
 						Color.rgb(204, 204, 204));
 				strBuilder.setSpan(fgc, wordStart, wordEnd, 0);
 
+			} else if (spanIndex == 1) {
+				final ForegroundColorSpan fgc = new ForegroundColorSpan(
+						Color.BLACK);
+				strBuilder.setSpan(fgc, wordStart, wordEnd, 0);
 			}
 
 			// example 1 needs to be set
-			if (i == 2) {
+			if (i == 3) {
 				TextView tv1 = (TextView) view.findViewById(R.id.example_01);
 				if (tv1 != null) {
 					tv1.setText(strBuilder);
 				}
 			}
-			if (i == 5) {
+			if (i == 7) {
 				// example 2 needs to be set
 				TextView tv2 = (TextView) view.findViewById(R.id.example_02);
 				if (tv2 != null) {
