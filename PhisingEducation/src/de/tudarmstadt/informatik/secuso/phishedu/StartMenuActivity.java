@@ -281,20 +281,6 @@ public class StartMenuActivity extends PhishBaseGameActivity implements
 	}
 
 	@Override
-	public void levelFailed(int level) {
-		AlertDialog.Builder builder = new AlertDialog.Builder(this);
-		builder.setTitle(R.string.level_failed_title);
-		builder.setMessage(R.string.level_failed_text);
-		builder.setNeutralButton(R.string.level_failed_button, new DialogInterface.OnClickListener() {
-			@Override
-			public void onClick(DialogInterface dialog, int which) {
-				BackendController.getInstance().restartLevel();
-			}
-		});
-		builder.show();
-	}
-
-	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 		// Respond to the action bar's Up/Home button
@@ -306,8 +292,9 @@ public class StartMenuActivity extends PhishBaseGameActivity implements
 	}
 
 	@Override
-	public void levelDone(int level) {
-		
-	}
-	
+	public void levelDone(int level) {}
+
+	@Override
+	public void levelFailed(int level) {}
+
 }

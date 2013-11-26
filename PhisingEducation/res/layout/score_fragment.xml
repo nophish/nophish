@@ -17,7 +17,7 @@
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/points_delim2"
+        android:id="@+id/points_delim"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/urls"
@@ -30,9 +30,9 @@
         android:id="@+id/urls_goal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/points_delim2"
-        android:layout_alignBottom="@+id/points_delim2"
-        android:layout_toRightOf="@+id/points_delim2"
+        android:layout_alignBaseline="@+id/points_delim"
+        android:layout_alignBottom="@+id/points_delim"
+        android:layout_toRightOf="@+id/points_delim"
         android:text="@string/number"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
@@ -75,7 +75,7 @@
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
-        android:id="@+id/delim2"
+        android:id="@+id/phishes_delim"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@+id/phishes"
@@ -86,9 +86,9 @@
         android:id="@+id/phishes_goal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/delim2"
-        android:layout_alignBottom="@+id/delim2"
-        android:layout_toRightOf="@+id/delim2"
+        android:layout_alignBaseline="@+id/phishes_delim"
+        android:layout_alignBottom="@+id/phishes_delim"
+        android:layout_toRightOf="@+id/phishes_delim"
         android:text="@string/number"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 

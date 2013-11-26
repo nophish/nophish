@@ -15,8 +15,7 @@
         android:allowBackup="true"
         android:icon="@drawable/appicon"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme"
-        android:name=".PhishEduApp" >
+        android:theme="@style/AppTheme" >
         <meta-data
             android:name="com.google.android.gms.games.APP_ID"
             android:value="@string/app_id" />

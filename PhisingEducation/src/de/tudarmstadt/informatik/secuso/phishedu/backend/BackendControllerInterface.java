@@ -150,4 +150,11 @@ public interface BackendControllerInterface {
 	 * The frontend should call this method in the {@link FrontendControllerInterface#levelDone(int)} function to finish the level.
 	 */
 	public void finishLevel();
+	
+	public static int LEVEL_RUNNING = 0;
+	public static int LEVEL_DONE = 1;
+	public static int LEVEL_FAILED = 2;
+	public static int LEVEL_FINISHED = 3;
+	
+	public int levelState();
 }

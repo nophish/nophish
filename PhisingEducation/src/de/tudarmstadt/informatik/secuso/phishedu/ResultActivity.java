@@ -20,6 +20,7 @@ import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishResult;
 
 public class ResultActivity extends SwipeActivity {
 	public static int RESULT_GUESSED = PhishResult.getMax() + 1;
+	public static ResultActivity instance = null;
 
 	protected static int[] reminderIDs = { R.string.level_03_reminder,
 			R.string.level_04_reminder, R.string.level_05_reminder,
@@ -51,43 +52,64 @@ public class ResultActivity extends SwipeActivity {
 		resultLayoutIDs[PhishResult.Phish_NotDetected.getValue()] = R.layout.result_phish_notdetected;
 		resultLayoutIDs[PhishResult.NoPhish_NotDetected.getValue()] = R.layout.result_nophish_notdetected;
 		resultLayoutIDs[RESULT_GUESSED] = R.layout.result_you_guessed;
+		instance=this;
 	}
 
 	protected void onStartClick() {
 		setResult(RESULT_OK);
-		if(BackendController.getInstance().foundPhishes()>=BackendController.getInstance().nextLevelPhishes()){
-		  levelDone();
-		}else{
-		  finish();
+		int state = BackendController.getInstance().levelState();
+		switch (state) {
+		case BackendController.LEVEL_DONE:
+			levelDone(BackendController.getInstance().getLevel());
+			break;
+		case BackendController.LEVEL_FAILED:
+			levelFailed(BackendController.getInstance().getLevel());
+			break;
+		case BackendController.LEVEL_FINISHED:
+			BackendController.getInstance().finishLevel();
+			break;
+		default:
+			finish();
+			break;
 		}
 	}
 	
 	public static boolean user_finish_asked=false;
-	public static boolean level_done=false;
-	
 	public static void resetState(){
 		user_finish_asked=false;
-		level_done=false;
 	}
 	
-	private void levelDone() {
+	public void levelFailed(int level) {
+		AlertDialog.Builder builder = new AlertDialog.Builder(instance);
+		builder.setTitle(R.string.level_failed_title);
+		builder.setMessage(R.string.level_failed_text);
+		builder.setNeutralButton(R.string.level_failed_button, new DialogInterface.OnClickListener() {
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				BackendController.getInstance().restartLevel();
+			}
+		});
+		builder.show();
+	}
+	
+	public void levelDone(int level) {
 		if(user_finish_asked){
-			finish();
+			instance.finish();
 			return;
 		}
-		AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
+		AlertDialog.Builder alertDialog = new AlertDialog.Builder(instance);
 
 		// Setting Dialog Title
-		alertDialog.setTitle(getString(R.string.level_continue_title));
+		alertDialog.setTitle(instance.getString(R.string.level_continue_title));
 
 		// Setting Dialog Message
-		alertDialog.setMessage(getString(R.string.level_contiue_text));
+		alertDialog.setMessage(instance.getString(R.string.level_contiue_text));
 
 		alertDialog.setPositiveButton(R.string.level_continue_positive_button,new DialogInterface.OnClickListener() {
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
 				user_finish_asked=true;
-				finish();
+				instance.finish();
 			}
 		});
 

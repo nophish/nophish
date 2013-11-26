@@ -235,20 +235,21 @@ public class BackendController implements BackendControllerInterface, GameStateL
 			//Level 0 and 1 do not have repeats
 			throw new IllegalStateException("This function is not defined for level 0 and 1 as these do not need URLs");
 		}
-		int remaining_urls = this.levelURLs()-this.progress.getDoneUrls();
+		int remaining_urls = this.levelURLs()-doneURLs();
 		int remaining_phish = this.levelPhishes()-this.progress.getPresentedPhish();
-		int remaining_phish_to_level = this.nextLevelPhishes() - this.progress.getDetectedPhish();
 		int remaining_repeats = this.levelRepeats() - this.progress.getPresentedRepeats();
 		//We might have failed the level
 		//Either by going out of URLs or by going out of options to detect phish
-		if(remaining_urls == 0){
-			if(remaining_phish_to_level <= 0){
-				this.frontend.levelFinished(getLevel());
-			}else{
-				this.frontend.levelFailed(this.getLevel());
-			}
-		}else if(foundPhishes()>=nextLevelPhishes()){
+		switch (levelState()) {
+		case LEVEL_DONE:
 			this.frontend.levelDone(getLevel());
+			break;
+		case LEVEL_FAILED:
+			this.frontend.levelFailed(getLevel());
+			break;
+		case LEVEL_FINISHED:
+			this.frontend.levelFinished(getLevel());
+			break;
 		}
 
 		//we have to decide whether we want to present a phish or not
@@ -468,9 +469,29 @@ public class BackendController implements BackendControllerInterface, GameStateL
 
 	@Override
 	public void finishLevel() {
-		if(this.foundPhishes()<=this.levelPhishes()){
+		if(this.levelState() != LEVEL_DONE && this.levelState() != LEVEL_FINISHED){
 			throw new IllegalStateException("only call finishLevel() after getting levelDone()");
 		}
 		levelFinished(getLevel());
+	}
+
+	@Override
+	public int levelState() {
+		int remaining_urls = levelURLs()-doneURLs();
+		int remaining_phish_to_level = nextLevelPhishes()-foundPhishes();
+		int result = 0;
+		if(remaining_urls <= 0){
+			if(remaining_phish_to_level <= 0){
+				result = LEVEL_FINISHED;
+			}else{
+				result = LEVEL_FAILED;
+			}
+		}else if(foundPhishes()>=nextLevelPhishes()){
+			result = LEVEL_DONE;
+		}else{
+			result = LEVEL_RUNNING;
+		}
+		
+		return result;
 	}
 }
