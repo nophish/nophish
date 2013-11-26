@@ -432,6 +432,9 @@ public class BackendController implements BackendControllerInterface, GameStateL
 	@Override
 	public int levelURLs() {
 		checkinited();
+		if(getLevel()==2){
+			return 5;
+		}
 		return 10+(2*this.getLevel());
 	}
 
