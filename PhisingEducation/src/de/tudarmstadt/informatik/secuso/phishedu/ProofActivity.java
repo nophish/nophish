@@ -92,13 +92,15 @@ public class ProofActivity extends PhishBaseActivity {
 		public void onClick(View widget) {
 			this.activity.selectedPart = this.part;
 			String[] urlparts = BackendController.getInstance().getUrl();
-			Toast.makeText(getApplicationContext(), "Ausgewählt: "
-					+ urlparts[part], Toast.LENGTH_LONG).show();;
+			widget.invalidate();
 		}
 
 		@Override
 		public void updateDrawState(TextPaint ds) {
 			super.updateDrawState(ds);
+			if(this.activity.selectedPart == this.part){
+				ds.bgColor = Color.LTGRAY;
+			}
 			ds.setColor(Color.BLACK);
 			ds.setUnderlineText(false);
 		}
