@@ -29,10 +29,13 @@ public class Level2Attack extends AbstractAttack {
 		ArrayList<String> adder = new ArrayList<String>(Arrays.asList(parts));
 		String hostname=adder.remove(3);
 		ArrayList<String> hostparts = new ArrayList<String>(Arrays.asList(hostname.split("\\.")));
-		hostparts.set(hostparts.size()-2, hostparts.get(hostparts.size()-2)+hostparts.get(hostparts.size()-1));
+		hostparts.set(hostparts.size()-2, hostparts.get(hostparts.size()-2)+"."+hostparts.get(hostparts.size()-1));
 		hostparts.remove(hostparts.size()-1);
 		this.correctPart=2+hostparts.size();
-		adder.addAll(3, hostparts);
+		for(int i=0; i<hostparts.size(); i++){
+			String delim = (i<hostparts.size()-1) ? "." : "";
+			adder.add(3+i,hostparts.get(i)+delim);
+		}
 		return adder.toArray(new String[0]);
 	}
 	

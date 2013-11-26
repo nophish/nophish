@@ -265,6 +265,11 @@ public class BackendController implements BackendControllerInterface, GameStateL
 			present_phish=true;
 		}
 		
+		//In Level 2 we alway present the phish because The test is implemented as Attack
+		if(this.getLevel() == 2){
+			present_phish=true;
+		}
+		
 		//First we choose a random start URL
 		PhishURLInterface base_url=getPhishURL(PhishAttackType.NoPhish);
 		//then we decorate the URL with a random generator
