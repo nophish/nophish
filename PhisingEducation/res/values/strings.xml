@@ -5,6 +5,7 @@
     <string name="action_restart">Restart</string>
     <string name="start_button">Please click me!</string>
     <string name="hello_result">You came here by clicking a phishedu:// Link!</string>
+    <string name="not_connected">Du bist nicht mit Google+ Verbunden</string>
 
     <!-- titles -->
     <string name="title_activity_display_you_dont_believe_us">DisplayYouDontBelieveUsActivity</string>
@@ -89,7 +90,8 @@
     <string name="button_about">Über uns</string>
     <string name="button_show_online_achievement">Deine Leistung (online)</string>
     <string name="button_show_leaderboard_rate">Leaderboard Rate (online)</string>
-    <string name="button_show_leaderboard_total">Leaderboard Total (online)</string>
+    <string name="button_show_leaderboard_total">Leaderboard Found Phishes (online)</string>
+    <string name="button_show_leaderboard_total_points">Highscore</string>
     <string name="button_next">Weiter</string>
     <string name="info_web_addresses">Mehr zu Web-Adressen</string>
     <string name="info_phishing">Mehr zu Phishing</string>

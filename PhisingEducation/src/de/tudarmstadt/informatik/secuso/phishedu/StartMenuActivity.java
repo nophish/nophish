@@ -65,23 +65,19 @@ public class StartMenuActivity extends PhishBaseGameActivity implements
 			findViewById(R.id.sign_in_button).setVisibility(View.GONE);
 			findViewById(R.id.sign_out_button).setVisibility(View.VISIBLE);
 
-			findViewById(R.id.button_show_leaderboard_rate).setVisibility(
-					View.VISIBLE);
-			findViewById(R.id.button_show_leaderboard_total).setVisibility(
-					View.VISIBLE);
-			findViewById(R.id.button_show_online_achievement).setVisibility(
-					View.VISIBLE);
+			//findViewById(R.id.button_show_leaderboard_rate).setVisibility(View.VISIBLE);
+			//findViewById(R.id.button_show_leaderboard_total).setVisibility(View.VISIBLE);
+			findViewById(R.id.button_show_leaderboard_total_points).setVisibility(View.VISIBLE);
+			findViewById(R.id.button_show_online_achievement).setVisibility(View.VISIBLE);
 		} else {
 			// show sign-in button, hide the sign-out button
 			findViewById(R.id.sign_in_button).setVisibility(View.VISIBLE);
 			findViewById(R.id.sign_out_button).setVisibility(View.GONE);
 
-			findViewById(R.id.button_show_leaderboard_rate).setVisibility(
-					View.GONE);
-			findViewById(R.id.button_show_leaderboard_total).setVisibility(
-					View.GONE);
-			findViewById(R.id.button_show_online_achievement).setVisibility(
-					View.GONE);
+			//findViewById(R.id.button_show_leaderboard_rate).setVisibility(View.GONE);
+			//findViewById(R.id.button_show_leaderboard_total).setVisibility(View.GONE);
+			findViewById(R.id.button_show_leaderboard_total_points).setVisibility(View.GONE);
+			findViewById(R.id.button_show_online_achievement).setVisibility(View.GONE);
 		}
 	}
 
@@ -123,10 +119,16 @@ public class StartMenuActivity extends PhishBaseGameActivity implements
 		Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT)
 				.show();
 	}
+	
+	@Override
+	public void displayToast(int message) {
+		Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT)
+				.show();
+	}
 
 	@Override
 	public void initDone() {
-		displayToast("we are finished with initialization!");
+		//displayToast("we are finished with initialization!");
 	}
 
 	@Override
@@ -164,12 +166,10 @@ public class StartMenuActivity extends PhishBaseGameActivity implements
 		findViewById(R.id.sign_in_button).setVisibility(View.VISIBLE);
 		findViewById(R.id.sign_out_button).setVisibility(View.GONE);
 
-		findViewById(R.id.button_show_leaderboard_rate)
-				.setVisibility(View.GONE);
-		findViewById(R.id.button_show_leaderboard_total).setVisibility(
-				View.GONE);
-		findViewById(R.id.button_show_online_achievement).setVisibility(
-				View.GONE);
+//		findViewById(R.id.button_show_leaderboard_rate).setVisibility(View.GONE);
+//		findViewById(R.id.button_show_leaderboard_total).setVisibility(View.GONE);
+		findViewById(R.id.button_show_leaderboard_total_points).setVisibility(View.GONE);
+		findViewById(R.id.button_show_online_achievement).setVisibility(View.GONE);
 	}
 
 	public void onSignInSucceeded() {
@@ -180,12 +180,10 @@ public class StartMenuActivity extends PhishBaseGameActivity implements
 		findViewById(R.id.sign_in_button).setVisibility(View.GONE);
 		findViewById(R.id.sign_out_button).setVisibility(View.VISIBLE);
 
-		findViewById(R.id.button_show_leaderboard_rate).setVisibility(
-				View.VISIBLE);
-		findViewById(R.id.button_show_leaderboard_total).setVisibility(
-				View.VISIBLE);
-		findViewById(R.id.button_show_online_achievement).setVisibility(
-				View.VISIBLE);
+		//findViewById(R.id.button_show_leaderboard_rate).setVisibility(View.VISIBLE);
+		//findViewById(R.id.button_show_leaderboard_total).setVisibility(View.VISIBLE);
+		findViewById(R.id.button_show_leaderboard_total_points).setVisibility(View.VISIBLE);
+		findViewById(R.id.button_show_online_achievement).setVisibility(View.VISIBLE);
 
 		// (your code here: update UI, enable functionality that depends on sign
 		// in, etc)
@@ -208,12 +206,10 @@ public class StartMenuActivity extends PhishBaseGameActivity implements
 			findViewById(R.id.sign_in_button).setVisibility(View.VISIBLE);
 			findViewById(R.id.sign_out_button).setVisibility(View.GONE);
 
-			findViewById(R.id.button_show_leaderboard_rate).setVisibility(
-					View.GONE);
-			findViewById(R.id.button_show_leaderboard_total).setVisibility(
-					View.GONE);
-			findViewById(R.id.button_show_online_achievement).setVisibility(
-					View.GONE);
+			//findViewById(R.id.button_show_leaderboard_rate).setVisibility(View.GONE);
+			//findViewById(R.id.button_show_leaderboard_total).setVisibility(View.GONE);
+			findViewById(R.id.button_show_leaderboard_total_points).setVisibility(View.GONE);
+			findViewById(R.id.button_show_online_achievement).setVisibility(View.GONE);
 		}
 	}
 
@@ -224,7 +220,7 @@ public class StartMenuActivity extends PhishBaseGameActivity implements
 							getResources().getString(
 									R.string.leaderboard_detection_rate)), 1);
 		} else {
-			displayToast("not connected");
+			displayToast(R.string.not_connected);
 		}
 	}
 
@@ -238,7 +234,22 @@ public class StartMenuActivity extends PhishBaseGameActivity implements
 													R.string.leaderboard_detected_phishing_urls)),
 					1);
 		} else {
-			displayToast("not connected");
+			displayToast(R.string.not_connected);
+		}
+
+	}
+	
+	public void showLeaderboardTotalPoints(View view) {
+		if (this.getGamesClient().isConnected()) {
+			startActivityForResult(
+					getGamesClient()
+							.getLeaderboardIntent(
+									getResources()
+											.getString(
+													R.string.leaderboard_total_points)),
+					1);
+		} else {
+			displayToast(R.string.not_connected);
 		}
 
 	}
@@ -247,7 +258,7 @@ public class StartMenuActivity extends PhishBaseGameActivity implements
 		if (this.getGamesClient().isConnected()) {
 			startActivityForResult(getGamesClient().getAchievementsIntent(), 0);
 		} else {
-			displayToast("not connected");
+			displayToast(R.string.not_connected);
 		}
 	}
 

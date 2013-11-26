@@ -47,6 +47,12 @@ public interface FrontendControllerInterface {
 	void displayToast(String message);
 	
 	/**
+	 * This is for the backend to display a message to the user.
+	 * @param Rid The message to show to the user. (Resource ID)
+	 */
+	void displayToast(int Rid);
+	
+	/**
 	 * Whenever a level is finished this function is called by the backend.
 	 * Whenever you are finished with this task call {@link BackendControllerInterface#startNextLevel()}
 	 * @param level the finished level

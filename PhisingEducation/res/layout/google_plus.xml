@@ -63,9 +63,18 @@
         android:text="@string/button_show_leaderboard_total"
         android:visibility="gone"
         android:onClick="showLeaderboardTotal" />
-
-    
-
+	
+	<Button
+        android:id="@+id/button_show_leaderboard_total_points"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/btn_standard_height"
+        android:minWidth="@dimen/btn_menu_width"
+        android:layout_alignLeft="@+id/button_show_leaderboard_rate"
+        android:layout_below="@+id/button_show_leaderboard_total"
+        android:layout_marginTop="@dimen/margin_small"
+        android:text="@string/button_show_leaderboard_total_points"
+        android:visibility="gone"
+        android:onClick="showLeaderboardTotalPoints" />
     <!-- sign-out button -->
     
     <Button
