@@ -145,4 +145,9 @@ public interface BackendControllerInterface {
 	 * This function restarts the current Level
 	 */
 	public void restartLevel();
+	
+	/**
+	 * The frontend should call this method in the {@link FrontendControllerInterface#levelDone(int)} function to finish the level.
+	 */
+	public void finishLevel();
 }

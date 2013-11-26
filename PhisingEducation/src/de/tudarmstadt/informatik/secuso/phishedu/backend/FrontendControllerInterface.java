@@ -64,13 +64,14 @@ public interface FrontendControllerInterface {
 	 * This means he was not able to detect enough Phishing URLs.
 	 * The UI should display a message stating this fact and call {@link BackendController#startLevel(int)}
 	 * This will (after initialization) result in a new Call to {@link FrontendControllerInterface#onLevelChange(int)} 
-	 * @param level
+	 * @param level The level the user failed
 	 */
 	void levelFailed(int level);
 	
 	/**
-	 * Ask the user if She wants to finish the level after finding enught fish.
-	 * @return True if the user clicked the positive Button. False otherwise.
+	 * This is function is called whenever the user found enough fishes to finish the level but has the possiblity to play on.
+	 * When the user whats to finish the frontend should call {@link BackendControllerInterface#finishLevel()} when the user wants to finish the level.
+	 * @param level The level the user finished
 	 */
-	boolean askUserFinish();
+	void levelDone(int level);
 }

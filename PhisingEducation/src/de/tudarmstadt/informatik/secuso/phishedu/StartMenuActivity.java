@@ -153,6 +153,7 @@ public class StartMenuActivity extends PhishBaseGameActivity implements
 	public void onLevelChange(int level) {
 		Intent levelIntent = new Intent(this, LevelIntroActivity.class);
 		levelIntent.putExtra(Constants.EXTRA_LEVEL, level);
+		ResultActivity.resetState();
 		startActivity(levelIntent);
 	}
 
@@ -303,49 +304,10 @@ public class StartMenuActivity extends PhishBaseGameActivity implements
 		}
 		return super.onOptionsItemSelected(item);
 	}
-	
-	private Boolean user_wants_finish=null;
 
 	@Override
-	public boolean askUserFinish() {
-		AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
-
-		// Setting Dialog Title
-		alertDialog.setTitle(getString(R.string.level_continue_title));
-
-		// Setting Dialog Message
-		alertDialog.setMessage(getString(R.string.level_contiue_text));
-
-		alertDialog.setPositiveButton(R.string.level_continue_positive_button,new DialogInterface.OnClickListener() {
-			@Override
-			public void onClick(DialogInterface dialog, int which) {
-				user_wants_finish=true;
-			}
-		});
-
-		alertDialog.setNegativeButton(R.string.level_continue_negative_button,
-				new DialogInterface.OnClickListener() {
-			@Override
-			public void onClick(DialogInterface dialog, int which) {
-				user_wants_finish=false;
-			}
-		});
+	public void levelDone(int level) {
 		
-		user_wants_finish=null;
-
-		// Showing Alert Message
-		alertDialog.show();
-		
-		while(user_wants_finish==null){
-			//TODO: This must be possible smarter.
-			try {
-				Thread.sleep(100);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-		}
-		
-		return this.user_wants_finish;
 	}
-
+	
 }

@@ -1,7 +1,9 @@
 package de.tudarmstadt.informatik.secuso.phishedu;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBarActivity;
 import android.view.View;
@@ -10,6 +12,36 @@ import android.widget.TextView;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController;
 
 public class PhishBaseActivity extends ActionBarActivity {
+	protected PhishEduApp mMyApp;
+	
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		mMyApp = (PhishEduApp)this.getApplicationContext();
+	}
+	
+	protected void onResume() {
+        super.onResume();
+        mMyApp.setCurrentActivity(this);
+    }
+    protected void onPause() {
+        clearReferences();
+        super.onPause();
+    }
+    protected void onDestroy() {        
+        clearReferences();
+        super.onDestroy();
+    }
+    
+    protected Activity getCurrentActivity(){
+    	return ((PhishEduApp) getApplicationContext()).getCurrentActivity();
+    }
+
+    private void clearReferences(){
+        Activity currActivity = mMyApp.getCurrentActivity();
+        if (currActivity != null && currActivity.equals(this))
+            mMyApp.setCurrentActivity(null);
+    }
 	
 	protected void updateScore(){
     	updateScore(findViewById(R.id.score_relative));

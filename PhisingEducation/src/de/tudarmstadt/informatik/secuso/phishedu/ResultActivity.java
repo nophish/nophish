@@ -1,7 +1,9 @@
 package de.tudarmstadt.informatik.secuso.phishedu;
 
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.support.v7.app.ActionBar;
@@ -53,8 +55,54 @@ public class ResultActivity extends SwipeActivity {
 
 	protected void onStartClick() {
 		setResult(RESULT_OK);
-		finish();
+		if(BackendController.getInstance().foundPhishes()>=BackendController.getInstance().nextLevelPhishes()){
+		  levelDone();
+		}else{
+		  finish();
+		}
 	}
+	
+	public static boolean user_finish_asked=false;
+	public static boolean level_done=false;
+	
+	public static void resetState(){
+		user_finish_asked=false;
+		level_done=false;
+	}
+	
+	private void levelDone() {
+		if(user_finish_asked){
+			finish();
+			return;
+		}
+		AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
+
+		// Setting Dialog Title
+		alertDialog.setTitle(getString(R.string.level_continue_title));
+
+		// Setting Dialog Message
+		alertDialog.setMessage(getString(R.string.level_contiue_text));
+
+		alertDialog.setPositiveButton(R.string.level_continue_positive_button,new DialogInterface.OnClickListener() {
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				user_finish_asked=true;
+				finish();
+			}
+		});
+
+		alertDialog.setNegativeButton(R.string.level_continue_negative_button,
+				new DialogInterface.OnClickListener() {
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				BackendController.getInstance().finishLevel();
+			}
+		});
+
+		// Showing Alert Message
+		alertDialog.show();
+	}
+
 
 	@Override
 	protected String startButtonText() {

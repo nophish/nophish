@@ -79,8 +79,6 @@ public class BackendController implements BackendControllerInterface, GameStateL
 	private PhishURLInterface[][] urlCache;
 	private boolean gamestate_loaded = false;
 	private GameProgress progress;
-	private Boolean user_wants_to_play_on = false;
-	
 
 	private static PhishURL[] deserializeURLs(String serialized){
 		return new Gson().fromJson(serialized, PhishURL[].class);
@@ -242,13 +240,15 @@ public class BackendController implements BackendControllerInterface, GameStateL
 		int remaining_phish_to_level = this.nextLevelPhishes() - this.progress.getDetectedPhish();
 		int remaining_repeats = this.levelRepeats() - this.progress.getPresentedRepeats();
 		//We might have failed the level
-		//Either by going out of URLs or by going out of options to detect phish 
-		if( remaining_urls <= 0 || remaining_phish<remaining_phish_to_level){
-			if(this.foundPhishes() >= this.nextLevelPhishes()){
-			  this.levelFinished(this.getLevel());
+		//Either by going out of URLs or by going out of options to detect phish
+		if(remaining_urls == 0){
+			if(remaining_phish_to_level <= 0){
+				this.frontend.levelFinished(getLevel());
 			}else{
-			  this.frontend.levelFailed(this.getLevel());
+				this.frontend.levelFailed(this.getLevel());
 			}
+		}else if(foundPhishes()>=nextLevelPhishes()){
+			this.frontend.levelDone(getLevel());
 		}
 
 		//we have to decide whether we want to present a phish or not
@@ -377,14 +377,6 @@ public class BackendController implements BackendControllerInterface, GameStateL
 		boolean clickedright = this.current_url.partClicked(part);
 		if(clickedright){
 			changePoints(PhishResult.Phish_Detected);
-			if(this.foundPhishes()>= this.nextLevelPhishes()){
-				if(user_wants_to_play_on==null){
-					user_wants_to_play_on=frontend.askUserFinish();
-				}
-				if(!user_wants_to_play_on){
-				  this.levelFinished(this.getLevel());
-				}
-			}
 		}else{
 			changePoints(PhishResult.Phish_NotDetected);
 		}
@@ -446,7 +438,11 @@ public class BackendController implements BackendControllerInterface, GameStateL
 	@Override
 	public int levelPhishes() {
 		checkinited();
-		return levelURLs()/2;
+		if(this.getLevel()==2){
+			return levelURLs();
+		}else{
+			return levelURLs()/2;
+		}
 	}
 
 	@Override
@@ -465,5 +461,13 @@ public class BackendController implements BackendControllerInterface, GameStateL
 	public int nextLevelPhishes() {
 		checkinited();
 		return levelPhishes()-2;
+	}
+
+	@Override
+	public void finishLevel() {
+		if(this.foundPhishes()<=this.levelPhishes()){
+			throw new IllegalStateException("only call finishLevel() after getting levelDone()");
+		}
+		levelFinished(getLevel());
 	}
 }
