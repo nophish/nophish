@@ -189,6 +189,9 @@ public class GameProgress implements OnStateLoadedListener{
 	 */
 	public void commitPoints(){
 		this.state.points+=this.level_points;
+		if(this.game_store.isConnected()){
+			game_store.submitScore(context.getResources().getString(R.string.leaderboard_total_points), this.state.points );
+		}
 		saveState();
 	}
 	
