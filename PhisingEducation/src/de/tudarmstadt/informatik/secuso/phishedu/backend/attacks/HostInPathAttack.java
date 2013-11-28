@@ -22,18 +22,20 @@ public class HostInPathAttack extends SubdomainAttack {
 	 */
 	public HostInPathAttack(PhishURLInterface object) {
 		super(object);
+		phish_domain=new Random().nextInt(PHISHER_DOMAINS.length);
 	}
 
 	@Override
 	public PhishAttackType getAttackType() {
 		return PhishAttackType.HostInPath;
 	}
+	private int phish_domain=-1;
 	
 	@Override
 	public String[] getParts() {
 		String[] parts = super.getParts();
 		String domain = parts[3];
-		parts[3]=PHISHER_DOMAINS[new Random().nextInt(PHISHER_DOMAINS.length)];
+		parts[3]=PHISHER_DOMAINS[phish_domain];
 		ArrayList<String> adder = new ArrayList<String>(Arrays.asList(parts));
 		adder.add(5,domain);
 		return adder.toArray(new String[0]);

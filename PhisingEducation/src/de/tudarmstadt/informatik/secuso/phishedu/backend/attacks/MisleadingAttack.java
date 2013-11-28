@@ -16,6 +16,7 @@ import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishURLInterface;
  */
 public class MisleadingAttack extends AbstractAttack {
 	int attackpos=0;
+	int attack_domain=-1;
 	private static final String[] DOMAIN_ADDITIONS={
 		"-login",
 		"-secure",
@@ -27,6 +28,7 @@ public class MisleadingAttack extends AbstractAttack {
 	 */
 	public MisleadingAttack(PhishURLInterface object) {
 		super(object);
+		attack_domain=new Random().nextInt(DOMAIN_ADDITIONS.length);
 	}
 
 	@Override
@@ -40,7 +42,7 @@ public class MisleadingAttack extends AbstractAttack {
 		ArrayList<String> adder = new ArrayList<String>(Arrays.asList(parts));
 		String hostname=adder.remove(3);
 		String[] hostparts = hostname.split("\\.");
-		hostparts[hostparts.length-2]+=DOMAIN_ADDITIONS[new Random().nextInt(DOMAIN_ADDITIONS.length)];
+		hostparts[hostparts.length-2]+=DOMAIN_ADDITIONS[attack_domain];
 		adder.addAll(3, Arrays.asList(hostparts));
 		return adder.toArray(new String[0]);
 	}

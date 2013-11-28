@@ -18,14 +18,18 @@ public class IPAttack extends AbstractAttack {
 	 * See {@link AbstractAttack#AbstractAttack(PhishURLInterface)}
 	 * @param object See {@link AbstractAttack#AbstractAttack(PhishURLInterface)}
 	 */
-	public IPAttack(PhishURLInterface object) {super(object);}
+	public IPAttack(PhishURLInterface object) {
+		super(object);
+		ip=getRandomIP();
+	}
 	
 	@Override
 	public String[] getParts(){
 		String[] parts = this.object.getParts();
-		parts[3] = getRandomIP();
+		parts[3] = ip;
 		return parts;
 	}
+	private String ip="";
 	
 	private String getRandomIP(){
 		Random rand = new Random();

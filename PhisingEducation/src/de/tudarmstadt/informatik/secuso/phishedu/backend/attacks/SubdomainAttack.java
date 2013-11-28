@@ -29,6 +29,7 @@ public class SubdomainAttack extends AbstractAttack {
 	 */
 	public SubdomainAttack(PhishURLInterface object) {
 		super(object);
+		attack_url=new Random().nextInt(PHISHER_DOMAINS.length);
 	}
 
 	@Override
@@ -38,9 +39,6 @@ public class SubdomainAttack extends AbstractAttack {
 	
 	@Override
 	public String[] getParts() {
-		if(attack_url==-1){
-			attack_url=new Random().nextInt(PHISHER_DOMAINS.length);
-		}
 		String[] parts = super.getParts();
 		ArrayList<String> adder = new ArrayList<String>(Arrays.asList(parts));
 		adder.add(4, "."+PHISHER_DOMAINS[attack_url]);
