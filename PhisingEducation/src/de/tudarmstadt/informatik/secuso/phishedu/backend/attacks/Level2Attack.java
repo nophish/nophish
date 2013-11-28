@@ -3,6 +3,7 @@ package de.tudarmstadt.informatik.secuso.phishedu.backend.attacks;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishAttackType;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishURLInterface;
@@ -48,5 +49,11 @@ public class Level2Attack extends AbstractAttack {
 	public PhishAttackType getAttackType() {
 		return PhishAttackType.Level2Attack;
 	}
-
+	
+	@Override
+	public List<Integer> getAttackParts() {
+		List<Integer> result = super.getAttackParts();
+		result.add(correctPart);
+		return result;
+	}
 }

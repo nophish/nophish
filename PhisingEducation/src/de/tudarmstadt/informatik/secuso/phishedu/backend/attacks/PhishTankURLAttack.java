@@ -1,5 +1,8 @@
 package de.tudarmstadt.informatik.secuso.phishedu.backend.attacks;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishAttackType;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishURLInterface;
@@ -33,5 +36,12 @@ public class PhishTankURLAttack extends AbstractAttack {
 		return true;
 	}
 	
-	
+	@Override
+	public List<Integer> getAttackParts() {
+		List<Integer> result = new ArrayList<Integer>();
+		for(int i=0; i<getParts().length; i++){
+			result.add(i);
+		}
+		return result;
+	}
 }

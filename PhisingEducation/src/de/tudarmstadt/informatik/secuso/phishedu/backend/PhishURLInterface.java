@@ -1,5 +1,7 @@
 package de.tudarmstadt.informatik.secuso.phishedu.backend;
 
+import java.util.List;
+
 /**
  * This is the Interface for all Phishing URLs.
  * This is needed because I want to implement the Attacks as decorators.
@@ -55,4 +57,10 @@ public interface PhishURLInterface{
 	 * @return true if this is a valid URL, false otherwise;
 	 */
 	public boolean validate();
+	
+	/**
+	 * Get the parts of this URL that is part of an Attack.
+	 * @return The attacked parts
+	 */
+	public List<Integer> getAttackParts();
 }

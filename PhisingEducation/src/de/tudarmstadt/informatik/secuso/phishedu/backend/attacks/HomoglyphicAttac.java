@@ -2,6 +2,7 @@ package de.tudarmstadt.informatik.secuso.phishedu.backend.attacks;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishAttackType;
@@ -59,5 +60,10 @@ public class HomoglyphicAttac extends AbstractAttack {
 		return part==3;
 	}
 	
-	
+	@Override
+	public List<Integer> getAttackParts() {
+		List<Integer> result = super.getAttackParts();
+		result.add(3);
+		return result;
+	}
 }

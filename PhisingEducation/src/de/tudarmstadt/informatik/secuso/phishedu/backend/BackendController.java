@@ -494,4 +494,9 @@ public class BackendController implements BackendControllerInterface, GameStateL
 		
 		return result;
 	}
+
+	@Override
+	public Integer[] getAttackParts() {
+		return current_url.getAttackParts().toArray(new Integer[0]);
+	}
 }

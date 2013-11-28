@@ -2,6 +2,7 @@ package de.tudarmstadt.informatik.secuso.phishedu.backend.attacks;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Random;
 
 import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController;
@@ -43,5 +44,10 @@ public class HostInPathAttack extends SubdomainAttack {
 		return part==5;
 	}
 	
-	
+	@Override
+	public List<Integer> getAttackParts() {
+		List<Integer> result = super.getAttackParts();
+		result.add(5);
+		return result;
+	}
 }

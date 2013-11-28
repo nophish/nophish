@@ -1,5 +1,6 @@
 package de.tudarmstadt.informatik.secuso.phishedu.backend.attacks;
 
+import java.util.List;
 import java.util.Random;
 
 import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishAttackType;
@@ -48,5 +49,10 @@ public class IPAttack extends AbstractAttack {
 		return part == 3;
 	}
 	
-
+	@Override
+	public List<Integer> getAttackParts() {
+		List<Integer> result = super.getAttackParts();
+		result.add(3);
+		return result;
+	}
 }

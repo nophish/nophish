@@ -1,5 +1,7 @@
 package de.tudarmstadt.informatik.secuso.phishedu.backend.attacks;
 
+import java.util.List;
+
 import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishAttackType;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishURLInterface;
@@ -34,6 +36,11 @@ public class HTTPAttack extends AbstractAttack {
 	public boolean partClicked(int part) {
 		return part==0;
 	}
-	
-	
+
+	@Override
+	public List<Integer> getAttackParts() {
+		List<Integer> result = super.getAttackParts();
+		result.add(0);
+		return result;
+	}
 }

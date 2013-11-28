@@ -1,5 +1,8 @@
 package de.tudarmstadt.informatik.secuso.phishedu.backend;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * this is for internally holding the phishing urls
  * @author Clemens Bergmann <cbergmann@schuhklassert.de>
@@ -55,5 +58,9 @@ public class PhishURL implements PhishURLInterface{
 			}
 		}
 		return false;
+	}
+	@Override
+	public List<Integer> getAttackParts() {
+		return new ArrayList<Integer>();
 	}
 }

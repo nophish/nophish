@@ -1,5 +1,7 @@
 package de.tudarmstadt.informatik.secuso.phishedu.backend;
 
+import java.util.List;
+
 import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishAttackType;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishResult;
@@ -50,6 +52,11 @@ public abstract class AbstractUrlDecorator implements PhishURLInterface {
 	@Override
 	public boolean partClicked(int part) {
 		return this.object.partClicked(part);
+	}
+	
+	@Override
+	public List<Integer> getAttackParts() {
+		return this.object.getAttackParts();
 	}
 	
 	/**

@@ -157,4 +157,6 @@ public interface BackendControllerInterface {
 	public static int LEVEL_FINISHED = 3;
 	
 	public int levelState();
+	
+	public Integer[] getAttackParts();
 }
