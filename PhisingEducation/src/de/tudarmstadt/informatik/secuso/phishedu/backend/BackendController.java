@@ -228,8 +228,7 @@ public class BackendController implements BackendControllerInterface, GameStateL
 	}
 	
 	@SuppressWarnings("unchecked")
-	@Override
-	public String[] getNextUrl() {
+	public void nextUrl() {
 		checkinited();
 		if(getLevel() <= 1){
 			//Level 0 and 1 do not have repeats
@@ -304,7 +303,6 @@ public class BackendController implements BackendControllerInterface, GameStateL
 		}
 
 		this.current_url=base_url;
-		return getUrl();
 	}
 	
 	
@@ -337,12 +335,12 @@ public class BackendController implements BackendControllerInterface, GameStateL
 		checkinited();
 		PhishResult result=this.current_url.getResult(acceptance);
 		if(result != PhishResult.Phish_Detected){
-			this.changePoints(result);
+			this.addResult(result);
 		}
 		return result;
 	}
 
-	private void changePoints(PhishResult result){
+	private void addResult(PhishResult result){
 		this.progress.addResult(result);
 		int offset=this.current_url.getPoints(result);
 		//with this function we ensure that the user gets more points per level
@@ -377,9 +375,9 @@ public class BackendController implements BackendControllerInterface, GameStateL
 		checkinited();
 		boolean clickedright = this.current_url.partClicked(part);
 		if(clickedright){
-			changePoints(PhishResult.Phish_Detected);
+			addResult(PhishResult.Phish_Detected);
 		}else{
-			changePoints(PhishResult.Phish_NotDetected);
+			addResult(PhishResult.Phish_NotDetected);
 		}
 		return clickedright;
 	}

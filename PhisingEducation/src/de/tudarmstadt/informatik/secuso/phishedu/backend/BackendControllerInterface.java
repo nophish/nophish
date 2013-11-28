@@ -38,12 +38,6 @@ public interface BackendControllerInterface {
 	public void redirectToLevel1URL();
 	
 	/**
-	 * Get the next url and save the URL Information internally.
-	 * @return A set of strings that (concardinated) make up the URL
-	 */
-	String[] getNextUrl();
-	
-	/**
 	 * Get the current url returned by the last {@link BackendControllerInterface#getNextUrl()} call.
 	 * @return A set of strings that (concardinated) make up the URL
 	 */

@@ -24,13 +24,11 @@ public class URLTaskActivity extends PhishBaseActivity {
 		super.onCreate(savedInstanceState);
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 		this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-
 		this.level = getIntent().getIntExtra(Constants.EXTRA_LEVEL, 0);
 
 		setContentView(R.layout.urltask_task);
-		updateScore();
+		this.urlText = (TextView) findViewById(R.id.url_task_url);
 
-		urlText = (TextView) findViewById(R.id.url_task_url);
 		nextURL();
 		setTitles();
 
@@ -43,9 +41,14 @@ public class URLTaskActivity extends PhishBaseActivity {
 
 		// set size of shown url depending on level
 		setUrlSize();
-
 	}
-
+	
+	@Override
+	protected void onActivityResult(int arg0, int arg1, Intent arg2) {
+		nextURL();
+		super.onActivityResult(arg0, arg1, arg2);
+	}
+	
 	private void setUrlSize() {
 		TextView url = (TextView) findViewById(R.id.url_task_url);
 		float textSize = url.getTextSize();
@@ -94,7 +97,8 @@ public class URLTaskActivity extends PhishBaseActivity {
 	}
 
 	private void nextURL() {
-		String[] urlArray = BackendController.getInstance().getNextUrl();
+		BackendController.getInstance().nextUrl();
+		String[] urlArray = BackendController.getInstance().getUrl();
 
 		// build string from array
 		StringBuilder sb = new StringBuilder();
@@ -130,12 +134,6 @@ public class URLTaskActivity extends PhishBaseActivity {
 		levelIntent.putExtra(Constants.EXTRA_ATTACK_TYPE, BackendController
 				.getInstance().getAttackType().getValue());
 		startActivityForResult(levelIntent, 1);
-	}
-
-	@Override
-	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-		super.onActivityResult(requestCode, resultCode, data);
-		nextURL();
 	}
 
 	@Override

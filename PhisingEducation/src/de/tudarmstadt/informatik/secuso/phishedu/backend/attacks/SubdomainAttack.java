@@ -15,6 +15,7 @@ import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishURLInterface;
  *
  */
 public class SubdomainAttack extends AbstractAttack {
+	int attack_url=-1;
 	
 	protected static final String[] PHISHER_DOMAINS ={
 		"phisher.com",
@@ -37,9 +38,12 @@ public class SubdomainAttack extends AbstractAttack {
 	
 	@Override
 	public String[] getParts() {
+		if(attack_url==-1){
+			attack_url=new Random().nextInt(PHISHER_DOMAINS.length);
+		}
 		String[] parts = super.getParts();
 		ArrayList<String> adder = new ArrayList<String>(Arrays.asList(parts));
-		adder.add(4, "."+PHISHER_DOMAINS[new Random().nextInt(PHISHER_DOMAINS.length)]);
+		adder.add(4, "."+PHISHER_DOMAINS[attack_url]);
 		return adder.toArray(new String[0]);
 	}
 	
