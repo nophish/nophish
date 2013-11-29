@@ -51,7 +51,7 @@
             android:background="@color/green"
             android:layout_marginTop="@dimen/margin_small"
             android:gravity="center"
-            android:padding="@dimen/margin_xxsmall"
+            android:padding="@dimen/mini_padding"
             android:text="@string/http_description"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 

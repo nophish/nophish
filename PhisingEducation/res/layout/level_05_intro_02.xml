@@ -66,6 +66,7 @@
             android:layout_alignLeft="@+id/level_05_intro_02_text_02"
             android:layout_below="@+id/level_05_intro_02_text_02"
             android:layout_marginTop="@dimen/margin_standard"
+            android:padding="@dimen/mini_padding"
             android:contentDescription="@string/content_desc_attention"
             android:src="@drawable/dialog_warning" />
 

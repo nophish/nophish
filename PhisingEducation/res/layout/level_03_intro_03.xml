@@ -30,6 +30,7 @@
             android:layout_below="@+id/level_03_intro_03_text_01"
             android:layout_marginTop="@dimen/margin_standard"
             android:contentDescription="@string/content_desc_attention"
+            android:padding="@dimen/mini_padding"
             android:src="@drawable/dialog_warning" />
 
         <TextView

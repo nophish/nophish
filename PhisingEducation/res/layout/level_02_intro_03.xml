@@ -54,7 +54,7 @@
             android:layout_marginTop="@dimen/margin_standard"
             android:background="@color/red"
             android:gravity="center"
-            android:padding="@dimen/margin_xxsmall"
+            android:padding="@dimen/mini_padding"
             android:text="@string/domain_description"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
@@ -69,14 +69,6 @@
             android:text="@string/http"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="@color/grey" />
-
-        <TextView
-            android:id="@+id/line_breaks"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/level_02_intro_01_http_01"
-            android:text="@string/linebreaks"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
     </RelativeLayout>
 
 </ScrollView>

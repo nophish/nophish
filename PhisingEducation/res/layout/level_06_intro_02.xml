@@ -68,6 +68,7 @@
             android:layout_below="@+id/level_06_intro_02_text_02"
             android:layout_marginTop="@dimen/margin_standard"
             android:contentDescription="@string/content_desc_attention"
+            android:padding="@dimen/mini_padding"
             android:src="@drawable/dialog_warning" />
     </RelativeLayout>
 

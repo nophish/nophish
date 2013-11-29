@@ -27,6 +27,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/level_00_finish_08_text_01"
+            android:layout_marginTop="@dimen/margin_xxsmall"
+            android:layout_centerHorizontal="true"
             android:contentDescription="@string/content_desc_smiley_bored"
             android:src="@drawable/dontbelieveus" />
     </RelativeLayout>

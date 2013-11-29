@@ -49,10 +49,11 @@
             android:layout_height="wrap_content"
             android:layout_alignRight="@+id/level_09_intro_02_path"
             android:layout_below="@+id/level_09_intro_02_path"
+            android:layout_marginTop="@dimen/margin_small"
+            android:layout_toRightOf="@+id/level_09_intro_02_before_path"
             android:background="@color/blue"
             android:gravity="center"
-            android:layout_marginTop="@dimen/margin_small"
-            android:padding="@dimen/margin_xxsmall"
+            android:padding="@dimen/mini_padding"
             android:text="@string/path_description"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 

@@ -54,7 +54,7 @@
             android:layout_marginTop="@dimen/margin_standard"
             android:background="@color/red"
             android:gravity="center"
-            android:padding="@dimen/margin_xxsmall"
+            android:padding="@dimen/mini_padding"
             android:text="@string/domain_description"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
@@ -79,22 +79,8 @@
             android:layout_marginTop="@dimen/margin_small"
             android:background="@color/green"
             android:gravity="center"
-            android:padding="@dimen/margin_xxsmall"
+            android:padding="@dimen/mini_padding"
             android:text="@string/http_description"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
-
-        <TextView
-            android:id="@+id/level_02_intro_01_path_02"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/level_02_intro_01_http_02"
-            android:layout_alignBottom="@+id/level_02_intro_01_http_02"
-            android:layout_alignRight="@+id/level_02_intro_01_path_01"
-            android:layout_toRightOf="@+id/level_02_intro_01_domain_01"
-            android:background="@color/blue"
-            android:gravity="center"
-            android:padding="@dimen/margin_xxsmall"
-            android:text="@string/path_description"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <TextView
@@ -105,6 +91,20 @@
             android:layout_marginTop="@dimen/margin_standard"
             android:text="@string/level_02_intro_02_text_02"
             android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/level_02_intro_01_path_02"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/level_02_intro_01_text_02"
+            android:layout_alignLeft="@+id/level_02_intro_01_path_01"
+            android:layout_alignRight="@+id/level_02_intro_01_path_01"
+            android:background="@color/blue"
+            android:gravity="center"
+            android:padding="@dimen/mini_padding"
+            android:text="@string/path_description"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
     </RelativeLayout>
 
 </ScrollView>

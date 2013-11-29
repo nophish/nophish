@@ -142,7 +142,7 @@
     <string name="level_10_splash_subtitle">Der Bereich der Sicherheitsstufe</string>
 
     <!-- text awareness activity -->
-    <string name="level_00_intro_00_text_01">\"Phishing\" ist eine Wortschöpfung, die eine Kombination der zwei englischen Begriffe \"phreaking\" (hacken) und \"fishing\" (angeln) darstellt. Es handelt sich hierbei um eine Technik, mit der Betrüger im Internet versuchen, deine sensiblen Daten, wie z.B. Passwörter, Kontodaten oder Kreditkartendaten, zu \"angeln\".\n\nDie Betrüger nutzen diese Daten, um dir zu schaden, z.B. um dein Konto zu plündern, in deinem Namen einzukaufen oder Freunde und Arbeitskollegen zu kontaktieren.\n\nUm an die sensiblen Daten zu kommen, schicken die Betrüger dir Nachrichten, z.B. in Form von E-Mails oder SMS. Diese Nachrichten sehen auf den ersten Block aus wie Nachrichten von Personen oder Institutionen, denen du vertraust (z.B. von Amazon, Facebook oder deiner Bank). In der Nachricht wirst du gebeten, Daten entweder direkt zurückzuschicken oder über einen Link einzugeben. Der Link führt dabei in der Regel zu einer Webseite, die auf den ersten Blick vertrauenswürdig aussieht. Es handelt sich allerdings um eine gefälschte Kopie.</string>
+    <string name="level_00_intro_00_text_01"><b>Was ist Phishing?</b>\n\n\"Phishing\" ist eine Wortschöpfung, die eine Kombination der zwei englischen Begriffe \"phreaking\" (hacken) und \"fishing\" (angeln) darstellt. Es handelt sich hierbei um eine Technik, mit der Betrüger im Internet versuchen, deine sensiblen Daten, wie z.B. Passwörter, Kontodaten oder Kreditkartendaten, zu \"angeln\".\n\nDie Betrüger nutzen diese Daten, um dir zu schaden, z.B. um dein Konto zu plündern, in deinem Namen einzukaufen oder Freunde und Arbeitskollegen zu kontaktieren.\n\nUm an die sensiblen Daten zu kommen, schicken die Betrüger dir Nachrichten, z.B. in Form von E-Mails oder SMS. Diese Nachrichten sehen auf den ersten Block aus wie Nachrichten von Personen oder Institutionen, denen du vertraust (z.B. von Amazon, Facebook oder deiner Bank). In der Nachricht wirst du gebeten, Daten entweder direkt zurückzuschicken oder über einen Link einzugeben. Der Link führt dabei in der Regel zu einer Webseite, die auf den ersten Blick vertrauenswürdig aussieht. Es handelt sich allerdings um eine gefälschte Kopie.</string>
     <string name="level_00_intro_01_text_01"><b>Jeder kann phishen!</b>\n\nUm dir zu verdeutlichen, dass auch du gefährdet bist, wollen wir dir zeigen, wie einfach es ist, gefälschte E-Mails im Namen einer anderen Person oder Institution zu verschicken.</string>
     <string name="level_00_intro_02_text_01"><b>Schicke dir selber eine E-Mail von einem beliebigen Absender</b></string>
     <string name="level_00_intro_02_text_02">Von wem soll die E-Mail kommen*:</string>
@@ -407,7 +407,7 @@
     <string name="url_task_description">Vertraust du der Webadresse?\nHäkchen: Legitim\nKreuz: Phishing</string>
     <string name="url">Beispiel URL</string>
     <string name="score">Punkte:</string>
-    <string name="phish_proof_01">Ja, die Webadresse ist gefälscht. Wie versucht der Phisher, dich auszutricksen?</string>
+    <string name="phish_proof_01">Ja, die Webadresse ist gefälscht. Als wen gibt der Phisher sich aus?</string>
     <string name="phish_proof_02">Klicke hierzu den entsprechenden Bereich der Webadresse an. <b>Wenn möglich, wähle nicht den Wer-Bereich!</b></string>
     <string name="title_level_finished">Level geschafft</string>
     <string name="you_are_wrong">Falsch! Du wurdest ausgetrickst. Das ist eine gefälschte Webadresse.</string>
@@ -505,5 +505,7 @@
     <string name="content_desc_security_level_high">Sicherheitsmann</string>
     <string name="content_desc_swipe_left">Nach links swipen</string>
     <string name="content_desc_swipe_right">Nach rechts swipen</string>
+    <string name="content_desc_start_level_button">Starte Level</string>
+    <string name="content_desc_single_tip">Entsprechende Stelle der Webadresse antippen</string>
 
 </resources>

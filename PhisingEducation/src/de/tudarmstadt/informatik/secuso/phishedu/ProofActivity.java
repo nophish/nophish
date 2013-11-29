@@ -37,9 +37,6 @@ public class ProofActivity extends PhishBaseActivity {
 		if (level == 2) {
 			TextView text = (TextView) findViewById(R.id.phish_proof_text);
 			text.setText(R.string.level_02_task);
-
-			TextView textToHide = (TextView) findViewById(R.id.phish_proof_text_02);
-			textToHide.setVisibility(View.INVISIBLE);
 			
 			ImageView image = (ImageView) findViewById(R.id.feedback_smiley);
 			image.setVisibility(View.INVISIBLE);

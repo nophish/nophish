@@ -88,6 +88,7 @@
             android:layout_below="@+id/level_08_intro_02_text_02"
             android:contentDescription="@string/content_desc_attention"
             android:layout_marginTop="@dimen/margin_standard"
+            android:padding="@dimen/mini_padding"
             android:src="@drawable/dialog_warning" />
 
         <TextView

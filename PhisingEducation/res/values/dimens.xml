@@ -28,6 +28,7 @@
 
     <!-- height -->
     <dimen name="height_large">540dp</dimen>
+    <dimen name="min_text_height">180dp</dimen>
     <!-- fontsizes -->
     <dimen name="font_size_medium">10sp</dimen>
     <dimen name="font_size_large">30sp</dimen>

@@ -82,6 +82,7 @@
             android:layout_height="wrap_content"
             android:layout_alignBottom="@+id/level_04_intro_01_image_house"
             android:layout_toRightOf="@+id/level_04_intro_01_image_house"
+            android:layout_marginLeft="@dimen/margin_small"
             android:contentDescription="@string/content_desc_computer"
             android:src="@drawable/mycomputer" />
 

@@ -3,9 +3,6 @@
     android:id="@+id/proof_sv"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginLeft="@dimen/margin_text"
-    android:layout_marginRight="@dimen/margin_text"
-    android:layout_marginTop="@dimen/margin_text"
     android:fadeScrollbars="false" >
 
     <RelativeLayout
@@ -48,25 +45,26 @@
             android:text="@string/url"
             android:textAppearance="?android:attr/textAppearanceLarge" />
 
-        <TextView
-            android:id="@+id/phish_proof_text_02"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/url"
-            android:layout_marginTop="@dimen/margin_small"
-            android:text="@string/phish_proof_02"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
-
         <Button
             android:id="@+id/done_botton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/phish_proof_text_02"
+            android:layout_below="@+id/single_tap"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="@dimen/margin_standard"
-            android:onClick="onDoneClick"
+            android:layout_marginTop="@dimen/margin_small"
             android:contentDescription="@string/content_desc_verify"
+            android:onClick="onDoneClick"
             android:text="@string/button_verify" />
+
+        <ImageView
+            android:id="@+id/single_tap"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/url"
+            android:contentDescription="@string/content_desc_single_tip"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/single_tap" />
+
     </RelativeLayout>
 
 </ScrollView>
