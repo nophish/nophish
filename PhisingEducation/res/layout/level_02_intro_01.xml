@@ -65,7 +65,7 @@
             android:layout_alignLeft="@+id/level_02_intro_01_text_01"
             android:layout_below="@+id/level_02_intro_01_domain_02"
             android:layout_marginTop="@dimen/margin_small"
-            android:background="@color/green"
+            android:background="@color/yellow"
             android:gravity="center"
             android:text="@string/http"
             android:textAppearance="?android:attr/textAppearanceMedium" />
@@ -77,7 +77,7 @@
             android:layout_alignParentLeft="true"
             android:layout_below="@+id/level_02_intro_01_domain_01"
             android:layout_marginTop="@dimen/margin_small"
-            android:background="@color/green"
+            android:background="@color/yellow"
             android:gravity="center"
             android:padding="@dimen/mini_padding"
             android:text="@string/http_description"

@@ -192,17 +192,17 @@ public class LevelIntroActivity extends SwipeActivity {
 				// we are in level 3, subdomain needs to be marked
 				// make background light red
 				final BackgroundColorSpan bgc = new BackgroundColorSpan(
-						Color.rgb(255, 178, 170));
+						Color.rgb(255, 188, 180));
 				strBuilder.setSpan(bgc, wordStart, wordEnd, 0);
 			} else if (spanIndex == 2) {
 				// make background red
 				final BackgroundColorSpan bgc = new BackgroundColorSpan(
-						Color.rgb(255, 102, 102));
+						Color.rgb(253, 116, 116));
 				strBuilder.setSpan(bgc, wordStart, wordEnd, 0);
 			} else if (spanIndex == 0 || spanIndex == 3) {
 				// make foregroundcolor grey
 				final ForegroundColorSpan fgc = new ForegroundColorSpan(
-						Color.rgb(204, 204, 204));
+						Color.rgb(149, 147, 147));
 				strBuilder.setSpan(fgc, wordStart, wordEnd, 0);
 
 			} else if (spanIndex == 1) {
@@ -228,37 +228,4 @@ public class LevelIntroActivity extends SwipeActivity {
 		}
 	}
 
-	private void setLevel3Spans(String[] url, View view) {
-		for (int i = 0; i < url.length; i++) {
-
-			String part = url[i];
-			// 0 at the beginning
-			wordStart = strBuilder.length();
-			wordEnd = wordStart + part.length();
-			strBuilder.append(part);
-
-			if (i == 1) {
-				// make background light red
-				final BackgroundColorSpan bgc = new BackgroundColorSpan(
-						Color.rgb(255, 178, 170));
-				strBuilder.setSpan(bgc, wordStart, wordEnd, 0);
-			} else if (i == 2) {
-				// make background red
-				final BackgroundColorSpan bgc = new BackgroundColorSpan(
-						Color.rgb(255, 102, 102));
-				strBuilder.setSpan(bgc, wordStart, wordEnd, 0);
-			} else {
-				// make foregroundcolor grey
-				final ForegroundColorSpan fgc = new ForegroundColorSpan(
-						Color.rgb(204, 204, 204));
-				strBuilder.setSpan(fgc, wordStart, wordEnd, 0);
-
-			}
-		}
-
-		TextView tv1 = (TextView) view.findViewById(R.id.example_01);
-		if (tv1 != null) {
-			tv1.setText(strBuilder);
-		}
-	}
 }
