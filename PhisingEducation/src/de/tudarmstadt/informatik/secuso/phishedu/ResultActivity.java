@@ -1,12 +1,15 @@
 package de.tudarmstadt.informatik.secuso.phishedu;
 
-
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.support.v7.app.ActionBar;
+import android.text.SpannableStringBuilder;
+import android.text.style.BackgroundColorSpan;
+import android.text.style.ForegroundColorSpan;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -21,7 +24,8 @@ import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishResult;
 public class ResultActivity extends SwipeActivity {
 	public static int RESULT_GUESSED = PhishResult.getMax() + 1;
 	public static ResultActivity instance = null;
-
+	SpannableStringBuilder strBuilder = new SpannableStringBuilder();
+	int wordStart, wordEnd;
 	protected static int[] reminderIDs = { R.string.level_03_reminder,
 			R.string.level_04_reminder, R.string.level_05_reminder,
 			R.string.level_06_reminder, R.string.level_07_reminder,
@@ -52,7 +56,7 @@ public class ResultActivity extends SwipeActivity {
 		resultLayoutIDs[PhishResult.Phish_NotDetected.getValue()] = R.layout.result_phish_notdetected;
 		resultLayoutIDs[PhishResult.NoPhish_NotDetected.getValue()] = R.layout.result_nophish_notdetected;
 		resultLayoutIDs[RESULT_GUESSED] = R.layout.result_you_guessed;
-		instance=this;
+		instance = this;
 	}
 
 	protected void onStartClick() {
@@ -73,27 +77,29 @@ public class ResultActivity extends SwipeActivity {
 			break;
 		}
 	}
-	
-	public static boolean user_finish_asked=false;
-	public static void resetState(){
-		user_finish_asked=false;
+
+	public static boolean user_finish_asked = false;
+
+	public static void resetState() {
+		user_finish_asked = false;
 	}
-	
+
 	public void levelFailed(int level) {
 		AlertDialog.Builder builder = new AlertDialog.Builder(instance);
 		builder.setTitle(R.string.level_failed_title);
 		builder.setMessage(R.string.level_failed_text);
-		builder.setNeutralButton(R.string.level_failed_button, new DialogInterface.OnClickListener() {
-			@Override
-			public void onClick(DialogInterface dialog, int which) {
-				BackendController.getInstance().restartLevel();
-			}
-		});
+		builder.setNeutralButton(R.string.level_failed_button,
+				new DialogInterface.OnClickListener() {
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						BackendController.getInstance().restartLevel();
+					}
+				});
 		builder.show();
 	}
-	
+
 	public void levelDone(int level) {
-		if(user_finish_asked){
+		if (user_finish_asked) {
 			instance.finish();
 			return;
 		}
@@ -105,26 +111,26 @@ public class ResultActivity extends SwipeActivity {
 		// Setting Dialog Message
 		alertDialog.setMessage(instance.getString(R.string.level_contiue_text));
 
-		alertDialog.setPositiveButton(R.string.level_continue_positive_button,new DialogInterface.OnClickListener() {
-			@Override
-			public void onClick(DialogInterface dialog, int which) {
-				user_finish_asked=true;
-				instance.finish();
-			}
-		});
+		alertDialog.setPositiveButton(R.string.level_continue_positive_button,
+				new DialogInterface.OnClickListener() {
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						user_finish_asked = true;
+						instance.finish();
+					}
+				});
 
 		alertDialog.setNegativeButton(R.string.level_continue_negative_button,
 				new DialogInterface.OnClickListener() {
-			@Override
-			public void onClick(DialogInterface dialog, int which) {
-				BackendController.getInstance().finishLevel();
-			}
-		});
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						BackendController.getInstance().finishLevel();
+					}
+				});
 
 		// Showing Alert Message
 		alertDialog.show();
 	}
-
 
 	@Override
 	protected String startButtonText() {
@@ -245,5 +251,47 @@ public class ResultActivity extends SwipeActivity {
 		}
 
 		ab.setIcon(getResources().getDrawable(R.drawable.desktop));
+	}
+
+	@Override
+	protected void setUrlText(TextView urlText) {
+
+		String urlParts[] = BackendController.getInstance().getUrl();
+		Integer[] attackedParts = BackendController.getInstance()
+				.getAttackParts();
+		// at start clear string builder
+		for (int i = 0; i < urlParts.length; i++) {
+
+			String part = urlParts[i];
+			// 0 at the beginning
+			wordStart = strBuilder.length();
+			wordEnd = wordStart + part.length();
+			strBuilder.append(part);
+
+			//TODO: when getAttackParts is OK einkommentieren
+//			final BackgroundColorSpan bgc;
+//			if (checkIfAttackedPart(attackedParts, i)) {
+//				// make attacked part background red
+//				if (BackendController.getInstance().getLevel() == 2) {
+//					bgc = new BackgroundColorSpan(Color.rgb(253, 116, 116));
+//				} else {
+//					bgc = new BackgroundColorSpan(Color.rgb(250, 62, 62));
+//				}
+//				strBuilder.setSpan(bgc, wordStart, wordEnd, 0);
+//			}
+
+		}
+		if (urlText != null) {
+			urlText.setText(strBuilder);
+		}
+	}
+
+	private boolean checkIfAttackedPart(Integer[] attackedParts, int index) {
+		for (int i = 0; i < attackedParts.length; i++) {
+			if (i == index) {
+				return true;
+			}
+		}
+		return false;
 	}
 }
