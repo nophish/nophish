@@ -1,5 +1,5 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/level_09_intro_03_sv"
+    android:id="@+id/recognize_attack"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fadeScrollbars="false" >
@@ -50,15 +50,14 @@
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <TextView
-            android:id="@+id/level_09_intro_03_http_01"
+            android:id="@+id/example_01"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignLeft="@+id/level_09_intro_03_text_03"
             android:layout_below="@+id/level_09_intro_03_text_03"
             android:layout_marginTop="@dimen/margin_standard"
-            android:text="@string/http"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="@color/grey" />
+            android:text="@string/url"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <ImageView
             android:id="@+id/level_09_warning"
@@ -70,47 +69,6 @@
             android:contentDescription="@string/content_desc_attention"
             android:padding="@dimen/mini_padding"
             android:src="@drawable/dialog_warning" />
-
-        <TextView
-            android:id="@+id/level_09_intro_03_vvetter"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/level_09_intro_03_http_01"
-            android:layout_alignBottom="@+id/level_09_intro_03_http_01"
-            android:layout_toRightOf="@+id/level_09_intro_03_http_01"
-            android:background="@color/red"
-            android:text="@string/level_09_intro_03_phisher"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
-
-        <TextView
-            android:id="@+id/level_09_intro_03_path_01"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/level_09_intro_03_vvetter"
-            android:layout_alignBottom="@+id/level_09_intro_03_vvetter"
-            android:layout_toRightOf="@+id/level_09_intro_03_vvetter"
-            android:text="@string/level_09_intro_03_path_01"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
-
-        <TextView
-            android:id="@+id/level_09_intro_03_path_03"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/level_09_intro_03_http_01"
-            android:text="@string/level_09_intro_03_path_03"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
-
-        <TextView
-            android:id="@+id/level_09_intro_03_path_02"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/level_09_intro_03_path_01"
-            android:layout_alignBottom="@+id/level_09_intro_03_path_01"
-            android:layout_toRightOf="@+id/level_09_intro_03_path_01"
-            android:text="@string/level_09_intro_03_path_02"
-            android:background="@color/blue"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
-
     </RelativeLayout>
 
 </ScrollView>

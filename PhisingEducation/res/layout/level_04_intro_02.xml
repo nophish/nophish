@@ -209,14 +209,6 @@
             android:layout_below="@+id/level_04_reminder_example_subdomain_01"
             android:text="@string/level_03_intro_03_path"
             android:textAppearance="?android:attr/textAppearanceMedium" />
-
-        <TextView
-            android:id="@+id/linebreaks"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/level_04_reminder_example_subdomain_05"
-            android:text="@string/linebreaks"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
     </RelativeLayout>
 
 </ScrollView>

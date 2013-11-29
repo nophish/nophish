@@ -69,13 +69,6 @@
             android:text="@string/level_04_intro_01_img_descr_computer"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
-        <TextView
-            android:id="@+id/linebreaks"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/level_04_intro_01_example_ip"
-            android:text="@string/linebreaks" />
-
         <ImageView
             android:id="@+id/level_04_intro_01_image_computer"
             android:layout_width="wrap_content"

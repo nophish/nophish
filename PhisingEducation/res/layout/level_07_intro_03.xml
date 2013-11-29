@@ -1,5 +1,5 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/level_07_intro_03_sv"
+    android:id="@+id/recognize_attack"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fadeScrollbars="false" >
@@ -11,17 +11,6 @@
         android:paddingLeft="@dimen/activity_horizontal_margin"
         android:paddingRight="@dimen/activity_horizontal_margin"
         android:paddingTop="@dimen/activity_vertical_margin" >
-
-        <TextView
-            android:id="@+id/level_07_intro_03_facebook_login"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/level_07_intro_03_www_01"
-            android:layout_alignBottom="@+id/level_07_intro_03_www_01"
-            android:layout_toRightOf="@+id/level_07_intro_03_www_01"
-            android:background="@color/red"
-            android:text="@string/level_07_intro_03_facebook_login"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <TextView
             android:id="@+id/level_07_intro_03_text_01"
@@ -72,138 +61,33 @@
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <TextView
-            android:id="@+id/level_07_intro_03_http_01"
+            android:id="@+id/example_01"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignLeft="@+id/level_07_intro_03_text_02"
             android:layout_below="@+id/level_07_intro_03_text_02"
             android:layout_marginTop="@dimen/margin_standard"
-            android:text="@string/http"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="@color/grey" />
-
-        <TextView
-            android:id="@+id/level_07_intro_03_www_01"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/level_07_intro_03_http_01"
-            android:layout_alignBottom="@+id/level_07_intro_03_http_01"
-            android:layout_toRightOf="@+id/level_07_intro_03_http_01"
-            android:text="@string/www"
+            android:text="@string/url"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <TextView
-            android:id="@+id/level_07_intro_03_path_01"
+            android:id="@+id/example_02"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/level_07_intro_03_facebook_login"
-            android:layout_alignBottom="@+id/level_07_intro_03_facebook_login"
-            android:layout_toRightOf="@+id/level_07_intro_03_facebook_login"
-            android:text="@string/slash"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="@color/grey" />
-
-        <TextView
-            android:id="@+id/level_07_intro_03_http_02"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/level_07_intro_03_http_01"
-            android:layout_below="@+id/level_07_intro_03_http_01"
+            android:layout_alignLeft="@+id/example_01"
+            android:layout_below="@+id/example_01"
             android:layout_marginTop="@dimen/margin_small"
-            android:text="@string/http"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="@color/grey" />
-
-        <TextView
-            android:id="@+id/level_07_intro_03_www_02"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/level_07_intro_03_http_02"
-            android:layout_alignBottom="@+id/level_07_intro_03_http_02"
-            android:layout_toRightOf="@+id/level_07_intro_03_http_02"
-            android:text="@string/www"
+            android:text="@string/url"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <TextView
-            android:id="@+id/level_07_intro_03_apple_support"
+            android:id="@+id/example_03"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/level_07_intro_03_www_02"
-            android:layout_alignBottom="@+id/level_07_intro_03_www_02"
-            android:layout_toRightOf="@+id/level_07_intro_03_www_02"
-            android:background="@color/red"
-            android:text="@string/level_07_intro_03_apple_support"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
-
-        <TextView
-            android:id="@+id/level_07_intro_03_http_03"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/level_07_intro_03_path_02"
+            android:layout_below="@+id/example_02"
             android:layout_marginTop="@dimen/margin_small"
-            android:text="@string/http"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="@color/grey" />
-
-        <TextView
-            android:id="@+id/level_07_intro_03_path_02"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/level_07_intro_03_http_02"
-            android:text="@string/level_07_intro_03_path_02"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="@color/grey" />
-
-        <TextView
-            android:id="@+id/level_07_intro_03_www_03"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/level_07_intro_03_http_03"
-            android:layout_alignBottom="@+id/level_07_intro_03_http_03"
-            android:layout_toRightOf="@+id/level_07_intro_03_http_03"
-            android:text="@string/www"
+            android:text="@string/url"
             android:textAppearance="?android:attr/textAppearanceMedium" />
-
-        <TextView
-            android:id="@+id/level_07_intro_03_path_03"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/level_07_intro_03_path_02"
-            android:layout_alignBottom="@+id/level_07_intro_03_path_02"
-            android:layout_toRightOf="@+id/level_07_intro_03_path_02"
-            android:text="@string/level_07_intro_03_path_03"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="@color/grey" />
-
-        <TextView
-            android:id="@+id/level_07_intro_03_my"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/level_07_intro_03_www_03"
-            android:layout_alignBottom="@+id/level_07_intro_03_www_03"
-            android:layout_toRightOf="@+id/level_07_intro_03_www_03"
-            android:text="@string/level_07_intro_03_my"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
-
-        <TextView
-            android:id="@+id/level_07_intro_03_ebay_verify"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/level_07_intro_03_my"
-            android:layout_alignBottom="@+id/level_07_intro_03_my"
-            android:layout_toRightOf="@+id/level_07_intro_03_my"
-            android:background="@color/red"
-            android:text="@string/level_07_intro_03_ebay_verify"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
-
-        <TextView
-            android:id="@+id/level_07_intro_03_path_04"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/level_07_intro_03_http_03"
-            android:text="@string/level_07_intro_03_path_04"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="@color/grey" />
     </RelativeLayout>
 
 </ScrollView>

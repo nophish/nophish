@@ -1,7 +1,6 @@
 package de.tudarmstadt.informatik.secuso.phishedu;
 
 import android.content.Intent;
-
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
@@ -34,7 +33,21 @@ public class LevelIntroActivity extends SwipeActivity {
 			{ "https://", "secure-login.mail.google.com.", "hsezis.de",
 					"/update-account", "http://",
 					"secure-login.mail.google.com.", "badcat.com", "/login" },
-			{ "https://", "microsoft.com.", "security-update.de", "/update" }
+			{ "https://", "microsoft.com.", "security-update.de", "/update" },
+			{ "http://", "www.", "facebook-login.com", "/", "http://", "www.",
+					"apple-support.com", "/ipodnano/troubleshooting",
+					"http://", "www.my.", "ebay-verify.de",
+					"/account-verification/user", "https://", "www.",
+					"fracebook.com", "/login", "http://", "www.",
+					"mircosoft.com", "/en-us/default.aspx" },
+			{ "https://", "www.", "vvetter.com", "/wetter_aktuell/?code=EUDE",
+					"http://", "www.", "googie.de", "/services/?fg=1",
+					"http://", "www.", "paypa1.com",
+					"/de/webapps/mpp/privatkunden" },
+			{ "http://", "phisher.de", "/mail.", "google.com", "/login" },
+			{ "https://", "www.", "deutsche-bank.de", "/index.htm",
+			  "https://", "www.", "deutsche-bank.de", "/index.htm",
+			  "https://","facebook.","phisher.de","/secure-login"}
 
 	};
 
@@ -170,10 +183,21 @@ public class LevelIntroActivity extends SwipeActivity {
 	}
 
 	private void setSpans(String[] url, View view) {
-		int exampleIndex = BackendController.getInstance().getLevel() - 3;
 
 		// at start clear string builder
 		strBuilder.clear();
+
+		// total different span pattern
+		int level = BackendController.getInstance().getLevel();
+		if (level == 9) {
+			setLevel9Span(url, view);
+			return;
+		}
+		if (level == 10) {
+			setLevel10Span(url, view);
+			return;
+		}
+
 		for (int i = 0; i < url.length; i++) {
 
 			int spanIndex = (i % 4);
@@ -188,21 +212,21 @@ public class LevelIntroActivity extends SwipeActivity {
 			wordEnd = wordStart + part.length();
 			strBuilder.append(part);
 
-			if (spanIndex == 1 && exampleIndex == 0) {
+			if (spanIndex == 1 && level == 3) {
 				// we are in level 3, subdomain needs to be marked
 				// make background light red
 				final BackgroundColorSpan bgc = new BackgroundColorSpan(
-						Color.rgb(255, 188, 180));
+						getResources().getColor(R.color.light_red));
 				strBuilder.setSpan(bgc, wordStart, wordEnd, 0);
 			} else if (spanIndex == 2) {
 				// make background red
 				final BackgroundColorSpan bgc = new BackgroundColorSpan(
-						Color.rgb(253, 116, 116));
+						getResources().getColor(R.color.red));
 				strBuilder.setSpan(bgc, wordStart, wordEnd, 0);
 			} else if (spanIndex == 0 || spanIndex == 3) {
 				// make foregroundcolor grey
 				final ForegroundColorSpan fgc = new ForegroundColorSpan(
-						Color.rgb(149, 147, 147));
+						getResources().getColor(R.color.grey));
 				strBuilder.setSpan(fgc, wordStart, wordEnd, 0);
 
 			} else if (spanIndex == 1) {
@@ -223,6 +247,127 @@ public class LevelIntroActivity extends SwipeActivity {
 				TextView tv2 = (TextView) view.findViewById(R.id.example_02);
 				if (tv2 != null) {
 					tv2.setText(strBuilder);
+				}
+			}
+			if (i == 11) {
+				// example 3 needs to be set
+				TextView tv3 = (TextView) view.findViewById(R.id.example_03);
+				if (tv3 != null) {
+					tv3.setText(strBuilder);
+				}
+			}
+
+			// no need to check in other levels
+			if (BackendController.getInstance().getLevel() == 7) {
+				if (i == 15) {
+					TextView tv4 = (TextView) view
+							.findViewById(R.id.example_04);
+					if (tv4 != null) {
+						tv4.setText(strBuilder);
+					}
+				}
+				if (i == 19) {
+					TextView tv5 = (TextView) view
+							.findViewById(R.id.example_05);
+					if (tv5 != null) {
+						tv5.setText(strBuilder);
+					}
+				}
+
+			}
+		}
+	}
+
+	private void setLevel10Span(String[] url, View view) {
+
+		for (int i = 0; i < url.length; i++) {
+
+			int spanIndex = (i % 4);
+			if (spanIndex == 0) {
+				strBuilder.clear();
+				strBuilder.clearSpans();
+			}
+
+			String part = url[i];
+			// 0 at the beginning
+			wordStart = strBuilder.length();
+			wordEnd = wordStart + part.length();
+			strBuilder.append(part);
+
+			if (spanIndex == 0) {
+				// make background of http yellow
+				final BackgroundColorSpan bgc = new BackgroundColorSpan(
+						getResources().getColor(R.color.yellow));
+				strBuilder.setSpan(bgc, wordStart, wordEnd, 0);
+
+			} else if (spanIndex == 2) {
+				// make domain red
+				final BackgroundColorSpan bgc = new BackgroundColorSpan(
+						getResources().getColor(R.color.red));
+				strBuilder.setSpan(bgc, wordStart, wordEnd, 0);
+			} else {
+				final ForegroundColorSpan fgc = new ForegroundColorSpan(
+						Color.BLACK);
+				strBuilder.setSpan(fgc, wordStart, wordEnd, 0);
+			}
+
+		// example 1 needs to be set
+		if (i == 3) {
+			TextView tv1 = (TextView) view.findViewById(R.id.example_01);
+			if (tv1 != null) {
+				tv1.setText(strBuilder);
+			}
+		}else if(i == 7){
+			TextView tv2 = (TextView) view.findViewById(R.id.example_02);
+			if (tv2 != null) {
+				tv2.setText(strBuilder);
+			}
+		}else if(i == 11){
+			TextView tv3 = (TextView) view.findViewById(R.id.example_03);
+			if (tv3 != null) {
+				tv3.setText(strBuilder);
+			}
+		}
+		}
+	}
+
+	private void setLevel9Span(String[] url, View view) {
+
+		for (int i = 0; i < url.length; i++) {
+
+			String part = url[i];
+			// 0 at the beginning
+			wordStart = strBuilder.length();
+			wordEnd = wordStart + part.length();
+			strBuilder.append(part);
+
+			if (i == 1) {
+				// background of domain red
+				final BackgroundColorSpan bgc = new BackgroundColorSpan(
+						getResources().getColor(R.color.red));
+				strBuilder.setSpan(bgc, wordStart, wordEnd, 0);
+			} else if (i == 0) {
+				// make foregroundcolor of http grey
+				final ForegroundColorSpan fgc = new ForegroundColorSpan(
+						getResources().getColor(R.color.grey));
+				strBuilder.setSpan(fgc, wordStart, wordEnd, 0);
+
+			} else if (i == 2 || i == 4) {
+				final ForegroundColorSpan fgc = new ForegroundColorSpan(
+						Color.BLACK);
+				strBuilder.setSpan(fgc, wordStart, wordEnd, 0);
+			} else if (i == 3) {
+				// make path part blue
+				final BackgroundColorSpan bgc = new BackgroundColorSpan(
+						getResources().getColor(R.color.blue));
+				strBuilder.setSpan(bgc, wordStart, wordEnd, 0);
+			}
+
+			// example 1 needs to be set
+			if (i == 3) {
+				TextView tv1 = (TextView) view.findViewById(R.id.example_01);
+				if (tv1 != null) {
+					tv1.setText(strBuilder);
 				}
 			}
 		}

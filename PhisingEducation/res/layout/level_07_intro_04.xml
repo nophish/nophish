@@ -1,5 +1,5 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/level_07_intro_04_sv"
+    android:id="@+id/recognize_attack"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fadeScrollbars="false" >
@@ -61,47 +61,15 @@
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <TextView
-            android:id="@+id/level_07_intro_04_http_01"
+            android:id="@+id/example_04"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignLeft="@+id/level_07_intro_04_text_02"
             android:layout_below="@+id/level_07_intro_04_text_02"
             android:layout_marginTop="@dimen/margin_standard"
-            android:text="@string/https"
+            android:text="@string/url"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="@color/grey" />
-
-        <TextView
-            android:id="@+id/level_07_intro_04_www_01"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/level_07_intro_04_http_01"
-            android:layout_alignBottom="@+id/level_07_intro_04_http_01"
-            android:layout_toRightOf="@+id/level_07_intro_04_http_01"
-            android:text="@string/www"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
-
-        <TextView
-            android:id="@+id/level_07_intro_04_fracebook"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/level_07_intro_04_www_01"
-            android:layout_alignBottom="@+id/level_07_intro_04_www_01"
-            android:layout_toRightOf="@+id/level_07_intro_04_www_01"
-            android:background="@color/red"
-            android:text="@string/level_07_intro_04_fracebook"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
-
-        <TextView
-            android:id="@+id/level_07_intro_04_path_01"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/level_07_intro_04_fracebook"
-            android:layout_alignBottom="@+id/level_07_intro_04_fracebook"
-            android:layout_toRightOf="@+id/level_07_intro_04_fracebook"
-            android:text="@string/level_07_intro_04_path"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="@color/grey" />
+             />
 
         <TextView
             android:id="@+id/level_07_intro_04_text_04"
