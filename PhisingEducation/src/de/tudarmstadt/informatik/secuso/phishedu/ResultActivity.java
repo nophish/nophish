@@ -268,17 +268,16 @@ public class ResultActivity extends SwipeActivity {
 			wordEnd = wordStart + part.length();
 			strBuilder.append(part);
 
-			//TODO: when getAttackParts is OK einkommentieren
-//			final BackgroundColorSpan bgc;
-//			if (checkIfAttackedPart(attackedParts, i)) {
-//				// make attacked part background red
-//				if (BackendController.getInstance().getLevel() == 2) {
-//					bgc = new BackgroundColorSpan(Color.rgb(253, 116, 116));
-//				} else {
-//					bgc = new BackgroundColorSpan(Color.rgb(250, 62, 62));
-//				}
-//				strBuilder.setSpan(bgc, wordStart, wordEnd, 0);
-//			}
+			final BackgroundColorSpan bgc;
+			if (checkIfAttackedPart(attackedParts, i)) {
+				// make attacked part background red
+				if (BackendController.getInstance().getLevel() == 2) {
+					bgc = new BackgroundColorSpan(getResources().getColor(R.color.red));
+				} else {
+					bgc = new BackgroundColorSpan(Color.rgb(250, 62, 62));
+				}
+				strBuilder.setSpan(bgc, wordStart, wordEnd, 0);
+			}
 
 		}
 		if (urlText != null) {
@@ -288,7 +287,7 @@ public class ResultActivity extends SwipeActivity {
 
 	private boolean checkIfAttackedPart(Integer[] attackedParts, int index) {
 		for (int i = 0; i < attackedParts.length; i++) {
-			if (i == index) {
+			if (attackedParts[i] == index) {
 				return true;
 			}
 		}
