@@ -5,7 +5,7 @@
     android:versionName="0.3.1" >
 
     <uses-sdk
-        android:minSdkVersion="14"
+        android:minSdkVersion="10"
         android:targetSdkVersion="18" />
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -22,11 +22,9 @@
         <meta-data
             android:name="com.google.android.gms.appstate.APP_ID"
             android:value="@string/app_id" />
-        <!--
-             <meta-data
+        <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
-        -->
 
         <activity
             android:name="de.tudarmstadt.informatik.secuso.phishedu.StartMenuActivity"

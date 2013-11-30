@@ -1,6 +1,6 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/level_04_intro_02_sv"
+    android:id="@+id/reminder_examples"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fadeScrollbars="false" >
@@ -161,53 +161,13 @@
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <TextView
-            android:id="@+id/level_04_reminder_example_subdomain_01"
+            android:id="@+id/example_01"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignLeft="@+id/level_04_reminder_subdomain"
             android:layout_below="@+id/level_04_reminder_subdomain"
             android:layout_marginTop="@dimen/margin_xxsmall"
-            android:text="@string/http"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
-
-        <TextView
-            android:id="@+id/level_04_reminder_example_subdomain_02"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/level_04_reminder_example_subdomain_01"
-            android:layout_alignBottom="@+id/level_04_reminder_example_subdomain_01"
-            android:layout_toRightOf="@+id/level_04_reminder_example_subdomain_01"
-            android:background="@color/light_red"
-            android:text="@string/level_03_intro_03_subdomain"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
-
-        <TextView
-            android:id="@+id/level_04_reminder_example_subdomain_03"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/level_04_reminder_example_subdomain_02"
-            android:layout_alignBottom="@+id/level_04_reminder_example_subdomain_02"
-            android:layout_toRightOf="@+id/level_04_reminder_example_subdomain_02"
-            android:background="@color/red"
-            android:text="@string/level_03_intro_03_domain"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
-
-        <TextView
-            android:id="@+id/level_04_reminder_example_subdomain_04"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/level_04_reminder_example_subdomain_03"
-            android:layout_alignBottom="@+id/level_04_reminder_example_subdomain_03"
-            android:layout_toRightOf="@+id/level_04_reminder_example_subdomain_03"
-            android:text="@string/slash"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
-
-        <TextView
-            android:id="@+id/level_04_reminder_example_subdomain_05"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/level_04_reminder_example_subdomain_01"
-            android:text="@string/level_03_intro_03_path"
+            android:text="@string/url"
             android:textAppearance="?android:attr/textAppearanceMedium" />
     </RelativeLayout>
 

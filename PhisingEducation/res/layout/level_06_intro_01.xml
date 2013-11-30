@@ -1,6 +1,6 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/level_05_intro_01_sv"
+    android:id="@+id/reminder_examples"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fadeScrollbars="false" >
@@ -161,151 +161,51 @@
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <TextView
-            android:id="@+id/reminder_example_subdomain_01"
+            android:id="@+id/example_01"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignLeft="@+id/reminder_subdomain"
             android:layout_below="@+id/reminder_subdomain"
             android:layout_marginTop="@dimen/margin_xxsmall"
-            android:text="@string/http"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
-
-        <TextView
-            android:id="@+id/reminder_example_subdomain_02"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/reminder_example_subdomain_01"
-            android:layout_alignBottom="@+id/reminder_example_subdomain_01"
-            android:layout_toRightOf="@+id/reminder_example_subdomain_01"
-            android:background="@color/light_red"
-            android:text="@string/level_03_intro_03_subdomain"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
-
-        <TextView
-            android:id="@+id/reminder_example_subdomain_03"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/reminder_example_subdomain_02"
-            android:layout_alignBottom="@+id/reminder_example_subdomain_02"
-            android:layout_toRightOf="@+id/reminder_example_subdomain_02"
-            android:background="@color/red"
-            android:text="@string/level_03_intro_03_domain"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
-
-        <TextView
-            android:id="@+id/reminder_example_subdomain_04"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/reminder_example_subdomain_03"
-            android:layout_alignBottom="@+id/reminder_example_subdomain_03"
-            android:layout_toRightOf="@+id/reminder_example_subdomain_03"
-            android:text="@string/slash"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
-
-        <TextView
-            android:id="@+id/reminder_example_subdomain_05"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/reminder_example_subdomain_01"
-            android:text="@string/level_03_intro_03_path"
+            android:text="@string/url"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <TextView
             android:id="@+id/reminder_ip"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/reminder_example_subdomain_05"
+            android:layout_below="@+id/example_01"
             android:layout_marginTop="@dimen/margin_standard"
             android:text="@string/reminder_ip"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <TextView
-            android:id="@+id/reminder_example_ip_01"
+            android:id="@+id/example_02"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignLeft="@+id/reminder_ip"
             android:layout_below="@+id/reminder_ip"
             android:layout_marginTop="@dimen/margin_xxsmall"
-            android:text="@string/http"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
-
-        <TextView
-            android:id="@+id/reminder_example_ip_02"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/reminder_example_ip_01"
-            android:layout_alignBottom="@+id/reminder_example_ip_01"
-            android:layout_toRightOf="@+id/reminder_example_ip_01"
-            android:background="@color/red"
-            android:text="@string/level_04_intro_03_example_ip"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
-
-        <TextView
-            android:id="@+id/reminder_example_ip_03"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/reminder_example_ip_02"
-            android:layout_alignBottom="@+id/reminder_example_ip_02"
-            android:layout_toRightOf="@+id/reminder_example_ip_02"
-            android:text="@string/level_04_intro_03_example_ip_path"
+            android:text="@string/url"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <TextView
             android:id="@+id/reminder_nonsense"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/reminder_example_ip_01"
+            android:layout_below="@+id/example_02"
             android:layout_marginTop="@dimen/margin_standard"
             android:text="@string/reminder_nonsense"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <TextView
-            android:id="@+id/reminder_example_nonsense"
+            android:id="@+id/example_03"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignLeft="@+id/reminder_nonsense"
             android:layout_below="@+id/reminder_nonsense"
             android:layout_marginTop="@dimen/margin_xxsmall"
-            android:text="@string/https"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
-
-        <TextView
-            android:id="@+id/reminder_example_nonsense_01"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/reminder_example_nonsense"
-            android:layout_alignBottom="@+id/reminder_example_nonsense"
-            android:layout_toRightOf="@+id/reminder_example_nonsense"
-            android:text="@string/level_05_intro_02_nonsense_01"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
-
-        <TextView
-            android:id="@+id/reminder_example_nonsense_02"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/reminder_example_nonsense_01"
-            android:text="@string/level_05_intro_02_nonsense_02"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
-
-        <TextView
-            android:id="@+id/reminder_example_nonsense_03"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/reminder_example_nonsense_02"
-            android:layout_alignBottom="@+id/reminder_example_nonsense_02"
-            android:layout_toRightOf="@+id/reminder_example_nonsense_02"
-            android:background="@color/red"
-            android:text="@string/level_05_intro_02_nonsense_03"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
-
-        <TextView
-            android:id="@+id/reminder_example_nonsense_04"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/reminder_example_nonsense_03"
-            android:layout_alignBottom="@+id/reminder_example_nonsense_03"
-            android:layout_toRightOf="@+id/reminder_example_nonsense_03"
-            android:text="@string/level_05_intro_02_nonsense_04"
+            android:text="@string/url"
             android:textAppearance="?android:attr/textAppearanceMedium" />
     </RelativeLayout>
 
