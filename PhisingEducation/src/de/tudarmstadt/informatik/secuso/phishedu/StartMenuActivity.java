@@ -107,6 +107,8 @@ public class StartMenuActivity extends PhishBaseGameActivity implements
 	 */
 	public void startGame(View view) {
 		int level = BackendController.getInstance().getLevel();
+		//TODO: remove
+		level = 11;
 		BackendController.getInstance().startLevel(level);
 	}
 

@@ -25,83 +25,123 @@ public class LevelIntroActivity extends SwipeActivity {
 
 	SpannableStringBuilder strBuilder = new SpannableStringBuilder();
 	int wordStart, wordEnd;
-	protected static String[][] exampleReminderUrlPartId = {
-			{ "http://", "google.com.", "phishers-seite.de",
-					"/search/online+banking+postbank" },
-			{ "http://", "", "192.168.160.02", "/secure-login" },
-			{ "https://", "secure-login.mail.google.com.", "hsezis.de",
-					"/update-account" },
-			{ "https://", "microsoft.com.", "security-update.de", "/update" },
-			{ "http://", "www.", "facebook-login.com", "/" },
-			{ "https://", "www.", "fracebook.com", "/login" },
-			{ "http://", "www.", "mircosoft.com", "/en-us/default.aspx" },
-			{ "https://", "www.", "vvetter.com", "/wetter_aktuell/?code=EUDE" },
-			{ "http://", "phisher.de", "/mail.", "google.com", "/login" } };
-	protected static String[][] exampleUrlPartId = {
-			// level 3
-			// TODO: auslagern in strings.xml
-			{ "http://", "google.com.", "phishers-seite.de",
-					"/search/online+banking+postbank" },
-			{ "http://", "", "192.168.160.02", "/secure-login" },
-			{ "https://", "secure-login.mail.google.com.", "hsezis.de",
-					"/update-account", "http://",
-					"secure-login.mail.google.com.", "badcat.com", "/login" },
-			{ "https://", "microsoft.com.", "security-update.de", "/update" },
-			{ "http://", "www.", "facebook-login.com", "/", "http://", "www.",
-					"apple-support.com", "/ipodnano/troubleshooting",
-					"http://", "www.my.", "ebay-verify.de",
-					"/account-verification/user", "https://", "www.",
-					"fracebook.com", "/login", "http://", "www.",
-					"mircosoft.com", "/en-us/default.aspx" },
-			{ "https://", "www.", "vvetter.com", "/wetter_aktuell/?code=EUDE",
-					"http://", "www.", "googie.de", "/services/?fg=1",
-					"http://", "www.", "paypa1.com",
-					"/de/webapps/mpp/privatkunden" },
-			{ "http://", "phisher.de", "/mail.", "google.com", "/login" },
-			{ "https://", "www.", "deutsche-bank.de", "/index.htm", "https://",
-					"www.", "deutsche-bank.de", "/index.htm", "https://",
-					"facebook.", "phisher.de", "/secure-login" }
-
-	};
 
 	protected static int[][] levelLayoutIds = {
-			{ R.layout.level_00_intro_00, R.layout.level_00_intro_01 },
-			{ R.layout.level_01_splash, R.layout.level_01_intro_00,
-					R.layout.level_01_intro_01, R.layout.level_01_intro_02,
-					R.layout.level_01_intro_03 },
-			{ R.layout.level_02_splash, R.layout.level_02_intro_00,
-					R.layout.level_02_intro_01, R.layout.level_02_intro_02,
-					R.layout.level_02_intro_03, R.layout.level_02_intro_04,
-					R.layout.level_02_intro_05, R.layout.level_02_intro_06,
-					R.layout.level_02_intro_07, R.layout.level_02_intro_08,
-					R.layout.level_02_intro_09, R.layout.level_02_intro_10, },
+			{ R.layout.level_00_intro_00, 
+			  R.layout.level_00_intro_01 },
+			{ R.layout.level_01_splash, 
+			  R.layout.level_01_intro_00,
+			  R.layout.level_01_intro_01, 
+			  R.layout.level_01_intro_02,
+			  R.layout.level_01_intro_03 },
+			{ R.layout.level_02_splash, 
+			  R.layout.level_02_intro_00,
+			  R.layout.level_02_intro_01, 
+			  R.layout.level_02_intro_02,
+			  R.layout.level_02_intro_03, 
+			  R.layout.level_02_intro_04,
+			  R.layout.level_02_intro_05, 
+		      R.layout.level_02_intro_06,
+		      R.layout.level_02_intro_07, 
+			  R.layout.level_02_intro_08,
+			  R.layout.level_02_intro_09, 
+		      R.layout.level_02_intro_10, },
+			{ R.layout.level_03_splash, 
+		      R.layout.level_03_intro_00,
+			  R.layout.level_03_intro_01, 
+			  R.layout.level_03_intro_02,
+		  	  R.layout.level_03_intro_03 },
+			{ R.layout.level_04_splash, 
+	  		  R.layout.level_04_intro_00,
+			  R.layout.level_04_intro_01, 
+			  R.layout.level_04_intro_02,
+			  R.layout.level_04_intro_03 },
+			{ R.layout.level_05_splash, 
+			  R.layout.level_05_intro_00,
+			  R.layout.level_05_intro_01, 
+			  R.layout.level_05_intro_02 },
+			{ R.layout.level_06_splash, 
+			  R.layout.level_06_intro_00,
+			  R.layout.level_06_intro_01, 
+			  R.layout.level_06_intro_02 },
+			{ R.layout.level_07_splash, 
+			  R.layout.level_07_intro_00,
+			  R.layout.level_07_intro_01, 
+			  R.layout.level_07_intro_02,
+			  R.layout.level_07_intro_03, 
+			  R.layout.level_07_intro_04,
+			  R.layout.level_07_intro_05, 
+			  R.layout.level_07_intro_06 },
+			{ R.layout.level_08_splash, 
+		      R.layout.level_08_intro_00,
+			  R.layout.level_08_intro_01, 
+			  R.layout.level_08_intro_02 },
+			{ R.layout.level_09_splash, 
+			  R.layout.level_09_intro_00,
+			  R.layout.level_09_intro_01, 
+			  R.layout.level_09_intro_02,
+			  R.layout.level_09_intro_03 },
+			{ R.layout.level_10_splash, 
+			  R.layout.level_10_intro_00,
+			  R.layout.level_10_intro_01, 
+			  R.layout.level_10_intro_02,
+			  R.layout.level_10_intro_03, 
+			  R.layout.level_10_intro_04,
+			  R.layout.level_10_intro_05, 
+			  R.layout.level_10_intro_06,
+			  R.layout.level_10_intro_07, 
+			  R.layout.level_10_intro_08,
+			  R.layout.level_10_intro_09, },
+			{ R.layout.level_11_splash_00,
+			  R.layout.level_11_intro_00,
+			  R.layout.level_11_splash_01,
+			  R.layout.level_11_intro_01,
+			  R.layout.level_11_intro_02,
+			  R.layout.level_11_intro_03,
+			  R.layout.level_11_intro_04,
+			  R.layout.level_11_splash_02,
+			  R.layout.level_11_intro_05,
+			  R.layout.level_11_intro_06,
+			  R.layout.level_11_intro_07
+			  
+			  }};
 
-			{ R.layout.level_03_splash, R.layout.level_03_intro_00,
-					R.layout.level_03_intro_01, R.layout.level_03_intro_02,
-					R.layout.level_03_intro_03 },
-			{ R.layout.level_04_splash, R.layout.level_04_intro_00,
-					R.layout.level_04_intro_01, R.layout.level_04_intro_02,
-					R.layout.level_04_intro_03 },
-			{ R.layout.level_05_splash, R.layout.level_05_intro_00,
-					R.layout.level_05_intro_01, R.layout.level_05_intro_02 },
-			{ R.layout.level_06_splash, R.layout.level_06_intro_00,
-					R.layout.level_06_intro_01, R.layout.level_06_intro_02 },
-			{ R.layout.level_07_splash, R.layout.level_07_intro_00,
-					R.layout.level_07_intro_01, R.layout.level_07_intro_02,
-					R.layout.level_07_intro_03, R.layout.level_07_intro_04,
-					R.layout.level_07_intro_05, R.layout.level_07_intro_06 },
-			{ R.layout.level_08_splash, R.layout.level_08_intro_00,
-					R.layout.level_08_intro_01, R.layout.level_08_intro_02 },
-			{ R.layout.level_09_splash, R.layout.level_09_intro_00,
-					R.layout.level_09_intro_01, R.layout.level_09_intro_02,
-					R.layout.level_09_intro_03 },
-			{ R.layout.level_10_splash, R.layout.level_10_intro_00,
-					R.layout.level_10_intro_01, R.layout.level_10_intro_02,
-					R.layout.level_10_intro_03, R.layout.level_10_intro_04,
-					R.layout.level_10_intro_05, R.layout.level_10_intro_06,
-					R.layout.level_10_intro_07, R.layout.level_10_intro_08,
-					R.layout.level_10_intro_09, } };
-
+	protected static String[][] exampleReminderUrlPartId = {
+		{ "http://", "google.com.", "phishers-seite.de","/search/online+banking+postbank" },
+		{ "http://", "", "192.168.160.02", "/secure-login" },
+		{ "https://", "secure-login.mail.google.com.", "hsezis.de","/update-account" },
+		{ "https://", "microsoft.com.", "security-update.de", "/update" },
+		{ "http://", "www.", "facebook-login.com", "/" },
+		{ "https://", "www.", "fracebook.com", "/login" },
+		{ "http://", "www.", "mircosoft.com", "/en-us/default.aspx" },
+		{ "https://", "www.", "vvetter.com", "/wetter_aktuell/?code=EUDE" },
+		{ "http://", "phisher.de", "/mail.", "google.com", "/login" } };
+protected static String[][] exampleUrlPartId = {
+		// level 3
+		// TODO: auslagern in strings.xml
+		{ "http://", "google.com.", "phishers-seite.de","/search/online+banking+postbank" },
+		{ "http://", "", "192.168.160.02", "/secure-login" },
+		{ "https://", "secure-login.mail.google.com.", "hsezis.de","/update-account", 
+		  "http://","secure-login.mail.google.com.", "badcat.com", "/login" },
+		{ "https://", "microsoft.com.", "security-update.de", "/update" },
+		{ "http://", "www.", "facebook-login.com", "/", 
+		  "http://", "www.", "apple-support.com", "/ipodnano/troubleshooting",
+		  "http://", "www.my.", "ebay-verify.de","/account-verification/user", 
+		  "https://", "www.","fracebook.com", "/login", 
+		  "http://", "www.","mircosoft.com", "/en-us/default.aspx" },
+		{ "https://", "www.", "vvetter.com", "/wetter_aktuell/?code=EUDE",
+		  "http://", "www.", "googie.de", "/services/?fg=1",
+		  "http://", "www.", "paypa1.com","/de/webapps/mpp/privatkunden" },
+		{ "http://", "phisher.de", "/mail.", "google.com", "/login" },
+		{ "https://", "www.", "deutsche-bank.de", "/index.htm", 
+		  "https://","www.", "deutsche-bank.de", "/index.htm", 
+		  "https://","facebook.", "phisher.de", "/secure-login" },
+		{ "https://", "www.", "commerzbank.de", "/",
+		  "https://", "www.", "commerzbanking.de", "/P-Portal1/XML/IFILPortal/pgf.html?Tab=3&ifil=coba_pk",
+		  "https://", "www.", "paypal.com", "/de",
+	      "https://", "www.", "paypal-viewpoints.com", "/DE-Kontakt"
+	    }
+	};
 	public int real_level = 0;
 	public int index_level = 0;
 
@@ -296,7 +336,7 @@ public class LevelIntroActivity extends SwipeActivity {
 			}
 
 			// no need to check in other levels
-			if (BackendController.getInstance().getLevel() == 7) {
+			if (BackendController.getInstance().getLevel() == 7 || BackendController.getInstance().getLevel() == 11) {
 				if (i == 15) {
 					setTextView(view, R.id.example_04);
 				}
@@ -326,13 +366,13 @@ public class LevelIntroActivity extends SwipeActivity {
 			final BackgroundColorSpan bgc = new BackgroundColorSpan(
 					getResources().getColor(R.color.red));
 			strBuilder.setSpan(bgc, wordStart, wordEnd, 0);
-		} else if (spanIndex == 0 || spanIndex == 3) {
+		} else if ((spanIndex == 0 || spanIndex == 3) && level < 11) {
 			// make foregroundcolor grey
 			final ForegroundColorSpan fgc = new ForegroundColorSpan(
 					getResources().getColor(R.color.grey));
 			strBuilder.setSpan(fgc, wordStart, wordEnd, 0);
 
-		} else if (spanIndex == 1) {
+		} else /* if (spanIndex == 1)*/ {
 			final ForegroundColorSpan fgc = new ForegroundColorSpan(Color.BLACK);
 			strBuilder.setSpan(fgc, wordStart, wordEnd, 0);
 		}
