@@ -16,7 +16,7 @@ public interface BackendControllerInterface {
 	 * @param frontend
 	 * @param gamehelper
 	 */
-	void init(FrontendControllerInterface frontend, GameHelper gamehelper);
+	public void init(FrontendControllerInterface frontend, GameHelper gamehelper);
 	
 	/**
 	 * This function sends a Mail to a custom Mail Adress-
@@ -24,13 +24,13 @@ public interface BackendControllerInterface {
 	 * @param to The receiver mail address
 	 * @param usermessage Each send out mail contains a usermessage to maximize the awareness.
 	 */
-	void sendMail(String from, String to, String usermessage);
+	public void sendMail(String from, String to, String usermessage);
 	
 	/**
 	 * This starts a level and initilizes the backend state.
 	 * @param level The level you want to start
 	 */
-	void startLevel(int level);
+	public void startLevel(int level);
 	
 	/**
 	 * This function start the browser at the leve1 URL
@@ -38,10 +38,15 @@ public interface BackendControllerInterface {
 	public void redirectToLevel1URL();
 	
 	/**
-	 * Get the current url returned by the last {@link BackendControllerInterface#getNextUrl()} call.
+	 * Get the current url returned by the last {@link #getNextUrl()} call.
 	 * @return A set of strings that (concardinated) make up the URL
 	 */
-	String[] getUrl();
+	public String[] getUrl();
+	
+	/**
+	 * Switch to the next URL.
+	 */
+	public void nextUrl();
 	
 	/**
 	 * Get the current level of the user.
@@ -49,13 +54,13 @@ public interface BackendControllerInterface {
 	 * If we later think about allowing the user to select level we have to implement a getUnlockedLevel() Function to get the maximum available level.
 	 * @return Current user level
 	 */
-	int getLevel();
+	public int getLevel();
 	
 	/**
 	 * Get the Level the user is able to play.
 	 * @return Biggest available level
 	 */
-	int getMaxUnlockedLevel();
+	public int getMaxUnlockedLevel();
 	
 	/**
 	 * Get how many points in the current level the user has.
@@ -64,46 +69,48 @@ public interface BackendControllerInterface {
 	 * The user has to restart the given level from 0 points each time the app starts.
 	 * @return points in the current level.
 	 */
-	int getPoints();
+	public int getPoints();
+	
 	/**
 	 * What type of site is this currently
 	 * @return sitetype of the current phish
 	 */
-	PhishSiteType getSiteType();
+	public PhishSiteType getSiteType();
 	
 	/**
 	 * What type of attack is this currently
 	 * @return attacktype of the current phish
 	 */
-	PhishAttackType getAttackType();
+	public PhishAttackType getAttackType();
 	
 	/**
 	 * This function is called when the user chooses weather this URL is a phish or not 
 	 * @param accptance true of the user thinks this is a phish. false otherwise.
 	 * @return a {@link PhishResult} enum representing the state of the phish
 	 */
-	PhishResult userClicked(boolean accptance);
+	public PhishResult userClicked(boolean accptance);
 	/**
 	 * This function must be called when the user selects a part of the URL as phishy.
 	 * @param part the part that the user suspects to be an attack.
 	 * @return true of the user clicked the correct part. False otherwise
 	 */
-	boolean partClicked(int part);
+	public boolean partClicked(int part);
 	
 	/**
 	 * When the main activity receives an URI via an Indent pass it to this function so that the backend can handle it.
 	 * @param data The recept URI
 	 */
-	void onUrlReceive(Uri data);
+	public void onUrlReceive(Uri data);
 	
 	/**
 	 * The user clicks on the Google+ signin button.
 	 */
-	void signIn();
+	public void signIn();
+	
 	/**
 	 * The user clicks on the Google+ signout button.
 	 */
-	void signOut();
+	public void signOut();
 	
 	/**
 	 * How many URLs must the user answer in this Level
@@ -145,12 +152,33 @@ public interface BackendControllerInterface {
 	 */
 	public void finishLevel();
 	
+	//Level States
+	/** 
+	 * return Value of {@link #levelState()} when level is running
+	 */
 	public static int LEVEL_RUNNING = 0;
+	/** 
+	 * return Value of {@link #levelState()} when level is done
+	 */
 	public static int LEVEL_DONE = 1;
+	/** 
+	 * return Value of {@link #levelState()} when level is failed
+	 */
 	public static int LEVEL_FAILED = 2;
+	/** 
+	 * return Value of {@link #levelState()} when level is finished
+	 */
 	public static int LEVEL_FINISHED = 3;
 	
+	/**
+	 * Return the current state of the level. This can change whenever {@link #userClicked(boolean)} or {@link #partClicked(int)} is called.
+	 * @return one of the LEVEL_* constants from this interface.
+	 */
 	public int levelState();
 	
+	/**
+	 * Get the parts of the current URL that are attacked.
+	 * @return indexes from the array returned by {@link #getUrl()} that are part of an attack.
+	 */
 	public Integer[] getAttackParts();
 }
