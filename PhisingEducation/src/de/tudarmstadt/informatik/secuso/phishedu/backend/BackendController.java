@@ -425,7 +425,7 @@ public class BackendController implements BackendControllerInterface, GameStateL
 		}
 		return 6+(2*this.getLevel());
 	}
-
+	
 	private int levelURLs() {
 		checkinited();
 		int failed_urls=progress.getLevelResults(PhishResult.Phish_NotDetected)+progress.getLevelResults(PhishResult.NoPhish_NotDetected);
@@ -441,9 +441,9 @@ public class BackendController implements BackendControllerInterface, GameStateL
 		checkinited();
 		int base_phishes=0;
 		if(this.getLevel()==2){
-			base_phishes=levelURLs();
+			base_phishes=levelCorrectURLs();
 		}else{
-			base_phishes=levelURLs()/2;
+			base_phishes=levelCorrectURLs()/2;
 		}
 		return base_phishes+progress.getLevelResults(PhishResult.Phish_NotDetected);
 	}
