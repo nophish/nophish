@@ -120,7 +120,7 @@ public class BackendController implements BackendControllerInterface, GameStateL
 	 * Getter for singleton.
 	 * @return The singleton Object of this class
 	 */
-	public static BackendController getInstance(){
+	public static BackendControllerInterface getInstance(){
 		return instance;
 	}
 
@@ -240,14 +240,12 @@ public class BackendController implements BackendControllerInterface, GameStateL
 		//We might have failed the level
 		//Either by going out of URLs or by going out of options to detect phish
 		switch (levelState()) {
-		case LEVEL_DONE:
-			this.frontend.levelDone(getLevel());
-			break;
 		case LEVEL_FAILED:
 			this.frontend.levelFailed(getLevel());
 			break;
 		case LEVEL_FINISHED:
-			this.frontend.levelFinished(getLevel());
+			this.progress.commitPoints();
+			this.frontend.levelFinished(this.getLevel());
 			break;
 		}
 
@@ -307,7 +305,7 @@ public class BackendController implements BackendControllerInterface, GameStateL
 	
 	
 	private int levelRepeats(){
-		return (int) Math.ceil(this.levelPhishes()/3);
+		return (int) Math.floor(this.levelPhishes()/2);
 	}
 
 	@Override
@@ -342,6 +340,9 @@ public class BackendController implements BackendControllerInterface, GameStateL
 
 	private void addResult(PhishResult result){
 		this.progress.addResult(result);
+		if(result == PhishResult.Phish_NotDetected){
+			progress.decLifes();
+		}
 		int offset=this.current_url.getPoints(result);
 		//with this function we ensure that the user gets more points per level
 		//This ensures that there is no point in running the same level multiple times to collect points
@@ -380,11 +381,6 @@ public class BackendController implements BackendControllerInterface, GameStateL
 			addResult(PhishResult.Phish_NotDetected);
 		}
 		return clickedright;
-	}
-	
-	private void levelFinished(int level){
-		this.progress.commitPoints();
-		this.frontend.levelFinished(this.getLevel());
 	}
 
 	public int getPoints(){
@@ -434,17 +430,21 @@ public class BackendController implements BackendControllerInterface, GameStateL
 		if(getLevel()==2){
 			return 5;
 		}
-		return 10+(2*this.getLevel());
+		int base_level_urls=6+(2*this.getLevel());
+		int failed_urls=progress.getLevelResults(PhishResult.Phish_NotDetected)+progress.getLevelResults(PhishResult.NoPhish_NotDetected);
+		return base_level_urls+failed_urls;
 	}
 
 	@Override
 	public int levelPhishes() {
 		checkinited();
+		int base_phishes=0;
 		if(this.getLevel()==2){
-			return levelURLs();
+			base_phishes=levelURLs();
 		}else{
-			return levelURLs()/2;
+			base_phishes=levelURLs()/2;
 		}
+		return base_phishes+progress.getLevelResults(PhishResult.Phish_NotDetected);
 	}
 
 	@Override
@@ -456,36 +456,17 @@ public class BackendController implements BackendControllerInterface, GameStateL
 	@Override
 	public int foundPhishes() {
 		checkinited();
-		return this.progress.getDetectedPhish();
-	}
-
-	@Override
-	public int nextLevelPhishes() {
-		checkinited();
-		return levelPhishes()-2;
-	}
-
-	@Override
-	public void finishLevel() {
-		if(this.levelState() != LEVEL_DONE && this.levelState() != LEVEL_FINISHED){
-			throw new IllegalStateException("only call finishLevel() after getting levelDone()");
-		}
-		levelFinished(getLevel());
+		return this.progress.getLevelResults(PhishResult.Phish_Detected);
 	}
 
 	@Override
 	public int levelState() {
 		int remaining_urls = levelURLs()-doneURLs();
-		int remaining_phish_to_level = nextLevelPhishes()-foundPhishes();
 		int result = 0;
-		if(remaining_urls <= 0){
-			if(remaining_phish_to_level <= 0){
-				result = LEVEL_FINISHED;
-			}else{
-				result = LEVEL_FAILED;
-			}
-		}else if(foundPhishes()>=nextLevelPhishes()){
-			result = LEVEL_DONE;
+		if(progress.getRemainingLives() <= 0){
+			result = LEVEL_FAILED;
+		}else if(remaining_urls <= 0){
+			result = LEVEL_FINISHED;
 		}else{
 			result = LEVEL_RUNNING;
 		}
@@ -496,5 +477,10 @@ public class BackendController implements BackendControllerInterface, GameStateL
 	@Override
 	public Integer[] getAttackParts() {
 		return current_url.getAttackParts().toArray(new Integer[0]);
+	}
+	
+	@Override
+	public int getLifes() {
+		return this.progress.getRemainingLives();
 	}
 }

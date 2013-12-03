@@ -1,8 +1,6 @@
 package de.tudarmstadt.informatik.secuso.phishedu;
 
-import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.net.Uri;
@@ -292,9 +290,6 @@ public class StartMenuActivity extends PhishBaseGameActivity implements
 		}
 		return super.onOptionsItemSelected(item);
 	}
-
-	@Override
-	public void levelDone(int level) {}
 
 	@Override
 	public void levelFailed(int level) {}

@@ -125,12 +125,6 @@ public interface BackendControllerInterface {
 	public int levelPhishes();
 	
 	/**
-	 * How many phishes do you have to find to get to the next Level
-	 * @return needed phishes for level completion
-	 */
-	public int nextLevelPhishes();
-	
-	/**
 	 * How Many URLs has the user found.
 	 * @return how many urls has the user seen.
 	 */
@@ -147,20 +141,11 @@ public interface BackendControllerInterface {
 	 */
 	public void restartLevel();
 	
-	/**
-	 * The frontend should call this method in the {@link FrontendControllerInterface#levelDone(int)} function to finish the level.
-	 */
-	public void finishLevel();
-	
 	//Level States
 	/** 
 	 * return Value of {@link #levelState()} when level is running
 	 */
 	public static int LEVEL_RUNNING = 0;
-	/** 
-	 * return Value of {@link #levelState()} when level is done
-	 */
-	public static int LEVEL_DONE = 1;
 	/** 
 	 * return Value of {@link #levelState()} when level is failed
 	 */
@@ -181,4 +166,18 @@ public interface BackendControllerInterface {
 	 * @return indexes from the array returned by {@link #getUrl()} that are part of an attack.
 	 */
 	public Integer[] getAttackParts();
+	
+	/**
+	 * return the number of lifes left
+	 * @return number of lifes left
+	 */
+	public int getLifes();
+	
+	/**
+	 * get a phishing URL of the given type
+	 * @param type The type of URL you want to get
+	 * @return The (possibly decorated) Phishing url
+	 */
+	public PhishURLInterface getPhishURL(PhishAttackType type);
 }
+
