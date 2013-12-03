@@ -232,7 +232,7 @@ public class ResultActivity extends SwipeActivity {
 			if (checkIfAttackedPart(attackedParts, i)) {
 				// make attacked part background red
 				if (BackendController.getInstance().getLevel() == 2) {
-					bgc = new BackgroundColorSpan(getResources().getColor(R.color.red));
+					bgc = new BackgroundColorSpan(getResources().getColor(R.color.domain));
 				} else {
 					bgc = new BackgroundColorSpan(Color.rgb(250, 62, 62));
 				}

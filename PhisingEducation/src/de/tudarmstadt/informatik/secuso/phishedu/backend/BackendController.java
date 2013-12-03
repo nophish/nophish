@@ -239,14 +239,15 @@ public class BackendController implements BackendControllerInterface, GameStateL
 		int remaining_repeats = this.levelRepeats() - this.progress.getPresentedRepeats();
 		//We might have failed the level
 		//Either by going out of URLs or by going out of options to detect phish
-		switch (levelState()) {
+		int state = levelState();
+		switch (state) {
 		case LEVEL_FAILED:
 			this.frontend.levelFailed(getLevel());
-			break;
+			return;
 		case LEVEL_FINISHED:
 			this.progress.commitPoints();
 			this.frontend.levelFinished(this.getLevel());
-			break;
+			return;
 		}
 
 		//we have to decide whether we want to present a phish or not

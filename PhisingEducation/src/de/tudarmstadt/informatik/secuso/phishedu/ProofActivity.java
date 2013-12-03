@@ -22,7 +22,7 @@ import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishResult;
 public class ProofActivity extends PhishBaseActivity {
 	int selectedPart = -1;
 	int level = 0;
-
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);

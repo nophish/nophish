@@ -29,7 +29,7 @@
             android:layout_alignBaseline="@+id/level_02_intro_01_http_01"
             android:layout_alignBottom="@+id/level_02_intro_01_http_01"
             android:layout_toRightOf="@+id/level_02_intro_01_http_01"
-            android:background="@color/red"
+            android:background="@color/domain"
             android:text="@string/domain"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
@@ -40,7 +40,7 @@
             android:layout_alignBaseline="@+id/level_02_intro_01_domain_01"
             android:layout_alignBottom="@+id/level_02_intro_01_domain_01"
             android:layout_toRightOf="@+id/level_02_intro_01_domain_01"
-            android:background="@color/blue"
+            android:background="@color/path"
             android:text="@string/path"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
@@ -52,7 +52,7 @@
             android:layout_below="@+id/level_02_intro_01_text_01"
             android:layout_marginLeft="@dimen/margin_standard"
             android:layout_marginTop="@dimen/margin_standard"
-            android:background="@color/red"
+            android:background="@color/domain"
             android:gravity="center"
             android:padding="@dimen/mini_padding"
             android:text="@string/domain_description"
@@ -65,7 +65,7 @@
             android:layout_alignLeft="@+id/level_02_intro_01_text_01"
             android:layout_below="@+id/level_02_intro_01_domain_02"
             android:layout_marginTop="@dimen/margin_small"
-            android:background="@color/yellow"
+            android:background="@color/protocol"
             android:gravity="center"
             android:text="@string/http"
             android:textAppearance="?android:attr/textAppearanceMedium" />
@@ -77,7 +77,7 @@
             android:layout_alignParentLeft="true"
             android:layout_below="@+id/level_02_intro_01_domain_01"
             android:layout_marginTop="@dimen/margin_small"
-            android:background="@color/yellow"
+            android:background="@color/protocol"
             android:gravity="center"
             android:padding="@dimen/mini_padding"
             android:text="@string/http_description"
@@ -99,7 +99,7 @@
             android:layout_above="@+id/level_02_intro_01_text_02"
             android:layout_alignLeft="@+id/level_02_intro_01_path_01"
             android:layout_alignRight="@+id/level_02_intro_01_path_01"
-            android:background="@color/blue"
+            android:background="@color/path"
             android:gravity="center"
             android:padding="@dimen/mini_padding"
             android:text="@string/path_description"

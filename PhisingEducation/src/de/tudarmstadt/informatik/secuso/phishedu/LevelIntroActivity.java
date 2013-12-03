@@ -229,7 +229,6 @@ protected static String[][] exampleUrlPartId = {
 	}
 
 	private void buildColoredSpan(View view) {
-
 		int exampleIndex = BackendController.getInstance().getLevel() - 3;
 		String[] url = exampleUrlPartId[exampleIndex];
 		if (view.findViewById(R.id.recognize_attack) != null) {
@@ -238,7 +237,6 @@ protected static String[][] exampleUrlPartId = {
 				&& (view.findViewById(R.id.reminder_examples) != null)) {
 			setReminderSpans(view, exampleIndex);
 		}
-
 	}
 
 	private void setReminderSpans(View view, int reminderIndex) {
@@ -359,12 +357,12 @@ protected static String[][] exampleUrlPartId = {
 			// we are in level 3, subdomain needs to be marked
 			// make background light red
 			final BackgroundColorSpan bgc = new BackgroundColorSpan(
-					getResources().getColor(R.color.light_red));
+					getResources().getColor(R.color.subdomain));
 			strBuilder.setSpan(bgc, wordStart, wordEnd, 0);
 		} else if (spanIndex == 2) {
 			// make background red
 			final BackgroundColorSpan bgc = new BackgroundColorSpan(
-					getResources().getColor(R.color.red));
+					getResources().getColor(R.color.domain));
 			strBuilder.setSpan(bgc, wordStart, wordEnd, 0);
 		} else if ((spanIndex == 0 || spanIndex == 3) && level < 11) {
 			// make foregroundcolor grey
@@ -397,13 +395,13 @@ protected static String[][] exampleUrlPartId = {
 			if (spanIndex == 0) {
 				// make background of http yellow
 				final BackgroundColorSpan bgc = new BackgroundColorSpan(
-						getResources().getColor(R.color.yellow));
+						getResources().getColor(R.color.protocol));
 				strBuilder.setSpan(bgc, wordStart, wordEnd, 0);
 
 			} else if (spanIndex == 2) {
 				// make domain red
 				final BackgroundColorSpan bgc = new BackgroundColorSpan(
-						getResources().getColor(R.color.red));
+						getResources().getColor(R.color.domain));
 				strBuilder.setSpan(bgc, wordStart, wordEnd, 0);
 			} else {
 				final ForegroundColorSpan fgc = new ForegroundColorSpan(
@@ -435,7 +433,7 @@ protected static String[][] exampleUrlPartId = {
 			if (i == 1) {
 				// background of domain red
 				final BackgroundColorSpan bgc = new BackgroundColorSpan(
-						getResources().getColor(R.color.red));
+						getResources().getColor(R.color.domain));
 				strBuilder.setSpan(bgc, wordStart, wordEnd, 0);
 			} else if (i == 0) {
 				// make foregroundcolor of http grey
@@ -450,7 +448,7 @@ protected static String[][] exampleUrlPartId = {
 			} else if (i == 3) {
 				// make path part blue
 				final BackgroundColorSpan bgc = new BackgroundColorSpan(
-						getResources().getColor(R.color.blue));
+						getResources().getColor(R.color.path));
 				strBuilder.setSpan(bgc, wordStart, wordEnd, 0);
 			}
 
