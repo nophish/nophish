@@ -1,14 +1,12 @@
 package de.tudarmstadt.informatik.secuso.phishedu.backend;
 
 import android.content.Context;
-
 import android.content.SharedPreferences;
 
+import com.google.android.gms.appstate.AppStateClient;
 import com.google.android.gms.appstate.OnStateLoadedListener;
 import com.google.android.gms.games.GamesClient;
 import com.google.android.gms.games.achievement.Achievement;
-
-import com.google.android.gms.appstate.AppStateClient;
 import com.google.gson.Gson;
 
 import de.tudarmstadt.informatik.secuso.phishedu.R;
@@ -66,7 +64,6 @@ public class GameProgress implements OnStateLoadedListener{
 	public void incPresentedRepeats(){
 		this.presented_repeats++;
 	}
-	
 	/**
 	 * Get the number of repeats we presented to the user in this level
 	 * @return Then number of repeated Attacks we presented to the user.
@@ -232,6 +229,7 @@ public class GameProgress implements OnStateLoadedListener{
 		this.presented_repeats=0;
 		this.level_points=0;
 		this.level_lives=LIFES_PER_LEVEL;
+		
 		this.saveState();
 	}
 

@@ -23,7 +23,7 @@ public class PhishURL implements PhishURLInterface{
 	public String[] getParts(){return parts;}
 	public PhishSiteType getSiteType(){return this.siteType;}
 	public PhishAttackType getAttackType(){return this.attackType;}
-	
+		
 	public final boolean validate(){
 		return this.points[0] > 0; //if we get no points on success we can not progress.
 	}
@@ -62,5 +62,16 @@ public class PhishURL implements PhishURLInterface{
 	@Override
 	public List<Integer> getAttackParts() {
 		return new ArrayList<Integer>();
+	}
+	
+	@Override
+	public PhishURLInterface clone(){
+		PhishURL clone = new PhishURL();
+		clone.attackType=this.attackType;
+		clone.parts=this.parts.clone();
+		clone.points=this.points.clone();
+		clone.siteType=this.siteType;
+		clone.correctparts=this.correctparts.clone();
+		return clone;
 	}
 }
