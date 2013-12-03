@@ -16,7 +16,7 @@
 
         <include
             android:id="@+id/score_relative"
-            layout="@layout/score_fragment" />
+            layout="@layout/fragment_score" />
 
         <TextView
             android:id="@+id/your_are_correct_01"

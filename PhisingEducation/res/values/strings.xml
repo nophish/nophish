@@ -404,7 +404,7 @@
 	<string name="level_11_intro_07_text_01"><b>https:// - Unsaubere Identitätsprüfungen</b>\n\nWegen der großen Konkurrenz unter den Zertifizierungsstellen werden solche Identitätsüberprüfungen leider nicht immer ganz sauber durchgeführt. Es ist dadurch möglich, dass Zertifikate Identitäten bestätigen, die sie gar nicht bestätigen sollten! Aus diesem Grund wurden zusätzlich spezielle Zertifikate eingeführt, die unter einer noch strengeren Identitätsüberprüfung von speziellen Zertifizierungsstellen ausgestellt werden. Viele Internetbrowser bieten die Möglichkeit Webseiten mit solchen speziellen Zertifikaten, auf den ersten Blick zu erkennen.\n\n TODO: link to another website</string>
     
     <!-- TASKS AND SOLUTION SCREENS FROM LEVEL 3 -->
-    <string name="URLs">Versuche:</string>
+    <string name="URLs">Erkannt:</string>
     <string name="level_failed_title">Level nicht bestanden!</string>
     <string name="level_failed_text">Leider konntest du nicht genügend Punkte sammeln um das Level zu bestehen. Das Level wird jetzt neu gestartet.</string>
     <string name="level_failed_button">Level neu starten</string>
@@ -419,7 +419,7 @@
     <string name="level_failed">Du hast leider das Level nicht geschafft. Wir fangen nochmal von vorne an.</string>
     <string name="game_over">Game Over</string>
     <string name="ok">OK</string>
-    <string name="phishes">Phishe:</string>
+    <string name="lives">Leben:</string>
     <string name="url_task_description">Vertraust du der Webadresse?\nHäkchen: Legitim\nKreuz: Phishing</string>
     <string name="url">Beispiel URL</string>
     <string name="score">Punkte:</string>

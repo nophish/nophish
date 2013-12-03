@@ -425,18 +425,25 @@ public class BackendController implements BackendControllerInterface, GameStateL
 	}
 
 	@Override
-	public int levelURLs() {
-		checkinited();
+	public int levelCorrectURLs() {
 		if(getLevel()==2){
 			return 5;
 		}
-		int base_level_urls=6+(2*this.getLevel());
+		return 6+(2*this.getLevel());
+	}
+	
+	private int levelURLs() {
+		checkinited();
 		int failed_urls=progress.getLevelResults(PhishResult.Phish_NotDetected)+progress.getLevelResults(PhishResult.NoPhish_NotDetected);
-		return base_level_urls+failed_urls;
+		return levelCorrectURLs()+failed_urls;
+	}
+	
+	@Override
+	public int getCorrectlyFoundURLs() {
+		return progress.getLevelResults(PhishResult.Phish_Detected)+progress.getLevelResults(PhishResult.NoPhish_Detected);
 	}
 
-	@Override
-	public int levelPhishes() {
+	private int levelPhishes() {
 		checkinited();
 		int base_phishes=0;
 		if(this.getLevel()==2){
@@ -447,16 +454,9 @@ public class BackendController implements BackendControllerInterface, GameStateL
 		return base_phishes+progress.getLevelResults(PhishResult.Phish_NotDetected);
 	}
 
-	@Override
-	public int doneURLs() {
+	private int doneURLs() {
 		checkinited();
 		return this.progress.getDoneUrls();
-	}
-
-	@Override
-	public int foundPhishes() {
-		checkinited();
-		return this.progress.getLevelResults(PhishResult.Phish_Detected);
 	}
 
 	@Override

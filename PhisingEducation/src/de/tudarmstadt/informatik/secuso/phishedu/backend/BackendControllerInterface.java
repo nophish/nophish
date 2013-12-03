@@ -116,25 +116,13 @@ public interface BackendControllerInterface {
 	 * How many URLs must the user answer in this Level
 	 * @return An Integer representing the number of URLs in this level
 	 */
-	public int levelURLs();
+	public int levelCorrectURLs();
 	
 	/**
-	 * How Many Phishes are in this level
-	 * @return The number of Phishes in this level
+	 * How many URLs did the user correctly identfiy
+	 * @return number of correct URLS
 	 */
-	public int levelPhishes();
-	
-	/**
-	 * How Many URLs has the user found.
-	 * @return how many urls has the user seen.
-	 */
-	public int doneURLs();
-	
-	/**
-	 * 
-	 * @return How many phishes has the user found.
-	 */
-	public int foundPhishes();
+	public int getCorrectlyFoundURLs();
 	
 	/**
 	 * This function restarts the current Level
