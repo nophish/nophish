@@ -336,7 +336,7 @@ public class GameProgress implements OnStateLoadedListener{
 	
 	/**
 	 * Get the number of remaining lives for this level.
-	 * @return Number of lives for this level.
+	 * @return Number of Lives for this level.
 	 */
 	public int getRemainingLives(){
 		return this.level_lives;
@@ -345,7 +345,7 @@ public class GameProgress implements OnStateLoadedListener{
 	/**
 	 * Decrement the number of lives the user has remaining.
 	 */
-	public void decLifes(){
+	public void decLives(){
 		this.level_lives--;
 	}
 }

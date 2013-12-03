@@ -341,7 +341,7 @@ public class BackendController implements BackendControllerInterface, GameStateL
 	private void addResult(PhishResult result){
 		this.progress.addResult(result);
 		if(result == PhishResult.Phish_NotDetected){
-			progress.decLifes();
+			progress.decLives();
 		}
 		int offset=this.current_url.getPoints(result);
 		//with this function we ensure that the user gets more points per level
