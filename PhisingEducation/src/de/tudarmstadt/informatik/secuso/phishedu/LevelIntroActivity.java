@@ -1,5 +1,6 @@
 package de.tudarmstadt.informatik.secuso.phishedu;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -8,9 +9,11 @@ import android.support.v7.app.ActionBar;
 import android.text.SpannableStringBuilder;
 import android.text.style.BackgroundColorSpan;
 import android.text.style.ForegroundColorSpan;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController;
 
@@ -474,5 +477,4 @@ protected static String[][] exampleUrlPartId = {
 			tv.setText(strBuilder);
 		}
 	}
-
 }
