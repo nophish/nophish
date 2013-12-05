@@ -53,6 +53,12 @@ public interface FrontendControllerInterface {
 	void displayToast(int Rid);
 	
 	/**
+	 * This is for the backend to display the score in the appropriate color to the user.
+	 */
+	
+	void displayToastScore(int score);
+	
+	/**
 	 * Whenever a level is finished this function is called by the backend.
 	 * Whenever you are finished with this task call {@link BackendControllerInterface#startNextLevel()}
 	 * @param level the finished level

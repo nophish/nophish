@@ -3,10 +3,15 @@ package de.tudarmstadt.informatik.secuso.phishedu;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -291,5 +296,31 @@ public class StartMenuActivity extends PhishBaseGameActivity implements
 
 	@Override
 	public void levelFailed(int level) {}
+
+	@Override
+	public void displayToastScore(int score) {
+		LayoutInflater inflater = getLayoutInflater();
+		View layout = inflater.inflate(R.layout.fragment_toast_score,
+		                               (ViewGroup) findViewById(R.id.toast_layout_root));
+
+		String scoreString = Integer.toString(score);
+		
+		TextView text = (TextView) layout.findViewById(R.id.text);
+		if(score < 0){
+			//red
+			text.setTextColor(Color.rgb(135, 0, 0));
+		}else{
+			//green
+			text.setTextColor(Color.rgb(0, 135, 0));
+			scoreString = "+ "+score;
+		}
+
+		text.setText(scoreString + " Punkte");
+		text.setTypeface(Typeface.DEFAULT_BOLD);
+		Toast toast = new Toast(getApplicationContext());
+		toast.setDuration(Toast.LENGTH_SHORT);
+		toast.setView(layout);
+		toast.show();
+	}
 
 }

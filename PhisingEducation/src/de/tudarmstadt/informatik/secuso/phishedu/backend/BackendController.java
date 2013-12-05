@@ -349,7 +349,10 @@ public class BackendController implements BackendControllerInterface, GameStateL
 		//with this function we ensure that the user gets more points per level
 		//This ensures that there is no point in running the same level multiple times to collect points
 		offset*=Math.pow(LEVEL_DISTANCE, this.getLevel());
-		this.frontend.displayToast(Integer.toString(offset) + " Punkte");
+		
+		
+		
+		this.frontend.displayToastScore(offset);
 		this.progress.setPoints(this.getPoints()+offset);
 	}
 
