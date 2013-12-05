@@ -80,7 +80,7 @@
             android:layout_alignBottom="@+id/http"
             android:layout_marginLeft="@dimen/margin_xxsmall"
             android:layout_toRightOf="@+id/http"
-            android:background="@color/light_red"
+            android:background="@color/subdomain"
             android:text="@string/subdomain"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
@@ -92,7 +92,7 @@
             android:layout_alignBottom="@+id/dot_02"
             android:layout_marginLeft="@dimen/margin_xxsmall"
             android:layout_toRightOf="@+id/dot_02"
-            android:background="@color/red"
+            android:background="@color/domain"
             android:text="@string/domain_de"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
@@ -104,7 +104,7 @@
             android:layout_alignBottom="@+id/dot_01"
             android:layout_marginLeft="@dimen/margin_xxsmall"
             android:layout_toRightOf="@+id/dot_01"
-            android:background="@color/red"
+            android:background="@color/domain"
             android:text="@string/domain_spiegel"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
@@ -114,7 +114,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/level_08_intro_01_reminder"
             android:layout_marginTop="@dimen/margin_standard"
-            android:background="@color/red"
+            android:background="@color/domain"
             android:gravity="center"
             android:padding="@dimen/mini_padding"
             android:text="@string/level_02_intro_08_domain_description"
@@ -126,7 +126,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/http"
             android:layout_marginTop="@dimen/margin_small"
-            android:background="@color/light_red"
+            android:background="@color/subdomain"
             android:gravity="center"
             android:padding="@dimen/padding"
             android:text="@string/level_02_intro_08_subdomain_description"

@@ -27,4 +27,5 @@ public abstract class AbstractAttack extends AbstractUrlDecorator {
 			return PhishResult.Phish_Detected;
 		}
 	}
+	
 }

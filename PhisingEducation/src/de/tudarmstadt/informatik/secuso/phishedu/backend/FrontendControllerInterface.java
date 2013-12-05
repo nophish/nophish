@@ -67,11 +67,4 @@ public interface FrontendControllerInterface {
 	 * @param level The level the user failed
 	 */
 	void levelFailed(int level);
-	
-	/**
-	 * This is function is called whenever the user found enough fishes to finish the level but has the possiblity to play on.
-	 * When the user whats to finish the frontend should call {@link BackendControllerInterface#finishLevel()} when the user wants to finish the level.
-	 * @param level The level the user finished
-	 */
-	void levelDone(int level);
 }

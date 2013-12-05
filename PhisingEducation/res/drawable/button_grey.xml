@@ -1,6 +1,6 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:state_pressed="true" android:drawable="@color/light_blue"></item>
+    <item android:state_pressed="true" android:drawable="@color/button_highlight_blue"></item>
     <item android:drawable="@drawable/button_gradient_grey" android:state_pressed="false"></item>
 
 </selector>

@@ -23,24 +23,11 @@ public class PhishBaseActivity extends ActionBarActivity {
 		if(scores != null){
 			TextView urlsText = (TextView) scores.findViewById(R.id.urls);
 			TextView urlsGoalText = (TextView) scores.findViewById(R.id.urls_goal);
-			TextView phishesText = (TextView) scores.findViewById(R.id.phishes);
-			TextView phishesGoalText = (TextView) scores.findViewById(R.id.phishes_goal);
+			TextView livesText = (TextView) scores.findViewById(R.id.lives);
 
-			urlsText.setText(Integer.toString(BackendController.getInstance()
-					.doneURLs()));
-			urlsGoalText.setText(Integer.toString(BackendController.getInstance()
-					.levelURLs()));
-			phishesText.setText(Integer.toString(BackendController.getInstance()
-					.foundPhishes()));
-			phishesGoalText.setText(Integer.toString(BackendController
-					.getInstance().levelPhishes()));
-			
-			if(BackendController.getInstance().getLevel() == 2){
-				scores.findViewById(R.id.phishes).setVisibility(View.INVISIBLE);
-				scores.findViewById(R.id.phishes_goal).setVisibility(View.INVISIBLE);
-				scores.findViewById(R.id.phishes_text).setVisibility(View.INVISIBLE);
-				scores.findViewById(R.id.phishes_delim).setVisibility(View.INVISIBLE);
-			}
+			urlsText.setText(Integer.toString(BackendController.getInstance().getCorrectlyFoundURLs()));
+			urlsGoalText.setText(Integer.toString(BackendController.getInstance().levelCorrectURLs()));
+			livesText.setText(Integer.toString(BackendController.getInstance().getLifes()));
 		}
 	}
 	

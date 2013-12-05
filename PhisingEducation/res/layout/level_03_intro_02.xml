@@ -63,7 +63,7 @@
         android:layout_alignBottom="@+id/http"
         android:layout_marginLeft="@dimen/margin_xxsmall"
         android:layout_toRightOf="@+id/http"
-        android:background="@color/light_red"
+        android:background="@color/subdomain"
         android:text="@string/subdomain"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 

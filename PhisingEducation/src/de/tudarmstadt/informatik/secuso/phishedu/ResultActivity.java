@@ -63,14 +63,8 @@ public class ResultActivity extends SwipeActivity {
 		setResult(RESULT_OK);
 		int state = BackendController.getInstance().levelState();
 		switch (state) {
-		case BackendController.LEVEL_DONE:
-			levelDone(BackendController.getInstance().getLevel());
-			break;
 		case BackendController.LEVEL_FAILED:
 			levelFailed(BackendController.getInstance().getLevel());
-			break;
-		case BackendController.LEVEL_FINISHED:
-			BackendController.getInstance().finishLevel();
 			break;
 		default:
 			finish();
@@ -96,40 +90,6 @@ public class ResultActivity extends SwipeActivity {
 					}
 				});
 		builder.show();
-	}
-
-	public void levelDone(int level) {
-		if (user_finish_asked) {
-			instance.finish();
-			return;
-		}
-		AlertDialog.Builder alertDialog = new AlertDialog.Builder(instance);
-
-		// Setting Dialog Title
-		alertDialog.setTitle(instance.getString(R.string.level_continue_title));
-
-		// Setting Dialog Message
-		alertDialog.setMessage(instance.getString(R.string.level_contiue_text));
-
-		alertDialog.setPositiveButton(R.string.level_continue_positive_button,
-				new DialogInterface.OnClickListener() {
-					@Override
-					public void onClick(DialogInterface dialog, int which) {
-						user_finish_asked = true;
-						instance.finish();
-					}
-				});
-
-		alertDialog.setNegativeButton(R.string.level_continue_negative_button,
-				new DialogInterface.OnClickListener() {
-					@Override
-					public void onClick(DialogInterface dialog, int which) {
-						BackendController.getInstance().finishLevel();
-					}
-				});
-
-		// Showing Alert Message
-		alertDialog.show();
 	}
 
 	@Override
@@ -272,7 +232,7 @@ public class ResultActivity extends SwipeActivity {
 			if (checkIfAttackedPart(attackedParts, i)) {
 				// make attacked part background red
 				if (BackendController.getInstance().getLevel() == 2) {
-					bgc = new BackgroundColorSpan(getResources().getColor(R.color.red));
+					bgc = new BackgroundColorSpan(getResources().getColor(R.color.domain));
 				} else {
 					bgc = new BackgroundColorSpan(Color.rgb(250, 62, 62));
 				}

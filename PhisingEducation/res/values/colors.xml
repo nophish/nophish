@@ -1,18 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <!-- standard colors -->
-    <color name="light_blue">#A6BFFD</color>
-    <color name="light_blue_2">#9ED2FA</color>
-    <color name="light_ice_blue">#A6FDFC</color>
-    <color name="light_mint_green">#A6FDCC</color>
-    <color name="light_olive_green">#ADFDA7</color>
-    <color name="light_red">#FFBCB4</color>
-    <color name="grey_">#AAA8A8</color>
-    <color name="yellow">#FBD789</color>
-    <color name="green">#99cc00</color>
-    <color name="red">#EE7F7F</color>
-    <color name="blue">#65cee8</color>
+    <color name="button_highlight_blue">#A6BFFD</color>
+    <color name="subdomain">#ABDFFF</color>
+    <color name="protocol">#E596FF</color>
+    <color name="domain">#66C5FF</color>
+    <color name="path">#FFAA6E</color>
     <color name="grey">#959393</color>
 
 </resources>

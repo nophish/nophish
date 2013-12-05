@@ -56,7 +56,7 @@
             android:layout_alignBaseline="@+id/level_07_intro_06_www_01"
             android:layout_alignBottom="@+id/level_07_intro_06_www_01"
             android:layout_toRightOf="@+id/level_07_intro_06_www_01"
-            android:background="@color/red"
+            android:background="@color/domain"
             android:text="@string/level_07_intro_03_facebook_login"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
@@ -105,7 +105,7 @@
             android:layout_alignBaseline="@+id/level_07_intro_06_www_02"
             android:layout_alignBottom="@+id/level_07_intro_06_www_02"
             android:layout_toRightOf="@+id/level_07_intro_06_www_02"
-            android:background="@color/red"
+            android:background="@color/domain"
             android:text="@string/level_07_intro_04_fracebook"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
@@ -154,7 +154,7 @@
             android:layout_alignBaseline="@+id/level_07_intro_06_www_03"
             android:layout_alignBottom="@+id/level_07_intro_06_www_03"
             android:layout_toRightOf="@+id/level_07_intro_06_www_03"
-            android:background="@color/red"
+            android:background="@color/domain"
             android:text="@string/level_07_intro_05_mircosoft"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 

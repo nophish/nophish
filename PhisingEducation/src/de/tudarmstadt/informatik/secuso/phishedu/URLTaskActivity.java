@@ -32,21 +32,14 @@ public class URLTaskActivity extends PhishBaseActivity {
 		nextURL();
 		setTitles();
 
-		// In Level 2 we don't need to check if it is a phish
-		if (level == 2) {
-			Intent levelIntent = new Intent(this, ProofActivity.class);
-			levelIntent.putExtra(Constants.EXTRA_LEVEL, this.level);
-			startActivityForResult(levelIntent, 1);
-		}
-
 		// set size of shown url depending on level
 		setUrlSize();
 	}
 	
 	@Override
-	protected void onActivityResult(int arg0, int arg1, Intent arg2) {
-		nextURL();
-		super.onActivityResult(arg0, arg1, arg2);
+	protected void onResume() {
+		super.onResume();
+		nextURL();	
 	}
 	
 	private void setUrlSize() {

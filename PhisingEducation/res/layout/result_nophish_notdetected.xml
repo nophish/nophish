@@ -14,7 +14,7 @@
 
         <include
             android:id="@+id/score_relative"
-            layout="@layout/score_fragment" />
+            layout="@layout/fragment_score" />
 
         <TextView
             android:id="@+id/url_task_no_phish_detected_as_phish"

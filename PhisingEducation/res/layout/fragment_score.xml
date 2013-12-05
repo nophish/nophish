@@ -17,7 +17,7 @@
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/points_delim"
+        android:id="@+id/urls_delim"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/urls"
@@ -30,9 +30,9 @@
         android:id="@+id/urls_goal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/points_delim"
-        android:layout_alignBottom="@+id/points_delim"
-        android:layout_toRightOf="@+id/points_delim"
+        android:layout_alignBaseline="@+id/urls_delim"
+        android:layout_alignBottom="@+id/urls_delim"
+        android:layout_toRightOf="@+id/urls_delim"
         android:text="@string/number"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
@@ -52,44 +52,26 @@
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
-        android:id="@+id/phishes_text"
+        android:id="@+id/lives_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/urls_goal"
         android:layout_alignBottom="@+id/urls_goal"
         android:layout_marginLeft="@dimen/margin_small"
         android:layout_toRightOf="@+id/urls_goal"
-        android:text="@string/phishes"
+        android:text="@string/lives"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/phishes"
+        android:id="@+id/lives"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/phishes_text"
-        android:layout_alignBottom="@+id/phishes_text"
-        android:layout_toRightOf="@+id/phishes_text"
+        android:layout_alignBaseline="@+id/lives_text"
+        android:layout_alignBottom="@+id/lives_text"
+        android:layout_toRightOf="@+id/lives_text"
         android:layout_marginLeft="@dimen/margin_xxsmall"
         android:text="@string/number"
         android:textAppearance="?android:attr/textAppearanceMedium" />
-
-    <TextView
-        android:id="@+id/phishes_delim"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/phishes"
-        android:text="@string/slash"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
-
-    <TextView
-        android:id="@+id/phishes_goal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/phishes_delim"
-        android:layout_alignBottom="@+id/phishes_delim"
-        android:layout_toRightOf="@+id/phishes_delim"
-        android:text="@string/number"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
-
+    
 </RelativeLayout>

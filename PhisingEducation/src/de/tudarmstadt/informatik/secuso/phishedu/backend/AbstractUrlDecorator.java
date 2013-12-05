@@ -66,5 +66,24 @@ public abstract class AbstractUrlDecorator implements PhishURLInterface {
 	public final boolean validate() {
 		return this.object.validate();
 	}
-
+	
+	@Override
+	public PhishURLInterface clone(){
+		return decorate(this.object.clone(),this.getClass());
+	}
+	
+	/**
+	 * Decorate a Phishing url with a given decorator.
+	 * @param base_url The URL to decorate
+	 * @param decorator The decorator
+	 * @return the base_url wrapped in a new instance of the decorator
+	 */
+	public static PhishURLInterface decorate(PhishURLInterface base_url, Class<? extends AbstractUrlDecorator> decorator) {
+		try {
+			base_url=decorator.getConstructor(PhishURLInterface.class).newInstance(base_url);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return base_url;
+	}
 }

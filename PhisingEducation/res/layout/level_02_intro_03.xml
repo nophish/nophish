@@ -29,7 +29,7 @@
             android:layout_alignBaseline="@+id/level_02_intro_01_http_01"
             android:layout_alignBottom="@+id/level_02_intro_01_http_01"
             android:layout_toRightOf="@+id/level_02_intro_01_http_01"
-            android:background="@color/red"
+            android:background="@color/domain"
             android:text="@string/domain"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
@@ -52,7 +52,7 @@
             android:layout_below="@+id/level_02_intro_03_text_01"
             android:layout_marginLeft="@dimen/margin_standard"
             android:layout_marginTop="@dimen/margin_standard"
-            android:background="@color/red"
+            android:background="@color/domain"
             android:gravity="center"
             android:padding="@dimen/mini_padding"
             android:text="@string/domain_description"

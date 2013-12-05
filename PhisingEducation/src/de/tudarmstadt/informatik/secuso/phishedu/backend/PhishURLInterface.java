@@ -63,4 +63,10 @@ public interface PhishURLInterface{
 	 * @return The attacked parts
 	 */
 	public List<Integer> getAttackParts();
+	
+	/**
+	 * Clone the current phishURL object deeply
+	 * @return deep clone
+	 */
+	public PhishURLInterface clone();
 }

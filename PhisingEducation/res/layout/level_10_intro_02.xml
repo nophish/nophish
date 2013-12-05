@@ -28,7 +28,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/level_10_intro_02_text_01"
             android:layout_marginTop="@dimen/margin_standard"
-            android:background="@color/yellow"
+            android:background="@color/protocol"
             android:text="@string/https"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
@@ -48,7 +48,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/level_10_intro_02_https"
-            android:background="@color/yellow"
+            android:background="@color/protocol"
             android:layout_marginTop="@dimen/margin_small"
             android:gravity="center"
             android:padding="@dimen/mini_padding"

@@ -39,7 +39,7 @@
             android:layout_alignBaseline="@+id/level_09_intro_02_before_path"
             android:layout_alignBottom="@+id/level_09_intro_02_before_path"
             android:layout_toRightOf="@+id/level_09_intro_02_before_path"
-            android:background="@color/blue"
+            android:background="@color/path"
             android:text="@string/level_09_intro_02_path"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
@@ -51,7 +51,7 @@
             android:layout_below="@+id/level_09_intro_02_path"
             android:layout_marginTop="@dimen/margin_small"
             android:layout_toRightOf="@+id/level_09_intro_02_before_path"
-            android:background="@color/blue"
+            android:background="@color/path"
             android:gravity="center"
             android:padding="@dimen/mini_padding"
             android:text="@string/path_description"

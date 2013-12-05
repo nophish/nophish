@@ -1,14 +1,12 @@
 package de.tudarmstadt.informatik.secuso.phishedu.backend;
 
 import android.content.Context;
-
 import android.content.SharedPreferences;
 
+import com.google.android.gms.appstate.AppStateClient;
 import com.google.android.gms.appstate.OnStateLoadedListener;
 import com.google.android.gms.games.GamesClient;
 import com.google.android.gms.games.achievement.Achievement;
-
-import com.google.android.gms.appstate.AppStateClient;
 import com.google.gson.Gson;
 
 import de.tudarmstadt.informatik.secuso.phishedu.R;
@@ -27,6 +25,7 @@ public class GameProgress implements OnStateLoadedListener{
 	private AppStateClient remote_store;
 	private static final int REMOTE_STORE_SLOT = 0;
 	private static final String LOCAL_STORE_KEY = "gamestate";
+	private static final int LIFES_PER_LEVEL = 3;
 
 	private class State{
 		public State(){
@@ -53,6 +52,7 @@ public class GameProgress implements OnStateLoadedListener{
 	//This is for saving the points per level. 
 	//Once the level is done the points get commited to the persistend state.
 	private int level_points;
+	private int level_lives=LIFES_PER_LEVEL;
 	
 	private GameStateLoadedListener listener;
 	private State state = new State();
@@ -64,7 +64,6 @@ public class GameProgress implements OnStateLoadedListener{
 	public void incPresentedRepeats(){
 		this.presented_repeats++;
 	}
-	
 	/**
 	 * Get the number of repeats we presented to the user in this level
 	 * @return Then number of repeated Attacks we presented to the user.
@@ -74,11 +73,12 @@ public class GameProgress implements OnStateLoadedListener{
 	}
 	
 	/**
-	 * This returns the number of Phish URLS the user detected
-	 * @return the number of Phish URLs the user Detected
+	 * Return the number of results of the given type the user had. 
+	 * @param type The type of result
+	 * @return the number of results
 	 */
-	public int getDetectedPhish(){
-		return this.level_results[PhishResult.Phish_Detected.getValue()];
+	public int getLevelResults(PhishResult type){
+		return this.level_results[type.getValue()];
 	}
 	
 	/**
@@ -228,6 +228,8 @@ public class GameProgress implements OnStateLoadedListener{
 		this.level_results=new int[4];
 		this.presented_repeats=0;
 		this.level_points=0;
+		this.level_lives=LIFES_PER_LEVEL;
+		
 		this.saveState();
 	}
 
@@ -328,5 +330,20 @@ public class GameProgress implements OnStateLoadedListener{
 	 */
 	public int getMaxUnlockedLevel() {
 		return this.state.unlockedLevel;
+	}
+	
+	/**
+	 * Get the number of remaining lives for this level.
+	 * @return Number of Lives for this level.
+	 */
+	public int getRemainingLives(){
+		return this.level_lives;
+	}
+	
+	/**
+	 * Decrement the number of lives the user has remaining.
+	 */
+	public void decLives(){
+		this.level_lives--;
 	}
 }
