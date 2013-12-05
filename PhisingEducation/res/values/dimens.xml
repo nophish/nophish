@@ -16,6 +16,7 @@
     <dimen name="margin_standard">20dp</dimen>
     <dimen name="margin_small">15dp</dimen>
     <dimen name="margin_xxsmall">5dp</dimen>
+    <dimen name="margin_xxxsmall">3dp</dimen>
     <dimen name="margin_xlarge">75dp</dimen>
     <dimen name="margin_xxlarge">100dp</dimen>
     <dimen name="margin_xxxlarge">300dp</dimen>

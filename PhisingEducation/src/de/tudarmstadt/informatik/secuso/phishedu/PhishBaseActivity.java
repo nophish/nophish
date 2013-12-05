@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBarActivity;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController;
@@ -23,11 +24,34 @@ public class PhishBaseActivity extends ActionBarActivity {
 		if(scores != null){
 			TextView urlsText = (TextView) scores.findViewById(R.id.urls);
 			TextView urlsGoalText = (TextView) scores.findViewById(R.id.urls_goal);
-			TextView livesText = (TextView) scores.findViewById(R.id.lives);
+			ImageView lifeOne = (ImageView) scores.findViewById(R.id.life_1);
+			ImageView lifeTwo = (ImageView) scores.findViewById(R.id.life_2);
+			ImageView lifeThree = (ImageView) scores.findViewById(R.id.life_3);
 
 			urlsText.setText(Integer.toString(BackendController.getInstance().getCorrectlyFoundURLs()));
 			urlsGoalText.setText(Integer.toString(BackendController.getInstance().levelCorrectURLs()));
-			livesText.setText(Integer.toString(BackendController.getInstance().getLifes()));
+			
+			int remaininLives = BackendController.getInstance().getLifes();
+			
+			//now hide hearts if required
+			switch (remaininLives) {
+			case 0:
+				//hide all hearts
+				lifeOne.setVisibility(View.INVISIBLE);
+				lifeTwo.setVisibility(View.INVISIBLE);
+				lifeThree.setVisibility(View.INVISIBLE);
+				break;
+			case 1:
+				//hide heart 1 and 2
+				lifeOne.setVisibility(View.INVISIBLE);
+				lifeTwo.setVisibility(View.INVISIBLE);
+				break;
+			case 2:
+				//hide only heart 1
+				lifeOne.setVisibility(View.INVISIBLE);
+			default:
+				break;
+			}
 		}
 	}
 	
