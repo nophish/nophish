@@ -2,8 +2,8 @@
 <resources>
     <!-- standard colors -->
     <color name="button_highlight_blue">#A6BFFD</color>
-    <color name="subdomain">#ABDFFF</color>
-    <color name="protocol">#E596FF</color>
+    <color name="subdomain">#C5E8FE</color>
+    <color name="protocol">#E8A9FD</color>
     <color name="domain">#66C5FF</color>
     <color name="path">#FFAA6E</color>
     <color name="grey">#959393</color>
