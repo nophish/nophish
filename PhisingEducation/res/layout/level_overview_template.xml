@@ -47,6 +47,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="36dp"
         android:text="@string/title"
+        android:textStyle="bold"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TextView
@@ -57,6 +58,6 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="42dp"
         android:text="@string/level_description"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+        android:textAppearance="?android:attr/textAppearanceMedium" />
 
 </RelativeLayout>
