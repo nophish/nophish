@@ -40,6 +40,7 @@
     <dimen name="leveicon_corner">50dp</dimen>
     <dimen name="leveicon_textsize">150dp</dimen>
     <dimen name="icon_small">30dp</dimen>
+    <dimen name="icon_xsmall">25dp</dimen>
     <dimen name="icon_medium">35dp</dimen>
     <dimen name="smiley_icons">90dp</dimen>
     <dimen name="security_icons">100dp</dimen>

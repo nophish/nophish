@@ -174,7 +174,7 @@ protected static String[][] exampleUrlPartId = {
 
 	@Override
 	protected String startButtonText() {
-		return "Start Level";
+		return "Starte Level";
 	}
 
 	@Override

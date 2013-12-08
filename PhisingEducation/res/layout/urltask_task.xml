@@ -19,6 +19,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/score_relative"
+        android:layout_marginTop="@dimen/margin_small"
         android:layout_below="@+id/score_relative"
         android:text="@string/url_task_description"
         android:textAppearance="?android:attr/textAppearanceMedium" />
@@ -66,7 +67,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignRight="@+id/score_relative"
-        android:layout_below="@+id/url_task_description"
+        android:layout_below="@+id/cross_text"
         android:src="@drawable/small_smiley_smile"
         android:visibility="invisible" />
 
@@ -78,6 +79,45 @@
         android:layout_centerHorizontal="true"
         android:contentDescription="@string/content_desc_swipe_right"
         android:src="@drawable/swipe_right" />
-   
+
+    <ImageView
+        android:id="@+id/tik_description"
+        android:layout_width="@dimen/icon_small"
+        android:layout_height="@dimen/icon_small"
+        android:layout_alignLeft="@+id/url_task_description"
+        android:layout_below="@+id/url_task_description"
+        android:layout_marginTop="@dimen/margin_xxsmall"
+        android:contentDescription="@string/content_desc_tik"
+        android:src="@drawable/checkmark" />
+
+    <TextView
+        android:id="@+id/tik_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/tik_description"
+        android:layout_marginLeft="@dimen/margin_xxsmall"
+        android:layout_toRightOf="@+id/tik_description"
+        android:text="@string/legitimate"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/cross_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/tik_text"
+        android:layout_alignBottom="@+id/tik_text"
+        android:layout_toRightOf="@+id/cross_description"
+        android:text="@string/fake"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <ImageView
+        android:id="@+id/cross_description"
+        android:layout_width="@dimen/icon_xsmall"
+        android:layout_height="@dimen/icon_xsmall"
+        android:layout_alignBottom="@+id/tik_text"
+        android:layout_marginLeft="@dimen/margin_standard"
+        android:layout_toRightOf="@+id/tik_text"
+        android:contentDescription="@string/content_desc_tik"
+        android:src="@drawable/cross" />
 
 </RelativeLayout>

@@ -94,7 +94,7 @@ public class ResultActivity extends SwipeActivity {
 
 	@Override
 	protected String startButtonText() {
-		return "Nächster Versuch";
+		return "Weiter";
 	}
 
 	@Override

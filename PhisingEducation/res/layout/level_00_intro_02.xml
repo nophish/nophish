@@ -18,6 +18,7 @@
             android:layout_marginLeft="@dimen/margin_standard"
             android:layout_marginRight="@dimen/margin_standard"
             android:layout_marginTop="@dimen/margin_standard"
+            android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="@string/level_00_intro_02_text_01" />
 
         <requestFocus />
@@ -30,6 +31,7 @@
             android:layout_alignRight="@+id/level_00_intro_02_text_01"
             android:layout_below="@+id/level_00_intro_02_text_01"
             android:layout_marginTop="@dimen/margin_standard"
+            android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="@string/level_00_intro_02_text_02" />
 
         <EditText
@@ -51,6 +53,7 @@
             android:layout_alignLeft="@+id/awareness_edit_sender_email"
             android:layout_below="@+id/awareness_edit_sender_email"
             android:layout_marginTop="@dimen/margin_standard"
+            android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="@string/level_00_intro_02_text_03" />
 
         <EditText
@@ -85,6 +88,7 @@
             android:layout_alignRight="@+id/awareness_edit_receiver_email"
             android:layout_below="@+id/awareness_edit_receiver_email"
             android:layout_marginTop="@dimen/margin_standard"
+            android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="@string/level_00_intro_02_text_04" />
 
         <EditText

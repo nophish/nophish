@@ -20,6 +20,7 @@
             android:id="@+id/phish_not_detected_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_xxsmall"
             android:layout_below="@id/score_relative"
             android:text="@string/you_are_wrong"
             android:textAppearance="?android:attr/textAppearanceMedium" />

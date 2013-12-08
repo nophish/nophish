@@ -19,6 +19,7 @@
         <TextView
             android:id="@+id/url_task_no_phish_detected_as_phish"
             android:layout_width="wrap_content"
+            android:layout_marginTop="@dimen/margin_xxsmall"
             android:layout_height="wrap_content"
             android:layout_below="@id/score_relative"
             android:text="@string/oversafe_01"

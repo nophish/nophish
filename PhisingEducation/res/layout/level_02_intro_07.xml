@@ -115,4 +115,13 @@
         android:contentDescription="@string/content_desc_arrow_up_abo"
         android:src="@drawable/up" />
 
+    <TextView
+        android:id="@+id/departments"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/arrow_domain"
+        android:layout_toRightOf="@+id/http"
+        android:text="@string/departments"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
 </RelativeLayout>

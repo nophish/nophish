@@ -161,12 +161,12 @@
     <string name="awareness_invalid_email">Die Absender oder Empfänger E-Mail ist ungültig. Bitte überprüfe deine Eingaben.</string>
     <string name="alert_btn_proceed_no_awareness">Überspringen</string>
     <string name="awareness_email_sent">E-Mail versandt</string>
-    <string name="awareness_alert_message">Nun überprüfe bitte deine E-Mails über dein Smartphone. Ggf. musst du auch deinen Junk/Spam-Ordner überprüfen. Bitte beachte, dass das Ankommen der E-Mail einige Minuten dauern kann.</string>
+    <string name="awareness_alert_message">Nun überprüfe bitte deine E-Mails über dein Smartphone. Ggf. musst du auch in deinem Junk/Spam-Ordner nachsehen. Bitte beachte, dass das Ankommen der E-Mail einige Minuten dauern kann.</string>
     <string name="start_game">Spiel starten</string>
     <string name="awareness_resend_email">E-Mail nicht erhalten</string>
     <string name="awareness_text_fake_websites">Auch das Fälschen von Webseiten ist sehr einfach (wie bei E-Mails), wie folgender Comic zeigt.</string>
-    <string name="level_00_finish_00_text_01"><b>Was hast du jetzt schon gelernt?</b>\n\n(1) Du hast es selber erlebt und gesehen, wie einfach es ist, den Absender einer E-Mail zu fälschen. Entsprechend vorsichtig solltest du bei der Einschätzung der Vertrauenswürdigkeit von E-Mails sein. Dies gilt insbesondere, wenn diese einen Link enthalten. Nicht nur bei Links, die dir bekannt zu sein scheinen, sondern auch bei solchen, die bspw. “Hier Klicken” heißen, solltest du vorsichtig sein.</string>
-    <string name="level_00_finish_00_text_02">(2) Du hast auch gelernt, dass man durch das Klicken auf Links nicht zwingend auf die Webadresse geführt wird, die im Link angegeben ist.</string>
+    <string name="level_00_finish_00_text_01"><b>Was hast du jetzt schon gelernt?</b>\n\n1.) Du hast es selber erlebt und gesehen, wie einfach es ist, den Absender einer E-Mail zu fälschen. Entsprechend vorsichtig solltest du bei der Einschätzung der Vertrauenswürdigkeit von E-Mails sein. Dies gilt insbesondere, wenn diese einen Link enthalten. Nicht nur bei Links, die dir bekannt zu sein scheinen, sondern auch bei solchen, die bspw. “Hier Klicken” heißen, solltest du aufpassen.</string>
+    <string name="level_00_finish_00_text_02">2.) Du hast auch gelernt, dass man durch das Klicken auf Links nicht zwingend auf die Webadresse geführt wird, die im Link angegeben ist.</string>
     <string name="level_00_finish_01_text_01"><b>Übrigens, das gilt nicht nur für E-Mails!</b>\n\nGefahren lauern nicht nur hinter Links in E-Mails, sondern generell immer, wenn du auf einen Link klickst (bspw. auf einer anderen Webseite, in einer SMS oder in Nachrichten bei Facebook oder Twitter).</string>
     <string name="level_00_finish_02_text_01"><b>Webadressen und Webseitenkopien erstellen kann jeder!</b>\n\nEine Webadresse kann heutzutage jeder anlegen. Eine identische Kopie einer Webseite dort anzuzeigen, bringt fast keinen Aufwand und auch fast keine Kosten mit sich. D.h., wenn du auf einer Webseite landest, kann die angezeigte Webseite zwar auf den ersten Blick korrekt aussehen, ist aber in Wirklichkeit die Kopie einer vertrauten Webseite, die angelegt wurde, um dir zu schaden.</string>
     <string name="level_00_finish_03_text_01"><b>Original</b>\n\nIm Folgenden zeigen wir dir einen Ausschnitt der <b>originalen</b> Webseite von Facebook. An der Webadresse (grün umrandet) kann man erkennen, dass es sich bei dieser Webseite um das Original handelt.</string>
@@ -196,7 +196,7 @@
     <string name="level_1_address_bar_subtitle_1">Einführung Adressleiste</string>
     <string name="level_1_address_bar_subtitle_2">Wo finde ich die Adressleiste?</string>
     <string name="level_1">Level 1</string>
-    <string name="level_01_intro_00_text_01"><b>Die Adressleiste</b>\n\nAls Erstes musst du wissen, wie du mit deinem Smartphone an die Webadresse kommst. Dazu sind zwei Dinge wichtig:\n\n1) Wo finde ich die Adressleiste?\n2) Wie schaue ich mir die vollständige Webadresse an?</string>
+    <string name="level_01_intro_00_text_01"><b>Die Adressleiste</b>\n\nAls Erstes musst du wissen, wie du mit deinem Smartphone an die Webadresse kommst. Dazu sind zwei Dinge wichtig:\n\n1.) Wo finde ich die Adressleiste?\n2.) Wie schaue ich mir die vollständige Webadresse an?</string>
     <string name="level_01_intro_00_button_01">Das kann ich schon!</string>
     <string name="level_01_intro_00_button_02">Das kann ich nocht nicht!</string>
     <string name="level_01_intro_01_text_01"><b>Wo finde ich die Adressleiste?</b>\n\nViele Webseiten sind so umfangreich, dass die eigentliche Webseite auf dem ganzen Display angezeigt wird und daher die Adressleiste nicht immer zu sehen ist.\n\nDu kannst aber auf der Webseite den Finger so lange herunter ziehen (ggf. mehrmals), bis du ganz oben auf der Webseite angekommen bist und die Adressleiste erscheint.</string>
@@ -217,11 +217,11 @@
     <string name="level_2_splash_text">Level 2\n\nWeb-Adressen</string>
     <string name="level_02_intro_00_text_01"><b>Einführung Webadressen</b>\n\nUm anhand von Webadressen eine gefälschte Webseite zu erkennen, ist es wichtig, den Aufbau einer Webadresse zu verstehen. In den folgenden Levels wirst du dies nach und nach lernen.\n\nZunächst ein Beispiel, wie eine Webadresse aussehen kann:</string>
     <string name="level_02_intro_00_text_02_url">http://abo.spiegel.de/spiegel-digital</string>
-    <string name="level_02_intro_01_text_01"><b>Was sind die wichtigen Bestandteile einer Webadresse?</b>\n\nWebadressen sind sehr komplex. Aus diesem Grund möchten wir alles möglichst vereinfacht erklären. Hierzu betrachten wir die Webseite, die du besuchst von nun an als deinen \"Gesprächspartner\". Bereits in der Webadresse erfährst du (wie in einem Gespräch) die ersten wichtigen Informationen.</string>
+    <string name="level_02_intro_01_text_01"><b>Was sind die wichtigen Bestandteile einer Webadresse?</b>\n\nWebadressen sind sehr komplex. Aus diesem Grund möchten wir alles möglichst vereinfacht erklären. Hierzu betrachten wir die Webseite, die du besuchst von nun an als deinen \"Gesprächspartner\". Bereits in der Webadresse erfährst du (wie in einem Gespräch) die ersten wichtigen Informationen, auf die wir im weiteren Verlauf genauer eingehen.</string>
     <string name="level_02_intro_02_text_01"><b>Was sind die wichtigen Bestandteile einer Webadresse?</b>\n\nDie folgende Grafik fasst zusammen, was die einzelnen Bestandteile einer Webadresse über das Gespräch aussagen.</string>
-    <string name="level_02_intro_02_text_02">Der lila hinterlegte Bereich stellt die Sicherheitsstufe des Gespräches dar. Eine Alternative zu \"http://\" ist \"https://\". Was der Unterschied ist, wirst du in einem fortgeschrittenen Level erfahren. Der blau hinterlegte Bereich gibt dir Informationen über deinen Gesprächspartner und der orange hinterlegte Bereich verrät dir das Gesprächsthema.</string>
-    <string name="level_02_intro_03_text_01"><b>Fokus - Info über Gesprächspartner selbst</b>\n\nIn diesem und in den nächsten paar Levels werden wir uns hauptsächlich mit dem blau hinterlegten Bestandteil der Webadresse beschäftigen, da es sehr wichtig ist, zu wissen, wer dein Gesprächspartner ist!\n\nDer Bereich <b>zwischen \""http://\" und dem dritten Slash \"/\"</b> gibt dir also Informationen über deinen Gesprächspartner, sprich über die Webseite. Die restlichen Bereiche kannst du erst einmal ignorieren.</string>
-    <string name="level_02_intro_04_text_01"><b>Aufbau dieses Bereiches</b>\n\nDieser Bereich wird durch Punkte in einzelne Blöcke eingeteilt.\n\n<b>Merke:</b> Diese Blöcke werden von recht nach links gelesen.</string>
+    <string name="level_02_intro_02_text_02">Der lila hinterlegte Bereich stellt die Sicherheitsstufe des Gespräches dar. Möglichkeiten hierfür sind \"http://\" und \"https://\". Was der Unterschied ist, wirst du in einem fortgeschrittenen Level erfahren. Der blau hinterlegte Bereich gibt dir Informationen über deinen Gesprächspartner und der orange hinterlegte Bereich verrät dir das Gesprächsthema.</string>
+    <string name="level_02_intro_03_text_01"><b>Fokus - Info über Gesprächspartner selbst</b>\n\nIn diesem und in den nächsten paar Levels werden wir uns hauptsächlich mit dem blau hinterlegten Bestandteil der Webadresse beschäftigen, da es sehr wichtig ist zu wissen, wer dein Gesprächspartner ist!\n\nDer Bereich <b>zwischen \""http://\" und dem dritten Slash \"/\"</b> gibt dir also Informationen über deinen Gesprächspartner, sprich über die Webseite. Die restlichen Bereiche kannst du jetzt erst einmal ignorieren.</string>
+    <string name="level_02_intro_04_text_01"><b>Aufbau des Gesprächspartner-Bereiches</b>\n\nDieser Bereich wird durch Punkte in einzelne Blöcke eingeteilt.\n\n<b>Merke:</b> Diese Blöcke werden von rechts nach links gelesen.</string>
     <string name="level_02_intro_05_text_01"><b>Angaben zum Standort</b>\n\nDer erste Block (von rechts) verrät dir den \"Standort\" deines Gesprächspartners. In diesem Fall \"de\" für Deutschland.</string>
     <string name="level_02_intro_06_text_01"><b>Angaben zum Unternehmen</b>\n\nDer zweite Block (von rechts) sagt dir, zu welchem \"Unternehmen\"" dein Gesprächspartner gehört.</string>
     <string name="level_02_intro_07_text_01"><b>Weitere Angaben</b>\n\nAb dem dritten Block (von rechts), beschreiben alle restlichen Blöcke (es können auch mehrere sein) verschiedene \"Abteilungen\" des Unternehmens deines Gesprächspartners.</string>
@@ -229,6 +229,7 @@
     <string name="level_02_intro_08_domain_description">Wer-Bereich\n(Unternehmen + Standort)</string>
     <string name="level_02_intro_08_subdomain_description">Abteilungen</string>
     <string name="level_02_intro_09_text_01"><b>Beispiele</b>\n\nIm Folgenden zeigen wir ein paar Beispiele für Webadressen. Überlege dir zunächst selbst, welcher Bereich in den angegebenen Webadressen der Wer-Bereich ist. Überprüfe im Anschluss deine Ergebnisse, indem du fortfährst.</string>
+   <string name="level_02_intro_10_text_01"><b>Beispiele - Auflösung</b>\n\nIm Folgenden zeigen wir ein paar Beispiele für Webadressen. Überlege dir zunächst selbst, welcher Bereich in den angegebenen Webadressen der Wer-Bereich ist. Überprüfe im Anschluss deine Ergebnisse, indem du fortfährst.</string>
     <string name="level_02_example_amazon">http://www.amazon.de</string>
     <string name="level_02_example_googlemail">https://mail.google.com/mail/?shva=1#inbox</string>
     <string name="level_02_example_ebay">http://pages.ebay.de/help/sell/quick-listing-tool.html</string>
@@ -251,6 +252,9 @@
     <string name="level_02_task">Tippe nun den Wer-Bereich der folgenden Webadressen an.</string>
     <string name="level_02_you_are_wrong">Leider konntest du den Wer-Bereich nicht identifizieren.</string>
     <string name="level_02_you_are_correct">Sehr gut! Du konntest den Wer-Bereich identifizieren.</string>
+    <string name="location">Standort</string>
+    <string name="company">Unternehmen</string>
+    <string name="departments">Abteilungen</string>
     <string name="http">http://</string>
     <string name="https">https://</string>
     <string name="www">www.</string>
@@ -399,14 +403,16 @@
     <string name="level_11_intro_02_text_02">Möchte der Benutzer nun Online-Banking durchführen, gelangt er auf die unten angegebene Webadresse. Hier lautet der Wer-Bereich auf einmal commerzbanking.de (blau hinterlegt). Wie man sieht, ist der Wer-Bereich hier nur eine ähnliche Abwandlung des Wer-Bereiches der regulären Commerzbank-Webseite, d.h. man würde diese Webseite als Phishing identifizieren.</string>
     <string name="level_11_intro_03_text_01"><b>Verwirrende aber legitime Webadressen</b>\n\nManchmal können legitime Webadressen aussehen wie Phishing-Webadressen. Aus diesem Grund ist es wichtig, <b>genau zu wissen</b>, wie die Wer-Bereiche deiner besuchten Webseiten lauten!\nIn solchen verwirrenden Fällen möchten wir dir gerne nahelegen, das entsprechende Unternehmen oder die entsprechende Bank zu kontaktieren. Gebe vorher keine Daten ein! Erstens kannst du dich auf diese Weise vergewissern, dass du keine Daten auf gefälschten Webseiten eingibst. Zweitens kannst du dich beschweren, warum das Unternehmen oder die Bank so verwirrende Webadressen verwendet und auf diese Weise dazu beitragen, das Internet ein bisschen sicherer zu gestalten.</string>
     <string name="level_11_intro_04_text_01"><b>Verwirrende aber legitime Webadressen</b>\n\nHier noch einmal ein Beispiel von zwei legitimen Webadressen, wobei die zweite wie eine Phishing-Webadresse aussieht:</string>
-	<string name="level_11_intro_05_text_01"><b>https://</b>\n\nDu hast gelernt, dass das https:// einer Webadresse zwei Dinge versichert:\n\n1.) Dein Gespräch kann kein anderer mitbekommen.\n\n2.) Dein Gesprächspartner kann sich ausweisen.</string>
+    <string name="level_11_intro_05_text_01"><b>https://</b>\n\nDu hast gelernt, dass das https:// einer Webadresse zwei Dinge versichert:\n\n1.) Dein Gespräch kann kein anderer mitbekommen.\n\n2.) Dein Gesprächspartner kann sich ausweisen.</string>
     <string name="level_11_intro_06_text_01"><b>https:// - Dein Gesprächspartner kann sich ausweisen</b>\n\nDies bedeutet, dass eine sogenannte vertrauenswürdige Zertifizierungsstelle zusichert, dass der Gesprächspartner wirklich derjenige ist, für den er sich ausgibt. Diese Zertifizierungsstelle führt bestimmte Identitätsüberprüfungen durch und stellt bei einer erfolgreichen Überprüfung dem Wer-Bereich ein sogenanntes Zertifikat aus. Dieses Zertifikat versichert dir, dass dein Gesprächspartner wirklich der ist, der im Wer-Bereich angegeben ist.</string>
-	<string name="level_11_intro_07_text_01"><b>https:// - Unsaubere Identitätsprüfungen</b>\n\nWegen der großen Konkurrenz unter den Zertifizierungsstellen werden solche Identitätsüberprüfungen leider nicht immer ganz sauber durchgeführt. Es ist dadurch möglich, dass Zertifikate Identitäten bestätigen, die sie gar nicht bestätigen sollten! Aus diesem Grund wurden zusätzlich spezielle Zertifikate eingeführt, die unter einer noch strengeren Identitätsüberprüfung von speziellen Zertifizierungsstellen ausgestellt werden. Viele Internetbrowser bieten die Möglichkeit Webseiten mit solchen speziellen Zertifikaten, auf den ersten Blick zu erkennen.\n\n TODO: link to another website</string>
-    
+    <string name="level_11_intro_07_text_01"><b>https:// - Unsaubere Identitätsprüfungen</b>\n\nWegen der großen Konkurrenz unter den Zertifizierungsstellen werden solche Identitätsüberprüfungen leider nicht immer ganz sauber durchgeführt. Es ist dadurch möglich, dass Zertifikate Identitäten bestätigen, die sie gar nicht bestätigen sollten! Aus diesem Grund wurden zusätzlich spezielle Zertifikate eingeführt, die unter einer noch strengeren Identitätsüberprüfung von speziellen Zertifizierungsstellen ausgestellt werden. Viele Internetbrowser bieten die Möglichkeit Webseiten mit solchen speziellen Zertifikaten, auf den ersten Blick zu erkennen.\n\n TODO: link to another website</string>
+
     <!-- TASKS AND SOLUTION SCREENS FROM LEVEL 3 -->
+    <string name="legitimate">Legitim</string>
+    <string name="fake">Gefälscht</string>
     <string name="URLs">Korrekt:</string>
     <string name="level_failed_title">Level nicht bestanden!</string>
-    <string name="level_failed_text">Leider konntest du nicht genügend Punkte sammeln um das Level zu bestehen. Das Level wird jetzt neu gestartet.</string>
+    <string name="level_failed_text">Leider konntest du nicht genügend Punkte sammeln um das Level zu bestehen. Versuche es am besten erneut!</string>
     <string name="level_failed_button">Level neu starten</string>
     <string name="level_cancel_title">Level abbrechen?</string>
     <string name="level_cancel_text">Wenn du diese Seite verlässt wird dein Spielstand für dieses Level nicht gespeichert. Bist du dir sicher?</string>
@@ -420,7 +426,7 @@
     <string name="game_over">Game Over</string>
     <string name="ok">OK</string>
     <string name="lives">Leben:</string>
-    <string name="url_task_description">Vertraust du der Webadresse?\nHäkchen: Legitim\nKreuz: Phishing</string>
+    <string name="url_task_description">Vertraust du der Webadresse?</string>
     <string name="url">Beispiel URL</string>
     <string name="score">Punkte:</string>
     <string name="phish_proof_01">Ja, die Webadresse ist gefälscht. Als wen gibt der Phisher sich aus?</string>
@@ -523,8 +529,8 @@
     <string name="content_desc_swipe_right">Nach rechts swipen</string>
     <string name="content_desc_start_level_button">Starte Level</string>
     <string name="content_desc_single_tip">Entsprechende Stelle der Webadresse antippen</string>
-	<string name="content_desc_life_1">Lebensherz 1</string>
-	<string name="content_desc_life_2">Lebensherz 2</string>
-	<string name="content_desc_life_3">Lebensherz 3</string>
-    
+    <string name="content_desc_life_1">Lebensherz 1</string>
+    <string name="content_desc_life_2">Lebensherz 2</string>
+    <string name="content_desc_life_3">Lebensherz 3</string>
+
 </resources>

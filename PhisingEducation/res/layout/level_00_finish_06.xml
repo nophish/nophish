@@ -40,7 +40,6 @@
             android:layout_alignTop="@+id/level_00_finish_06_image_01"
             android:layout_centerHorizontal="true"
             android:layout_marginLeft="@dimen/margin_standard"
-            android:paddingLeft="@dimen/margin_small"
             android:text="@string/level_00_finish_06_text_02"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
@@ -60,7 +59,6 @@
             android:layout_height="wrap_content"
             android:layout_alignLeft="@+id/level_00_finish_06_text_02"
             android:layout_alignTop="@+id/level_00_finish_06_image_02"
-            android:paddingLeft="@dimen/margin_small"
             android:text="@string/level_00_finish_06_text_03"
             android:textAppearance="?android:attr/textAppearanceMedium" />
     </RelativeLayout>
