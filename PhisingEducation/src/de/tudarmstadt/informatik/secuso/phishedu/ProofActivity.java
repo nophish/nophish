@@ -155,10 +155,10 @@ public class ProofActivity extends PhishBaseActivity {
 		return super.onCreateOptionsMenu(menu);
 	}
 	/**
-	 * Disable back button so he can not guess again.
+	 * Going back not possible, only cancel level
 	 */
 	@Override
 	public void onBackPressed() {
-		return;
+		levelCanceldWarning();
 	}
 }

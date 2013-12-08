@@ -148,13 +148,6 @@ public class URLTaskActivity extends PhishBaseActivity {
 		levelCanceldWarning();
 	}
 
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu items for use in the action bar
-		MenuInflater inflater = getMenuInflater();
-		inflater.inflate(R.menu.urltask_menu, menu);
-		return super.onCreateOptionsMenu(menu);
-	}
 
 	@Override
 	protected void onStart() {
@@ -167,6 +160,14 @@ public class URLTaskActivity extends PhishBaseActivity {
 			sendScrollToRight();
 		}
 	}
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu items for use in the action bar
+		MenuInflater inflater = getMenuInflater();
+		inflater.inflate(R.menu.urltask_menu, menu);
+		return super.onCreateOptionsMenu(menu);
+	}
+
 
 	private void sendScrollToRight() {
 		final Handler handler = new Handler();

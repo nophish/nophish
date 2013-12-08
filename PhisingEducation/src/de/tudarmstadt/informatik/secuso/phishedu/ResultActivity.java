@@ -103,11 +103,11 @@ public class ResultActivity extends SwipeActivity {
 	}
 
 	/**
-	 * Disable back button so he can not guess again.
+	 * Going back not possible, only cancel level
 	 */
 	@Override
 	public void onBackPressed() {
-		return;
+		levelCanceldWarning();
 	}
 
 	@Override
@@ -188,6 +188,7 @@ public class ResultActivity extends SwipeActivity {
 		return super.onOptionsItemSelected(item);
 	}
 
+	
 	private void vibrate() {
 		// make phone vibrate
 		Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
