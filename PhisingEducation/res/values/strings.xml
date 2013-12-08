@@ -472,6 +472,7 @@
     <string name="number">10</string>
     <string name="title">Title</string>
     <string name="level_description">Level Description</string>
+    <string name="cannot_replay_level_0">Dieser Teil kann nicht wiederholt werden!</string>
 
     <!-- CONTENT DESCRIPTIONS FOR ACCESSIBILITY -->
     <string name="content_desc_back_button">Button Zurück</string>
