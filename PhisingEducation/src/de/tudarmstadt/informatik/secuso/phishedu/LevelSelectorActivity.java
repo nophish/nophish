@@ -72,7 +72,7 @@ public class LevelSelectorActivity extends SwipeActivity implements
 	@Override
 	public void onClickPage(int page) {
 		if (page <= BackendController.getInstance().getMaxUnlockedLevel()) {
-			if (page == 0) {
+			if (page == 0 && BackendController.getInstance().getLevel()>0) {
 				// level 0 cannot be replayed
 				Toast.makeText(getApplicationContext(),
 						getString(R.string.cannot_replay_level_0),

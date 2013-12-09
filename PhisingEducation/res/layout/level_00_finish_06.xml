@@ -38,8 +38,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignTop="@+id/level_00_finish_06_image_01"
-            android:layout_centerHorizontal="true"
-            android:layout_marginLeft="@dimen/margin_standard"
+            android:layout_marginLeft="@dimen/margin_small"
+            android:layout_toRightOf="@id/level_00_finish_06_image_01"
             android:text="@string/level_00_finish_06_text_02"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 

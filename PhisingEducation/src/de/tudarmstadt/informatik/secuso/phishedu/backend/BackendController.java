@@ -216,7 +216,6 @@ public class BackendController implements BackendControllerInterface, GameStateL
 	@Override
 	public void startLevel(int level) {
 		checkinited();
-		this.progress.setLevel(level);
 		this.level_repeat_offsets=new ArrayList<Integer>();
 		if(getLevel()>=FIRST_REPEAT_LEVEL){
 			for(int i=1;i<=getLevel()-(FIRST_REPEAT_LEVEL-1);i++){
@@ -263,6 +262,7 @@ public class BackendController implements BackendControllerInterface, GameStateL
 		case LEVEL_FINISHED:
 			this.progress.commitPoints();
 			this.frontend.levelFinished(this.getLevel());
+			this.progress.setLevel(this.getLevel()+1);
 			return;
 		}
 
@@ -393,8 +393,10 @@ public class BackendController implements BackendControllerInterface, GameStateL
 		String host = data.getHost();
 		if(host.equals("maillink")){
 			this.frontend.levelFinished(0);
+			this.progress.setLevel(this.getLevel()+1);
 		}else if(host.equals("level1finished")){
 			this.frontend.levelFinished(1);
+			this.progress.setLevel(this.getLevel()+1);
 		}
 	}
 
