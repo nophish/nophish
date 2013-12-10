@@ -23,7 +23,7 @@ public class BaseGenerator extends AbstractUrlDecorator {
 	
 	@Override
 	public PhishAttackType getAttackType() {
-		return PhishAttackType.NoPhish;
+		return this.object.getAttackType();
 	}
 
 	@Override

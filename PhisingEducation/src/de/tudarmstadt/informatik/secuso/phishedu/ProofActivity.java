@@ -88,7 +88,6 @@ public class ProofActivity extends PhishBaseActivity {
 
 		public void onClick(View widget) {
 			this.activity.selectedPart = this.part;
-			String[] urlparts = BackendController.getInstance().getUrl();
 			widget.invalidate();
 		}
 

@@ -63,13 +63,20 @@ public interface BackendControllerInterface {
 	public int getMaxUnlockedLevel();
 	
 	/**
+	 * Get how many points the user collected.
+	 * The current level Points are not added here.
+	 * @return points the user has collected.
+	 */
+	public int getTotalPoints();
+	
+	/**
 	 * Get how many points in the current level the user has.
 	 * 
 	 * It is worth to mention that these are not persistently saved.
 	 * The user has to restart the given level from 0 points each time the app starts.
 	 * @return points in the current level.
 	 */
-	public int getPoints();
+	public int getLevelPoints();
 	
 	/**
 	 * What type of site is this currently

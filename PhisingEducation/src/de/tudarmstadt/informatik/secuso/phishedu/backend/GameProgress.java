@@ -200,7 +200,7 @@ public class GameProgress implements OnStateLoadedListener{
 	 * See the comment of {@link GameProgress#getPoints()} regarding persistence.
 	 * @param points the number of points for this level.
 	 */
-	public void setPoints(int points){
+	public void setLevelPoints(int points){
 		//we only allow positive points
 		if(points < 0 ){
 			points = 0;
@@ -222,14 +222,25 @@ public class GameProgress implements OnStateLoadedListener{
 	 */
 	public void setLevel(int level){
 		this.state.level=level;
-		if(level > this.state.unlockedLevel){
-			this.state.unlockedLevel=level;
+		if(this.state.unlockedLevel<level){
+			throw new IllegalStateException("The given level ("+level+") is not unlocked.");
 		}
 		this.level_results=new int[4];
 		this.presented_repeats=0;
 		this.level_points=0;
 		this.level_lives=LIFES_PER_LEVEL;
 		
+		this.saveState();
+	}
+	
+	/**
+	 * Unlock the given Level so that the user is able to play it.
+	 * @param level the level to unlock
+	 */
+	public void unlockLevel(int level){
+		if(level > this.state.unlockedLevel){
+			this.state.unlockedLevel=level;
+		}
 		this.saveState();
 	}
 

@@ -26,6 +26,7 @@ public class IPAttack extends AbstractAttack {
 	@Override
 	public String[] getParts(){
 		String[] parts = this.object.getParts();
+		parts[2] = ""; //when using IPs subdomains are not allowed.
 		parts[3] = ip;
 		return parts;
 	}

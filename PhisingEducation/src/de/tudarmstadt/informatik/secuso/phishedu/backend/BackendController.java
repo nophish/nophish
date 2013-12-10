@@ -39,7 +39,7 @@ public class BackendController implements BackendControllerInterface, GameStateL
 	//constants
 	private static final String PREFS_NAME = "PhisheduState";
 	private static final String URL_CACHE_NAME ="urlcache";
-	private static final String LEVEL1_URL = "https://pages.no-phish.de/level1.php#bottom";
+	private static final String LEVEL1_URL = "https://pages.no-phish.de/level1.php";
 	private static final int FIRST_REPEAT_LEVEL = 4;
 	private static final PhishAttackType[] CACHE_TYPES = {PhishAttackType.AnyPhish, PhishAttackType.NoPhish};
 	//For each level we can define what Attacks are applied
@@ -105,6 +105,12 @@ public class BackendController implements BackendControllerInterface, GameStateL
 	 * This holds the current URL returned by the last {@link BackendControllerInterface}{@link #getNextUrl()} call
 	 */
 	private PhishURLInterface current_url;
+	
+	/**
+	 * save the current repeat offset of the attack.
+	 * This is needed to reinsert the offset into the {@link #level_repeat_offsets} list on fail.
+	 */
+	private int current_url_level_offset=0;
 
 	/**
 	 * Private constructor for singelton.
@@ -229,6 +235,7 @@ public class BackendController implements BackendControllerInterface, GameStateL
 				this.level_repeat_offsets.add(index_level);
 			}
 		}
+		this.progress.setLevel(level);
 		this.frontend.onLevelChange(this.progress.getLevel());
 	}
 
@@ -239,7 +246,13 @@ public class BackendController implements BackendControllerInterface, GameStateL
 
 	@Override
 	public void redirectToLevel1URL(){
-		this.frontend.startBrowser(Uri.parse(LEVEL1_URL));
+		Random random = new Random();
+		char[] buf=new char[4];
+		for(int i=0;i<buf.length;i++){
+			buf[i]=(char) ('a'+random.nextInt(26));
+		}
+		String random_string=new String(buf);
+		this.frontend.startBrowser(Uri.parse(LEVEL1_URL+"?frag="+random_string+"#bottom-"+random_string));
 	}
 
 	@SuppressWarnings("unchecked")
@@ -260,9 +273,7 @@ public class BackendController implements BackendControllerInterface, GameStateL
 			this.frontend.levelFailed(getLevel());
 			return;
 		case LEVEL_FINISHED:
-			this.progress.commitPoints();
-			this.frontend.levelFinished(this.getLevel());
-			this.progress.setLevel(this.getLevel()+1);
+			this.levelFinished(this.getLevel());
 			return;
 		}
 
@@ -286,6 +297,7 @@ public class BackendController implements BackendControllerInterface, GameStateL
 		//then we decorate the URL with a random generator
 		base_url=AbstractUrlDecorator.decorate(base_url, GENERATORS[random.nextInt(GENERATORS.length)]);
 		//Lastly we might apply a attack
+		current_url_level_offset=0;
 		if(present_phish){
 			boolean present_repeat = false;
 			if(getLevel() < FIRST_REPEAT_LEVEL){
@@ -302,8 +314,9 @@ public class BackendController implements BackendControllerInterface, GameStateL
 			int index_level = Math.min(getLevel(), ATTACK_TYPES_PER_LEVEL.length-1);
 			if(present_repeat){
 				this.progress.incPresentedRepeats();
-				index_level-=this.level_repeat_offsets.remove(random.nextInt(this.level_repeat_offsets.size()));
+				current_url_level_offset=this.level_repeat_offsets.remove(random.nextInt(this.level_repeat_offsets.size()));
 			}
+			index_level-=current_url_level_offset;
 			//choose a random attack from the selected Level
 			Class<? extends AbstractUrlDecorator>[] level_attacks = ATTACK_TYPES_PER_LEVEL[index_level];
 			attack=level_attacks[random.nextInt(level_attacks.length)];
@@ -343,17 +356,17 @@ public class BackendController implements BackendControllerInterface, GameStateL
 	private void addResult(PhishResult result){
 		this.progress.addResult(result);
 		if(result == PhishResult.Phish_NotDetected){
+			if(current_url_level_offset>0){
+				level_repeat_offsets.add(current_url_level_offset);
+			}
 			progress.decLives();
 		}
 		int offset=this.current_url.getPoints(result);
 		//with this function we ensure that the user gets more points per level
 		//This ensures that there is no point in running the same level multiple times to collect points
 		offset*=Math.pow(LEVEL_DISTANCE, this.getLevel());
-		
-		
-		
 		this.frontend.displayToastScore(offset);
-		this.progress.setPoints(this.getPoints()+offset);
+		this.progress.setLevelPoints(this.getLevelPoints()+offset);
 	}
 
 	@Override
@@ -380,9 +393,14 @@ public class BackendController implements BackendControllerInterface, GameStateL
 		return clickedright;
 	}
 
-	public int getPoints(){
+	public int getTotalPoints(){
 		checkinited();
 		return this.progress.getPoints();
+	}
+	
+	public int getLevelPoints(){
+		checkinited();
+		return this.progress.getLevelPoints();
 	}
 
 	public void onUrlReceive(Uri data){
@@ -392,12 +410,18 @@ public class BackendController implements BackendControllerInterface, GameStateL
 		}
 		String host = data.getHost();
 		if(host.equals("maillink")){
-			this.frontend.levelFinished(0);
-			this.progress.setLevel(this.getLevel()+1);
+			this.levelFinished(0);
 		}else if(host.equals("level1finished")){
-			this.frontend.levelFinished(1);
-			this.progress.setLevel(this.getLevel()+1);
+			this.levelFinished(1);
+		}else if(host.equals("level1failed")){
+			this.startLevel(1);
 		}
+	}
+	
+	private void levelFinished(int level){
+		this.progress.commitPoints();
+		this.progress.unlockLevel(level+1);
+		this.frontend.levelFinished(level);
 	}
 
 	@Override

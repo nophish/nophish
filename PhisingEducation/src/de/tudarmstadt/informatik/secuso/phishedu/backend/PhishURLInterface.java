@@ -12,10 +12,13 @@ public interface PhishURLInterface{
 	/**
 	 * Return the parts of the URL.
 	 * When concardinatend they build up the whole url.
-	 * The first 3 Parts are always defined as follows:
+	 * The first 4 Parts are always defined as follows:
 	 * 0: The scheme (eg. "https:")
-	 * 1: "/"
-	 * 2: "/"
+	 * 1: "//"
+	 * 2: <subdomain(s) string> (might be the empty string)
+	 * 3: domain
+	 * 4: "/"
+	 * 5-: path
 	 * 
 	 * @return String parts of a url.
 	 */

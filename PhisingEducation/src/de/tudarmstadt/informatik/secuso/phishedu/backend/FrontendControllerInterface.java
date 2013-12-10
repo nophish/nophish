@@ -54,8 +54,8 @@ public interface FrontendControllerInterface {
 	
 	/**
 	 * This is for the backend to display the score in the appropriate color to the user.
+	 * @param score the current score
 	 */
-	
 	void displayToastScore(int score);
 	
 	/**
