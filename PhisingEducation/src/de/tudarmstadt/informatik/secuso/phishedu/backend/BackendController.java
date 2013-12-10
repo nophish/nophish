@@ -39,7 +39,7 @@ public class BackendController implements BackendControllerInterface, GameStateL
 	//constants
 	private static final String PREFS_NAME = "PhisheduState";
 	private static final String URL_CACHE_NAME ="urlcache";
-	private static final String LEVEL1_URL = "https://pages.no-phish.de/level1.php#bottom";
+	private static final String LEVEL1_URL = "https://pages.no-phish.de/level1.php";
 	private static final int FIRST_REPEAT_LEVEL = 4;
 	private static final PhishAttackType[] CACHE_TYPES = {PhishAttackType.AnyPhish, PhishAttackType.NoPhish};
 	//For each level we can define what Attacks are applied
@@ -246,7 +246,13 @@ public class BackendController implements BackendControllerInterface, GameStateL
 
 	@Override
 	public void redirectToLevel1URL(){
-		this.frontend.startBrowser(Uri.parse(LEVEL1_URL));
+		Random random = new Random();
+		char[] buf=new char[4];
+		for(int i=0;i<buf.length;i++){
+			buf[i]=(char) ('a'+random.nextInt(26));
+		}
+		String random_string=new String(buf);
+		this.frontend.startBrowser(Uri.parse(LEVEL1_URL+"?frag="+random_string+"#bottom-"+random_string));
 	}
 
 	@SuppressWarnings("unchecked")
@@ -407,6 +413,8 @@ public class BackendController implements BackendControllerInterface, GameStateL
 			this.levelFinished(0);
 		}else if(host.equals("level1finished")){
 			this.levelFinished(1);
+		}else if(host.equals("level1failed")){
+			this.startLevel(1);
 		}
 	}
 	
