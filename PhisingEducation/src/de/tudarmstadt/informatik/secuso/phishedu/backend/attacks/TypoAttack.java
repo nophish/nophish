@@ -38,17 +38,17 @@ public class TypoAttack extends AbstractAttack {
 		String[] parts = super.getParts();
 		ArrayList<String> adder = new ArrayList<String>(Arrays.asList(parts));
 		String domain = adder.remove(3);
-		if(attack_pos==-1){
+		do{
 			attack_pos=new Random().nextInt(domain.length()-1);
-		}
+		}while(domain.charAt(attack_pos)==domain.charAt(attack_pos+1));
+		
 		switch (attack_type) {
 		case 0:
 			//swap
-			String find = domain.substring(attack_pos, attack_pos+1);
+			String find = domain.substring(attack_pos, attack_pos+2);
 			String replace = find.charAt(1)+""+find.charAt(0);
 			domain=domain.replace(find, replace);
 			break;
-
 		default:
 			//copy char
 			String first = domain.substring(0,attack_pos);
