@@ -11,10 +11,7 @@ $success=false;
 <?php
 if(isset($_REQUEST["first_word"])){
 if($_REQUEST["first_word"]==$first_domain_word && $_REQUEST["chars"] == substr($_REQUEST["fragment"],-$number_fragment_charsfragment)){
-  $success=true;
-?>
-<p>Super! Hier geht es <a href="phishedu://level1finished/">zur&uuml;ck zur App</a></p>
-<?php
+  header('Location: phishedu://level1finished');
 }else{
 ?>
 <p>Leider ist deine Antwort falsch.</p>
@@ -23,7 +20,6 @@ if($_REQUEST["first_word"]==$first_domain_word && $_REQUEST["chars"] == substr($
 }
 }
 
-if(!$success){
 ?>
 <form action="<?= $_SERVER["REQUEST_URI"] ?>" method="post">
 <p>1. Nun schaue dir die gesamte Webadresse an. Hierzu musst du den Adresstext antippen und mit dem Finger ggf. nach rechts und links schieben.</p>
@@ -42,8 +38,5 @@ if(!$success){
 			<p>Bitte scrolle ganz nach oben, um dir die Webadresse anzeigen zu lassen. Ziehe hierzu den Finger so lange herunter (ggf. mehrmals), bis du die Adressleiste siehst.</p>
                         <a name="bottom-<?= $_REQUEST["frag"] ?>" />
 </form>
-<?php
-}
-?>
 			</body>
 		</html>
