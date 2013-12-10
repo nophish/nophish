@@ -229,7 +229,7 @@
     <string name="level_02_intro_08_domain_description">Wer-Bereich\n(Unternehmen + Standort)</string>
     <string name="level_02_intro_08_subdomain_description">Abteilungen</string>
     <string name="level_02_intro_09_text_01"><b>Beispiele</b>\n\nIm Folgenden zeigen wir ein paar Beispiele für Webadressen. Überlege dir zunächst selbst, welcher Bereich in den angegebenen Webadressen der Wer-Bereich ist. Überprüfe im Anschluss deine Ergebnisse, indem du fortfährst.</string>
-   <string name="level_02_intro_10_text_01"><b>Beispiele - Auflösung</b>\n\nIm Folgenden zeigen wir ein paar Beispiele für Webadressen. Überlege dir zunächst selbst, welcher Bereich in den angegebenen Webadressen der Wer-Bereich ist. Überprüfe im Anschluss deine Ergebnisse, indem du fortfährst.</string>
+    <string name="level_02_intro_10_text_01"><b>Beispiele - Auflösung</b>\n\nIm Folgenden zeigen wir ein paar Beispiele für Webadressen. Überlege dir zunächst selbst, welcher Bereich in den angegebenen Webadressen der Wer-Bereich ist. Überprüfe im Anschluss deine Ergebnisse, indem du fortfährst.</string>
     <string name="level_02_example_amazon">http://www.amazon.de</string>
     <string name="level_02_example_googlemail">https://mail.google.com/mail/?shva=1#inbox</string>
     <string name="level_02_example_ebay">http://pages.ebay.de/help/sell/quick-listing-tool.html</string>
@@ -533,5 +533,6 @@
     <string name="content_desc_life_1">Lebensherz 1</string>
     <string name="content_desc_life_2">Lebensherz 2</string>
     <string name="content_desc_life_3">Lebensherz 3</string>
+    <string name="title_activity_app_end">Danke</string>
 
 </resources>
