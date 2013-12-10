@@ -23,6 +23,12 @@ public class TypoAttack extends AbstractAttack {
 	public TypoAttack(PhishURLInterface object) {
 		super(object);
 		attack_type=new Random().nextInt(2);
+		String domain=super.getParts()[3];
+		int last_period_pos = domain.lastIndexOf(".");
+		do{
+			attack_pos=new Random().nextInt(domain.length()-1);
+		}while(domain.charAt(attack_pos)==domain.charAt(attack_pos+1) || attack_pos >= last_period_pos-1);
+		
 	}
 
 	@Override
@@ -38,10 +44,6 @@ public class TypoAttack extends AbstractAttack {
 		String[] parts = super.getParts();
 		ArrayList<String> adder = new ArrayList<String>(Arrays.asList(parts));
 		String domain = adder.remove(3);
-		do{
-			attack_pos=new Random().nextInt(domain.length()-1);
-		}while(domain.charAt(attack_pos)==domain.charAt(attack_pos+1));
-		
 		switch (attack_type) {
 		case 0:
 			//swap
