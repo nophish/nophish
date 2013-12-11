@@ -418,6 +418,10 @@ public class BackendController implements BackendControllerInterface, GameStateL
 		}
 	}
 	
+	public void skipLevel0(){
+		this.levelFinished(0);
+	}
+	
 	private void levelFinished(int level){
 		this.progress.commitPoints();
 		this.progress.unlockLevel(level+1);
