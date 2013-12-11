@@ -28,11 +28,12 @@
         android:layout_marginTop="@dimen/margin_large"
         android:minWidth="@dimen/btn_menu_width" />
 
+    <!-- Google play buttons button -->
     <Button
         android:id="@+id/button_show_online_achievement"
         android:layout_width="wrap_content"
         android:layout_height="@dimen/btn_standard_height"
-        android:layout_below="@+id/sign_in_button"
+        android:layout_below="@+id/google_plus_text"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/margin_large"
         android:minWidth="@dimen/btn_menu_width"
@@ -80,9 +81,9 @@
     <Button
         android:id="@+id/sign_out_button"
         android:layout_width="wrap_content"
+        android:layout_below="@+id/button_show_leaderboard_total_points"
         android:layout_height="@dimen/btn_standard_height"
         android:minWidth="@dimen/btn_menu_width"
-        android:layout_below="@+id/button_show_leaderboard_total"
         android:text="@string/sign_out"
         android:visibility="gone" />
     
