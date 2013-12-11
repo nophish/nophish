@@ -22,10 +22,9 @@
         <meta-data
             android:name="com.google.android.gms.appstate.APP_ID"
             android:value="@string/app_id" />
-        <meta-data
+         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
-
         <activity
             android:name="de.tudarmstadt.informatik.secuso.phishedu.StartMenuActivity"
             android:label="@string/title_activity_start_menu" >
@@ -118,6 +117,14 @@
         <activity
             android:name="de.tudarmstadt.informatik.secuso.phishedu.FindAddressBarActivity"
             android:label="@string/title_activity_find_address_bar"
+            android:parentActivityName="de.tudarmstadt.informatik.secuso.phishedu.StartMenuActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="de.tudarmstadt.informatik.secuso.phishedu.StartMenuActivity" />
+        </activity>
+        <activity
+            android:name="de.tudarmstadt.informatik.secuso.phishedu.AppEndActivity"
+            android:label="@string/title_activity_app_end"
             android:parentActivityName="de.tudarmstadt.informatik.secuso.phishedu.StartMenuActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
