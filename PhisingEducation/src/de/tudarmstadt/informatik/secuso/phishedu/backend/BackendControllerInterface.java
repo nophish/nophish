@@ -174,5 +174,10 @@ public interface BackendControllerInterface {
 	 * @return The (possibly decorated) Phishing url
 	 */
 	public PhishURLInterface getPhishURL(PhishAttackType type);
+	
+	/**
+	 * This function is for debugging only. It skips level0 gracefully.
+	 */
+	public void skipLevel0();
 }
 

@@ -42,9 +42,7 @@ public class AwarenessActivity extends SwipeActivity {
 	}
 
 	public void skipSendEmail(View view){
-		Intent levelIntent = new Intent(this, LevelFinishedActivity.class);
-		levelIntent.putExtra(Constants.EXTRA_LEVEL, 0);
-		startActivity(levelIntent);
+		BackendController.getInstance().skipLevel0();
 	}
 	
 	/**
