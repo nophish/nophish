@@ -51,7 +51,7 @@ public class MisleadingAttack extends AbstractAttack {
 
 	@Override
 	public PhishAttackType getAttackType() {
-		return PhishAttackType.Sudomains;
+		return PhishAttackType.Misleading;
 	}
 	
 	@Override
