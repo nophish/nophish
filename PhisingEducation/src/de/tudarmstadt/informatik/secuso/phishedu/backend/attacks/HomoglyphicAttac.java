@@ -34,7 +34,7 @@ public class HomoglyphicAttac extends AbstractAttack {
 			{"j","i"},
 			{"i", "j"},
 			{"a","o"},
-			{"o", "a"}
+			{"o", "a"},
 	};
 	/**
 	 * This constructor is required because of the implementation in {@link BackendController#getNextUrl()}
