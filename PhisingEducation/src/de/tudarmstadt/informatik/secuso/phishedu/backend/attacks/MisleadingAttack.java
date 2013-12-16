@@ -19,10 +19,26 @@ public class MisleadingAttack extends AbstractAttack {
 	int attack_domain=-1;
 	private static final String[] DOMAIN_ADDITIONS={
 		"-login",
+		"-anmelden",
 		"-secure",
+		"-sicher",
 		"-accounts",
+		"-konto",
 		"-verify",
-		"-signin" 
+		"-verification",
+		"-verifizierung",
+		"-signin",
+		"-com",
+		"-de",
+		"-home",
+		"-update",
+		"-registration",
+		"-registrierung",
+		"-settings",
+		"-einstellungen",
+		"-service",
+		"-support",
+		"-hilfe"
 	};
 	/**
 	 * This constructor is required because of the implementation in {@link BackendController#getNextUrl()}
