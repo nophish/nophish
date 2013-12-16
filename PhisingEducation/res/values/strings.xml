@@ -459,13 +459,14 @@
     <!-- unrelated but trustworthy -->
     <string name="level_06_reminder"><b>Erinnerung:</b> Enthält der Wer-Bereich Namen, die vertrauenswürdig klingen, aber dennoch nichts mit dem Unternehmen deines Gesprächspartners zu tun haben, dann gebe hier keine Daten ein! </string>
     <!-- misleading (facebook-login) -->
-    <string name="level_07_reminder"><b>Erinnerung:</b> Typo + Buchstabendreher + buchstabendreher</string>
+    <string name="level_07_reminder"><b>Erinnerung:</b> Enthält der Wer-Bereich nur eine ähnliche Abwandlung des dir bisher vertrauten Wer-Bereiches oder\nenthält der Wer-Bereich einen Tippfehler oder\nenthält der Wer-Bereich einen Buchstabendreher, dann gebe hier keine Daten ein!</string>
+    
     <!-- homographic -->
-    <string name="level_08_reminder"><b>Erinnerung:</b> homographic</string>
+    <string name="level_08_reminder"><b>Erinnerung:</b> Enthält der Wer-Bereich Ersetzungen von Buchstaben durch andere ähnliche Zeichen oder Zahlen, dann gebe hier keine Daten ein!</string>
     <!-- hostname in path -->
-    <string name="level_09_reminder"><b>Erinnerung:</b> hostname in path</string>
+    <string name="level_09_reminder"><b>Erinnerung:</b> Enthält der Bereich des Gesprächsthemas dir bekannte Namen oder Webadressen und entspricht der Wer-Bereich aber nicht dem Unternehmen deines Gesprächspartners, dann gebe hier keine Daten ein!</string>
     <!-- http/https -->
-    <string name="level_10_reminder"><b>Erinnerung:</b> http/https</string>
+    <string name="level_10_reminder"><b>Erinnerung:</b> In diesem Level sollst prinzipiell Webadressen ablehnen, die kein https:// verwenden. Zusätzlich musst du selbstverständlich überprüfen, ob die Webadresse eine Phishing-Adresse ist.</string>
     <string name="title_activity_about">About</string>
     <string name="title_activity_find_address_bar">Die Adressleiste</string>
     <string name="action_settings">Settings</string>
