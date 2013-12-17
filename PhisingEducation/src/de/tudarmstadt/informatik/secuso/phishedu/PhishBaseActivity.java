@@ -2,6 +2,7 @@ package de.tudarmstadt.informatik.secuso.phishedu;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBarActivity;
 import android.view.View;
@@ -11,7 +12,25 @@ import android.widget.TextView;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController;
 
 public class PhishBaseActivity extends ActionBarActivity {
-	
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        BackendController.getInstance().getGameHelper().onStart(this);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        BackendController.getInstance().getGameHelper().onStop();
+    }
+    
+    @Override
+    protected void onActivityResult(int request, int response, Intent data) {
+        super.onActivityResult(request, response, data);
+        BackendController.getInstance().getGameHelper().onActivityResult(request, response, data);
+    }
+		
 	protected void updateScore(){
     	updateScore(findViewById(R.id.score_relative));
     }

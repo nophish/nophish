@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Phishing Education</string>
+    <string name="app_name">Anti-Phishing Education</string>
     <string name="action_restart">Restart</string>
     <string name="start_button">Please click me!</string>
     <string name="hello_result">You came here by clicking a phishedu:// Link!</string>
@@ -67,8 +67,6 @@
     <string name="title_activity_end_demo">EndDemoActivity</string>
     <string name="title_activity_ip_nonsense_url_exercise_two_correct_solution">IpNonsenseUrlExerciseTwoCorrectSolution</string>
     <string name="title_activity_backend_test">Backend Test</string>
-    <string name="title_activity_start_menu">Anti-Phishing Education</string>
-    <string name="title_anti_phishing">Anti-Phishing Education</string>
     <string name="title_activity_awareness">E-Mail Fälschung</string>
     <string name="title_level_1_addr_bar_activity">Die Addressleiste</string>
     <string name="title_activity_level_grid">LevelGridActivity</string>

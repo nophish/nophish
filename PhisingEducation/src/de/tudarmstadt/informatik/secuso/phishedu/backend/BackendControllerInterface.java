@@ -1,6 +1,7 @@
 package de.tudarmstadt.informatik.secuso.phishedu.backend;
 
 import com.google.example.games.basegameutils.GameHelper;
+import com.google.example.games.basegameutils.GameHelper.GameHelperListener;
 
 import android.net.Uri;
 
@@ -9,14 +10,14 @@ import android.net.Uri;
  * @author Clemens Bergmann <cbergmann@schuhklassert.de>
  *
  */
-public interface BackendControllerInterface {
+public interface BackendControllerInterface extends GameHelperListener{
 	/**
 	 * This function must be called directly before the first start of the app.
 	 * It will register the caller with the backend for callbacks.
 	 * @param frontend
 	 * @param gamehelper
 	 */
-	public void init(FrontendControllerInterface frontend, GameHelper gamehelper);
+	public void init(FrontendControllerInterface frontend);
 	
 	/**
 	 * This function sends a Mail to a custom Mail Adress-
@@ -179,5 +180,11 @@ public interface BackendControllerInterface {
 	 * This function is for debugging only. It skips level0 gracefully.
 	 */
 	public void skipLevel0();
+
+	/**
+	 * Get the current game Helper. Via this Object you can access leaderboards and achievements. 
+	 * @return The current gameHelper
+	 */
+	public GameHelper getGameHelper();
 }
 
