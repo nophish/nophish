@@ -20,10 +20,21 @@ public class HomoglyphicAttac extends AbstractAttack {
 	 */
 	public static final String[][] REPLACEMENTS={
 			{"w","vv"},
+			{"vv", "w"},
 			{"l","1"},
+			{"1", "l"},
 			{"l","I"},
+			{"I", "l"},
 			{"i","1"},
+			{"1", "i"},
 			{"o","0"},
+			{"0","o"},
+			{"y","v"},
+			{"v","y"},
+			{"j","i"},
+			{"i", "j"},
+			{"a","o"},
+			{"o", "a"},
 	};
 	/**
 	 * This constructor is required because of the implementation in {@link BackendController#getNextUrl()}

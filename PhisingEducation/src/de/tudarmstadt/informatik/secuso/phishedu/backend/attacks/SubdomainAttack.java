@@ -20,7 +20,11 @@ public class SubdomainAttack extends AbstractAttack {
 	protected static final String[] PHISHER_DOMAINS ={
 		"phisher.com",
 		"phisher.de",
-		"fischerei.com"
+		"fischerei.com",
+		"fischmarkt.de",
+		"ich-bin-ein-phisher.de",
+		"want-phish.com",
+		"phishers-seite.de"
 	};
 	
 	/**

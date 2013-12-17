@@ -41,7 +41,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/feedback_smiley"
-            android:layout_centerHorizontal="true"
             android:layout_marginTop="@dimen/margin_small"
             android:text="@string/url"
             android:textAppearance="?android:attr/textAppearanceLarge" />

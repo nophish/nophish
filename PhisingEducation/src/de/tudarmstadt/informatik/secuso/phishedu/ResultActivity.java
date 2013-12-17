@@ -159,6 +159,7 @@ public class ResultActivity extends SwipeActivity {
 
 		int indexReminder = attack_type - 3;
 		if (indexReminder == 8) {
+			//typo and misleading are in one level (7)
 			indexReminder = 4;
 		}
 		if (indexReminder >= 0) {
