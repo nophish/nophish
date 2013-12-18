@@ -1,5 +1,8 @@
 package de.tudarmstadt.informatik.secuso.phishedu.backend;
 
+import com.google.example.games.basegameutils.GameHelper.GameHelperListener;
+
+import android.app.Activity;
 import android.content.Context;
 import android.net.Uri;
 
@@ -9,13 +12,19 @@ import android.net.Uri;
  * @author Clemens Bergmann <cbergmann@schuhklassert.de>
  *
  */
-public interface FrontendControllerInterface {
+public interface FrontendControllerInterface extends GameHelperListener {
 	//Context functions
 	/**
 	 * For the local store of the game state we need the local store
 	 * @return the curren gameContext
 	 */
 	Context getContext();
+	
+	/**
+	 * Get an Acitivity that events can set theyr base on.
+	 * @return the StartMenuActivity
+	 */
+	Activity getBaseActivity();
 	
 	//Callback functions
 	/**

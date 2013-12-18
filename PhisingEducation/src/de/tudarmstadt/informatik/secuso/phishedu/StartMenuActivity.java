@@ -1,5 +1,6 @@
 package de.tudarmstadt.informatik.secuso.phishedu;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
@@ -7,7 +8,6 @@ import android.graphics.Color;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -15,7 +15,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.example.games.basegameutils.BaseGameActivity;
+import com.google.android.gms.games.GamesClient;
 
 import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.FrontendControllerInterface;
@@ -26,18 +26,18 @@ import de.tudarmstadt.informatik.secuso.phishedu.backend.FrontendControllerInter
  *         splash screen and afterwards a menu is displayed if the user wants to
  *         store his/her score online he/she has to sign into google+
  */
-public class StartMenuActivity extends PhishBaseGameActivity implements
+public class StartMenuActivity extends PhishBaseActivity implements
 		FrontendControllerInterface, View.OnClickListener {
 
 	public StartMenuActivity() {
 		// request AppStateClient and GamesClient
-		super(BaseGameActivity.CLIENT_APPSTATE | BaseGameActivity.CLIENT_GAMES);
+		super();
 	}
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		BackendController.getInstance().init(this, this.mHelper);
+		BackendController.getInstance().init(this);
 
 		setContentView(R.layout.start_menu);
 		this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
@@ -63,7 +63,7 @@ public class StartMenuActivity extends PhishBaseGameActivity implements
 		findViewById(R.id.sign_in_button).setOnClickListener(this);
 		findViewById(R.id.sign_out_button).setOnClickListener(this);
 
-		if (this.getGamesClient().isConnected()) {
+		if (BackendController.getInstance().getGameHelper().isSignedIn()) {
 			// show sign-in button, hide the sign-out button
 			findViewById(R.id.sign_in_button).setVisibility(View.GONE);
 			findViewById(R.id.sign_out_button).setVisibility(View.VISIBLE);
@@ -215,6 +215,10 @@ public class StartMenuActivity extends PhishBaseGameActivity implements
 			findViewById(R.id.button_show_online_achievement).setVisibility(View.GONE);
 		}
 	}
+	
+	private GamesClient getGamesClient(){
+		return BackendController.getInstance().getGameHelper().getGamesClient();
+	}
 
 	public void showLeaderboardRate(View view) {
 		if (this.getGamesClient().isConnected()) {
@@ -320,6 +324,11 @@ public class StartMenuActivity extends PhishBaseGameActivity implements
 		toast.setDuration(Toast.LENGTH_SHORT);
 		toast.setView(layout);
 		toast.show();
+	}
+
+	@Override
+	public Activity getBaseActivity() {
+		return this;
 	}
 
 }

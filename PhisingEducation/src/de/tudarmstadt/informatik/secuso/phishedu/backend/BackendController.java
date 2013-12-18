@@ -12,9 +12,11 @@ import android.net.Uri;
 
 import com.google.android.gms.appstate.AppStateClient;
 import com.google.android.gms.games.GamesClient;
+import com.google.example.games.basegameutils.BaseGameActivity;
 import com.google.example.games.basegameutils.GameHelper;
 import com.google.gson.Gson;
 
+import de.tudarmstadt.informatik.secuso.phishedu.R;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.attacks.HTTPAttack;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.attacks.HomoglyphicAttac;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.attacks.HostInPathAttack;
@@ -120,7 +122,6 @@ public class BackendController implements BackendControllerInterface, GameStateL
 		for(PhishAttackType type: CACHE_TYPES){
 			this.urlCache[type.getValue()]=new PhishURLInterface[0];
 		}
-
 	}
 
 	/**
@@ -140,9 +141,10 @@ public class BackendController implements BackendControllerInterface, GameStateL
 		}
 	}
 
-	public void init(FrontendControllerInterface frontend, GameHelper gamehelper){
+	public void init(FrontendControllerInterface frontend){
 		this.frontend=frontend;
-		this.gamehelper=gamehelper;
+		this.gamehelper=new GameHelper(frontend.getBaseActivity());
+		this.gamehelper.setup(this,BaseGameActivity.CLIENT_APPSTATE | BaseGameActivity.CLIENT_GAMES);
 		SharedPreferences prefs = this.frontend.getContext().getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
 		GamesClient gamesclient = this.gamehelper.getGamesClient();
 		AppStateClient appstateclient = this.gamehelper.getAppStateClient();
@@ -509,5 +511,21 @@ public class BackendController implements BackendControllerInterface, GameStateL
 	@Override
 	public int getLifes() {
 		return this.progress.getRemainingLives();
+	}
+
+	@Override
+	public void onSignInFailed() {
+		frontend.onSignInFailed();
+	}
+
+	@Override
+	public void onSignInSucceeded() {
+		gamehelper.getGamesClient().unlockAchievement(frontend.getContext().getResources().getString(R.string.achievement_welcome));
+		frontend.onSignInSucceeded();
+	}
+
+	@Override
+	public GameHelper getGameHelper() {
+		return this.gamehelper;
 	}
 }

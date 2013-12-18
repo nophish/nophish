@@ -255,9 +255,6 @@ public class GameProgress implements OnStateLoadedListener{
 
 	private void unlockAchievements(){
 		//unlock Achievements
-		if(this.state.app_started){
-			game_store.unlockAchievement(context.getResources().getString(R.string.achievement_welcome));
-		}
 		if(this.state.level>1){
 			game_store.unlockAchievement(context.getResources().getString(R.string.achievement_search_and_rescue));
 		}
