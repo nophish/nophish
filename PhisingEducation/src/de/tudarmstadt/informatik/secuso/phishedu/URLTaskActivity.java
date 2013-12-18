@@ -75,6 +75,7 @@ public class URLTaskActivity extends PhishBaseActivity {
 			textSize = 13;
 			break;
 		default:
+			textSize = 13;
 			break;
 		}
 		url.setTextSize(textSize);
