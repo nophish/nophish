@@ -72,7 +72,7 @@ public class LevelIntroActivity extends SwipeActivity {
 					R.layout.level_11_intro_05, R.layout.level_11_intro_06,
 					R.layout.level_11_intro_07
 
-			} };
+			}};
 
 	protected static String[][] exampleReminderUrlPartId = {
 			{ "http://", "google.com.", "phishers-seite.de",
@@ -137,7 +137,7 @@ public class LevelIntroActivity extends SwipeActivity {
 		} else if (this.real_level == 1) {
 			next_activity = FindAddressBarActivity.class;
 		}else if(this.real_level == 11){
-//			next_activity = AppEndActivity.class;
+			next_activity = AppEndActivity.class;
 		}
 		Intent levelIntent = new Intent(this, next_activity);
 		levelIntent.putExtra(Constants.EXTRA_LEVEL, this.real_level);

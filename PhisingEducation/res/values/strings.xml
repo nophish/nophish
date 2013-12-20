@@ -112,7 +112,8 @@
     <string name="title_activity_more_info">Links zu Phishing</string>
 
     <!-- About -->
-    <string name="about_text">Lorem ipsum about about..</string>
+    <string name="about_text">Die NoPhish App wurde von Clemens Bergmann und Gamze Canova im Rahmen einer Masterarbeit an der Technischen Universiät Darmstadt entwickelt. Die Masterarbeit wurde von Prof. Dr. Melanie Volkamer und Arne Renkema-Padmos betreut.</string>
+    <string name="about_contact"><b>Technische Universität Darmstadt</b>\nFachbereich Informatik\nGebäude S2|02\nHochschulstraße 10\n64289 Darmstadt\n\nE-Mail: melanie.volkamer@cased.de</string>
 
     <!-- LEVEL TITLES -->
     <string name="level_title_01">Level 1</string>
@@ -252,7 +253,7 @@
     <string name="level_02_example_facebook_03">/</string>
     <string name="level_02_example_facebook_04">settings?tab=payments</string>
     <string name="level_02_exercise_text_01">Nun bist du an der Reihe:\n\nNach den vorherigen Beispielen, sollst du nun selber den Wer-Bereich der folgenden Webadressen bestimmen.\n\nBerühre hierzu die entsprechende Stelle und klicke auf \"Überprüfen\", wenn deine Antwort überprüft werden soll.</string>
-    <string name="level_02_task">Tippe nun den Wer-Bereich der folgenden Webadressen an.</string>
+    <string name="level_02_task"><b>Tippe</b> nun den Wer-Bereich der folgenden Webadressen an.</string>
     <string name="level_02_you_are_wrong">Leider konntest du den Wer-Bereich nicht identifizieren.</string>
     <string name="level_02_you_are_correct">Sehr gut! Du konntest den Wer-Bereich identifizieren.</string>
     <string name="location">Standort</string>
@@ -408,7 +409,12 @@
     <string name="level_11_intro_04_text_01"><b>Verwirrende aber legitime Webadressen</b>\n\nHier noch einmal ein Beispiel von zwei legitimen Webadressen, wobei die zweite wie eine Phishing-Webadresse aussieht:</string>
     <string name="level_11_intro_05_text_01"><b>https://</b>\n\nDu hast gelernt, dass das https:// einer Webadresse zwei Dinge versichert:\n\n1.) Dein Gespräch kann kein anderer mitbekommen.\n\n2.) Dein Gesprächspartner kann sich ausweisen.</string>
     <string name="level_11_intro_06_text_01"><b>https:// - Dein Gesprächspartner kann sich ausweisen</b>\n\nDies bedeutet, dass eine sogenannte vertrauenswürdige Zertifizierungsstelle zusichert, dass der Gesprächspartner wirklich derjenige ist, für den er sich ausgibt. Diese Zertifizierungsstelle führt bestimmte Identitätsüberprüfungen durch und stellt bei einer erfolgreichen Überprüfung dem Wer-Bereich ein sogenanntes Zertifikat aus. Dieses Zertifikat versichert dir, dass dein Gesprächspartner wirklich der ist, der im Wer-Bereich angegeben ist.</string>
-    <string name="level_11_intro_07_text_01"><b>https:// - Unsaubere Identitätsprüfungen</b>\n\nWegen der großen Konkurrenz unter den Zertifizierungsstellen werden solche Identitätsüberprüfungen leider nicht immer ganz sauber durchgeführt. Es ist dadurch möglich, dass Zertifikate Identitäten bestätigen, die sie gar nicht bestätigen sollten! Aus diesem Grund wurden zusätzlich spezielle Zertifikate eingeführt, die unter einer noch strengeren Identitätsüberprüfung von speziellen Zertifizierungsstellen ausgestellt werden. Viele Internetbrowser bieten die Möglichkeit Webseiten mit solchen speziellen Zertifikaten, auf den ersten Blick zu erkennen.\n\n TODO: link to another website</string>
+    <string name="level_11_intro_07_text_01"><b>https:// - Unsaubere Identitätsprüfungen</b>\n\Die große Konkurrenz und der Preisdruck unter den Zertifizierungsstellen führt leider teilweise zu oberflächlichen und vereinfachten Zertifikatsvergaben. Es ist dadurch möglich, dass Zertifikate Identitäten bestätigen, die sie gar nicht bestätigen sollten! Aus diesem Grund wurden zusätzlich spezielle Zertifikate eingeführt, die unter einer noch strengeren Identitätsüberprüfung von speziellen Zertifizierungsstellen ausgestellt werden. Einige Internetbrowser (leider nicht der Android-Browser) bieten die Möglichkeit Webseiten mit solchen speziellen Zertifikaten, auf den ersten Blick zu erkennen.\n\nMehr Informationen kannst du unter .. erhalten.<b>TODO: link to another website</b></string>
+
+    <!-- FINAL APP SCREEN -->
+    <string name="congrats">Glückwunsch</string>
+    <string name="text_final_app_screen">Du hast das Spiel komplett durchgespielt. Wenn du weiterhin üben möchtest, kannst du über den Level-Überblick in die einzelnen Levels springen.\n\nViele Grüße,\nDein NoPhish Team</string>
+    <string name="back_to_home">Zum Hauptmenü</string>
 
     <!-- TASKS AND SOLUTION SCREENS FROM LEVEL 3 -->
     <string name="legitimate">Legitim</string>
@@ -433,7 +439,7 @@
     <string name="url">Beispiel URL</string>
     <string name="level_score">Levelpunkte:</string>
     <string name="total_score">Gesamtpunkte:</string>
-    <string name="phish_proof_01">Ja, die Webadresse ist gefälscht. Als wen gibt der Phisher sich aus?</string>
+    <string name="phish_proof_01">Ja, die Webadresse ist gefälscht. Als wen gibt der Phisher sich aus? <b>Tippe</b> die Stelle an.</string>
     <string name="phish_proof_02">Klicke hierzu den entsprechenden Bereich der Webadresse an. <b>Wenn möglich, wähle nicht den Wer-Bereich!</b></string>
     <string name="title_level_finished">Level geschafft</string>
     <string name="you_are_wrong">Falsch! Du wurdest ausgetrickst. Das ist eine gefälschte Webadresse.</string>
@@ -463,14 +469,14 @@
     <string name="level_06_reminder"><b>Erinnerung:</b> Enthält der Wer-Bereich Namen, die vertrauenswürdig klingen, aber dennoch nichts mit dem Unternehmen deines Gesprächspartners zu tun haben, dann gebe hier keine Daten ein! </string>
     <!-- misleading (facebook-login) -->
     <string name="level_07_reminder"><b>Erinnerung:</b> Enthält der Wer-Bereich nur eine ähnliche Abwandlung des dir bisher vertrauten Wer-Bereiches oder\nenthält der Wer-Bereich einen Tippfehler oder\nenthält der Wer-Bereich einen Buchstabendreher, dann gebe hier keine Daten ein!</string>
-    
+
     <!-- homographic -->
     <string name="level_08_reminder"><b>Erinnerung:</b> Enthält der Wer-Bereich Ersetzungen von Buchstaben durch andere ähnliche Zeichen oder Zahlen, dann gebe hier keine Daten ein!</string>
     <!-- hostname in path -->
     <string name="level_09_reminder"><b>Erinnerung:</b> Enthält der Bereich des Gesprächsthemas dir bekannte Namen oder Webadressen und entspricht der Wer-Bereich aber nicht dem Unternehmen deines Gesprächspartners, dann gebe hier keine Daten ein!</string>
     <!-- http/https -->
     <string name="level_10_reminder"><b>Erinnerung:</b> In diesem Level sollst prinzipiell Webadressen ablehnen, die kein https:// verwenden. Zusätzlich musst du selbstverständlich überprüfen, ob die Webadresse eine Phishing-Adresse ist.</string>
-    <string name="title_activity_about">About</string>
+    <string name="title_activity_about">Über Uns</string>
     <string name="title_activity_find_address_bar">Die Adressleiste</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
@@ -538,6 +544,9 @@
     <string name="content_desc_life_1">Lebensherz 1</string>
     <string name="content_desc_life_2">Lebensherz 2</string>
     <string name="content_desc_life_3">Lebensherz 3</string>
-    <string name="title_activity_app_end">Danke</string>
+    <string name="title_activity_app_end">Spielende</string>
+    <string name="secuso_logo">Secuso Logo</string>
+    <string name="informatik_logo">FB Informatik Logo</string>
+    <string name="content_desc_confetti">Konfetti</string>
 
 </resources>

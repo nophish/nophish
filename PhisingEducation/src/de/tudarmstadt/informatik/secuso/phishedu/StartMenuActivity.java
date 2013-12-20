@@ -110,7 +110,9 @@ public class StartMenuActivity extends PhishBaseActivity implements
 	 * once - Button text should change to Continue game state should be loaded
 	 */
 	public void startGame(View view) {
-		BackendController.getInstance().startLevel(BackendController.getInstance().getMaxUnlockedLevel());
+//		BackendController.getInstance().startLevel(BackendController.getInstance().getMaxUnlockedLevel());
+		//TODO: remove
+		BackendController.getInstance().startLevel(11);
 	}
 
 	/*

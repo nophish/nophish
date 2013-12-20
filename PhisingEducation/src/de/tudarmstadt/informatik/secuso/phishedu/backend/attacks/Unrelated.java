@@ -37,7 +37,9 @@ public class Unrelated extends AbstractAttack {
 		"einstellungen.de",
 		"service.de",
 		"support.com",
-		"hilfe.de"
+		"hilfe.de",
+		"abo",
+		"abonnement"
 		
 	};
 	

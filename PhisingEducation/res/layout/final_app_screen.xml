@@ -15,32 +15,42 @@
         tools:context=".AboutActivity" >
 
         <TextView
-            android:id="@+id/about_text"
+            android:id="@+id/thanks"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:text="@string/about_text"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:text="@string/congrats"
+            android:textSize="@dimen/font_size_large" />
 
         <TextView
-            android:id="@+id/about_contact"
+            android:id="@+id/play_on"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/about_text"
-            android:layout_below="@+id/about_text"
+            android:layout_below="@id/thanks"
             android:layout_marginTop="@dimen/margin_standard"
-            android:text="@string/about_contact"
+            android:layout_alignParentLeft="true"
+            android:text="@string/text_final_app_screen"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <ImageView
-            android:id="@+id/secuso_logo"
+            android:id="@+id/imageView1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/about_contact"
-            android:layout_marginTop="@dimen/margin_small"
-            android:contentDescription="@string/secuso_logo"
-            android:src="@drawable/secuso" />
+            android:layout_below="@+id/play_on"
+            android:layout_marginTop="@dimen/margin_standard"
+            android:layout_alignParentRight="true"
+            android:contentDescription="@string/content_desc_confetti"
+            android:src="@drawable/confetti" />
+
+        <Button
+            android:id="@+id/button1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:onClick="toMainMenu"
+            android:text="@string/back_to_home" />
 
     </RelativeLayout>
 

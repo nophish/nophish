@@ -23,8 +23,8 @@ public class LevelSelectorActivity extends SwipeActivity implements
 
 	@Override
 	protected int getPageCount() {
-		return Math.min(Constants.levelTitlesIds.length,
-				Constants.levelSubtitlesIds.length);
+		return Math.min(Constants.levelTitlesIds.length-1,
+				Constants.levelSubtitlesIds.length-1);
 	}
 
 	@Override
