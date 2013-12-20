@@ -1,7 +1,9 @@
 package de.tudarmstadt.informatik.secuso.phishedu;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.Color;
@@ -16,7 +18,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.games.GamesClient;
-
 import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.FrontendControllerInterface;
 
@@ -274,9 +275,40 @@ public class StartMenuActivity extends PhishBaseActivity implements
 		if (onGooglePlus()) {
 			goToStartMenu();
 		} else {
-			// exit the app when pressing back in the main menu
-			finish();
+			// show alert dialog first, before exiting the app...
+			showExitPopup();
+//			finish();
 		}
+	}
+
+	private void showExitPopup() {
+		AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
+
+		// Setting Dialog Title
+		alertDialog.setTitle(getString(R.string.end_app));
+
+		// Setting Dialog Message
+		alertDialog.setMessage(getString(R.string.end_app_text));
+
+		alertDialog.setPositiveButton(R.string.end_app_yes,
+				new DialogInterface.OnClickListener(){
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				StartMenuActivity.this.finish();
+			}
+		});
+
+		alertDialog.setNegativeButton(R.string.end_app_no,
+				new DialogInterface.OnClickListener() {
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				dialog.cancel();
+			}
+		});
+
+		// Showing Alert Message
+		alertDialog.show();
+
 	}
 
 	@Override

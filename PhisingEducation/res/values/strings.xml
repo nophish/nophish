@@ -80,6 +80,10 @@
     <string name="first_page">Das ist die erste Seite.</string>
 
     <!-- menu buttons -->
+    <string name="end_app">App beenden</string>
+    <string name="end_app_text">Möchtest du die App wirklich beenden?</string>
+    <string name="end_app_yes">Ja</string>
+    <string name="end_app_no">Nein</string>
     <string name="start_menu">Lerne, dich gegen die Internetgefahr \"Phishing\" zu schützen!</string>
     <string name="sign_out">Sign Out</string>
     <string name="button_play">Spielen</string>
