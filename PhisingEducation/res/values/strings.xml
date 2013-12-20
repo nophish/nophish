@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Anti-Phishing Education</string>
+    <string name="app_name">NoPhish</string>
     <string name="action_restart">Restart</string>
     <string name="start_button">Please click me!</string>
     <string name="hello_result">You came here by clicking a phishedu:// Link!</string>
     <string name="not_connected">Du bist nicht mit Google+ Verbunden</string>
 
     <!-- titles -->
+    <string name="title_activity_start_menu">NoPhish</string>
     <string name="title_activity_display_you_dont_believe_us">DisplayYouDontBelieveUsActivity</string>
     <string name="title_activity_send_email">SendEmailActivity</string>
     <string name="title_activity_alert_dialog">AlertDialogActivity</string>
