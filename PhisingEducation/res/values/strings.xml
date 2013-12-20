@@ -219,7 +219,7 @@
     <!-- LEVEL 2 - WEB-ADRESSEN -->
     <string name="level_1_web_address_title">Web-Adressen</string>
     <string name="level_2_splash_text">Level 2\n\nWeb-Adressen</string>
-    <string name="level_02_intro_00_text_01"><b>Einführung Webadressen</b>\n\nUm anhand von Webadressen eine gefälschte Webseite zu erkennen, ist es wichtig, den Aufbau einer Webadresse zu verstehen. In den folgenden Levels wirst du dies nach und nach lernen.\n\nZunächst ein Beispiel, wie eine Webadresse aussehen kann:</string>
+    <string name="level_02_intro_00_text_01"><b>Einführung Webadressen</b>\n\nUm anhand von Webadressen eine gefälschte Webseite zu erkennen, ist es wichtig, den Aufbau einer Webadresse zu verstehen. In diesem und in den folgenden Levels wirst du dies nach und nach lernen.\n\nZunächst ein Beispiel, wie eine Webadresse aussehen kann:</string>
     <string name="level_02_intro_00_text_02_url">http://abo.spiegel.de/spiegel-digital</string>
     <string name="level_02_intro_01_text_01"><b>Die wichtigen Bestandteile einer Webadresse</b>\n\nWebadressen sind sehr komplex. Aus diesem Grund möchten wir alles möglichst vereinfacht erklären. Hierzu betrachten wir die Webseite, die du besuchst von nun an als deinen \"Gesprächspartner\". Bereits in der Webadresse erfährst du (wie in einem Gespräch) die ersten wichtigen Informationen, auf die wir im weiteren Verlauf genauer eingehen.</string>
     <string name="level_02_intro_02_text_01"><b>Die wichtigen Bestandteile einer Webadresse</b>\n\nDie folgende Grafik fasst zusammen, was die einzelnen Bestandteile einer Webadresse über das Gespräch aussagen.</string>
