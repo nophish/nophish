@@ -26,6 +26,7 @@ import de.tudarmstadt.informatik.secuso.phishedu.backend.attacks.MisleadingAttac
 import de.tudarmstadt.informatik.secuso.phishedu.backend.attacks.NonsenseAttack;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.attacks.SubdomainAttack;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.attacks.TypoAttack;
+import de.tudarmstadt.informatik.secuso.phishedu.backend.attacks.Unrelated;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.generator.KeepGenerator;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.generator.SudomainGenerator;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.networkTasks.GetUrlsTask;
@@ -54,8 +55,8 @@ public class BackendController implements BackendControllerInterface, GameStateL
 		{Level2Attack.class}, //Level 2
 		{SubdomainAttack.class}, //Level 3 
 		{IPAttack.class}, //Level 4
-		{NonsenseAttack.class}, //TODO: Level 5
-		{IPAttack.class}, //TODO: Level 6 
+		{NonsenseAttack.class}, // Level 5
+		{Unrelated.class}, // Level 6 
 		{MisleadingAttack.class,TypoAttack.class}, //Level 7
 		{HomoglyphicAttac.class}, //Level 8
 		{HostInPathAttack.class}, //Level 9
