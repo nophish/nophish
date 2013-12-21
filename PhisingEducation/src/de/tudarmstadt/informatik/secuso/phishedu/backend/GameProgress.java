@@ -115,7 +115,15 @@ public class GameProgress implements OnStateLoadedListener{
 		this.game_store=game_store;
 		this.remote_store=remote_store;
 		this.listener = listener;
-		this.loadState(this.local_store.getString(LOCAL_STORE_KEY, "{}"));
+		this.loadState();
+	}
+
+	/**
+	 * Load the game state.
+	 * This function loads the local state and the remote state and tries to get them into sync.
+	 */
+	public void loadState(){
+		this.loadLocalState(this.local_store.getString(LOCAL_STORE_KEY, "{}"));
 		if(this.remote_store.isConnected()){
 			this.remote_store.loadState(this, REMOTE_STORE_SLOT);
 		}else{
@@ -124,8 +132,8 @@ public class GameProgress implements OnStateLoadedListener{
 			this.listener.onGameStateLoaded();
 		}
 	}
-
-	private void loadState(String state){
+	
+	private void loadLocalState(String state){
 		State newState = this.deserializeState(state);
 		if(newState.validate()){
 			this.state=newState;
@@ -288,7 +296,7 @@ public class GameProgress implements OnStateLoadedListener{
 			this.remote_store.updateState(REMOTE_STORE_SLOT, serialized.getBytes());
 		}
 	}
-
+	
 	@Override
 	public void onStateConflict(int stateKey, String resolvedVersion,
 			byte[] localData, byte[] serverData) {
@@ -317,11 +325,11 @@ public class GameProgress implements OnStateLoadedListener{
 		String data = new String(localData);
 		if (statusCode == AppStateClient.STATUS_OK) {
 			// successfully loaded/saved data
-			this.loadState(data);
+			this.loadLocalState(data);
 		}else if (statusCode == AppStateClient.STATUS_NETWORK_ERROR_STALE_DATA) {
 			// could not connect to get fresh data,
 			// but loaded (possibly out-of-sync) cached data instead
-			this.loadState(data);
+			this.loadLocalState(data);
 		} else if(statusCode == AppStateClient.STATUS_STATE_KEY_NOT_FOUND) {
 			// this error can be ignored because we have the local store.
 			// The next time we save this will be fixed.

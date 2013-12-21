@@ -522,6 +522,7 @@ public class BackendController implements BackendControllerInterface, GameStateL
 
 	@Override
 	public void onSignInSucceeded() {
+		progress.loadState();
 		gamehelper.getGamesClient().unlockAchievement(frontend.getContext().getResources().getString(R.string.achievement_welcome));
 		frontend.onSignInSucceeded();
 	}
