@@ -121,6 +121,7 @@
             android:layout_marginTop="14dp"
             android:minWidth="@dimen/btn_standard_width"
             android:onClick="skipSendEmail"
+            android:visibility="invisible"
             android:text="Skip (for testing)" />
     </RelativeLayout>
 
