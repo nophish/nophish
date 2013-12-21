@@ -43,12 +43,16 @@ public class StartMenuActivity extends PhishBaseActivity implements
 		setContentView(R.layout.start_menu);
 		this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
+		checkPlayOn();
+
+		BackendController.getInstance().onUrlReceive(getIntent().getData());
+	}
+	
+	private void checkPlayOn(){
 		if (BackendController.getInstance().getMaxUnlockedLevel() > 0) {
 			TextView startbutton = (TextView) findViewById(R.id.menu_button_play);
 			startbutton.setText(R.string.button_play_on);
 		}
-
-		BackendController.getInstance().onUrlReceive(getIntent().getData());
 	}
 
 	public void showLevelOverview(View view) {
@@ -93,6 +97,7 @@ public class StartMenuActivity extends PhishBaseActivity implements
 		setContentView(R.layout.start_menu);
 		getSupportActionBar().setHomeButtonEnabled(false);
 		getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+		checkPlayOn();
 	}
 
 	public void showMoreInfo(View view) {

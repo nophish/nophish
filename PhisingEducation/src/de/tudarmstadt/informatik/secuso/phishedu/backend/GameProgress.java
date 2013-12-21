@@ -322,14 +322,13 @@ public class GameProgress implements OnStateLoadedListener{
 		if(stateKey != REMOTE_STORE_SLOT){
 			return;
 		}
-		String data = new String(localData);
 		if (statusCode == AppStateClient.STATUS_OK) {
 			// successfully loaded/saved data
-			this.loadLocalState(data);
+			this.loadLocalState(new String(localData));
 		}else if (statusCode == AppStateClient.STATUS_NETWORK_ERROR_STALE_DATA) {
 			// could not connect to get fresh data,
 			// but loaded (possibly out-of-sync) cached data instead
-			this.loadLocalState(data);
+			this.loadLocalState(new String(localData));
 		} else if(statusCode == AppStateClient.STATUS_STATE_KEY_NOT_FOUND) {
 			// this error can be ignored because we have the local store.
 			// The next time we save this will be fixed.

@@ -1,6 +1,7 @@
 package de.tudarmstadt.informatik.secuso.phishedu.backend;
 
 import java.io.InputStream;
+import java.security.SignedObject;
 import java.util.ArrayList;
 import java.util.Locale;
 import java.util.Random;
@@ -446,7 +447,9 @@ public class BackendController implements BackendControllerInterface, GameStateL
 	@Override
 	public void signIn() {
 		checkinited();
-		this.gamehelper.beginUserInitiatedSignIn();
+		if(!this.gamehelper.isSignedIn()){
+			this.gamehelper.beginUserInitiatedSignIn();
+		}
 	}
 
 	@Override

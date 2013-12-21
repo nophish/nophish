@@ -1,6 +1,12 @@
 package de.tudarmstadt.informatik.secuso.phishedu;
 
 public class Constants {
+	/**
+	 * Game configuration
+	 */
+	
+	public static final boolean ALLOW_LEVEL0_REPLAY = true;
+	
 	public static final int COUNT_DOWN_INTERVAL = 1000;
 	public static final int MILLIS_IN_FUTURE = 2500;
 	public static final String EXTRA_LEVEL = "level";

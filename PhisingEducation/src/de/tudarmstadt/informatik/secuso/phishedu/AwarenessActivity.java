@@ -1,16 +1,23 @@
 package de.tudarmstadt.informatik.secuso.phishedu;
 
+import java.util.regex.Pattern;
+
 import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController;
 
+import android.accounts.Account;
+import android.accounts.AccountManager;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -20,27 +27,34 @@ import android.widget.Toast;
  *         Activity should only be invoked if the user has not done this part
  *         before
  */
-public class AwarenessActivity extends SwipeActivity {
+public class AwarenessActivity extends PhishBaseActivity {
 
 	private static String from;
 	private static String to;
 	private static String userMessage;
 	
-	protected static final int[] levelLayoutIds = {
-		R.layout.level_00_intro_02,
-	};
-	
 	@Override
-	protected int getPageCount() {
-		return levelLayoutIds.length;
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.awareness);
+		Pattern emailPattern = Patterns.EMAIL_ADDRESS; // API level 8+
+		Account[] accounts = AccountManager.get(this.getApplicationContext()).getAccounts();
+		ArrayAdapter<String> toAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line);
+		for (Account account : accounts) {
+			if (emailPattern.matcher(account.name).matches()) {
+				toAdapter.add(account.name);
+				displayToast(account.name);
+		    }
+		}
+		final String[] fromMails = getResources().getStringArray(R.array.fromMails);
+		ArrayAdapter<String> fromAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line,fromMails);
+		AutoCompleteTextView fromView = (AutoCompleteTextView) findViewById(R.id.awareness_edit_sender_email);
+		fromView.setAdapter(fromAdapter);
+		AutoCompleteTextView toView = (AutoCompleteTextView) findViewById(R.id.awareness_edit_receiver_email);
+		toView.setAdapter(toAdapter);	
+		toView.setText(toAdapter.getItem(toAdapter.getCount()-1));
 	}
 	
-	@Override
-	protected View getPage(int page, LayoutInflater inflater,
-			ViewGroup container, Bundle savedInstanceState) {
-		return inflater.inflate(levelLayoutIds[page],	container, false);
-	}
-
 	public void skipSendEmail(View view){
 		BackendController.getInstance().skipLevel0();
 	}
