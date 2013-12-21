@@ -69,19 +69,23 @@ public class StartMenuActivity extends PhishBaseActivity implements
 			findViewById(R.id.sign_in_button).setVisibility(View.GONE);
 			findViewById(R.id.sign_out_button).setVisibility(View.VISIBLE);
 
-			//findViewById(R.id.button_show_leaderboard_rate).setVisibility(View.VISIBLE);
-			//findViewById(R.id.button_show_leaderboard_total).setVisibility(View.VISIBLE);
-			findViewById(R.id.button_show_leaderboard_total_points).setVisibility(View.VISIBLE);
-			findViewById(R.id.button_show_online_achievement).setVisibility(View.VISIBLE);
+			// findViewById(R.id.button_show_leaderboard_rate).setVisibility(View.VISIBLE);
+			// findViewById(R.id.button_show_leaderboard_total).setVisibility(View.VISIBLE);
+			findViewById(R.id.button_show_leaderboard_total_points)
+					.setVisibility(View.VISIBLE);
+			findViewById(R.id.button_show_online_achievement).setVisibility(
+					View.VISIBLE);
 		} else {
 			// show sign-in button, hide the sign-out button
 			findViewById(R.id.sign_in_button).setVisibility(View.VISIBLE);
 			findViewById(R.id.sign_out_button).setVisibility(View.GONE);
 
-			//findViewById(R.id.button_show_leaderboard_rate).setVisibility(View.GONE);
-			//findViewById(R.id.button_show_leaderboard_total).setVisibility(View.GONE);
-			findViewById(R.id.button_show_leaderboard_total_points).setVisibility(View.GONE);
-			findViewById(R.id.button_show_online_achievement).setVisibility(View.GONE);
+			// findViewById(R.id.button_show_leaderboard_rate).setVisibility(View.GONE);
+			// findViewById(R.id.button_show_leaderboard_total).setVisibility(View.GONE);
+			findViewById(R.id.button_show_leaderboard_total_points)
+					.setVisibility(View.GONE);
+			findViewById(R.id.button_show_online_achievement).setVisibility(
+					View.GONE);
 		}
 	}
 
@@ -110,9 +114,8 @@ public class StartMenuActivity extends PhishBaseActivity implements
 	 * once - Button text should change to Continue game state should be loaded
 	 */
 	public void startGame(View view) {
-//		BackendController.getInstance().startLevel(BackendController.getInstance().getMaxUnlockedLevel());
-		//TODO: remove
-		BackendController.getInstance().startLevel(11);
+		BackendController.getInstance().startLevel(
+				BackendController.getInstance().getMaxUnlockedLevel());
 	}
 
 	/*
@@ -124,7 +127,7 @@ public class StartMenuActivity extends PhishBaseActivity implements
 		Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT)
 				.show();
 	}
-	
+
 	@Override
 	public void displayToast(int message) {
 		Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT)
@@ -133,7 +136,7 @@ public class StartMenuActivity extends PhishBaseActivity implements
 
 	@Override
 	public void initDone() {
-		//displayToast("we are finished with initialization!");
+		// displayToast("we are finished with initialization!");
 	}
 
 	@Override
@@ -172,10 +175,12 @@ public class StartMenuActivity extends PhishBaseActivity implements
 		findViewById(R.id.sign_in_button).setVisibility(View.VISIBLE);
 		findViewById(R.id.sign_out_button).setVisibility(View.GONE);
 
-//		findViewById(R.id.button_show_leaderboard_rate).setVisibility(View.GONE);
-//		findViewById(R.id.button_show_leaderboard_total).setVisibility(View.GONE);
-		findViewById(R.id.button_show_leaderboard_total_points).setVisibility(View.GONE);
-		findViewById(R.id.button_show_online_achievement).setVisibility(View.GONE);
+		// findViewById(R.id.button_show_leaderboard_rate).setVisibility(View.GONE);
+		// findViewById(R.id.button_show_leaderboard_total).setVisibility(View.GONE);
+		findViewById(R.id.button_show_leaderboard_total_points).setVisibility(
+				View.GONE);
+		findViewById(R.id.button_show_online_achievement).setVisibility(
+				View.GONE);
 	}
 
 	public void onSignInSucceeded() {
@@ -186,10 +191,12 @@ public class StartMenuActivity extends PhishBaseActivity implements
 		findViewById(R.id.sign_in_button).setVisibility(View.GONE);
 		findViewById(R.id.sign_out_button).setVisibility(View.VISIBLE);
 
-		//findViewById(R.id.button_show_leaderboard_rate).setVisibility(View.VISIBLE);
-		//findViewById(R.id.button_show_leaderboard_total).setVisibility(View.VISIBLE);
-		findViewById(R.id.button_show_leaderboard_total_points).setVisibility(View.VISIBLE);
-		findViewById(R.id.button_show_online_achievement).setVisibility(View.VISIBLE);
+		// findViewById(R.id.button_show_leaderboard_rate).setVisibility(View.VISIBLE);
+		// findViewById(R.id.button_show_leaderboard_total).setVisibility(View.VISIBLE);
+		findViewById(R.id.button_show_leaderboard_total_points).setVisibility(
+				View.VISIBLE);
+		findViewById(R.id.button_show_online_achievement).setVisibility(
+				View.VISIBLE);
 
 		// (your code here: update UI, enable functionality that depends on sign
 		// in, etc)
@@ -212,14 +219,16 @@ public class StartMenuActivity extends PhishBaseActivity implements
 			findViewById(R.id.sign_in_button).setVisibility(View.VISIBLE);
 			findViewById(R.id.sign_out_button).setVisibility(View.GONE);
 
-			//findViewById(R.id.button_show_leaderboard_rate).setVisibility(View.GONE);
-			//findViewById(R.id.button_show_leaderboard_total).setVisibility(View.GONE);
-			findViewById(R.id.button_show_leaderboard_total_points).setVisibility(View.GONE);
-			findViewById(R.id.button_show_online_achievement).setVisibility(View.GONE);
+			// findViewById(R.id.button_show_leaderboard_rate).setVisibility(View.GONE);
+			// findViewById(R.id.button_show_leaderboard_total).setVisibility(View.GONE);
+			findViewById(R.id.button_show_leaderboard_total_points)
+					.setVisibility(View.GONE);
+			findViewById(R.id.button_show_online_achievement).setVisibility(
+					View.GONE);
 		}
 	}
-	
-	private GamesClient getGamesClient(){
+
+	private GamesClient getGamesClient() {
 		return BackendController.getInstance().getGameHelper().getGamesClient();
 	}
 
@@ -248,16 +257,13 @@ public class StartMenuActivity extends PhishBaseActivity implements
 		}
 
 	}
-	
+
 	public void showLeaderboardTotalPoints(View view) {
 		if (this.getGamesClient().isConnected()) {
 			startActivityForResult(
-					getGamesClient()
-							.getLeaderboardIntent(
-									getResources()
-											.getString(
-													R.string.leaderboard_total_points)),
-					1);
+					getGamesClient().getLeaderboardIntent(
+							getResources().getString(
+									R.string.leaderboard_total_points)), 1);
 		} else {
 			displayToast(R.string.not_connected);
 		}
@@ -279,7 +285,7 @@ public class StartMenuActivity extends PhishBaseActivity implements
 		} else {
 			// show alert dialog first, before exiting the app...
 			showExitPopup();
-//			finish();
+			// finish();
 		}
 	}
 
@@ -293,20 +299,20 @@ public class StartMenuActivity extends PhishBaseActivity implements
 		alertDialog.setMessage(getString(R.string.end_app_text));
 
 		alertDialog.setPositiveButton(R.string.end_app_yes,
-				new DialogInterface.OnClickListener(){
-			@Override
-			public void onClick(DialogInterface dialog, int which) {
-				StartMenuActivity.this.finish();
-			}
-		});
+				new DialogInterface.OnClickListener() {
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						StartMenuActivity.this.finish();
+					}
+				});
 
 		alertDialog.setNegativeButton(R.string.end_app_no,
 				new DialogInterface.OnClickListener() {
-			@Override
-			public void onClick(DialogInterface dialog, int which) {
-				dialog.cancel();
-			}
-		});
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						dialog.cancel();
+					}
+				});
 
 		// Showing Alert Message
 		alertDialog.show();
@@ -332,24 +338,25 @@ public class StartMenuActivity extends PhishBaseActivity implements
 	}
 
 	@Override
-	public void levelFailed(int level) {}
+	public void levelFailed(int level) {
+	}
 
 	@Override
 	public void displayToastScore(int score) {
 		LayoutInflater inflater = getLayoutInflater();
 		View layout = inflater.inflate(R.layout.fragment_toast_score,
-		                               (ViewGroup) findViewById(R.id.toast_layout_root));
+				(ViewGroup) findViewById(R.id.toast_layout_root));
 
 		String scoreString = Integer.toString(score);
-		
+
 		TextView text = (TextView) layout.findViewById(R.id.text);
-		if(score < 0){
-			//red
+		if (score < 0) {
+			// red
 			text.setTextColor(Color.rgb(135, 0, 0));
-		}else{
-			//green
+		} else {
+			// green
 			text.setTextColor(Color.rgb(0, 135, 0));
-			scoreString = "+ "+score;
+			scoreString = "+ " + score;
 		}
 
 		text.setText(scoreString + " Punkte");

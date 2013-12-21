@@ -222,10 +222,9 @@ public class GameProgress implements OnStateLoadedListener{
 	 */
 	public void setLevel(int level){
 		this.state.level=level;
-		//TODO: REMOVEEE!!
-//		if(this.state.unlockedLevel<level){
-//			throw new IllegalStateException("The given level ("+level+") is not unlocked.");
-//		}
+		if(this.state.unlockedLevel<level){
+			throw new IllegalStateException("The given level ("+level+") is not unlocked.");
+		}
 		this.level_results=new int[4];
 		this.presented_repeats=0;
 		this.level_points=0;
