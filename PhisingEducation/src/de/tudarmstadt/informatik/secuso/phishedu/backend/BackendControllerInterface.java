@@ -226,7 +226,7 @@ public interface BackendControllerInterface extends GameHelperListener{
 	
 	/**
 	 * Check if this backendcontroller is already inited.
-	 * @return 
+	 * @return true if the initialization is finished. 
 	 */
 	public boolean isInitDone();
 }

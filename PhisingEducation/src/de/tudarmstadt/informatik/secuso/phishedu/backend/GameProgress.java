@@ -20,8 +20,6 @@ import de.tudarmstadt.informatik.secuso.phishedu.R;
  *
  */
 public class GameProgress implements OnStateLoadedListener{
-	private static GameProgress instance=null;
-
 	private Context context;
 	private SharedPreferences local_store;
 	private GamesClient game_store;
@@ -113,23 +111,13 @@ public class GameProgress implements OnStateLoadedListener{
 	 * @param remote_store This is the remote persistent database to save the gamestate.
 	 * @param listener
 	 */
-	private GameProgress(Context context, SharedPreferences local_store, GamesClient game_store, AppStateClient remote_store, GameStateLoadedListener listener) {
+	public GameProgress(Context context, SharedPreferences local_store, GamesClient game_store, AppStateClient remote_store, GameStateLoadedListener listener) {
 		this.context=context;
 		this.local_store=local_store;
 		this.game_store=game_store;
 		this.remote_store=remote_store;
 		this.listener = listener;
 		this.loadState();
-	}
-
-	public static void init(Context context, SharedPreferences local_store, GamesClient game_store, AppStateClient remote_store, GameStateLoadedListener listener){
-		if(instance==null){
-			instance=new GameProgress(context, local_store, game_store, remote_store, listener);
-		}
-	}
-
-	public static GameProgress getInstance(){
-		return instance;
 	}
 
 	/**

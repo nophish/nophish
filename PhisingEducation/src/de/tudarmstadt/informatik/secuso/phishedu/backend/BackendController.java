@@ -16,7 +16,6 @@ import com.google.example.games.basegameutils.BaseGameActivity;
 import com.google.example.games.basegameutils.GameHelper;
 import com.google.gson.Gson;
 
-import de.tudarmstadt.informatik.secuso.phishedu.Constants;
 import de.tudarmstadt.informatik.secuso.phishedu.R;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.generator.KeepGenerator;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.generator.SudomainGenerator;
@@ -129,8 +128,7 @@ public class BackendController implements BackendControllerInterface, GameStateL
 		GamesClient gamesclient = this.gamehelper.getGamesClient();
 		AppStateClient appstateclient = this.gamehelper.getAppStateClient();
 		Context context = this.frontend.getContext();
-		GameProgress.init(context, prefs, gamesclient,appstateclient,this);
-		this.progress = GameProgress.getInstance();
+		this.progress = new GameProgress(context, prefs, gamesclient,appstateclient,this);
 		SharedPreferences url_cache = this.frontend.getContext().getSharedPreferences(URL_CACHE_NAME, Context.MODE_PRIVATE);
 		for(PhishAttackType type: CACHE_TYPES){
 			loadUrls(url_cache, type);
