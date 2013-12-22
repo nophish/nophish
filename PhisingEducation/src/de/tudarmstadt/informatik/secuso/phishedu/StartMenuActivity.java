@@ -28,7 +28,7 @@ import de.tudarmstadt.informatik.secuso.phishedu.backend.FrontendControllerInter
  *         store his/her score online he/she has to sign into google+
  */
 public class StartMenuActivity extends PhishBaseActivity implements
-		FrontendControllerInterface, View.OnClickListener {
+		FrontendControllerInterface {
 
 	public StartMenuActivity() {
 		// request AppStateClient and GamesClient
@@ -61,43 +61,9 @@ public class StartMenuActivity extends PhishBaseActivity implements
 	}
 
 	public void goToGooglePlay(View view) {
-		setContentView(R.layout.google_plus);
-		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-		getSupportActionBar().setHomeButtonEnabled(true);
-
-		findViewById(R.id.sign_in_button).setOnClickListener(this);
-		findViewById(R.id.sign_out_button).setOnClickListener(this);
-
-		if (BackendController.getInstance().getGameHelper().isSignedIn()) {
-			// show sign-in button, hide the sign-out button
-			findViewById(R.id.sign_in_button).setVisibility(View.GONE);
-			findViewById(R.id.sign_out_button).setVisibility(View.VISIBLE);
-
-			// findViewById(R.id.button_show_leaderboard_rate).setVisibility(View.VISIBLE);
-			// findViewById(R.id.button_show_leaderboard_total).setVisibility(View.VISIBLE);
-			findViewById(R.id.button_show_leaderboard_total_points)
-					.setVisibility(View.VISIBLE);
-			findViewById(R.id.button_show_online_achievement).setVisibility(
-					View.VISIBLE);
-		} else {
-			// show sign-in button, hide the sign-out button
-			findViewById(R.id.sign_in_button).setVisibility(View.VISIBLE);
-			findViewById(R.id.sign_out_button).setVisibility(View.GONE);
-
-			// findViewById(R.id.button_show_leaderboard_rate).setVisibility(View.GONE);
-			// findViewById(R.id.button_show_leaderboard_total).setVisibility(View.GONE);
-			findViewById(R.id.button_show_leaderboard_total_points)
-					.setVisibility(View.GONE);
-			findViewById(R.id.button_show_online_achievement).setVisibility(
-					View.GONE);
-		}
-	}
-
-	public void goToStartMenu() {
-		setContentView(R.layout.start_menu);
-		getSupportActionBar().setHomeButtonEnabled(false);
-		getSupportActionBar().setDisplayHomeAsUpEnabled(false);
-		checkPlayOn();
+		// start Activity showing the list view
+		Intent playIntent = new Intent(this, GooglePlusActivity.class);
+		startActivity(playIntent);
 	}
 
 	public void showMoreInfo(View view) {
@@ -111,7 +77,6 @@ public class StartMenuActivity extends PhishBaseActivity implements
 		// start Activity showing the list view
 		Intent aboutIntent = new Intent(this, AboutActivity.class);
 		startActivity(aboutIntent);
-
 	}
 
 	/**
@@ -170,69 +135,6 @@ public class StartMenuActivity extends PhishBaseActivity implements
 		startActivity(levelIntent);
 	}
 
-	@Override
-	public void onSignInFailed() {
-		if (!onGooglePlus()) {
-			return; // we are not in googleplus view
-		}
-
-		// Sign in has failed. So show the user the sign-in button.
-		findViewById(R.id.sign_in_button).setVisibility(View.VISIBLE);
-		findViewById(R.id.sign_out_button).setVisibility(View.GONE);
-
-		// findViewById(R.id.button_show_leaderboard_rate).setVisibility(View.GONE);
-		// findViewById(R.id.button_show_leaderboard_total).setVisibility(View.GONE);
-		findViewById(R.id.button_show_leaderboard_total_points).setVisibility(
-				View.GONE);
-		findViewById(R.id.button_show_online_achievement).setVisibility(
-				View.GONE);
-	}
-
-	public void onSignInSucceeded() {
-		if (!onGooglePlus()) {
-			return; // we are not in googleplus view
-		}
-		// show sign-out button, hide the sign-in button
-		findViewById(R.id.sign_in_button).setVisibility(View.GONE);
-		findViewById(R.id.sign_out_button).setVisibility(View.VISIBLE);
-
-		// findViewById(R.id.button_show_leaderboard_rate).setVisibility(View.VISIBLE);
-		// findViewById(R.id.button_show_leaderboard_total).setVisibility(View.VISIBLE);
-		findViewById(R.id.button_show_leaderboard_total_points).setVisibility(
-				View.VISIBLE);
-		findViewById(R.id.button_show_online_achievement).setVisibility(
-				View.VISIBLE);
-
-		// (your code here: update UI, enable functionality that depends on sign
-		// in, etc)
-	}
-
-	private boolean onGooglePlus() {
-		return findViewById(R.id.sign_in_button) != null;
-	}
-
-	@Override
-	public void onClick(View view) {
-		if (view.getId() == R.id.sign_in_button) {
-			// start the asynchronous sign in flow
-			BackendController.getInstance().signIn();
-		} else if (view.getId() == R.id.sign_out_button) {
-			// sign out.
-			BackendController.getInstance().signOut();
-
-			// show sign-in button, hide the sign-out button
-			findViewById(R.id.sign_in_button).setVisibility(View.VISIBLE);
-			findViewById(R.id.sign_out_button).setVisibility(View.GONE);
-
-			// findViewById(R.id.button_show_leaderboard_rate).setVisibility(View.GONE);
-			// findViewById(R.id.button_show_leaderboard_total).setVisibility(View.GONE);
-			findViewById(R.id.button_show_leaderboard_total_points)
-					.setVisibility(View.GONE);
-			findViewById(R.id.button_show_online_achievement).setVisibility(
-					View.GONE);
-		}
-	}
-
 	private GamesClient getGamesClient() {
 		return BackendController.getInstance().getGameHelper().getGamesClient();
 	}
@@ -285,13 +187,7 @@ public class StartMenuActivity extends PhishBaseActivity implements
 
 	@Override
 	public void onBackPressed() {
-		if (onGooglePlus()) {
-			goToStartMenu();
-		} else {
-			// show alert dialog first, before exiting the app...
-			showExitPopup();
-			// finish();
-		}
+		showExitPopup();
 	}
 
 	private void showExitPopup() {
@@ -332,17 +228,6 @@ public class StartMenuActivity extends PhishBaseActivity implements
 	}
 
 	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		switch (item.getItemId()) {
-		// Respond to the action bar's Up/Home button
-		case android.R.id.home:
-			goToStartMenu();
-			return true;
-		}
-		return super.onOptionsItemSelected(item);
-	}
-
-	@Override
 	public void levelFailed(int level) {
 	}
 
@@ -375,6 +260,20 @@ public class StartMenuActivity extends PhishBaseActivity implements
 	@Override
 	public Activity getBaseActivity() {
 		return this;
+	}
+
+	@Override
+	public void onSignInFailed() {
+		if(GooglePlusActivity.getInstance() != null){
+			GooglePlusActivity.getInstance().onSignInFailed();
+		}
+	}
+
+	@Override
+	public void onSignInSucceeded() {
+		if(GooglePlusActivity.getInstance() != null){
+			GooglePlusActivity.getInstance().onSignInSucceeded();
+		}
 	}
 
 }
