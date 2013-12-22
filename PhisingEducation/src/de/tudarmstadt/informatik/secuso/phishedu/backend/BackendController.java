@@ -43,7 +43,7 @@ public class BackendController implements BackendControllerInterface, GameStateL
 		SudomainGenerator.class,
 		KeepGenerator.class,
 	};
-	private static final int URL_CACHE_SIZE = 100;
+	private static final int URL_CACHE_SIZE = 500;
 	private static final double LEVEL_DISTANCE = 1.5;
 
 	private static Random random = new Random();
