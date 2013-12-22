@@ -79,32 +79,35 @@ public class PhishBaseActivity extends ActionBarActivity {
 	
 	
 	protected void levelRestartWarning() {
-		levelCanceldWarning(true);
-	}
+		AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
 
-	protected void levelCanceldWarning() {
-		levelCanceldWarning(false);
-	}
+		// Setting Dialog Title
+		alertDialog.setTitle(getString(R.string.level_restart_title));
 
-	private class CanceldWarningClickListener implements
-	DialogInterface.OnClickListener {
-		private boolean restart;
+		// Setting Dialog Message
+		alertDialog.setMessage(getString(R.string.level_restart_text));
 
-		public CanceldWarningClickListener(boolean restart) {
-			this.restart = restart;
-		}
-
-		@Override
-		public void onClick(DialogInterface dialog, int which) {
-			if (this.restart) {
+		alertDialog.setPositiveButton(R.string.level_restart_positive_button, new DialogInterface.OnClickListener() {
+			
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
 				BackendController.getInstance().restartLevel();
-			} else {
-				NavUtils.navigateUpFromSameTask(PhishBaseActivity.this);
 			}
-		}
+		});
+
+		alertDialog.setNegativeButton(R.string.level_restart_negative_button,
+				new DialogInterface.OnClickListener() {
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				dialog.cancel();
+			}
+		});
+
+		// Showing Alert Message
+		alertDialog.show();
 	}
 	
-	private void levelCanceldWarning(final boolean restart) {
+	protected void levelCanceldWarning() {
 		AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
 
 		// Setting Dialog Title
@@ -113,8 +116,13 @@ public class PhishBaseActivity extends ActionBarActivity {
 		// Setting Dialog Message
 		alertDialog.setMessage(getString(R.string.level_cancel_text));
 
-		alertDialog.setPositiveButton(R.string.level_cancel_positive_button,
-				new CanceldWarningClickListener(restart));
+		alertDialog.setPositiveButton(R.string.level_cancel_positive_button, new DialogInterface.OnClickListener() {
+			
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				NavUtils.navigateUpFromSameTask(PhishBaseActivity.this);
+			}
+		});
 
 		alertDialog.setNegativeButton(R.string.level_cancel_negative_button,
 				new DialogInterface.OnClickListener() {

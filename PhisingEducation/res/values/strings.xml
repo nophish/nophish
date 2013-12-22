@@ -427,6 +427,10 @@
     <string name="level_cancel_text">Wenn du diese Seite verlässt wird dein Spielstand für dieses Level nicht gespeichert. Bist du dir sicher?</string>
     <string name="level_cancel_positive_button">Level verlassen</string>
     <string name="level_cancel_negative_button">Weiterspielen</string>
+    <string name="level_restart_title">Level neu starten?</string>
+    <string name="level_restart_text">Wenn du das Level neu startest wird dein Spielstand für dieses Level nicht gespeichert. Bist du dir sicher?</string>
+    <string name="level_restart_positive_button">Level neu starten</string>
+    <string name="level_restart_negative_button">Weiterspielen</string>
     <string name="level_continue_title">Level beendet!</string>
     <string name="level_contiue_text">Du hast genug Phishing Adressen erkannt um ins nächste Level zu kommen! Willst du weiterspielen um weitere Punkte zu sammeln oder willst du zum nächsten Level?</string>
     <string name="level_continue_positive_button">Weiterspielen</string>
