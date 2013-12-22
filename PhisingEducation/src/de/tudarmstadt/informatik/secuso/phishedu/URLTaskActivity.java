@@ -35,13 +35,13 @@ public class URLTaskActivity extends PhishBaseActivity {
 		// set size of shown url depending on level
 		setUrlSize();
 	}
-	
+
 	@Override
 	protected void onResume() {
 		super.onResume();
 		nextURL();	
 	}
-	
+
 	private void setUrlSize() {
 		TextView url = (TextView) findViewById(R.id.url_task_url);
 		float textSize = url.getTextSize();
@@ -84,8 +84,7 @@ public class URLTaskActivity extends PhishBaseActivity {
 	private void setTitles() {
 		ActionBar ab = getSupportActionBar();
 
-		ab.setTitle(Constants.levelTitlesIds[BackendController.getInstance()
-				.getLevel()]);
+		ab.setTitle(BackendController.getInstance().getLevelInfo().titleId);
 		ab.setSubtitle(getString(R.string.exercise));
 		ab.setIcon(getResources().getDrawable(R.drawable.desktop));
 	}

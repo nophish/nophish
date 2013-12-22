@@ -1,7 +1,6 @@
 package de.tudarmstadt.informatik.secuso.phishedu.backend;
 
 import java.io.InputStream;
-import java.security.SignedObject;
 import java.util.ArrayList;
 import java.util.Locale;
 import java.util.Random;
@@ -17,17 +16,8 @@ import com.google.example.games.basegameutils.BaseGameActivity;
 import com.google.example.games.basegameutils.GameHelper;
 import com.google.gson.Gson;
 
+import de.tudarmstadt.informatik.secuso.phishedu.Constants;
 import de.tudarmstadt.informatik.secuso.phishedu.R;
-import de.tudarmstadt.informatik.secuso.phishedu.backend.attacks.HTTPAttack;
-import de.tudarmstadt.informatik.secuso.phishedu.backend.attacks.HomoglyphicAttac;
-import de.tudarmstadt.informatik.secuso.phishedu.backend.attacks.HostInPathAttack;
-import de.tudarmstadt.informatik.secuso.phishedu.backend.attacks.IPAttack;
-import de.tudarmstadt.informatik.secuso.phishedu.backend.attacks.Level2Attack;
-import de.tudarmstadt.informatik.secuso.phishedu.backend.attacks.MisleadingAttack;
-import de.tudarmstadt.informatik.secuso.phishedu.backend.attacks.NonsenseAttack;
-import de.tudarmstadt.informatik.secuso.phishedu.backend.attacks.SubdomainAttack;
-import de.tudarmstadt.informatik.secuso.phishedu.backend.attacks.TypoAttack;
-import de.tudarmstadt.informatik.secuso.phishedu.backend.attacks.Unrelated;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.generator.KeepGenerator;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.generator.SudomainGenerator;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.networkTasks.GetUrlsTask;
@@ -47,22 +37,6 @@ public class BackendController implements BackendControllerInterface, GameStateL
 	private static final String LEVEL1_URL = "https://pages.no-phish.de/level1.php";
 	private static final int FIRST_REPEAT_LEVEL = 4;
 	private static final PhishAttackType[] CACHE_TYPES = {PhishAttackType.AnyPhish, PhishAttackType.NoPhish};
-	//For each level we can define what Attacks are applied
-	//LEVEL 0-1 are empty because they don't 
-	@SuppressWarnings("rawtypes")
-	private static Class[][] ATTACK_TYPES_PER_LEVEL = {
-		{}, //Level 0: Awareness
-		{}, //Level 1: Find URLBar in Browser
-		{Level2Attack.class}, //Level 2
-		{SubdomainAttack.class}, //Level 3 
-		{IPAttack.class}, //Level 4
-		{NonsenseAttack.class}, // Level 5
-		{Unrelated.class}, // Level 6 
-		{MisleadingAttack.class,TypoAttack.class}, //Level 7
-		{HomoglyphicAttac.class}, //Level 8
-		{HostInPathAttack.class}, //Level 9
-		{HTTPAttack.class} //Level 10
-	};
 	@SuppressWarnings("rawtypes")
 	private static Class[] GENERATORS = {
 		//Currently we use the same generators for all levels
@@ -110,7 +84,7 @@ public class BackendController implements BackendControllerInterface, GameStateL
 	 * This holds the current URL returned by the last {@link BackendControllerInterface}{@link #getNextUrl()} call
 	 */
 	private PhishURLInterface current_url;
-	
+
 	/**
 	 * save the current repeat offset of the attack.
 	 * This is needed to reinsert the offset into the {@link #level_repeat_offsets} list on fail.
@@ -316,14 +290,14 @@ public class BackendController implements BackendControllerInterface, GameStateL
 				present_repeat = random.nextBoolean();
 			}
 			Class<? extends AbstractUrlDecorator> attack;
-			int index_level = Math.min(getLevel(), ATTACK_TYPES_PER_LEVEL.length-1);
 			if(present_repeat){
 				this.progress.incPresentedRepeats();
 				current_url_level_offset=this.level_repeat_offsets.remove(random.nextInt(this.level_repeat_offsets.size()));
 			}
-			index_level-=current_url_level_offset;
+			int attack_level= getLevel() - current_url_level_offset;
+			NoPhishLevelInfo attack_level_info = BackendController.getInstance().getLevelInfo(attack_level);
 			//choose a random attack from the selected Level
-			Class<? extends AbstractUrlDecorator>[] level_attacks = ATTACK_TYPES_PER_LEVEL[index_level];
+			Class<? extends AbstractUrlDecorator>[] level_attacks = attack_level_info.attackTypes;
 			attack=level_attacks[random.nextInt(level_attacks.length)];
 			//decorate the current url with this attack
 			base_url=AbstractUrlDecorator.decorate(base_url,attack);
@@ -402,7 +376,7 @@ public class BackendController implements BackendControllerInterface, GameStateL
 		checkinited();
 		return this.progress.getPoints();
 	}
-	
+
 	public int getLevelPoints(){
 		checkinited();
 		return this.progress.getLevelPoints();
@@ -422,11 +396,11 @@ public class BackendController implements BackendControllerInterface, GameStateL
 			this.startLevel(1);
 		}
 	}
-	
+
 	public void skipLevel0(){
 		this.levelFinished(0);
 	}
-	
+
 	private void levelFinished(int level){
 		this.progress.commitPoints();
 		this.progress.unlockLevel(level+1);
@@ -465,7 +439,7 @@ public class BackendController implements BackendControllerInterface, GameStateL
 		}
 		return 6+(2*this.getLevel());
 	}
-	
+
 	private int levelURLs() {
 		checkinited();
 		int failed_urls=progress.getLevelResults(PhishResult.Phish_NotDetected)+progress.getLevelResults(PhishResult.NoPhish_NotDetected);
@@ -533,5 +507,28 @@ public class BackendController implements BackendControllerInterface, GameStateL
 	@Override
 	public GameHelper getGameHelper() {
 		return this.gamehelper;
+	}
+
+	@Override
+	public int getLevelCount() {
+		return Constants.levelIntroLayoutIds.length;
+	}
+
+	@Override
+	public NoPhishLevelInfo getLevelInfo(int levelid) {
+		if(levelid >= getLevelCount()){
+			throw new IllegalArgumentException("Invalid level ID. levelid>= getLevelCount()");
+		}
+		return new NoPhishLevelInfo(levelid);
+	}
+	
+	@Override
+	public NoPhishLevelInfo getLevelInfo() {
+		return getLevelInfo(getLevel());
+	}
+
+	@Override
+	public int getLevelPoints(int level) {
+		return this.progress.getLevelPoints(level);
 	}
 }

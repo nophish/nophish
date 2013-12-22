@@ -19,8 +19,7 @@ public class FindAddressBarActivity extends PhishBaseActivity {
 	private void setTitles() {
 		android.support.v7.app.ActionBar ab = getSupportActionBar();
 
-		ab.setTitle(Constants.levelTitlesIds[BackendController.getInstance()
-				.getLevel()]);
+		ab.setTitle(BackendController.getInstance().getLevelInfo().titleId);
 		ab.setSubtitle(getString(R.string.exercise));		
 	}
 

@@ -8,62 +8,53 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController;
+import de.tudarmstadt.informatik.secuso.phishedu.backend.NoPhishLevelInfo;
 
 public class LevelFinishedActivity extends SwipeActivity {
-	ActionBar ab;
-	protected static int[][] levelLayoutIds = {
-			{ R.layout.level_00_finish_00, R.layout.level_00_finish_01,
-					R.layout.level_00_finish_02, R.layout.level_00_finish_03,
-					R.layout.level_00_finish_04, R.layout.level_00_finish_05,
-					R.layout.level_00_finish_06, R.layout.level_00_finish_07,
-					R.layout.level_00_finish_08 },
-			{ R.layout.level_01_finish_00, }, { R.layout.level_02_finish_00, } };
-
-	int real_level = 0;
-	int index_level = 0;
+	int level = 0;
 
 	protected void onCreate(Bundle savedInstanceState) {
-		this.real_level = getIntent().getIntExtra(Constants.EXTRA_LEVEL, 0);
-		this.index_level = Math.min(real_level, levelLayoutIds.length - 1);
+		this.level = getIntent().getIntExtra(Constants.EXTRA_LEVEL, 0);
 
 		super.onCreate(savedInstanceState);
 	}
 
 	protected void onStartClick() {
-		BackendController.getInstance().startLevel(real_level + 1);
+		BackendController.getInstance().startLevel(level + 1);
 	}
 
 	@Override
 	protected String startButtonText() {
-		return "Weiter zu Level " + (real_level + 1);
+		return "Weiter zu Level " + (level + 1);
 	}
 
 	@Override
 	protected int getPageCount() {
-		return this.levelLayoutIds[index_level].length;
+		return BackendController.getInstance().getLevelInfo(level).finishedLayouts.length;
 	}
 
 	@Override
 	protected View getPage(int page, LayoutInflater inflater,
 			ViewGroup container, Bundle savedInstanceState) {
 		setTitles();
-		View view = inflater.inflate(this.levelLayoutIds[index_level][page],
+		View view = inflater.inflate(BackendController.getInstance().getLevelInfo(level).finishedLayouts[page],
 				container, false);
 		setScoreText(view);
 		return view;
 	}
 
 	private void setScoreText(View view) {
-		if (index_level > 1) {
+		if (level > 1) {
 			((TextView) view.findViewById(R.id.level_score)).setText(Integer.toString(BackendController.getInstance().getLevelPoints()));
 			((TextView) view.findViewById(R.id.total_score)).setText(Integer.toString(BackendController.getInstance().getTotalPoints()));
 		}
 	}
 
 	private void setTitles() {
-		ab = getSupportActionBar();
-		String title = getString(Constants.levelTitlesIds[this.real_level]);
-		String subtitle = getString(Constants.levelSubtitlesIds[this.real_level]);
+		ActionBar ab = getSupportActionBar();
+		NoPhishLevelInfo level_info = BackendController.getInstance().getLevelInfo();
+		String title = getString(level_info.titleId);
+		String subtitle = getString(level_info.subTitleId);
 
 		if (!title.equals(subtitle)) {
 			// if subtitle and title are different, subtitle is set

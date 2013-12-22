@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController;
+import de.tudarmstadt.informatik.secuso.phishedu.backend.NoPhishLevelInfo;
 
 public class LevelSelectorActivity extends SwipeActivity implements
 		ViewPager.OnPageChangeListener {
@@ -23,13 +24,13 @@ public class LevelSelectorActivity extends SwipeActivity implements
 
 	@Override
 	protected int getPageCount() {
-		return Math.min(Constants.levelTitlesIds.length-1,
-				Constants.levelSubtitlesIds.length-1);
+		return BackendController.getInstance().getLevelCount();
 	}
 
 	@Override
 	protected View getPage(int level, LayoutInflater inflater,
 			ViewGroup container, Bundle savedInstanceState) {
+		NoPhishLevelInfo level_info = BackendController.getInstance().getLevelInfo(level);
 		View layoutView = inflater.inflate(R.layout.level_overview_template,
 				container, false);
 		int userlevel = BackendController.getInstance().getMaxUnlockedLevel();
@@ -61,10 +62,10 @@ public class LevelSelectorActivity extends SwipeActivity implements
 		levelnumber.setText(Integer.toString(level));
 		TextView levelTitle = (TextView) layoutView
 				.findViewById(R.id.level_title);
-		levelTitle.setText(Constants.levelTitlesIds[level]);
+		levelTitle.setText(level_info.titleId);
 		TextView levelDescription = (TextView) layoutView
 				.findViewById(R.id.level_description);
-		levelDescription.setText(Constants.levelSubtitlesIds[level]);
+		levelDescription.setText(level_info.subTitleId);
 
 		return layoutView;
 	}

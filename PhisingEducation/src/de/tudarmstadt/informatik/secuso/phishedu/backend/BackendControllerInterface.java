@@ -186,5 +186,31 @@ public interface BackendControllerInterface extends GameHelperListener{
 	 * @return The current gameHelper
 	 */
 	public GameHelper getGameHelper();
+	
+	/**
+	 * Get the number of levels the game currently supports
+	 * @return number of supported levels
+	 */
+	public int getLevelCount();
+	
+	/**
+	 * Get the Information about the given level
+	 * @param level The number of the level you want to get
+	 * @return the Level with the given number
+	 */
+	public NoPhishLevelInfo getLevelInfo(int level);
+	
+	/**
+	 * Get the Info of the current Level
+	 * @return The Info of the current Level
+	 */
+	public NoPhishLevelInfo getLevelInfo();
+	
+	/**
+	 * Get the number of points the user got in the given level
+	 * @param level The level for which you want to get the points
+	 * @return the number of points for the given level
+	 */
+	public int getLevelPoints(int level);
 }
 

@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.NavUtils;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.ActionBar;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -159,11 +160,11 @@ public abstract class SwipeActivity extends PhishBaseActivity implements ViewPag
 			this.page=getArguments().getInt(Constants.ARG_PAGE_NUMBER);
 			SwipeActivity activity = (SwipeActivity) getActivity();
 			View view = activity.getPage(page,inflater,container,savedInstanceState);
+			
 			view.setOnClickListener(activity.new clickListener(page));
 			return view;
 		}
 	}
-
 
 	private class clickListener implements View.OnClickListener{
 		private int page;

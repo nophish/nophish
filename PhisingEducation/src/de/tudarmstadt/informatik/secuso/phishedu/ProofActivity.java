@@ -22,7 +22,7 @@ import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishResult;
 public class ProofActivity extends PhishBaseActivity {
 	int selectedPart = -1;
 	int level = 0;
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -37,11 +37,11 @@ public class ProofActivity extends PhishBaseActivity {
 		if (level == 2) {
 			TextView text = (TextView) findViewById(R.id.phish_proof_text);
 			text.setText(R.string.level_02_task);
-			
+
 			ImageView image = (ImageView) findViewById(R.id.feedback_smiley);
 			image.setVisibility(View.INVISIBLE);
 		}
-
+		
 		setTitles();
 
 		String[] urlparts = BackendController.getInstance().getUrl();
@@ -70,8 +70,7 @@ public class ProofActivity extends PhishBaseActivity {
 			ab.setTitle(R.string.correct);
 			ab.setSubtitle(getString(R.string.phish));
 		} else {
-			ab.setTitle(Constants.levelTitlesIds[BackendController
-					.getInstance().getLevel()]);
+			ab.setTitle(BackendController.getInstance().getLevelInfo().titleId);
 			ab.setSubtitle(getString(R.string.exercise));
 		}
 		ab.setIcon(getResources().getDrawable(R.drawable.desktop));

@@ -32,6 +32,7 @@ public class GameProgress implements OnStateLoadedListener{
 			this.results = new int[4];
 		}
 		public int[] results = {0,0,0,0};
+		public int[] levelPoints = new int[BackendController.getInstance().getLevelCount()];
 		public int level = 0;
 		public int unlockedLevel = 0;
 		public int detected_phish_behind = 0;
@@ -43,7 +44,7 @@ public class GameProgress implements OnStateLoadedListener{
 		 * @return if the state is valid true, otherwise false
 		 */
 		private boolean validate(){
-			return this.results != null;
+			return this.results != null && this.levelPoints != null;
 		}	
 		
 	}
@@ -200,6 +201,9 @@ public class GameProgress implements OnStateLoadedListener{
 		if(this.game_store.isConnected()){
 			game_store.submitScore(context.getResources().getString(R.string.leaderboard_total_points), this.state.points );
 		}
+		if(this.getPoints() > this.state.levelPoints[this.getLevel()]){
+			this.state.levelPoints[this.getLevel()]=this.getPoints();
+		}
 		saveState();
 	}
 	
@@ -314,6 +318,9 @@ public class GameProgress implements OnStateLoadedListener{
 		for(PhishResult value: PhishResult.values()){
 			resolved_game.results[value.getValue()]=Math.max(local_game.results[value.getValue()], server_game.results[value.getValue()]);
 		}
+		for(int level=0;level<BackendController.getInstance().getLevelCount();level++){
+			resolved_game.levelPoints[level]=Math.max(local_game.levelPoints[level],server_game.levelPoints[level]);
+		}
 		this.remote_store.resolveState(this, REMOTE_STORE_SLOT, resolvedVersion, resolved_game.toString().getBytes());
 	}
 
@@ -360,5 +367,15 @@ public class GameProgress implements OnStateLoadedListener{
 	 */
 	public void decLives(){
 		this.level_lives--;
+	}
+
+	/**
+	 * Get the points saved for the given level.
+	 * This only changes after finishing a level.
+	 * @param level The level you want to get the points for
+	 * @return  the points for the given level.
+	 */
+	public int getLevelPoints(int level){
+		return this.state.levelPoints[level];
 	}
 }
