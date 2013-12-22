@@ -12,7 +12,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/URLs"
-        android:layout_centerVertical="true"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textStyle="bold" />
 
@@ -22,7 +21,6 @@
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/urls"
         android:layout_alignTop="@+id/urls"
-        android:layout_centerVertical="true"
         android:layout_toRightOf="@+id/urls"
         android:text="@string/slash"
         android:textAppearance="?android:attr/textAppearanceMedium" />
@@ -34,14 +32,31 @@
         android:layout_alignBaseline="@+id/urls_delim"
         android:layout_alignBottom="@+id/urls_delim"
         android:layout_toRightOf="@+id/urls_delim"
-        android:layout_centerVertical="true"
+        android:text="@string/number"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <!-- total score -->
+
+    <TextView
+        android:id="@+id/level_score_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/urls_text"
+        android:text="@string/level_score"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/level_score"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/level_score_text"
+        android:layout_alignBottom="@+id/level_score_text"
+        android:layout_toRightOf="@+id/level_score_text"
         android:text="@string/number"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <!-- Phishes -->
-
-
-    <!-- total score -->
 
     <TextView
         android:id="@+id/urls"
@@ -50,38 +65,37 @@
         android:layout_alignBaseline="@+id/urls_text"
         android:layout_alignBottom="@+id/urls_text"
         android:layout_marginLeft="@dimen/margin_xxsmall"
-        android:layout_centerVertical="true"
         android:layout_toRightOf="@+id/urls_text"
         android:text="@string/number"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <ImageView
-        android:id="@+id/life_3"
+        android:id="@+id/life_1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_alignTop="@+id/life_2"
-        android:contentDescription="@string/content_desc_life_3"
+        android:layout_marginRight="@dimen/margin_xxxsmall"
+        android:layout_toLeftOf="@+id/life_2"
+        android:layout_centerVertical="true"
+        android:contentDescription="@string/content_desc_life_1"
         android:src="@drawable/heart" />
-
+    
     <ImageView
         android:id="@+id/life_2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/urls_goal"
         android:layout_marginRight="@dimen/margin_xxxsmall"
         android:layout_toLeftOf="@+id/life_3"
+        android:layout_centerVertical="true"
         android:contentDescription="@string/content_desc_life_2"
         android:src="@drawable/heart" />
-
+    
     <ImageView
-        android:id="@+id/life_1"
+        android:id="@+id/life_3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/life_2"
-        android:layout_marginRight="@dimen/margin_xxxsmall"
-        android:layout_toLeftOf="@+id/life_2"
-        android:contentDescription="@string/content_desc_life_1"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:contentDescription="@string/content_desc_life_3"
         android:src="@drawable/heart" />
 
 </RelativeLayout>

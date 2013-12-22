@@ -47,9 +47,11 @@ public class PhishBaseActivity extends ActionBarActivity {
 			ImageView lifeOne = (ImageView) scores.findViewById(R.id.life_1);
 			ImageView lifeTwo = (ImageView) scores.findViewById(R.id.life_2);
 			ImageView lifeThree = (ImageView) scores.findViewById(R.id.life_3);
+			TextView LevelScoreText = (TextView) scores.findViewById(R.id.level_score);
 
 			urlsText.setText(Integer.toString(BackendController.getInstance().getCorrectlyFoundURLs()));
 			urlsGoalText.setText(Integer.toString(BackendController.getInstance().levelCorrectURLs()));
+			LevelScoreText.setText(Integer.toString(BackendController.getInstance().getLevelPoints()));
 			
 			int remaininLives = BackendController.getInstance().getLifes();
 			
