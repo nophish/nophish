@@ -511,7 +511,7 @@ public class BackendController implements BackendControllerInterface, GameStateL
 
 	@Override
 	public int getLevelCount() {
-		return Constants.levelIntroLayoutIds.length;
+		return NoPhishLevelInfo.levelCount();
 	}
 
 	@Override

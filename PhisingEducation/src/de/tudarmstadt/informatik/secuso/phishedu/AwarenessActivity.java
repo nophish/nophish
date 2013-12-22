@@ -2,24 +2,20 @@ package de.tudarmstadt.informatik.secuso.phishedu;
 
 import java.util.regex.Pattern;
 
-import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController;
-
 import android.accounts.Account;
 import android.accounts.AccountManager;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Patterns;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.Toast;
+import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController;
 
 /**
  * 
@@ -43,15 +39,16 @@ public class AwarenessActivity extends PhishBaseActivity {
 		for (Account account : accounts) {
 			if (emailPattern.matcher(account.name).matches()) {
 				toAdapter.add(account.name);
-				displayToast(account.name);
 		    }
 		}
 		final String[] fromMails = getResources().getStringArray(R.array.fromMails);
 		ArrayAdapter<String> fromAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line,fromMails);
 		AutoCompleteTextView fromView = (AutoCompleteTextView) findViewById(R.id.awareness_edit_sender_email);
 		fromView.setAdapter(fromAdapter);
+		fromView.setThreshold(1);
 		AutoCompleteTextView toView = (AutoCompleteTextView) findViewById(R.id.awareness_edit_receiver_email);
-		toView.setAdapter(toAdapter);	
+		toView.setAdapter(toAdapter);
+		fromView.setThreshold(1);
 		toView.setText(toAdapter.getItem(toAdapter.getCount()-1));
 	}
 	
