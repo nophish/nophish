@@ -19,6 +19,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController;
+import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishAttackType;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishResult;
 
 public class ResultActivity extends SwipeActivity {
@@ -217,10 +218,8 @@ public class ResultActivity extends SwipeActivity {
 
 	@Override
 	protected void setUrlText(TextView urlText) {
-
 		String urlParts[] = BackendController.getInstance().getUrl();
-		Integer[] attackedParts = BackendController.getInstance()
-				.getAttackParts();
+		int domainPart = BackendController.getInstance().getDomainPart();
 		// at start clear string builder
 		for (int i = 0; i < urlParts.length; i++) {
 
@@ -231,12 +230,16 @@ public class ResultActivity extends SwipeActivity {
 			strBuilder.append(part);
 
 			final BackgroundColorSpan bgc;
-			if (checkIfAttackedPart(attackedParts, i)) {
+			if (i==domainPart) {
 				// make attacked part background red
 				if (BackendController.getInstance().getLevel() == 2) {
 					bgc = new BackgroundColorSpan(getResources().getColor(R.color.domain));
 				} else {
-					bgc = new BackgroundColorSpan(Color.rgb(250, 62, 62));
+					if(attack_type==PhishAttackType.NoPhish.getValue()){
+					  bgc = new BackgroundColorSpan(getResources().getColor(R.color.nophish_domain));
+					}else{
+					  bgc = new BackgroundColorSpan(getResources().getColor(R.color.phish_domain));
+					}
 				}
 				strBuilder.setSpan(bgc, wordStart, wordEnd, 0);
 			}
@@ -245,14 +248,5 @@ public class ResultActivity extends SwipeActivity {
 		if (urlText != null) {
 			urlText.setText(strBuilder);
 		}
-	}
-
-	private boolean checkIfAttackedPart(Integer[] attackedParts, int index) {
-		for (int i = 0; i < attackedParts.length; i++) {
-			if (attackedParts[i] == index) {
-				return true;
-			}
-		}
-		return false;
 	}
 }

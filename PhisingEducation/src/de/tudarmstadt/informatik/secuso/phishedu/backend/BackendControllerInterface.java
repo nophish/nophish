@@ -164,6 +164,12 @@ public interface BackendControllerInterface extends GameHelperListener{
 	public Integer[] getAttackParts();
 	
 	/**
+	 * Get the part of the current URL that is the domain.
+	 * @return index from the array returned by {@link #getUrl()} that is the Domain.
+	 */
+	public int getDomainPart();
+	
+	/**
 	 * return the number of lifes left
 	 * @return number of lifes left
 	 */

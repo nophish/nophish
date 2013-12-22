@@ -539,4 +539,9 @@ public class BackendController implements BackendControllerInterface, GameStateL
 	public int getLevelPoints(int level) {
 		return this.progress.getLevelPoints(level);
 	}
+
+	@Override
+	public int getDomainPart() {
+		return current_url.getDomainPart();
+	}
 }
