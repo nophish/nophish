@@ -1,10 +1,10 @@
-<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+<menu xmlns:android="http://schemas.android.com/apk/res/android" xmlns:yourapp="http://schemas.android.com/apk/res-auto" >
 
     <item
         android:id="@+id/restart_level"
         android:orderInCategory="100"
         android:title="@string/action_restart"
         android:icon="@drawable/ic_replay"
-        android:showAsAction="ifRoom" />
+        yourapp:showAsAction="ifRoom"  />
 
 </menu>
