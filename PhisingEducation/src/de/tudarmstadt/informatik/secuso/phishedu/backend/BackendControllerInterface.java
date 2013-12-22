@@ -212,5 +212,11 @@ public interface BackendControllerInterface extends GameHelperListener{
 	 * @return the number of points for the given level
 	 */
 	public int getLevelPoints(int level);
+	
+	/**
+	 * Check if this backendcontroller is already inited.
+	 * @return 
+	 */
+	public boolean isInitDone();
 }
 

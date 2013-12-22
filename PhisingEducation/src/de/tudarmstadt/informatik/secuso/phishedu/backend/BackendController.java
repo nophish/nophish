@@ -113,12 +113,15 @@ public class BackendController implements BackendControllerInterface, GameStateL
 	 * Check if the singleton is inited. If not it will throw a IllegalStateException;
 	 */
 	private static void checkinited(){
-		if(instance == null || !(instance.inited)){
+		if(instance == null || !(instance.isInitDone())){
 			throw new IllegalStateException("initialize me first! Call backendcontroller.init()");
 		}
 	}
 
 	public void init(FrontendControllerInterface frontend){
+		if(this.isInitDone()){
+			return;
+		}
 		this.frontend=frontend;
 		this.gamehelper=new GameHelper(frontend.getBaseActivity());
 		this.gamehelper.setup(this,BaseGameActivity.CLIENT_APPSTATE | BaseGameActivity.CLIENT_GAMES);
@@ -126,7 +129,8 @@ public class BackendController implements BackendControllerInterface, GameStateL
 		GamesClient gamesclient = this.gamehelper.getGamesClient();
 		AppStateClient appstateclient = this.gamehelper.getAppStateClient();
 		Context context = this.frontend.getContext();
-		this.progress = new GameProgress(context, prefs, gamesclient,appstateclient,this);
+		GameProgress.init(context, prefs, gamesclient,appstateclient,this);
+		this.progress = GameProgress.getInstance();
 		SharedPreferences url_cache = this.frontend.getContext().getSharedPreferences(URL_CACHE_NAME, Context.MODE_PRIVATE);
 		for(PhishAttackType type: CACHE_TYPES){
 			loadUrls(url_cache, type);
@@ -178,10 +182,14 @@ public class BackendController implements BackendControllerInterface, GameStateL
 	public void urlDownloadProgress(int percent){
 		this.frontend.initProgress(percent);
 	}
+	
+	public boolean isInitDone(){
+		return this.inited;
+	}
 
 	private void checkInitDone(){
 		//This means we already are initialized
-		if(this.inited){
+		if(isInitDone()){
 			return;
 		}
 		if (this.urlCache[PhishAttackType.NoPhish.getValue()].length >0 && this.urlCache[PhishAttackType.AnyPhish.getValue()].length > 0 &&  this.gamestate_loaded){

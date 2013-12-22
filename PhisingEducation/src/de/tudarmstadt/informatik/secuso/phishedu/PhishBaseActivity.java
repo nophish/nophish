@@ -22,7 +22,8 @@ public class PhishBaseActivity extends ActionBarActivity {
     @Override
     protected void onStop() {
         super.onStop();
-        BackendController.getInstance().getGameHelper().onStop();
+        //disabled because this is called after onstart
+        //BackendController.getInstance().getGameHelper().onStop();
     }
     
     @Override

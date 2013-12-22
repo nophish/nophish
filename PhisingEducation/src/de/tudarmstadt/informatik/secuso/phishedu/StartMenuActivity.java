@@ -38,23 +38,21 @@ public class StartMenuActivity extends PhishBaseActivity implements
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		BackendController.getInstance().init(this);
+		if(!BackendController.getInstance().isInitDone()){
+		  BackendController.getInstance().init(this);
+		}
 
 		setContentView(R.layout.start_menu);
 		this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
-		checkPlayOn();
-
-		BackendController.getInstance().onUrlReceive(getIntent().getData());
-	}
-	
-	private void checkPlayOn(){
 		if (BackendController.getInstance().getMaxUnlockedLevel() > 0) {
 			TextView startbutton = (TextView) findViewById(R.id.menu_button_play);
 			startbutton.setText(R.string.button_play_on);
 		}
-	}
 
+		BackendController.getInstance().onUrlReceive(getIntent().getData());
+	}
+	
 	public void showLevelOverview(View view) {
 		Intent levelGridIntent = new Intent(this, LevelSelectorActivity.class);
 		startActivity(levelGridIntent);
@@ -133,56 +131,6 @@ public class StartMenuActivity extends PhishBaseActivity implements
 		levelIntent.putExtra(Constants.EXTRA_LEVEL, level);
 		ResultActivity.resetState();
 		startActivity(levelIntent);
-	}
-
-	private GamesClient getGamesClient() {
-		return BackendController.getInstance().getGameHelper().getGamesClient();
-	}
-
-	public void showLeaderboardRate(View view) {
-		if (this.getGamesClient().isConnected()) {
-			startActivityForResult(
-					getGamesClient().getLeaderboardIntent(
-							getResources().getString(
-									R.string.leaderboard_detection_rate)), 1);
-		} else {
-			displayToast(R.string.not_connected);
-		}
-	}
-
-	public void showLeaderboardTotal(View view) {
-		if (this.getGamesClient().isConnected()) {
-			startActivityForResult(
-					getGamesClient()
-							.getLeaderboardIntent(
-									getResources()
-											.getString(
-													R.string.leaderboard_detected_phishing_urls)),
-					1);
-		} else {
-			displayToast(R.string.not_connected);
-		}
-
-	}
-
-	public void showLeaderboardTotalPoints(View view) {
-		if (this.getGamesClient().isConnected()) {
-			startActivityForResult(
-					getGamesClient().getLeaderboardIntent(
-							getResources().getString(
-									R.string.leaderboard_total_points)), 1);
-		} else {
-			displayToast(R.string.not_connected);
-		}
-
-	}
-
-	public void showAchievments(View view) {
-		if (this.getGamesClient().isConnected()) {
-			startActivityForResult(getGamesClient().getAchievementsIntent(), 0);
-		} else {
-			displayToast(R.string.not_connected);
-		}
 	}
 
 	@Override
