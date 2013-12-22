@@ -64,11 +64,6 @@ public class TypoAttack extends AbstractAttack {
 	}
 	
 	@Override
-	public boolean partClicked(int part) {
-		return part==3;
-	}
-	
-	@Override
 	public List<Integer> getAttackParts() {
 		List<Integer> result = super.getAttackParts();
 		result.add(3);

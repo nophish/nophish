@@ -35,13 +35,6 @@ public interface PhishURLInterface{
 	public PhishAttackType getAttackType();
 	
 	/**
-	 * See {@link BackendControllerInterface#partClicked(int)}
-	 * @param part See {@link BackendControllerInterface#partClicked(int)}
-	 * @return See {@link BackendControllerInterface#partClicked(int)}
-	 */
-	public boolean partClicked(int part);
-	
-	/**
 	 * Get the points resulting in his selection
 	 * @param result the result returned from {@link #getResult(boolean)} 
 	 * @return the points the user gets for his selection
@@ -66,6 +59,13 @@ public interface PhishURLInterface{
 	 * @return The attacked parts
 	 */
 	public List<Integer> getAttackParts();
+	
+	/**
+	 * Which part is the domain.
+	 * This might change if the attack prefixes something to the domain.
+	 * @return The index of the domain in the {@link #getParts()} Array.
+	 */
+	public int getDomainPart();
 	
 	/**
 	 * Clone the current phishURL object deeply

@@ -371,7 +371,7 @@ public class BackendController implements BackendControllerInterface, GameStateL
 	@Override
 	public boolean partClicked(int part) {
 		checkinited();
-		boolean clickedright = this.current_url.partClicked(part);
+		boolean clickedright = part == current_url.getDomainPart();
 		if(clickedright){
 			addResult(PhishResult.Phish_Detected);
 		}else{

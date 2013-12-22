@@ -50,8 +50,8 @@ public class SubdomainAttack extends AbstractAttack {
 	}
 	
 	@Override
-	public boolean partClicked(int part) {
-		return part==3;
+	public int getDomainPart() {
+		return 4;
 	}
 	
 	@Override

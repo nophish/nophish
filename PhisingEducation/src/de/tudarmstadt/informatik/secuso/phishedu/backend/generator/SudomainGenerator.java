@@ -22,10 +22,4 @@ public class SudomainGenerator extends BaseGenerator {
 		return parts;
 	}
 	
-	@Override
-	public boolean partClicked(int part) {
-		return part == 3;
-	}
-	
-
 }

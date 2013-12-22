@@ -32,11 +32,6 @@ public class PhishTankURLAttack extends AbstractAttack {
 	 * As we don't know the structure of the url from phishTank. All parts might be phishy.
 	 */
 	@Override
-	public boolean partClicked(int part) {
-		return true;
-	}
-	
-	@Override
 	public List<Integer> getAttackParts() {
 		List<Integer> result = new ArrayList<Integer>();
 		for(int i=0; i<getParts().length; i++){

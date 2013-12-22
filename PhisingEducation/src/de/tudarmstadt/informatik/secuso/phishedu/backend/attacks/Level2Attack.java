@@ -41,11 +41,6 @@ public class Level2Attack extends AbstractAttack {
 	}
 	
 	@Override
-	public boolean partClicked(int part) {
-		return part == correctPart;
-	}
-	
-	@Override
 	public PhishAttackType getAttackType() {
 		return PhishAttackType.Level2Attack;
 	}

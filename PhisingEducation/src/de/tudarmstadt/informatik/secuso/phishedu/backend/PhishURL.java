@@ -51,15 +51,6 @@ public class PhishURL implements PhishURLInterface{
 	}
 	
 	@Override
-	public boolean partClicked(int part) {
-		for(int correctpart: this.correctparts){
-			if(part == correctpart ){
-				return true;
-			}
-		}
-		return false;
-	}
-	@Override
 	public List<Integer> getAttackParts() {
 		return new ArrayList<Integer>();
 	}
@@ -73,5 +64,10 @@ public class PhishURL implements PhishURLInterface{
 		clone.siteType=this.siteType;
 		clone.correctparts=this.correctparts.clone();
 		return clone;
+	}
+	
+	@Override
+	public int getDomainPart() {
+		return 3;
 	}
 }

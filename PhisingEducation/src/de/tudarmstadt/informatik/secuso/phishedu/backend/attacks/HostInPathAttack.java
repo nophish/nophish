@@ -42,11 +42,6 @@ public class HostInPathAttack extends SubdomainAttack {
 	}
 	
 	@Override
-	public boolean partClicked(int part) {
-		return part==5;
-	}
-	
-	@Override
 	public List<Integer> getAttackParts() {
 		List<Integer> result = super.getAttackParts();
 		result.add(5);

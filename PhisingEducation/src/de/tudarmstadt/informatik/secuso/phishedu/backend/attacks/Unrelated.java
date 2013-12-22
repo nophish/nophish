@@ -66,8 +66,8 @@ public class Unrelated extends AbstractAttack {
 	}
 	
 	@Override
-	public boolean partClicked(int part) {
-		return part==4;
+	public int getDomainPart() {
+		return 4;
 	}
 	
 	@Override

@@ -50,11 +50,6 @@ public abstract class AbstractUrlDecorator implements PhishURLInterface {
 	public abstract PhishResult getResult(boolean acceptance);
 	
 	@Override
-	public boolean partClicked(int part) {
-		return this.object.partClicked(part);
-	}
-	
-	@Override
 	public List<Integer> getAttackParts() {
 		return this.object.getAttackParts();
 	}
@@ -85,5 +80,10 @@ public abstract class AbstractUrlDecorator implements PhishURLInterface {
 			e.printStackTrace();
 		}
 		return base_url;
+	}
+	
+	@Override
+	public int getDomainPart() {
+		return object.getDomainPart();
 	}
 }
