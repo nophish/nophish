@@ -544,4 +544,9 @@ public class BackendController implements BackendControllerInterface, GameStateL
 	public int getDomainPart() {
 		return current_url.getDomainPart();
 	}
+
+	@Override
+	public void deleteRemoteData() {
+		this.progress.deleteRemoteData();
+	}
 }

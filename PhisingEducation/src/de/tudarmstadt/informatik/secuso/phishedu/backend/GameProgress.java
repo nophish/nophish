@@ -8,6 +8,7 @@ import com.google.android.gms.appstate.OnStateLoadedListener;
 import com.google.android.gms.games.GamesClient;
 import com.google.android.gms.games.achievement.Achievement;
 import com.google.gson.Gson;
+import com.google.gson.JsonSyntaxException;
 
 import de.tudarmstadt.informatik.secuso.phishedu.R;
 
@@ -20,7 +21,7 @@ import de.tudarmstadt.informatik.secuso.phishedu.R;
  */
 public class GameProgress implements OnStateLoadedListener{
 	private static GameProgress instance=null;
-	
+
 	private Context context;
 	private SharedPreferences local_store;
 	private GamesClient game_store;
@@ -32,6 +33,7 @@ public class GameProgress implements OnStateLoadedListener{
 	private class State{
 		public State(){
 			this.results = new int[4];
+			this.levelPoints = new int[BackendController.getInstance().getLevelCount()];
 		}
 		public int[] results = {0,0,0,0};
 		public int[] levelPoints = new int[BackendController.getInstance().getLevelCount()];
@@ -40,27 +42,26 @@ public class GameProgress implements OnStateLoadedListener{
 		public int detected_phish_behind = 0;
 		public boolean app_started = false;
 		public int points = 0;
-			
+
 		/**
 		 * This function checks a loaded state for validity
 		 * @return if the state is valid true, otherwise false
 		 */
 		private boolean validate(){
 			return this.results != null && this.levelPoints != null;
-		}	
-		
+		}		
 	}
-	
+
 	private int[] level_results = {0,0,0,0};
 	//This is for saving the points per level. 
 	//Once the level is done the points get commited to the persistend state.
 	private int level_points;
 	private int level_lives=LIFES_PER_LEVEL;
-	
+
 	private GameStateLoadedListener listener;
 	private State state = new State();
 	private int presented_repeats = 0;
-	
+
 	/**
 	 * Increment the number of presented Repeats
 	 */
@@ -74,7 +75,7 @@ public class GameProgress implements OnStateLoadedListener{
 	public int getPresentedRepeats(){
 		return presented_repeats;
 	}
-	
+
 	/**
 	 * Return the number of results of the given type the user had. 
 	 * @param type The type of result
@@ -83,7 +84,7 @@ public class GameProgress implements OnStateLoadedListener{
 	public int getLevelResults(PhishResult type){
 		return this.level_results[type.getValue()];
 	}
-	
+
 	/**
 	 * This function returns the total count of phishURLs the User saw.
 	 * @return the number of PhishURLs the user saw.
@@ -91,7 +92,7 @@ public class GameProgress implements OnStateLoadedListener{
 	public int getPresentedPhish(){
 		return this.level_results[PhishResult.Phish_Detected.getValue()]+this.level_results[PhishResult.Phish_NotDetected.getValue()];
 	}
-	
+
 	/**
 	 * Get the number of URLs the user decided on.
 	 * @return Number of URLs the user decided on.
@@ -103,7 +104,7 @@ public class GameProgress implements OnStateLoadedListener{
 		}
 		return sum;
 	}
-	
+
 	/**
 	 * This is the default constructor.
 	 * @param context We need this for getting the resources for the achievements 
@@ -120,13 +121,13 @@ public class GameProgress implements OnStateLoadedListener{
 		this.listener = listener;
 		this.loadState();
 	}
-	
+
 	public static void init(Context context, SharedPreferences local_store, GamesClient game_store, AppStateClient remote_store, GameStateLoadedListener listener){
 		if(instance==null){
 			instance=new GameProgress(context, local_store, game_store, remote_store, listener);
 		}
 	}
-	
+
 	public static GameProgress getInstance(){
 		return instance;
 	}
@@ -145,10 +146,10 @@ public class GameProgress implements OnStateLoadedListener{
 			this.listener.onGameStateLoaded();
 		}
 	}
-	
+
 	private void loadLocalState(String state){
 		State newState = this.deserializeState(state);
-		if(newState.validate()){
+		if(newState != null && newState.validate()){
 			this.state=newState;
 		}
 	}
@@ -196,7 +197,7 @@ public class GameProgress implements OnStateLoadedListener{
 	public int getPoints(){
 		return this.state.points;
 	}
-	
+
 	/**
 	 * This function returns the points the user gained in this level.
 	 * @return The Points in this level
@@ -204,7 +205,7 @@ public class GameProgress implements OnStateLoadedListener{
 	public int getLevelPoints(){
 		return this.level_points;
 	}
-	
+
 	/**
 	 * Save the level Points to the persistend state.
 	 */
@@ -218,7 +219,7 @@ public class GameProgress implements OnStateLoadedListener{
 		}
 		saveState();
 	}
-	
+
 	/**
 	 * This saves the current points.
 	 * See the comment of {@link GameProgress#getPoints()} regarding persistence.
@@ -253,10 +254,10 @@ public class GameProgress implements OnStateLoadedListener{
 		this.presented_repeats=0;
 		this.level_points=0;
 		this.level_lives=LIFES_PER_LEVEL;
-		
+
 		this.saveState();
 	}
-	
+
 	/**
 	 * Unlock the given Level so that the user is able to play it.
 	 * @param level the level to unlock
@@ -292,7 +293,12 @@ public class GameProgress implements OnStateLoadedListener{
 	}
 
 	private State deserializeState(String state){
-		return new Gson().fromJson(state,State.class);
+		try {
+			return new Gson().fromJson(state,State.class);
+		} catch (JsonSyntaxException e) {
+			//Json SyntaxException
+		}
+		return null;
 	}
 
 	/**
@@ -312,7 +318,7 @@ public class GameProgress implements OnStateLoadedListener{
 			this.remote_store.updateState(REMOTE_STORE_SLOT, serialized.getBytes());
 		}
 	}
-	
+
 	@Override
 	public void onStateConflict(int stateKey, String resolvedVersion,
 			byte[] localData, byte[] serverData) {
@@ -324,14 +330,21 @@ public class GameProgress implements OnStateLoadedListener{
 
 		//Current resolving strategy: get the most of all values
 		State resolved_game = new State();
-		resolved_game.level= Math.max(local_game.level, server_game.level);
-		resolved_game.app_started = local_game.app_started || server_game.app_started;
-		resolved_game.points = Math.max(local_game.points, server_game.points);
-		for(PhishResult value: PhishResult.values()){
-			resolved_game.results[value.getValue()]=Math.max(local_game.results[value.getValue()], server_game.results[value.getValue()]);
-		}
-		for(int level=0;level<BackendController.getInstance().getLevelCount();level++){
-			resolved_game.levelPoints[level]=Math.max(local_game.levelPoints[level],server_game.levelPoints[level]);
+
+		if(local_game == null && server_game != null){
+			resolved_game = server_game;
+		}else if(server_game == null && local_game != null){
+			resolved_game = local_game;
+		}else if(server_game != null && local_game != null){
+			resolved_game.level= Math.max(local_game.level, server_game.level);
+			resolved_game.app_started = local_game.app_started || server_game.app_started;
+			resolved_game.points = Math.max(local_game.points, server_game.points);
+			for(PhishResult value: PhishResult.values()){
+				resolved_game.results[value.getValue()]=Math.max(local_game.results[value.getValue()], server_game.results[value.getValue()]);
+			}
+			for(int level=0;level<BackendController.getInstance().getLevelCount();level++){
+				resolved_game.levelPoints[level]=Math.max(local_game.levelPoints[level],server_game.levelPoints[level]);
+			}
 		}
 		this.remote_store.resolveState(this, REMOTE_STORE_SLOT, resolvedVersion, resolved_game.toString().getBytes());
 	}
@@ -356,8 +369,8 @@ public class GameProgress implements OnStateLoadedListener{
 		}
 		this.listener.onGameStateLoaded();
 	}
-	
-	
+
+
 	/**
 	 * This returns the maximum level the user is able to access
 	 * @return the max level
@@ -365,7 +378,7 @@ public class GameProgress implements OnStateLoadedListener{
 	public int getMaxUnlockedLevel() {
 		return this.state.unlockedLevel;
 	}
-	
+
 	/**
 	 * Get the number of remaining lives for this level.
 	 * @return Number of Lives for this level.
@@ -373,7 +386,7 @@ public class GameProgress implements OnStateLoadedListener{
 	public int getRemainingLives(){
 		return this.level_lives;
 	}
-	
+
 	/**
 	 * Decrement the number of lives the user has remaining.
 	 */
@@ -389,5 +402,14 @@ public class GameProgress implements OnStateLoadedListener{
 	 */
 	public int getLevelPoints(int level){
 		return this.state.levelPoints[level];
+	}
+
+	/**
+	 * remove the game Data that was stored in Googles Cloud Save Storage
+	 */
+	public void deleteRemoteData(){
+		if(this.remote_store.isConnected()){
+			this.remote_store.updateState(REMOTE_STORE_SLOT, new byte[0]);
+		}
 	}
 }

@@ -94,7 +94,8 @@
     <string name="button_show_online_achievement">Deine Erfolge</string>
     <string name="button_show_leaderboard_rate">Leaderboard Rate</string>
     <string name="button_show_leaderboard_total">Leaderboard Found Phishes</string>
-    <string name="button_show_leaderboard_total_points">Highscore</string>
+	<string name="button_show_leaderboard_total_points">Highscore</string>
+	<string name="button_delete_remote_data">Online Daten Löschen</string>    
     <string name="button_next">Weiter</string>
     <string name="info_web_addresses">Mehr zu Web-Adressen</string>
     <string name="info_phishing">Mehr zu Phishing</string>
