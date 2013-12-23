@@ -281,12 +281,13 @@ public class GameProgress implements OnStateLoadedListener{
 	}
 
 	private State deserializeState(String state){
+		State result = null;
 		try {
-			return new Gson().fromJson(state,State.class);
+			result = (new Gson()).fromJson(state,State.class);
 		} catch (JsonSyntaxException e) {
 			//Json SyntaxException
 		}
-		return null;
+		return result;
 	}
 
 	/**

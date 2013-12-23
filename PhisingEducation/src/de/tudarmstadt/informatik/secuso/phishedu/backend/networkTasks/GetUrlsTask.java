@@ -12,6 +12,7 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonSyntaxException;
 
 import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishAttackType;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishURL;
@@ -53,7 +54,12 @@ public class GetUrlsTask extends AsyncTask<Integer, Integer, PhishURLInterface[]
 				ByteArrayOutputStream out = new ByteArrayOutputStream();
 				response.getEntity().writeTo(out);
 				out.close();
-				PhishURL[] result = new Gson().fromJson(out.toString(), PhishURL[].class);
+				PhishURL[] result = new PhishURL[0];
+				try {
+					result = (new Gson()).fromJson(out.toString(), PhishURL[].class);
+				} catch (JsonSyntaxException e) {
+					// TODO: handle exception
+				}
 				if(result.length > count){
 					result = Arrays.copyOf(result, count);
 				}
