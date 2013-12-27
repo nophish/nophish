@@ -444,7 +444,7 @@
     <string name="url">Beispiel URL</string>
     <string name="level_score">Levelpunkte:</string>
     <string name="total_score">Gesamtpunkte:</string>
-    <string name="phish_proof_01">Ja, die Webadresse ist gefälscht. Als wen gibt der Phisher sich aus? <b>Tippe</b> die Stelle an.</string>
+    <string name="phish_proof_01">Ja, die Webadresse ist gefälscht. Nun zeige uns den Wer-Bereich. <b>Tippe</b> die Stelle an.</string>
     <string name="phish_proof_02">Klicke hierzu den entsprechenden Bereich der Webadresse an. <b>Wenn möglich, wähle nicht den Wer-Bereich!</b></string>
     <string name="title_level_finished">Level geschafft</string>
     <string name="you_are_wrong">Falsch! Du wurdest ausgetrickst. Das ist eine gefälschte Webadresse.</string>
