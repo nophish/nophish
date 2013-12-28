@@ -6,8 +6,6 @@ import java.util.Locale;
 import java.util.Random;
 import java.util.Scanner;
 
-import org.json.JSONException;
-
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.net.Uri;
@@ -17,7 +15,6 @@ import com.google.android.gms.games.GamesClient;
 import com.google.example.games.basegameutils.BaseGameActivity;
 import com.google.example.games.basegameutils.GameHelper;
 import com.google.gson.Gson;
-import com.google.gson.JsonParseException;
 import com.google.gson.JsonSyntaxException;
 
 import de.tudarmstadt.informatik.secuso.phishedu.R;

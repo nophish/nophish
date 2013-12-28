@@ -17,7 +17,7 @@ import de.tudarmstadt.informatik.secuso.phishedu.backend.attacks.Unrelated;
  */
 public class NoPhishLevelInfo {
 	private static final int[] levelTitlesIds = {
-		R.string.app_name, R.string.level_title_01,
+		R.string.level_title_00, R.string.level_title_01,
 		R.string.level_title_02, R.string.level_title_03,
 		R.string.level_title_04, R.string.level_title_05,
 		R.string.level_title_06, R.string.level_title_07,
@@ -26,7 +26,7 @@ public class NoPhishLevelInfo {
 	};
 
 	private static final int[] levelSubtitlesIds = {
-		R.string.app_name, R.string.level_subtitle_01,
+		R.string.level_subtitle_00, R.string.level_subtitle_01,
 		R.string.level_subtitle_02, R.string.level_subtitle_03,
 		R.string.level_subtitle_04, R.string.level_subtitle_05,
 		R.string.level_subtitle_06, R.string.level_subtitle_07,
@@ -130,6 +130,7 @@ public class NoPhishLevelInfo {
 	public final int levelId;
 	@SuppressWarnings("rawtypes")
 	public final Class[] attackTypes;
+	public final String levelNumber;
 	
 	public NoPhishLevelInfo(int levelid){
 		this.levelId = levelid;
@@ -141,6 +142,11 @@ public class NoPhishLevelInfo {
 		this.finishedLayouts =levelFinishedLayoutIds[finished_index];
 		int attacktype_index = Math.min(levelid, levelAttackTypes.length-1);
 		this.attackTypes = levelAttackTypes[attacktype_index];
+		if(levelid<2){
+			this.levelNumber = "E"+(levelid+1);
+		}else{
+			this.levelNumber = Integer.toString(levelid-1);
+		}		 
 	}
 	
 	public int getlevelPoints(){

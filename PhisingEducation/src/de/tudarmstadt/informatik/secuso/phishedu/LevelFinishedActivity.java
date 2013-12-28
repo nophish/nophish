@@ -25,7 +25,7 @@ public class LevelFinishedActivity extends SwipeActivity {
 
 	@Override
 	protected String startButtonText() {
-		return "Weiter zu Level " + (level + 1);
+		return "Weiter zu " + getResources().getString(BackendController.getInstance().getLevelInfo(this.level+1).titleId);
 	}
 
 	@Override
@@ -52,7 +52,7 @@ public class LevelFinishedActivity extends SwipeActivity {
 
 	private void setTitles() {
 		ActionBar ab = getSupportActionBar();
-		NoPhishLevelInfo level_info = BackendController.getInstance().getLevelInfo();
+		NoPhishLevelInfo level_info = BackendController.getInstance().getLevelInfo(level);
 		String title = getString(level_info.titleId);
 		String subtitle = getString(level_info.subTitleId);
 

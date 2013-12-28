@@ -117,17 +117,19 @@
     <string name="about_contact"><b>Technische Universität Darmstadt</b>\nFachbereich Informatik\nGebäude S2|02\nHochschulstraße 10\n64289 Darmstadt\n\nE-Mail: melanie.volkamer@cased.de</string>
 
     <!-- LEVEL TITLES -->
-    <string name="level_title_01">Level 1</string>
-    <string name="level_title_02">Level 2</string>
-    <string name="level_title_03">Level 3</string>
-    <string name="level_title_04">Level 4</string>
-    <string name="level_title_05">Level 5</string>
-    <string name="level_title_06">Level 6</string>
-    <string name="level_title_07">Level 7</string>
-    <string name="level_title_08">Level 8</string>
-    <string name="level_title_09">Level 9</string>
-    <string name="level_title_10">Level 10</string>
+    <string name="level_title_00">Einführung 1</string>
+    <string name="level_title_01">Einführung 2</string>
+    <string name="level_title_02">Level 1</string>
+    <string name="level_title_03">Level 2</string>
+    <string name="level_title_04">Level 3</string>
+    <string name="level_title_05">Level 4</string>
+    <string name="level_title_06">Level 5</string>
+    <string name="level_title_07">Level 6</string>
+    <string name="level_title_08">Level 7</string>
+    <string name="level_title_09">Level 8</string>
+    <string name="level_title_10">Level 9</string>
     <string name="level_title_11">Spielende</string>
+    <string name="level_subtitle_00">Phishing</string>
     <string name="level_subtitle_01">Die Adressleiste</string>
     <string name="level_subtitle_02">Einführung in Webadressen</string>
     <string name="level_subtitle_03">Bereich der Abteilungen</string>
@@ -179,7 +181,7 @@
     <string name="level_00_finish_03_text_01"><b>Original</b>\n\nIm Folgenden zeigen wir dir einen Ausschnitt der <b>originalen</b> Webseite von Facebook. An der Webadresse https://m.facebook.com/ (grün umrandet) kann man erkennen, dass es sich bei dieser Webseite um das Original handelt.</string>
     <string name="level_00_finish_04_text_01"><b>Kopie</b>\n\nIm Folgenden zeigen wir dir einen Ausschnitt einer <b>kopierten</b> Webseite von Facebook, die unter der gefälschten Webadresse https://pages.no-phish.de/ (rot umrandet) angezeigt wird.</string>
     <string name="level_00_finish_05_text_01"><b>Wie du dich vor Phishing schützen kannst</b>\n\nEs ist wichtig, dass du immer die Webadresse prüfst, bevor du Daten auf der Webseite eingibst, insbesondere dann, wenn du eine unerwartete E-Mail mit einem Link erhältst. Mit dieser App lernst du, wie du die Überprüfung der Webadressen durchführen kannst.</string>
-    <string name="level_00_finish_06_text_01"><b>Aufbau dieser App</b>\n\nDa es bei der Überprüfung von Webadressen unterschiedlich schwierig zu erkennende Angriffe gibt, haben wir die Aufgaben in unterschiedliche Levels unterteilt.\n\nJedes Level besteht aus zwei Teilen:</string>
+    <string name="level_00_finish_06_text_01"><b>Weiterer Spielverlauf</b>\n\nDa es bei der Überprüfung von Webadressen unterschiedlich schwierig zu erkennende Angriffe gibt, haben wir die Aufgaben in unterschiedliche Levels unterteilt.\n\nJedes Level besteht aus zwei Teilen:</string>
     <string name="level_00_finish_06_text_02">Einführung und Erklärung</string>
     <string name="level_00_finish_06_text_03">Aufgaben zum Punkte sammeln</string>
     <string name="level_00_finish_07_text_01"><b>Hinweis:</b> Wir möchten dich an dieser Stelle darauf hinweisen, dass wir dir mit dieser App helfen, dich gegen eine sehr verbreitete Form des Phishings zu schützen. Leider gibt es auch noch einige andere Arten. Wenn du später hierzu mehr wissen möchtest, dann klicke im Menü auf \"Mehr über Phishing\".</string>

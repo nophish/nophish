@@ -97,12 +97,10 @@ public class LevelIntroActivity extends SwipeActivity {
 
 	@Override
 	protected String startButtonText() {
-		if( this.level == 0){
-			return "Weiter";
-		}else if (this.level == BackendController.getInstance().getLevelCount()) {
+		if (this.level == BackendController.getInstance().getLevelCount()) {
 			return "Fertig";
 		}
-		return "Starte Level "+this.level;
+		return "Starte "+getResources().getString(BackendController.getInstance().getLevelInfo(this.level).titleId);
 	}
 
 	@Override
