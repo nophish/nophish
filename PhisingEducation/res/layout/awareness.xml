@@ -7,7 +7,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="518dp"
+        android:layout_height="wrap_content"
         tools:context=".AwarenessActivity" >
 
         <TextView
@@ -28,20 +28,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignLeft="@+id/level_00_intro_02_text_01"
-            android:layout_alignRight="@+id/level_00_intro_02_text_01"
             android:layout_below="@+id/level_00_intro_02_text_01"
             android:layout_marginTop="@dimen/margin_standard"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="@string/level_00_intro_02_text_02" />
 
         <MultiAutoCompleteTextView
-            android:id="@+id/awareness_edit_sender_email"
-            android:layout_width="wrap_content"
+            android:id="@+id/awareness_edit_receiver_email"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/level_00_intro_02_text_02"
-            android:layout_alignRight="@+id/level_00_intro_02_text_02"
+            android:layout_alignLeft="@+id/level_00_intro_02_text_01"
             android:layout_below="@+id/level_00_intro_02_text_02"
-            android:layout_marginTop="@dimen/margin_standard"
+            android:layout_marginTop="@dimen/margin_small"
             android:ems="10"
             android:hint="@string/example_email"
             android:inputType="textEmailAddress" />
@@ -50,20 +48,30 @@
             android:id="@+id/level_00_intro_02_text_03"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/awareness_edit_sender_email"
-            android:layout_below="@+id/awareness_edit_sender_email"
+            android:layout_alignLeft="@+id/level_00_intro_02_text_01"
+            android:layout_below="@+id/awareness_edit_receiver_email"
             android:layout_marginTop="@dimen/margin_standard"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="@string/level_00_intro_02_text_03" />
 
-        <MultiAutoCompleteTextView
-            android:id="@+id/awareness_edit_receiver_email"
+        <TextView
+            android:id="@+id/awareness_hint"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/level_00_intro_02_text_03"
-            android:layout_alignRight="@+id/awareness_edit_sender_email"
+			android:layout_alignLeft="@+id/level_00_intro_02_text_01"
             android:layout_below="@+id/level_00_intro_02_text_03"
             android:layout_marginTop="@dimen/margin_xxsmall"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="@color/grey"
+            android:text="@string/awareness_email_hint" />
+        
+        <MultiAutoCompleteTextView
+            android:id="@+id/awareness_edit_sender_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+			android:layout_alignLeft="@+id/level_00_intro_02_text_01"
+            android:layout_below="@+id/awareness_hint"
+            android:layout_marginTop="@dimen/margin_small"
             android:ems="10"
             android:hint="@string/example_email"
             android:inputType="textEmailAddress" />
@@ -72,44 +80,44 @@
             android:id="@+id/level_00_intro_02_text_04"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/awareness_edit_receiver_email"
-            android:layout_alignRight="@+id/awareness_edit_receiver_email"
-            android:layout_below="@+id/awareness_edit_receiver_email"
+			android:layout_alignLeft="@+id/level_00_intro_02_text_01"
+            android:layout_below="@+id/awareness_edit_sender_email"
             android:layout_marginTop="@dimen/margin_standard"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="@string/level_00_intro_02_text_04" />
+        
+         <TextView
+            android:id="@+id/awareness_text_hint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+			android:layout_alignLeft="@+id/level_00_intro_02_text_01"
+            android:layout_below="@+id/level_00_intro_02_text_04"
+            android:layout_marginTop="@dimen/margin_xxsmall"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="@color/grey"
+            android:text="@string/awareness_text_hint" />
 
         <EditText
             android:id="@+id/awareness_edit_text"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/level_00_intro_02_text_04"
-            android:layout_alignRight="@+id/level_00_intro_02_text_04"
-            android:layout_below="@+id/level_00_intro_02_text_04"
-            android:layout_marginTop="@dimen/margin_xxsmall"
+            android:layout_alignLeft="@+id/level_00_intro_02_text_01"
+            android:layout_below="@+id/awareness_text_hint"
+            android:layout_marginTop="@dimen/margin_small"
             android:ems="10"
             android:hint="@string/hint_text"
-            android:inputType="textEmailAddress" />
-
-        <TextView
-            android:id="@+id/awareness_hint"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/awareness_edit_text"
-            android:layout_alignRight="@+id/level_00_intro_02_text_04"
-            android:layout_below="@+id/awareness_edit_text"
-            android:layout_marginTop="@dimen/margin_large"
-            android:text="@string/awareness_email_hint" />
+            android:inputType="textShortMessage" />
 
         <Button
             android:id="@+id/button_abschicken"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/btn_standard_height"
-            android:layout_below="@+id/awareness_hint"
+            android:layout_below="@+id/awareness_edit_text"
             android:layout_centerHorizontal="true"
             android:minWidth="@dimen/btn_standard_width"
             android:onClick="sendEmail"
             android:contentDescription="@string/content_desc_button_send"
+            android:layout_marginTop="@dimen/margin_standard"
             android:text="@string/btn_send" />
         
         <Button
@@ -118,7 +126,7 @@
             android:layout_height="@dimen/btn_standard_height"
             android:layout_below="@+id/button_abschicken"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="14dp"
+            android:layout_marginTop="@dimen/margin_standard"
             android:minWidth="@dimen/btn_standard_width"
             android:onClick="skipSendEmail"
             android:visibility="invisible"

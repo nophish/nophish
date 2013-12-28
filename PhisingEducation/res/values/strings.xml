@@ -155,10 +155,11 @@
     <string name="level_00_intro_00_text_01"><b>Phishing</b>\n\n\"Phishing\" ist eine Wortschöpfung, die eine Kombination der zwei englischen Begriffe \"phreaking\" (hacken) und \"fishing\" (angeln) darstellt. Es handelt sich hierbei um eine Technik, mit der Betrüger im Internet versuchen, deine sensiblen Daten, wie z.B. Passwörter, Kontodaten oder Kreditkartendaten, zu \"angeln\".\n\nDie Betrüger nutzen diese Daten, um dir zu schaden, z.B. um dein Konto zu plündern, in deinem Namen einzukaufen oder Freunde und Arbeitskollegen zu kontaktieren.\n\nUm an die sensiblen Daten zu kommen, schicken die Betrüger dir Nachrichten, z.B. in Form von E-Mails oder SMS. Diese Nachrichten sehen auf den ersten Blick aus wie Nachrichten von Personen oder Institutionen, denen du vertraust (z.B. von Amazon, Facebook oder deiner Bank). In der Nachricht wirst du gebeten, Daten entweder direkt zurückzuschicken oder über einen Link einzugeben. Der Link führt dabei in der Regel zu einer Webseite, die auf den ersten Blick vertrauenswürdig aussieht. Es handelt sich allerdings um eine gefälschte Kopie.</string>
     <string name="level_00_intro_01_text_01"><b>Jeder kann phishen!</b>\n\nUm dir zu verdeutlichen, dass auch du gefährdet bist, wollen wir dir zeigen, wie einfach es ist, gefälschte E-Mails im Namen einer anderen Person oder Institution zu verschicken.</string>
     <string name="level_00_intro_02_text_01"><b>Schicke dir selber eine E-Mail von einem beliebigen Absender</b></string>
-    <string name="level_00_intro_02_text_02">Von wem soll die E-Mail kommen*:</string>
-    <string name="level_00_intro_02_text_03">Deine E-Mail Adresse:</string>
-    <string name="level_00_intro_02_text_04">Hier kannst du einen beliebigen Text eingeben, der in  der E-Mail erscheinen soll:</string>
-    <string name="awareness_email_hint"><b>*Hinweis:</b> Bitte gebe an dieser Stelle eine möglichst authentische (oder bereits existierende) E-Mail Adresse ein, die als Absender erscheinen soll.</string>
+    <string name="level_00_intro_02_text_02">Deine E-Mail Adresse:</string>
+    <string name="level_00_intro_02_text_03">Absender E-Mail:</string>
+    <string name="level_00_intro_02_text_04">Optionaler Freitext:</string>
+    <string name="awareness_text_hint">Hier kannst du einen beliebigen Text eingeben, der in  der E-Mail erscheinen soll.</string>
+    <string name="awareness_email_hint">Bitte gebe an dieser Stelle eine möglichst authentische (oder bereits existierende) E-Mail Adresse ein, die als Absender erscheinen soll.</string>
     <string name="example_email">Max@Mustermann.de</string>
     <string name="btn_send">Abschicken</string>
     <string name="hint_text">Hier Text eingeben.</string>

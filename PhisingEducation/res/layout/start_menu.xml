@@ -95,6 +95,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_alignParentBottom="true"
+            android:layout_below="@+id/menu_button_about"
             android:text="version"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:textColor="@color/grey"
