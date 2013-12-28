@@ -58,7 +58,6 @@ public class StartMenuActivity extends PhishBaseActivity implements
 			pInfo = getPackageManager().getPackageInfo(getPackageName(), 0);
 			version.setText(pInfo.versionName);
 		} catch (NameNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

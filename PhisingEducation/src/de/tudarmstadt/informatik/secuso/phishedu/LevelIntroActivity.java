@@ -87,7 +87,7 @@ public class LevelIntroActivity extends SwipeActivity {
 			next_activity = AwarenessActivity.class;
 		} else if (this.level == 1) {
 			next_activity = FindAddressBarActivity.class;
-		}else if(this.level == 11){
+		}else if(this.level == BackendController.getInstance().getLevelCount()){
 			next_activity = AppEndActivity.class;
 		}
 		Intent levelIntent = new Intent(this, next_activity);
@@ -97,10 +97,12 @@ public class LevelIntroActivity extends SwipeActivity {
 
 	@Override
 	protected String startButtonText() {
-		if (BackendController.getInstance().getLevel() < 11) {
-			return "Starte Level";
+		if( this.level == 0){
+			return "Weiter";
+		}else if (this.level == BackendController.getInstance().getLevelCount()) {
+			return "Fertig";
 		}
-		return "Fertig";
+		return "Starte Level "+this.level;
 	}
 
 	@Override
@@ -120,7 +122,7 @@ public class LevelIntroActivity extends SwipeActivity {
 			setExampleSpans(view);
 		}
 		setTitles();
-		
+
 		return view;
 	}
 

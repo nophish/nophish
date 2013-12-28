@@ -167,7 +167,8 @@
     <string name="awareness_invalid_email">Die Absender oder Empfänger E-Mail ist ungültig. Bitte überprüfe deine Eingaben.</string>
     <string name="alert_btn_proceed_no_awareness">Überspringen</string>
     <string name="awareness_email_sent">E-Mail versandt</string>
-    <string name="awareness_alert_message">Nun überprüfe bitte deine E-Mails über dein Smartphone. Ggf. musst du auch in deinem Junk/Spam-Ordner nachsehen. Bitte beachte, dass das Ankommen der E-Mail einige Minuten dauern kann.</string>
+    <string name="awareness_alert_message">Nun überprüfe bitte deine E-Mails über dein Smartphone. Über diese kommst du dann zurück in die App.</string>
+    <string name="awareness_second_alert_message">Bitte beachte, dass das Ankommen der E-Mail einige Minuten dauern kann. Ggf. musst du auch in deinem Junk/Spam-Ordner nachsehen.</string>
     <string name="start_game">Spiel starten</string>
     <string name="awareness_resend_email">E-Mail nicht erhalten</string>
     <string name="awareness_text_fake_websites">Auch das Fälschen von Webseiten ist sehr einfach (wie bei E-Mails), wie folgender Comic zeigt.</string>
