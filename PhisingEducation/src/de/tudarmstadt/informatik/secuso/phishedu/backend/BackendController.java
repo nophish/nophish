@@ -9,14 +9,15 @@ import java.util.Scanner;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.net.Uri;
+import android.os.Vibrator;
 
 import com.google.android.gms.appstate.AppStateClient;
 import com.google.android.gms.games.GamesClient;
 import com.google.example.games.basegameutils.BaseGameActivity;
 import com.google.example.games.basegameutils.GameHelper;
 import com.google.gson.Gson;
+import com.google.gson.JsonSyntaxException;
 
-import de.tudarmstadt.informatik.secuso.phishedu.Constants;
 import de.tudarmstadt.informatik.secuso.phishedu.R;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.generator.KeepGenerator;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.generator.SudomainGenerator;
@@ -61,7 +62,13 @@ public class BackendController implements BackendControllerInterface, GameStateL
 	private GameProgress progress;
 
 	private static PhishURL[] deserializeURLs(String serialized){
-		return new Gson().fromJson(serialized, PhishURL[].class);
+		PhishURL[] result = new PhishURL[0];
+		try {
+			result = (new Gson()).fromJson(serialized, PhishURL[].class);
+		} catch (JsonSyntaxException e) {
+			// TODO: handle exception
+		}
+		return result;
 	}
 
 	private static String serializeURLs(PhishURLInterface[] object){
@@ -129,8 +136,7 @@ public class BackendController implements BackendControllerInterface, GameStateL
 		GamesClient gamesclient = this.gamehelper.getGamesClient();
 		AppStateClient appstateclient = this.gamehelper.getAppStateClient();
 		Context context = this.frontend.getContext();
-		GameProgress.init(context, prefs, gamesclient,appstateclient,this);
-		this.progress = GameProgress.getInstance();
+		this.progress = new GameProgress(context, prefs, gamesclient,appstateclient,this);
 		SharedPreferences url_cache = this.frontend.getContext().getSharedPreferences(URL_CACHE_NAME, Context.MODE_PRIVATE);
 		for(PhishAttackType type: CACHE_TYPES){
 			loadUrls(url_cache, type);
@@ -152,7 +158,12 @@ public class BackendController implements BackendControllerInterface, GameStateL
 			int resource = frontend.getContext().getResources().getIdentifier(type.toString().toLowerCase(Locale.US), "raw", frontend.getContext().getPackageName());
 			InputStream input = frontend.getContext().getResources().openRawResource(resource);
 			String json = new Scanner(input,"UTF-8").useDelimiter("\\A").next();
-			urls = (new Gson()).fromJson(json, PhishURL[].class);
+			try {
+				urls = (new Gson()).fromJson(json, PhishURL[].class);
+			} catch (JsonSyntaxException e) {
+				// TODO: handle exception
+			}
+			
 		}
 		this.setURLs(type, urls);
 		//then we get the value from the online store
@@ -347,6 +358,8 @@ public class BackendController implements BackendControllerInterface, GameStateL
 				level_repeat_offsets.add(current_url_level_offset);
 			}
 			progress.decLives();
+			Vibrator v = (Vibrator) frontend.getContext().getSystemService(Context.VIBRATOR_SERVICE);
+			v.vibrate(500);
 		}
 		int offset=this.current_url.getPoints(result);
 		//with this function we ensure that the user gets more points per level
@@ -543,5 +556,10 @@ public class BackendController implements BackendControllerInterface, GameStateL
 	@Override
 	public int getDomainPart() {
 		return current_url.getDomainPart();
+	}
+
+	@Override
+	public void deleteRemoteData() {
+		this.progress.deleteRemoteData();
 	}
 }

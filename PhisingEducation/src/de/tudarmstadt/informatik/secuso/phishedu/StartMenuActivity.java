@@ -6,6 +6,8 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager.NameNotFoundException;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.net.Uri;
@@ -49,7 +51,20 @@ public class StartMenuActivity extends PhishBaseActivity implements
 			TextView startbutton = (TextView) findViewById(R.id.menu_button_play);
 			startbutton.setText(R.string.button_play_on);
 		}
-
+		
+		TextView version = (TextView) findViewById(R.id.version);
+		PackageInfo pInfo;
+		try {
+			pInfo = getPackageManager().getPackageInfo(getPackageName(), 0);
+			version.setText(pInfo.versionName);
+		} catch (NameNotFoundException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@Override
+	protected void onStart() {
+		super.onStart();
 		BackendController.getInstance().onUrlReceive(getIntent().getData());
 	}
 	

@@ -121,6 +121,11 @@ public interface BackendControllerInterface extends GameHelperListener{
 	public void signOut();
 	
 	/**
+	 * Delete the Data saved in the Google+ Storage
+	 */
+	public void deleteRemoteData();
+	
+	/**
 	 * How many URLs must the user answer in this Level
 	 * @return An Integer representing the number of URLs in this level
 	 */
@@ -221,7 +226,7 @@ public interface BackendControllerInterface extends GameHelperListener{
 	
 	/**
 	 * Check if this backendcontroller is already inited.
-	 * @return 
+	 * @return true if the initialization is finished. 
 	 */
 	public boolean isInitDone();
 }

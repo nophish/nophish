@@ -31,6 +31,8 @@ public class GooglePlusActivity extends PhishBaseActivity implements View.OnClic
 				View.VISIBLE);
 		findViewById(R.id.button_show_online_achievement).setVisibility(
 				View.VISIBLE);
+		findViewById(R.id.button_delete_remote_data).setVisibility(
+				View.VISIBLE);
 	}
 
 	private void hidePlusButtons(){
@@ -43,6 +45,8 @@ public class GooglePlusActivity extends PhishBaseActivity implements View.OnClic
 		findViewById(R.id.button_show_leaderboard_total_points).setVisibility(
 				View.GONE);
 		findViewById(R.id.button_show_online_achievement).setVisibility(
+				View.GONE);
+		findViewById(R.id.button_delete_remote_data).setVisibility(
 				View.GONE);
 	}
 
@@ -99,17 +103,7 @@ public class GooglePlusActivity extends PhishBaseActivity implements View.OnClic
 		} else if (view.getId() == R.id.sign_out_button) {
 			// sign out.
 			BackendController.getInstance().signOut();
-
-			// show sign-in button, hide the sign-out button
-			findViewById(R.id.sign_in_button).setVisibility(View.VISIBLE);
-			findViewById(R.id.sign_out_button).setVisibility(View.GONE);
-
-			// findViewById(R.id.button_show_leaderboard_rate).setVisibility(View.GONE);
-			// findViewById(R.id.button_show_leaderboard_total).setVisibility(View.GONE);
-			findViewById(R.id.button_show_leaderboard_total_points)
-			.setVisibility(View.GONE);
-			findViewById(R.id.button_show_online_achievement).setVisibility(
-					View.GONE);
+			hidePlusButtons();
 		}
 	}
 
@@ -156,4 +150,9 @@ public class GooglePlusActivity extends PhishBaseActivity implements View.OnClic
 		}
 	}
 
+	public void deleteRemoteData(View view){
+		if (this.getGamesClient().isConnected()) {
+			BackendController.getInstance().deleteRemoteData();
+		}
+	}
 }

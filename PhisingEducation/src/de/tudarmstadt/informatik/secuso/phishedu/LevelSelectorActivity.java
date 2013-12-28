@@ -24,13 +24,12 @@ public class LevelSelectorActivity extends SwipeActivity implements
 
 	@Override
 	protected int getPageCount() {
-		return BackendController.getInstance().getLevelCount()-1;
+		return BackendController.getInstance().getLevelCount();
 	}
 
 	@Override
 	protected View getPage(int level, LayoutInflater inflater,
 			ViewGroup container, Bundle savedInstanceState) {
-		level+=1;
 		NoPhishLevelInfo level_info = BackendController.getInstance().getLevelInfo(level);
 		View layoutView = inflater.inflate(R.layout.level_overview_template,
 				container, false);
@@ -59,7 +58,7 @@ public class LevelSelectorActivity extends SwipeActivity implements
 					View.INVISIBLE);
 		}
 		TextView levelnumber = (TextView) layoutView.findViewById(R.id.levelbutton_text);
-		levelnumber.setText(Integer.toString(level));
+		levelnumber.setText(level_info.levelNumber);
 		TextView levelTitle = (TextView) layoutView.findViewById(R.id.level_title);
 		levelTitle.setText(level_info.titleId);
 		TextView levelDescription = (TextView) layoutView.findViewById(R.id.level_description);
@@ -75,9 +74,8 @@ public class LevelSelectorActivity extends SwipeActivity implements
 
 	@Override
 	public void onClickPage(int page) {
-		page+=1;
 		if (page <= BackendController.getInstance().getMaxUnlockedLevel()) {
-			if (page == 0 && BackendController.getInstance().getLevel()>0 && !Constants.ALLOW_LEVEL0_REPLAY) {
+			if (page == 0 && !Constants.ALLOW_LEVEL0_REPLAY) {
 				// level 0 cannot be replayed
 				Toast.makeText(getApplicationContext(),
 						getString(R.string.cannot_replay_level_0),
