@@ -64,7 +64,6 @@ public class ProofActivity extends PhishBaseActivity {
 	}
 
 	private void setTitles() {
-
 		android.support.v7.app.ActionBar ab = getSupportActionBar();
 		if (level != 2) {
 			ab.setTitle(R.string.correct);

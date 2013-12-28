@@ -39,13 +39,14 @@ public class ResultActivity extends SwipeActivity {
 	private int result = PhishResult.Phish_Detected.getValue();
 	private int site_type = 0;
 	private int attack_type = 0;
+	private int level = 0;
 
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		this.result = getIntent().getIntExtra(Constants.EXTRA_RESULT, 0);
 		this.site_type = getIntent().getIntExtra(Constants.EXTRA_SITE_TYPE, 0);
-		this.attack_type = getIntent().getIntExtra(Constants.EXTRA_ATTACK_TYPE,
-				0);
+		this.attack_type = getIntent().getIntExtra(Constants.EXTRA_ATTACK_TYPE,0);
+		this.level = getIntent().getIntExtra(Constants.EXTRA_LEVEL, 0);
 		setTitle();
 	}
 
@@ -206,7 +207,10 @@ public class ResultActivity extends SwipeActivity {
 		} else {
 			ab.setTitle(getString(R.string.wrong));
 		}
-		if (this.result == PhishResult.Phish_Detected.getValue()
+		if(this.level==2){
+			//no subtitle in level2;
+			ab.setSubtitle(null);
+		}else if (this.result == PhishResult.Phish_Detected.getValue()
 				|| this.result == PhishResult.Phish_NotDetected.getValue()) {
 			ab.setSubtitle(getString(R.string.phish));
 		} else {
