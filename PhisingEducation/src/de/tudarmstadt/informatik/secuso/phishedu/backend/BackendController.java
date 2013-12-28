@@ -215,7 +215,6 @@ public class BackendController implements BackendControllerInterface, GameStateL
 		new SendMailTask(from, to, usermessage).execute();
 	}
 
-
 	private ArrayList<Integer> level_repeat_offsets;
 	@Override
 	public void startLevel(int level) {
