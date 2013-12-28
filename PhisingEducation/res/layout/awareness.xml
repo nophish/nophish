@@ -33,7 +33,7 @@
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="@string/level_00_intro_02_text_02" />
 
-        <MultiAutoCompleteTextView
+        <AutoCompleteTextView
             android:id="@+id/awareness_edit_receiver_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -65,7 +65,7 @@
             android:textColor="@color/grey"
             android:text="@string/awareness_email_hint" />
         
-        <MultiAutoCompleteTextView
+        <AutoCompleteTextView
             android:id="@+id/awareness_edit_sender_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
