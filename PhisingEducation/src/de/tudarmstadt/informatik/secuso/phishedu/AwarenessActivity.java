@@ -2,8 +2,6 @@ package de.tudarmstadt.informatik.secuso.phishedu;
 
 import java.util.regex.Pattern;
 
-import com.google.android.gms.internal.bu;
-
 import android.accounts.Account;
 import android.accounts.AccountManager;
 import android.app.AlertDialog;

@@ -31,7 +31,7 @@ public class LevelSelectorActivity extends SwipeActivity implements
 	protected View getPage(int level, LayoutInflater inflater,
 			ViewGroup container, Bundle savedInstanceState) {
 		NoPhishLevelInfo level_info = BackendController.getInstance().getLevelInfo(level);
-		View layoutView = inflater.inflate(R.layout.level_overview_template,
+		View layoutView = inflater.inflate(R.layout.fragment_level_overview_template,
 				container, false);
 		int userlevel = BackendController.getInstance().getMaxUnlockedLevel();
 		View button = layoutView.findViewById(R.id.levelbutton);
@@ -42,6 +42,10 @@ public class LevelSelectorActivity extends SwipeActivity implements
 					View.INVISIBLE);
 			layoutView.findViewById(R.id.levelbutton_tick).setVisibility(
 					View.VISIBLE);
+			layoutView.findViewById(R.id.levelbutton_points).setVisibility(
+					View.VISIBLE);
+			layoutView.findViewById(R.id.levelbutton_points_text).setVisibility(
+					View.VISIBLE);
 		} else if (level == userlevel) {
 			button.setBackgroundDrawable(getResources().getDrawable(
 					R.drawable.levelicon_active_bg));
@@ -49,12 +53,20 @@ public class LevelSelectorActivity extends SwipeActivity implements
 					View.INVISIBLE);
 			layoutView.findViewById(R.id.levelbutton_tick).setVisibility(
 					View.INVISIBLE);
+			layoutView.findViewById(R.id.levelbutton_points).setVisibility(
+					View.VISIBLE);
+			layoutView.findViewById(R.id.levelbutton_points_text).setVisibility(
+					View.VISIBLE);
 		} else {
 			button.setBackgroundDrawable(getResources().getDrawable(
 					R.drawable.levelicon_inactive_bg));
 			layoutView.findViewById(R.id.levelbutton_padlock).setVisibility(
 					View.VISIBLE);
 			layoutView.findViewById(R.id.levelbutton_tick).setVisibility(
+					View.INVISIBLE);
+			layoutView.findViewById(R.id.levelbutton_points).setVisibility(
+					View.INVISIBLE);
+			layoutView.findViewById(R.id.levelbutton_points_text).setVisibility(
 					View.INVISIBLE);
 		}
 		TextView levelnumber = (TextView) layoutView.findViewById(R.id.levelbutton_text);
