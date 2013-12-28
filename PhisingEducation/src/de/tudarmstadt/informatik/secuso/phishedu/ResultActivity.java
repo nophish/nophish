@@ -119,7 +119,6 @@ public class ResultActivity extends SwipeActivity {
 				false);
 		// if result == result_nophish_notdetected -> virbration feedback
 		if (this.result == PhishResult.Phish_NotDetected.getValue()) {
-			vibrate();
 			setReminderText(view);
 		}
 		if (BackendController.getInstance().getLevel() == 2) {
@@ -142,8 +141,6 @@ public class ResultActivity extends SwipeActivity {
 			TextView resultTextToHide = (TextView) view
 					.findViewById(R.id.you_guessed_02);
 			resultTextToHide.setVisibility(View.INVISIBLE);
-
-			vibrate();
 
 			// change smile to not smiling
 			ImageView image = (ImageView) view
@@ -189,14 +186,6 @@ public class ResultActivity extends SwipeActivity {
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
-	}
-
-	
-	private void vibrate() {
-		// make phone vibrate
-		Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-		v.vibrate(500);
-
 	}
 
 	private void setTitle() {

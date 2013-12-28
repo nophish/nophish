@@ -39,7 +39,7 @@
             android:layout_height="wrap_content"
             android:layout_alignBottom="@+id/level_03_warning"
             android:layout_toRightOf="@+id/level_03_warning"
-            android:text="@string/new_attack"
+            android:text="@string/first_attack"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <TextView

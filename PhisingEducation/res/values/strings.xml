@@ -277,6 +277,7 @@
     <string name="path_description">Gesprächs-\nthema</string>
     <string name="domain_de">de</string>
     <string name="dot">.</string>
+    <string name="first_attack"><b>Erster Angriff</b></string>
     <string name="new_attack"><b>Neuer Angriff</b></string>
     <string name="slash">/</string>
     <string name="reminder"><b>Zur Erinnerung - Webadressen</b></string>
@@ -455,9 +456,9 @@
     <string name="oversafe_01">Diese Webadresse ist nicht gefälscht. Ihr kannst du ruhig vertrauen.</string>
     <string name="oversafe_02">Wenn man sich unsicher ist, ist es allerdings besser übervorsichtig zu sein und keine Daten einzugeben. In solchen Fällen ist es sinnvoll, das entsprechende Unternehmen zu kontaktieren und dort nach der Vertrauenswürdigkeit der verdächtigen Webadresse zu fragen.</string>
     <string name="you_are_correct">Gut gemacht. Diese Webadresse ist nicht gefälscht, ihr kannst du vertrauen.</string>
-    <string name="you_guessed">Leider konntest du nicht zeigen, an welcher Stelle der Phisher versucht hat, dich auszutricksen.</string>
-    <string name="you_guessed_02">Aus diesem Grund müssen wir davon ausgehen, dass du in dieser Runde nur geraten hast. Es gibt keine Punkte.</string>
-    <string name="you_found_the_phish">Du hast den Phish erkannt. Herzlichen Glückwunsch. Du bist jetzt etwas sicherer.</string>
+    <string name="you_guessed">Leider konntest du uns nicht den Wer-Bereich zeigen.</string>
+    <string name="you_guessed_02"></string>
+    <string name="you_found_the_phish">Du hast den Phish erkannt und konntest uns den Wer-Bereich nennen. Herzlichen Glückwunsch. Du bist jetzt etwas sicherer.</string>
     <string name="title_activity_proof">ProofActivity</string>
     <string name="exercise">Übung</string>
     <string name="button_verify">Überprüfen</string>

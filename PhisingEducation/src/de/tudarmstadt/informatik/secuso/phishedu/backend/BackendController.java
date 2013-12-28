@@ -9,6 +9,7 @@ import java.util.Scanner;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.net.Uri;
+import android.os.Vibrator;
 
 import com.google.android.gms.appstate.AppStateClient;
 import com.google.android.gms.games.GamesClient;
@@ -357,6 +358,8 @@ public class BackendController implements BackendControllerInterface, GameStateL
 				level_repeat_offsets.add(current_url_level_offset);
 			}
 			progress.decLives();
+			Vibrator v = (Vibrator) frontend.getContext().getSystemService(Context.VIBRATOR_SERVICE);
+			v.vibrate(500);
 		}
 		int offset=this.current_url.getPoints(result);
 		//with this function we ensure that the user gets more points per level
