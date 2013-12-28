@@ -1,13 +1,12 @@
 <?php
+include("header.php");
+?>
+<?php
 $first_domain_word=explode(".",$_SERVER["HTTP_HOST"])[0];
 $number_fragment_charsfragment=4;
 $success=false;
 ?>
-<html>
-	<head>
-		<title>Anti Phishing Education</title>
-	</head>
-	<body>
+<div class="content">
 <?php
 if(isset($_REQUEST["first_word"])){
 if($_REQUEST["first_word"]==$first_domain_word && $_REQUEST["chars"] == substr($_REQUEST["fragment"],-$number_fragment_charsfragment)){
@@ -39,12 +38,13 @@ if(!$success){
 </ul>
 <input type="hidden" name="fragment" value="<?= $_REQUEST["frag"] ?>" />
 <p><input type="submit" /></p>
-                        <div style="height:110%;">&nbsp;</div>
+                        <div class="forcescroll">&nbsp;</div>
+ 			<a name="bottom-<?= $_REQUEST["frag"] ?>"></a>
 			<p>Bitte scrolle ganz nach oben, um dir die Webadresse anzeigen zu lassen. Ziehe hierzu den Finger so lange herunter (ggf. mehrmals), bis du die Adressleiste siehst.</p>
-                        <a name="bottom-<?= $_REQUEST["frag"] ?>" />
 </form>
 <?php
 }
 ?>
-			</body>
-		</html>
+<?php
+include("footer.php");
+?>
