@@ -245,7 +245,7 @@ public interface BackendController extends GameHelperListener{
 	public interface OnLevelChangeListener{
 		/**
 		 * This function is called when the level changes
-		 * @param new_level the new level ID
+		 * @param new_levelid the new level ID
 		 */
 		public void onLevelChange(int new_levelid);
 	}
