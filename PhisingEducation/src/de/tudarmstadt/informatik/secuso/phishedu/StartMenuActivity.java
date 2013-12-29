@@ -18,6 +18,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
+import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController.OnLevelChangeListener;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendControllerImpl;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.FrontendController;
 
@@ -28,7 +29,7 @@ import de.tudarmstadt.informatik.secuso.phishedu.backend.FrontendController;
  *         store his/her score online he/she has to sign into google+
  */
 public class StartMenuActivity extends PhishBaseActivity implements
-		FrontendController {
+		FrontendController, OnLevelChangeListener {
 	private static Activity context;
 	
 	public StartMenuActivity(){

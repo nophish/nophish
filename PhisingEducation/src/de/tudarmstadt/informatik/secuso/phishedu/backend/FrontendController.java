@@ -38,12 +38,6 @@ public interface FrontendController extends GameHelperListener {
 	void initDone();
 	
 	/**
-	 * This function is called from the backend when we change Level.
-	 * @param level the new level
-	 */
-	void onLevelChange(int level);
-	
-	/**
 	 * Start a browser and show the given URL
 	 * @param url the url to show
 	 */

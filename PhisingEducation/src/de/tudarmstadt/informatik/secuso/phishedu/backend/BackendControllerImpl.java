@@ -62,6 +62,7 @@ public class BackendControllerImpl implements BackendController, GameStateLoaded
 	private boolean gamestate_loaded = false;
 	private GameProgress progress;
 	private List<OnLevelstateChangeListener> onLevelstateChangeListeners=new ArrayList<BackendController.OnLevelstateChangeListener>();
+	private List<OnLevelChangeListener> onLevelChangeListeners=new ArrayList<BackendController.OnLevelChangeListener>();
 
 	private static PhishURL[] deserializeURLs(String serialized){
 		PhishURL[] result = new PhishURL[0];
@@ -235,7 +236,9 @@ public class BackendControllerImpl implements BackendController, GameStateLoaded
 			}
 		}
 		this.progress.setLevel(level);
-		this.frontend.onLevelChange(this.progress.getLevel());
+		for (OnLevelChangeListener listener : onLevelChangeListeners) {
+			listener.onLevelChange(level);
+		}
 		notifyLevelStateChangedListener(Levelstate.running);
 	}
 
@@ -591,5 +594,18 @@ public class BackendControllerImpl implements BackendController, GameStateLoaded
 	public void removeOnLevelstateChangeListener(
 			OnLevelstateChangeListener listener) {
 		this.onLevelstateChangeListeners.remove(listener);
+	}
+	
+	@Override
+	public void addOnLevelChangeListener(OnLevelChangeListener listener) {
+		if(!this.onLevelChangeListeners.contains(listener)){
+			this.onLevelChangeListeners.add(listener);
+		}
+	}
+
+	@Override
+	public void removeOnLevelChangeListener(
+			OnLevelChangeListener listener) {
+		this.onLevelChangeListeners.remove(listener);
 	}
 }
