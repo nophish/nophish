@@ -240,6 +240,17 @@ public interface BackendController extends GameHelperListener{
 	}
 	
 	/**
+	 * This Interface is implemented by the frontend to get notifed whenever the level changes
+	 */
+	public interface OnLevelChangeListener{
+		/**
+		 * This function is called when the level changes
+		 * @param new_level the new level ID
+		 */
+		public void onLevelChange(int new_levelid);
+	}
+	
+	/**
 	 * Represents the state of the leve
 	 */
 	public enum Levelstate{
