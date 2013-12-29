@@ -105,7 +105,7 @@ public abstract class SwipeActivity extends PhishBaseActivity implements ViewPag
 	}
 	
 	protected void setUrlText(TextView urlText) {
-		String[] urlParts = BackendControllerImpl.getInstance().getUrl();
+		String[] urlParts = BackendControllerImpl.getInstance().getUrl().getParts();
 		StringBuilder builder = new StringBuilder();
 		
 		for(int i=0; i< urlParts.length; i++){

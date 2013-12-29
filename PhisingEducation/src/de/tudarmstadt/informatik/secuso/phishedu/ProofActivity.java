@@ -44,7 +44,7 @@ public class ProofActivity extends PhishBaseActivity {
 		
 		setTitles();
 
-		String[] urlparts = BackendControllerImpl.getInstance().getUrl();
+		String[] urlparts = BackendControllerImpl.getInstance().getUrl().getParts();
 		SpannableStringBuilder builder = new SpannableStringBuilder();
 
 		for (int i = 0; i < urlparts.length; i++) {
@@ -117,8 +117,8 @@ public class ProofActivity extends PhishBaseActivity {
 		Intent levelIntent = new Intent(this, ResultActivity.class);
 		levelIntent.putExtra(Constants.EXTRA_RESULT, result);
 		levelIntent.putExtra(Constants.EXTRA_LEVEL, this.level);
-		levelIntent.putExtra(Constants.EXTRA_SITE_TYPE, BackendControllerImpl.getInstance().getSiteType().getValue());
-		levelIntent.putExtra(Constants.EXTRA_ATTACK_TYPE, BackendControllerImpl.getInstance().getAttackType().getValue());
+		levelIntent.putExtra(Constants.EXTRA_SITE_TYPE, BackendControllerImpl.getInstance().getUrl().getSiteType().getValue());
+		levelIntent.putExtra(Constants.EXTRA_ATTACK_TYPE, BackendControllerImpl.getInstance().getUrl().getAttackType().getValue());
 		startActivity(levelIntent);
 	}
 

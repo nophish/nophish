@@ -66,7 +66,7 @@ public interface BackendController extends GameHelperListener{
 	 * Get the current url returned by the last {@link #getNextUrl()} call.
 	 * @return A set of strings that (concardinated) make up the URL
 	 */
-	public String[] getUrl();
+	public PhishURL getUrl();
 	
 	/**
 	 * Switch to the next URL.
@@ -104,23 +104,12 @@ public interface BackendController extends GameHelperListener{
 	public int getLevelPoints();
 	
 	/**
-	 * What type of site is this currently
-	 * @return sitetype of the current phish
-	 */
-	public PhishSiteType getSiteType();
-	
-	/**
-	 * What type of attack is this currently
-	 * @return attacktype of the current phish
-	 */
-	public PhishAttackType getAttackType();
-	
-	/**
 	 * This function is called when the user chooses weather this URL is a phish or not 
 	 * @param accptance true of the user thinks this is a phish. false otherwise.
 	 * @return a {@link PhishResult} enum representing the state of the phish
 	 */
 	public PhishResult userClicked(boolean accptance);
+	
 	/**
 	 * This function must be called when the user selects a part of the URL as phishy.
 	 * @param part the part that the user suspects to be an attack.
@@ -171,18 +160,6 @@ public interface BackendController extends GameHelperListener{
 	 * @return one of the LEVEL_* constants from this interface.
 	 */
 	public Levelstate getLevelState();
-	
-	/**
-	 * Get the parts of the current URL that are attacked.
-	 * @return indexes from the array returned by {@link #getUrl()} that are part of an attack.
-	 */
-	public Integer[] getAttackParts();
-	
-	/**
-	 * Get the part of the current URL that is the domain.
-	 * @return index from the array returned by {@link #getUrl()} that is the Domain.
-	 */
-	public int getDomainPart();
 	
 	/**
 	 * return the number of lifes left

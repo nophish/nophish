@@ -86,7 +86,7 @@ public class URLTaskActivity extends PhishBaseActivity {
 
 	private void nextURL() {
 		BackendControllerImpl.getInstance().nextUrl();
-		String[] urlArray = BackendControllerImpl.getInstance().getUrl();
+		String[] urlArray = BackendControllerImpl.getInstance().getUrl().getParts();
 
 		// build string from array
 		StringBuilder sb = new StringBuilder();
@@ -117,8 +117,8 @@ public class URLTaskActivity extends PhishBaseActivity {
 		Intent levelIntent = new Intent(this, followActivity);
 		levelIntent.putExtra(Constants.EXTRA_RESULT, result.getValue());
 		levelIntent.putExtra(Constants.EXTRA_LEVEL, this.level);
-		levelIntent.putExtra(Constants.EXTRA_SITE_TYPE, BackendControllerImpl.getInstance().getSiteType().getValue());
-		levelIntent.putExtra(Constants.EXTRA_ATTACK_TYPE, BackendControllerImpl.getInstance().getAttackType().getValue());
+		levelIntent.putExtra(Constants.EXTRA_SITE_TYPE, BackendControllerImpl.getInstance().getUrl().getSiteType().getValue());
+		levelIntent.putExtra(Constants.EXTRA_ATTACK_TYPE, BackendControllerImpl.getInstance().getUrl().getAttackType().getValue());
 		startActivity(levelIntent);
 	}
 	

@@ -325,8 +325,8 @@ public class BackendControllerImpl implements BackendController, GameStateLoaded
 	}
 
 	@Override
-	public String[] getUrl(){
-		return (String[]) this.current_url.getParts();
+	public PhishURL getUrl(){
+		return this.current_url;
 	}
 
 	@Override
@@ -376,18 +376,6 @@ public class BackendControllerImpl implements BackendController, GameStateLoaded
 				break;
 			}
 		}
-	}
-
-	@Override
-	public PhishSiteType getSiteType() {
-		checkinited();
-		return this.current_url.getSiteType();
-	}
-
-	@Override
-	public PhishAttackType getAttackType() {
-		checkinited();
-		return this.current_url.getAttackType();
 	}
 
 	@Override
@@ -523,11 +511,6 @@ public class BackendControllerImpl implements BackendController, GameStateLoaded
 	}
 
 	@Override
-	public Integer[] getAttackParts() {
-		return current_url.getAttackParts().toArray(new Integer[0]);
-	}
-
-	@Override
 	public int getLifes() {
 		checkinited();
 		return this.progress.getRemainingLives();
@@ -571,11 +554,6 @@ public class BackendControllerImpl implements BackendController, GameStateLoaded
 	@Override
 	public int getLevelPoints(int level) {
 		return this.progress.getLevelPoints(level);
-	}
-
-	@Override
-	public int getDomainPart() {
-		return current_url.getDomainPart();
 	}
 
 	@Override

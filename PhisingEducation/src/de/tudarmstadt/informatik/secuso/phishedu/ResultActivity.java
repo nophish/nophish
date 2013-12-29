@@ -214,8 +214,8 @@ public class ResultActivity extends SwipeActivity {
 
 	@Override
 	protected void setUrlText(TextView urlText) {
-		String urlParts[] = BackendControllerImpl.getInstance().getUrl();
-		int domainPart = BackendControllerImpl.getInstance().getDomainPart();
+		String urlParts[] = BackendControllerImpl.getInstance().getUrl().getParts();
+		int domainPart = BackendControllerImpl.getInstance().getUrl().getDomainPart();
 		// at start clear string builder
 		for (int i = 0; i < urlParts.length; i++) {
 
