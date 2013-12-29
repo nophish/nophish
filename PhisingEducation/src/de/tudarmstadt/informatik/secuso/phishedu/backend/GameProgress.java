@@ -2,7 +2,6 @@ package de.tudarmstadt.informatik.secuso.phishedu.backend;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.os.Vibrator;
 
 import com.google.android.gms.appstate.AppStateClient;
 import com.google.android.gms.appstate.OnStateLoadedListener;

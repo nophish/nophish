@@ -254,6 +254,10 @@ public interface BackendController extends GameHelperListener{
 		private Levelstate(int value){
 			this.value=value;
 		}
+		/**
+		 * Get the Value for this enum
+		 * @return the int value of the enum
+		 */
 		public int getValue(){
 			return value;
 		}
