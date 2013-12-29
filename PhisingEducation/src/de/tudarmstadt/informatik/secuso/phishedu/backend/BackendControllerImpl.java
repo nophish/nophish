@@ -239,7 +239,7 @@ public class BackendControllerImpl implements BackendController, GameStateLoaded
 		for (OnLevelChangeListener listener : onLevelChangeListeners) {
 			listener.onLevelChange(level);
 		}
-		notifyLevelStateChangedListener(Levelstate.running);
+		notifyLevelStateChangedListener(Levelstate.running, level);
 	}
 
 	@Override
@@ -420,18 +420,18 @@ public class BackendControllerImpl implements BackendController, GameStateLoaded
 	}
 
 	private void levelFailed(int level){
-		notifyLevelStateChangedListener(Levelstate.failed);
+		notifyLevelStateChangedListener(Levelstate.failed, level);
 	}
 
 	private void levelFinished(int level){
 		this.progress.commitPoints();
 		this.progress.unlockLevel(level+1);
-		notifyLevelStateChangedListener(Levelstate.finished);
+		notifyLevelStateChangedListener(Levelstate.finished, level);
 	}
 
-	private void notifyLevelStateChangedListener(Levelstate newstate){
+	private void notifyLevelStateChangedListener(Levelstate newstate, int levelid){
 		for (OnLevelstateChangeListener listener : onLevelstateChangeListeners) {
-			listener.onLevelstateChange(newstate);
+			listener.onLevelstateChange(newstate, levelid);
 		}
 	}
 
