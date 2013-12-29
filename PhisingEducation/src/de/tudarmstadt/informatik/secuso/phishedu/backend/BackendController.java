@@ -23,13 +23,13 @@ public interface BackendController extends GameHelperListener{
 	 * This Function allows the frontend to be notified whenever the level State changes.
 	 * @param listener the frontend to notify.
 	 */
-	public void addOnLevelstateChangedListener(OnLevelstateChangedListener listener);
+	public void addOnLevelstateChangeListener(OnLevelstateChangeListener listener);
 	
 	/**
-	 * This Function allows the frontend to unregister a listener previously registered via {@link #addOnLevelstateChangedListener(OnLevelstateChangedListener)} 
+	 * This Function allows the frontend to unregister a listener previously registered via {@link #addOnLevelstateChangeListener(OnLevelstateChangeListener)} 
 	 * @param listener the listener to unregister
 	 */
-	public void removeOnLevelstateChangedListener(OnLevelstateChangedListener listener);
+	public void removeOnLevelstateChangeListener(OnLevelstateChangeListener listener);
 		
 	/**
 	 * This function sends a Mail to a custom Mail Adress-
@@ -231,7 +231,7 @@ public interface BackendController extends GameHelperListener{
 	/**
 	 * this Interface is implemented by the frontend to get notified whenever the Level State changes
 	 */
-	public interface OnLevelstateChangedListener{
+	public interface OnLevelstateChangeListener{
 		/**
 		 * This function is called when the level state changes.
 		 * @param state the new state
