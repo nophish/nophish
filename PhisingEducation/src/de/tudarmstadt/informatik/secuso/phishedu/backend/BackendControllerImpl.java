@@ -440,7 +440,7 @@ public class BackendControllerImpl implements BackendController, GameStateLoaded
 
 	private void notifyLevelStateChangedListener(Levelstate newstate){
 		for (OnLevelstateChangeListener listener : onLevelstateChangeListeners) {
-			listener.onlevelstateChange(newstate);
+			listener.onLevelstateChange(newstate);
 		}
 	}
 
