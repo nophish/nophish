@@ -63,6 +63,7 @@ public class BackendControllerImpl implements BackendController, GameStateLoaded
 	private GameProgress progress;
 	private List<OnLevelstateChangeListener> onLevelstateChangeListeners=new ArrayList<BackendController.OnLevelstateChangeListener>();
 	private List<OnLevelChangeListener> onLevelChangeListeners=new ArrayList<BackendController.OnLevelChangeListener>();
+	private BackendInitListener initListener;
 
 	private static PhishURL[] deserializeURLs(String serialized){
 		PhishURL[] result = new PhishURL[0];
@@ -128,11 +129,12 @@ public class BackendControllerImpl implements BackendController, GameStateLoaded
 		}
 	}
 
-	public void init(FrontendController frontend){
+	public void init(FrontendController frontend, BackendInitListener initlistener){
 		if(this.isInitDone()){
 			return;
 		}
 		this.frontend=frontend;
+		this.initListener=initlistener;
 		this.gamehelper=new GameHelper(frontend.getBaseActivity());
 		this.gamehelper.setup(this,BaseGameActivity.CLIENT_APPSTATE | BaseGameActivity.CLIENT_GAMES);
 		SharedPreferences prefs = this.frontend.getContext().getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
@@ -164,9 +166,7 @@ public class BackendControllerImpl implements BackendController, GameStateLoaded
 			try {
 				urls = (new Gson()).fromJson(json, PhishURL[].class);
 			} catch (JsonSyntaxException e) {
-				// TODO: handle exception
 			}
-
 		}
 		this.setURLs(type, urls);
 		//then we get the value from the online store
@@ -194,7 +194,7 @@ public class BackendControllerImpl implements BackendController, GameStateLoaded
 	}
 
 	public void urlDownloadProgress(int percent){
-		this.frontend.initProgress(percent);
+		this.initListener.initProgress(percent);
 	}
 
 	public boolean isInitDone(){
@@ -208,7 +208,7 @@ public class BackendControllerImpl implements BackendController, GameStateLoaded
 		}
 		if (this.urlCache[PhishAttackType.NoPhish.getValue()].length >0 && this.urlCache[PhishAttackType.AnyPhish.getValue()].length > 0 &&  this.gamestate_loaded){
 			this.inited=true;
-			this.frontend.initDone();
+			this.initListener.onInitDone();
 			this.progress.StartFinished();	
 		}
 	}

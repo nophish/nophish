@@ -14,10 +14,10 @@ public interface BackendController extends GameHelperListener{
 	/**
 	 * This function must be called directly before the first start of the app.
 	 * It will register the caller with the backend for callbacks.
-	 * @param frontend
-	 * @param gamehelper
+	 * @param frontend This is the frontend for this backend
+	 * @param doneListener This Listener is notified when init is done.
 	 */
-	public void init(FrontendController frontend);
+	public void init(FrontendController frontend, BackendInitListener doneListener);
 	
 	/**
 	 * This Function allows the frontend to be notified whenever the level State changes.
@@ -260,6 +260,21 @@ public interface BackendController extends GameHelperListener{
 		 * @param new_levelid the new level ID
 		 */
 		public void onLevelChange(int new_levelid);
+	}
+	
+	/**
+	 * This Interface is implemented by the frontend to get notified when the init is done.
+	 */
+	public interface BackendInitListener{
+		/**
+		 * This function is called while init continues.
+		 * @param percent how far is completion.
+		 */
+		void initProgress(int percent);
+		/**
+		 * This function is called when the game can start.
+		 */
+		void onInitDone();
 	}
 	
 	/**

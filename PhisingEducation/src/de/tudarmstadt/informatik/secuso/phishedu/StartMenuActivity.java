@@ -18,6 +18,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
+import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController.BackendInitListener;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController.OnLevelChangeListener;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendControllerImpl;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.FrontendController;
@@ -29,7 +30,7 @@ import de.tudarmstadt.informatik.secuso.phishedu.backend.FrontendController;
  *         store his/her score online he/she has to sign into google+
  */
 public class StartMenuActivity extends PhishBaseActivity implements
-		FrontendController, OnLevelChangeListener {
+		FrontendController, OnLevelChangeListener, BackendInitListener {
 	private static Activity context;
 	
 	public StartMenuActivity(){
@@ -44,7 +45,7 @@ public class StartMenuActivity extends PhishBaseActivity implements
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		if(!BackendControllerImpl.getInstance().isInitDone()){
-		  BackendControllerImpl.getInstance().init(this);
+		  BackendControllerImpl.getInstance().init(this,this);
 		}
 
 		setContentView(R.layout.start_menu);
@@ -121,7 +122,7 @@ public class StartMenuActivity extends PhishBaseActivity implements
 	}
 
 	@Override
-	public void initDone() {
+	public void onInitDone() {
 		// displayToast("we are finished with initialization!");
 	}
 

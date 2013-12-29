@@ -28,16 +28,6 @@ public interface FrontendController extends GameHelperListener {
 	
 	//Callback functions
 	/**
-	 * This function is called while init continues.
-	 * @param percent how far is completion.
-	 */
-	void initProgress(int percent);
-	/**
-	 * This function is called when the game can start.
-	 */
-	void initDone();
-	
-	/**
 	 * Start a browser and show the given URL
 	 * @param url the url to show
 	 */
