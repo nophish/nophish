@@ -130,9 +130,9 @@ public class LevelIntroActivity extends SwipeActivity {
 
 	private void setTitles() {
 		ActionBar ab = getSupportActionBar();
-		NoPhishLevelInfo level_info = BackendControllerImpl.getInstance().getLevelInfo();
+		NoPhishLevelInfo level_info = BackendControllerImpl.getInstance().getLevelInfo(level);
 		String title = getString(level_info.titleId);
-		String subtitle = getString(level_info.titleId);
+		String subtitle = getString(level_info.subTitleId);
 
 		if (!title.equals(subtitle)) {
 			// if subtitle and title are different, subtitle is set

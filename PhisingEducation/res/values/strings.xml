@@ -134,7 +134,7 @@
     <string name="level_subtitle_02">Einführung in Webadressen</string>
     <string name="level_subtitle_03">Bereich der Abteilungen</string>
     <string name="level_subtitle_04">IP-Adressen</string>
-    <string name="level_subtitle_05">Bezugslose/schwachsinnige Namen</string>
+    <string name="level_subtitle_05">Bezugslose/unsinnige Namen</string>
     <string name="level_subtitle_06">Vertrauenswürdig klingende Namen</string>
     <string name="level_subtitle_07">Ähnliche Namen im Wer-Bereich</string>
     <string name="level_subtitle_08">Ähnliche Zeichen im Wer-Bereich</string>
@@ -143,7 +143,7 @@
     <string name="level_subtitle_11">Schlussbemerkung</string>
     <string name="level_03_splash_subtitle">Bekannte Namen im Bereich der Abteilungen</string>
     <string name="level_04_splash_subtitle">IP-Adresse anstelle des Wer-Bereiches</string>
-    <string name="level_05_splash_subtitle">Bezugslose oder schwachsinnige Namen im Wer-Bereich</string>
+    <string name="level_05_splash_subtitle">Bezugslose oder unsinnige Namen im Wer-Bereich</string>
     <string name="level_06_splash_subtitle">Vertrauenswürdig klingende Namen im Wer-Bereich</string>
     <string name="level_07_splash_subtitle">Ähnliche Namen im Wer-Bereich</string>
     <string name="level_08_splash_subtitle">Ähnliche Zeichen im Wer-Bereich</string>
@@ -318,7 +318,7 @@
     <string name="level_3_splash_text">Level 3\n\n IP- und Nonsense</string>
 
     <!-- LEVEL 5 - NONSENSE DOMAINS -->
-    <string name="level_05_intro_00_text_01"><b>Angriff durch bezugslose oder schwachsinnige Namen im Wer-Bereich</b>\n\nEin weiterer Trick ist die Verwendung von bezugslosen oder gar schwachsinnigen Namen im Wer-Bereich einer Webadresse. Mit dieser Art des Angriffs beschäftigen wir uns in diesem Level.</string>
+    <string name="level_05_intro_00_text_01"><b>Angriff durch bezugslose oder unsinnige Namen im Wer-Bereich</b>\n\nEin weiterer Trick ist die Verwendung von bezugslosen oder gar unsinnigen Namen im Wer-Bereich einer Webadresse. Mit dieser Art des Angriffs beschäftigen wir uns in diesem Level.</string>
     <string name="level_05_intro_02_text_02">Der wichtigste Wer-Bereich einer Webadresse muss auch vom Phisher registriert werden. Schaue dir also auch immer die wichtigsten zwei Blöcke der Webadresse an, den Wer-Bereich. </string>
     <string name="level_05_intro_02_text_03">Enthält der Wer-Bereich Namen, die keinen Sinn ergeben oder nichts mit dem Dienst bzw. Unternehmen deines Gesprächspartners zu tun haben, dann <b>gebe hier keine Daten ein!</b>\n\nUnten sind zwei Beispiele für Phishing-Webadressen, die dieses Prinzip anwenden. In den Beispielen ist dein Gesprächspartner jeweils hsezis.de bzw. badcat.com (blau hinterlegt). Das sind jeweils die wichtigsten Wer-Bereiche der Webadressen. <b>Diese geben augenscheinlich keinen Sinn!</b></string>
     <string name="level_05_intro_02_nonsense_01">secure-login.mail.google.</string>
@@ -400,7 +400,7 @@
     <string name="level_10_intro_02_after_http_01">www.deutsche-bank.de/</string>
     <string name="level_10_intro_03_text_01"><b>https</b>\n\nFängt eine Webadresse mit https:// an, handelt es sich bei dem Gespräch um eine hohe Sicherheitsstufe. Das https:// versichert dir folgendes:\n\n1.) Dein Gespräch bekommt kein anderer mit\n\n2.) Dein Gesprächspartner kann sich ausweisen</string>
     <string name="level_10_intro_04_text_01"><b>https - Dein Gespräch bekommt kein anderer mit</b>\n\nFängt eine Webadresse mit https:// an, bedeutet das quasi, dass das Gespräch in einem geschlossenen Raum stattfindet, fern von der Öffentlichkeit. D.h. niemand bekommt mit, worüber du mit der Webseite redest bzw. welche Benutzereingaben du abschickst (Benutzername, Passwort, Kontodaten, etc.).\n\nIn dem folgenden Beispiel ist dein Gesprächspartner deutsche-bank.de (blau hinterlegt). Es wird https:// verwendet (lila hinterlegt), d.h. niemand kann mitlesen, welche Daten du an deutsche-bank.de schickst.</string>
-    <string name="level_10_intro_05_text_01"><b>https - Dein Gespräch kann sich ausweisen</b>\n\nDas https:// versichert dir außerdem, dass dein Gesprächspartner, der im Wer-Bereich angegeben ist, auch wirklich dieser ist. Dein Gesprächspartner kann dir also beweisen, dass er wirklich der ist, für den er sich im Wer-Bereich ausgibt.\n\nIm folgenden Beispiel ist dein Gesprächspartner deutsche-bank.de (blau hinterlegt). Die Webadresse beginnt mit https (lila hinterlegt). Somit kannst du dir sicher sein, dass dein Gesprächspartner wirklich deutsche-bank.de ist.</string>
+    <string name="level_10_intro_05_text_01"><b>https - Dein Gesprächspartner kann sich ausweisen</b>\n\nDas https:// versichert dir außerdem, dass dein Gesprächspartner, der im Wer-Bereich angegeben ist, auch wirklich dieser ist. Dein Gesprächspartner kann dir also beweisen, dass er wirklich der ist, für den er sich im Wer-Bereich ausgibt.\n\nIm folgenden Beispiel ist dein Gesprächspartner deutsche-bank.de (blau hinterlegt). Die Webadresse beginnt mit https (lila hinterlegt). Somit kannst du dir sicher sein, dass dein Gesprächspartner wirklich deutsche-bank.de ist.</string>
     <string name="level_10_intro_06_text_01"><b>http</b>\n\nFängt eine Webadresse mit http:// an, handelt es sich bei dem Gespräch um eine niedrige Sicherheitsstufe. Das http:// bedeutet folgendes:\n\n1.) Dein Gespräch kann jeder mitbekommen\n\n2.) Dein Gesprächspartner kann sich nicht ausweisen\n\nBei Benutzereingaben (Benutzername, Passwort, Kontodaten, etc.) befindest du dich in der Öffentlichkeit, jeder kann diese mitbekommen. Außerdem kannst du dir nicht sicher sein, dass der im Wer-Bereich angegebene Gesprächspartner tatsächlich derjenige ist, für den er sich ausgibt</string>
     <string name="level_10_intro_07_text_01"><b>Gebe nur bei https:// Daten ein</b>\n\nWenn du Daten auf einer Webseite eingibst, solltest du immer darauf achten, dass https:// verwendet wird, damit niemand deine Daten mitlesen kann und sie auch nicht in falsche Hände geraten. Wenn du also den Wer-Bereich überprüft hast und zusätzlich https:// verwendet wird, kannst du sicher sein, dass niemand deine Eingaben mitlesen kann und dass sie nicht in die falschen Hände geraten.</string>
     <string name="level_10_intro_08_text_01"><b>Achtung! Verlasse dich nicht nur auf https:// - Auch Phisher können https benutzen\n\nVerlasse dich niemals alleine auf die Existenz von https://</b>, denn auch Phisher können https:// verwenden.  Schaue dir also immer zusätzlich den Bereich Wer-Bereich an, um sicher zu gehen, dass du auch wirklich mit genau dem Gesprächspartner kommunizierst, mit dem du kommunizieren wolltest.\n\nIm folgenden Beispiel ist dein Gesprächspartner phisher.de (blau hinterlegt), und nicht facebook. Das https:// bestätigt dir, dass dein Gesprächspartner wirklich phisher.de ist und dass kein anderer dein Gespräch mit ihm mitbekommen kann.</string>
