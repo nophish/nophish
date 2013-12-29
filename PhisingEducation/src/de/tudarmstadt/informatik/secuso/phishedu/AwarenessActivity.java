@@ -20,7 +20,7 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController;
+import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendControllerImpl;
 
 /**
  * 
@@ -78,7 +78,7 @@ public class AwarenessActivity extends PhishBaseActivity {
 	
 	
 	public void skipSendEmail(View view){
-		BackendController.getInstance().skipLevel0();
+		BackendControllerImpl.getInstance().skipLevel0();
 	}
 
 	/**
@@ -116,7 +116,7 @@ public class AwarenessActivity extends PhishBaseActivity {
 				/*
 				 * TODO:
 				 */
-				BackendController.getInstance().sendMail(from, to, userMessage);
+				BackendControllerImpl.getInstance().sendMail(from, to, userMessage);
 
 				// Pop up with go to E-Mail on your Smartphone
 

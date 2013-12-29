@@ -12,7 +12,7 @@ import android.net.Uri;
  * @author Clemens Bergmann <cbergmann@schuhklassert.de>
  *
  */
-public interface FrontendControllerInterface extends GameHelperListener {
+public interface FrontendController extends GameHelperListener {
 	//Context functions
 	/**
 	 * For the local store of the game state we need the local store

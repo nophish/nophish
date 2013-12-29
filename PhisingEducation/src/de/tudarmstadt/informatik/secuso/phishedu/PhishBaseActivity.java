@@ -9,7 +9,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController;
+import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendControllerImpl;
 
 public class PhishBaseActivity extends ActionBarActivity {
 	
@@ -17,7 +17,7 @@ public class PhishBaseActivity extends ActionBarActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        BackendController.getInstance().getGameHelper().onStart(this);
+        BackendControllerImpl.getInstance().getGameHelper().onStart(this);
         StartMenuActivity.onStart(this);
     }
 
@@ -31,7 +31,7 @@ public class PhishBaseActivity extends ActionBarActivity {
     @Override
     protected void onActivityResult(int request, int response, Intent data) {
         super.onActivityResult(request, response, data);
-        BackendController.getInstance().getGameHelper().onActivityResult(request, response, data);
+        BackendControllerImpl.getInstance().getGameHelper().onActivityResult(request, response, data);
     }
 		
 	protected void updateScore(){
@@ -51,11 +51,11 @@ public class PhishBaseActivity extends ActionBarActivity {
 			ImageView lifeThree = (ImageView) scores.findViewById(R.id.life_3);
 			TextView LevelScoreText = (TextView) scores.findViewById(R.id.level_score);
 
-			urlsText.setText(Integer.toString(BackendController.getInstance().getCorrectlyFoundURLs()));
-			urlsGoalText.setText(Integer.toString(BackendController.getInstance().levelCorrectURLs()));
-			LevelScoreText.setText(Integer.toString(BackendController.getInstance().getLevelPoints()));
+			urlsText.setText(Integer.toString(BackendControllerImpl.getInstance().getCorrectlyFoundURLs()));
+			urlsGoalText.setText(Integer.toString(BackendControllerImpl.getInstance().levelCorrectURLs()));
+			LevelScoreText.setText(Integer.toString(BackendControllerImpl.getInstance().getLevelPoints()));
 			
-			int remaininLives = BackendController.getInstance().getLifes();
+			int remaininLives = BackendControllerImpl.getInstance().getLifes();
 			
 			//now hide hearts if required
 			switch (remaininLives) {
@@ -93,7 +93,7 @@ public class PhishBaseActivity extends ActionBarActivity {
 			
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
-				BackendController.getInstance().restartLevel();
+				BackendControllerImpl.getInstance().restartLevel();
 			}
 		});
 

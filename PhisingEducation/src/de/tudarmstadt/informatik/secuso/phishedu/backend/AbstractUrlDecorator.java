@@ -2,7 +2,7 @@ package de.tudarmstadt.informatik.secuso.phishedu.backend;
 
 import java.util.List;
 
-import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController;
+import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendControllerImpl;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishAttackType;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishResult;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishSiteType;
@@ -20,7 +20,7 @@ public abstract class AbstractUrlDecorator implements PhishURLInterface {
 	 * This constructor takes a random Valid URL and decorates it.
 	 */
 	public AbstractUrlDecorator(){
-		this.object=BackendController.getInstance().getPhishURL(PhishAttackType.NoPhish);
+		this.object=BackendControllerImpl.getInstance().getPhishURL(PhishAttackType.NoPhish);
 	}
 	
 	/**

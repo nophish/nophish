@@ -18,8 +18,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
-import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController;
-import de.tudarmstadt.informatik.secuso.phishedu.backend.FrontendControllerInterface;
+import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendControllerImpl;
+import de.tudarmstadt.informatik.secuso.phishedu.backend.FrontendController;
 
 /**
  * 
@@ -28,7 +28,7 @@ import de.tudarmstadt.informatik.secuso.phishedu.backend.FrontendControllerInter
  *         store his/her score online he/she has to sign into google+
  */
 public class StartMenuActivity extends PhishBaseActivity implements
-		FrontendControllerInterface {
+		FrontendController {
 	private static Activity context;
 	
 	public StartMenuActivity(){
@@ -42,14 +42,14 @@ public class StartMenuActivity extends PhishBaseActivity implements
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		if(!BackendController.getInstance().isInitDone()){
-		  BackendController.getInstance().init(this);
+		if(!BackendControllerImpl.getInstance().isInitDone()){
+		  BackendControllerImpl.getInstance().init(this);
 		}
 
 		setContentView(R.layout.start_menu);
 		this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
-		if (BackendController.getInstance().getMaxUnlockedLevel() > 0) {
+		if (BackendControllerImpl.getInstance().getMaxUnlockedLevel() > 0) {
 			TextView startbutton = (TextView) findViewById(R.id.menu_button_play);
 			startbutton.setText(R.string.button_play_on);
 		}
@@ -67,7 +67,7 @@ public class StartMenuActivity extends PhishBaseActivity implements
 	@Override
 	protected void onStart() {
 		super.onStart();
-		BackendController.getInstance().onUrlReceive(getIntent().getData());
+		BackendControllerImpl.getInstance().onUrlReceive(getIntent().getData());
 	}
 	
 	public void showLevelOverview(View view) {
@@ -99,8 +99,8 @@ public class StartMenuActivity extends PhishBaseActivity implements
 	 * once - Button text should change to Continue game state should be loaded
 	 */
 	public void startGame(View view) {
-		BackendController.getInstance().startLevel(
-				BackendController.getInstance().getMaxUnlockedLevel());
+		BackendControllerImpl.getInstance().startLevel(
+				BackendControllerImpl.getInstance().getMaxUnlockedLevel());
 	}
 
 	/*

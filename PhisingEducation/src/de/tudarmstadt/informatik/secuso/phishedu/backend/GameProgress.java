@@ -32,10 +32,10 @@ public class GameProgress implements OnStateLoadedListener{
 	private class State{
 		public State(){
 			this.results = new int[4];
-			this.levelPoints = new int[BackendController.getInstance().getLevelCount()];
+			this.levelPoints = new int[BackendControllerImpl.getInstance().getLevelCount()];
 		}
 		public int[] results = {0,0,0,0};
-		public int[] levelPoints = new int[BackendController.getInstance().getLevelCount()];
+		public int[] levelPoints = new int[BackendControllerImpl.getInstance().getLevelCount()];
 		public int level = 0;
 		public int unlockedLevel = 0;
 		public int detected_phish_behind = 0;
@@ -332,7 +332,7 @@ public class GameProgress implements OnStateLoadedListener{
 			for(PhishResult value: PhishResult.values()){
 				resolved_game.results[value.getValue()]=Math.max(local_game.results[value.getValue()], server_game.results[value.getValue()]);
 			}
-			for(int level=0;level<BackendController.getInstance().getLevelCount();level++){
+			for(int level=0;level<BackendControllerImpl.getInstance().getLevelCount();level++){
 				resolved_game.levelPoints[level]=Math.max(local_game.levelPoints[level],server_game.levelPoints[level]);
 			}
 		}

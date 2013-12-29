@@ -7,7 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController;
+import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendControllerImpl;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.NoPhishLevelInfo;
 
 public class LevelFinishedActivity extends SwipeActivity {
@@ -20,24 +20,24 @@ public class LevelFinishedActivity extends SwipeActivity {
 	}
 
 	protected void onStartClick() {
-		BackendController.getInstance().startLevel(level + 1);
+		BackendControllerImpl.getInstance().startLevel(level + 1);
 	}
 
 	@Override
 	protected String startButtonText() {
-		return "Weiter zu " + getResources().getString(BackendController.getInstance().getLevelInfo(this.level+1).titleId);
+		return "Weiter zu " + getResources().getString(BackendControllerImpl.getInstance().getLevelInfo(this.level+1).titleId);
 	}
 
 	@Override
 	protected int getPageCount() {
-		return BackendController.getInstance().getLevelInfo(level).finishedLayouts.length;
+		return BackendControllerImpl.getInstance().getLevelInfo(level).finishedLayouts.length;
 	}
 
 	@Override
 	protected View getPage(int page, LayoutInflater inflater,
 			ViewGroup container, Bundle savedInstanceState) {
 		setTitles();
-		View view = inflater.inflate(BackendController.getInstance().getLevelInfo(level).finishedLayouts[page],
+		View view = inflater.inflate(BackendControllerImpl.getInstance().getLevelInfo(level).finishedLayouts[page],
 				container, false);
 		setScoreText(view);
 		return view;
@@ -45,14 +45,14 @@ public class LevelFinishedActivity extends SwipeActivity {
 
 	private void setScoreText(View view) {
 		if (level > 1) {
-			((TextView) view.findViewById(R.id.level_score)).setText(Integer.toString(BackendController.getInstance().getLevelPoints()));
-			((TextView) view.findViewById(R.id.total_score)).setText(Integer.toString(BackendController.getInstance().getTotalPoints()));
+			((TextView) view.findViewById(R.id.level_score)).setText(Integer.toString(BackendControllerImpl.getInstance().getLevelPoints()));
+			((TextView) view.findViewById(R.id.total_score)).setText(Integer.toString(BackendControllerImpl.getInstance().getTotalPoints()));
 		}
 	}
 
 	private void setTitles() {
 		ActionBar ab = getSupportActionBar();
-		NoPhishLevelInfo level_info = BackendController.getInstance().getLevelInfo(level);
+		NoPhishLevelInfo level_info = BackendControllerImpl.getInstance().getLevelInfo(level);
 		String title = getString(level_info.titleId);
 		String subtitle = getString(level_info.subTitleId);
 

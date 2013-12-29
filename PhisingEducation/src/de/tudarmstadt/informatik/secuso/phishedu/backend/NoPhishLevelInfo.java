@@ -150,7 +150,7 @@ public class NoPhishLevelInfo {
 	}
 	
 	public int getlevelPoints(){
-		return BackendController.getInstance().getLevelPoints(this.levelId);
+		return BackendControllerImpl.getInstance().getLevelPoints(this.levelId);
 	}
 	
 }

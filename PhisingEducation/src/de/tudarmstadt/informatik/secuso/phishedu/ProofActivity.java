@@ -16,7 +16,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController;
+import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendControllerImpl;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishResult;
 
 public class ProofActivity extends PhishBaseActivity {
@@ -44,7 +44,7 @@ public class ProofActivity extends PhishBaseActivity {
 		
 		setTitles();
 
-		String[] urlparts = BackendController.getInstance().getUrl();
+		String[] urlparts = BackendControllerImpl.getInstance().getUrl();
 		SpannableStringBuilder builder = new SpannableStringBuilder();
 
 		for (int i = 0; i < urlparts.length; i++) {
@@ -69,7 +69,7 @@ public class ProofActivity extends PhishBaseActivity {
 			ab.setTitle(R.string.correct);
 			ab.setSubtitle(getString(R.string.phish));
 		} else {
-			ab.setTitle(BackendController.getInstance().getLevelInfo().titleId);
+			ab.setTitle(BackendControllerImpl.getInstance().getLevelInfo().titleId);
 			ab.setSubtitle(getString(R.string.exercise));
 		}
 		ab.setIcon(getResources().getDrawable(R.drawable.desktop));
@@ -108,7 +108,7 @@ public class ProofActivity extends PhishBaseActivity {
 					Toast.LENGTH_SHORT).show();
 			return;
 		}
-		boolean clicked_right = BackendController.getInstance().partClicked(
+		boolean clicked_right = BackendControllerImpl.getInstance().partClicked(
 				selectedPart);
 		int result = PhishResult.Phish_Detected.getValue();
 		if (!clicked_right) {
@@ -117,8 +117,8 @@ public class ProofActivity extends PhishBaseActivity {
 		Intent levelIntent = new Intent(this, ResultActivity.class);
 		levelIntent.putExtra(Constants.EXTRA_RESULT, result);
 		levelIntent.putExtra(Constants.EXTRA_LEVEL, this.level);
-		levelIntent.putExtra(Constants.EXTRA_SITE_TYPE, BackendController.getInstance().getSiteType().getValue());
-		levelIntent.putExtra(Constants.EXTRA_ATTACK_TYPE, BackendController.getInstance().getAttackType().getValue());
+		levelIntent.putExtra(Constants.EXTRA_SITE_TYPE, BackendControllerImpl.getInstance().getSiteType().getValue());
+		levelIntent.putExtra(Constants.EXTRA_ATTACK_TYPE, BackendControllerImpl.getInstance().getAttackType().getValue());
 		startActivity(levelIntent);
 	}
 

@@ -3,7 +3,7 @@ package de.tudarmstadt.informatik.secuso.phishedu;
 import com.google.android.gms.games.GamesClient;
 import com.google.example.games.basegameutils.GameHelper.GameHelperListener;
 
-import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController;
+import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendControllerImpl;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.pm.ActivityInfo;
@@ -99,17 +99,17 @@ public class GooglePlusActivity extends PhishBaseActivity implements View.OnClic
 	public void onClick(View view) {
 		if (view.getId() == R.id.sign_in_button) {
 			// start the asynchronous sign in flow
-			BackendController.getInstance().signIn();
+			BackendControllerImpl.getInstance().signIn();
 		} else if (view.getId() == R.id.sign_out_button) {
 			// sign out.
-			BackendController.getInstance().signOut();
+			BackendControllerImpl.getInstance().signOut();
 			hidePlusButtons();
 		}
 	}
 
 
 	private GamesClient getGamesClient() {
-		return BackendController.getInstance().getGameHelper().getGamesClient();
+		return BackendControllerImpl.getInstance().getGameHelper().getGamesClient();
 	}
 	
 	public void showLeaderboardRate(View view) {
@@ -152,7 +152,7 @@ public class GooglePlusActivity extends PhishBaseActivity implements View.OnClic
 
 	public void deleteRemoteData(View view){
 		if (this.getGamesClient().isConnected()) {
-			BackendController.getInstance().deleteRemoteData();
+			BackendControllerImpl.getInstance().deleteRemoteData();
 		}
 	}
 }

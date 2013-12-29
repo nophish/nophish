@@ -19,8 +19,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendControllerInterface;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController;
+import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendControllerImpl;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishAttackType;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishResult;
 
@@ -64,7 +64,7 @@ public class ResultActivity extends SwipeActivity {
 	protected void onStartClick() {
 		//We might have failed the level
 		//Either by going out of URLs or by going out of options to detect phish
-		switch (BackendController.getInstance().getLevelState()) {
+		switch (BackendControllerImpl.getInstance().getLevelState()) {
 		case failed:
 			this.levelFailed();
 			break;
@@ -91,7 +91,7 @@ public class ResultActivity extends SwipeActivity {
 				new DialogInterface.OnClickListener() {
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
-				BackendController.getInstance().restartLevel();
+				BackendControllerImpl.getInstance().restartLevel();
 			}
 		});
 		builder.show();
@@ -124,7 +124,7 @@ public class ResultActivity extends SwipeActivity {
 		if (this.result == PhishResult.Phish_NotDetected.getValue()) {
 			setReminderText(view);
 		}
-		if (BackendController.getInstance().getLevel() == 2) {
+		if (BackendControllerImpl.getInstance().getLevel() == 2) {
 			setLevel2Texts(view);
 		}
 		TextView urlText = (TextView) view.findViewById(R.id.url);
@@ -214,8 +214,8 @@ public class ResultActivity extends SwipeActivity {
 
 	@Override
 	protected void setUrlText(TextView urlText) {
-		String urlParts[] = BackendController.getInstance().getUrl();
-		int domainPart = BackendController.getInstance().getDomainPart();
+		String urlParts[] = BackendControllerImpl.getInstance().getUrl();
+		int domainPart = BackendControllerImpl.getInstance().getDomainPart();
 		// at start clear string builder
 		for (int i = 0; i < urlParts.length; i++) {
 
@@ -228,7 +228,7 @@ public class ResultActivity extends SwipeActivity {
 			final BackgroundColorSpan bgc;
 			if (i==domainPart) {
 				// make attacked part background red
-				if (BackendController.getInstance().getLevel() == 2) {
+				if (BackendControllerImpl.getInstance().getLevel() == 2) {
 					bgc = new BackgroundColorSpan(getResources().getColor(R.color.domain));
 				} else {
 					if(attack_type==PhishAttackType.NoPhish.getValue()){
