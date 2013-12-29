@@ -2,7 +2,6 @@ package de.tudarmstadt.informatik.secuso.phishedu;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.Application;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -47,6 +46,7 @@ public class StartMenuActivity extends PhishBaseActivity implements
 		if(!BackendControllerImpl.getInstance().isInitDone()){
 		  BackendControllerImpl.getInstance().init(this,this);
 		}
+		BackendControllerImpl.getInstance().addOnLevelChangeListener(this);
 
 		setContentView(R.layout.start_menu);
 		this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
