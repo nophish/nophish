@@ -5,7 +5,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController;
+import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendControllerImpl;
 
 public class FindAddressBarActivity extends PhishBaseActivity {
 
@@ -19,13 +19,13 @@ public class FindAddressBarActivity extends PhishBaseActivity {
 	private void setTitles() {
 		android.support.v7.app.ActionBar ab = getSupportActionBar();
 
-		ab.setTitle(BackendController.getInstance().getLevelInfo().titleId);
+		ab.setTitle(BackendControllerImpl.getInstance().getLevelInfo().titleId);
 		ab.setSubtitle(getString(R.string.exercise));		
 	}
 
 
 	public void startBrowser(View view){
-		BackendController.getInstance().redirectToLevel1URL();
+		BackendControllerImpl.getInstance().redirectToLevel1URL();
 	}
 	
 	/**

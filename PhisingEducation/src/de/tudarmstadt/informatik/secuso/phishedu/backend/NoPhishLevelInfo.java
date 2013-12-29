@@ -131,9 +131,8 @@ public class NoPhishLevelInfo {
 			this.levelNumber = Integer.toString(levelid - 1);
 		}
 	}
-
-	public int getlevelPoints() {
-		return BackendController.getInstance().getLevelPoints(this.levelId);
+	public int getlevelPoints(){
+		return BackendControllerImpl.getInstance().getLevelPoints(this.levelId);
 	}
 
 }

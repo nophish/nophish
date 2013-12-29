@@ -5,9 +5,9 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
-import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController;
+import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendControllerImpl;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishAttackType;
-import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishURLInterface;
+import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishURL;
 
 /**
  * This Attack replaces the whole URL by a replace from phishtank
@@ -41,10 +41,10 @@ public class MisleadingAttack extends AbstractAttack {
 		"-hilfe"
 	};
 	/**
-	 * This constructor is required because of the implementation in {@link BackendController#getNextUrl()}
+	 * This constructor is required because of the implementation in {@link BackendControllerImpl#getNextUrl()}
 	 * @param object This Parmeter is discarded. It is replaced by a PhishTank URL
 	 */
-	public MisleadingAttack(PhishURLInterface object) {
+	public MisleadingAttack(PhishURL object) {
 		super(object);
 		attack_domain=new Random().nextInt(DOMAIN_ADDITIONS.length);
 	}

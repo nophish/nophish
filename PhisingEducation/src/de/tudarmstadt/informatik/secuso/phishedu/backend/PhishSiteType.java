@@ -1,7 +1,7 @@
 package de.tudarmstadt.informatik.secuso.phishedu.backend;
 
 /**
- * This enum shows what type of phish the last {@link BackendControllerInterface#getNextUrl()} call returned.
+ * This enum shows what type of phish the last {@link BackendController#getNextUrl()} call returned.
  * @author Clemens Bergmann <cbergmann@schuhklassert.de>
  *
  */

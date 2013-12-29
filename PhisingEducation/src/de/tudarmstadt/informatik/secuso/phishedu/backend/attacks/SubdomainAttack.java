@@ -5,9 +5,9 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
-import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController;
+import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendControllerImpl;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishAttackType;
-import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishURLInterface;
+import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishURL;
 
 /**
  * This Attack replaces the whole URL by a replace from phishtank
@@ -28,10 +28,10 @@ public class SubdomainAttack extends AbstractAttack {
 	};
 	
 	/**
-	 * This constructor is required because of the implementation in {@link BackendController#getNextUrl()}
+	 * This constructor is required because of the implementation in {@link BackendControllerImpl#getNextUrl()}
 	 * @param object This Parmeter is discarded. It is replaced by a PhishTank URL
 	 */
-	public SubdomainAttack(PhishURLInterface object) {
+	public SubdomainAttack(PhishURL object) {
 		super(object);
 		attack_url=new Random().nextInt(PHISHER_DOMAINS.length);
 	}

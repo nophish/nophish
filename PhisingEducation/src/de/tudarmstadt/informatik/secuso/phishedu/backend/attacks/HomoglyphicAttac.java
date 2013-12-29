@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController;
+import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendControllerImpl;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishAttackType;
-import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishURLInterface;
+import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishURL;
 
 /**
  * This Attack replaces the whole URL by a replace from phishtank
@@ -39,10 +39,10 @@ public class HomoglyphicAttac extends AbstractAttack {
 			{"cl","d"}
 	};
 	/**
-	 * This constructor is required because of the implementation in {@link BackendController#getNextUrl()}
+	 * This constructor is required because of the implementation in {@link BackendControllerImpl#getNextUrl()}
 	 * @param object This Parmeter is discarded. It is replaced by a PhishTank URL
 	 */
-	public HomoglyphicAttac(PhishURLInterface object) {
+	public HomoglyphicAttac(PhishURL object) {
 		super(object);
 	}
 

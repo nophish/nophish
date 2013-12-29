@@ -2,8 +2,6 @@ package de.tudarmstadt.informatik.secuso.phishedu;
 
 import java.util.regex.Pattern;
 
-import com.google.android.gms.internal.bu;
-
 import android.accounts.Account;
 import android.accounts.AccountManager;
 import android.app.AlertDialog;
@@ -12,6 +10,8 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnShowListener;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Patterns;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -20,7 +20,7 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController;
+import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendControllerImpl;
 
 /**
  * 
@@ -51,14 +51,34 @@ public class AwarenessActivity extends PhishBaseActivity {
 		AutoCompleteTextView fromView = (AutoCompleteTextView) findViewById(R.id.awareness_edit_sender_email);
 		fromView.setAdapter(fromAdapter);
 		fromView.setThreshold(1);
+		PopupListener listener = new PopupListener();
+		fromView.setOnFocusChangeListener(listener);
+		fromView.setOnClickListener(listener);
 		AutoCompleteTextView toView = (AutoCompleteTextView) findViewById(R.id.awareness_edit_receiver_email);
 		toView.setAdapter(toAdapter);
-		fromView.setThreshold(1);
-		toView.setText(toAdapter.getItem(toAdapter.getCount()-1));
+		toView.setThreshold(1);
+		toView.setOnFocusChangeListener(listener);
+		toView.setOnClickListener(listener);
 	}
+	
+	private class PopupListener implements View.OnFocusChangeListener, View.OnClickListener{
+		@Override
+		public void onClick(View v) {
+			((AutoCompleteTextView) v).showDropDown();
+		}
 
+		@Override
+		public void onFocusChange(View v, boolean hasFocus) {
+			if(hasFocus){
+				((AutoCompleteTextView) v).showDropDown();
+			}
+		}
+		
+	}
+	
+	
 	public void skipSendEmail(View view){
-		BackendController.getInstance().skipLevel0();
+		BackendControllerImpl.getInstance().skipLevel0();
 	}
 
 	/**
@@ -96,7 +116,7 @@ public class AwarenessActivity extends PhishBaseActivity {
 				/*
 				 * TODO:
 				 */
-				BackendController.getInstance().sendMail(from, to, userMessage);
+				BackendControllerImpl.getInstance().sendMail(from, to, userMessage);
 
 				// Pop up with go to E-Mail on your Smartphone
 

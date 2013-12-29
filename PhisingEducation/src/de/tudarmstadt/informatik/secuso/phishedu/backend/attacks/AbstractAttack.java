@@ -2,7 +2,7 @@ package de.tudarmstadt.informatik.secuso.phishedu.backend.attacks;
 
 import de.tudarmstadt.informatik.secuso.phishedu.backend.AbstractUrlDecorator;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishResult;
-import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishURLInterface;
+import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishURL;
 
 /**
  * This is the abstract implementation for following Attacks.
@@ -15,7 +15,7 @@ public abstract class AbstractAttack extends AbstractUrlDecorator {
 	 * To build an attack we need a url to decorate
 	 * @param object the decorated URL
 	 */
-	public AbstractAttack(PhishURLInterface object){
+	public AbstractAttack(PhishURL object){
 		this.object=object;
 	}
 	

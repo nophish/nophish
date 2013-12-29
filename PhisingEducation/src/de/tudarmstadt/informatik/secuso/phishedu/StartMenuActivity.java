@@ -2,6 +2,7 @@ package de.tudarmstadt.informatik.secuso.phishedu;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.Application;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -13,15 +14,14 @@ import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.google.android.gms.games.GamesClient;
-import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController;
-import de.tudarmstadt.informatik.secuso.phishedu.backend.FrontendControllerInterface;
+import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController.BackendInitListener;
+import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController.OnLevelChangeListener;
+import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendControllerImpl;
+import de.tudarmstadt.informatik.secuso.phishedu.backend.FrontendController;
 
 /**
  * 
@@ -30,24 +30,28 @@ import de.tudarmstadt.informatik.secuso.phishedu.backend.FrontendControllerInter
  *         store his/her score online he/she has to sign into google+
  */
 public class StartMenuActivity extends PhishBaseActivity implements
-		FrontendControllerInterface {
-
-	public StartMenuActivity() {
-		// request AppStateClient and GamesClient
-		super();
+		FrontendController, OnLevelChangeListener, BackendInitListener {
+	private static Activity context;
+	
+	public StartMenuActivity(){
+		context=this;
+	}
+	
+	public static void onStart(Activity context){
+		StartMenuActivity.context=context;
 	}
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		if(!BackendController.getInstance().isInitDone()){
-		  BackendController.getInstance().init(this);
+		if(!BackendControllerImpl.getInstance().isInitDone()){
+		  BackendControllerImpl.getInstance().init(this,this);
 		}
 
 		setContentView(R.layout.start_menu);
 		this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
-		if (BackendController.getInstance().getMaxUnlockedLevel() > 0) {
+		if (BackendControllerImpl.getInstance().getMaxUnlockedLevel() > 0) {
 			TextView startbutton = (TextView) findViewById(R.id.menu_button_play);
 			startbutton.setText(R.string.button_play_on);
 		}
@@ -65,7 +69,7 @@ public class StartMenuActivity extends PhishBaseActivity implements
 	@Override
 	protected void onStart() {
 		super.onStart();
-		BackendController.getInstance().onUrlReceive(getIntent().getData());
+		BackendControllerImpl.getInstance().onUrlReceive(getIntent().getData());
 	}
 	
 	public void showLevelOverview(View view) {
@@ -97,8 +101,8 @@ public class StartMenuActivity extends PhishBaseActivity implements
 	 * once - Button text should change to Continue game state should be loaded
 	 */
 	public void startGame(View view) {
-		BackendController.getInstance().startLevel(
-				BackendController.getInstance().getMaxUnlockedLevel());
+		BackendControllerImpl.getInstance().startLevel(
+				BackendControllerImpl.getInstance().getMaxUnlockedLevel());
 	}
 
 	/*
@@ -118,13 +122,13 @@ public class StartMenuActivity extends PhishBaseActivity implements
 	}
 
 	@Override
-	public void initDone() {
+	public void onInitDone() {
 		// displayToast("we are finished with initialization!");
 	}
 
 	@Override
 	public Context getContext() {
-		return getApplicationContext();
+		return StartMenuActivity.context;
 	}
 
 	@Override
@@ -144,7 +148,6 @@ public class StartMenuActivity extends PhishBaseActivity implements
 	public void onLevelChange(int level) {
 		Intent levelIntent = new Intent(this, LevelIntroActivity.class);
 		levelIntent.putExtra(Constants.EXTRA_LEVEL, level);
-		ResultActivity.resetState();
 		startActivity(levelIntent);
 	}
 
@@ -181,17 +184,6 @@ public class StartMenuActivity extends PhishBaseActivity implements
 		// Showing Alert Message
 		alertDialog.show();
 
-	}
-
-	@Override
-	public void levelFinished(int level) {
-		Intent levelIntent = new Intent(this, LevelFinishedActivity.class);
-		levelIntent.putExtra(Constants.EXTRA_LEVEL, level);
-		startActivity(levelIntent);
-	}
-
-	@Override
-	public void levelFailed(int level) {
 	}
 
 	@Override

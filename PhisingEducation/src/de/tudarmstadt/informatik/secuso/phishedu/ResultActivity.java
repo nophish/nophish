@@ -3,6 +3,7 @@ package de.tudarmstadt.informatik.secuso.phishedu;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Vibrator;
@@ -19,19 +20,19 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController;
+import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendControllerImpl;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishAttackType;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishResult;
 
 public class ResultActivity extends SwipeActivity {
-	public static int RESULT_GUESSED = PhishResult.getMax() + 1;
-	public static ResultActivity instance = null;
+	public static final int RESULT_GUESSED = PhishResult.getMax() + 1;
 	SpannableStringBuilder strBuilder = new SpannableStringBuilder();
 	int wordStart, wordEnd;
 	protected static int[] reminderIDs = { R.string.level_03_reminder,
-			R.string.level_04_reminder, R.string.level_05_reminder,
-			R.string.level_06_reminder, R.string.level_07_reminder,
-			R.string.level_08_reminder, R.string.level_09_reminder,
-			R.string.level_10_reminder };
+		R.string.level_04_reminder, R.string.level_05_reminder,
+		R.string.level_06_reminder, R.string.level_07_reminder,
+		R.string.level_08_reminder, R.string.level_09_reminder,
+		R.string.level_10_reminder };
 
 	// int level; is used as index for the consequences type
 
@@ -58,39 +59,41 @@ public class ResultActivity extends SwipeActivity {
 		resultLayoutIDs[PhishResult.Phish_NotDetected.getValue()] = R.layout.result_phish_notdetected;
 		resultLayoutIDs[PhishResult.NoPhish_NotDetected.getValue()] = R.layout.result_nophish_notdetected;
 		resultLayoutIDs[RESULT_GUESSED] = R.layout.result_you_guessed;
-		instance = this;
 	}
 
 	protected void onStartClick() {
-		setResult(RESULT_OK);
-		int state = BackendController.getInstance().levelState();
-		switch (state) {
-		case BackendController.LEVEL_FAILED:
-			levelFailed(BackendController.getInstance().getLevel());
+		//We might have failed the level
+		//Either by going out of URLs or by going out of options to detect phish
+		switch (BackendControllerImpl.getInstance().getLevelState()) {
+		case failed:
+			this.levelFailed();
+			break;
+		case finished:
+			this.levelFinished();
 			break;
 		default:
-			finish();
+			nextURL();
 			break;
 		}
 	}
 
-	public static boolean user_finish_asked = false;
-
-	public static void resetState() {
-		user_finish_asked = false;
+	private void levelFinished() {
+		Intent levelIntent = new Intent(this, LevelFinishedActivity.class);
+		levelIntent.putExtra(Constants.EXTRA_LEVEL, level);
+		startActivity(levelIntent);
 	}
 
-	public void levelFailed(int level) {
-		AlertDialog.Builder builder = new AlertDialog.Builder(instance);
+	private void levelFailed() {
+		AlertDialog.Builder builder = new AlertDialog.Builder(this);
 		builder.setTitle(R.string.level_failed_title);
 		builder.setMessage(R.string.level_failed_text);
 		builder.setNeutralButton(R.string.level_failed_button,
 				new DialogInterface.OnClickListener() {
-					@Override
-					public void onClick(DialogInterface dialog, int which) {
-						BackendController.getInstance().restartLevel();
-					}
-				});
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				BackendControllerImpl.getInstance().restartLevel();
+			}
+		});
 		builder.show();
 	}
 
@@ -121,7 +124,7 @@ public class ResultActivity extends SwipeActivity {
 		if (this.result == PhishResult.Phish_NotDetected.getValue()) {
 			setReminderText(view);
 		}
-		if (BackendController.getInstance().getLevel() == 2) {
+		if (BackendControllerImpl.getInstance().getLevel() == 2) {
 			setLevel2Texts(view);
 		}
 		TextView urlText = (TextView) view.findViewById(R.id.url);
@@ -211,8 +214,8 @@ public class ResultActivity extends SwipeActivity {
 
 	@Override
 	protected void setUrlText(TextView urlText) {
-		String urlParts[] = BackendController.getInstance().getUrl();
-		int domainPart = BackendController.getInstance().getDomainPart();
+		String urlParts[] = BackendControllerImpl.getInstance().getUrl().getParts();
+		int domainPart = BackendControllerImpl.getInstance().getUrl().getDomainPart();
 		// at start clear string builder
 		for (int i = 0; i < urlParts.length; i++) {
 
@@ -225,13 +228,13 @@ public class ResultActivity extends SwipeActivity {
 			final BackgroundColorSpan bgc;
 			if (i==domainPart) {
 				// make attacked part background red
-				if (BackendController.getInstance().getLevel() == 2) {
+				if (BackendControllerImpl.getInstance().getLevel() == 2) {
 					bgc = new BackgroundColorSpan(getResources().getColor(R.color.domain));
 				} else {
 					if(attack_type==PhishAttackType.NoPhish.getValue()){
-					  bgc = new BackgroundColorSpan(getResources().getColor(R.color.nophish_domain));
+						bgc = new BackgroundColorSpan(getResources().getColor(R.color.nophish_domain));
 					}else{
-					  bgc = new BackgroundColorSpan(getResources().getColor(R.color.phish_domain));
+						bgc = new BackgroundColorSpan(getResources().getColor(R.color.phish_domain));
 					}
 				}
 				strBuilder.setSpan(bgc, wordStart, wordEnd, 0);
@@ -242,4 +245,11 @@ public class ResultActivity extends SwipeActivity {
 			urlText.setText(strBuilder);
 		}
 	}
+
+	private void nextURL(){
+		Intent levelIntent = new Intent(this, URLTaskActivity.class);
+		levelIntent.putExtra(Constants.EXTRA_LEVEL, this.level);
+		startActivity(levelIntent);
+	}
+
 }

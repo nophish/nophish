@@ -12,7 +12,7 @@ import android.net.Uri;
  * @author Clemens Bergmann <cbergmann@schuhklassert.de>
  *
  */
-public interface FrontendControllerInterface extends GameHelperListener {
+public interface FrontendController extends GameHelperListener {
 	//Context functions
 	/**
 	 * For the local store of the game state we need the local store
@@ -27,22 +27,6 @@ public interface FrontendControllerInterface extends GameHelperListener {
 	Activity getBaseActivity();
 	
 	//Callback functions
-	/**
-	 * This function is called while init continues.
-	 * @param percent how far is completion.
-	 */
-	void initProgress(int percent);
-	/**
-	 * This function is called when the game can start.
-	 */
-	void initDone();
-	
-	/**
-	 * This function is called from the backend when we change Level.
-	 * @param level the new level
-	 */
-	void onLevelChange(int level);
-	
 	/**
 	 * Start a browser and show the given URL
 	 * @param url the url to show
@@ -66,20 +50,4 @@ public interface FrontendControllerInterface extends GameHelperListener {
 	 * @param score the current score
 	 */
 	void displayToastScore(int score);
-	
-	/**
-	 * Whenever a level is finished this function is called by the backend.
-	 * Whenever you are finished with this task call {@link BackendControllerInterface#startNextLevel()}
-	 * @param level the finished level
-	 */
-	void levelFinished(int level);
-	
-	/**
-	 * This function is called whenever the user failed on a level.
-	 * This means he was not able to detect enough Phishing URLs.
-	 * The UI should display a message stating this fact and call {@link BackendController#startLevel(int)}
-	 * This will (after initialization) result in a new Call to {@link FrontendControllerInterface#onLevelChange(int)} 
-	 * @param level The level the user failed
-	 */
-	void levelFailed(int level);
 }

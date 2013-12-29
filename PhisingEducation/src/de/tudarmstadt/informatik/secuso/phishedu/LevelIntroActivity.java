@@ -15,7 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ScrollView;
 import android.widget.TextView;
-import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController;
+import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendControllerImpl;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.NoPhishLevelInfo;
 
 /**
@@ -76,7 +76,7 @@ public class LevelIntroActivity extends SwipeActivity {
 		this.level = getIntent().getIntExtra(Constants.EXTRA_LEVEL, 0);
 		super.onCreate(savedInstanceState);
 	}
-
+	
 	public void onStartClick(View view) {
 		this.onStartClick();
 	}
@@ -87,7 +87,7 @@ public class LevelIntroActivity extends SwipeActivity {
 			next_activity = AwarenessActivity.class;
 		} else if (this.level == 1) {
 			next_activity = FindAddressBarActivity.class;
-		}else if(this.level == BackendController.getInstance().getLevelCount()){
+		}else if(this.level == BackendControllerImpl.getInstance().getLevelCount()){
 			next_activity = AppEndActivity.class;
 		}
 		Intent levelIntent = new Intent(this, next_activity);
@@ -97,22 +97,22 @@ public class LevelIntroActivity extends SwipeActivity {
 
 	@Override
 	protected String startButtonText() {
-		if (this.level == BackendController.getInstance().getLevelCount()) {
+		if (this.level == BackendControllerImpl.getInstance().getLevelCount()) {
 			return "Fertig";
 		}
-		return "Starte "+getResources().getString(BackendController.getInstance().getLevelInfo(this.level).titleId);
+		return "Starte "+getResources().getString(BackendControllerImpl.getInstance().getLevelInfo(this.level).titleId);
 	}
 
 	@Override
 	protected int getPageCount() {
-		return BackendController.getInstance().getLevelInfo(level).introLayouts.length;
+		return BackendControllerImpl.getInstance().getLevelInfo(level).introLayouts.length;
 	}
 
 	@Override
 	protected View getPage(int page, LayoutInflater inflater,
 			ViewGroup container, Bundle savedInstanceState) {
 
-		View view = inflater.inflate(BackendController.getInstance().getLevelInfo(level).introLayouts[page], container, false);
+		View view = inflater.inflate(BackendControllerImpl.getInstance().getLevelInfo(level).introLayouts[page], container, false);
 
 		// when example screen is showns
 		if ((view.findViewById(R.id.recognize_attack) != null)
@@ -130,7 +130,7 @@ public class LevelIntroActivity extends SwipeActivity {
 
 	private void setTitles() {
 		ActionBar ab = getSupportActionBar();
-		NoPhishLevelInfo level_info = BackendController.getInstance().getLevelInfo(level);
+		NoPhishLevelInfo level_info = BackendControllerImpl.getInstance().getLevelInfo(level);
 		String title = getString(level_info.titleId);
 		String subtitle = getString(level_info.subTitleId);
 
@@ -158,11 +158,11 @@ public class LevelIntroActivity extends SwipeActivity {
 	}
 
 	private void buildColoredSpan(View view) {
-		int exampleIndex = BackendController.getInstance().getLevel() - 3;
+		int exampleIndex = BackendControllerImpl.getInstance().getLevel() - 3;
 		String[] url = exampleUrlPartId[exampleIndex];
 		if (view.findViewById(R.id.recognize_attack) != null) {
 			setSpans(url, view);
-		} else if ((BackendController.getInstance().getLevel() > 3)
+		} else if ((BackendControllerImpl.getInstance().getLevel() > 3)
 				&& (view.findViewById(R.id.reminder_examples) != null)) {
 			setReminderSpans(view, exampleIndex);
 		}
@@ -170,7 +170,7 @@ public class LevelIntroActivity extends SwipeActivity {
 
 	private void setReminderSpans(View view, int reminderIndex) {
 
-		int level = BackendController.getInstance().getLevel();
+		int level = BackendControllerImpl.getInstance().getLevel();
 		if (level > 7) {
 			// two more urls displayed from there
 			reminderIndex = reminderIndex + 2;
@@ -195,7 +195,7 @@ public class LevelIntroActivity extends SwipeActivity {
 					strBuilder.clearSpans();
 				}
 
-				setSingleSpan(currentUrl, BackendController.getInstance()
+				setSingleSpan(currentUrl, BackendControllerImpl.getInstance()
 						.getLevel(), i, spanIndex);
 
 				// example 1 needs to be set
@@ -229,7 +229,7 @@ public class LevelIntroActivity extends SwipeActivity {
 		strBuilder.clear();
 
 		// total different span pattern
-		int level = BackendController.getInstance().getLevel();
+		int level = BackendControllerImpl.getInstance().getLevel();
 		if (level == 9) {
 			setLevel9Span(url, view);
 			return;
@@ -263,8 +263,8 @@ public class LevelIntroActivity extends SwipeActivity {
 			}
 
 			// no need to check in other levels
-			if (BackendController.getInstance().getLevel() == 7
-					|| BackendController.getInstance().getLevel() == 11) {
+			if (BackendControllerImpl.getInstance().getLevel() == 7
+					|| BackendControllerImpl.getInstance().getLevel() == 11) {
 				if (i == 15) {
 					setTextView(view, R.id.example_04);
 				}

@@ -1,73 +1,75 @@
 package de.tudarmstadt.informatik.secuso.phishedu.backend;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
- * this is for internally holding the phishing urls
+ * This is the Interface for all Phishing URLs.
+ * This is needed because I want to implement the Attacks as decorators.
  * @author Clemens Bergmann <cbergmann@schuhklassert.de>
  *
  */
-public class PhishURL implements PhishURLInterface{
-	private String[] parts = new String[0];
-	private PhishSiteType siteType = PhishSiteType.AnyPhish;
-	private PhishAttackType attackType = PhishAttackType.NoPhish;
-	protected int[] correctparts = new int[0];
+public interface PhishURL{
 	/**
-	 * This stores the points the user gets for his detection.
-	 * 0: he got it right
-	 * 1: he did not get it right
+	 * Return the parts of the URL.
+	 * When concardinatend they build up the whole url.
+	 * The first 4 Parts are always defined as follows:
+	 * 0: The scheme (eg. "https:")
+	 * 1: "//"
+	 * 2: <subdomain(s) string> (might be the empty string)
+	 * 3: domain
+	 * 4: "/"
+	 * 5-: path
+	 * 
+	 * @return String parts of a url.
 	 */
-	private int[] points = {15,-10};
+	public String[] getParts();
+	/**
+	 * Return what type of Site the url is supposed to link to.
+	 * @return The linked Site type
+	 */
+	public PhishSiteType getSiteType();
+	/**
+	 * What type of attack was applyed to the URL
+	 * @return The type of attack was applyed
+	 */
+	public PhishAttackType getAttackType();
 	
-	public String[] getParts(){return parts;}
-	public PhishSiteType getSiteType(){return this.siteType;}
-	public PhishAttackType getAttackType(){return this.attackType;}
-		
-	public final boolean validate(){
-		return this.points[0] > 0; //if we get no points on success we can not progress.
-	}
+	/**
+	 * Get the points resulting in his selection
+	 * @param result the result returned from {@link #getResult(boolean)} 
+	 * @return the points the user gets for his selection
+	 */
+	public int getPoints(PhishResult result);
 	
-	public int getPoints(PhishResult result){
-		boolean correct = (result == PhishResult.NoPhish_Detected || result==PhishResult.Phish_Detected);
-		return points[correct ? 0 : 1];
-	}
+	/**
+	 * Get the result if the user selected or did not select the URL
+	 * @param acceptance true of the user clicked the checkmark. Otherwise false
+	 * @return Result depending on the acceptance
+	 */
+	public PhishResult getResult(boolean acceptance);
 	
-	public PhishResult getResult(boolean acceptance){
-		PhishResult result;
-		PhishAttackType attacktype = getAttackType();
-		if(attacktype == PhishAttackType.NoPhish && acceptance){
-			result =  PhishResult.NoPhish_Detected;
-		}else if(attacktype == PhishAttackType.NoPhish && !acceptance){
-			result =  PhishResult.NoPhish_NotDetected;
-		}else if(attacktype != PhishAttackType.NoPhish && acceptance){
-			result =  PhishResult.Phish_NotDetected;
-		}else if(attacktype != PhishAttackType.NoPhish && !acceptance){
-			result =  PhishResult.Phish_Detected;
-		}else {
-			throw new IllegalStateException("Something went horrably wrong! We should not be here.");
-		}
-		return result;
-	}
+	/**
+	 * As this URL is serialized we implement a way of checking if the deserialized version is correct in respect of our current data model.
+	 * @return true if this is a valid URL, false otherwise;
+	 */
+	public boolean validate();
 	
-	@Override
-	public List<Integer> getAttackParts() {
-		return new ArrayList<Integer>();
-	}
+	/**
+	 * Get the parts of this URL that is part of an Attack.
+	 * @return The attacked parts
+	 */
+	public List<Integer> getAttackParts();
 	
-	@Override
-	public PhishURLInterface clone(){
-		PhishURL clone = new PhishURL();
-		clone.attackType=this.attackType;
-		clone.parts=this.parts.clone();
-		clone.points=this.points.clone();
-		clone.siteType=this.siteType;
-		clone.correctparts=this.correctparts.clone();
-		return clone;
-	}
+	/**
+	 * Which part is the domain.
+	 * This might change if the attack prefixes something to the domain.
+	 * @return The index of the domain in the {@link #getParts()} Array.
+	 */
+	public int getDomainPart();
 	
-	@Override
-	public int getDomainPart() {
-		return 3;
-	}
+	/**
+	 * Clone the current phishURL object deeply
+	 * @return deep clone
+	 */
+	public PhishURL clone();
 }

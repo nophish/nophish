@@ -15,8 +15,8 @@ import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 
 import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishAttackType;
+import de.tudarmstadt.informatik.secuso.phishedu.backend.BasePhishURL;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishURL;
-import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishURLInterface;
 
 import android.os.AsyncTask;
 
@@ -25,7 +25,7 @@ import android.os.AsyncTask;
  * @author Clemens Bergmann <cbergmann@schuhklassert.de>
  *
  */
-public class GetUrlsTask extends AsyncTask<Integer, Integer, PhishURLInterface[]>{
+public class GetUrlsTask extends AsyncTask<Integer, Integer, PhishURL[]>{
 	private UrlsLoadedListener controller;
 	private PhishAttackType type = PhishAttackType.NoPhish;
 
@@ -37,7 +37,7 @@ public class GetUrlsTask extends AsyncTask<Integer, Integer, PhishURLInterface[]
 		this.controller=controller;
 	}
 
-	protected PhishURLInterface[] doInBackground(Integer... params) {
+	protected PhishURL[] doInBackground(Integer... params) {
 		int count = params[0];
 		this.type = PhishAttackType.NoPhish;
 		for(PhishAttackType type : PhishAttackType.values()){
@@ -54,9 +54,9 @@ public class GetUrlsTask extends AsyncTask<Integer, Integer, PhishURLInterface[]
 				ByteArrayOutputStream out = new ByteArrayOutputStream();
 				response.getEntity().writeTo(out);
 				out.close();
-				PhishURL[] result = new PhishURL[0];
+				BasePhishURL[] result = new BasePhishURL[0];
 				try {
-					result = (new Gson()).fromJson(out.toString(), PhishURL[].class);
+					result = (new Gson()).fromJson(out.toString(), BasePhishURL[].class);
 				} catch (JsonSyntaxException e) {
 					// TODO: handle exception
 				}
@@ -73,7 +73,7 @@ public class GetUrlsTask extends AsyncTask<Integer, Integer, PhishURLInterface[]
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return new PhishURLInterface[0];
+		return new PhishURL[0];
 	}
 
 	protected void onProgressUpdate(Integer... progress) {
@@ -81,7 +81,7 @@ public class GetUrlsTask extends AsyncTask<Integer, Integer, PhishURLInterface[]
 	}
 
 	@Override
-	protected void onPostExecute(PhishURLInterface[] result) {
+	protected void onPostExecute(PhishURL[] result) {
 		this.controller.urlsReturned(result, this.type);
 	}
 }

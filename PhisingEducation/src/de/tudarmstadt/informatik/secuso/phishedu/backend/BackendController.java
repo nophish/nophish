@@ -1,564 +1,281 @@
 package de.tudarmstadt.informatik.secuso.phishedu.backend;
 
-import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.Locale;
-import java.util.Random;
-import java.util.Scanner;
-
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.net.Uri;
-import android.os.Vibrator;
 
-import com.google.android.gms.appstate.AppStateClient;
-import com.google.android.gms.games.GamesClient;
-import com.google.example.games.basegameutils.BaseGameActivity;
 import com.google.example.games.basegameutils.GameHelper;
-import com.google.gson.Gson;
-import com.google.gson.JsonSyntaxException;
-
-import de.tudarmstadt.informatik.secuso.phishedu.R;
-import de.tudarmstadt.informatik.secuso.phishedu.backend.generator.KeepGenerator;
-import de.tudarmstadt.informatik.secuso.phishedu.backend.generator.SudomainGenerator;
-import de.tudarmstadt.informatik.secuso.phishedu.backend.networkTasks.GetUrlsTask;
-import de.tudarmstadt.informatik.secuso.phishedu.backend.networkTasks.SendMailTask;
-import de.tudarmstadt.informatik.secuso.phishedu.backend.networkTasks.UrlsLoadedListener;
+import com.google.example.games.basegameutils.GameHelper.GameHelperListener;
 
 /**
- * This is the main backend logik.
- * It is implemented as static singleton to keep state while changing activities.
+ * This is the interface that the backend presents to the frontend.
  * @author Clemens Bergmann <cbergmann@schuhklassert.de>
  *
  */
-public class BackendController implements BackendControllerInterface, GameStateLoadedListener, UrlsLoadedListener {
-	//constants
-	private static final String PREFS_NAME = "PhisheduState";
-	private static final String URL_CACHE_NAME ="urlcache";
-	private static final String LEVEL1_URL = "https://pages.no-phish.de/level1.php";
-	private static final int FIRST_REPEAT_LEVEL = 4;
-	private static final PhishAttackType[] CACHE_TYPES = {PhishAttackType.AnyPhish, PhishAttackType.NoPhish};
-	@SuppressWarnings("rawtypes")
-	private static Class[] GENERATORS = {
-		//Currently we use the same generators for all levels
-		SudomainGenerator.class,
-		KeepGenerator.class,
-	};
-	private static final int URL_CACHE_SIZE = 500;
-	private static final double LEVEL_DISTANCE = 1.5;
-
-	private static Random random = new Random();
-
-	//singleton instance
-	private static BackendController instance = new BackendController();
-
-	//instance variables
-	private FrontendControllerInterface frontend;
-	private GameHelper gamehelper;
-	private boolean inited = false;
-	//indexed by UrlType
-	private PhishURLInterface[][] urlCache;
-	private boolean gamestate_loaded = false;
-	private GameProgress progress;
-
-	private static PhishURL[] deserializeURLs(String serialized){
-		PhishURL[] result = new PhishURL[0];
-		try {
-			result = (new Gson()).fromJson(serialized, PhishURL[].class);
-		} catch (JsonSyntaxException e) {
-			// TODO: handle exception
-		}
-		return result;
-	}
-
-	private static String serializeURLs(PhishURLInterface[] object){
-		return new Gson().toJson(object);
-	}
+public interface BackendController extends GameHelperListener{
+	/**
+	 * This function must be called directly before the first start of the app.
+	 * It will register the caller with the backend for callbacks.
+	 * @param frontend This is the frontend for this backend
+	 * @param doneListener This Listener is notified when init is done.
+	 */
+	public void init(FrontendController frontend, BackendInitListener doneListener);
+	
+	/**
+	 * This Function allows the frontend to be notified whenever the level State changes.
+	 * @param listener the frontend to notify.
+	 */
+	public void addOnLevelstateChangeListener(OnLevelstateChangeListener listener);
+	
+	/**
+	 * This Function allows the frontend to unregister a listener previously registered via {@link #addOnLevelstateChangeListener(OnLevelstateChangeListener)} 
+	 * @param listener the listener to unregister
+	 */
+	public void removeOnLevelstateChangeListener(OnLevelstateChangeListener listener);
+	
+	/**
+	 * This Function allows the frontend to be notified whenever the level changes.
+	 * @param listener the new Listener
+	 */
+	public void addOnLevelChangeListener(OnLevelChangeListener listener);
+	
+	/**
+	 * This Function allows the frontend to unregister a listener previously registerd via {@link #addOnLevelChangeListener(OnLevelChangeListener)}
+	 * @param listener the listener to unregister
+	 */
+	public void removeOnLevelChangeListener(OnLevelChangeListener listener);
+		
+	/**
+	 * This function sends a Mail to a custom Mail Adress-
+	 * @param from The Sender mail address
+	 * @param to The receiver mail address
+	 * @param usermessage Each send out mail contains a usermessage to maximize the awareness.
+	 */
+	public void sendMail(String from, String to, String usermessage);
+	
+	/**
+	 * This starts a level and initilizes the backend state.
+	 * @param level The level you want to start
+	 */
+	public void startLevel(int level);
+	
+	/**
+	 * This function start the browser at the leve1 URL
+	 */
+	public void redirectToLevel1URL();
+	
+	/**
+	 * Get the current url returned by the last {@link #getNextUrl()} call.
+	 * @return A set of strings that (concardinated) make up the URL
+	 */
+	public PhishURL getUrl();
+	
+	/**
+	 * Switch to the next URL.
+	 */
+	public void nextUrl();
+	
+	/**
+	 * Get the current level of the user.
+	 * This is the level the user is currently in.
+	 * If we later think about allowing the user to select level we have to implement a getUnlockedLevel() Function to get the maximum available level.
+	 * @return Current user level
+	 */
+	public int getLevel();
+	
+	/**
+	 * Get the Level the user is able to play.
+	 * @return Biggest available level
+	 */
+	public int getMaxUnlockedLevel();
+	
+	/**
+	 * Get how many points the user collected.
+	 * The current level Points are not added here.
+	 * @return points the user has collected.
+	 */
+	public int getTotalPoints();
+	
+	/**
+	 * Get how many points in the current level the user has.
+	 * 
+	 * It is worth to mention that these are not persistently saved.
+	 * The user has to restart the given level from 0 points each time the app starts.
+	 * @return points in the current level.
+	 */
+	public int getLevelPoints();
+	
+	/**
+	 * This function is called when the user chooses weather this URL is a phish or not 
+	 * @param accptance true of the user thinks this is a phish. false otherwise.
+	 * @return a {@link PhishResult} enum representing the state of the phish
+	 */
+	public PhishResult userClicked(boolean accptance);
+	
+	/**
+	 * This function must be called when the user selects a part of the URL as phishy.
+	 * @param part the part that the user suspects to be an attack.
+	 * @return true of the user clicked the correct part. False otherwise
+	 */
+	public boolean partClicked(int part);
+	
+	/**
+	 * When the main activity receives an URI via an Indent pass it to this function so that the backend can handle it.
+	 * @param data The recept URI
+	 */
+	public void onUrlReceive(Uri data);
+	
+	/**
+	 * The user clicks on the Google+ signin button.
+	 */
+	public void signIn();
+	
+	/**
+	 * The user clicks on the Google+ signout button.
+	 */
+	public void signOut();
+	
+	/**
+	 * Delete the Data saved in the Google+ Storage
+	 */
+	public void deleteRemoteData();
+	
+	/**
+	 * How many URLs must the user answer in this Level
+	 * @return An Integer representing the number of URLs in this level
+	 */
+	public int levelCorrectURLs();
+	
+	/**
+	 * How many URLs did the user correctly identfiy
+	 * @return number of correct URLS
+	 */
+	public int getCorrectlyFoundURLs();
+	
+	/**
+	 * This function restarts the current Level
+	 */
+	public void restartLevel();
+	
+	/**
+	 * Return the current state of the level. This can change whenever {@link #userClicked(boolean)} or {@link #partClicked(int)} is called.
+	 * @return one of the LEVEL_* constants from this interface.
+	 */
+	public Levelstate getLevelState();
+	
+	/**
+	 * return the number of lifes left
+	 * @return number of lifes left
+	 */
+	public int getLifes();
+	
+	/**
+	 * get a phishing URL of the given type
+	 * @param type The type of URL you want to get
+	 * @return The (possibly decorated) Phishing url
+	 */
+	public PhishURL getPhishURL(PhishAttackType type);
+	
+	/**
+	 * This function is for debugging only. It skips level0 gracefully.
+	 */
+	public void skipLevel0();
 
 	/**
-	 * This function returns a Phishing url of the given type
-	 * @param type Type of Attack for the URL
-	 * @return A PhishURL of the given type
+	 * Get the current game Helper. Via this Object you can access leaderboards and achievements. 
+	 * @return The current gameHelper
 	 */
-	public PhishURLInterface getPhishURL(PhishAttackType type){
-		if(type.getValue() >= this.urlCache.length || this.urlCache[type.getValue()].length == 0){
-			throw new IllegalArgumentException("This phish type is not cached.");
-		}
-		return urlCache[type.getValue()][random.nextInt(urlCache[type.getValue()].length)].clone();
-	}
-
+	public GameHelper getGameHelper();
+	
 	/**
-	 * This holds the current URL returned by the last {@link BackendControllerInterface}{@link #getNextUrl()} call
+	 * Get the number of levels the game currently supports
+	 * @return number of supported levels
 	 */
-	private PhishURLInterface current_url;
-
+	public int getLevelCount();
+	
 	/**
-	 * save the current repeat offset of the attack.
-	 * This is needed to reinsert the offset into the {@link #level_repeat_offsets} list on fail.
+	 * Get the Information about the given level
+	 * @param level The number of the level you want to get
+	 * @return the Level with the given number
 	 */
-	private int current_url_level_offset=0;
-
+	public NoPhishLevelInfo getLevelInfo(int level);
+	
 	/**
-	 * Private constructor for singelton.
+	 * Get the Info of the current Level
+	 * @return The Info of the current Level
 	 */
-	private BackendController() {
-		this.urlCache=new PhishURLInterface[CACHE_TYPES.length][];
-		for(PhishAttackType type: CACHE_TYPES){
-			this.urlCache[type.getValue()]=new PhishURLInterface[0];
-		}
-	}
-
+	public NoPhishLevelInfo getLevelInfo();
+	
 	/**
-	 * Getter for singleton.
-	 * @return The singleton Object of this class
+	 * Get the number of points the user got in the given level
+	 * @param level The level for which you want to get the points
+	 * @return the number of points for the given level
 	 */
-	public static BackendControllerInterface getInstance(){
-		return instance;
-	}
-
+	public int getLevelPoints(int level);
+	
 	/**
-	 * Check if the singleton is inited. If not it will throw a IllegalStateException;
+	 * Check if this backendcontroller is already inited.
+	 * @return true if the initialization is finished. 
 	 */
-	private static void checkinited(){
-		if(instance == null || !(instance.isInitDone())){
-			throw new IllegalStateException("initialize me first! Call backendcontroller.init()");
-		}
-	}
-
-	public void init(FrontendControllerInterface frontend){
-		if(this.isInitDone()){
-			return;
-		}
-		this.frontend=frontend;
-		this.gamehelper=new GameHelper(frontend.getBaseActivity());
-		this.gamehelper.setup(this,BaseGameActivity.CLIENT_APPSTATE | BaseGameActivity.CLIENT_GAMES);
-		SharedPreferences prefs = this.frontend.getContext().getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
-		GamesClient gamesclient = this.gamehelper.getGamesClient();
-		AppStateClient appstateclient = this.gamehelper.getAppStateClient();
-		Context context = this.frontend.getContext();
-		this.progress = new GameProgress(context, prefs, gamesclient,appstateclient,this);
-		SharedPreferences url_cache = this.frontend.getContext().getSharedPreferences(URL_CACHE_NAME, Context.MODE_PRIVATE);
-		for(PhishAttackType type: CACHE_TYPES){
-			loadUrls(url_cache, type);
-		}
-		checkInitDone();
-	}
-
-	private void CacheUrls(SharedPreferences cache, PhishAttackType type, PhishURLInterface[] urls){
-		SharedPreferences.Editor editor = cache.edit();
-		editor.putString(type.toString(), serializeURLs(urls));
-		editor.commit();
-	}
-
-	private void loadUrls(SharedPreferences cache, PhishAttackType type){
-		//first we load the cached value if available
-		PhishURL[] urls=deserializeURLs(cache.getString(type.toString(), "[]"));
-		//If the values are still empty we load the factory defaults 
-		if(urls.length==0){
-			int resource = frontend.getContext().getResources().getIdentifier(type.toString().toLowerCase(Locale.US), "raw", frontend.getContext().getPackageName());
-			InputStream input = frontend.getContext().getResources().openRawResource(resource);
-			String json = new Scanner(input,"UTF-8").useDelimiter("\\A").next();
-			try {
-				urls = (new Gson()).fromJson(json, PhishURL[].class);
-			} catch (JsonSyntaxException e) {
-				// TODO: handle exception
-			}
-			
-		}
-		this.setURLs(type, urls);
-		//then we get the value from the online store
-		new GetUrlsTask(this).execute(URL_CACHE_SIZE,type.getValue());
-	}
-
-	private void setURLs(PhishAttackType type, PhishURLInterface[] urls){
-		ArrayList<PhishURLInterface> result = new ArrayList<PhishURLInterface>();
-		for (PhishURLInterface phishURL : urls) {
-			if(phishURL.validate()){
-				result.add(phishURL);	
-			}
-		}
-		if(result.size()>0){
-			this.urlCache[type.getValue()] = result.toArray(new PhishURLInterface[0]);
-		}
-	}
-
-	public void urlsReturned(PhishURLInterface[] urls, PhishAttackType type){
-		if(urls.length > 0){
-			this.setURLs(type, urls);
-			this.CacheUrls(this.frontend.getContext().getSharedPreferences(URL_CACHE_NAME, Context.MODE_PRIVATE),type, this.urlCache[type.getValue()]);
-			this.checkInitDone();
-		}
-	}
-
-	public void urlDownloadProgress(int percent){
-		this.frontend.initProgress(percent);
+	public boolean isInitDone();
+	
+	/**
+	 * this Interface is implemented by the frontend to get notified whenever the Level State changes
+	 */
+	public interface OnLevelstateChangeListener{
+		/**
+		 * This function is called when the level state changes.
+		 * @param new_state the new state
+		 */
+		public void onLevelstateChange(Levelstate new_state);
 	}
 	
-	public boolean isInitDone(){
-		return this.inited;
-	}
-
-	private void checkInitDone(){
-		//This means we already are initialized
-		if(isInitDone()){
-			return;
-		}
-		if (this.urlCache[PhishAttackType.NoPhish.getValue()].length >0 && this.urlCache[PhishAttackType.AnyPhish.getValue()].length > 0 &&  this.gamestate_loaded){
-			this.inited=true;
-			this.frontend.initDone();
-			this.progress.StartFinished();	
-		}
-	}
-
-	public void sendMail(String from, String to, String usermessage){
-		checkinited();
-		new SendMailTask(from, to, usermessage).execute();
-	}
-
-	private ArrayList<Integer> level_repeat_offsets;
-	@Override
-	public void startLevel(int level) {
-		checkinited();
-		this.level_repeat_offsets=new ArrayList<Integer>();
-		if(getLevel()>=FIRST_REPEAT_LEVEL){
-			for(int i=1;i<=getLevel()-(FIRST_REPEAT_LEVEL-1);i++){
-				this.level_repeat_offsets.add(i);
-			}
-			while(this.level_repeat_offsets.size()<this.levelRepeats()){
-				//select a random earlier Level 
-				//"-(FIRST_REPEAT_LEVEL-1)" is to prevent levels 0-2 from being repeated
-				//"+1" is to prevent "repeating" the current level
-				int index_level = (random.nextInt(getLevel()-(FIRST_REPEAT_LEVEL-1)))+1;
-				this.level_repeat_offsets.add(index_level);
-			}
-		}
-		this.progress.setLevel(level);
-		this.frontend.onLevelChange(this.progress.getLevel());
-	}
-
-	@Override
-	public void restartLevel(){
-		this.startLevel(this.getLevel());
-	}
-
-	@Override
-	public void redirectToLevel1URL(){
-		Random random = new Random();
-		char[] buf=new char[4];
-		for(int i=0;i<buf.length;i++){
-			buf[i]=(char) ('a'+random.nextInt(26));
-		}
-		String random_string=new String(buf);
-		this.frontend.startBrowser(Uri.parse(LEVEL1_URL+"?frag="+random_string+"#bottom-"+random_string));
-	}
-
-	@SuppressWarnings("unchecked")
-	public void nextUrl() {
-		checkinited();
-		if(getLevel() <= 1){
-			//Level 0 and 1 do not have repeats
-			throw new IllegalStateException("This function is not defined for level 0 and 1 as these do not need URLs");
-		}
-		int remaining_urls = this.levelURLs()-doneURLs();
-		int remaining_phish = this.levelPhishes()-this.progress.getPresentedPhish();
-		int remaining_repeats = this.levelRepeats() - this.progress.getPresentedRepeats();
-		//We might have failed the level
-		//Either by going out of URLs or by going out of options to detect phish
-		int state = levelState();
-		switch (state) {
-		case LEVEL_FAILED:
-			this.frontend.levelFailed(getLevel());
-			return;
-		case LEVEL_FINISHED:
-			this.levelFinished(this.getLevel());
-			return;
-		}
-
-		//we have to decide whether we want to present a phish or not
-		boolean present_phish=false;
-		if(remaining_phish > 0){
-			if(remaining_urls<=remaining_phish){
-				present_phish=true;
-			}else{
-				present_phish=random.nextBoolean();
-			}
-		}
-
-		//In Level 2 we always present the phish because The test is implemented as Attack
-		if(this.getLevel() == 2){
-			present_phish=true;
-		}
-
-		//First we choose a random start URL
-		PhishURLInterface base_url=getPhishURL(PhishAttackType.NoPhish);
-		//then we decorate the URL with a random generator
-		base_url=AbstractUrlDecorator.decorate(base_url, GENERATORS[random.nextInt(GENERATORS.length)]);
-		//Lastly we might apply a attack
-		current_url_level_offset=0;
-		if(present_phish){
-			boolean present_repeat = false;
-			if(getLevel() < FIRST_REPEAT_LEVEL){
-				//Up until level FIRST_REPEAT_LEVEL we don't repeat because levels 0-2 are special. 
-				present_repeat = false;
-			}else if(remaining_urls <= remaining_repeats){
-				//we have to present a repeat
-				present_repeat = true;
-			}else if( remaining_repeats > 0 ){
-				//we might present a repeat
-				present_repeat = random.nextBoolean();
-			}
-			Class<? extends AbstractUrlDecorator> attack;
-			if(present_repeat){
-				this.progress.incPresentedRepeats();
-				current_url_level_offset=this.level_repeat_offsets.remove(random.nextInt(this.level_repeat_offsets.size()));
-			}
-			int attack_level= getLevel() - current_url_level_offset;
-			NoPhishLevelInfo attack_level_info = BackendController.getInstance().getLevelInfo(attack_level);
-			//choose a random attack from the selected Level
-			Class<? extends AbstractUrlDecorator>[] level_attacks = attack_level_info.attackTypes;
-			attack=level_attacks[random.nextInt(level_attacks.length)];
-			//decorate the current url with this attack
-			base_url=AbstractUrlDecorator.decorate(base_url,attack);
-		}
-
-		this.current_url=base_url;
-	}
-
-
-	private int levelRepeats(){
-		return (int) Math.floor(this.levelPhishes()/2);
-	}
-
-	@Override
-	public String[] getUrl(){
-		return (String[]) this.current_url.getParts();
-	}
-
-	@Override
-	public int getLevel() {
-		checkinited();
-		return this.progress.getLevel();
-	}
-
-	@Override
-	public PhishResult userClicked(boolean acceptance) {
-		checkinited();
-		PhishResult result=this.current_url.getResult(acceptance);
-		if(result != PhishResult.Phish_Detected){
-			this.addResult(result);
-		}
-		return result;
-	}
-
-	private void addResult(PhishResult result){
-		this.progress.addResult(result);
-		if(result == PhishResult.Phish_NotDetected){
-			if(current_url_level_offset>0){
-				level_repeat_offsets.add(current_url_level_offset);
-			}
-			progress.decLives();
-			Vibrator v = (Vibrator) frontend.getContext().getSystemService(Context.VIBRATOR_SERVICE);
-			v.vibrate(500);
-		}
-		int offset=this.current_url.getPoints(result);
-		//with this function we ensure that the user gets more points per level
-		//This ensures that there is no point in running the same level multiple times to collect points
-		offset*=Math.pow(LEVEL_DISTANCE, this.getLevel());
-		this.frontend.displayToastScore(offset);
-		this.progress.setLevelPoints(this.getLevelPoints()+offset);
-	}
-
-	@Override
-	public PhishSiteType getSiteType() {
-		checkinited();
-		return this.current_url.getSiteType();
-	}
-
-	@Override
-	public PhishAttackType getAttackType() {
-		checkinited();
-		return this.current_url.getAttackType();
-	}
-
-	@Override
-	public boolean partClicked(int part) {
-		checkinited();
-		boolean clickedright = part == current_url.getDomainPart();
-		if(clickedright){
-			addResult(PhishResult.Phish_Detected);
-		}else{
-			addResult(PhishResult.Phish_NotDetected);
-		}
-		return clickedright;
-	}
-
-	public int getTotalPoints(){
-		checkinited();
-		return this.progress.getPoints();
-	}
-
-	public int getLevelPoints(){
-		checkinited();
-		return this.progress.getLevelPoints();
-	}
-
-	public void onUrlReceive(Uri data){
-		checkinited();
-		if(data == null){
-			return;
-		}
-		String host = data.getHost();
-		if(host.equals("maillink")){
-			this.levelFinished(0);
-		}else if(host.equals("level1finished")){
-			this.levelFinished(1);
-		}else if(host.equals("level1failed")){
-			this.startLevel(1);
-		}
-	}
-
-	public void skipLevel0(){
-		this.levelFinished(0);
-	}
-
-	private void levelFinished(int level){
-		this.progress.commitPoints();
-		this.progress.unlockLevel(level+1);
-		this.frontend.levelFinished(level);
-	}
-
-	@Override
-	public void onGameStateLoaded() {
-		this.gamestate_loaded=true;
-		this.checkInitDone();
-	}
-
-	@Override
-	public int getMaxUnlockedLevel() {
-		return this.progress.getMaxUnlockedLevel();
-	}
-
-	@Override
-	public void signIn() {
-		checkinited();
-		if(!this.gamehelper.isSignedIn()){
-			this.gamehelper.beginUserInitiatedSignIn();
-		}
-	}
-
-	@Override
-	public void signOut() {
-		checkinited();
-		this.gamehelper.signOut();
-	}
-
-	@Override
-	public int levelCorrectURLs() {
-		if(getLevel()==2){
-			return 5;
-		}
-		return 6+(2*this.getLevel());
-	}
-
-	private int levelURLs() {
-		checkinited();
-		int failed_urls=progress.getLevelResults(PhishResult.Phish_NotDetected)+progress.getLevelResults(PhishResult.NoPhish_NotDetected);
-		return levelCorrectURLs()+failed_urls;
-	}
-
-	@Override
-	public int getCorrectlyFoundURLs() {
-		return progress.getLevelResults(PhishResult.Phish_Detected)+progress.getLevelResults(PhishResult.NoPhish_Detected);
-	}
-
-	private int levelPhishes() {
-		checkinited();
-		int base_phishes=0;
-		if(this.getLevel()==2){
-			base_phishes=levelCorrectURLs();
-		}else{
-			base_phishes=levelCorrectURLs()/2;
-		}
-		return base_phishes+progress.getLevelResults(PhishResult.Phish_NotDetected);
-	}
-
-	private int doneURLs() {
-		checkinited();
-		return this.progress.getDoneUrls();
-	}
-
-	@Override
-	public int levelState() {
-		int remaining_urls = levelURLs()-doneURLs();
-		int result = 0;
-		if(progress.getRemainingLives() <= 0){
-			result = LEVEL_FAILED;
-		}else if(remaining_urls <= 0){
-			result = LEVEL_FINISHED;
-		}else{
-			result = LEVEL_RUNNING;
-		}
-
-		return result;
-	}
-
-	@Override
-	public Integer[] getAttackParts() {
-		return current_url.getAttackParts().toArray(new Integer[0]);
-	}
-
-	@Override
-	public int getLifes() {
-		return this.progress.getRemainingLives();
-	}
-
-	@Override
-	public void onSignInFailed() {
-		frontend.onSignInFailed();
-	}
-
-	@Override
-	public void onSignInSucceeded() {
-		progress.loadState();
-		gamehelper.getGamesClient().unlockAchievement(frontend.getContext().getResources().getString(R.string.achievement_welcome));
-		frontend.onSignInSucceeded();
-	}
-
-	@Override
-	public GameHelper getGameHelper() {
-		return this.gamehelper;
-	}
-
-	@Override
-	public int getLevelCount() {
-		return NoPhishLevelInfo.levelCount();
-	}
-
-	@Override
-	public NoPhishLevelInfo getLevelInfo(int levelid) {
-		if(levelid >= getLevelCount()){
-			throw new IllegalArgumentException("Invalid level ID. levelid>= getLevelCount()");
-		}
-		return new NoPhishLevelInfo(levelid);
+	/**
+	 * This Interface is implemented by the frontend to get notifed whenever the level changes
+	 */
+	public interface OnLevelChangeListener{
+		/**
+		 * This function is called when the level changes
+		 * @param new_levelid the new level ID
+		 */
+		public void onLevelChange(int new_levelid);
 	}
 	
-	@Override
-	public NoPhishLevelInfo getLevelInfo() {
-		return getLevelInfo(getLevel());
+	/**
+	 * This Interface is implemented by the frontend to get notified when the init is done.
+	 */
+	public interface BackendInitListener{
+		/**
+		 * This function is called while init continues.
+		 * @param percent how far is completion.
+		 */
+		void initProgress(int percent);
+		/**
+		 * This function is called when the game can start.
+		 */
+		void onInitDone();
 	}
-
-	@Override
-	public int getLevelPoints(int level) {
-		return this.progress.getLevelPoints(level);
-	}
-
-	@Override
-	public int getDomainPart() {
-		return current_url.getDomainPart();
-	}
-
-	@Override
-	public void deleteRemoteData() {
-		this.progress.deleteRemoteData();
+	
+	/**
+	 * Represents the state of the leve
+	 */
+	public enum Levelstate{
+		/** The Level is Running */
+		running (0),
+		/** The Level is finished and the user used up all lifes */
+		failed (2),
+		/** The Level is finished successfully */
+		finished (3);
+		
+		private int value;
+		private Levelstate(int value){
+			this.value=value;
+		}
+		/**
+		 * Get the Value for this enum
+		 * @return the int value of the enum
+		 */
+		public int getValue(){
+			return value;
+		}
 	}
 }
+

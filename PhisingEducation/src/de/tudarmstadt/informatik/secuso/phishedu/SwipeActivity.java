@@ -16,7 +16,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController;
+import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendControllerImpl;
 
 
 public abstract class SwipeActivity extends PhishBaseActivity implements ViewPager.OnPageChangeListener
@@ -105,7 +105,7 @@ public abstract class SwipeActivity extends PhishBaseActivity implements ViewPag
 	}
 	
 	protected void setUrlText(TextView urlText) {
-		String[] urlParts = BackendController.getInstance().getUrl();
+		String[] urlParts = BackendControllerImpl.getInstance().getUrl().getParts();
 		StringBuilder builder = new StringBuilder();
 		
 		for(int i=0; i< urlParts.length; i++){
