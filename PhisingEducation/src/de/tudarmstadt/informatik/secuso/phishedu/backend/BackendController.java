@@ -195,7 +195,7 @@ public interface BackendController extends GameHelperListener{
 	 * @param type The type of URL you want to get
 	 * @return The (possibly decorated) Phishing url
 	 */
-	public PhishURLInterface getPhishURL(PhishAttackType type);
+	public PhishURL getPhishURL(PhishAttackType type);
 	
 	/**
 	 * This function is for debugging only. It skips level0 gracefully.

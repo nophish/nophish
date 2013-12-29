@@ -1,6 +1,6 @@
 package de.tudarmstadt.informatik.secuso.phishedu.backend.generator;
 
-import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishURLInterface;
+import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishURL;
 
 /**
  * This Generator passes the decorated URL without modification. 
@@ -10,8 +10,8 @@ import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishURLInterface;
 public class KeepGenerator extends BaseGenerator {
 
 	/**
-	 * See {@link BaseGenerator#BaseGenerator(PhishURLInterface)}
-	 * @param object See {@link BaseGenerator#BaseGenerator(PhishURLInterface)}
+	 * See {@link BaseGenerator#BaseGenerator(PhishURL)}
+	 * @param object See {@link BaseGenerator#BaseGenerator(PhishURL)}
 	 */
-	public KeepGenerator(PhishURLInterface object) {super(object);}
+	public KeepGenerator(PhishURL object) {super(object);}
 }

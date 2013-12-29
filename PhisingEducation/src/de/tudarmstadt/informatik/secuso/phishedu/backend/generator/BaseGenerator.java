@@ -3,7 +3,7 @@ package de.tudarmstadt.informatik.secuso.phishedu.backend.generator;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.AbstractUrlDecorator;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishAttackType;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishResult;
-import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishURLInterface;
+import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishURL;
 
 /**
  * This is the Base Class of all Generators.
@@ -17,7 +17,7 @@ public class BaseGenerator extends AbstractUrlDecorator {
 	 * To build an Generator we need a url to decorate
 	 * @param object the decorated URL
 	 */
-	public BaseGenerator(PhishURLInterface object) {
+	public BaseGenerator(PhishURL object) {
 		super(object);
 	}
 	

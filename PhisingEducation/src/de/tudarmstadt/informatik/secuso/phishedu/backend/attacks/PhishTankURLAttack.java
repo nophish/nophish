@@ -5,7 +5,7 @@ import java.util.List;
 
 import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendControllerImpl;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishAttackType;
-import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishURLInterface;
+import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishURL;
 
 /**
  * This Attack replaces the whole URL by a replace from phishtank
@@ -18,7 +18,7 @@ public class PhishTankURLAttack extends AbstractAttack {
 	 * This constructor is required because of the implementation in {@link BackendControllerImpl#getNextUrl()}
 	 * @param object This Parmeter is discarded. It is replaced by a PhishTank URL
 	 */
-	public PhishTankURLAttack(PhishURLInterface object) {
+	public PhishTankURLAttack(PhishURL object) {
 		super(object);
 		this.object=BackendControllerImpl.getInstance().getPhishURL(PhishAttackType.AnyPhish);
 	}

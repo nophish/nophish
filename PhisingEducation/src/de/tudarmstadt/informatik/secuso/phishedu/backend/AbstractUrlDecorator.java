@@ -6,15 +6,15 @@ import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendControllerImpl;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishAttackType;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishResult;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishSiteType;
-import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishURLInterface;
+import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishURL;
 
 /**
  * This is the abstract implementation for following Attacks.
  * @author Clemens Bergmann <cbergmann@schuhklassert.de>
  *
  */
-public abstract class AbstractUrlDecorator implements PhishURLInterface {
-	protected PhishURLInterface object;
+public abstract class AbstractUrlDecorator implements PhishURL {
+	protected PhishURL object;
 	
 	/**
 	 * This constructor takes a random Valid URL and decorates it.
@@ -27,7 +27,7 @@ public abstract class AbstractUrlDecorator implements PhishURLInterface {
 	 * To build an attack we need a url to decorate
 	 * @param object the decorated URL
 	 */
-	public AbstractUrlDecorator(PhishURLInterface object){
+	public AbstractUrlDecorator(PhishURL object){
 		this.object=object;
 	}
 
@@ -63,7 +63,7 @@ public abstract class AbstractUrlDecorator implements PhishURLInterface {
 	}
 	
 	@Override
-	public PhishURLInterface clone(){
+	public PhishURL clone(){
 		return decorate(this.object.clone(),this.getClass());
 	}
 	
@@ -73,9 +73,9 @@ public abstract class AbstractUrlDecorator implements PhishURLInterface {
 	 * @param decorator The decorator
 	 * @return the base_url wrapped in a new instance of the decorator
 	 */
-	public static PhishURLInterface decorate(PhishURLInterface base_url, Class<? extends AbstractUrlDecorator> decorator) {
+	public static PhishURL decorate(PhishURL base_url, Class<? extends AbstractUrlDecorator> decorator) {
 		try {
-			base_url=decorator.getConstructor(PhishURLInterface.class).newInstance(base_url);
+			base_url=decorator.getConstructor(PhishURL.class).newInstance(base_url);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

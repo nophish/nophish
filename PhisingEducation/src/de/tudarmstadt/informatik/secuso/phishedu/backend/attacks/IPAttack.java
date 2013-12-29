@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Random;
 
 import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishAttackType;
-import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishURLInterface;
+import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishURL;
 
 /**
  * This attack is baesed on using an IP address as hostname.
@@ -15,10 +15,10 @@ import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishURLInterface;
 public class IPAttack extends AbstractAttack {
 
 	/**
-	 * See {@link AbstractAttack#AbstractAttack(PhishURLInterface)}
-	 * @param object See {@link AbstractAttack#AbstractAttack(PhishURLInterface)}
+	 * See {@link AbstractAttack#AbstractAttack(PhishURL)}
+	 * @param object See {@link AbstractAttack#AbstractAttack(PhishURL)}
 	 */
-	public IPAttack(PhishURLInterface object) {
+	public IPAttack(PhishURL object) {
 		super(object);
 		ip=getRandomIP();
 	}

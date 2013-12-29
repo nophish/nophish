@@ -58,24 +58,24 @@ public class BackendControllerImpl implements BackendController, GameStateLoaded
 	private GameHelper gamehelper;
 	private boolean inited = false;
 	//indexed by UrlType
-	private PhishURLInterface[][] urlCache;
+	private PhishURL[][] urlCache;
 	private boolean gamestate_loaded = false;
 	private GameProgress progress;
 	private List<OnLevelstateChangeListener> onLevelstateChangeListeners=new ArrayList<BackendController.OnLevelstateChangeListener>();
 	private List<OnLevelChangeListener> onLevelChangeListeners=new ArrayList<BackendController.OnLevelChangeListener>();
 	private BackendInitListener initListener;
 
-	private static PhishURL[] deserializeURLs(String serialized){
-		PhishURL[] result = new PhishURL[0];
+	private static BasePhishURL[] deserializeURLs(String serialized){
+		BasePhishURL[] result = new BasePhishURL[0];
 		try {
-			result = (new Gson()).fromJson(serialized, PhishURL[].class);
+			result = (new Gson()).fromJson(serialized, BasePhishURL[].class);
 		} catch (JsonSyntaxException e) {
 			// TODO: handle exception
 		}
 		return result;
 	}
 
-	private static String serializeURLs(PhishURLInterface[] object){
+	private static String serializeURLs(PhishURL[] object){
 		return new Gson().toJson(object);
 	}
 
@@ -84,7 +84,7 @@ public class BackendControllerImpl implements BackendController, GameStateLoaded
 	 * @param type Type of Attack for the URL
 	 * @return A PhishURL of the given type
 	 */
-	public PhishURLInterface getPhishURL(PhishAttackType type){
+	public PhishURL getPhishURL(PhishAttackType type){
 		if(type.getValue() >= this.urlCache.length || this.urlCache[type.getValue()].length == 0){
 			throw new IllegalArgumentException("This phish type is not cached.");
 		}
@@ -94,7 +94,7 @@ public class BackendControllerImpl implements BackendController, GameStateLoaded
 	/**
 	 * This holds the current URL returned by the last {@link BackendController}{@link #getNextUrl()} call
 	 */
-	private PhishURLInterface current_url;
+	private PhishURL current_url;
 
 	/**
 	 * save the current repeat offset of the attack.
@@ -106,9 +106,9 @@ public class BackendControllerImpl implements BackendController, GameStateLoaded
 	 * Private constructor for singelton.
 	 */
 	private BackendControllerImpl() {
-		this.urlCache=new PhishURLInterface[CACHE_TYPES.length][];
+		this.urlCache=new PhishURL[CACHE_TYPES.length][];
 		for(PhishAttackType type: CACHE_TYPES){
-			this.urlCache[type.getValue()]=new PhishURLInterface[0];
+			this.urlCache[type.getValue()]=new PhishURL[0];
 		}
 	}
 
@@ -149,7 +149,7 @@ public class BackendControllerImpl implements BackendController, GameStateLoaded
 		checkInitDone();
 	}
 
-	private void CacheUrls(SharedPreferences cache, PhishAttackType type, PhishURLInterface[] urls){
+	private void CacheUrls(SharedPreferences cache, PhishAttackType type, PhishURL[] urls){
 		SharedPreferences.Editor editor = cache.edit();
 		editor.putString(type.toString(), serializeURLs(urls));
 		editor.commit();
@@ -157,14 +157,14 @@ public class BackendControllerImpl implements BackendController, GameStateLoaded
 
 	private void loadUrls(SharedPreferences cache, PhishAttackType type){
 		//first we load the cached value if available
-		PhishURL[] urls=deserializeURLs(cache.getString(type.toString(), "[]"));
+		BasePhishURL[] urls=deserializeURLs(cache.getString(type.toString(), "[]"));
 		//If the values are still empty we load the factory defaults 
 		if(urls.length==0){
 			int resource = frontend.getContext().getResources().getIdentifier(type.toString().toLowerCase(Locale.US), "raw", frontend.getContext().getPackageName());
 			InputStream input = frontend.getContext().getResources().openRawResource(resource);
 			String json = new Scanner(input,"UTF-8").useDelimiter("\\A").next();
 			try {
-				urls = (new Gson()).fromJson(json, PhishURL[].class);
+				urls = (new Gson()).fromJson(json, BasePhishURL[].class);
 			} catch (JsonSyntaxException e) {
 			}
 		}
@@ -173,19 +173,19 @@ public class BackendControllerImpl implements BackendController, GameStateLoaded
 		new GetUrlsTask(this).execute(URL_CACHE_SIZE,type.getValue());
 	}
 
-	private void setURLs(PhishAttackType type, PhishURLInterface[] urls){
-		ArrayList<PhishURLInterface> result = new ArrayList<PhishURLInterface>();
-		for (PhishURLInterface phishURL : urls) {
+	private void setURLs(PhishAttackType type, PhishURL[] urls){
+		ArrayList<PhishURL> result = new ArrayList<PhishURL>();
+		for (PhishURL phishURL : urls) {
 			if(phishURL.validate()){
 				result.add(phishURL);	
 			}
 		}
 		if(result.size()>0){
-			this.urlCache[type.getValue()] = result.toArray(new PhishURLInterface[0]);
+			this.urlCache[type.getValue()] = result.toArray(new PhishURL[0]);
 		}
 	}
 
-	public void urlsReturned(PhishURLInterface[] urls, PhishAttackType type){
+	public void urlsReturned(PhishURL[] urls, PhishAttackType type){
 		if(urls.length > 0){
 			this.setURLs(type, urls);
 			this.CacheUrls(this.frontend.getContext().getSharedPreferences(URL_CACHE_NAME, Context.MODE_PRIVATE),type, this.urlCache[type.getValue()]);
@@ -285,7 +285,7 @@ public class BackendControllerImpl implements BackendController, GameStateLoaded
 		}
 
 		//First we choose a random start URL
-		PhishURLInterface base_url=getPhishURL(PhishAttackType.NoPhish);
+		PhishURL base_url=getPhishURL(PhishAttackType.NoPhish);
 		//then we decorate the URL with a random generator
 		base_url=AbstractUrlDecorator.decorate(base_url, GENERATORS[random.nextInt(GENERATORS.length)]);
 		//Lastly we might apply a attack

@@ -2,7 +2,7 @@ package de.tudarmstadt.informatik.secuso.phishedu.backend.attacks;
 
 
 import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishAttackType;
-import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishURLInterface;
+import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishURL;
 
 /**
  * This Attack is special for Level2
@@ -13,10 +13,10 @@ import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishURLInterface;
 public class Level2Attack extends AbstractAttack {
 
 	/**
-	 * See {@link AbstractAttack#AbstractAttack(PhishURLInterface)}
-	 * @param object See {@link AbstractAttack#AbstractAttack(PhishURLInterface)}
+	 * See {@link AbstractAttack#AbstractAttack(PhishURL)}
+	 * @param object See {@link AbstractAttack#AbstractAttack(PhishURL)}
 	 */
-	public Level2Attack(PhishURLInterface object) {super(object);}
+	public Level2Attack(PhishURL object) {super(object);}
 	
 	public PhishAttackType getAttackType() {
 		return PhishAttackType.Level2Attack;
