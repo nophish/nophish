@@ -29,17 +29,12 @@ public class URLTaskActivity extends PhishBaseActivity {
 		setContentView(R.layout.urltask_task);
 		this.urlText = (TextView) findViewById(R.id.url_task_url);
 
-		nextURL();
 		setTitles();
 
 		// set size of shown url depending on level
 		setUrlSize();
-	}
-
-	@Override
-	protected void onResume() {
-		super.onResume();
-		nextURL();	
+		
+		nextURL();
 	}
 
 	private void setUrlSize() {
@@ -122,13 +117,11 @@ public class URLTaskActivity extends PhishBaseActivity {
 		Intent levelIntent = new Intent(this, followActivity);
 		levelIntent.putExtra(Constants.EXTRA_RESULT, result.getValue());
 		levelIntent.putExtra(Constants.EXTRA_LEVEL, this.level);
-		levelIntent.putExtra(Constants.EXTRA_SITE_TYPE, BackendController
-				.getInstance().getSiteType().getValue());
-		levelIntent.putExtra(Constants.EXTRA_ATTACK_TYPE, BackendController
-				.getInstance().getAttackType().getValue());
-		startActivityForResult(levelIntent, 1);
+		levelIntent.putExtra(Constants.EXTRA_SITE_TYPE, BackendController.getInstance().getSiteType().getValue());
+		levelIntent.putExtra(Constants.EXTRA_ATTACK_TYPE, BackendController.getInstance().getAttackType().getValue());
+		startActivity(levelIntent);
 	}
-
+	
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
@@ -148,18 +141,18 @@ public class URLTaskActivity extends PhishBaseActivity {
 		levelCanceldWarning();
 	}
 
-
 	@Override
 	protected void onStart() {
 		super.onStart();
 		if (level == 2) {
 			Intent levelIntent = new Intent(this, ProofActivity.class);
 			levelIntent.putExtra(Constants.EXTRA_LEVEL, this.level);
-			startActivityForResult(levelIntent, 1);
+			startActivity(levelIntent);
 		} else {
 			sendScrollToRight();
 		}
 	}
+	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu items for use in the action bar

@@ -117,17 +117,9 @@ public class ProofActivity extends PhishBaseActivity {
 		Intent levelIntent = new Intent(this, ResultActivity.class);
 		levelIntent.putExtra(Constants.EXTRA_RESULT, result);
 		levelIntent.putExtra(Constants.EXTRA_LEVEL, this.level);
-		levelIntent.putExtra(Constants.EXTRA_SITE_TYPE, BackendController
-				.getInstance().getSiteType().getValue());
-		levelIntent.putExtra(Constants.EXTRA_ATTACK_TYPE, BackendController
-				.getInstance().getAttackType().getValue());
-		startActivityForResult(levelIntent, 1);
-	}
-
-	@Override
-	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-		super.onActivityResult(requestCode, resultCode, data);
-		finish();
+		levelIntent.putExtra(Constants.EXTRA_SITE_TYPE, BackendController.getInstance().getSiteType().getValue());
+		levelIntent.putExtra(Constants.EXTRA_ATTACK_TYPE, BackendController.getInstance().getAttackType().getValue());
+		startActivity(levelIntent);
 	}
 
 	@Override

@@ -2,6 +2,7 @@ package de.tudarmstadt.informatik.secuso.phishedu.backend;
 
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 import java.util.Random;
 import java.util.Scanner;
@@ -60,6 +61,7 @@ public class BackendController implements BackendControllerInterface, GameStateL
 	private PhishURLInterface[][] urlCache;
 	private boolean gamestate_loaded = false;
 	private GameProgress progress;
+	private List<LevelstateChangedListener> levelstateChangedListeners=new ArrayList<BackendControllerInterface.LevelstateChangedListener>();
 
 	private static PhishURL[] deserializeURLs(String serialized){
 		PhishURL[] result = new PhishURL[0];
@@ -163,7 +165,7 @@ public class BackendController implements BackendControllerInterface, GameStateL
 			} catch (JsonSyntaxException e) {
 				// TODO: handle exception
 			}
-			
+
 		}
 		this.setURLs(type, urls);
 		//then we get the value from the online store
@@ -193,7 +195,7 @@ public class BackendController implements BackendControllerInterface, GameStateL
 	public void urlDownloadProgress(int percent){
 		this.frontend.initProgress(percent);
 	}
-	
+
 	public boolean isInitDone(){
 		return this.inited;
 	}
@@ -234,6 +236,7 @@ public class BackendController implements BackendControllerInterface, GameStateL
 		}
 		this.progress.setLevel(level);
 		this.frontend.onLevelChange(this.progress.getLevel());
+		notifyLevelStateChangedListener(Levelstate.running);
 	}
 
 	@Override
@@ -262,17 +265,6 @@ public class BackendController implements BackendControllerInterface, GameStateL
 		int remaining_urls = this.levelURLs()-doneURLs();
 		int remaining_phish = this.levelPhishes()-this.progress.getPresentedPhish();
 		int remaining_repeats = this.levelRepeats() - this.progress.getPresentedRepeats();
-		//We might have failed the level
-		//Either by going out of URLs or by going out of options to detect phish
-		int state = levelState();
-		switch (state) {
-		case LEVEL_FAILED:
-			this.frontend.levelFailed(getLevel());
-			return;
-		case LEVEL_FINISHED:
-			this.levelFinished(this.getLevel());
-			return;
-		}
 
 		//we have to decide whether we want to present a phish or not
 		boolean present_phish=false;
@@ -351,6 +343,7 @@ public class BackendController implements BackendControllerInterface, GameStateL
 	}
 
 	private void addResult(PhishResult result){
+		Levelstate oldstate = getLevelState();
 		this.progress.addResult(result);
 		if(result == PhishResult.Phish_NotDetected){
 			if(current_url_level_offset>0){
@@ -366,6 +359,20 @@ public class BackendController implements BackendControllerInterface, GameStateL
 		offset*=Math.pow(LEVEL_DISTANCE, this.getLevel());
 		this.frontend.displayToastScore(offset);
 		this.progress.setLevelPoints(this.getLevelPoints()+offset);
+
+		Levelstate newstate = getLevelState();
+		if(oldstate != newstate){
+			switch (newstate) {
+			case finished:
+				levelFinished(this.getLevel());
+				break;
+			case failed:
+				levelFailed(this.getLevel());
+				break;
+			default:
+				break;
+			}
+		}
 	}
 
 	@Override
@@ -420,11 +427,21 @@ public class BackendController implements BackendControllerInterface, GameStateL
 	public void skipLevel0(){
 		this.levelFinished(0);
 	}
-
+	
+	private void levelFailed(int level){
+		notifyLevelStateChangedListener(Levelstate.failed);
+	}
+	
 	private void levelFinished(int level){
 		this.progress.commitPoints();
 		this.progress.unlockLevel(level+1);
-		this.frontend.levelFinished(level);
+		notifyLevelStateChangedListener(Levelstate.finished);
+	}
+	
+	private void notifyLevelStateChangedListener(Levelstate newstate){
+		for (LevelstateChangedListener listener : levelstateChangedListeners) {
+			listener.onlevelstateChange(newstate);
+		}
 	}
 
 	@Override
@@ -488,15 +505,15 @@ public class BackendController implements BackendControllerInterface, GameStateL
 	}
 
 	@Override
-	public int levelState() {
+	public Levelstate getLevelState() {
 		int remaining_urls = levelURLs()-doneURLs();
-		int result = 0;
-		if(progress.getRemainingLives() <= 0){
-			result = LEVEL_FAILED;
+		Levelstate result;
+		if(this.getLifes() <= 0){
+			result = Levelstate.failed;
 		}else if(remaining_urls <= 0){
-			result = LEVEL_FINISHED;
+			result = Levelstate.finished;
 		}else{
-			result = LEVEL_RUNNING;
+			result = Levelstate.running;
 		}
 
 		return result;
@@ -509,6 +526,7 @@ public class BackendController implements BackendControllerInterface, GameStateL
 
 	@Override
 	public int getLifes() {
+		checkinited();
 		return this.progress.getRemainingLives();
 	}
 
@@ -541,7 +559,7 @@ public class BackendController implements BackendControllerInterface, GameStateL
 		}
 		return new NoPhishLevelInfo(levelid);
 	}
-	
+
 	@Override
 	public NoPhishLevelInfo getLevelInfo() {
 		return getLevelInfo(getLevel());
@@ -560,5 +578,16 @@ public class BackendController implements BackendControllerInterface, GameStateL
 	@Override
 	public void deleteRemoteData() {
 		this.progress.deleteRemoteData();
+	}
+
+	@Override
+	public void addLevelstateChangedListener(LevelstateChangedListener listener) {
+		this.levelstateChangedListeners.add(listener);
+	}
+
+	@Override
+	public void removeLevelstateChangedListener(
+			LevelstateChangedListener listener) {
+		this.levelstateChangedListeners.remove(listener);
 	}
 }

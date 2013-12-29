@@ -76,7 +76,7 @@ public class LevelIntroActivity extends SwipeActivity {
 		this.level = getIntent().getIntExtra(Constants.EXTRA_LEVEL, 0);
 		super.onCreate(savedInstanceState);
 	}
-
+	
 	public void onStartClick(View view) {
 		this.onStartClick();
 	}

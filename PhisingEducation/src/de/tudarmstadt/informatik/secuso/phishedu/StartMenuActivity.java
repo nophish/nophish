@@ -2,6 +2,7 @@ package de.tudarmstadt.informatik.secuso.phishedu;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.Application;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -13,13 +14,10 @@ import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.google.android.gms.games.GamesClient;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.FrontendControllerInterface;
 
@@ -31,10 +29,14 @@ import de.tudarmstadt.informatik.secuso.phishedu.backend.FrontendControllerInter
  */
 public class StartMenuActivity extends PhishBaseActivity implements
 		FrontendControllerInterface {
-
-	public StartMenuActivity() {
-		// request AppStateClient and GamesClient
-		super();
+	private static Activity context;
+	
+	public StartMenuActivity(){
+		context=this;
+	}
+	
+	public static void onStart(Activity context){
+		StartMenuActivity.context=context;
 	}
 
 	@Override
@@ -124,7 +126,7 @@ public class StartMenuActivity extends PhishBaseActivity implements
 
 	@Override
 	public Context getContext() {
-		return getApplicationContext();
+		return StartMenuActivity.context;
 	}
 
 	@Override
@@ -144,7 +146,6 @@ public class StartMenuActivity extends PhishBaseActivity implements
 	public void onLevelChange(int level) {
 		Intent levelIntent = new Intent(this, LevelIntroActivity.class);
 		levelIntent.putExtra(Constants.EXTRA_LEVEL, level);
-		ResultActivity.resetState();
 		startActivity(levelIntent);
 	}
 
@@ -181,17 +182,6 @@ public class StartMenuActivity extends PhishBaseActivity implements
 		// Showing Alert Message
 		alertDialog.show();
 
-	}
-
-	@Override
-	public void levelFinished(int level) {
-		Intent levelIntent = new Intent(this, LevelFinishedActivity.class);
-		levelIntent.putExtra(Constants.EXTRA_LEVEL, level);
-		startActivity(levelIntent);
-	}
-
-	@Override
-	public void levelFailed(int level) {
 	}
 
 	@Override

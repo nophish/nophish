@@ -12,11 +12,13 @@ import android.widget.TextView;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController;
 
 public class PhishBaseActivity extends ActionBarActivity {
+	
 
     @Override
     protected void onStart() {
         super.onStart();
         BackendController.getInstance().getGameHelper().onStart(this);
+        StartMenuActivity.onStart(this);
     }
 
     @Override

@@ -1,9 +1,9 @@
 package de.tudarmstadt.informatik.secuso.phishedu.backend;
 
+import android.net.Uri;
+
 import com.google.example.games.basegameutils.GameHelper;
 import com.google.example.games.basegameutils.GameHelper.GameHelperListener;
-
-import android.net.Uri;
 
 /**
  * This is the interface that the backend presents to the frontend.
@@ -19,6 +19,18 @@ public interface BackendControllerInterface extends GameHelperListener{
 	 */
 	public void init(FrontendControllerInterface frontend);
 	
+	/**
+	 * This Function allows the frontend to be notified whenever the level State changes.
+	 * @param listener the frontend to notify.
+	 */
+	public void addLevelstateChangedListener(LevelstateChangedListener listener);
+	
+	/**
+	 * This Function allows the frontend to unregister a listener previously registered via {@link #addLevelstateChangedListener(LevelstateChangedListener)} 
+	 * @param listener the listener to unregister
+	 */
+	public void removeLevelstateChangedListener(LevelstateChangedListener listener);
+		
 	/**
 	 * This function sends a Mail to a custom Mail Adress-
 	 * @param from The Sender mail address
@@ -142,25 +154,11 @@ public interface BackendControllerInterface extends GameHelperListener{
 	 */
 	public void restartLevel();
 	
-	//Level States
-	/** 
-	 * return Value of {@link #levelState()} when level is running
-	 */
-	public static int LEVEL_RUNNING = 0;
-	/** 
-	 * return Value of {@link #levelState()} when level is failed
-	 */
-	public static int LEVEL_FAILED = 2;
-	/** 
-	 * return Value of {@link #levelState()} when level is finished
-	 */
-	public static int LEVEL_FINISHED = 3;
-	
 	/**
 	 * Return the current state of the level. This can change whenever {@link #userClicked(boolean)} or {@link #partClicked(int)} is called.
 	 * @return one of the LEVEL_* constants from this interface.
 	 */
-	public int levelState();
+	public Levelstate getLevelState();
 	
 	/**
 	 * Get the parts of the current URL that are attacked.
@@ -229,5 +227,36 @@ public interface BackendControllerInterface extends GameHelperListener{
 	 * @return true if the initialization is finished. 
 	 */
 	public boolean isInitDone();
+	
+	/**
+	 * this Interface is implemented by the frontend to get notified whenever the Level State changes
+	 */
+	public interface LevelstateChangedListener{
+		/**
+		 * This function is called when the level state changes.
+		 * @param state the new state
+		 */
+		public void onlevelstateChange(Levelstate state);
+	}
+	
+	/**
+	 * Represents the state of the leve
+	 */
+	public enum Levelstate{
+		/** The Level is Running */
+		running (0),
+		/** The Level is finished and the user used up all lifes */
+		failed (2),
+		/** The Level is finished successfully */
+		finished (3);
+		
+		private int value;
+		private Levelstate(int value){
+			this.value=value;
+		}
+		public int getValue(){
+			return value;
+		}
+	}
 }
 
