@@ -28,7 +28,7 @@ if(!$success){
 <form action="<?= $_SERVER["REQUEST_URI"] ?>" method="post">
 <p>1. Nun schaue dir die gesamte Webadresse an. Hierzu musst du den Adresstext antippen und mit dem Finger ggf. nach rechts und links schieben.</p>
 <p>2. Gebe die letzten <?= $number_fragment_charsfragment ?> Zeichen der Webadresse ein:</p>
-<input type="text" name="chars" />
+<input type="text" name="chars" autocomplete="off" />
 <p>3. Welches der folgenden Begriffe ist das erste Wort der Webadresse:</p>
 <ul style="list-style:none;padding-left:0px;">
 <li><input type="radio" name="first_word" value="bottom" />bottom</li>
