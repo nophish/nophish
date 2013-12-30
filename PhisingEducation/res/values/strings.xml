@@ -205,7 +205,7 @@
     <string name="level_1_address_bar_subtitle_1">Einführung Adressleiste</string>
     <string name="level_1_address_bar_subtitle_2">Die Adressleiste finden</string>
     <string name="level_1">Level 1</string>
-    <string name="level_01_intro_00_text_01"><b>Die Adressleiste</b>\n\nAls Erstes musst du wissen, wie du mit deinem Smartphone an die Webadresse kommst. Dazu sind zwei Dinge wichtig:\n\n1.) Wo finde ich die Adressleiste?\n2.) Wie schaue ich mir die vollständige Webadresse an?</string>
+    <string name="level_01_intro_00_text_01"><b>Die Adressleiste</b>\n\nAls Erstes musst du wissen, wie du mit deinem Smartphone an die Webadresse kommst. Das ist bei jedem Android Browser gleich. Dazu sind zwei Dinge wichtig:\n\n1.) Wo finde ich die Adressleiste?\n2.) Wie schaue ich mir die vollständige Webadresse an?</string>
     <string name="level_01_intro_00_button_01">Das kann ich schon!</string>
     <string name="level_01_intro_00_button_02">Das kann ich nocht nicht!</string>
     <string name="level_01_intro_01_text_01"><b>Die Adressleiste finden</b>\n\nViele Webseiten sind so umfangreich, dass die eigentliche Webseite auf dem ganzen Display angezeigt wird und daher die Adressleiste nicht immer zu sehen ist.\n\nDu kannst aber auf der Webseite den Finger so lange herunter ziehen (ggf. mehrmals), bis du ganz oben auf der Webseite angekommen bist und die Adressleiste erscheint.</string>
