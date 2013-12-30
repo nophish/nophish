@@ -636,6 +636,6 @@ public class BackendControllerImpl implements BackendController, GameStateLoaded
 
 	@Override
 	public boolean getLevelCompleted(int level) {
-		return level>getMaxUnlockedLevel();
+		return level<getMaxUnlockedLevel();
 	}
 }
