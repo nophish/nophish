@@ -14,7 +14,9 @@ import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishURL;
  * @author Clemens Bergmann <cbergmann@schuhklassert.de>
  *
  */
-public class HostInPathAttack extends SubdomainAttack {
+public class HostInPathAttack extends AbstractAttack {
+	
+	protected static final String[] PHISHER_DOMAINS = Unrelated.PHISHER_DOMAINS;
 	
 	/**
 	 * This constructor is required because of the implementation in {@link BackendControllerImpl#getNextUrl()}
@@ -33,11 +35,12 @@ public class HostInPathAttack extends SubdomainAttack {
 	
 	@Override
 	public String[] getParts() {
-		String[] parts = super.getParts();
-		String domain = parts[3];
-		parts[3]=PHISHER_DOMAINS[phish_domain];
+		String[] parts = super.getParts().clone();
 		ArrayList<String> adder = new ArrayList<String>(Arrays.asList(parts));
-		adder.add(5,domain);
+		String address = parts[0]+parts[1]+parts[2]+parts[3];
+		adder.set(3, PHISHER_DOMAINS[phish_domain]);
+		adder.set(2, "");
+		adder.add(5,address+"/");
 		return adder.toArray(new String[0]);
 	}
 	

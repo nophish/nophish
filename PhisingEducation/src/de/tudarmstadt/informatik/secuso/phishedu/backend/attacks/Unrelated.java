@@ -38,8 +38,8 @@ public class Unrelated extends AbstractAttack {
 		"service.de",
 		"support.com",
 		"hilfe.de",
-		"abo",
-		"abonnement"
+		"abo.net",
+		"abonnement.biz"
 		
 	};
 	
