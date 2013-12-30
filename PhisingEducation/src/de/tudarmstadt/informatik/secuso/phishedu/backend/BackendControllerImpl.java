@@ -21,6 +21,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 
 import de.tudarmstadt.informatik.secuso.phishedu.R;
+import de.tudarmstadt.informatik.secuso.phishedu.backend.attacks.Level2Attack;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.generator.KeepGenerator;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.generator.SudomainGenerator;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.networkTasks.GetUrlsTask;
@@ -346,7 +347,7 @@ public class BackendControllerImpl implements BackendController, GameStateLoaded
 				after_url=Arrays.toString(base_url.getParts());
 			}
 			tries--;
-		}while(attack !=null && before_url.equals(after_url) && tries > 0); //The attack might not change the URL so we try again.
+		}while(attack !=null && before_url.equals(after_url) && attack != Level2Attack.class && tries > 0); //The attack might not change the URL so we try again.
 		
 		if(tries == 0){
 			throw new IllegalStateException("Could not find attackable URL. Attack:"+attack.getName());
