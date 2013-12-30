@@ -2,42 +2,67 @@ package de.tudarmstadt.informatik.secuso.phishedu;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.content.Intent;
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBarActivity;
+import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendControllerImpl;
 
-public class PhishBaseActivity extends ActionBarActivity {
+public abstract class PhishBaseActivity extends Fragment implements OnClickListener {
 	
+	/**
+	 * Get the id of the Layout of this fragment
+	 * @return the base layout 
+	 */
+	public abstract int getLayout();
+	public void onClick(View view){};
+	/**
+	 * If the fragment wants to react on the backpressed button it can implements this function
+	 * @return return true to continue with the back event. False otherwise. 
+	 */
+	public boolean onBackPressed(){return true;};
+	/**
+	 * If the Fragment wants to set the titles it can overwrite this
+	 */
+	private int getTitle(){return 0;};
+	private int getSubTitle(){return 0;};
+	/**
+	 * If there are clickable elements on this page you must list them here and implement {@link #onClick(View)}
+	 * @return the list of resource IDs of the clickable elements.
+	 */
+	public int[] getClickables(){return new int[0];};
+	
+	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+		View v = inflater.inflate(getLayout(), container, false);
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        BackendControllerImpl.getInstance().getGameHelper().onStart(this);
-        StartMenuActivity.onStart(this);
-    }
+		for (int i : getClickables()) {
+			v.findViewById(i).setOnClickListener(this);
+		}
+		
+		setTitles();
 
-    @Override
-    protected void onStop() {
-        super.onStop();
-        //disabled because this is called after onstart
-        //BackendController.getInstance().getGameHelper().onStop();
-    }
-    
-    @Override
-    protected void onActivityResult(int request, int response, Intent data) {
-        super.onActivityResult(request, response, data);
-        BackendControllerImpl.getInstance().getGameHelper().onActivityResult(request, response, data);
-    }
-		
-	protected void updateScore(){
-    	updateScore(findViewById(R.id.score_relative));
-    }
-		
+		return v;		 
+	}
+	
+	private void setTitles(){
+		android.support.v7.app.ActionBar ab = ((ActionBarActivity)getActivity()).getSupportActionBar();
+		if(getTitle()!=0){
+			ab.setTitle(getTitle());
+		}
+		if(getSubTitle()!=0){
+			ab.setSubtitle(getSubTitle());
+		}
+	}
+
 	protected void updateScore(View view){
 		if(view == null){
 			return;
@@ -81,7 +106,7 @@ public class PhishBaseActivity extends ActionBarActivity {
 	
 	
 	protected void levelRestartWarning() {
-		AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
+		AlertDialog.Builder alertDialog = new AlertDialog.Builder(getActivity());
 
 		// Setting Dialog Title
 		alertDialog.setTitle(getString(R.string.level_restart_title));
@@ -110,7 +135,7 @@ public class PhishBaseActivity extends ActionBarActivity {
 	}
 	
 	protected void levelCanceldWarning() {
-		AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
+		AlertDialog.Builder alertDialog = new AlertDialog.Builder(getActivity());
 
 		// Setting Dialog Title
 		alertDialog.setTitle(getString(R.string.level_cancel_title));
@@ -122,7 +147,7 @@ public class PhishBaseActivity extends ActionBarActivity {
 			
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
-				NavUtils.navigateUpFromSameTask(PhishBaseActivity.this);
+				NavUtils.navigateUpFromSameTask(getActivity());
 			}
 		});
 
@@ -136,5 +161,15 @@ public class PhishBaseActivity extends ActionBarActivity {
 
 		// Showing Alert Message
 		alertDialog.show();
+	}
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+		case android.R.id.home:
+			NavUtils.navigateUpFromSameTask(getActivity());
+			return true;
+		}
+		return super.onOptionsItemSelected(item);
 	}
 }

@@ -9,18 +9,12 @@ import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendControllerImpl;
 
 public class FindAddressBarActivity extends PhishBaseActivity {
 
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.level_01_task);
-		setTitles();
+	private int getTitle() {
+		return BackendControllerImpl.getInstance().getLevelInfo().titleId;
 	}
-
-	private void setTitles() {
-		android.support.v7.app.ActionBar ab = getSupportActionBar();
-
-		ab.setTitle(BackendControllerImpl.getInstance().getLevelInfo().titleId);
-		ab.setSubtitle(getString(R.string.exercise));		
+	
+	private int getSubTitle() {
+		return R.string.exercise;
 	}
 
 
@@ -32,8 +26,9 @@ public class FindAddressBarActivity extends PhishBaseActivity {
 	 * Going back not possible, only cancel level
 	 */
 	@Override
-	public void onBackPressed() {
+	public boolean onBackPressed() {
 		levelCanceldWarning();
+		return false;
 	}
 	
 	@Override
@@ -48,5 +43,10 @@ public class FindAddressBarActivity extends PhishBaseActivity {
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
+	}
+
+	@Override
+	public int getLayout() {
+		return R.layout.level_01_task;
 	}
 }

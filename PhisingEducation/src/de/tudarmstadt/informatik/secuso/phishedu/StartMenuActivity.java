@@ -30,26 +30,10 @@ import de.tudarmstadt.informatik.secuso.phishedu.backend.FrontendController;
  *         splash screen and afterwards a menu is displayed if the user wants to
  *         store his/her score online he/she has to sign into google+
  */
-public class StartMenuActivity extends PhishBaseActivity implements
-		FrontendController, OnLevelChangeListener, BackendInitListener, OnLevelstateChangeListener {
-	private static Activity context;
-	
-	public StartMenuActivity(){
-		context=this;
-	}
-	
-	public static void onStart(Activity context){
-		StartMenuActivity.context=context;
-	}
-
+public class StartMenuActivity extends PhishBaseActivity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		if(!BackendControllerImpl.getInstance().isInitDone()){
-		  BackendControllerImpl.getInstance().init(this,this);
-		}
-		BackendControllerImpl.getInstance().addOnLevelChangeListener(this);
-		BackendControllerImpl.getInstance().addOnLevelstateChangeListener(this);
 
 		setContentView(R.layout.start_menu);
 		this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
@@ -108,47 +92,7 @@ public class StartMenuActivity extends PhishBaseActivity implements
 	 * Use these as examples for later implementation
 	 */
 
-	@Override
-	public void displayToast(String message) {
-		Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT)
-				.show();
-	}
-
-	@Override
-	public void displayToast(int message) {
-		Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT)
-				.show();
-	}
-
-	@Override
-	public void onInitDone() {
-		// displayToast("we are finished with initialization!");
-	}
-
-	@Override
-	public Context getContext() {
-		return StartMenuActivity.context;
-	}
-
-	@Override
-	public void initProgress(int percent) {
-		if (percent % 10 == 0) {
-			displayToast("init Progress:" + percent);
-		}
-	}
-
-	@Override
-	public void startBrowser(Uri url) {
-		Intent browserIntent = new Intent(Intent.ACTION_VIEW, url);
-		this.startActivity(browserIntent);
-	}
-
-	@Override
-	public void onLevelChange(int level) {
-		Intent levelIntent = new Intent(this, LevelIntroActivity.class);
-		levelIntent.putExtra(Constants.EXTRA_LEVEL, level);
-		startActivity(levelIntent);
-	}
+	
 
 	@Override
 	public void onBackPressed() {
@@ -183,63 +127,6 @@ public class StartMenuActivity extends PhishBaseActivity implements
 		// Showing Alert Message
 		alertDialog.show();
 
-	}
-
-	@Override
-	public void displayToastScore(int score) {
-		LayoutInflater inflater = getLayoutInflater();
-		View layout = inflater.inflate(R.layout.fragment_toast_score,
-				(ViewGroup) findViewById(R.id.toast_layout_root));
-
-		String scoreString = Integer.toString(score);
-
-		TextView text = (TextView) layout.findViewById(R.id.text);
-		if (score < 0) {
-			// red
-			text.setTextColor(Color.rgb(135, 0, 0));
-		} else {
-			// green
-			text.setTextColor(Color.rgb(0, 135, 0));
-			scoreString = "+ " + score;
-		}
-
-		text.setText(scoreString + " Punkte");
-		text.setTypeface(Typeface.DEFAULT_BOLD);
-		Toast toast = new Toast(getApplicationContext());
-		toast.setDuration(Toast.LENGTH_SHORT);
-		toast.setView(layout);
-		toast.show();
-	}
-
-	@Override
-	public Activity getBaseActivity() {
-		return this;
-	}
-
-	@Override
-	public void onSignInFailed() {
-		if(GooglePlusActivity.getInstance() != null){
-			GooglePlusActivity.getInstance().onSignInFailed();
-		}
-	}
-
-	@Override
-	public void onSignInSucceeded() {
-		if(GooglePlusActivity.getInstance() != null){
-			GooglePlusActivity.getInstance().onSignInSucceeded();
-		}
-	}
-
-	@Override
-	public void onLevelstateChange(Levelstate new_state, int levelid) {
-		//The Intend only works when the user actually is in this activity.
-		//This is only the case when he clicked an phishedu URL
-		Uri data = getIntent().getData();
-		if(new_state == Levelstate.finished && data != null && data.getScheme().equals("phishedu")){
-			Intent finishedIntent = new Intent(this, LevelFinishedActivity.class);
-			finishedIntent.putExtra(Constants.EXTRA_LEVEL, levelid);
-			startActivity(finishedIntent);
-		}
 	}
 
 }

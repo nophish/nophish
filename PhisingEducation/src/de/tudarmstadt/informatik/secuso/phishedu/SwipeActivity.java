@@ -1,15 +1,12 @@
 package de.tudarmstadt.informatik.secuso.phishedu;
 
-import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.app.NavUtils;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.ActionBar;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
@@ -28,30 +25,27 @@ public abstract class SwipeActivity extends PhishBaseActivity implements ViewPag
 	protected Button bStartLevel;
 
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-		this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+	public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
+		View v = super.onCreateView(inflater, container, savedInstanceState);
 
-		setContentView(R.layout.fragment_pager);
-		updateScore();
+		updateScore(v);
 		
-		mPager= (ViewPager) findViewById(R.id.pager);
+		mPager= (ViewPager) v.findViewById(R.id.pager);
 		
 		//if(mPager.getAdapter()==null){
-		mPager.setAdapter(new SwipePageAdapter(getSupportFragmentManager()));
+		mPager.setAdapter(new SwipePageAdapter(((FragmentActivity)getActivity()).getSupportFragmentManager()));
 		//}
 		//mPager.getAdapter().notifyDataSetChanged();
 		mPager.setOnPageChangeListener(this);
 
-		this.imgPrevious = (ImageView) findViewById(R.id.game_intro_arrow_back);
+		this.imgPrevious = (ImageView) v.findViewById(R.id.game_intro_arrow_back);
 		imgPrevious.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				previousPage();				
 			}
 		});
-		this.imgNext = (ImageView) findViewById(R.id.game_intro_arrow_forward);
+		this.imgNext = (ImageView) v.findViewById(R.id.game_intro_arrow_forward);
 		imgNext.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -59,7 +53,7 @@ public abstract class SwipeActivity extends PhishBaseActivity implements ViewPag
 			}
 		});
 
-		this.bStartLevel = (Button) findViewById(R.id.game_intro_start_button);
+		this.bStartLevel = (Button) v.findViewById(R.id.game_intro_start_button);
 		bStartLevel.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -69,6 +63,8 @@ public abstract class SwipeActivity extends PhishBaseActivity implements ViewPag
 		bStartLevel.setText(this.startButtonText());
 
 		checkAndHideButtons(0);
+		
+		return v;
 	}
 
 	private void nextPage() {
@@ -150,15 +146,12 @@ public abstract class SwipeActivity extends PhishBaseActivity implements ViewPag
 
 	public static class SwipeFragment extends Fragment{
 
-		/**
-		 * 
-		 */
 		private Integer page = 0;
-
+		
 		@Override
 		public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 			this.page=getArguments().getInt(Constants.ARG_PAGE_NUMBER);
-			SwipeActivity activity = (SwipeActivity) getActivity();
+			
 			View view = activity.getPage(page,inflater,container,savedInstanceState);
 			
 			view.setOnClickListener(activity.new clickListener(page));
@@ -179,17 +172,6 @@ public abstract class SwipeActivity extends PhishBaseActivity implements ViewPag
 
 	}
 	
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-	    switch (item.getItemId()) {
-	    // Respond to the action bar's Up/Home button
-	    case android.R.id.home:
-	        NavUtils.navigateUpFromSameTask(this);
-	        return true;
-	    }
-	    return super.onOptionsItemSelected(item);
-	}
-	
 	protected abstract int getPageCount();
 	protected abstract View getPage(int page, LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState);
 
@@ -199,6 +181,9 @@ public abstract class SwipeActivity extends PhishBaseActivity implements ViewPag
 		return null;
 	}
 
-
+	@Override
+	public int getLayout() {
+		return R.layout.fragment_pager;
+	}
 
 }
