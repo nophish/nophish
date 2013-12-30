@@ -27,13 +27,17 @@ public class SubdomainAttack extends AbstractAttack {
 		"phishers-seite.de"
 	};
 	
+	protected String[] getPhisherDomains(){
+		return PHISHER_DOMAINS;
+	}
+	
 	/**
 	 * This constructor is required because of the implementation in {@link BackendControllerImpl#getNextUrl()}
 	 * @param object This Parmeter is discarded. It is replaced by a PhishTank URL
 	 */
 	public SubdomainAttack(PhishURL object) {
 		super(object);
-		attack_url=new Random().nextInt(PHISHER_DOMAINS.length);
+		attack_url=new Random().nextInt(getPhisherDomains().length);
 	}
 
 	@Override
@@ -45,7 +49,9 @@ public class SubdomainAttack extends AbstractAttack {
 	public String[] getParts() {
 		String[] parts = super.getParts();
 		ArrayList<String> adder = new ArrayList<String>(Arrays.asList(parts));
-		adder.add(4, "."+PHISHER_DOMAINS[attack_url]);
+		String domain = adder.get(3);
+		adder.set(3, domain+".");
+		adder.add(4, getPhisherDomains()[attack_url]);
 		return adder.toArray(new String[0]);
 	}
 	

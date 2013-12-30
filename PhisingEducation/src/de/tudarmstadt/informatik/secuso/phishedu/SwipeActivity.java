@@ -153,8 +153,9 @@ public abstract class SwipeActivity extends PhishBaseActivity implements ViewPag
 			this.page=getArguments().getInt(Constants.ARG_PAGE_NUMBER);
 			
 			View view = activity.getPage(page,inflater,container,savedInstanceState);
-			
 			view.setOnClickListener(activity.new clickListener(page));
+
+			activity.updateScore(view);
 			return view;
 		}
 	}

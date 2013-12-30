@@ -171,7 +171,6 @@ public class AwarenessActivity extends PhishBaseActivity {
 		});
 		
 		AlertDialog dialog = dialogbuilder.create();
-		
 		Alertenabler enabler = new Alertenabler();
 		dialog.setOnShowListener(enabler);
 		// Showing Alert Message
@@ -236,7 +235,6 @@ public class AwarenessActivity extends PhishBaseActivity {
 		
 		@Override
 		protected Integer doInBackground(Integer... params) {
-			button.setEnabled(false);
 			//wait a little until the dialog is shown.
 			for (int i = 5; i > 0 && this.button == null ; i--) {
 				try {
@@ -245,6 +243,7 @@ public class AwarenessActivity extends PhishBaseActivity {
 					e.printStackTrace();
 				}
 			}
+			button.setEnabled(false);
 			for (int i = TIMEOUT; i > 0 ; i--) {
 				publishProgress(i);
 				try {

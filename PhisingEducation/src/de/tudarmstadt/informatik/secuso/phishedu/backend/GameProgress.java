@@ -10,6 +10,7 @@ import com.google.android.gms.games.achievement.Achievement;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 
+import de.tudarmstadt.informatik.secuso.phishedu.Constants;
 import de.tudarmstadt.informatik.secuso.phishedu.R;
 
 /**
@@ -58,20 +59,20 @@ public class GameProgress implements OnStateLoadedListener{
 
 	private GameStateLoadedListener listener;
 	private State state = new State();
-	private int presented_repeats = 0;
+	private int identified_repeats = 0;
 
 	/**
 	 * Increment the number of presented Repeats
 	 */
-	public void incPresentedRepeats(){
-		this.presented_repeats++;
+	public void incIdentifiedRepeats(){
+		this.identified_repeats++;
 	}
 	/**
 	 * Get the number of repeats we presented to the user in this level
 	 * @return Then number of repeated Attacks we presented to the user.
 	 */
-	public int getPresentedRepeats(){
-		return presented_repeats;
+	public int getIdentifiedRepeats(){
+		return identified_repeats;
 	}
 
 	/**
@@ -235,11 +236,11 @@ public class GameProgress implements OnStateLoadedListener{
 	 */
 	public void setLevel(int level){
 		this.state.level=level;
-		if(this.state.unlockedLevel<level){
+		if(getMaxUnlockedLevel()<level){
 			throw new IllegalStateException("The given level ("+level+") is not unlocked.");
 		}
 		this.level_results=new int[4];
-		this.presented_repeats=0;
+		this.identified_repeats=0;
 		this.level_points=0;
 		this.level_lives=LIFES_PER_LEVEL;
 
@@ -365,7 +366,11 @@ public class GameProgress implements OnStateLoadedListener{
 	 * @return the max level
 	 */
 	public int getMaxUnlockedLevel() {
-		return this.state.unlockedLevel;
+		if(Constants.UNLOCK_ALL_LEVELS){
+			return BackendControllerImpl.getInstance().getLevelCount()-1;
+		}else{
+			return this.state.unlockedLevel;
+		}
 	}
 
 	/**

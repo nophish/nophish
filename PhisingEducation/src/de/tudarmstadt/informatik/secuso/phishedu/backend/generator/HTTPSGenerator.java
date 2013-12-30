@@ -8,18 +8,18 @@ import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishURL;
  * @author Clemens Bergmann <cbergmann@schuhklassert.de>
  *
  */
-public class HTTPGenerator extends BaseGenerator {
+public class HTTPSGenerator extends BaseGenerator {
 
 	/**
 	 * See {@link BaseGenerator#BaseGenerator(PhishURL)}
 	 * @param object See {@link BaseGenerator#BaseGenerator(PhishURL)}
 	 */
-	public HTTPGenerator(PhishURL object) {super(object);}
+	public HTTPSGenerator(PhishURL object) {super(object);}
 	
 	@Override
 	public String[] getParts(){
 		String[] parts = this.object.getParts();
-		parts[0]="http:";
+		parts[0]="https:";
 		return parts;
 	}
 }
