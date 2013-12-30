@@ -2,7 +2,7 @@ package de.tudarmstadt.informatik.secuso.phishedu.backend;
 
 import de.tudarmstadt.informatik.secuso.phishedu.R;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.attacks.HTTPAttack;
-import de.tudarmstadt.informatik.secuso.phishedu.backend.attacks.HomoglyphicAttac;
+import de.tudarmstadt.informatik.secuso.phishedu.backend.attacks.HomoglyphicAttack;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.attacks.HostInPathAttack;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.attacks.IPAttack;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.attacks.Level2Attack;
@@ -96,7 +96,7 @@ public class NoPhishLevelInfo {
 			{ NonsenseAttack.class }, // Level 5
 			{ Unrelated.class }, // Level 6
 			{ MisleadingAttack.class, TypoAttack.class }, // Level 7
-			{ HomoglyphicAttac.class }, // Level 8
+			{ HomoglyphicAttack.class }, // Level 8
 			{ HostInPathAttack.class }, // Level 9
 			{ HTTPAttack.class } // Level 10
 	};
