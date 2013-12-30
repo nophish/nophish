@@ -34,7 +34,6 @@ public abstract class SwipeActivity extends PhishBaseActivity implements ViewPag
 		this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
 		setContentView(R.layout.fragment_pager);
-		updateScore();
 		
 		mPager= (ViewPager) findViewById(R.id.pager);
 		
@@ -160,8 +159,9 @@ public abstract class SwipeActivity extends PhishBaseActivity implements ViewPag
 			this.page=getArguments().getInt(Constants.ARG_PAGE_NUMBER);
 			SwipeActivity activity = (SwipeActivity) getActivity();
 			View view = activity.getPage(page,inflater,container,savedInstanceState);
-			
 			view.setOnClickListener(activity.new clickListener(page));
+
+			activity.updateScore(view);
 			return view;
 		}
 	}

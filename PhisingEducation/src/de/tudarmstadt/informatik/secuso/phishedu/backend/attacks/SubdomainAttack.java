@@ -45,7 +45,9 @@ public class SubdomainAttack extends AbstractAttack {
 	public String[] getParts() {
 		String[] parts = super.getParts();
 		ArrayList<String> adder = new ArrayList<String>(Arrays.asList(parts));
-		adder.add(4, "."+PHISHER_DOMAINS[attack_url]);
+		String domain = adder.get(3);
+		adder.set(3, domain+".");
+		adder.add(4, PHISHER_DOMAINS[attack_url]);
 		return adder.toArray(new String[0]);
 	}
 	

@@ -130,7 +130,6 @@ public class ResultActivity extends SwipeActivity {
 		TextView urlText = (TextView) view.findViewById(R.id.url);
 		setUrlText(urlText);
 		urlText.setTextSize(25);
-		updateScore(view);
 		return view;
 	}
 
