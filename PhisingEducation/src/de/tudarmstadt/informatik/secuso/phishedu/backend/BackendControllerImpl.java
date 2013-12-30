@@ -223,6 +223,7 @@ public class BackendControllerImpl implements BackendController, GameStateLoaded
 	public void startLevel(int level) {
 		checkinited();
 		this.level_repeat_offsets=new ArrayList<Integer>();
+		this.current_url_level_offset=0;
 		if(getLevel()>=FIRST_REPEAT_LEVEL){
 			for(int i=1;i<=getLevel()-(FIRST_REPEAT_LEVEL-1);i++){
 				this.level_repeat_offsets.add(i);
@@ -245,8 +246,8 @@ public class BackendControllerImpl implements BackendController, GameStateLoaded
 			//select a random earlier Level 
 			//"-(FIRST_REPEAT_LEVEL-1)" is to prevent levels 0-2 from being repeated
 			//"+1" is to prevent "repeating" the current level
-			int index_level = (random.nextInt(getLevel()-(FIRST_REPEAT_LEVEL-1)))+1;
-			this.level_repeat_offsets.add(index_level);
+			int level_offset = (random.nextInt(getLevel()-(FIRST_REPEAT_LEVEL-1)))+1;
+			this.level_repeat_offsets.add(level_offset);
 		}
 	}
 

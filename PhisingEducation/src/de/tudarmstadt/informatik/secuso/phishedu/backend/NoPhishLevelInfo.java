@@ -88,7 +88,8 @@ public class NoPhishLevelInfo {
 	// For each level we can define what Attacks are applied
 	// LEVEL 0-1 are empty because they don't
 	@SuppressWarnings("rawtypes")
-	public static final Class[][] levelAttackTypes = { {}, // Level 0: Awareness
+	public static final Class[][] levelAttackTypes = {
+			{}, // Level 0: Awareness
 			{}, // Level 1: Find URLBar in Browser
 			{ Level2Attack.class }, // Level 2
 			{ SubdomainAttack.class }, // Level 3
