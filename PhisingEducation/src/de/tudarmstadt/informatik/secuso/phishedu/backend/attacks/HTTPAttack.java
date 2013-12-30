@@ -28,7 +28,7 @@ public class HTTPAttack extends AbstractAttack {
 	@Override
 	public String[] getParts() {
 		String[] parts = super.getParts();
-		parts[0]="http";
+		parts[0]="http:";
 		return parts;
 	}
 	

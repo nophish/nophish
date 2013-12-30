@@ -6,7 +6,8 @@ public class Constants {
 	 * Game configuration
 	 */
 
-	public static final boolean ALLOW_LEVEL0_REPLAY = false;
+	public static final boolean UNLOCK_ALL_LEVELS = true;
+	public static final boolean SHOW_POINTS_ON_ALL_LEVELS = true;
 
 	public static final int COUNT_DOWN_INTERVAL = 1000;
 	public static final int MILLIS_IN_FUTURE = 2500;

@@ -227,19 +227,27 @@ public class BackendControllerImpl implements BackendController, GameStateLoaded
 			for(int i=1;i<=getLevel()-(FIRST_REPEAT_LEVEL-1);i++){
 				this.level_repeat_offsets.add(i);
 			}
-			while(this.level_repeat_offsets.size()<this.levelRepeats()){
-				//select a random earlier Level 
-				//"-(FIRST_REPEAT_LEVEL-1)" is to prevent levels 0-2 from being repeated
-				//"+1" is to prevent "repeating" the current level
-				int index_level = (random.nextInt(getLevel()-(FIRST_REPEAT_LEVEL-1)))+1;
-				this.level_repeat_offsets.add(index_level);
-			}
+			fillLevelRepeats(this.levelRepeats());
 		}
 		this.progress.setLevel(level);
 		for (OnLevelChangeListener listener : onLevelChangeListeners) {
 			listener.onLevelChange(level);
 		}
 		notifyLevelStateChangedListener(Levelstate.running, level);
+	}
+	
+	/**
+	 * fill up the repeats to a given size
+	 * @param size The size the {@link #level_repeat_offsets} should have afterwards
+	 */
+	private void fillLevelRepeats(int size){
+		while(this.level_repeat_offsets.size()<size){
+			//select a random earlier Level 
+			//"-(FIRST_REPEAT_LEVEL-1)" is to prevent levels 0-2 from being repeated
+			//"+1" is to prevent "repeating" the current level
+			int index_level = (random.nextInt(getLevel()-(FIRST_REPEAT_LEVEL-1)))+1;
+			this.level_repeat_offsets.add(index_level);
+		}
 	}
 
 	@Override
@@ -265,9 +273,9 @@ public class BackendControllerImpl implements BackendController, GameStateLoaded
 			//Level 0 and 1 do not have repeats
 			throw new IllegalStateException("This function is not defined for level 0 and 1 as these do not need URLs");
 		}
-		int remaining_urls = this.levelURLs()-doneURLs();
-		int remaining_phish = this.levelPhishes()-this.progress.getPresentedPhish();
-		int remaining_repeats = this.levelRepeats() - this.progress.getPresentedRepeats();
+		int remaining_urls = levelCorrectURLs() - (this.progress.getLevelResults(PhishResult.Phish_Detected) + this.progress.getLevelResults(PhishResult.NoPhish_Detected));
+		int remaining_phish = this.levelPhishes() - this.progress.getLevelResults(PhishResult.Phish_Detected);
+		int remaining_repeats = this.levelRepeats() - this.progress.getIdentifiedRepeats();
 
 		//we have to decide whether we want to present a phish or not
 		boolean present_phish=false;
@@ -304,7 +312,10 @@ public class BackendControllerImpl implements BackendController, GameStateLoaded
 			}
 			Class<? extends AbstractUrlDecorator> attack;
 			if(present_repeat){
-				this.progress.incPresentedRepeats();
+				//something went wrong and we are out of repeats.
+				if(this.level_repeat_offsets.size()==0){
+					fillLevelRepeats(1);
+				}
 				current_url_level_offset=this.level_repeat_offsets.remove(random.nextInt(this.level_repeat_offsets.size()));
 			}
 			int attack_level= getLevel() - current_url_level_offset;
@@ -339,7 +350,15 @@ public class BackendControllerImpl implements BackendController, GameStateLoaded
 	public PhishResult userClicked(boolean acceptance) {
 		checkinited();
 		PhishResult result=this.current_url.getResult(acceptance);
-		if(result != PhishResult.Phish_Detected){
+		//When we are in the HTTPS level we only accept https urls even if these are not attacks.
+		if(getLevel() == 10 && !this.getUrl().getParts()[0].equals("https:")){
+			if(acceptance){
+				result=PhishResult.Phish_NotDetected;
+			}else{
+				result=PhishResult.Phish_Detected;
+			}
+		}
+		if(result != PhishResult.Phish_Detected || getLevel() == 10){
 			this.addResult(result);
 		}
 		return result;
@@ -355,6 +374,8 @@ public class BackendControllerImpl implements BackendController, GameStateLoaded
 			progress.decLives();
 			Vibrator v = (Vibrator) frontend.getContext().getSystemService(Context.VIBRATOR_SERVICE);
 			v.vibrate(500);
+		}else if(result == PhishResult.Phish_Detected && current_url_level_offset > 0){
+			this.progress.incIdentifiedRepeats();
 		}
 		int offset=this.current_url.getPoints(result);
 		//with this function we ensure that the user gets more points per level
@@ -585,5 +606,10 @@ public class BackendControllerImpl implements BackendController, GameStateLoaded
 	public void removeOnLevelChangeListener(
 			OnLevelChangeListener listener) {
 		this.onLevelChangeListeners.remove(listener);
+	}
+
+	@Override
+	public boolean getLevelCompleted(int level) {
+		return getLevelPoints(level)>0;
 	}
 }
