@@ -560,7 +560,8 @@
     <string name="content_desc_confetti">Konfetti</string>
     
     <string-array name="fromMails">
-    <item>phish@nophish.de</item>
+    <!-- no examples until we decide to do it again -->
+    <!-- <item>phish@no-phish.de</item>  -->
     </string-array>
 
 </resources>

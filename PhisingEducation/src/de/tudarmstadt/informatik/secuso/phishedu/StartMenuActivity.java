@@ -2,7 +2,6 @@ package de.tudarmstadt.informatik.secuso.phishedu;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.Application;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -19,7 +18,9 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController.BackendInitListener;
+import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController.Levelstate;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController.OnLevelChangeListener;
+import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController.OnLevelstateChangeListener;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendControllerImpl;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.FrontendController;
 
@@ -30,7 +31,7 @@ import de.tudarmstadt.informatik.secuso.phishedu.backend.FrontendController;
  *         store his/her score online he/she has to sign into google+
  */
 public class StartMenuActivity extends PhishBaseActivity implements
-		FrontendController, OnLevelChangeListener, BackendInitListener {
+		FrontendController, OnLevelChangeListener, BackendInitListener, OnLevelstateChangeListener {
 	private static Activity context;
 	
 	public StartMenuActivity(){
@@ -47,6 +48,8 @@ public class StartMenuActivity extends PhishBaseActivity implements
 		if(!BackendControllerImpl.getInstance().isInitDone()){
 		  BackendControllerImpl.getInstance().init(this,this);
 		}
+		BackendControllerImpl.getInstance().addOnLevelChangeListener(this);
+		BackendControllerImpl.getInstance().addOnLevelstateChangeListener(this);
 
 		setContentView(R.layout.start_menu);
 		this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
@@ -64,11 +67,7 @@ public class StartMenuActivity extends PhishBaseActivity implements
 		} catch (NameNotFoundException e) {
 			e.printStackTrace();
 		}
-	}
-	
-	@Override
-	protected void onStart() {
-		super.onStart();
+		
 		BackendControllerImpl.getInstance().onUrlReceive(getIntent().getData());
 	}
 	
@@ -228,6 +227,18 @@ public class StartMenuActivity extends PhishBaseActivity implements
 	public void onSignInSucceeded() {
 		if(GooglePlusActivity.getInstance() != null){
 			GooglePlusActivity.getInstance().onSignInSucceeded();
+		}
+	}
+
+	@Override
+	public void onLevelstateChange(Levelstate new_state, int levelid) {
+		//The Intend only works when the user actually is in this activity.
+		//This is only the case when he clicked an phishedu URL
+		Uri data = getIntent().getData();
+		if(new_state == Levelstate.finished && data != null && data.getScheme().equals("phishedu")){
+			Intent finishedIntent = new Intent(this, LevelFinishedActivity.class);
+			finishedIntent.putExtra(Constants.EXTRA_LEVEL, levelid);
+			startActivity(finishedIntent);
 		}
 	}
 
