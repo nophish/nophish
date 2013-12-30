@@ -469,7 +469,9 @@ public class BackendControllerImpl implements BackendController, GameStateLoaded
 	}
 
 	private void levelFinished(int level){
-		this.progress.commitPoints();
+		if(getLevel()==level){
+			this.progress.commitPoints();
+		}
 		this.progress.unlockLevel(level+1);
 		notifyLevelStateChangedListener(Levelstate.finished, level);
 	}
@@ -634,6 +636,6 @@ public class BackendControllerImpl implements BackendController, GameStateLoaded
 
 	@Override
 	public boolean getLevelCompleted(int level) {
-		return getLevelPoints(level)>0;
+		return level>getMaxUnlockedLevel();
 	}
 }
