@@ -331,6 +331,7 @@ public class BackendControllerImpl implements BackendController, GameStateLoaded
 
 		PhishURL base_url;
 		String before_url = "",after_url = "";
+		int tries = 5;
 		do{
 			//First we choose a random start URL
 			base_url=getPhishURL(PhishAttackType.NoPhish);
@@ -343,7 +344,12 @@ public class BackendControllerImpl implements BackendController, GameStateLoaded
 				base_url=AbstractUrlDecorator.decorate(base_url,attack);
 				after_url=Arrays.toString(base_url.getParts());
 			}
-		}while(attack !=null && before_url.equals(after_url)); //The attack might not change the URL so we try again.
+			tries--;
+		}while(attack !=null && before_url.equals(after_url) && tries > 0); //The attack might not change the URL so we try again.
+		
+		if(tries == 0){
+			throw new IllegalStateException("Could not find attackable URL. Attack:"+attack.getName());
+		}
 		
 		this.current_url=base_url;
 	}
