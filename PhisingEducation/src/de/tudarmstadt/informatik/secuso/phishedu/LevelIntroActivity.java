@@ -69,92 +69,62 @@ public class LevelIntroActivity extends SwipeActivity {
 						"/P-Portal1/XML/IFILPortal/pgf.html?Tab=3&ifil=coba_pk",
 						"https://", "www.", "paypal.com", "/de", "https://",
 						"www.", "paypal-viewpoints.com", "/DE-Kontakt" } };
-	public int level = 0;
 
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		this.level = getIntent().getIntExtra(Constants.EXTRA_LEVEL, 0);
-		super.onCreate(savedInstanceState);
-	}
-	
 	public void onStartClick(View view) {
 		this.onStartClick();
 	}
 
 	protected void onStartClick() {
 		Class next_activity = URLTaskActivity.class;
-		if (this.level == 0) {
+		if (this.getLevel() == 0) {
 			next_activity = AwarenessActivity.class;
-		} else if (this.level == 1) {
+		} else if (this.getLevel() == 1) {
 			next_activity = FindAddressBarActivity.class;
-		}else if(this.level == BackendControllerImpl.getInstance().getLevelCount()){
+		}else if(this.getLevel() == BackendControllerImpl.getInstance().getLevelCount()){
 			next_activity = AppEndActivity.class;
 		}
-		Intent levelIntent = new Intent(this, next_activity);
-		levelIntent.putExtra(Constants.EXTRA_LEVEL, this.level);
-		startActivity(levelIntent);
+		//TODO reanable
+		//Intent levelIntent = new Intent(this, next_activity);
+		//levelIntent.putExtra(Constants.EXTRA_LEVEL, this.level);
+		//startActivity(levelIntent);
 	}
 
 	@Override
 	protected String startButtonText() {
-		if (this.level == BackendControllerImpl.getInstance().getLevelCount()) {
+		if (this.getLevel() == BackendControllerImpl.getInstance().getLevelCount()) {
 			return "Fertig";
 		}
-		return "Starte "+getResources().getString(BackendControllerImpl.getInstance().getLevelInfo(this.level).titleId);
+		return "Starte "+getResources().getString(BackendControllerImpl.getInstance().getLevelInfo(this.getLevel()).titleId);
 	}
 
 	@Override
 	protected int getPageCount() {
-		return BackendControllerImpl.getInstance().getLevelInfo(level).introLayouts.length;
+		return BackendControllerImpl.getInstance().getLevelInfo(getLevel()).introLayouts.length;
 	}
 
 	@Override
 	protected View getPage(int page, LayoutInflater inflater,
 			ViewGroup container, Bundle savedInstanceState) {
 
-		View view = inflater.inflate(BackendControllerImpl.getInstance().getLevelInfo(level).introLayouts[page], container, false);
+		View view = inflater.inflate(BackendControllerImpl.getInstance().getLevelInfo(getLevel()).introLayouts[page], container, false);
 
 		// when example screen is showns
 		if ((view.findViewById(R.id.recognize_attack) != null)
 				|| view.findViewById(R.id.reminder_examples) != null) {
 			setExampleSpans(view);
 		}
-		setTitles();
+
+		// if awareness is shown - no icon change
+		//TODO reanable
+		//if (level_info.levelId > 0) {
+		//	ab.setIcon(getResources().getDrawable(R.drawable.emblem_library));
+		//}
 
 		return view;
 	}
 
 	private void setExampleSpans(View view) {
 		buildColoredSpan(view);
-	}
-
-	private void setTitles() {
-		ActionBar ab = getSupportActionBar();
-		NoPhishLevelInfo level_info = BackendControllerImpl.getInstance().getLevelInfo(level);
-		String title = getString(level_info.titleId);
-		String subtitle = getString(level_info.subTitleId);
-
-		if (!title.equals(subtitle)) {
-			// if subtitle and title are different, subtitle is set
-			ab.setSubtitle(subtitle);
-		}
-		// title is set in anyway
-		ab.setTitle(title);
-
-		// if awareness is shown - no icon change
-		if (level_info.levelId > 0) {
-			ab.setIcon(getResources().getDrawable(R.drawable.emblem_library));
-		}
-
-	}
-
-	/**
-	 * User is getting back to the main menu from the introductionary texts.
-	 */
-	@Override
-	public void onBackPressed() {
-		NavUtils.navigateUpFromSameTask(this);
-		return;
 	}
 
 	private void buildColoredSpan(View view) {

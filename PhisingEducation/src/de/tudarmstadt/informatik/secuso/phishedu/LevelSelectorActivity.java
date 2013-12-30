@@ -14,14 +14,10 @@ import de.tudarmstadt.informatik.secuso.phishedu.backend.NoPhishLevelInfo;
 public class LevelSelectorActivity extends SwipeActivity implements
 		ViewPager.OnPageChangeListener {
 
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-		getSupportActionBar().setTitle("Level Überblick");
+	private int getTitle(){
+		return R.string.button_level_overview;
 	}
-
+	
 	@Override
 	protected int getPageCount() {
 		return BackendControllerImpl.getInstance().getLevelCount();
@@ -89,7 +85,7 @@ public class LevelSelectorActivity extends SwipeActivity implements
 		if (page <= BackendControllerImpl.getInstance().getMaxUnlockedLevel()) {
 			if (page == 0 && BackendControllerImpl.getInstance().getMaxUnlockedLevel() > 0 &&  !Constants.ALLOW_LEVEL0_REPLAY) {
 				// level 0 cannot be replayed
-				Toast.makeText(getApplicationContext(),
+				Toast.makeText(getActivity().getApplicationContext(),
 						getString(R.string.cannot_replay_level_0),
 						Toast.LENGTH_LONG).show();
 			} else {

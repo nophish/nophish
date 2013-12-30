@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendControllerImpl;
 
 public abstract class PhishBaseActivity extends Fragment implements OnClickListener {
@@ -25,6 +26,7 @@ public abstract class PhishBaseActivity extends Fragment implements OnClickListe
 	 */
 	public abstract int getLayout();
 	public void onClick(View view){};
+	
 	/**
 	 * If the fragment wants to react on the backpressed button it can implements this function
 	 * @return return true to continue with the back event. False otherwise. 
@@ -33,8 +35,16 @@ public abstract class PhishBaseActivity extends Fragment implements OnClickListe
 	/**
 	 * If the Fragment wants to set the titles it can overwrite this
 	 */
-	private int getTitle(){return 0;};
-	private int getSubTitle(){return 0;};
+	private int getTitle(){
+		return BackendControllerImpl.getInstance().getLevelInfo(getLevel()).titleId;
+	};
+	private int getSubTitle(){
+		int subtitle = BackendControllerImpl.getInstance().getLevelInfo(getLevel()).subTitleId;
+		if(subtitle == getTitle()){
+			return 0;
+		}
+		return subtitle;
+	};
 	/**
 	 * If there are clickable elements on this page you must list them here and implement {@link #onClick(View)}
 	 * @return the list of resource IDs of the clickable elements.
@@ -171,5 +181,9 @@ public abstract class PhishBaseActivity extends Fragment implements OnClickListe
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
+	}
+	
+	int getLevel(){
+		return BackendControllerImpl.getInstance().getLevel();
 	}
 }
