@@ -486,6 +486,9 @@
     <string name="level_09_reminder"><b>Erinnerung:</b> Enthält der Bereich des Gesprächsthemas dir bekannte Namen oder Webadressen und entspricht der Wer-Bereich aber nicht dem Unternehmen deines Gesprächspartners, dann gebe hier keine Daten ein!</string>
     <!-- http/https -->
     <string name="level_10_reminder"><b>Erinnerung:</b> In diesem Level sollst prinzipiell Webadressen ablehnen, die kein https:// verwenden. Zusätzlich musst du selbstverständlich überprüfen, ob die Webadresse eine Phishing-Adresse ist.</string>
+    <string name="level_10_reminder_http_legitimate"><b>Erinnerung:</b> Die Webadresse ist zwar legitim, aber verwendet nur http://. Daher kannst du dich hier nicht darauf verlassen, dass dein Gespräch von keinem Dritten mitgehört werden kann. Außerdem wird dir mit http:// nicht versichert, dass dein Gesprächspartner der ist, der er im Wer-Bereich vorgibt zu sein.</string>
+    <string name="level_10_reminder_http_phish"><b>Erinnerung: </b>Dies ist eine gefälschte Webadresse, die http:// verwendet. Wenn du dieser Webadresse vertraust, überlässt du nicht nur dem Phisher deine Daten, sondern auch einer potentiellen dritten Partei.</string>
+    <string name="level_10_reminder_https_phish"><b>Erinnerung: </b>Dies ist eine gefälschte Webadresse, die https:// verwendet. Hier wird dir versichert, dass deine Daten nur der Phisher mitlesen kann und kein Dritter. Außerdem wird dir versichert, dass der Phisher der ist, der er im Wer-Bereich vorgibt zu sein.</string>
     <string name="title_activity_about">Über Uns</string>
     <string name="title_activity_find_address_bar">Die Adressleiste</string>
     <string name="action_settings">Settings</string>

@@ -29,10 +29,10 @@ public class ResultActivity extends SwipeActivity {
 	SpannableStringBuilder strBuilder = new SpannableStringBuilder();
 	int wordStart, wordEnd;
 	protected static int[] reminderIDs = { R.string.level_03_reminder,
-		R.string.level_04_reminder, R.string.level_05_reminder,
-		R.string.level_06_reminder, R.string.level_07_reminder,
-		R.string.level_08_reminder, R.string.level_09_reminder,
-		R.string.level_10_reminder };
+			R.string.level_04_reminder, R.string.level_05_reminder,
+			R.string.level_06_reminder, R.string.level_07_reminder,
+			R.string.level_08_reminder, R.string.level_09_reminder,
+			R.string.level_10_reminder };
 
 	// int level; is used as index for the consequences type
 
@@ -46,7 +46,8 @@ public class ResultActivity extends SwipeActivity {
 		super.onCreate(savedInstanceState);
 		this.result = getIntent().getIntExtra(Constants.EXTRA_RESULT, 0);
 		this.site_type = getIntent().getIntExtra(Constants.EXTRA_SITE_TYPE, 0);
-		this.attack_type = getIntent().getIntExtra(Constants.EXTRA_ATTACK_TYPE,0);
+		this.attack_type = getIntent().getIntExtra(Constants.EXTRA_ATTACK_TYPE,
+				0);
 		this.level = getIntent().getIntExtra(Constants.EXTRA_LEVEL, 0);
 		setTitle();
 	}
@@ -62,8 +63,9 @@ public class ResultActivity extends SwipeActivity {
 	}
 
 	protected void onStartClick() {
-		//We might have failed the level
-		//Either by going out of URLs or by going out of options to detect phish
+		// We might have failed the level
+		// Either by going out of URLs or by going out of options to detect
+		// phish
 		switch (BackendControllerImpl.getInstance().getLevelState()) {
 		case failed:
 			this.levelFailed();
@@ -89,11 +91,11 @@ public class ResultActivity extends SwipeActivity {
 		builder.setMessage(R.string.level_failed_text);
 		builder.setNeutralButton(R.string.level_failed_button,
 				new DialogInterface.OnClickListener() {
-			@Override
-			public void onClick(DialogInterface dialog, int which) {
-				BackendControllerImpl.getInstance().restartLevel();
-			}
-		});
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						BackendControllerImpl.getInstance().restartLevel();
+					}
+				});
 		builder.show();
 	}
 
@@ -159,11 +161,29 @@ public class ResultActivity extends SwipeActivity {
 				.findViewById(R.id.phish_not_detected_reminder);
 
 		int indexReminder = attack_type - 3;
-		if (indexReminder == 8) {
-			//typo and misleading are in one level (7)
-			indexReminder = 4;
-		}
-		if (indexReminder >= 0) {
+
+		// level 10 reminders need to be set specifically
+		// this can be reached in level 10 either by not being an attack at all
+		// (attacktype = nophish) or by being an attacktype of http
+		// http + legitimate url
+		if (level == 10) {
+			if (attack_type == PhishAttackType.NoPhish.getValue() || attack_type == PhishAttackType.HTTP.getValue()) {
+				reminderText.setText(R.string.level_10_reminder_http_legitimate);
+			} else {
+				// in level 10 different texts are shown
+				String urlScheme = BackendControllerImpl.getInstance().getUrl().getParts()[0];
+				if (urlScheme.equals("http:")) {
+					reminderText.setText(R.string.level_10_reminder_http_phish);
+				} else {
+					reminderText.setText(R.string.level_10_reminder_https_phish);
+				}
+			}
+		} else if (indexReminder >= 0) {
+			if (indexReminder == 8) {
+				// typo and misleading are in one level (7)
+				indexReminder = 4;
+			}
+		} else {
 			reminderText.setText(reminderIDs[indexReminder]);
 		}
 	}
@@ -198,10 +218,10 @@ public class ResultActivity extends SwipeActivity {
 		} else {
 			ab.setTitle(getString(R.string.wrong));
 		}
-		if(this.level==2){
-			//no subtitle in level2;
+		if (this.level == 2) {
+			// no subtitle in level2;
 			ab.setSubtitle(null);
-		}else if (this.result == PhishResult.Phish_Detected.getValue()
+		} else if (this.result == PhishResult.Phish_Detected.getValue()
 				|| this.result == PhishResult.Phish_NotDetected.getValue()) {
 			ab.setSubtitle(getString(R.string.phish));
 		} else {
@@ -213,8 +233,10 @@ public class ResultActivity extends SwipeActivity {
 
 	@Override
 	protected void setUrlText(TextView urlText) {
-		String urlParts[] = BackendControllerImpl.getInstance().getUrl().getParts();
-		int domainPart = BackendControllerImpl.getInstance().getUrl().getDomainPart();
+		String urlParts[] = BackendControllerImpl.getInstance().getUrl()
+				.getParts();
+		int domainPart = BackendControllerImpl.getInstance().getUrl()
+				.getDomainPart();
 		// at start clear string builder
 		for (int i = 0; i < urlParts.length; i++) {
 
@@ -224,26 +246,32 @@ public class ResultActivity extends SwipeActivity {
 			wordEnd = wordStart + part.length();
 			strBuilder.append(part);
 
-			BackgroundColorSpan bgc=null;
-			if(i==0 && level == 10){
-				if(part.equals("https:")){
-					bgc = new BackgroundColorSpan(getResources().getColor(R.color.nophish_domain));
-				}else{
-					bgc = new BackgroundColorSpan(getResources().getColor(R.color.phish_domain));
+			BackgroundColorSpan bgc = null;
+			if (i == 0 && level == 10) {
+				if (part.equals("https:")) {
+					bgc = new BackgroundColorSpan(getResources().getColor(
+							R.color.nophish_domain));
+				} else {
+					bgc = new BackgroundColorSpan(getResources().getColor(
+							R.color.phish_domain));
 				}
-			}else if(i==domainPart) {
+			} else if (i == domainPart) {
 				// make attacked part background red
 				if (BackendControllerImpl.getInstance().getLevel() == 2) {
-					bgc = new BackgroundColorSpan(getResources().getColor(R.color.domain));
+					bgc = new BackgroundColorSpan(getResources().getColor(
+							R.color.domain));
 				} else {
-					if(attack_type==PhishAttackType.NoPhish.getValue() || attack_type==PhishAttackType.HTTP.getValue()){
-						bgc = new BackgroundColorSpan(getResources().getColor(R.color.nophish_domain));
-					}else{
-						bgc = new BackgroundColorSpan(getResources().getColor(R.color.phish_domain));
+					if (attack_type == PhishAttackType.NoPhish.getValue()
+							|| attack_type == PhishAttackType.HTTP.getValue()) {
+						bgc = new BackgroundColorSpan(getResources().getColor(
+								R.color.nophish_domain));
+					} else {
+						bgc = new BackgroundColorSpan(getResources().getColor(
+								R.color.phish_domain));
 					}
 				}
 			}
-			if(bgc!=null){
+			if (bgc != null) {
 				strBuilder.setSpan(bgc, wordStart, wordEnd, 0);
 			}
 
@@ -253,7 +281,7 @@ public class ResultActivity extends SwipeActivity {
 		}
 	}
 
-	private void nextURL(){
+	private void nextURL() {
 		Intent levelIntent = new Intent(this, URLTaskActivity.class);
 		levelIntent.putExtra(Constants.EXTRA_LEVEL, this.level);
 		startActivity(levelIntent);
