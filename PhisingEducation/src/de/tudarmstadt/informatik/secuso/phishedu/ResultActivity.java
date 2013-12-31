@@ -126,13 +126,32 @@ public class ResultActivity extends SwipeActivity {
 		if (this.result == PhishResult.Phish_NotDetected.getValue()) {
 			setReminderText(view);
 		}
-		if (BackendControllerImpl.getInstance().getLevel() == 2) {
+		if (level == 2) {
 			setLevel2Texts(view);
+		}else if (level == 10){
+			setLevel10Texts(view);
 		}
 		TextView urlText = (TextView) view.findViewById(R.id.url);
 		setUrlText(urlText);
 		urlText.setTextSize(25);
 		return view;
+	}
+
+	private void setLevel10Texts(View view) {
+		TextView resultText;
+		if (this.result == PhishResult.NoPhish_Detected.getValue()) {
+			// change text
+			resultText = (TextView) view.findViewById(R.id.your_are_correct_01);
+			resultText.setText(R.string.level_10_you_are_correct);
+			// make second text disappear
+
+		} else if (this.result == PhishResult.Phish_NotDetected.getValue()) {
+			resultText = (TextView) view.findViewById(R.id.phish_not_detected_text);
+			resultText.setText(R.string.level_10_you_are_wrong);
+		} else if (this.result == PhishResult.Phish_Detected.getValue()){
+			resultText = (TextView) view.findViewById(R.id.your_are_correct_01);
+			resultText.setText(R.string.level_10_you_are_correct_phish);
+		}
 	}
 
 	private void setLevel2Texts(View view) {
@@ -257,7 +276,7 @@ public class ResultActivity extends SwipeActivity {
 				}
 			} else if (i == domainPart) {
 				// make attacked part background red
-				if (BackendControllerImpl.getInstance().getLevel() == 2) {
+				if (level == 2) {
 					bgc = new BackgroundColorSpan(getResources().getColor(
 							R.color.domain));
 				} else {
