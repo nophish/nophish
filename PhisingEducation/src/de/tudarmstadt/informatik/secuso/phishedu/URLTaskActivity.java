@@ -111,7 +111,8 @@ public class URLTaskActivity extends PhishBaseActivity {
 		PhishResult result = BackendControllerImpl.getInstance().userClicked(
 				acceptance);
 		Class followActivity = ResultActivity.class;
-		if (result == PhishResult.Phish_Detected) {
+		//In Level 10 (HTTP) we don't show proof activity.
+		if (result == PhishResult.Phish_Detected && level != 10) {
 			followActivity = ProofActivity.class;
 		}
 		Intent levelIntent = new Intent(this, followActivity);

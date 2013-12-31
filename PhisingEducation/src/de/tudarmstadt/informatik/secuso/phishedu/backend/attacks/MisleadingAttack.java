@@ -56,13 +56,14 @@ public class MisleadingAttack extends AbstractAttack {
 	
 	@Override
 	public String[] getParts() {
-		String[] parts = super.getParts();
-		ArrayList<String> adder = new ArrayList<String>(Arrays.asList(parts));
-		String hostname=adder.remove(3);
-		String[] hostparts = hostname.split("\\.");
-		hostparts[hostparts.length-2]+=DOMAIN_ADDITIONS[attack_domain]+".";
-		adder.addAll(3, Arrays.asList(hostparts));
-		return adder.toArray(new String[0]);
+		String[] parts = super.getParts().clone();
+		String domain = parts[3];
+		int period = domain.lastIndexOf(".");
+		String before=domain.substring(0,period);
+		String after=domain.substring(period);
+		domain=before+DOMAIN_ADDITIONS[attack_domain]+after;
+		parts[3]=domain;
+		return parts;
 	}
 	
 	@Override

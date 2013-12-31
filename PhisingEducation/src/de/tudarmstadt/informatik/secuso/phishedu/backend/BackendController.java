@@ -210,6 +210,13 @@ public interface BackendController extends GameHelperListener{
 	 * @return the number of points for the given level
 	 */
 	public int getLevelPoints(int level);
+
+	/**
+	 * Test whether a given leve was completed successfully 
+	 * @param level the leve to test
+	 * @return true if the user completed this level previously
+	 */
+	public boolean getLevelCompleted(int level);
 	
 	/**
 	 * Check if this backendcontroller is already inited.

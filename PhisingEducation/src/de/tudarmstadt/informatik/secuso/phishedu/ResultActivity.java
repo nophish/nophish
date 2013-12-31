@@ -130,7 +130,6 @@ public class ResultActivity extends SwipeActivity {
 		TextView urlText = (TextView) view.findViewById(R.id.url);
 		setUrlText(urlText);
 		urlText.setTextSize(25);
-		updateScore(view);
 		return view;
 	}
 
@@ -225,18 +224,26 @@ public class ResultActivity extends SwipeActivity {
 			wordEnd = wordStart + part.length();
 			strBuilder.append(part);
 
-			final BackgroundColorSpan bgc;
-			if (i==domainPart) {
+			BackgroundColorSpan bgc=null;
+			if(i==0 && level == 10){
+				if(part.equals("https:")){
+					bgc = new BackgroundColorSpan(getResources().getColor(R.color.nophish_domain));
+				}else{
+					bgc = new BackgroundColorSpan(getResources().getColor(R.color.phish_domain));
+				}
+			}else if(i==domainPart) {
 				// make attacked part background red
 				if (BackendControllerImpl.getInstance().getLevel() == 2) {
 					bgc = new BackgroundColorSpan(getResources().getColor(R.color.domain));
 				} else {
-					if(attack_type==PhishAttackType.NoPhish.getValue()){
+					if(attack_type==PhishAttackType.NoPhish.getValue() || attack_type==PhishAttackType.HTTP.getValue()){
 						bgc = new BackgroundColorSpan(getResources().getColor(R.color.nophish_domain));
 					}else{
 						bgc = new BackgroundColorSpan(getResources().getColor(R.color.phish_domain));
 					}
 				}
+			}
+			if(bgc!=null){
 				strBuilder.setSpan(bgc, wordStart, wordEnd, 0);
 			}
 

@@ -177,7 +177,7 @@
     <string name="level_00_finish_00_text_01"><b>Was du jetzt schon gelernt hast:</b>\n\n1.) Du hast es selber erlebt und gesehen, wie einfach es ist, den Absender einer E-Mail zu fälschen. Entsprechend vorsichtig solltest du bei der Einschätzung der Vertrauenswürdigkeit von E-Mails sein. Dies gilt insbesondere, wenn diese einen Link enthalten. Nicht nur bei Links, die dir bekannt zu sein scheinen, sondern auch bei solchen, die bspw. “Hier Klicken” heißen, solltest du aufpassen.</string>
     <string name="level_00_finish_00_text_02">2.) Du hast auch gelernt, dass man durch das Klicken auf Links nicht zwingend auf die Webadresse geführt wird, die im Link angegeben ist.</string>
     <string name="level_00_finish_01_text_01"><b>Übrigens, das gilt nicht nur für E-Mails!</b>\n\nGefahren lauern nicht nur hinter Links in E-Mails, sondern generell immer, wenn du auf einen Link klickst (bspw. auf einer anderen Webseite, in einer SMS oder in Nachrichten bei Facebook oder Twitter).</string>
-    <string name="level_00_finish_02_text_01"><b>Webadressen und Webseitenkopien erstellen kann jeder!</b>\n\nEine Webadresse kann heutzutage jeder anlegen. Eine identische Kopie einer Webseite dort anzuzeigen, bringt fast keinen Aufwand und auch fast keine Kosten mit sich. D.h., wenn du auf einer Webseite landest, kann die angezeigte Webseite zwar auf den ersten Blick korrekt aussehen, ist aber in Wirklichkeit die Kopie einer vertrauten Webseite, die angelegt wurde, um dir zu schaden.</string>
+    <string name="level_00_finish_02_text_01"><b>Webadressen und Webseitenkopien erstellen kann jeder!</b>\n\nEine Webadresse kann heutzutage jeder anlegen. Eine identische Kopie einer Webseite dort anzuzeigen, bringt fast keinen Aufwand und auch fast keine Kosten mit sich. D.h., wenn du auf einer Webseite landest, kann die angezeigte Webseite zwar auf den ersten Blick korrekt aussehen, ist aber in Wirklichkeit die Kopie einer vertrauten Webseite, die angelegt wurde, um dir zu schaden. Die meisten E-Mail Clients bieten leider keine Möglichkeit das Ziel von Links im Vorhinein zu erkennen. Daher erklären wir dir in dieser App, wie du Webadressen nach dem Klicken im Webbrowser überprüfen kannst.</string>
     <string name="level_00_finish_03_text_01"><b>Original</b>\n\nIm Folgenden zeigen wir dir einen Ausschnitt der <b>originalen</b> Webseite von Facebook. An der Webadresse https://m.facebook.com/ (grün umrandet) kann man erkennen, dass es sich bei dieser Webseite um das Original handelt.</string>
     <string name="level_00_finish_04_text_01"><b>Kopie</b>\n\nIm Folgenden zeigen wir dir einen Ausschnitt einer <b>kopierten</b> Webseite von Facebook, die unter der gefälschten Webadresse https://pages.no-phish.de/ (rot umrandet) angezeigt wird.</string>
     <string name="level_00_finish_05_text_01"><b>Wie du dich vor Phishing schützen kannst</b>\n\nEs ist wichtig, dass du immer die Webadresse prüfst, bevor du Daten auf der Webseite eingibst, insbesondere dann, wenn du eine unerwartete E-Mail mit einem Link erhältst. Mit dieser App lernst du, wie du die Überprüfung der Webadressen durchführen kannst.</string>
@@ -205,7 +205,7 @@
     <string name="level_1_address_bar_subtitle_1">Einführung Adressleiste</string>
     <string name="level_1_address_bar_subtitle_2">Die Adressleiste finden</string>
     <string name="level_1">Level 1</string>
-    <string name="level_01_intro_00_text_01"><b>Die Adressleiste</b>\n\nAls Erstes musst du wissen, wie du mit deinem Smartphone an die Webadresse kommst. Dazu sind zwei Dinge wichtig:\n\n1.) Wo finde ich die Adressleiste?\n2.) Wie schaue ich mir die vollständige Webadresse an?</string>
+    <string name="level_01_intro_00_text_01"><b>Die Adressleiste</b>\n\nAls Erstes musst du wissen, wie du mit deinem Smartphone an die Webadresse kommst. Das ist bei jedem Android Browser gleich. Dazu sind zwei Dinge wichtig:\n\n1.) Wo finde ich die Adressleiste?\n2.) Wie schaue ich mir die vollständige Webadresse an?</string>
     <string name="level_01_intro_00_button_01">Das kann ich schon!</string>
     <string name="level_01_intro_00_button_02">Das kann ich nocht nicht!</string>
     <string name="level_01_intro_01_text_01"><b>Die Adressleiste finden</b>\n\nViele Webseiten sind so umfangreich, dass die eigentliche Webseite auf dem ganzen Display angezeigt wird und daher die Adressleiste nicht immer zu sehen ist.\n\nDu kannst aber auf der Webseite den Finger so lange herunter ziehen (ggf. mehrmals), bis du ganz oben auf der Webseite angekommen bist und die Adressleiste erscheint.</string>
@@ -259,7 +259,7 @@
     <string name="level_02_example_facebook_04">settings?tab=payments</string>
     <string name="level_02_exercise_text_01">Nun bist du an der Reihe:\n\nNach den vorherigen Beispielen, sollst du nun selber den Wer-Bereich der folgenden Webadressen bestimmen.\n\nBerühre hierzu die entsprechende Stelle und klicke auf \"Überprüfen\", wenn deine Antwort überprüft werden soll.</string>
     <string name="level_02_task"><b>Tippe</b> nun den Wer-Bereich der folgenden Webadressen an.</string>
-    <string name="level_02_you_are_wrong">Leider konntest du den Wer-Bereich nicht identifizieren.</string>
+    <string name="level_02_you_are_wrong">Leider konntest du den Wer-Bereich nicht identifizieren. Daher verlierst du ein Leben.</string>
     <string name="level_02_you_are_correct">Sehr gut! Du konntest den Wer-Bereich identifizieren.</string>
     <string name="location">Standort</string>
     <string name="company">Unternehmen</string>
@@ -456,7 +456,7 @@
     <string name="oversafe_01">Diese Webadresse ist nicht gefälscht. Ihr kannst du ruhig vertrauen.</string>
     <string name="oversafe_02">Wenn man sich unsicher ist, ist es allerdings besser übervorsichtig zu sein und keine Daten einzugeben. In solchen Fällen ist es sinnvoll, das entsprechende Unternehmen zu kontaktieren und dort nach der Vertrauenswürdigkeit der verdächtigen Webadresse zu fragen.</string>
     <string name="you_are_correct">Gut gemacht. Diese Webadresse ist nicht gefälscht, ihr kannst du vertrauen.</string>
-    <string name="you_guessed">Leider konntest du uns nicht den Wer-Bereich zeigen.</string>
+    <string name="you_guessed">Leider konntest du uns nicht den Wer-Bereich zeigen. Daher verlierst du ein Leben.</string>
     <string name="you_guessed_02"></string>
     <string name="you_found_the_phish">Du hast den Phish erkannt und konntest uns den Wer-Bereich nennen. Herzlichen Glückwunsch. Du bist jetzt etwas sicherer.</string>
     <string name="title_activity_proof">ProofActivity</string>
