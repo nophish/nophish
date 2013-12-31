@@ -23,6 +23,7 @@ import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController.OnLev
 import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController.OnLevelstateChangeListener;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendControllerImpl;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.FrontendController;
+import de.tudarmstadt.informatik.secuso.phishedu.backend.MainActivity;
 
 /**
  * 
@@ -31,80 +32,75 @@ import de.tudarmstadt.informatik.secuso.phishedu.backend.FrontendController;
  *         store his/her score online he/she has to sign into google+
  */
 public class StartMenuActivity extends PhishBaseActivity {
+	
 	@Override
-	public void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-
-		setContentView(R.layout.start_menu);
-		this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-
+	public View getLayout(LayoutInflater inflater, ViewGroup container,
+			Bundle savedInstanceState) {
+		View v = inflater.inflate(R.layout.start_menu, container,false);
+		
 		if (BackendControllerImpl.getInstance().getMaxUnlockedLevel() > 0) {
-			TextView startbutton = (TextView) findViewById(R.id.menu_button_play);
+			TextView startbutton = (TextView) v.findViewById(R.id.menu_button_play);
 			startbutton.setText(R.string.button_play_on);
 		}
 		
-		TextView version = (TextView) findViewById(R.id.version);
+		TextView version = (TextView) v.findViewById(R.id.version);
 		PackageInfo pInfo;
 		try {
-			pInfo = getPackageManager().getPackageInfo(getPackageName(), 0);
+			pInfo = getActivity().getPackageManager().getPackageInfo(getActivity().getPackageName(), 0);
 			version.setText(pInfo.versionName);
 		} catch (NameNotFoundException e) {
 			e.printStackTrace();
 		}
 		
-		BackendControllerImpl.getInstance().onUrlReceive(getIntent().getData());
+		return v;
 	}
 	
-	public void showLevelOverview(View view) {
-		Intent levelGridIntent = new Intent(this, LevelSelectorActivity.class);
-		startActivity(levelGridIntent);
+	@Override
+	public int[] getClickables() {
+		return new int[]{
+			R.id.menu_button_about,
+			R.id.menu_button_level_overview,
+			R.id.menu_button_more_info,
+			R.id.menu_button_play,
+			R.id.menu_button_social,
+		};
 	}
-
-	public void goToGooglePlay(View view) {
-		// start Activity showing the list view
-		Intent playIntent = new Intent(this, GooglePlusActivity.class);
-		startActivity(playIntent);
-	}
-
-	public void showMoreInfo(View view) {
-		// start Activity showing the list view
-		Intent moreInfoIntent = new Intent(this, MoreInfoActivity.class);
-		startActivity(moreInfoIntent);
-
-	}
-
-	public void showAbout(View view) {
-		// start Activity showing the list view
-		Intent aboutIntent = new Intent(this, AboutActivity.class);
-		startActivity(aboutIntent);
-	}
-
-	/**
-	 * initially game is started from awareness-part when game has been started
-	 * once - Button text should change to Continue game state should be loaded
-	 */
-	public void startGame(View view) {
-		int userlevel = BackendControllerImpl.getInstance().getMaxUnlockedLevel();
-		if(userlevel == BackendControllerImpl.getInstance().getLevelCount() - 1){
-			startActivity(new Intent(this, AppEndActivity.class));
-		}else{
-			BackendControllerImpl.getInstance().startLevel(userlevel);
+	
+	@Override
+	public void onClick(View view) {
+		switch (view.getId()) {
+		case R.id.menu_button_about:
+			((MainActivity)getActivity()).switchToFragment(AboutActivity.class);
+			break;
+		case R.id.menu_button_level_overview:
+			((MainActivity)getActivity()).switchToFragment(LevelSelectorActivity.class);
+			break;
+		case R.id.menu_button_more_info:
+			((MainActivity)getActivity()).switchToFragment(MoreInfoActivity.class);
+			break;
+		case R.id.menu_button_play:
+			int userlevel = BackendControllerImpl.getInstance().getMaxUnlockedLevel();
+			if(userlevel == BackendControllerImpl.getInstance().getLevelCount() - 1){
+				((MainActivity)getActivity()).switchToFragment(AppEndActivity.class);
+			}else{
+				BackendControllerImpl.getInstance().startLevel(userlevel);
+			}
+			break;
+		case R.id.menu_button_social:
+			((MainActivity)getActivity()).switchToFragment(GooglePlusActivity.class);
+			break;
+			
 		}
 	}
-
-	/*
-	 * Use these as examples for later implementation
-	 */
-
 	
-
 	@Override
-	public void onBackPressed() {
+	public boolean onBackPressed() {
 		showExitPopup();
+		return false;
 	}
 
 	private void showExitPopup() {
-		AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
+		AlertDialog.Builder alertDialog = new AlertDialog.Builder(getActivity());
 
 		// Setting Dialog Title
 		alertDialog.setTitle(getString(R.string.end_app));
@@ -116,7 +112,7 @@ public class StartMenuActivity extends PhishBaseActivity {
 				new DialogInterface.OnClickListener() {
 					@Override
 					public void onClick(DialogInterface dialog, int which) {
-						StartMenuActivity.this.finish();
+						getActivity().finish();
 					}
 				});
 
@@ -132,5 +128,14 @@ public class StartMenuActivity extends PhishBaseActivity {
 		alertDialog.show();
 
 	}
-
+	
+	@Override
+	public boolean enableHomeButton() {
+		return false;
+	}
+	
+	@Override
+	int getTitle() {
+		return R.string.title_activity_start_menu;
+	}
 }

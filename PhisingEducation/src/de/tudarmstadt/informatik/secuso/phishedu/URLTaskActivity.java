@@ -1,47 +1,53 @@
 package de.tudarmstadt.informatik.secuso.phishedu;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.ActionBar;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.HorizontalScrollView;
 import android.widget.TextView;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendControllerImpl;
+import de.tudarmstadt.informatik.secuso.phishedu.backend.MainActivity;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishResult;
 
 public class URLTaskActivity extends PhishBaseActivity {
 
 	private TextView urlText;
-	private int level;
+	private View v;
 
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-		this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-		this.level = getIntent().getIntExtra(Constants.EXTRA_LEVEL, 0);
-
-		setContentView(R.layout.urltask_task);
-		this.urlText = (TextView) findViewById(R.id.url_task_url);
-
-		setTitles();
-
-		// set size of shown url depending on level
+	public View getLayout(LayoutInflater inflater, ViewGroup container,	Bundle savedInstanceState) {
+		View v = inflater.inflate(R.layout.urltask_task, container, false);
+		this.urlText = (TextView) v.findViewById(R.id.url_task_url);
 		setUrlSize();
-		
+
 		nextURL();
+
+		final HorizontalScrollView scroll = (HorizontalScrollView) v.findViewById(R.id.url_horizintal_sv);
+		scroll.post(new Runnable() {            
+		    @Override
+		    public void run() {
+		           scroll.fullScroll(View.FOCUS_RIGHT);              
+		    }
+		});
+
+		this.v=v;
+		
+		return v;
 	}
 
 	private void setUrlSize() {
-		TextView url = (TextView) findViewById(R.id.url_task_url);
-		float textSize = url.getTextSize();
+		float textSize = urlText.getTextSize();
 
-		switch (level) {
+		switch (getLevel()) {
 		case 0:
 			// should not reach this code, as urltask is called beginning from
 			// level 2
@@ -73,15 +79,17 @@ public class URLTaskActivity extends PhishBaseActivity {
 			textSize = 13;
 			break;
 		}
-		url.setTextSize(textSize);
+		urlText.setTextSize(textSize);
 	}
 
-	private void setTitles() {
-		ActionBar ab = getSupportActionBar();
+	int getTitle(){
+		return BackendControllerImpl.getInstance().getLevelInfo(getLevel()).titleId;
+	};
+	int getIcon(){return R.drawable.desktop;}
 
-		ab.setTitle(BackendControllerImpl.getInstance().getLevelInfo().titleId);
-		ab.setSubtitle(getString(R.string.exercise));
-		ab.setIcon(getResources().getDrawable(R.drawable.desktop));
+	@Override
+	int getSubTitle() {
+		return R.string.exercise;
 	}
 
 	private void nextURL() {
@@ -96,15 +104,27 @@ public class URLTaskActivity extends PhishBaseActivity {
 		}
 
 		urlText.setText(sb.toString());
-		updateScore();
+		updateScore(v);
 	}
 
-	public void clickAccept(View view) {
-		clicked(true);
+	@Override
+	public int[] getClickables() {
+		return new int[]{
+				R.id.url_task_check_mark,
+				R.id.url_task_cross,
+		};
 	}
 
-	public void clickDecline(View view) {
-		clicked(false);
+	@Override
+	public void onClick(View view) {
+		switch (view.getId()) {
+		case R.id.url_task_check_mark:
+			clicked(true);
+			break;
+		case R.id.url_task_cross:
+			clicked(false);
+			break;
+		}
 	}
 
 	private void clicked(boolean acceptance) {
@@ -112,17 +132,12 @@ public class URLTaskActivity extends PhishBaseActivity {
 				acceptance);
 		Class followActivity = ResultActivity.class;
 		//In Level 10 (HTTP) we don't show proof activity.
-		if (result == PhishResult.Phish_Detected && level != 10) {
+		if (result == PhishResult.Phish_Detected && getLevel() != 10) {
 			followActivity = ProofActivity.class;
 		}
-		Intent levelIntent = new Intent(this, followActivity);
-		levelIntent.putExtra(Constants.EXTRA_RESULT, result.getValue());
-		levelIntent.putExtra(Constants.EXTRA_LEVEL, this.level);
-		levelIntent.putExtra(Constants.EXTRA_SITE_TYPE, BackendControllerImpl.getInstance().getUrl().getSiteType().getValue());
-		levelIntent.putExtra(Constants.EXTRA_ATTACK_TYPE, BackendControllerImpl.getInstance().getUrl().getAttackType().getValue());
-		startActivity(levelIntent);
+		((MainActivity)getActivity()).switchToFragment(followActivity);
 	}
-	
+
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
@@ -138,49 +153,23 @@ public class URLTaskActivity extends PhishBaseActivity {
 	}
 
 	@Override
-	public void onBackPressed() {
+	public boolean onBackPressed() {
 		levelCanceldWarning();
-	}
-
-	@Override
-	protected void onStart() {
-		super.onStart();
-		if (level == 2) {
-			Intent levelIntent = new Intent(this, ProofActivity.class);
-			levelIntent.putExtra(Constants.EXTRA_LEVEL, this.level);
-			startActivity(levelIntent);
-		} else {
-			sendScrollToRight();
-		}
+		return false;
 	}
 	
 	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu items for use in the action bar
-		MenuInflater inflater = getMenuInflater();
-		inflater.inflate(R.menu.urltask_menu, menu);
-		return super.onCreateOptionsMenu(menu);
+	public void onAttach(Activity activity) {
+		super.onAttach(activity);
+		if (getLevel() == 2) {
+			((MainActivity)getActivity()).switchToFragment(ProofActivity.class);
+		}
 	}
 
-
-	private void sendScrollToRight() {
-		final Handler handler = new Handler();
-		final HorizontalScrollView hsv = (HorizontalScrollView) findViewById(R.id.url_horizintal_sv);
-
-		new Thread(new Runnable() {
-			@Override
-			public void run() {
-				try {
-					Thread.sleep(5);
-				} catch (InterruptedException e) {
-				}
-				handler.post(new Runnable() {
-					@Override
-					public void run() {
-						hsv.fullScroll(View.FOCUS_RIGHT);
-					}
-				});
-			}
-		}).start();
+	@Override
+	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+		// Inflate the menu items for use in the action bar
+		inflater.inflate(R.menu.urltask_menu, menu);
+		super.onCreateOptionsMenu(menu, inflater);
 	}
 }

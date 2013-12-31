@@ -23,18 +23,26 @@ import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishResult;
 
 public class ProofActivity extends SwipeActivity {
 	int selectedPart = -1;
-	int level = 0;
 
-	private void setTitles() {
-		android.support.v7.app.ActionBar ab = getSupportActionBar();
-		if (level != 2) {
-			ab.setTitle(R.string.correct);
-			ab.setSubtitle(getString(R.string.phish));
+	@Override
+	int getTitle(){
+		if (getLevel() != 2) {
+			return R.string.correct;
 		} else {
-			ab.setTitle(BackendControllerImpl.getInstance().getLevelInfo().titleId);
-			ab.setSubtitle(getString(R.string.exercise));
+			return BackendControllerImpl.getInstance().getLevelInfo().titleId;
 		}
-		ab.setIcon(getResources().getDrawable(R.drawable.desktop));
+	};
+	@Override
+	int getSubTitle(){
+		if (getLevel() != 2) {
+			return R.string.phish;
+		} else {
+			return R.string.exercise;
+		}
+	};
+	@Override
+	int getIcon(){
+		return R.drawable.desktop;
 	}
 
 	private class ClickSpan extends ClickableSpan {
@@ -75,20 +83,20 @@ public class ProofActivity extends SwipeActivity {
 		}
 		return super.onOptionsItemSelected(item);
 	}
-
+	
 	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu items for use in the action bar
-		MenuInflater inflater = getMenuInflater();
+	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
 		inflater.inflate(R.menu.urltask_menu, menu);
-		return super.onCreateOptionsMenu(menu);
+		super.onCreateOptionsMenu(menu, inflater);
 	}
+
 	/**
 	 * Going back not possible, only cancel level
 	 */
 	@Override
-	public void onBackPressed() {
+	public boolean onBackPressed() {
 		levelCanceldWarning();
+		return false;
 	}
 
 	@Override
@@ -101,17 +109,13 @@ public class ProofActivity extends SwipeActivity {
 			ViewGroup container, Bundle savedInstanceState) {
 		View v = inflater.inflate(R.layout.proof, container,false);
 
-		this.level = getIntent().getIntExtra(Constants.EXTRA_LEVEL, 0);
-
-		if (level == 2) {
+		if (getLevel() == 2) {
 			TextView text = (TextView) v.findViewById(R.id.phish_proof_text);
 			text.setText(R.string.level_02_task);
 
 			ImageView image = (ImageView) v.findViewById(R.id.feedback_smiley);
 			image.setVisibility(View.INVISIBLE);
 		}
-		
-		setTitles();
 
 		String[] urlparts = BackendControllerImpl.getInstance().getUrl().getParts();
 		SpannableStringBuilder builder = new SpannableStringBuilder();
@@ -130,15 +134,15 @@ public class ProofActivity extends SwipeActivity {
 		url.setMovementMethod(LinkMovementMethod.getInstance());
 		url.setHighlightColor(Color.LTGRAY);
 		url.setTextSize(25);
-		
+
 		return v;
 	}
-	
+
 	@Override
 	protected void onStartClick() {
 		Log.i("SelectedPart", Integer.toString(selectedPart));
 		if (selectedPart == -1) {
-			Toast.makeText(getApplicationContext(),
+			Toast.makeText(getActivity().getApplicationContext(),
 					getResources().getString(R.string.select_part),
 					Toast.LENGTH_SHORT).show();
 			return;
@@ -149,14 +153,15 @@ public class ProofActivity extends SwipeActivity {
 		if (!clicked_right) {
 			result = ResultActivity.RESULT_GUESSED;
 		}
-		Intent levelIntent = new Intent(this, ResultActivity.class);
-		levelIntent.putExtra(Constants.EXTRA_RESULT, result);
-		levelIntent.putExtra(Constants.EXTRA_LEVEL, this.level);
-		levelIntent.putExtra(Constants.EXTRA_SITE_TYPE, BackendControllerImpl.getInstance().getUrl().getSiteType().getValue());
-		levelIntent.putExtra(Constants.EXTRA_ATTACK_TYPE, BackendControllerImpl.getInstance().getUrl().getAttackType().getValue());
-		startActivity(levelIntent);		
+		//TODO: reenable
+		//Intent levelIntent = new Intent(this, ResultActivity.class);
+		//levelIntent.putExtra(Constants.EXTRA_RESULT, result);
+		//levelIntent.putExtra(Constants.EXTRA_LEVEL, this.level);
+		//levelIntent.putExtra(Constants.EXTRA_SITE_TYPE, BackendControllerImpl.getInstance().getUrl().getSiteType().getValue());
+		//levelIntent.putExtra(Constants.EXTRA_ATTACK_TYPE, BackendControllerImpl.getInstance().getUrl().getAttackType().getValue());
+		//startActivity(levelIntent);		
 	}
-	
+
 	@Override
 	protected String startButtonText() {
 		return "überprüfen";

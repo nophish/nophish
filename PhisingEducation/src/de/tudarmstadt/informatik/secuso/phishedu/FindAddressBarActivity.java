@@ -9,11 +9,13 @@ import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendControllerImpl;
 
 public class FindAddressBarActivity extends PhishBaseActivity {
 
-	private int getTitle() {
+	@Override
+	int getTitle() {
 		return BackendControllerImpl.getInstance().getLevelInfo().titleId;
 	}
 	
-	private int getSubTitle() {
+	@Override
+	int getSubTitle() {
 		return R.string.exercise;
 	}
 

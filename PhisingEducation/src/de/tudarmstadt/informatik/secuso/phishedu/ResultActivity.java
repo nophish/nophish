@@ -21,6 +21,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendControllerImpl;
+import de.tudarmstadt.informatik.secuso.phishedu.backend.MainActivity;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishAttackType;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishResult;
 
@@ -38,18 +39,6 @@ public class ResultActivity extends SwipeActivity {
 
 	protected static int[] resultLayoutIDs;
 	private int result = PhishResult.Phish_Detected.getValue();
-	private int site_type = 0;
-	private int attack_type = 0;
-	private int level = 0;
-
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		this.result = getIntent().getIntExtra(Constants.EXTRA_RESULT, 0);
-		this.site_type = getIntent().getIntExtra(Constants.EXTRA_SITE_TYPE, 0);
-		this.attack_type = getIntent().getIntExtra(Constants.EXTRA_ATTACK_TYPE,0);
-		this.level = getIntent().getIntExtra(Constants.EXTRA_LEVEL, 0);
-		setTitle();
-	}
 
 	public ResultActivity() {
 		// We need one layout for each PhishResult + You guessed
@@ -78,13 +67,11 @@ public class ResultActivity extends SwipeActivity {
 	}
 
 	private void levelFinished() {
-		Intent levelIntent = new Intent(this, LevelFinishedActivity.class);
-		levelIntent.putExtra(Constants.EXTRA_LEVEL, level);
-		startActivity(levelIntent);
+		((MainActivity)getActivity()).switchToFragment(LevelFinishedActivity.class);
 	}
 
 	private void levelFailed() {
-		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 		builder.setTitle(R.string.level_failed_title);
 		builder.setMessage(R.string.level_failed_text);
 		builder.setNeutralButton(R.string.level_failed_button,
@@ -111,15 +98,15 @@ public class ResultActivity extends SwipeActivity {
 	 * Going back not possible, only cancel level
 	 */
 	@Override
-	public void onBackPressed() {
+	public boolean onBackPressed() {
 		levelCanceldWarning();
+		return false;
 	}
 
 	@Override
 	protected View getPage(int page, LayoutInflater inflater,
 			ViewGroup container, Bundle savedInstanceState) {
-		View view = inflater.inflate(resultLayoutIDs[this.result], container,
-				false);
+		View view = inflater.inflate(resultLayoutIDs[this.result], container, false);
 		// if result == result_nophish_notdetected -> virbration feedback
 		if (this.result == PhishResult.Phish_NotDetected.getValue()) {
 			setReminderText(view);
@@ -158,7 +145,7 @@ public class ResultActivity extends SwipeActivity {
 		TextView reminderText = (TextView) view
 				.findViewById(R.id.phish_not_detected_reminder);
 
-		int indexReminder = attack_type - 3;
+		int indexReminder = BackendControllerImpl.getInstance().getUrl().getAttackType().getValue() - 3;
 		if (indexReminder == 8) {
 			//typo and misleading are in one level (7)
 			indexReminder = 4;
@@ -167,13 +154,11 @@ public class ResultActivity extends SwipeActivity {
 			reminderText.setText(reminderIDs[indexReminder]);
 		}
 	}
-
+	
 	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu items for use in the action bar
-		MenuInflater inflater = getMenuInflater();
+	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
 		inflater.inflate(R.menu.urltask_menu, menu);
-		return super.onCreateOptionsMenu(menu);
+		super.onCreateOptionsMenu(menu, inflater);
 	}
 
 	@Override
@@ -189,28 +174,35 @@ public class ResultActivity extends SwipeActivity {
 		}
 		return super.onOptionsItemSelected(item);
 	}
-
-	private void setTitle() {
-		ActionBar ab = getSupportActionBar();
+	
+	@Override
+	int getTitle() {
 		if (this.result == PhishResult.Phish_Detected.getValue()
 				|| this.result == PhishResult.NoPhish_Detected.getValue()) {
-			ab.setTitle(getString(R.string.correct));
+			return R.string.correct;
 		} else {
-			ab.setTitle(getString(R.string.wrong));
+			return R.string.wrong;
 		}
-		if(this.level==2){
+	}
+	
+	@Override
+	int getSubTitle() {
+		if(getLevel()==2){
 			//no subtitle in level2;
-			ab.setSubtitle(null);
+			return 0;
 		}else if (this.result == PhishResult.Phish_Detected.getValue()
 				|| this.result == PhishResult.Phish_NotDetected.getValue()) {
-			ab.setSubtitle(getString(R.string.phish));
+			return R.string.phish;
 		} else {
-			ab.setSubtitle(getString(R.string.no_phish));
+			return R.string.no_phish;
 		}
-
-		ab.setIcon(getResources().getDrawable(R.drawable.desktop));
 	}
-
+	
+	@Override
+	int getIcon() {
+		return R.drawable.desktop;
+	}
+	
 	@Override
 	protected void setUrlText(TextView urlText) {
 		String urlParts[] = BackendControllerImpl.getInstance().getUrl().getParts();
@@ -225,7 +217,7 @@ public class ResultActivity extends SwipeActivity {
 			strBuilder.append(part);
 
 			BackgroundColorSpan bgc=null;
-			if(i==0 && level == 10){
+			if(i==0 && getLevel() == 10){
 				if(part.equals("https:")){
 					bgc = new BackgroundColorSpan(getResources().getColor(R.color.nophish_domain));
 				}else{
@@ -236,7 +228,8 @@ public class ResultActivity extends SwipeActivity {
 				if (BackendControllerImpl.getInstance().getLevel() == 2) {
 					bgc = new BackgroundColorSpan(getResources().getColor(R.color.domain));
 				} else {
-					if(attack_type==PhishAttackType.NoPhish.getValue() || attack_type==PhishAttackType.HTTP.getValue()){
+					PhishAttackType attack_type = BackendControllerImpl.getInstance().getUrl().getAttackType();
+					if(attack_type==PhishAttackType.NoPhish || attack_type==PhishAttackType.HTTP){
 						bgc = new BackgroundColorSpan(getResources().getColor(R.color.nophish_domain));
 					}else{
 						bgc = new BackgroundColorSpan(getResources().getColor(R.color.phish_domain));
@@ -254,9 +247,7 @@ public class ResultActivity extends SwipeActivity {
 	}
 
 	private void nextURL(){
-		Intent levelIntent = new Intent(this, URLTaskActivity.class);
-		levelIntent.putExtra(Constants.EXTRA_LEVEL, this.level);
-		startActivity(levelIntent);
+		((MainActivity)getActivity()).switchToFragment(URLTaskActivity.class);
 	}
 
 }

@@ -1,22 +1,16 @@
 package de.tudarmstadt.informatik.secuso.phishedu;
 
-import android.content.Context;
-import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.v4.app.NavUtils;
-import android.support.v7.app.ActionBar;
 import android.text.SpannableStringBuilder;
 import android.text.style.BackgroundColorSpan;
 import android.text.style.ForegroundColorSpan;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ScrollView;
 import android.widget.TextView;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendControllerImpl;
-import de.tudarmstadt.informatik.secuso.phishedu.backend.NoPhishLevelInfo;
+import de.tudarmstadt.informatik.secuso.phishedu.backend.MainActivity;
 
 /**
  * 
@@ -74,6 +68,7 @@ public class LevelIntroActivity extends SwipeActivity {
 		this.onStartClick();
 	}
 
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	protected void onStartClick() {
 		Class next_activity = URLTaskActivity.class;
 		if (this.getLevel() == 0) {
@@ -83,10 +78,7 @@ public class LevelIntroActivity extends SwipeActivity {
 		}else if(this.getLevel() == BackendControllerImpl.getInstance().getLevelCount()-1){
 			next_activity = AppEndActivity.class;
 		}
-		//TODO reanable
-		//Intent levelIntent = new Intent(this, next_activity);
-		//levelIntent.putExtra(Constants.EXTRA_LEVEL, this.level);
-		//startActivity(levelIntent);
+		((MainActivity)getActivity()).switchToFragment(next_activity);
 	}
 
 	@Override
@@ -113,14 +105,16 @@ public class LevelIntroActivity extends SwipeActivity {
 				|| view.findViewById(R.id.reminder_examples) != null) {
 			setExampleSpans(view);
 		}
-
-		// if awareness is shown - no icon change
-		//TODO reanable
-		//if (level_info.levelId > 0) {
-		//	ab.setIcon(getResources().getDrawable(R.drawable.emblem_library));
-		//}
-
 		return view;
+	}
+	
+	@Override
+	int getIcon() {
+		if (getLevel() > 0) {
+			return R.drawable.emblem_library;
+		}else{
+			return 0;
+		}
 	}
 
 	private void setExampleSpans(View view) {

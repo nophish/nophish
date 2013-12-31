@@ -37,10 +37,10 @@ public class AwarenessActivity extends PhishBaseActivity {
 	private static String from;
 	private static String to;
 	private static String userMessage;
-
+	
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		View v = super.onCreateView(inflater, container, savedInstanceState);
+	public View getLayout(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+		View v = inflater.inflate(R.layout.awareness, container, false);
 		Pattern emailPattern = Patterns.EMAIL_ADDRESS; // API level 8+
 		Account[] accounts = AccountManager.get(getActivity().getApplicationContext()).getAccounts();
 		ArrayAdapter<String> toAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_dropdown_item_1line);
@@ -264,12 +264,6 @@ public class AwarenessActivity extends PhishBaseActivity {
 		}
 	}
 
-
-	@Override
-	public int getLayout() {
-		return R.layout.awareness;
-	}
-	
 	@Override
     public void onClick(View view) {
         switch (view.getId()) {

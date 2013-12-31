@@ -24,33 +24,31 @@ import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class MainActivity extends BaseGameActivity implements FrontendController, OnLevelChangeListener, BackendInitListener, OnLevelstateChangeListener {
-	HashMap<Class<? extends Fragment>, Fragment> fragcache = new HashMap<Class<? extends Fragment>, Fragment>();
+public class MainActivity extends PhishBaseGameActivity implements FrontendController, OnLevelChangeListener, BackendInitListener, OnLevelstateChangeListener {
 	PhishBaseActivity current_frag;
 	
-	void switchToFragment(Class<? extends Fragment> fragClass) {
-		Fragment newFrag;
-		if(!fragcache.containsKey(fragClass)){
-			try {
-				fragcache.put(fragClass, fragClass.newInstance());
-			} catch (InstantiationException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (IllegalAccessException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+	public void switchToFragment(Class<? extends PhishBaseActivity> fragClass) {
+		PhishBaseActivity newFrag;
+		try {
+			newFrag = fragClass.newInstance();
+			getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, newFrag)
+            .commit();
+			current_frag = (PhishBaseActivity)newFrag;
+		} catch (InstantiationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-		newFrag = fragcache.get(fragClass);
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, newFrag)
-                .commit();
-        current_frag = (PhishBaseActivity)newFrag;
     }
 	
 	@Override
@@ -70,8 +68,10 @@ public class MainActivity extends BaseGameActivity implements FrontendController
 		}
 		BackendControllerImpl.getInstance().addOnLevelChangeListener(this);
 		BackendControllerImpl.getInstance().addOnLevelstateChangeListener(this);
-
+		
 		switchToFragment(StartMenuActivity.class);
+		
+		BackendControllerImpl.getInstance().onUrlReceive(getIntent().getData());
 	}
 
 	@Override
@@ -110,9 +110,7 @@ public class MainActivity extends BaseGameActivity implements FrontendController
 
 	@Override
 	public void onLevelChange(int level) {
-		Intent levelIntent = new Intent(this, LevelIntroActivity.class);
-		levelIntent.putExtra(Constants.EXTRA_LEVEL, level);
-		startActivity(levelIntent);
+		switchToFragment(LevelIntroActivity.class);
 	}
 	@Override
 	public void displayToastScore(int score) {
@@ -169,5 +167,10 @@ public class MainActivity extends BaseGameActivity implements FrontendController
 			finishedIntent.putExtra(Constants.EXTRA_LEVEL, levelid);
 			startActivity(finishedIntent);
 		}
+	}
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		return current_frag.onOptionsItemSelected(item);
 	}
 }

@@ -14,7 +14,8 @@ import de.tudarmstadt.informatik.secuso.phishedu.backend.NoPhishLevelInfo;
 public class LevelSelectorActivity extends SwipeActivity implements
 		ViewPager.OnPageChangeListener {
 
-	private int getTitle(){
+	@Override
+	int getTitle(){
 		return R.string.button_level_overview;
 	}
 	
@@ -27,8 +28,7 @@ public class LevelSelectorActivity extends SwipeActivity implements
 	protected View getPage(int level, LayoutInflater inflater,
 			ViewGroup container, Bundle savedInstanceState) {
 		NoPhishLevelInfo level_info = BackendControllerImpl.getInstance().getLevelInfo(level);
-		View layoutView = inflater.inflate(R.layout.fragment_level_overview_template,
-				container, false);
+		View layoutView = inflater.inflate(R.layout.fragment_level_overview_template, container, false);
 		int userlevel = BackendControllerImpl.getInstance().getMaxUnlockedLevel();
 		View button = layoutView.findViewById(R.id.levelbutton);
 		if (level <= userlevel) {

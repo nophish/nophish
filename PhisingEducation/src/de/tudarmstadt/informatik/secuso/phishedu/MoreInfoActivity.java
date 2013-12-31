@@ -8,13 +8,15 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBarActivity;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-public class MoreInfoActivity extends ActionBarActivity {
+public class MoreInfoActivity extends PhishBaseActivity {
 
 	public interface MoreInfo {
 		void pressed();
@@ -24,23 +26,20 @@ public class MoreInfoActivity extends ActionBarActivity {
 	private LinkedHashMap<String, MoreInfo> entrysForMoreInfo;
 
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-		this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-
-		setContentView(R.layout.more_info_list_view);
-
+	public View getLayout(LayoutInflater inflater, ViewGroup container,
+			Bundle savedInstanceState) {
+		View v = inflater.inflate(R.layout.more_info_list_view, container, false);
+		
 		entrysForMoreInfo = new LinkedHashMap<String, MoreInfo>();
 		entrysForMoreInfo.put(getString(R.string.info_security_comic),new MoreInfo() {public void pressed() {openLink(getString(R.string.url_securitycomic));}});
 		entrysForMoreInfo.put(getString(R.string.info_apwg), new MoreInfo(){public void pressed(){openLink(getString(R.string.url_apwg));}});
 		entrysForMoreInfo.put(getString(R.string.info_how_phishing_works), new MoreInfo(){public void pressed(){openLink(getString(R.string.url_how_phishing_works));}});
 		
-		adapterForMoreInfo = new ArrayAdapter<String>(this,
+		adapterForMoreInfo = new ArrayAdapter<String>(getActivity(),
 				android.R.layout.simple_list_item_1, entrysForMoreInfo.keySet()
 						.toArray(new String[0]));
 
-		final ListView listview = (ListView) findViewById(R.id.more_info_listview);
+		final ListView listview = (ListView) v.findViewById(R.id.more_info_listview);
 		listview.setAdapter(this.adapterForMoreInfo);
 
 		listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -52,6 +51,8 @@ public class MoreInfoActivity extends ActionBarActivity {
 			}
 
 		});
+		
+		return v;
 	}
 	
 	private void openLink(String url) {
@@ -59,17 +60,5 @@ public class MoreInfoActivity extends ActionBarActivity {
 		browserIntent.setData(Uri.parse(url));
 		startActivity(browserIntent);
 	}
-
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-	    switch (item.getItemId()) {
-	    // Respond to the action bar's Up/Home button
-	    case android.R.id.home:
-	        NavUtils.navigateUpFromSameTask(this);
-	        return true;
-	    }
-	    return super.onOptionsItemSelected(item);
-	}
-
 
 }
