@@ -162,14 +162,6 @@ public class GameProgress implements OnStateLoadedListener{
 				game_store.incrementAchievement(context.getResources().getString(R.string.achievement_whale_shark),this.state.detected_phish_behind+1);
 				this.state.detected_phish_behind=0;
 			}
-			if(result == PhishResult.Phish_Detected || result ==  PhishResult.Phish_NotDetected){
-				//(1) always > 0 because at least one is 1 because of the if condition 
-				int total_phish = this.state.results[PhishResult.Phish_NotDetected.getValue()] + this.state.results[PhishResult.Phish_Detected.getValue()];
-				int detected_phish = this.state.results[PhishResult.Phish_Detected.getValue()];
-				//(2) No divByZero possible because of (1)
-				long rate = detected_phish / total_phish;
-				game_store.submitScore(context.getResources().getString(R.string.leaderboard_detection_rate),rate );
-			}
 		}else{
 			if(result == PhishResult.Phish_Detected){
 				this.state.detected_phish_behind+=1;

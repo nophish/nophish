@@ -89,9 +89,6 @@ public class GooglePlusActivity extends PhishBaseActivity {
 			// sign out.
 			listener.onSignOutButtonClicked();
 			break;
-		case R.id.button_show_leaderboard_rate:
-			listener.onShowLeaderboardsRequested(R.string.leaderboard_detection_rate);
-			break;
 		case R.id.button_show_leaderboard_total:
 			listener.onShowLeaderboardsRequested(R.string.leaderboard_detected_phishing_urls);
 			break;
