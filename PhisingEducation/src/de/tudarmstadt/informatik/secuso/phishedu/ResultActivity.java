@@ -128,7 +128,7 @@ public class ResultActivity extends SwipeActivity {
 		}
 		if (level == 2) {
 			setLevel2Texts(view);
-		}else if (level == 10){
+		} else if (level == 10) {
 			setLevel10Texts(view);
 		}
 		TextView urlText = (TextView) view.findViewById(R.id.url);
@@ -146,9 +146,10 @@ public class ResultActivity extends SwipeActivity {
 			// make second text disappear
 
 		} else if (this.result == PhishResult.Phish_NotDetected.getValue()) {
-			resultText = (TextView) view.findViewById(R.id.phish_not_detected_text);
+			resultText = (TextView) view
+					.findViewById(R.id.phish_not_detected_text);
 			resultText.setText(R.string.level_10_you_are_wrong);
-		} else if (this.result == PhishResult.Phish_Detected.getValue()){
+		} else if (this.result == PhishResult.Phish_Detected.getValue()) {
 			resultText = (TextView) view.findViewById(R.id.your_are_correct_01);
 			resultText.setText(R.string.level_10_you_are_correct_phish);
 		}
@@ -186,24 +187,27 @@ public class ResultActivity extends SwipeActivity {
 		// (attacktype = nophish) or by being an attacktype of http
 		// http + legitimate url
 		if (level == 10) {
-			if (attack_type == PhishAttackType.NoPhish.getValue() || attack_type == PhishAttackType.HTTP.getValue()) {
-				reminderText.setText(R.string.level_10_reminder_http_legitimate);
+			if (attack_type == PhishAttackType.NoPhish.getValue()
+					|| attack_type == PhishAttackType.HTTP.getValue()) {
+				reminderText
+						.setText(R.string.level_10_reminder_http_legitimate);
 			} else {
 				// in level 10 different texts are shown
-				String urlScheme = BackendControllerImpl.getInstance().getUrl().getParts()[0];
+				String urlScheme = BackendControllerImpl.getInstance().getUrl()
+						.getParts()[0];
 				if (urlScheme.equals("http:")) {
 					reminderText.setText(R.string.level_10_reminder_http_phish);
 				} else {
-					reminderText.setText(R.string.level_10_reminder_https_phish);
+					reminderText
+							.setText(R.string.level_10_reminder_https_phish);
 				}
 			}
 		} else if (indexReminder >= 0) {
 			if (indexReminder == 8) {
 				// typo and misleading are in one level (7)
 				indexReminder = 4;
-			} else {
-			reminderText.setText(reminderIDs[indexReminder]);
 			}
+			reminderText.setText(reminderIDs[indexReminder]);
 		}
 	}
 
@@ -243,9 +247,9 @@ public class ResultActivity extends SwipeActivity {
 		} else if (this.result == PhishResult.Phish_Detected.getValue()
 				|| this.result == PhishResult.Phish_NotDetected.getValue()) {
 			ab.setSubtitle(getString(R.string.phish));
-		} else if(this.result == RESULT_GUESSED){
+		} else if (this.result == RESULT_GUESSED) {
 			ab.setSubtitle(R.string.marked_domain_wrongly);
-		}else{
+		} else {
 			ab.setSubtitle(getString(R.string.no_phish));
 		}
 
