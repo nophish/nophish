@@ -1,7 +1,6 @@
 package de.tudarmstadt.informatik.secuso.phishedu;
 
 import android.os.Bundle;
-
 import android.support.v7.app.ActionBar;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,6 +19,16 @@ public class LevelFinishedActivity extends SwipeActivity {
 		return "Weiter zu " + getResources().getString(BackendControllerImpl.getInstance().getLevelInfo(this.getLevel()+1).titleId);
 	}
 
+	@Override
+	int getTitle(){
+		return BackendControllerImpl.getInstance().getLevelInfo().titleId;
+	};
+	
+	@Override
+	int getSubTitle() {
+		return R.string.finished;
+	}
+	
 	@Override
 	protected int getPageCount() {
 		return BackendControllerImpl.getInstance().getLevelInfo(getLevel()).finishedLayouts.length;

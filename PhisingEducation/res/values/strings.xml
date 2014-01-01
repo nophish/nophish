@@ -465,6 +465,7 @@
     <string name="title_activity_proof">ProofActivity</string>
     <string name="exercise">Übung</string>
     <string name="intro">Einführung und Erklärung</string>
+    <string name="finished">Abgeschlossen</string>
     <string name="button_verify">Überprüfen</string>
     <string name="attack_reminder"><b>Erinnerung:</b> Vertraue nicht..</string>
     <string name="oversafe">Übervorsicht</string>
