@@ -89,6 +89,7 @@ public class ProofActivity extends SwipeActivity {
 		return super.onOptionsItemSelected(item);
 	}
 	
+	
 	@Override
 	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
 		inflater.inflate(R.menu.urltask_menu, menu);
