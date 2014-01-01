@@ -1,16 +1,10 @@
 package de.tudarmstadt.informatik.secuso.phishedu;
 
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.os.Vibrator;
-import android.support.v7.app.ActionBar;
 import android.text.SpannableStringBuilder;
 import android.text.style.BackgroundColorSpan;
-import android.text.style.ForegroundColorSpan;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -19,7 +13,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendControllerImpl;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.MainActivity;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishAttackType;
@@ -35,17 +28,30 @@ public class ResultActivity extends SwipeActivity {
 
 	// int level; is used as index for the consequences type
 
-	protected static int[] resultLayoutIDs;
+	protected static int[] resultTextIDs;
+	protected static int[] resultSmileyIDs;
 	private int result = PhishResult.Phish_Detected.getValue();
+
+	@Override
+	public void onSwitchTo() {
+		super.onSwitchTo();
+	}
 
 	public ResultActivity() {
 		// We need one layout for each PhishResult + You guessed
-		resultLayoutIDs = new int[PhishResult.values().length + 1];
-		resultLayoutIDs[PhishResult.Phish_Detected.getValue()] = R.layout.result_phish_detected;
-		resultLayoutIDs[PhishResult.NoPhish_Detected.getValue()] = R.layout.result_nophish_detected;
-		resultLayoutIDs[PhishResult.Phish_NotDetected.getValue()] = R.layout.result_phish_notdetected;
-		resultLayoutIDs[PhishResult.NoPhish_NotDetected.getValue()] = R.layout.result_nophish_notdetected;
-		resultLayoutIDs[RESULT_GUESSED] = R.layout.result_you_guessed;
+		resultTextIDs = new int[PhishResult.values().length + 1];
+		resultTextIDs[PhishResult.Phish_Detected.getValue()] = R.string.you_are_correct;
+		resultTextIDs[PhishResult.NoPhish_Detected.getValue()] = R.string.you_found_the_phish;
+		resultTextIDs[PhishResult.Phish_NotDetected.getValue()] = R.string.you_are_wrong;
+		resultTextIDs[PhishResult.NoPhish_NotDetected.getValue()] = R.string.oversafe_text;
+		resultTextIDs[RESULT_GUESSED] = R.string.you_guessed;
+
+		resultSmileyIDs = new int[PhishResult.values().length + 1];
+		resultSmileyIDs[PhishResult.Phish_Detected.getValue()] = R.drawable.small_smiley_smile;
+		resultSmileyIDs[PhishResult.NoPhish_Detected.getValue()] = R.drawable.small_smiley_smile;
+		resultSmileyIDs[PhishResult.Phish_NotDetected.getValue()] = R.drawable.small_smiley_not_smile;
+		resultSmileyIDs[PhishResult.NoPhish_NotDetected.getValue()] = R.drawable.small_smiley_o;
+		resultSmileyIDs[RESULT_GUESSED] = R.drawable.small_smiley_you_guessed;
 	}
 
 	protected void onStartClick() {
@@ -102,57 +108,63 @@ public class ResultActivity extends SwipeActivity {
 	}
 
 	@Override
-	protected View getPage(int page, LayoutInflater inflater,
-			ViewGroup container, Bundle savedInstanceState) {
-		View view = inflater.inflate(resultLayoutIDs[this.result], container, false);
-		// if result == result_nophish_notdetected -> virbration feedback
-		if (this.result == PhishResult.Phish_NotDetected.getValue()) {
-			setReminderText(view);
-		}
-		if (BackendControllerImpl.getInstance().getLevel() == 2) {
-			setLevel2Texts(view);
-		}
-		TextView urlText = (TextView) view.findViewById(R.id.url);
-		setUrlText(urlText);
-		urlText.setTextSize(25);
+	protected View getPage(int page, LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+		View view = inflater.inflate(R.layout.result, container, false);
+		updateView(view.findViewById(R.id.result_layout));
 		return view;
 	}
 
-	private void setLevel2Texts(View view) {
-		TextView resultText;
-		if (this.result == RESULT_GUESSED) {
-			// change text
-			resultText = (TextView) view.findViewById(R.id.you_guessed_01);
-			resultText.setText(R.string.level_02_you_are_wrong);
-			// make second text disappear
-			TextView resultTextToHide = (TextView) view
-					.findViewById(R.id.you_guessed_02);
-			resultTextToHide.setVisibility(View.INVISIBLE);
-
-			// change smile to not smiling
-			ImageView image = (ImageView) view
-					.findViewById(R.id.feedback_smiley);
-			image.setImageResource(R.drawable.small_smiley_not_smile);
-		} else if (this.result == PhishResult.Phish_Detected.getValue()) {
-			resultText = (TextView) view.findViewById(R.id.your_are_correct_01);
-			resultText.setText(R.string.level_02_you_are_correct);
-		}
+	public void setResult(int result){
+		updateView(getActivity().findViewById(R.id.result_layout));
 	}
 
-	private void setReminderText(View view) {
-		TextView reminderText = (TextView) view
-				.findViewById(R.id.phish_not_detected_reminder);
+	private void updateView(View view){
+		int level = BackendControllerImpl.getInstance().getLevel(); 
 
+		TextView text1 = (TextView) view.findViewById(R.id.result_text1);
+		if(level == 2){
+			text1.setText(getLevel2Texts(result));
+		}if(level == 10){
+			text1.setText(getLevel10Texts(result));
+		}else{
+			text1.setText(resultTextIDs[result]);
+		}
+
+		ImageView smiley = (ImageView) view.findViewById(R.id.result_smiley);
+		if(level == 2 && this.result == RESULT_GUESSED){
+			smiley.setImageResource(R.drawable.small_smiley_not_smile);
+		}else{
+			smiley.setImageResource(resultSmileyIDs[result]);
+		}
+
+		TextView text2 = (TextView) view.findViewById(R.id.result_text2);
+		text2.setVisibility(View.GONE);
+		if(this.result == PhishResult.Phish_NotDetected.getValue()){
+			text2.setText(R.string.oversafe_02);
+			text2.setVisibility(View.VISIBLE);
+		}else if (this.result == PhishResult.Phish_NotDetected.getValue()) {
+			int indexReminder = getReminderText();
+			if (indexReminder >= 0) {
+				text2.setText(reminderIDs[indexReminder]);
+				text2.setVisibility(View.VISIBLE);
+			}
+		}
+
+		TextView urlText = (TextView) view.findViewById(R.id.url);
+		setUrlText(urlText);
+		urlText.setTextSize(25);
+	}
+
+	private int getReminderText() {
 		int indexReminder = BackendControllerImpl.getInstance().getUrl().getAttackType().getValue() - 3;
 		if (indexReminder == 8) {
 			//typo and misleading are in one level (7)
 			indexReminder = 4;
 		}
-		if (indexReminder >= 0) {
-			reminderText.setText(reminderIDs[indexReminder]);
-		}
+
+		return indexReminder;
 	}
-	
+
 	@Override
 	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
 		inflater.inflate(R.menu.urltask_menu, menu);
@@ -172,7 +184,7 @@ public class ResultActivity extends SwipeActivity {
 		}
 		return super.onOptionsItemSelected(item);
 	}
-	
+
 	@Override
 	int getTitle() {
 		if (this.result == PhishResult.Phish_Detected.getValue()
@@ -182,7 +194,7 @@ public class ResultActivity extends SwipeActivity {
 			return R.string.wrong;
 		}
 	}
-	
+
 	@Override
 	int getSubTitle() {
 		if(getLevel()==2){
@@ -195,12 +207,12 @@ public class ResultActivity extends SwipeActivity {
 			return R.string.no_phish;
 		}
 	}
-	
+
 	@Override
 	int getIcon() {
 		return R.drawable.desktop;
 	}
-	
+
 	@Override
 	protected void setUrlText(TextView urlText) {
 		String urlParts[] = BackendControllerImpl.getInstance().getUrl().getParts();
@@ -247,6 +259,28 @@ public class ResultActivity extends SwipeActivity {
 
 	private void nextURL(){
 		((MainActivity)getActivity()).switchToFragment(URLTaskActivity.class);
+	}
+
+	private int getLevel2Texts(int result){
+		if (this.result == RESULT_GUESSED) {
+			return R.string.level_02_you_are_wrong;
+		} else if (this.result == PhishResult.Phish_Detected.getValue()) {
+			return R.string.level_02_you_are_correct;
+		} else {
+			return resultTextIDs[result];
+		}
+	}
+
+	private int getLevel10Texts(int result){
+		if (this.result == PhishResult.NoPhish_Detected.getValue()) {
+			R.string.level_10_you_are_correct;
+		} else if (this.result == PhishResult.Phish_NotDetected.getValue()) {
+			R.string.level_10_you_are_wrong;
+		} else if (this.result == PhishResult.Phish_Detected.getValue()){
+			R.string.level_10_you_are_correct_phish;
+		} else {
+			return resultTextIDs[result];
+		}
 	}
 
 }

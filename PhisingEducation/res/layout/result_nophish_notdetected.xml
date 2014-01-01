@@ -22,11 +22,11 @@
             android:layout_marginTop="@dimen/margin_xxsmall"
             android:layout_height="wrap_content"
             android:layout_below="@id/score_relative"
-            android:text="@string/oversafe_01"
+            android:text="@string/oversafe"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <TextView
-            android:id="@+id/oversafe_02"
+            android:id="@+id/result_text2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignLeft="@+id/url_task_no_phish_detected_as_phish"

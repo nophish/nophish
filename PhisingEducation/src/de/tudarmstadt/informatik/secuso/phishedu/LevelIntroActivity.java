@@ -67,6 +67,11 @@ public class LevelIntroActivity extends SwipeActivity {
 	int getTitle(){
 		return BackendControllerImpl.getInstance().getLevelInfo().titleId;
 	};
+	
+	@Override
+	int getSubTitle() {
+		return R.string.intro;
+	}
 
 	
 	@Override
