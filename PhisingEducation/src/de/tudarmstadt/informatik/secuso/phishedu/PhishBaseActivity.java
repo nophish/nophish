@@ -100,6 +100,7 @@ public abstract class PhishBaseActivity extends Fragment implements OnClickListe
 	private void setTitles(){
 		android.support.v7.app.ActionBar ab = ((ActionBarActivity)getActivity()).getSupportActionBar();
 		ab.setDisplayHomeAsUpEnabled(enableHomeButton());
+		ab.setHomeButtonEnabled(enableHomeButton());
 		if(getTitle()!=0){
 			ab.setTitle(getTitle());
 		}else{
