@@ -26,8 +26,6 @@ public class ResultActivity extends SwipeActivity {
 		R.string.level_08_reminder, R.string.level_09_reminder,
 		R.string.level_10_reminder };
 
-	// int level; is used as index for the consequences type
-
 	protected static int[] resultTextIDs;
 	protected static int[] resultSmileyIDs;
 	private int result = PhishResult.Phish_Detected.getValue();

@@ -10,13 +10,16 @@ import android.graphics.Color;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
-import de.tudarmstadt.informatik.secuso.phishedu.Constants;
+
+import com.google.android.gms.games.GamesClient;
+
 import de.tudarmstadt.informatik.secuso.phishedu.GooglePlusActivity;
 import de.tudarmstadt.informatik.secuso.phishedu.LevelFinishedActivity;
 import de.tudarmstadt.informatik.secuso.phishedu.LevelIntroActivity;
@@ -28,9 +31,29 @@ import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController.Level
 import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController.OnLevelChangeListener;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController.OnLevelstateChangeListener;
 
-public class MainActivity extends PhishBaseGameActivity implements FrontendController, OnLevelChangeListener, BackendInitListener, OnLevelstateChangeListener {
+public class MainActivity extends ActionBarActivity implements FrontendController, OnLevelChangeListener, BackendInitListener, OnLevelstateChangeListener, GooglePlusActivity.Listener {
 	Map<Class<? extends PhishBaseActivity>, PhishBaseActivity> fragCache = new HashMap<Class<? extends PhishBaseActivity>, PhishBaseActivity>();
 	PhishBaseActivity current_frag;
+	
+	GooglePlusActivity plusFragment;
+	
+	@Override
+	protected void onStart() {
+		super.onStart();
+		BackendControllerImpl.getInstance().getGameHelper().onStart(this);
+	}
+	
+	@Override
+	protected void onStop() {
+		super.onStop();
+		BackendControllerImpl.getInstance().getGameHelper().onStop();
+	}
+	
+	@Override
+	protected void onActivityResult(int requestCode, int responseCode, Intent intent) {
+		super.onActivityResult(requestCode, responseCode, intent);
+		BackendControllerImpl.getInstance().getGameHelper().onActivityResult(requestCode, responseCode, intent);
+	}
 	
 	public void switchToFragment(Class<? extends PhishBaseActivity> fragClass) {
 		switchToFragment(fragClass, new Bundle());
@@ -42,10 +65,8 @@ public class MainActivity extends PhishBaseGameActivity implements FrontendContr
 			try {
 				fragCache.put(fragClass, fragClass.newInstance());
 			} catch (InstantiationException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			} catch (IllegalAccessException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
@@ -79,6 +100,10 @@ public class MainActivity extends PhishBaseGameActivity implements FrontendContr
 		}
 		BackendControllerImpl.getInstance().addOnLevelChangeListener(this);
 		BackendControllerImpl.getInstance().addOnLevelstateChangeListener(this);
+		
+		plusFragment = new GooglePlusActivity();
+		plusFragment.setListener(this);
+		fragCache.put(GooglePlusActivity.class, plusFragment);
 		
 		switchToFragment(StartMenuActivity.class);
 		
@@ -156,16 +181,13 @@ public class MainActivity extends PhishBaseGameActivity implements FrontendContr
 
 	@Override
 	public void onSignInFailed() {
-		if(fragCache.containsKey(GooglePlusActivity.class)){
-			((GooglePlusActivity) fragCache.get(GooglePlusActivity.class)).onSignInFailed();
-		}
+		plusFragment.setShowSignIn(true);
 	}
 
 	@Override
 	public void onSignInSucceeded() {
-		if(fragCache.containsKey(GooglePlusActivity.class)){
-			((GooglePlusActivity) fragCache.get(GooglePlusActivity.class)).onSignInSucceeded();
-		}
+		plusFragment.setShowSignIn(false);
+		getGamesClient().unlockAchievement(getString(R.string.achievement_welcome));
 	}
 
 	@Override
@@ -181,5 +203,43 @@ public class MainActivity extends PhishBaseGameActivity implements FrontendContr
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		return current_frag.onOptionsItemSelected(item);
+	}
+	
+	private GamesClient getGamesClient(){
+		return BackendControllerImpl.getInstance().getGameHelper().getGamesClient();
+	}
+	
+	private boolean isSignedIn(){
+		return BackendControllerImpl.getInstance().getGameHelper().isSignedIn();
+	}
+
+	@Override
+	public void onShowAchievementsRequested() {
+		if (isSignedIn()) {
+            startActivityForResult(getGamesClient().getAchievementsIntent(), 0);
+        }
+	}
+
+	@Override
+	public void onShowLeaderboardsRequested(int leaderboard) {
+		if (isSignedIn()) {
+            startActivityForResult(getGamesClient().getLeaderboardIntent(getString(leaderboard)), 0);
+        }
+	}
+
+	@Override
+	public void onSignInButtonClicked() {
+		BackendControllerImpl.getInstance().signIn();
+	}
+
+	@Override
+	public void onSignOutButtonClicked() {
+		BackendControllerImpl.getInstance().signOut();
+		plusFragment.setShowSignIn(true);
+	}
+
+	@Override
+	public void onDeleteRemoteDataClicked() {
+		BackendControllerImpl.getInstance().deleteRemoteData();
 	}
 }

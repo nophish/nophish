@@ -1,18 +1,37 @@
 package de.tudarmstadt.informatik.secuso.phishedu;
 
-import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-
-import com.google.android.gms.games.GamesClient;
-import com.google.example.games.basegameutils.GameHelper.GameHelperListener;
-
 import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendControllerImpl;
+import android.app.Activity;
+import android.view.View;
 
-public class GooglePlusActivity extends PhishBaseActivity implements View.OnClickListener, GameHelperListener {
+public class GooglePlusActivity extends PhishBaseActivity {
+	public interface Listener{
+		public void onShowAchievementsRequested();
+		public void onShowLeaderboardsRequested(int leaderboard);
+		public void onSignInButtonClicked();
+		public void onSignOutButtonClicked();
+		public void onDeleteRemoteDataClicked();
+	}
 
-	private void showPlusButtons(View v){
+	private Listener listener=null;
+	private boolean showSignIn=true;
+	
+	public void setShowSignIn(boolean showsignin){
+		this.showSignIn=showsignin;
+		updateUi();
+	}
+
+	public void setListener(Listener l){
+		listener=l;
+	}
+	
+	@Override
+	public void onStart() {
+		super.onStart();
+		updateUi();
+	}
+
+	private void showPlusButtons(Activity v){
 		// show sign-out button, hide the sign-in button
 		v.findViewById(R.id.sign_in_button).setVisibility(View.GONE);
 		v.findViewById(R.id.sign_out_button).setVisibility(View.VISIBLE);
@@ -27,7 +46,7 @@ public class GooglePlusActivity extends PhishBaseActivity implements View.OnClic
 				View.VISIBLE);
 	}
 
-	private void hidePlusButtons(View v){
+	private void hidePlusButtons(Activity v){
 		// show sign-out button, hide the sign-in button
 		v.findViewById(R.id.sign_in_button).setVisibility(View.VISIBLE);
 		v.findViewById(R.id.sign_out_button).setVisibility(View.GONE);
@@ -42,100 +61,46 @@ public class GooglePlusActivity extends PhishBaseActivity implements View.OnClic
 				View.GONE);
 	}
 
-	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-			Bundle savedInstanceState) {
-		View v = super.onCreateView(inflater, container, savedInstanceState);
+	private void updateUi(){
+		Activity v = getActivity();
+		if(v==null) return;
 
-		if (this.getGamesClient().isConnected()) {
-			showPlusButtons(v);
-		} else {
-			hidePlusButtons(v);
-		}
-		return v;
-	}
+		// show sign-out button, hide the sign-in button
+		v.findViewById(R.id.sign_in_button).setVisibility(showSignIn ? View.VISIBLE : View.GONE);
+		v.findViewById(R.id.sign_out_button).setVisibility(showSignIn ? View.GONE : View.VISIBLE);
 
-	public void onSignInFailed() {
-		hidePlusButtons(getView());
-	}
-
-	public void onSignInSucceeded() {
-		showPlusButtons(getView());
+		// findViewById(R.id.button_show_leaderboard_rate).setVisibility(View.VISIBLE);
+		// findViewById(R.id.button_show_leaderboard_total).setVisibility(View.VISIBLE);
+		v.findViewById(R.id.button_show_leaderboard_total_points).setVisibility(
+				showSignIn ? View.GONE : View.VISIBLE);
+		v.findViewById(R.id.button_show_online_achievement).setVisibility(
+				showSignIn ? View.GONE : View.VISIBLE);
+		v.findViewById(R.id.button_delete_remote_data).setVisibility(
+				showSignIn ? View.GONE : View.VISIBLE);
 	}
 
 	@Override
 	public void onClick(View view) {
 		switch (view.getId()) {
 		case R.id.sign_in_button:
-			// start the asynchronous sign in flow
-			BackendControllerImpl.getInstance().signIn();
+			listener.onSignInButtonClicked();
 			break;
 		case R.id.sign_out_button:
 			// sign out.
-			BackendControllerImpl.getInstance().signOut();
-			hidePlusButtons(getView());
+			listener.onSignOutButtonClicked();
 			break;
 		case R.id.button_show_leaderboard_rate:
-			showLeaderboardRate(view);
+			listener.onShowLeaderboardsRequested(R.string.leaderboard_detection_rate);
 			break;
 		case R.id.button_show_leaderboard_total:
-			showLeaderboardTotal(view);
+			listener.onShowLeaderboardsRequested(R.string.leaderboard_detected_phishing_urls);
 			break;
 		case R.id.button_show_leaderboard_total_points:
-			showLeaderboardTotalPoints(view);
+			listener.onShowLeaderboardsRequested(R.string.leaderboard_total_points);
 			break;
 		case R.id.button_show_online_achievement:
-			showAchievments(view);
+			listener.onShowAchievementsRequested();
 			break;
-		}
-	}
-
-
-	private GamesClient getGamesClient() {
-		return BackendControllerImpl.getInstance().getGameHelper().getGamesClient();
-	}
-	
-	public void showLeaderboardRate(View view) {
-		if (this.getGamesClient().isConnected()) {
-			startActivityForResult(
-					getGamesClient().getLeaderboardIntent(
-							getResources().getString(
-									R.string.leaderboard_detection_rate)), 1);
-		}
-	}
-
-	public void showLeaderboardTotal(View view) {
-		if (this.getGamesClient().isConnected()) {
-			startActivityForResult(
-					getGamesClient()
-					.getLeaderboardIntent(
-							getResources()
-							.getString(
-									R.string.leaderboard_detected_phishing_urls)),
-									1);
-		}
-
-	}
-
-	public void showLeaderboardTotalPoints(View view) {
-		if (this.getGamesClient().isConnected()) {
-			startActivityForResult(
-					getGamesClient().getLeaderboardIntent(
-							getResources().getString(
-									R.string.leaderboard_total_points)), 1);
-		}
-
-	}
-
-	public void showAchievments(View view) {
-		if (this.getGamesClient().isConnected()) {
-			startActivityForResult(getGamesClient().getAchievementsIntent(), 0);
-		}
-	}
-
-	public void deleteRemoteData(View view){
-		if (this.getGamesClient().isConnected()) {
-			BackendControllerImpl.getInstance().deleteRemoteData();
 		}
 	}
 
