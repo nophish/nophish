@@ -9,6 +9,11 @@ import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishURL;
  *
  */
 public class NonsenseAttack extends SubdomainAttack {
+
+	/**
+	 * To build an attack we need a url to decorate
+	 * @param object the decorated URL
+	 */
 	public NonsenseAttack(PhishURL object) {
 		super(object);
 	}

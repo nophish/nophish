@@ -5,7 +5,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
-import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendControllerImpl;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishAttackType;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishURL;
 
@@ -19,8 +18,8 @@ public class HostInPathAttack extends AbstractAttack {
 	protected static final String[] PHISHER_DOMAINS = Unrelated.PHISHER_DOMAINS;
 	
 	/**
-	 * This constructor is required because of the implementation in {@link BackendControllerImpl#getNextUrl()}
-	 * @param object This Parmeter is discarded. It is replaced by a PhishTank URL
+	 * To build an attack we need a url to decorate
+	 * @param object the decorated URL
 	 */
 	public HostInPathAttack(PhishURL object) {
 		super(object);

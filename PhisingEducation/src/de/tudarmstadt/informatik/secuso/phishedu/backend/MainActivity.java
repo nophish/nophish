@@ -190,7 +190,7 @@ public class MainActivity extends ActionBarActivity implements FrontendControlle
 	}
 
 	@Override
-	public void onLevelstateChange(Levelstate new_state, int levelid) {
+	public void onLevelstateChange(Levelstate new_state) {
 		//The Intend only works when the user actually is in this activity.
 		//This is only the case when he clicked an phishedu URL
 		Uri data = getIntent().getData();

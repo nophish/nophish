@@ -1,11 +1,10 @@
 package de.tudarmstadt.informatik.secuso.phishedu.backend;
 
-import com.google.example.games.basegameutils.GameHelper;
-import com.google.example.games.basegameutils.GameHelper.GameHelperListener;
-
 import android.app.Activity;
 import android.content.Context;
 import android.net.Uri;
+
+import com.google.example.games.basegameutils.GameHelper.GameHelperListener;
 
 /**
  * This is the Interface that the frontend presents to the backend.

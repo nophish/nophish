@@ -2,7 +2,6 @@ package de.tudarmstadt.informatik.secuso.phishedu.backend.attacks;
 
 import java.util.List;
 
-import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendControllerImpl;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishAttackType;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishURL;
 
@@ -12,9 +11,10 @@ import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishURL;
  *
  */
 public class HTTPAttack extends AbstractAttack {
+	
 	/**
-	 * This constructor is required because of the implementation in {@link BackendControllerImpl#getNextUrl()}
-	 * @param object This Parmeter is discarded. It is replaced by a PhishTank URL
+	 * To build an attack we need a url to decorate
+	 * @param object the decorated URL
 	 */
 	public HTTPAttack(PhishURL object) {
 		super(object);

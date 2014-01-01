@@ -4,9 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
-import java.util.Vector;
 
-import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendControllerImpl;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishAttackType;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishURL;
 
@@ -40,11 +38,13 @@ public class HomoglyphicAttack extends AbstractAttack {
 			{"d","cl"},
 			{"cl","d"}
 	};
-	/**
-	 * This constructor is required because of the implementation in {@link BackendControllerImpl#getNextUrl()}
-	 * @param object This Parmeter is discarded. It is replaced by a PhishTank URL
-	 */
+	
 	int attack_replacement=-1;
+	
+	/**
+	 * To build an attack we need a url to decorate
+	 * @param object the decorated URL
+	 */
 	public HomoglyphicAttack(PhishURL object) {
 		super(object);
 		String domain = getsecondleveldomain();
