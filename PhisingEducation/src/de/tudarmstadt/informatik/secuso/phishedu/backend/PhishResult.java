@@ -23,7 +23,7 @@ public enum PhishResult {
 	 * The user identified a no-phish URL as phishy
 	 */
 	NoPhish_NotDetected(3);
-
+	
 	private int value;
 
 	private PhishResult(int value) {

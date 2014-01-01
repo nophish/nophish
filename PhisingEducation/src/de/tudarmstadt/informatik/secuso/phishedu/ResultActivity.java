@@ -143,9 +143,9 @@ public class ResultActivity extends SwipeActivity {
 			text2.setText(R.string.oversafe_02);
 			text2.setVisibility(View.VISIBLE);
 		}else if (this.result == PhishResult.Phish_NotDetected.getValue()) {
-			int indexReminder = getReminderText();
-			if (indexReminder >= 0) {
-				text2.setText(reminderIDs[indexReminder]);
+			int remindertext = getReminderText(BackendControllerImpl.getInstance().getUrl().getAttackType(), level);
+			if (remindertext > 0) {
+				text2.setText(remindertext);
 				text2.setVisibility(View.VISIBLE);
 			}
 		}
@@ -155,14 +155,34 @@ public class ResultActivity extends SwipeActivity {
 		urlText.setTextSize(25);
 	}
 
-	private int getReminderText() {
-		int indexReminder = BackendControllerImpl.getInstance().getUrl().getAttackType().getValue() - 3;
-		if (indexReminder == 8) {
-			//typo and misleading are in one level (7)
-			indexReminder = 4;
+	private int getReminderText(PhishAttackType attack_type, int level) {
+		int indexReminder = attack_type.getValue() - 3;
+
+		// level 10 reminders need to be set specifically
+		// this can be reached in level 10 either by not being an attack at all
+		// (attacktype = nophish) or by being an attacktype of http
+		// http + legitimate url
+		if (level == 10) {
+			if (attack_type == PhishAttackType.NoPhish || attack_type == PhishAttackType.HTTP) {
+				return R.string.level_10_reminder_http_legitimate;
+			} else {
+				// in level 10 different texts are shown
+				String urlScheme = BackendControllerImpl.getInstance().getUrl().getParts()[0];
+				if (urlScheme.equals("http:")) {
+					return R.string.level_10_reminder_http_phish;
+				} else {
+					return R.string.level_10_reminder_https_phish;
+				}
+			}
+		} else if (indexReminder >= 0) {
+			if (indexReminder == 8) {
+				// typo and misleading are in one level (7)
+				indexReminder = 4;
+			}
+			return reminderIDs[indexReminder];
 		}
 
-		return indexReminder;
+		return 0;
 	}
 
 	@Override
@@ -273,11 +293,11 @@ public class ResultActivity extends SwipeActivity {
 
 	private int getLevel10Texts(int result){
 		if (this.result == PhishResult.NoPhish_Detected.getValue()) {
-			R.string.level_10_you_are_correct;
+			return R.string.level_10_you_are_correct;
 		} else if (this.result == PhishResult.Phish_NotDetected.getValue()) {
-			R.string.level_10_you_are_wrong;
+			return R.string.level_10_you_are_wrong;
 		} else if (this.result == PhishResult.Phish_Detected.getValue()){
-			R.string.level_10_you_are_correct_phish;
+			return R.string.level_10_you_are_correct_phish;
 		} else {
 			return resultTextIDs[result];
 		}
