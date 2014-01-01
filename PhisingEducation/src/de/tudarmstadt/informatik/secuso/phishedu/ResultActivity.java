@@ -226,7 +226,7 @@ public class ResultActivity extends SwipeActivity {
 
 	@Override
 	int getSubTitle() {
-		if(getLevel()==2){
+		if(getLevel()==2 || getLevel() == 10){
 			//no subtitle in level2;
 			return 0;
 		}else if (this.result == PhishResult.Phish_Detected.getValue()
