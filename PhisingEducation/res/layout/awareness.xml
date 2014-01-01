@@ -38,6 +38,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignLeft="@+id/level_00_intro_02_text_01"
+            android:layout_alignRight="@+id/level_00_intro_02_text_01"
             android:layout_below="@+id/level_00_intro_02_text_02"
             android:layout_marginTop="@dimen/margin_small"
             android:ems="10"
@@ -58,18 +59,20 @@
             android:id="@+id/awareness_hint"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-			android:layout_alignLeft="@+id/level_00_intro_02_text_01"
+            android:layout_alignLeft="@+id/level_00_intro_02_text_01"
+            android:layout_alignRight="@+id/awareness_edit_receiver_email"
             android:layout_below="@+id/level_00_intro_02_text_03"
             android:layout_marginTop="@dimen/margin_xxsmall"
+            android:text="@string/awareness_email_hint"
             android:textAppearance="?android:attr/textAppearanceSmall"
-            android:textColor="@color/grey"
-            android:text="@string/awareness_email_hint" />
+            android:textColor="@color/grey" />
         
         <AutoCompleteTextView
             android:id="@+id/awareness_edit_sender_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-			android:layout_alignLeft="@+id/level_00_intro_02_text_01"
+            android:layout_alignLeft="@+id/level_00_intro_02_text_01"
+            android:layout_alignRight="@+id/awareness_hint"
             android:layout_below="@+id/awareness_hint"
             android:layout_marginTop="@dimen/margin_small"
             android:ems="10"
@@ -87,21 +90,23 @@
             android:text="@string/level_00_intro_02_text_04" />
         
          <TextView
-            android:id="@+id/awareness_text_hint"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-			android:layout_alignLeft="@+id/level_00_intro_02_text_01"
-            android:layout_below="@+id/level_00_intro_02_text_04"
-            android:layout_marginTop="@dimen/margin_xxsmall"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:textColor="@color/grey"
-            android:text="@string/awareness_text_hint" />
+             android:id="@+id/awareness_text_hint"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_alignLeft="@+id/level_00_intro_02_text_01"
+             android:layout_alignRight="@+id/awareness_edit_sender_email"
+             android:layout_below="@+id/level_00_intro_02_text_04"
+             android:layout_marginTop="@dimen/margin_xxsmall"
+             android:text="@string/awareness_text_hint"
+             android:textAppearance="?android:attr/textAppearanceSmall"
+             android:textColor="@color/grey" />
 
         <EditText
             android:id="@+id/awareness_edit_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignLeft="@+id/level_00_intro_02_text_01"
+            android:layout_alignRight="@+id/awareness_text_hint"
             android:layout_below="@+id/awareness_text_hint"
             android:layout_marginTop="@dimen/margin_small"
             android:ems="10"
