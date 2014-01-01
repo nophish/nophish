@@ -159,6 +159,6 @@ public class ProofActivity extends SwipeActivity {
 	
 	@Override
 	protected String startButtonText() {
-		return "überprüfen";
+		return "Überprüfen";
 	}
 }

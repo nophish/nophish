@@ -458,6 +458,7 @@
     <string name="you_are_correct">Gut gemacht. Diese Webadresse ist nicht gefälscht, ihr kannst du vertrauen.</string>
     <string name="you_guessed">Leider konntest du uns nicht den Wer-Bereich zeigen. Daher verlierst du ein Leben.</string>
     <string name="you_guessed_02"></string>
+    <string name="marked_domain_wrongly">Wer-Bereich nicht erkannt</string>
     <string name="level_10_you_are_correct">Gut gemacht. Dieser Webadresse kannst du voll und ganz vertrauen.</string>
     <string name="level_10_you_are_wrong">Das war leider falsch.</string>
     <string name="level_10_you_are_correct_phish">Gut gemacht. Das war richtig. Bei dieser Webadresse ist Vorsicht angesagt!</string>

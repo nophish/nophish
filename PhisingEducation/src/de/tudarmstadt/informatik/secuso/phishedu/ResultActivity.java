@@ -201,9 +201,9 @@ public class ResultActivity extends SwipeActivity {
 			if (indexReminder == 8) {
 				// typo and misleading are in one level (7)
 				indexReminder = 4;
-			}
-		} else {
+			} else {
 			reminderText.setText(reminderIDs[indexReminder]);
+			}
 		}
 	}
 
@@ -243,7 +243,9 @@ public class ResultActivity extends SwipeActivity {
 		} else if (this.result == PhishResult.Phish_Detected.getValue()
 				|| this.result == PhishResult.Phish_NotDetected.getValue()) {
 			ab.setSubtitle(getString(R.string.phish));
-		} else {
+		} else if(this.result == RESULT_GUESSED){
+			ab.setSubtitle(R.string.marked_domain_wrongly);
+		}else{
 			ab.setSubtitle(getString(R.string.no_phish));
 		}
 
