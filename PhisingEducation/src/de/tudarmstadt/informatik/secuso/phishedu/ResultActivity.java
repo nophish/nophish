@@ -27,8 +27,6 @@ import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishResult;
 
 public class ResultActivity extends SwipeActivity {
 	public static final int RESULT_GUESSED = PhishResult.getMax() + 1;
-	SpannableStringBuilder strBuilder = new SpannableStringBuilder();
-	int wordStart, wordEnd;
 	protected static int[] reminderIDs = { R.string.level_03_reminder,
 		R.string.level_04_reminder, R.string.level_05_reminder,
 		R.string.level_06_reminder, R.string.level_07_reminder,
@@ -208,12 +206,13 @@ public class ResultActivity extends SwipeActivity {
 		String urlParts[] = BackendControllerImpl.getInstance().getUrl().getParts();
 		int domainPart = BackendControllerImpl.getInstance().getUrl().getDomainPart();
 		// at start clear string builder
+		SpannableStringBuilder strBuilder = new SpannableStringBuilder();
 		for (int i = 0; i < urlParts.length; i++) {
 
 			String part = urlParts[i];
 			// 0 at the beginning
-			wordStart = strBuilder.length();
-			wordEnd = wordStart + part.length();
+			int wordStart = strBuilder.length();
+			int wordEnd = wordStart + part.length();
 			strBuilder.append(part);
 
 			BackgroundColorSpan bgc=null;

@@ -1,7 +1,5 @@
 package de.tudarmstadt.informatik.secuso.phishedu;
 
-import android.content.Intent;
-import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.SpannableStringBuilder;
@@ -19,10 +17,17 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendControllerImpl;
+import de.tudarmstadt.informatik.secuso.phishedu.backend.MainActivity;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishResult;
 
 public class ProofActivity extends SwipeActivity {
 	int selectedPart = -1;
+	
+	@Override
+	public void onSwitchTo() {
+		selectedPart=-1;
+		super.onSwitchTo();
+	}
 
 	@Override
 	int getTitle(){
@@ -153,13 +158,7 @@ public class ProofActivity extends SwipeActivity {
 		if (!clicked_right) {
 			result = ResultActivity.RESULT_GUESSED;
 		}
-		//TODO: reenable
-		//Intent levelIntent = new Intent(this, ResultActivity.class);
-		//levelIntent.putExtra(Constants.EXTRA_RESULT, result);
-		//levelIntent.putExtra(Constants.EXTRA_LEVEL, this.level);
-		//levelIntent.putExtra(Constants.EXTRA_SITE_TYPE, BackendControllerImpl.getInstance().getUrl().getSiteType().getValue());
-		//levelIntent.putExtra(Constants.EXTRA_ATTACK_TYPE, BackendControllerImpl.getInstance().getUrl().getAttackType().getValue());
-		//startActivity(levelIntent);		
+		((MainActivity)getActivity()).switchToFragment(ResultActivity.class);
 	}
 
 	@Override

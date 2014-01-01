@@ -1,10 +1,10 @@
 package de.tudarmstadt.informatik.secuso.phishedu;
 
+import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +12,7 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendControllerImpl;
 
@@ -20,18 +21,47 @@ public abstract class SwipeActivity extends PhishBaseActivity implements ViewPag
 {
 
 	protected ViewPager mPager;
+	protected PagerAdapter mPageAdapter;
+	
 	protected ImageView imgNext;
 	protected ImageView imgPrevious;
 	protected Button bStartLevel;
+	
+	//abstract functions
+	protected abstract int getPageCount();
+	protected abstract View getPage(int page, LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState);
+
+	//hooks
+	protected void onClickPage(int page){}
+	protected void onStartClick(){}
+	protected String startButtonText(){
+		return null;
+	}
+	
+	private boolean gotostart=false;
+	
+	@Override
+	public void onResume() {
+		super.onResume();
+		if(mPager!=null && gotostart){
+			mPager.setCurrentItem(0);
+			gotostart=false;
+		}
+	}
+			
+	@Override
+	public void onSwitchTo() {
+		gotostart=true;
+		super.onSwitchTo();
+	}
 	
 	@Override
 	public View getLayout(LayoutInflater inflater, ViewGroup container,	Bundle savedInstanceState) {
 		View v = inflater.inflate(R.layout.fragment_pager, container,false);
 
-		updateScore(v);
-		
 		mPager= (ViewPager) v.findViewById(R.id.pager);
-		mPager.setAdapter(new SwipePageAdapter(((FragmentActivity)getActivity()).getSupportFragmentManager()));
+		mPageAdapter = new SwipePageAdapter(getFragmentManager(),this); 
+		mPager.setAdapter(mPageAdapter);
 		mPager.setOnPageChangeListener(this);
 
 		this.imgPrevious = (ImageView) v.findViewById(R.id.game_intro_arrow_back);
@@ -108,34 +138,56 @@ public abstract class SwipeActivity extends PhishBaseActivity implements ViewPag
 		urlText.setText(builder.toString());
 	}
 
-	private class SwipePageAdapter extends FragmentPagerAdapter {
-		public SwipePageAdapter(FragmentManager fragmentManager) {
-			super(fragmentManager);
-		}
+	private class SwipePageAdapter extends PagerAdapter {
+		private class ClickListener implements View.OnClickListener{
+			private int page;
 
+			public ClickListener(int level){
+				this.page=level;
+			}
+			
+			@Override
+			public void onClick(View v) {
+				SwipeActivity.this.onClickPage(page);
+			}
+
+		}
+		
+		SwipeActivity activity;
+		public SwipePageAdapter(FragmentManager fragmentManager, SwipeActivity activity) {
+			super();
+			this.activity = activity;
+		}
+		
+		@Override
+		public Object instantiateItem(ViewGroup container, int position) {
+			View view = activity.getPage(position, activity.getLayoutInflater(getArguments()), container, getArguments());
+			view.setOnClickListener(new ClickListener(position));
+			updateScore(view);
+			for (int i : getClickables()) {
+				View clickview = view.findViewById(i);
+				if(clickview != null){
+					clickview.setOnClickListener(activity);	
+				}
+			}
+			container.addView(view);
+			return view;
+			
+		};
+		
+		@Override
+		public void destroyItem(ViewGroup container, int position, Object object) {
+			container.removeView((View) object);
+		}
+		
 		@Override
 		public int getCount() {
-			return SwipeActivity.this.getPageCount();
+			return activity.getPageCount();
 		}
-
+		
 		@Override
-		public Fragment getItem(int position) {
-			Fragment frag = new SwipeFragment(){
-				@Override
-				public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
-					int page=getArguments().getInt(Constants.ARG_PAGE_NUMBER);
-					SwipeActivity activity = SwipeActivity.this;
-					View view = activity.getPage(page,inflater,container,savedInstanceState);
-					view.setOnClickListener(activity.new clickListener(page));
-
-					activity.updateScore(view);
-					return view;
-				}
-			};
-			Bundle args = new Bundle();
-			args.putInt(Constants.ARG_PAGE_NUMBER, position);
-			frag.setArguments(args);
-			return frag;
+		public boolean isViewFromObject(View view, Object object) {
+			return view==object;
 		}
 	}
 	
@@ -149,33 +201,6 @@ public abstract class SwipeActivity extends PhishBaseActivity implements ViewPag
 	@Override
 	public void onPageSelected(int position) {
 		checkAndHideButtons(position);
-	}
-
-	public static abstract class SwipeFragment extends Fragment{
-		@Override
-		public abstract View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState);
-	}
-
-	private class clickListener implements View.OnClickListener{
-		private int page;
-
-		public clickListener(int level){
-			this.page=level;
-		}
-		@Override
-		public void onClick(View v) {
-			SwipeActivity.this.onClickPage(page);
-		}
-
-	}
-	
-	protected abstract int getPageCount();
-	protected abstract View getPage(int page, LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState);
-
-	protected void onClickPage(int page){}
-	protected void onStartClick(){}
-	protected String startButtonText(){
-		return null;
 	}
 
 }

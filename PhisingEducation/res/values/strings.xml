@@ -461,6 +461,7 @@
     <string name="you_found_the_phish">Du hast den Phish erkannt und konntest uns den Wer-Bereich nennen. Herzlichen Glückwunsch. Du bist jetzt etwas sicherer.</string>
     <string name="title_activity_proof">ProofActivity</string>
     <string name="exercise">Übung</string>
+    <string name="intro">Einführung und Erklärung</string>
     <string name="button_verify">Überprüfen</string>
     <string name="attack_reminder"><b>Erinnerung:</b> Vertraue nicht..</string>
     <string name="oversafe">Übervorsicht</string>

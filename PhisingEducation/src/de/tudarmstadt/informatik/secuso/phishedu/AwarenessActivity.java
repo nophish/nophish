@@ -34,10 +34,6 @@ import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendControllerImpl;
  */
 public class AwarenessActivity extends PhishBaseActivity {
 
-	private static String from;
-	private static String to;
-	private static String userMessage;
-	
 	@Override
 	public View getLayout(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View v = inflater.inflate(R.layout.awareness, container, false);
@@ -99,9 +95,9 @@ public class AwarenessActivity extends PhishBaseActivity {
 		EditText mEditReceiver = (EditText) getView().findViewById(R.id.awareness_edit_receiver_email);
 		EditText mEditText = (EditText) getView().findViewById(R.id.awareness_edit_text);
 
-		from = mEditSender.getText().toString();
-		to = mEditReceiver.getText().toString();
-		userMessage = mEditText.getText().toString();
+		String from = mEditSender.getText().toString();
+		String to = mEditReceiver.getText().toString();
+		String userMessage = mEditText.getText().toString();
 
 		String toastMsg;
 
@@ -117,13 +113,9 @@ public class AwarenessActivity extends PhishBaseActivity {
 			} else {
 				// Input is OK send email
 				// invoke Backendcontroller
-				/*
-				 * TODO:
-				 */
 				BackendControllerImpl.getInstance().sendMail(from, to, userMessage);
 
 				// Pop up with go to E-Mail on your Smartphone
-
 				showAlertDialog();
 
 			}
@@ -195,14 +187,6 @@ public class AwarenessActivity extends PhishBaseActivity {
 
 				new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int which) {
-				EditText mEditSender = (EditText) getView().findViewById(R.id.awareness_edit_sender_email);
-				EditText mEditReceiver = (EditText) getView().findViewById(R.id.awareness_edit_receiver_email);
-				EditText mEditText = (EditText) getView().findViewById(R.id.awareness_edit_text);
-
-				mEditSender.setText(AwarenessActivity.from);
-				mEditReceiver.setText(AwarenessActivity.to);
-				mEditText.setText(AwarenessActivity.userMessage);
-
 				dialog.dismiss();
 			}
 

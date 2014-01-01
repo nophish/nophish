@@ -1,27 +1,16 @@
 package de.tudarmstadt.informatik.secuso.phishedu;
 
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+
 import com.google.android.gms.games.GamesClient;
 import com.google.example.games.basegameutils.GameHelper.GameHelperListener;
 
 import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendControllerImpl;
-import android.os.Bundle;
-import android.app.Activity;
-import android.content.pm.ActivityInfo;
-import android.view.LayoutInflater;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Switch;
-import android.support.v4.app.NavUtils;
-import android.support.v7.app.ActionBarActivity;
 
 public class GooglePlusActivity extends PhishBaseActivity implements View.OnClickListener, GameHelperListener {
-
-	private static GooglePlusActivity instance;
-
-	public GooglePlusActivity() {
-		instance=this;
-	}
 
 	private void showPlusButtons(View v){
 		// show sign-out button, hide the sign-in button
@@ -74,10 +63,6 @@ public class GooglePlusActivity extends PhishBaseActivity implements View.OnClic
 		showPlusButtons(getView());
 	}
 
-	public static GooglePlusActivity getInstance(){
-		return instance;
-	}
-
 	@Override
 	public void onClick(View view) {
 		switch (view.getId()) {
@@ -109,7 +94,7 @@ public class GooglePlusActivity extends PhishBaseActivity implements View.OnClic
 	private GamesClient getGamesClient() {
 		return BackendControllerImpl.getInstance().getGameHelper().getGamesClient();
 	}
-
+	
 	public void showLeaderboardRate(View view) {
 		if (this.getGamesClient().isConnected()) {
 			startActivityForResult(
@@ -163,7 +148,12 @@ public class GooglePlusActivity extends PhishBaseActivity implements View.OnClic
 	public int[] getClickables() {
 		return new int[] {
 				R.id.sign_in_button,
-				R.id.sign_out_button
+				R.id.sign_out_button,
+				R.id.button_show_online_achievement,
+				R.id.button_show_leaderboard_rate,
+				R.id.button_show_leaderboard_total,
+				R.id.button_show_leaderboard_total_points,
+				R.id.button_delete_remote_data
 		};
 	}
 }

@@ -1,9 +1,21 @@
 package de.tudarmstadt.informatik.secuso.phishedu.backend;
 
 import java.util.HashMap;
+import java.util.Map;
 
-import com.google.example.games.basegameutils.BaseGameActivity;
-
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.Typeface;
+import android.net.Uri;
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+import android.widget.Toast;
 import de.tudarmstadt.informatik.secuso.phishedu.Constants;
 import de.tudarmstadt.informatik.secuso.phishedu.GooglePlusActivity;
 import de.tudarmstadt.informatik.secuso.phishedu.LevelFinishedActivity;
@@ -16,39 +28,27 @@ import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController.Level
 import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController.OnLevelChangeListener;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController.OnLevelstateChangeListener;
 
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.Typeface;
-import android.net.Uri;
-import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v7.app.ActionBarActivity;
-import android.view.LayoutInflater;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
-import android.widget.Toast;
-
 public class MainActivity extends PhishBaseGameActivity implements FrontendController, OnLevelChangeListener, BackendInitListener, OnLevelstateChangeListener {
+	Map<Class<? extends PhishBaseActivity>, PhishBaseActivity> fragCache = new HashMap<Class<? extends PhishBaseActivity>, PhishBaseActivity>();
 	PhishBaseActivity current_frag;
 	
 	public void switchToFragment(Class<? extends PhishBaseActivity> fragClass) {
-		PhishBaseActivity newFrag;
-		try {
-			newFrag = fragClass.newInstance();
-			getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, newFrag)
-            .commit();
-			current_frag = (PhishBaseActivity)newFrag;
-		} catch (InstantiationException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IllegalAccessException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		PhishBaseActivity  newFrag;
+		if(!fragCache.containsKey(fragClass)){
+			try {
+				fragCache.put(fragClass, fragClass.newInstance());
+			} catch (InstantiationException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IllegalAccessException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
+		newFrag = fragCache.get(fragClass);
+		getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, newFrag).commitAllowingStateLoss();
+		newFrag.onSwitchTo();
+		current_frag = (PhishBaseActivity)newFrag;
     }
 	
 	@Override
@@ -145,15 +145,15 @@ public class MainActivity extends PhishBaseGameActivity implements FrontendContr
 
 	@Override
 	public void onSignInFailed() {
-		if(GooglePlusActivity.getInstance() != null){
-			GooglePlusActivity.getInstance().onSignInFailed();
+		if(fragCache.containsKey(GooglePlusActivity.class)){
+			((GooglePlusActivity) fragCache.get(GooglePlusActivity.class)).onSignInFailed();
 		}
 	}
 
 	@Override
 	public void onSignInSucceeded() {
-		if(GooglePlusActivity.getInstance() != null){
-			GooglePlusActivity.getInstance().onSignInSucceeded();
+		if(fragCache.containsKey(GooglePlusActivity.class)){
+			((GooglePlusActivity) fragCache.get(GooglePlusActivity.class)).onSignInSucceeded();
 		}
 	}
 
@@ -163,9 +163,7 @@ public class MainActivity extends PhishBaseGameActivity implements FrontendContr
 		//This is only the case when he clicked an phishedu URL
 		Uri data = getIntent().getData();
 		if(new_state == Levelstate.finished && data != null && data.getScheme().equals("phishedu")){
-			Intent finishedIntent = new Intent(this, LevelFinishedActivity.class);
-			finishedIntent.putExtra(Constants.EXTRA_LEVEL, levelid);
-			startActivity(finishedIntent);
+			switchToFragment(LevelFinishedActivity.class);
 		}
 	}
 	

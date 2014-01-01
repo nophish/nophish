@@ -1,8 +1,5 @@
 package de.tudarmstadt.informatik.secuso.phishedu;
 
-import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendControllerImpl;
@@ -18,10 +15,21 @@ public class FindAddressBarActivity extends PhishBaseActivity {
 	int getSubTitle() {
 		return R.string.exercise;
 	}
-
-
-	public void startBrowser(View view){
-		BackendControllerImpl.getInstance().redirectToLevel1URL();
+	
+	@Override
+	public int[] getClickables() {
+		return new int[]{
+				R.id.level_01_exercise_button
+		};
+	}
+	
+	@Override
+	public void onClick(View view) {
+		switch (view.getId()) {
+		case R.id.level_01_exercise_button:
+			BackendControllerImpl.getInstance().redirectToLevel1URL();
+			break;
+		}
 	}
 	
 	/**

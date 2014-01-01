@@ -104,7 +104,6 @@ public class URLTaskActivity extends PhishBaseActivity {
 		}
 
 		urlText.setText(sb.toString());
-		updateScore(v);
 	}
 
 	@Override

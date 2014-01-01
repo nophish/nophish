@@ -1,8 +1,10 @@
 package de.tudarmstadt.informatik.secuso.phishedu;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.provider.ContactsContract.CommonDataKinds.Relation;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBarActivity;
@@ -52,6 +54,16 @@ public abstract class PhishBaseActivity extends Fragment implements OnClickListe
 	};
 	int getIcon(){return 0;}
 	public boolean enableHomeButton(){return true;};
+	
+	public void onSwitchTo(){};
+	
+	@Override
+	public void onResume() {
+		super.onResume();
+		updateScore();
+		setTitles();
+	}
+	
 	/**
 	 * If there are clickable elements on this page you must list them here and implement {@link #onClick(View)}
 	 * @return the list of resource IDs of the clickable elements.
@@ -68,7 +80,10 @@ public abstract class PhishBaseActivity extends Fragment implements OnClickListe
 		}
 
 		for (int i : getClickables()) {
-			v.findViewById(i).setOnClickListener(this);
+			View clickview = v.findViewById(i);;
+			if(clickview != null){
+				clickview.setOnClickListener(this);	
+			}
 		}
 		
 		setTitles();
@@ -93,6 +108,13 @@ public abstract class PhishBaseActivity extends Fragment implements OnClickListe
 			ab.setIcon(getIcon());
 		}else{
 			ab.setIcon(R.drawable.appicon);
+		}
+	}
+	
+	protected void updateScore(){
+		Activity view = getActivity();
+		if(view != null){
+			updateScore(view.findViewById(R.id.score_relative));
 		}
 	}
 

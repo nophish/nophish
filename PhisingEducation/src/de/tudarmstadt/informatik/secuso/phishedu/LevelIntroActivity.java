@@ -20,7 +20,6 @@ import de.tudarmstadt.informatik.secuso.phishedu.backend.MainActivity;
  */
 public class LevelIntroActivity extends SwipeActivity {
 	SpannableStringBuilder strBuilder = new SpannableStringBuilder();
-	int wordStart, wordEnd;
 
 	protected static String[][] exampleReminderUrlPartId = {
 		{ "http://", "google.com.", "phishers-seite.de",
@@ -64,8 +63,27 @@ public class LevelIntroActivity extends SwipeActivity {
 						"https://", "www.", "paypal.com", "/de", "https://",
 						"www.", "paypal-viewpoints.com", "/DE-Kontakt" } };
 
-	public void onStartClick(View view) {
-		this.onStartClick();
+	@Override
+	int getTitle(){
+		return BackendControllerImpl.getInstance().getLevelInfo().titleId;
+	};
+
+	
+	@Override
+	public int[] getClickables() {
+		return new int[]{
+			R.id.level_01_intro_00_button_01
+		};
+	}
+	
+	@Override
+	public void onClick(View view) {
+		switch (view.getId()) {
+		case R.id.level_01_intro_00_button_01:
+			onStartClick();
+			break;
+		}
+		super.onClick(view);
 	}
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
@@ -243,8 +261,8 @@ public class LevelIntroActivity extends SwipeActivity {
 	private void setSingleSpan(String[] url, int level, int i, int spanIndex) {
 		String part = url[i];
 		// 0 at the beginning
-		wordStart = strBuilder.length();
-		wordEnd = wordStart + part.length();
+		int wordStart = strBuilder.length();
+		int wordEnd = wordStart + part.length();
 		strBuilder.append(part);
 
 		if (spanIndex == 1 && level == 3) {
@@ -282,8 +300,8 @@ public class LevelIntroActivity extends SwipeActivity {
 
 			String part = url[i];
 			// 0 at the beginning
-			wordStart = strBuilder.length();
-			wordEnd = wordStart + part.length();
+			int wordStart = strBuilder.length();
+			int wordEnd = wordStart + part.length();
 			strBuilder.append(part);
 
 			if (spanIndex == 0) {
@@ -320,8 +338,8 @@ public class LevelIntroActivity extends SwipeActivity {
 
 			String part = url[i];
 			// 0 at the beginning
-			wordStart = strBuilder.length();
-			wordEnd = wordStart + part.length();
+			int wordStart = strBuilder.length();
+			int wordEnd = wordStart + part.length();
 			strBuilder.append(part);
 
 			if (i == 1) {
