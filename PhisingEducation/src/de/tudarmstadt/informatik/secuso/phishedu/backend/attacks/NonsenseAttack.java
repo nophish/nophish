@@ -1,5 +1,6 @@
 package de.tudarmstadt.informatik.secuso.phishedu.backend.attacks;
 
+import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishAttackType;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishURL;
 
 /**
@@ -30,6 +31,11 @@ public class NonsenseAttack extends SubdomainAttack {
 	
 	protected String[] getPhisherDomains(){
 		return PHISHER_DOMAINS;
+	}
+	
+	@Override
+	public PhishAttackType getAttackType() {
+		return PhishAttackType.Nonsense;
 	}
 	
 }

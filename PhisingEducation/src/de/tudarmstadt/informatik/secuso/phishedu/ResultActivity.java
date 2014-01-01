@@ -108,6 +108,7 @@ public class ResultActivity extends SwipeActivity {
 	}
 
 	@Override
+
 	protected View getPage(int page, LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View view = inflater.inflate(R.layout.result, container, false);
 		this.layout = view;
@@ -119,6 +120,7 @@ public class ResultActivity extends SwipeActivity {
 		this.result=result;
 		updateView();
 	}
+
 
 	private void updateView(){
 		View view = this.layout;
@@ -173,7 +175,8 @@ public class ResultActivity extends SwipeActivity {
 				return R.string.level_10_reminder_http_legitimate;
 			} else {
 				// in level 10 different texts are shown
-				String urlScheme = BackendControllerImpl.getInstance().getUrl().getParts()[0];
+				String urlScheme = BackendControllerImpl.getInstance().getUrl()
+						.getParts()[0];
 				if (urlScheme.equals("http:")) {
 					return R.string.level_10_reminder_http_phish;
 				} else {
@@ -223,7 +226,7 @@ public class ResultActivity extends SwipeActivity {
 
 	@Override
 	int getSubTitle() {
-		if(getLevel()==2){
+		if(getLevel()==2 || getLevel() == 10){
 			//no subtitle in level2;
 			return 0;
 		}else if (this.result == PhishResult.Phish_Detected.getValue()
