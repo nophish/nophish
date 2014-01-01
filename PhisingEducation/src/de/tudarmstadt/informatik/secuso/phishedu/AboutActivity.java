@@ -1,39 +1,36 @@
 package de.tudarmstadt.informatik.secuso.phishedu;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.app.Activity;
-import android.content.Intent;
-import android.content.pm.ActivityInfo;
-import android.view.MenuItem;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.support.v4.app.NavUtils;
-import android.support.v7.app.ActionBarActivity;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 
-public class AboutActivity extends PhishBaseActivity {
-
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.about);
-		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-		this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-	}
+public class AboutActivity extends PhishBaseActivity implements OnClickListener {
 
 	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		switch (item.getItemId()) {
-		case android.R.id.home:
-			NavUtils.navigateUpFromSameTask(this);
-			return true;
-		}
-		return super.onOptionsItemSelected(item);
+	public int getLayout() {
+		return R.layout.about;
 	}
 	
-	public void openSecusoLink(View view){
-		Intent browserIntent = new Intent(Intent.ACTION_VIEW);
-		browserIntent.setData(Uri.parse("https://www.secuso.informatik.tu-darmstadt.de"));
-		startActivity(browserIntent);
+	@Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+        case R.id.secuso_logo:
+        	Intent browserIntent = new Intent(Intent.ACTION_VIEW);
+    		browserIntent.setData(Uri.parse("https://www.secuso.informatik.tu-darmstadt.de"));
+    		startActivity(browserIntent);
+            break;
+        }
+    }
+
+	@Override
+	public int[] getClickables() {
+		return new int[] {
+				R.id.secuso_logo
+		};
 	}
 
 }

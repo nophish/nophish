@@ -11,64 +11,41 @@ import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendControllerImpl;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.NoPhishLevelInfo;
 
 public class LevelFinishedActivity extends SwipeActivity {
-	int level = 0;
-
-	protected void onCreate(Bundle savedInstanceState) {
-		this.level = getIntent().getIntExtra(Constants.EXTRA_LEVEL, 0);
-
-		super.onCreate(savedInstanceState);
-	}
-
 	protected void onStartClick() {
-		BackendControllerImpl.getInstance().startLevel(level + 1);
+		BackendControllerImpl.getInstance().startLevel(getLevel() + 1);
 	}
 
 	@Override
 	protected String startButtonText() {
-		return "Weiter zu " + getResources().getString(BackendControllerImpl.getInstance().getLevelInfo(this.level+1).titleId);
+		return "Weiter zu " + getResources().getString(BackendControllerImpl.getInstance().getLevelInfo(this.getLevel()+1).titleId);
 	}
 
 	@Override
 	protected int getPageCount() {
-		return BackendControllerImpl.getInstance().getLevelInfo(level).finishedLayouts.length;
+		return BackendControllerImpl.getInstance().getLevelInfo(getLevel()).finishedLayouts.length;
 	}
 
 	@Override
 	protected View getPage(int page, LayoutInflater inflater,
 			ViewGroup container, Bundle savedInstanceState) {
-		setTitles();
-		View view = inflater.inflate(BackendControllerImpl.getInstance().getLevelInfo(level).finishedLayouts[page],
+		View view = inflater.inflate(BackendControllerImpl.getInstance().getLevelInfo(getLevel()).finishedLayouts[page],
 				container, false);
 		setScoreText(view);
 		return view;
 	}
 
 	private void setScoreText(View view) {
-		if (level > 1) {
+		if (getLevel() > 1) {
 			((TextView) view.findViewById(R.id.level_score)).setText(Integer.toString(BackendControllerImpl.getInstance().getLevelPoints()));
 			((TextView) view.findViewById(R.id.total_score)).setText(Integer.toString(BackendControllerImpl.getInstance().getTotalPoints()));
 		}
 	}
-
-	private void setTitles() {
-		ActionBar ab = getSupportActionBar();
-		NoPhishLevelInfo level_info = BackendControllerImpl.getInstance().getLevelInfo(level);
-		String title = getString(level_info.titleId);
-		String subtitle = getString(level_info.subTitleId);
-
-		if (!title.equals(subtitle)) {
-			// if subtitle and title are different, subtitle is set
-			ab.setSubtitle(subtitle);
-		}
-		// title is set in anyway
-		ab.setTitle(title);
-	}
-
+	
 	/**
 	 * after finishing a level the user is not allowed to go back
 	 */
 	@Override
-	public void onBackPressed() {
-		return;
+	public boolean onBackPressed() {
+		return false;
 	}
 }

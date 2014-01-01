@@ -7,13 +7,17 @@ import android.accounts.AccountManager;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.DialogInterface.OnShowListener;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Patterns;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
@@ -30,35 +34,31 @@ import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendControllerImpl;
  */
 public class AwarenessActivity extends PhishBaseActivity {
 
-	private static String from;
-	private static String to;
-	private static String userMessage;
-
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.awareness);
+	public View getLayout(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+		View v = inflater.inflate(R.layout.awareness, container, false);
 		Pattern emailPattern = Patterns.EMAIL_ADDRESS; // API level 8+
-		Account[] accounts = AccountManager.get(this.getApplicationContext()).getAccounts();
-		ArrayAdapter<String> toAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line);
+		Account[] accounts = AccountManager.get(getActivity().getApplicationContext()).getAccounts();
+		ArrayAdapter<String> toAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_dropdown_item_1line);
 		for (Account account : accounts) {
 			if (emailPattern.matcher(account.name).matches()) {
 				toAdapter.add(account.name);
 			}
 		}
 		final String[] fromMails = getResources().getStringArray(R.array.fromMails);
-		ArrayAdapter<String> fromAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line,fromMails);
-		AutoCompleteTextView fromView = (AutoCompleteTextView) findViewById(R.id.awareness_edit_sender_email);
+		ArrayAdapter<String> fromAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_dropdown_item_1line,fromMails);
+		AutoCompleteTextView fromView = (AutoCompleteTextView) v.findViewById(R.id.awareness_edit_sender_email);
 		fromView.setAdapter(fromAdapter);
 		fromView.setThreshold(1);
 		PopupListener listener = new PopupListener();
 		fromView.setOnFocusChangeListener(listener);
 		fromView.setOnClickListener(listener);
-		AutoCompleteTextView toView = (AutoCompleteTextView) findViewById(R.id.awareness_edit_receiver_email);
+		AutoCompleteTextView toView = (AutoCompleteTextView) v.findViewById(R.id.awareness_edit_receiver_email);
 		toView.setAdapter(toAdapter);
 		toView.setThreshold(1);
 		toView.setOnFocusChangeListener(listener);
 		toView.setOnClickListener(listener);
+		return v;
 	}
 	
 	private class PopupListener implements View.OnFocusChangeListener, View.OnClickListener{
@@ -91,13 +91,13 @@ public class AwarenessActivity extends PhishBaseActivity {
 		hideKeyboard(view);
 
 		// get User Input
-		EditText mEditSender = (EditText) findViewById(R.id.awareness_edit_sender_email);
-		EditText mEditReceiver = (EditText) findViewById(R.id.awareness_edit_receiver_email);
-		EditText mEditText = (EditText) findViewById(R.id.awareness_edit_text);
+		EditText mEditSender = (EditText) getView().findViewById(R.id.awareness_edit_sender_email);
+		EditText mEditReceiver = (EditText) getView().findViewById(R.id.awareness_edit_receiver_email);
+		EditText mEditText = (EditText) getView().findViewById(R.id.awareness_edit_text);
 
-		from = mEditSender.getText().toString();
-		to = mEditReceiver.getText().toString();
-		userMessage = mEditText.getText().toString();
+		String from = mEditSender.getText().toString();
+		String to = mEditReceiver.getText().toString();
+		String userMessage = mEditText.getText().toString();
 
 		String toastMsg;
 
@@ -113,13 +113,9 @@ public class AwarenessActivity extends PhishBaseActivity {
 			} else {
 				// Input is OK send email
 				// invoke Backendcontroller
-				/*
-				 * TODO:
-				 */
 				BackendControllerImpl.getInstance().sendMail(from, to, userMessage);
 
 				// Pop up with go to E-Mail on your Smartphone
-
 				showAlertDialog();
 
 			}
@@ -139,13 +135,12 @@ public class AwarenessActivity extends PhishBaseActivity {
 	}
 
 	private void displayToast(String message) {
-		Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG)
+		Toast.makeText(getActivity().getApplicationContext(), message, Toast.LENGTH_LONG)
 		.show();
 	}
 
 	private void showAlertDialog() {
-		AlertDialog.Builder dialogbuilder = new AlertDialog.Builder(
-				AwarenessActivity.this);
+		AlertDialog.Builder dialogbuilder = new AlertDialog.Builder(getActivity());
 
 		// Setting Dialog Title
 		dialogbuilder.setTitle(getString(R.string.awareness_email_sent));
@@ -176,8 +171,7 @@ public class AwarenessActivity extends PhishBaseActivity {
 	}
 
 	private void showSecondAlertDialog() {
-		AlertDialog.Builder alertDialog = new AlertDialog.Builder(
-				AwarenessActivity.this);
+		AlertDialog.Builder alertDialog = new AlertDialog.Builder(getActivity());
 
 		// Setting Dialog Title
 		alertDialog.setTitle(getString(R.string.awareness_email_sent));
@@ -193,14 +187,6 @@ public class AwarenessActivity extends PhishBaseActivity {
 
 				new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int which) {
-				EditText mEditSender = (EditText) findViewById(R.id.awareness_edit_sender_email);
-				EditText mEditReceiver = (EditText) findViewById(R.id.awareness_edit_receiver_email);
-				EditText mEditText = (EditText) findViewById(R.id.awareness_edit_text);
-
-				mEditSender.setText(AwarenessActivity.from);
-				mEditReceiver.setText(AwarenessActivity.to);
-				mEditText.setText(AwarenessActivity.userMessage);
-
 				dialog.dismiss();
 			}
 
@@ -211,7 +197,7 @@ public class AwarenessActivity extends PhishBaseActivity {
 	}
 
 	protected void hideKeyboard(View view) {
-		InputMethodManager in = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+		InputMethodManager in = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
 		in.hideSoftInputFromWindow(view.getWindowToken(),
 				InputMethodManager.HIDE_NOT_ALWAYS);
 	}
@@ -260,6 +246,21 @@ public class AwarenessActivity extends PhishBaseActivity {
 			this.basetext=this.button.getText().toString();
 			this.button.setEnabled(false);
 		}
+	}
+
+	@Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+        case R.id.button_abschicken:
+        	sendEmail(view);
+        }
+    }
+
+	@Override
+	public int[] getClickables() {
+		return new int[] {
+				R.id.button_abschicken
+		};
 	}
 
 }

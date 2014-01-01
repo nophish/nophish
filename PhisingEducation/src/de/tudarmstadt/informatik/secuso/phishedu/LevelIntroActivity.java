@@ -1,22 +1,16 @@
 package de.tudarmstadt.informatik.secuso.phishedu;
 
-import android.content.Context;
-import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.v4.app.NavUtils;
-import android.support.v7.app.ActionBar;
 import android.text.SpannableStringBuilder;
 import android.text.style.BackgroundColorSpan;
 import android.text.style.ForegroundColorSpan;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ScrollView;
 import android.widget.TextView;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendControllerImpl;
-import de.tudarmstadt.informatik.secuso.phishedu.backend.NoPhishLevelInfo;
+import de.tudarmstadt.informatik.secuso.phishedu.backend.MainActivity;
 
 /**
  * 
@@ -26,7 +20,6 @@ import de.tudarmstadt.informatik.secuso.phishedu.backend.NoPhishLevelInfo;
  */
 public class LevelIntroActivity extends SwipeActivity {
 	SpannableStringBuilder strBuilder = new SpannableStringBuilder();
-	int wordStart, wordEnd;
 
 	protected static String[][] exampleReminderUrlPartId = {
 		{ "http://", "google.com.", "phishers-seite.de",
@@ -69,92 +62,86 @@ public class LevelIntroActivity extends SwipeActivity {
 						"/P-Portal1/XML/IFILPortal/pgf.html?Tab=3&ifil=coba_pk",
 						"https://", "www.", "paypal.com", "/de", "https://",
 						"www.", "paypal-viewpoints.com", "/DE-Kontakt" } };
-	public int level = 0;
 
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		this.level = getIntent().getIntExtra(Constants.EXTRA_LEVEL, 0);
-		super.onCreate(savedInstanceState);
-	}
+	int getTitle(){
+		return BackendControllerImpl.getInstance().getLevelInfo().titleId;
+	};
 	
-	public void onStartClick(View view) {
-		this.onStartClick();
+	@Override
+	int getSubTitle() {
+		return R.string.intro;
 	}
 
+	
+	@Override
+	public int[] getClickables() {
+		return new int[]{
+			R.id.level_01_intro_00_button_01
+		};
+	}
+	
+	@Override
+	public void onClick(View view) {
+		switch (view.getId()) {
+		case R.id.level_01_intro_00_button_01:
+			onStartClick();
+			break;
+		}
+		super.onClick(view);
+	}
+
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	protected void onStartClick() {
 		Class next_activity = URLTaskActivity.class;
-		if (this.level == 0) {
+		if (this.getLevel() == 0) {
 			next_activity = AwarenessActivity.class;
-		} else if (this.level == 1) {
+		} else if (this.getLevel() == 1) {
 			next_activity = FindAddressBarActivity.class;
-		}else if(this.level == BackendControllerImpl.getInstance().getLevelCount()-1){
+		}else if(this.getLevel() == BackendControllerImpl.getInstance().getLevelCount()-1){
 			next_activity = AppEndActivity.class;
 		}
-		Intent levelIntent = new Intent(this, next_activity);
-		levelIntent.putExtra(Constants.EXTRA_LEVEL, this.level);
-		startActivity(levelIntent);
+		((MainActivity)getActivity()).switchToFragment(next_activity);
 	}
 
 	@Override
 	protected String startButtonText() {
-		if (this.level == BackendControllerImpl.getInstance().getLevelCount()-1) {
+		if (this.getLevel() == BackendControllerImpl.getInstance().getLevelCount()-1) {
 			return "Fertig";
 		}
-		return "Starte "+getResources().getString(BackendControllerImpl.getInstance().getLevelInfo(this.level).titleId);
+		return "Starte "+getResources().getString(BackendControllerImpl.getInstance().getLevelInfo(this.getLevel()).titleId);
 	}
 
 	@Override
 	protected int getPageCount() {
-		return BackendControllerImpl.getInstance().getLevelInfo(level).introLayouts.length;
+		return BackendControllerImpl.getInstance().getLevelInfo(getLevel()).introLayouts.length;
 	}
 
 	@Override
 	protected View getPage(int page, LayoutInflater inflater,
 			ViewGroup container, Bundle savedInstanceState) {
 
-		View view = inflater.inflate(BackendControllerImpl.getInstance().getLevelInfo(level).introLayouts[page], container, false);
+		View view = inflater.inflate(BackendControllerImpl.getInstance().getLevelInfo(getLevel()).introLayouts[page], container, false);
 
 		// when example screen is showns
 		if ((view.findViewById(R.id.recognize_attack) != null)
 				|| view.findViewById(R.id.reminder_examples) != null) {
 			setExampleSpans(view);
 		}
-		setTitles();
-
 		return view;
+	}
+	
+	@Override
+	int getIcon() {
+		if (getLevel() > 0) {
+			return R.drawable.emblem_library;
+		}else{
+			return 0;
+		}
 	}
 
 	private void setExampleSpans(View view) {
 		buildColoredSpan(view);
-	}
-
-	private void setTitles() {
-		ActionBar ab = getSupportActionBar();
-		NoPhishLevelInfo level_info = BackendControllerImpl.getInstance().getLevelInfo(level);
-		String title = getString(level_info.titleId);
-		String subtitle = getString(level_info.subTitleId);
-
-		if (!title.equals(subtitle)) {
-			// if subtitle and title are different, subtitle is set
-			ab.setSubtitle(subtitle);
-		}
-		// title is set in anyway
-		ab.setTitle(title);
-
-		// if awareness is shown - no icon change
-		if (level_info.levelId > 0) {
-			ab.setIcon(getResources().getDrawable(R.drawable.emblem_library));
-		}
-
-	}
-
-	/**
-	 * User is getting back to the main menu from the introductionary texts.
-	 */
-	@Override
-	public void onBackPressed() {
-		NavUtils.navigateUpFromSameTask(this);
-		return;
 	}
 
 	private void buildColoredSpan(View view) {
@@ -279,8 +266,8 @@ public class LevelIntroActivity extends SwipeActivity {
 	private void setSingleSpan(String[] url, int level, int i, int spanIndex) {
 		String part = url[i];
 		// 0 at the beginning
-		wordStart = strBuilder.length();
-		wordEnd = wordStart + part.length();
+		int wordStart = strBuilder.length();
+		int wordEnd = wordStart + part.length();
 		strBuilder.append(part);
 
 		if (spanIndex == 1 && level == 3) {
@@ -318,8 +305,8 @@ public class LevelIntroActivity extends SwipeActivity {
 
 			String part = url[i];
 			// 0 at the beginning
-			wordStart = strBuilder.length();
-			wordEnd = wordStart + part.length();
+			int wordStart = strBuilder.length();
+			int wordEnd = wordStart + part.length();
 			strBuilder.append(part);
 
 			if (spanIndex == 0) {
@@ -356,8 +343,8 @@ public class LevelIntroActivity extends SwipeActivity {
 
 			String part = url[i];
 			// 0 at the beginning
-			wordStart = strBuilder.length();
-			wordEnd = wordStart + part.length();
+			int wordStart = strBuilder.length();
+			int wordEnd = wordStart + part.length();
 			strBuilder.append(part);
 
 			if (i == 1) {

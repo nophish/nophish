@@ -1,158 +1,119 @@
 package de.tudarmstadt.informatik.secuso.phishedu;
 
-import com.google.android.gms.games.GamesClient;
-import com.google.example.games.basegameutils.GameHelper.GameHelperListener;
-
 import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendControllerImpl;
-import android.os.Bundle;
 import android.app.Activity;
-import android.content.pm.ActivityInfo;
-import android.view.MenuItem;
 import android.view.View;
-import android.support.v4.app.NavUtils;
-import android.support.v7.app.ActionBarActivity;
 
-public class GooglePlusActivity extends PhishBaseActivity implements View.OnClickListener, GameHelperListener {
+public class GooglePlusActivity extends PhishBaseActivity {
+	private boolean showSignIn=true;
 	
-	private static GooglePlusActivity instance;
-	
-	public GooglePlusActivity() {
-		instance=this;
-	}
-	
-	private void showPlusButtons(){
-		// show sign-out button, hide the sign-in button
-		findViewById(R.id.sign_in_button).setVisibility(View.GONE);
-		findViewById(R.id.sign_out_button).setVisibility(View.VISIBLE);
-
-		// findViewById(R.id.button_show_leaderboard_rate).setVisibility(View.VISIBLE);
-		// findViewById(R.id.button_show_leaderboard_total).setVisibility(View.VISIBLE);
-		findViewById(R.id.button_show_leaderboard_total_points).setVisibility(
-				View.VISIBLE);
-		findViewById(R.id.button_show_online_achievement).setVisibility(
-				View.VISIBLE);
-		findViewById(R.id.button_delete_remote_data).setVisibility(
-				View.VISIBLE);
-	}
-
-	private void hidePlusButtons(){
-		// show sign-out button, hide the sign-in button
-		findViewById(R.id.sign_in_button).setVisibility(View.VISIBLE);
-		findViewById(R.id.sign_out_button).setVisibility(View.GONE);
-
-		// findViewById(R.id.button_show_leaderboard_rate).setVisibility(View.VISIBLE);
-		// findViewById(R.id.button_show_leaderboard_total).setVisibility(View.VISIBLE);
-		findViewById(R.id.button_show_leaderboard_total_points).setVisibility(
-				View.GONE);
-		findViewById(R.id.button_show_online_achievement).setVisibility(
-				View.GONE);
-		findViewById(R.id.button_delete_remote_data).setVisibility(
-				View.GONE);
+	public void setShowSignIn(boolean showsignin){
+		this.showSignIn=showsignin;
+		updateUi();
 	}
 
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.google_plus);
-		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-		this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-
-		getSupportActionBar().setHomeButtonEnabled(true);
-
-		findViewById(R.id.sign_in_button).setOnClickListener(this);
-		findViewById(R.id.sign_out_button).setOnClickListener(this);
-	}
-	
-	@Override
-	protected void onStart() {
+	public void onStart() {
 		super.onStart();
-		if (this.getGamesClient().isConnected()) {
-			showPlusButtons();
-		} else {
-			hidePlusButtons();
-		}
+		updateUi();
 	}
 
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		switch (item.getItemId()) {
-		case android.R.id.home:
-			NavUtils.navigateUpFromSameTask(this);
-			return true;
-		}
-		return super.onOptionsItemSelected(item);
+	private void showPlusButtons(Activity v){
+		// show sign-out button, hide the sign-in button
+		v.findViewById(R.id.sign_in_button).setVisibility(View.GONE);
+		v.findViewById(R.id.sign_out_button).setVisibility(View.VISIBLE);
+
+		// findViewById(R.id.button_show_leaderboard_rate).setVisibility(View.VISIBLE);
+		// findViewById(R.id.button_show_leaderboard_total).setVisibility(View.VISIBLE);
+		v.findViewById(R.id.button_show_leaderboard_total_points).setVisibility(
+				View.VISIBLE);
+		v.findViewById(R.id.button_show_online_achievement).setVisibility(
+				View.VISIBLE);
+		v.findViewById(R.id.button_delete_remote_data).setVisibility(
+				View.VISIBLE);
 	}
 
-	public void onSignInFailed() {
-		hidePlusButtons();
+	private void hidePlusButtons(Activity v){
+		// show sign-out button, hide the sign-in button
+		v.findViewById(R.id.sign_in_button).setVisibility(View.VISIBLE);
+		v.findViewById(R.id.sign_out_button).setVisibility(View.GONE);
+
+		// findViewById(R.id.button_show_leaderboard_rate).setVisibility(View.VISIBLE);
+		// findViewById(R.id.button_show_leaderboard_total).setVisibility(View.VISIBLE);
+		v.findViewById(R.id.button_show_leaderboard_total_points).setVisibility(
+				View.GONE);
+		v.findViewById(R.id.button_show_online_achievement).setVisibility(
+				View.GONE);
+		v.findViewById(R.id.button_delete_remote_data).setVisibility(
+				View.GONE);
 	}
 
-	public void onSignInSucceeded() {
-		showPlusButtons();
-	}
-	
-	public static GooglePlusActivity getInstance(){
-		return instance;
+	private void updateUi(){
+		Activity v = getActivity();
+		if(v==null) return;
+
+		// show sign-out button, hide the sign-in button
+		v.findViewById(R.id.sign_in_button).setVisibility(showSignIn ? View.VISIBLE : View.GONE);
+		v.findViewById(R.id.sign_out_button).setVisibility(showSignIn ? View.GONE : View.VISIBLE);
+
+		// findViewById(R.id.button_show_leaderboard_rate).setVisibility(View.VISIBLE);
+		// findViewById(R.id.button_show_leaderboard_total).setVisibility(View.VISIBLE);
+		v.findViewById(R.id.button_show_leaderboard_total_points).setVisibility(
+				showSignIn ? View.GONE : View.VISIBLE);
+		v.findViewById(R.id.button_show_online_achievement).setVisibility(
+				showSignIn ? View.GONE : View.VISIBLE);
+		v.findViewById(R.id.button_delete_remote_data).setVisibility(
+				showSignIn ? View.GONE : View.VISIBLE);
 	}
 
 	@Override
 	public void onClick(View view) {
-		if (view.getId() == R.id.sign_in_button) {
-			// start the asynchronous sign in flow
+		switch (view.getId()) {
+		case R.id.sign_in_button:
 			BackendControllerImpl.getInstance().signIn();
-		} else if (view.getId() == R.id.sign_out_button) {
-			// sign out.
+			break;
+		case R.id.sign_out_button:
 			BackendControllerImpl.getInstance().signOut();
-			hidePlusButtons();
+			setShowSignIn(true);
+			break;
+		case R.id.button_show_leaderboard_total:
+			onShowLeaderboardsRequested(R.string.leaderboard_detected_phishing_urls);
+			break;
+		case R.id.button_show_leaderboard_total_points:
+			onShowLeaderboardsRequested(R.string.leaderboard_total_points);
+			break;
+		case R.id.button_show_online_achievement:
+			if (BackendControllerImpl.getInstance().getGameHelper().isSignedIn()) {
+	            startActivityForResult(BackendControllerImpl.getInstance().getGameHelper().getGamesClient().getAchievementsIntent(), 0);
+	        }
+			break;
+		case R.id.button_delete_remote_data:
+			BackendControllerImpl.getInstance().deleteRemoteData();
+			break;
 		}
-	}
-
-
-	private GamesClient getGamesClient() {
-		return BackendControllerImpl.getInstance().getGameHelper().getGamesClient();
 	}
 	
-	public void showLeaderboardRate(View view) {
-		if (this.getGamesClient().isConnected()) {
-			startActivityForResult(
-					getGamesClient().getLeaderboardIntent(
-							getResources().getString(
-									R.string.leaderboard_detection_rate)), 1);
-		}
+	private void onShowLeaderboardsRequested(int leaderboard) {
+		if (BackendControllerImpl.getInstance().getGameHelper().isSignedIn()) {
+            startActivityForResult(BackendControllerImpl.getInstance().getGameHelper().getGamesClient().getLeaderboardIntent(getString(leaderboard)), 0);
+        }
 	}
 
-	public void showLeaderboardTotal(View view) {
-		if (this.getGamesClient().isConnected()) {
-			startActivityForResult(
-					getGamesClient()
-							.getLeaderboardIntent(
-									getResources()
-											.getString(
-													R.string.leaderboard_detected_phishing_urls)),
-					1);
-		}
-
+	@Override
+	public int getLayout() {
+		return R.layout.google_plus;
 	}
 
-	public void showLeaderboardTotalPoints(View view) {
-		if (this.getGamesClient().isConnected()) {
-			startActivityForResult(
-					getGamesClient().getLeaderboardIntent(
-							getResources().getString(
-									R.string.leaderboard_total_points)), 1);
-		}
-
-	}
-
-	public void showAchievments(View view) {
-		if (this.getGamesClient().isConnected()) {
-			startActivityForResult(getGamesClient().getAchievementsIntent(), 0);
-		}
-	}
-
-	public void deleteRemoteData(View view){
-		if (this.getGamesClient().isConnected()) {
-			BackendControllerImpl.getInstance().deleteRemoteData();
-		}
+	@Override
+	public int[] getClickables() {
+		return new int[] {
+				R.id.sign_in_button,
+				R.id.sign_out_button,
+				R.id.button_show_online_achievement,
+				R.id.button_show_leaderboard_rate,
+				R.id.button_show_leaderboard_total,
+				R.id.button_show_leaderboard_total_points,
+				R.id.button_delete_remote_data
+		};
 	}
 }

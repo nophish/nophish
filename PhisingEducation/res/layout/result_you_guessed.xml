@@ -42,16 +42,6 @@
             android:layout_below="@+id/you_guessed_01"
             android:contentDescription="@string/content_desc_disappointed_face"
             android:src="@drawable/small_smiley_you_guessed" />
-
-        <TextView
-            android:id="@+id/you_guessed_02"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/you_guessed_01"
-            android:layout_below="@+id/url"
-            android:layout_marginTop="@dimen/margin_small"
-            android:text="@string/you_guessed_02"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
     </RelativeLayout>
 
 </ScrollView>

@@ -15,13 +15,10 @@ public class LevelSelectorActivity extends SwipeActivity implements
 		ViewPager.OnPageChangeListener {
 
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-		getSupportActionBar().setTitle("Level Überblick");
+	int getTitle(){
+		return R.string.button_level_overview;
 	}
-
+	
 	@Override
 	protected int getPageCount() {
 		return BackendControllerImpl.getInstance().getLevelCount();
@@ -31,8 +28,7 @@ public class LevelSelectorActivity extends SwipeActivity implements
 	protected View getPage(int level, LayoutInflater inflater,
 			ViewGroup container, Bundle savedInstanceState) {
 		NoPhishLevelInfo level_info = BackendControllerImpl.getInstance().getLevelInfo(level);
-		View layoutView = inflater.inflate(R.layout.fragment_level_overview_template,
-				container, false);
+		View layoutView = inflater.inflate(R.layout.fragment_level_overview_template, container, false);
 		int userlevel = BackendControllerImpl.getInstance().getMaxUnlockedLevel();
 		View button = layoutView.findViewById(R.id.levelbutton);
 		if (level <= userlevel) {
@@ -81,7 +77,7 @@ public class LevelSelectorActivity extends SwipeActivity implements
 		if (page <= BackendControllerImpl.getInstance().getMaxUnlockedLevel()) {
 			if (page == 0 && BackendControllerImpl.getInstance().getMaxUnlockedLevel() > 0 &&  !Constants.UNLOCK_ALL_LEVELS) {
 				// level 0 cannot be replayed
-				Toast.makeText(getApplicationContext(),
+				Toast.makeText(getActivity().getApplicationContext(),
 						getString(R.string.cannot_replay_level_0),
 						Toast.LENGTH_LONG).show();
 			} else {

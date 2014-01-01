@@ -14,6 +14,5 @@ Save this file as res/values/games-ids.xml in your project.
   <string name="achievement_tuna">CgkIwbmwmqkcEAIQBw</string>
   <string name="achievement_whale_shark">CgkIwbmwmqkcEAIQCA</string>
   <string name="leaderboard_detected_phishing_urls">CgkIwbmwmqkcEAIQCQ</string>
-  <string name="leaderboard_detection_rate">CgkIwbmwmqkcEAIQCw</string>
   <string name="leaderboard_total_points">CgkIwbmwmqkcEAIQDA</string>
 </resources>

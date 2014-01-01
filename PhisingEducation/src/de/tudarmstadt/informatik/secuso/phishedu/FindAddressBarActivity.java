@@ -1,8 +1,5 @@
 package de.tudarmstadt.informatik.secuso.phishedu;
 
-import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendControllerImpl;
@@ -10,31 +7,43 @@ import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendControllerImpl;
 public class FindAddressBarActivity extends PhishBaseActivity {
 
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.level_01_task);
-		setTitles();
+	int getIcon() {
+		return R.drawable.desktop;
 	}
-
-	private void setTitles() {
-		android.support.v7.app.ActionBar ab = getSupportActionBar();
-
-		ab.setTitle(BackendControllerImpl.getInstance().getLevelInfo().titleId);
-		ab.setSubtitle(getString(R.string.exercise));	
-		ab.setIcon(getResources().getDrawable(R.drawable.desktop));
+	
+	@Override
+	int getTitle() {
+		return BackendControllerImpl.getInstance().getLevelInfo().titleId;
 	}
-
-
-	public void startBrowser(View view){
-		BackendControllerImpl.getInstance().redirectToLevel1URL();
+	
+	@Override
+	int getSubTitle() {
+		return R.string.exercise;
+	}
+	
+	@Override
+	public int[] getClickables() {
+		return new int[]{
+				R.id.level_01_exercise_button
+		};
+	}
+	
+	@Override
+	public void onClick(View view) {
+		switch (view.getId()) {
+		case R.id.level_01_exercise_button:
+			BackendControllerImpl.getInstance().redirectToLevel1URL();
+			break;
+		}
 	}
 	
 	/**
 	 * Going back not possible, only cancel level
 	 */
 	@Override
-	public void onBackPressed() {
+	public boolean onBackPressed() {
 		levelCanceldWarning();
+		return false;
 	}
 	
 	@Override
@@ -49,5 +58,10 @@ public class FindAddressBarActivity extends PhishBaseActivity {
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
+	}
+
+	@Override
+	public int getLayout() {
+		return R.layout.level_01_task;
 	}
 }

@@ -1,36 +1,30 @@
 package de.tudarmstadt.informatik.secuso.phishedu;
 
-import android.os.Bundle;
-import android.app.Activity;
-import android.view.Menu;
-import android.view.MenuItem;
+import de.tudarmstadt.informatik.secuso.phishedu.backend.MainActivity;
 import android.view.View;
-import android.support.v4.app.NavUtils;
-import android.annotation.TargetApi;
-import android.os.Build;
+
 
 public class AppEndActivity extends PhishBaseActivity {
 
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.final_app_screen);
-		// Show the Up button in the action bar.
+	public int getLayout() {
+		return R.layout.final_app_screen;
 	}
-
+	
 	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		switch (item.getItemId()) {
-		// Respond to the action bar's Up/Home button
-		case android.R.id.home:
-			NavUtils.navigateUpFromSameTask(AppEndActivity.this);
-
-		}
-		return super.onOptionsItemSelected(item);
+	public int[] getClickables() {
+		return new int[]{
+				R.id.button1
+		};
 	}
-
-	public void toMainMenu(View view) {
-		NavUtils.navigateUpFromSameTask(AppEndActivity.this);
+	
+	@Override
+	public void onClick(View view) {
+		switch (view.getId()) {
+		case R.id.button1:
+			((MainActivity)getActivity()).switchToFragment(StartMenuActivity.class);
+			break;
+		}
 	}
 
 }

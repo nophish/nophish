@@ -1,5 +1,6 @@
 package de.tudarmstadt.informatik.secuso.phishedu.backend;
 
+import com.google.example.games.basegameutils.GameHelper;
 import com.google.example.games.basegameutils.GameHelper.GameHelperListener;
 
 import android.app.Activity;
