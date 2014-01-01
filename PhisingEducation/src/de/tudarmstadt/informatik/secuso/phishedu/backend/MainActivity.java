@@ -31,7 +31,7 @@ import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController.Level
 import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController.OnLevelChangeListener;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController.OnLevelstateChangeListener;
 
-public class MainActivity extends ActionBarActivity implements FrontendController, OnLevelChangeListener, BackendInitListener, OnLevelstateChangeListener, GooglePlusActivity.Listener {
+public class MainActivity extends ActionBarActivity implements FrontendController, OnLevelChangeListener, BackendInitListener, OnLevelstateChangeListener {
 	Map<Class<? extends PhishBaseActivity>, PhishBaseActivity> fragCache = new HashMap<Class<? extends PhishBaseActivity>, PhishBaseActivity>();
 	PhishBaseActivity current_frag;
 	
@@ -102,7 +102,6 @@ public class MainActivity extends ActionBarActivity implements FrontendControlle
 		BackendControllerImpl.getInstance().addOnLevelstateChangeListener(this);
 		
 		plusFragment = new GooglePlusActivity();
-		plusFragment.setListener(this);
 		fragCache.put(GooglePlusActivity.class, plusFragment);
 		
 		switchToFragment(StartMenuActivity.class);
@@ -211,35 +210,5 @@ public class MainActivity extends ActionBarActivity implements FrontendControlle
 	
 	private boolean isSignedIn(){
 		return BackendControllerImpl.getInstance().getGameHelper().isSignedIn();
-	}
-
-	@Override
-	public void onShowAchievementsRequested() {
-		if (isSignedIn()) {
-            startActivityForResult(getGamesClient().getAchievementsIntent(), 0);
-        }
-	}
-
-	@Override
-	public void onShowLeaderboardsRequested(int leaderboard) {
-		if (isSignedIn()) {
-            startActivityForResult(getGamesClient().getLeaderboardIntent(getString(leaderboard)), 0);
-        }
-	}
-
-	@Override
-	public void onSignInButtonClicked() {
-		BackendControllerImpl.getInstance().signIn();
-	}
-
-	@Override
-	public void onSignOutButtonClicked() {
-		BackendControllerImpl.getInstance().signOut();
-		plusFragment.setShowSignIn(true);
-	}
-
-	@Override
-	public void onDeleteRemoteDataClicked() {
-		BackendControllerImpl.getInstance().deleteRemoteData();
 	}
 }

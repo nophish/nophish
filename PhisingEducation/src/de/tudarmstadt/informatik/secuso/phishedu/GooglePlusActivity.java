@@ -5,15 +5,6 @@ import android.app.Activity;
 import android.view.View;
 
 public class GooglePlusActivity extends PhishBaseActivity {
-	public interface Listener{
-		public void onShowAchievementsRequested();
-		public void onShowLeaderboardsRequested(int leaderboard);
-		public void onSignInButtonClicked();
-		public void onSignOutButtonClicked();
-		public void onDeleteRemoteDataClicked();
-	}
-
-	private Listener listener=null;
 	private boolean showSignIn=true;
 	
 	public void setShowSignIn(boolean showsignin){
@@ -21,10 +12,6 @@ public class GooglePlusActivity extends PhishBaseActivity {
 		updateUi();
 	}
 
-	public void setListener(Listener l){
-		listener=l;
-	}
-	
 	@Override
 	public void onStart() {
 		super.onStart();
@@ -83,22 +70,33 @@ public class GooglePlusActivity extends PhishBaseActivity {
 	public void onClick(View view) {
 		switch (view.getId()) {
 		case R.id.sign_in_button:
-			listener.onSignInButtonClicked();
+			BackendControllerImpl.getInstance().signIn();
 			break;
 		case R.id.sign_out_button:
-			// sign out.
-			listener.onSignOutButtonClicked();
+			BackendControllerImpl.getInstance().signOut();
+			setShowSignIn(true);
 			break;
 		case R.id.button_show_leaderboard_total:
-			listener.onShowLeaderboardsRequested(R.string.leaderboard_detected_phishing_urls);
+			onShowLeaderboardsRequested(R.string.leaderboard_detected_phishing_urls);
 			break;
 		case R.id.button_show_leaderboard_total_points:
-			listener.onShowLeaderboardsRequested(R.string.leaderboard_total_points);
+			onShowLeaderboardsRequested(R.string.leaderboard_total_points);
 			break;
 		case R.id.button_show_online_achievement:
-			listener.onShowAchievementsRequested();
+			if (BackendControllerImpl.getInstance().getGameHelper().isSignedIn()) {
+	            startActivityForResult(BackendControllerImpl.getInstance().getGameHelper().getGamesClient().getAchievementsIntent(), 0);
+	        }
+			break;
+		case R.id.button_delete_remote_data:
+			BackendControllerImpl.getInstance().deleteRemoteData();
 			break;
 		}
+	}
+	
+	private void onShowLeaderboardsRequested(int leaderboard) {
+		if (BackendControllerImpl.getInstance().getGameHelper().isSignedIn()) {
+            startActivityForResult(BackendControllerImpl.getInstance().getGameHelper().getGamesClient().getLeaderboardIntent(getString(leaderboard)), 0);
+        }
 	}
 
 	@Override
