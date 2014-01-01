@@ -7,6 +7,11 @@ import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendControllerImpl;
 public class FindAddressBarActivity extends PhishBaseActivity {
 
 	@Override
+	int getIcon() {
+		return R.drawable.desktop;
+	}
+	
+	@Override
 	int getTitle() {
 		return BackendControllerImpl.getInstance().getLevelInfo().titleId;
 	}

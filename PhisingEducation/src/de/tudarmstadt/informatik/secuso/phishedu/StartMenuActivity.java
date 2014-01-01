@@ -27,9 +27,7 @@ import de.tudarmstadt.informatik.secuso.phishedu.backend.MainActivity;
 
 /**
  * 
- * @author Gamze Canova this activity respresents the start screen of the game a
- *         splash screen and afterwards a menu is displayed if the user wants to
- *         store his/her score online he/she has to sign into google+
+ * @author Gamze Canova this activity respresents the main menu of the app
  */
 public class StartMenuActivity extends PhishBaseActivity {
 	

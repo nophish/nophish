@@ -229,7 +229,9 @@ public class ResultActivity extends SwipeActivity {
 		}else if (this.result == PhishResult.Phish_Detected.getValue()
 				|| this.result == PhishResult.Phish_NotDetected.getValue()) {
 			return R.string.phish;
-		} else {
+		} else if(this.result == RESULT_GUESSED){
+			return R.string.marked_domain_wrongly;
+		}else{
 			return R.string.no_phish;
 		}
 	}
