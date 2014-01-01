@@ -1,5 +1,7 @@
 package de.tudarmstadt.informatik.secuso.phishedu;
 
+import java.lang.reflect.Field;
+
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -237,6 +239,22 @@ public abstract class PhishBaseActivity extends Fragment implements OnClickListe
 	
 	int getLevel(){
 		return BackendControllerImpl.getInstance().getLevel();
+	}
+	
+	@Override
+	public void onDetach() {
+	    super.onDetach();
+
+	    try {
+	        Field childFragmentManager = Fragment.class.getDeclaredField("mChildFragmentManager");
+	        childFragmentManager.setAccessible(true);
+	        childFragmentManager.set(this, null);
+
+	    } catch (NoSuchFieldException e) {
+	        throw new RuntimeException(e);
+	    } catch (IllegalAccessException e) {
+	        throw new RuntimeException(e);
+	    }
 	}
 	
 }
