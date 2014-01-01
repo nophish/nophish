@@ -31,17 +31,19 @@ public class ResultActivity extends SwipeActivity {
 	protected static int[] resultTextIDs;
 	protected static int[] resultSmileyIDs;
 	private int result = PhishResult.Phish_Detected.getValue();
+	private View layout;
 
 	@Override
 	public void onSwitchTo() {
+		this.setResult(getArguments().getInt(Constants.ARG_RESULT));
 		super.onSwitchTo();
 	}
 
 	public ResultActivity() {
 		// We need one layout for each PhishResult + You guessed
 		resultTextIDs = new int[PhishResult.values().length + 1];
-		resultTextIDs[PhishResult.Phish_Detected.getValue()] = R.string.you_are_correct;
-		resultTextIDs[PhishResult.NoPhish_Detected.getValue()] = R.string.you_found_the_phish;
+		resultTextIDs[PhishResult.Phish_Detected.getValue()] = R.string.you_found_the_phish;
+		resultTextIDs[PhishResult.NoPhish_Detected.getValue()] = R.string.you_are_correct;
 		resultTextIDs[PhishResult.Phish_NotDetected.getValue()] = R.string.you_are_wrong;
 		resultTextIDs[PhishResult.NoPhish_NotDetected.getValue()] = R.string.oversafe_text;
 		resultTextIDs[RESULT_GUESSED] = R.string.you_guessed;
@@ -110,21 +112,27 @@ public class ResultActivity extends SwipeActivity {
 	@Override
 	protected View getPage(int page, LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View view = inflater.inflate(R.layout.result, container, false);
-		updateView(view.findViewById(R.id.result_layout));
+		this.layout = view;
+		updateView();
 		return view;
 	}
 
 	public void setResult(int result){
-		updateView(getActivity().findViewById(R.id.result_layout));
+		this.result=result;
+		updateView();
 	}
 
-	private void updateView(View view){
+	private void updateView(){
+		View view = this.layout;
+		if(view == null){
+			return;
+		}
 		int level = BackendControllerImpl.getInstance().getLevel(); 
 
 		TextView text1 = (TextView) view.findViewById(R.id.result_text1);
 		if(level == 2){
 			text1.setText(getLevel2Texts(result));
-		}if(level == 10){
+		}else if(level == 10){
 			text1.setText(getLevel10Texts(result));
 		}else{
 			text1.setText(resultTextIDs[result]);
@@ -139,7 +147,7 @@ public class ResultActivity extends SwipeActivity {
 
 		TextView text2 = (TextView) view.findViewById(R.id.result_text2);
 		text2.setVisibility(View.GONE);
-		if(this.result == PhishResult.Phish_NotDetected.getValue()){
+		if(this.result == PhishResult.NoPhish_NotDetected.getValue()){
 			text2.setText(R.string.oversafe_02);
 			text2.setVisibility(View.VISIBLE);
 		}else if (this.result == PhishResult.Phish_NotDetected.getValue()) {

@@ -14,5 +14,5 @@ public class Constants {
 	public static final String EXTRA_RESULT = "result";
 	
 	public static final String ARG_PAGE_NUMBER = "page";
-	
+	public static final String ARG_RESULT = "result";
 }

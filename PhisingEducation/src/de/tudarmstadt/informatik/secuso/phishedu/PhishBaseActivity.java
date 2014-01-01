@@ -21,6 +21,12 @@ import de.tudarmstadt.informatik.secuso.phishedu.backend.MainActivity;
 
 public abstract class PhishBaseActivity extends Fragment implements OnClickListener {
 	
+	@Override
+	public void onAttach(Activity activity) {
+		super.onAttach(activity);
+		this.onSwitchTo();
+	}
+	
 	/**
 	 * Get the id of the Layout of this fragment.
 	 * You have to implement one of this and {@link #getLayout(LayoutInflater, ViewGroup, Bundle)}

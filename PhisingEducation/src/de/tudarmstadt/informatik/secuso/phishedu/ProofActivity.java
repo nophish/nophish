@@ -158,7 +158,9 @@ public class ProofActivity extends SwipeActivity {
 		if (!clicked_right) {
 			result = ResultActivity.RESULT_GUESSED;
 		}
-		((MainActivity)getActivity()).switchToFragment(ResultActivity.class);
+		Bundle args = new Bundle();
+		args.putInt(Constants.ARG_RESULT, result);
+		((MainActivity)getActivity()).switchToFragment(ResultActivity.class,args);
 	}
 
 	@Override

@@ -134,7 +134,9 @@ public class URLTaskActivity extends PhishBaseActivity {
 		if (result == PhishResult.Phish_Detected && getLevel() != 10) {
 			followActivity = ProofActivity.class;
 		}
-		((MainActivity)getActivity()).switchToFragment(followActivity);
+		Bundle args = new Bundle();
+		args.putInt(Constants.ARG_RESULT, result.getValue());
+		((MainActivity)getActivity()).switchToFragment(followActivity,args);
 	}
 
 	@Override

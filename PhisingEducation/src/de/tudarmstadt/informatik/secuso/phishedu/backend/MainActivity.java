@@ -33,6 +33,10 @@ public class MainActivity extends PhishBaseGameActivity implements FrontendContr
 	PhishBaseActivity current_frag;
 	
 	public void switchToFragment(Class<? extends PhishBaseActivity> fragClass) {
+		switchToFragment(fragClass, new Bundle());
+    }
+	
+	public void switchToFragment(Class<? extends PhishBaseActivity> fragClass, Bundle arguments) {
 		PhishBaseActivity  newFrag;
 		if(!fragCache.containsKey(fragClass)){
 			try {
@@ -46,8 +50,15 @@ public class MainActivity extends PhishBaseGameActivity implements FrontendContr
 			}
 		}
 		newFrag = fragCache.get(fragClass);
+		newFrag.setArguments(arguments);
 		getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, newFrag).commitAllowingStateLoss();
-		newFrag.onSwitchTo();
+		/**
+		 * ensure that we only run onswitchto when attached.
+		 * this is also called in PhishBaseActivity.onAttack() 
+		 */
+		if(newFrag.getActivity()!=null){
+			newFrag.onSwitchTo();
+		}
 		current_frag = (PhishBaseActivity)newFrag;
     }
 	
