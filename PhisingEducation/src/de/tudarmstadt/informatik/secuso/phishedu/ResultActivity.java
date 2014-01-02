@@ -133,7 +133,7 @@ public class ResultActivity extends SwipeActivity {
 		if(this.result == PhishResult.NoPhish_NotDetected.getValue()){
 			text2.setText(R.string.oversafe_02);
 			text2.setVisibility(View.VISIBLE);
-		}else if (this.result == PhishResult.Phish_NotDetected.getValue()) {
+		}else if (this.result == PhishResult.Phish_NotDetected.getValue() || result == RESULT_GUESSED) {
 			int remindertext = getReminderText(BackendControllerImpl.getInstance().getUrl().getAttackType(), level);
 			if (remindertext > 0) {
 				text2.setText(remindertext);

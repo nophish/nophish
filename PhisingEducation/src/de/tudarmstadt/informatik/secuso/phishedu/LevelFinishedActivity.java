@@ -26,7 +26,6 @@ public class LevelFinishedActivity extends SwipeActivity {
 	
 	private void setLevel(int level){
 		this.level=level;
-		updateUI();
 	}
 	
 	int getLevel(){

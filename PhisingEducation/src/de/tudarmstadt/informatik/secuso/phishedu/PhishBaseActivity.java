@@ -27,7 +27,7 @@ public abstract class PhishBaseActivity extends Fragment implements OnClickListe
 		this.onSwitchTo();
 	}
 	
-	final void updateUI(){
+	void updateUI(){
 		if(getActivity()!=null){
 			
 			for (int i : getClickables()) {
