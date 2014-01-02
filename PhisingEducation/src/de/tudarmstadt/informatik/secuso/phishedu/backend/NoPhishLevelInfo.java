@@ -77,7 +77,7 @@ public class NoPhishLevelInfo {
 			} };
 
 	private static final int[][] levelFinishedLayoutIds = {
-			{ R.layout.level_00_finish_00, R.layout.level_00_finish_01,
+			{ R.layout.level_00_finish_00a, R.layout.level_00_finish_00, R.layout.level_00_finish_01,
 					R.layout.level_00_finish_02, R.layout.level_00_finish_03,
 					R.layout.level_00_finish_04, R.layout.level_00_finish_05,
 					R.layout.level_00_finish_06, R.layout.level_00_finish_07,
