@@ -406,8 +406,15 @@ public class BackendControllerImpl implements BackendController, GameStateLoaded
 		//with this function we ensure that the user gets more points per level
 		//This ensures that there is no point in running the same level multiple times to collect points
 		offset=getLevelInfo().weightLevelPoints(offset);
-		this.frontend.displayToastScore(offset);
-		this.progress.setLevelPoints(this.getLevelPoints()+offset);
+		if(!(offset<0 && getLevelPoints() <= 0)){
+			//don't display toast when not removing points
+			this.frontend.displayToastScore(offset);
+		}
+		int new_levelpoints = this.getLevelPoints()+offset;
+		if(new_levelpoints<=0){
+			new_levelpoints=0;
+		}
+		this.progress.setLevelPoints(new_levelpoints);
 
 		Levelstate newstate = getLevelState();
 		if(oldstate != newstate){
