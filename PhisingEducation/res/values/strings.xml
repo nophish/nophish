@@ -220,7 +220,7 @@
     <string name="reminder"><b>Zur Erinnerung - Webadressen</b></string>
     <string name="former_attacks"><b>Bisherige Angriffe</b></string>
     <string name="reminder_subdomain">1.) Enthält der Bereich der Abteilungen dir bekannte Namen und entspricht der Wer-Bereich aber nicht dem Unternehmen deines Gesprächspartners, dann gebe hier keine Daten ein!</string>
-    <string name="reminder_ip">2.) Enthält der Bereich zwischen \"http://\" und dem dritten Slash \"/\" eine IP-Adresse (4-stellige Zahlenfolge, durch Punkte getrennt) anstelle des Wer-Bereiches, dann gebe hier keine Daten ein!</string>
+    <string name="reminder_ip">2.) Ist der Bereich zwischen \"http://\" und dem dritten Slash \"/\" eine IP-Adresse, ist diese der Wer-Bereich. Gib hier keine Daten ein!</string>
     <string name="reminder_nonsense">3.) Enthält der Wer-Bereich Namen, die keinen Sinn ergeben oder nichts mit dem Dienst bzw. Unternehmen deines Gesprächspartners zu tun haben, dann gebe hier keine Daten ein! </string>
     <string name="reminder_sounding_trustworthy">4.) Enthält der Wer-Bereich Namen, die vertrauenswürdig klingen, aber dennoch nichts mit dem Unternehmen deines Gesprächspartners zu tun haben, dann gebe hier keine Daten ein! </string>
     <string name="reminder_brand_in_domain">5.) Enthält der Wer-Bereich nur eine ähnliche Abwandlung des dir bisher vertrauten Wer-Bereiches, dann gebe hier keine Daten ein!</string>
@@ -249,7 +249,7 @@
     <string name="level_04_intro_01_example_ip">Beispiel: 192.168.10.15</string>
     <string name="level_04_intro_01_img_descr_computer">IP-Adresse</string>
     <string name="level_04_intro_01_img_descr_house">Hausadresse</string>
-    <string name="level_04_intro_03_text_02">Enthält der Bereich zwischen \"http://\" und dem dritten Slash \"/\" eine IP-Adresse (4-stellige Zahlenfolge durch Punkte getrennt) anstelle des Wer-Bereiches, dann <b>gebe hier keine Daten ein!</b>\n\nBeispiel für eine Phishing-Webadresse, die dieses Prinzip anwendet: </string>
+    <string name="level_04_intro_03_text_02">Ist der Bereich zwischen \"http://\" und dem dritten Slash \"/\" eine IP-Adresse, ist diese der Wer-Bereich. <b>Gib hier keine Daten ein!</b>\n\nBeispiel für eine Phishing-Webadresse, die dieses Prinzip anwendet: </string>
     <string name="level_04_intro_03_example_ip">192.168.160.02</string>
     <string name="level_04_intro_03_example_ip_path">/secure-login</string>
     <string name="level_3_splash_text">Level 3\n\n IP- und Nonsense</string>
