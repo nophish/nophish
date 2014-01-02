@@ -31,19 +31,11 @@ public class ProofActivity extends SwipeActivity {
 
 	@Override
 	int getTitle(){
-		if (getLevel() != 2) {
-			return R.string.correct;
-		} else {
-			return BackendControllerImpl.getInstance().getLevelInfo().titleId;
-		}
+		return BackendControllerImpl.getInstance().getLevelInfo().titleId;
 	};
 	@Override
 	int getSubTitle(){
-		if (getLevel() != 2) {
-			return R.string.phish;
-		} else {
-			return R.string.exercise;
-		}
+		return R.string.exercise;
 	};
 	@Override
 	int getIcon(){

@@ -6,9 +6,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.provider.ContactsContract.CommonDataKinds.Relation;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -28,6 +26,20 @@ public abstract class PhishBaseActivity extends Fragment implements OnClickListe
 		super.onAttach(activity);
 		this.onSwitchTo();
 	}
+	
+	@Override
+	public void onStart() {
+		updateUI();
+		super.onStart();
+	}
+	
+	final void updateUI(){
+		if(getActivity()!=null){
+			updateUI(getActivity());
+		}
+	}
+	
+	void updateUI(Activity activity){}
 	
 	/**
 	 * Get the id of the Layout of this fragment.

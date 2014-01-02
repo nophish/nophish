@@ -11,7 +11,27 @@ public class LevelFinishedActivity extends SwipeActivity {
 	protected void onStartClick() {
 		BackendControllerImpl.getInstance().startLevel(getLevel() + 1);
 	}
-
+	
+	int level;
+	
+	@Override
+	public void onSwitchTo() {
+		if(getArguments().containsKey(Constants.ARG_LEVEL)){
+			this.setLevel(getArguments().getInt(Constants.ARG_LEVEL));
+		}else{
+			this.setLevel(BackendControllerImpl.getInstance().getLevel());
+		}
+		super.onSwitchTo();
+	}
+	
+	private void setLevel(int level){
+		this.level=level;
+	}
+	
+	int getLevel(){
+		return this.level;
+	}
+	
 	@Override
 	protected String startButtonText() {
 		return "Weiter zu " + getResources().getString(BackendControllerImpl.getInstance().getLevelInfo(this.getLevel()+1).titleId);

@@ -9,13 +9,7 @@ public class GooglePlusActivity extends PhishBaseActivity {
 	
 	public void setShowSignIn(boolean showsignin){
 		this.showSignIn=showsignin;
-		updateUi();
-	}
-
-	@Override
-	public void onStart() {
-		super.onStart();
-		updateUi();
+		updateUI();
 	}
 
 	private void showPlusButtons(Activity v){
@@ -48,10 +42,7 @@ public class GooglePlusActivity extends PhishBaseActivity {
 				View.GONE);
 	}
 
-	private void updateUi(){
-		Activity v = getActivity();
-		if(v==null) return;
-
+	void updateUI(Activity v){
 		// show sign-out button, hide the sign-in button
 		v.findViewById(R.id.sign_in_button).setVisibility(showSignIn ? View.VISIBLE : View.GONE);
 		v.findViewById(R.id.sign_out_button).setVisibility(showSignIn ? View.GONE : View.VISIBLE);

@@ -55,10 +55,7 @@ public abstract class SwipeActivity extends PhishBaseActivity implements ViewPag
 		super.onSwitchTo();
 	}
 	
-	@Override
-	public View getLayout(LayoutInflater inflater, ViewGroup container,	Bundle savedInstanceState) {
-		View v = inflater.inflate(R.layout.fragment_pager, container,false);
-
+	void updateUI(Activity v){
 		mPager= (ViewPager) v.findViewById(R.id.pager);
 		mPageAdapter = new SwipePageAdapter(getFragmentManager(),this); 
 		mPager.setAdapter(mPageAdapter);
@@ -89,10 +86,13 @@ public abstract class SwipeActivity extends PhishBaseActivity implements ViewPag
 		bStartLevel.setText(this.startButtonText());
 
 		checkAndHideButtons(0);
-		
-		return v;
 	}
-
+	
+	@Override
+	public int getLayout() {
+		return R.layout.fragment_pager;
+	}
+	
 	private void nextPage() {
 		int currentPage = mPager.getCurrentItem();
 		int nextPage = currentPage + 1;

@@ -1,5 +1,6 @@
 package de.tudarmstadt.informatik.secuso.phishedu;
 
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
@@ -75,10 +76,8 @@ public class LevelSelectorActivity extends SwipeActivity implements
 	public void onClickPage(int page) {
 		if (page <= BackendControllerImpl.getInstance().getMaxUnlockedLevel()) {
 			if (page == 0 && BackendControllerImpl.getInstance().getMaxUnlockedLevel() > 0 &&  !Constants.UNLOCK_ALL_LEVELS) {
-				// level 0 cannot be replayed
-				Toast.makeText(getActivity().getApplicationContext(),
-						getString(R.string.cannot_replay_level_0),
-						Toast.LENGTH_LONG).show();
+				// level 0 cannot be replayed show finished instead.
+				BackendControllerImpl.getInstance().onUrlReceive(Uri.parse("phishedu://maillink/"));
 			} else {
 				BackendControllerImpl.getInstance().startLevel(page);
 			}

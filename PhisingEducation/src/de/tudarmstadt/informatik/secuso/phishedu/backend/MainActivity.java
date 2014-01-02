@@ -20,6 +20,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.games.GamesClient;
 
+import de.tudarmstadt.informatik.secuso.phishedu.Constants;
 import de.tudarmstadt.informatik.secuso.phishedu.GooglePlusActivity;
 import de.tudarmstadt.informatik.secuso.phishedu.LevelFinishedActivity;
 import de.tudarmstadt.informatik.secuso.phishedu.LevelIntroActivity;
@@ -188,12 +189,14 @@ public class MainActivity extends ActionBarActivity implements FrontendControlle
 	}
 
 	@Override
-	public void onLevelstateChange(Levelstate new_state) {
+	public void onLevelstateChange(Levelstate new_state, int level) {
 		//The Intend only works when the user actually is in this activity.
 		//This is only the case when he clicked an phishedu URL
 		Uri data = getIntent().getData();
 		if(new_state == Levelstate.finished && data != null && data.getScheme().equals("phishedu")){
-			switchToFragment(LevelFinishedActivity.class);
+			Bundle args = new Bundle();
+			args.putInt(Constants.ARG_LEVEL, level);
+			switchToFragment(LevelFinishedActivity.class, args);
 		}
 	}
 	

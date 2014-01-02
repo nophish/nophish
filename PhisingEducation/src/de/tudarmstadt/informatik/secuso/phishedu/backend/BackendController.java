@@ -231,8 +231,9 @@ public interface BackendController extends GameHelperListener{
 		/**
 		 * This function is called when the level state changes.
 		 * @param new_state the new state
+		 * @param level the level that changed the state
 		 */
-		public void onLevelstateChange(Levelstate new_state);
+		public void onLevelstateChange(Levelstate new_state, int level);
 	}
 	
 	/**
