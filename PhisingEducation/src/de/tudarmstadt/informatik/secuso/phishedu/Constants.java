@@ -11,4 +11,9 @@ public class Constants {
 	public static final String ARG_PAGE_NUMBER = "page";
 	public static final String ARG_RESULT = "result";
 	public static final String ARG_LEVEL = "level";
+	
+	/**
+	 * How many URLs do we try to get new urls after giving up.
+	 */
+	public static final int ATTACK_RETRY_URLS = 10;
 }

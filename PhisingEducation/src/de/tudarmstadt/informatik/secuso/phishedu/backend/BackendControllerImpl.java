@@ -20,6 +20,7 @@ import com.google.example.games.basegameutils.GameHelper;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 
+import de.tudarmstadt.informatik.secuso.phishedu.Constants;
 import de.tudarmstadt.informatik.secuso.phishedu.R;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.attacks.Level2Attack;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.generator.KeepGenerator;
@@ -333,7 +334,7 @@ public class BackendControllerImpl implements BackendController, GameStateLoaded
 
 		PhishURL base_url;
 		String before_url = "",after_url = "";
-		int tries = 5;
+		int tries = Constants.ATTACK_RETRY_URLS;
 		do{
 			//First we choose a random start URL
 			base_url=getPhishURL(PhishAttackType.NoPhish);
