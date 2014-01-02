@@ -72,7 +72,11 @@ public class MainActivity extends ActionBarActivity implements FrontendControlle
 			}
 		}
 		newFrag = fragCache.get(fragClass);
-		newFrag.setArguments(arguments);
+		if(newFrag.getArguments()!=null){
+			newFrag.getArguments().putAll(arguments);
+		}else{
+			newFrag.setArguments(arguments);
+		}
 		getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, newFrag).commitAllowingStateLoss();
 		/**
 		 * ensure that we only run onswitchto when attached.
