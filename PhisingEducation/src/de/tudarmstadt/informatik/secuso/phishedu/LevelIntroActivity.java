@@ -109,7 +109,7 @@ public class LevelIntroActivity extends SwipeActivity {
 		if (this.getLevel() == BackendControllerImpl.getInstance().getLevelCount()-1) {
 			return "Fertig";
 		}
-		return "Starte "+getResources().getString(BackendControllerImpl.getInstance().getLevelInfo(this.getLevel()).titleId);
+		return "Starte Übung";
 	}
 
 	@Override
