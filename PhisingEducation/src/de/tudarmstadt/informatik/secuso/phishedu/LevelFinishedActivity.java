@@ -26,6 +26,7 @@ public class LevelFinishedActivity extends SwipeActivity {
 	
 	private void setLevel(int level){
 		this.level=level;
+		updateUI();
 	}
 	
 	int getLevel(){
@@ -44,7 +45,7 @@ public class LevelFinishedActivity extends SwipeActivity {
 
 	@Override
 	int getTitle(){
-		return BackendControllerImpl.getInstance().getLevelInfo().titleId;
+		return BackendControllerImpl.getInstance().getLevelInfo(getLevel()).titleId;
 	};
 	
 	@Override

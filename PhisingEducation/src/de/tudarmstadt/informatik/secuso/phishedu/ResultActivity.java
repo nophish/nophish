@@ -1,5 +1,6 @@
 package de.tudarmstadt.informatik.secuso.phishedu;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
@@ -107,25 +108,8 @@ public class ResultActivity extends SwipeActivity {
 	}
 
 	@Override
-
 	protected View getPage(int page, LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View view = inflater.inflate(R.layout.result, container, false);
-		this.layout = view;
-		updateView();
-		return view;
-	}
-
-	public void setResult(int result){
-		this.result=result;
-		updateView();
-	}
-
-
-	private void updateView(){
-		View view = this.layout;
-		if(view == null){
-			return;
-		}
 		int level = BackendControllerImpl.getInstance().getLevel(); 
 
 		TextView text1 = (TextView) view.findViewById(R.id.result_text1);
@@ -160,6 +144,12 @@ public class ResultActivity extends SwipeActivity {
 		TextView urlText = (TextView) view.findViewById(R.id.url);
 		setUrlText(urlText);
 		urlText.setTextSize(25);
+		
+		return view;
+	}
+
+	public void setResult(int result){
+		this.result=result;
 	}
 
 	private int getReminderText(PhishAttackType attack_type, int level) {

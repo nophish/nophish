@@ -27,19 +27,24 @@ public abstract class PhishBaseActivity extends Fragment implements OnClickListe
 		this.onSwitchTo();
 	}
 	
-	@Override
-	public void onStart() {
-		updateUI();
-		super.onStart();
-	}
-	
 	final void updateUI(){
 		if(getActivity()!=null){
+			
+			for (int i : getClickables()) {
+				View clickview = getActivity().findViewById(i);
+				if(clickview != null){
+					clickview.setOnClickListener(this);	
+				}
+			}
+			
+			setTitles();
+			updateScore();
+			
 			updateUI(getActivity());
 		}
 	}
 	
-	void updateUI(Activity activity){}
+	void updateUI(Activity activity){};
 	
 	/**
 	 * Get the id of the Layout of this fragment.
@@ -81,8 +86,7 @@ public abstract class PhishBaseActivity extends Fragment implements OnClickListe
 	@Override
 	public void onResume() {
 		super.onResume();
-		updateScore();
-		setTitles();
+		updateUI();
 	}
 	
 	/**
@@ -99,15 +103,6 @@ public abstract class PhishBaseActivity extends Fragment implements OnClickListe
 		}else{
 			v = getLayout(inflater, container, savedInstanceState);
 		}
-
-		for (int i : getClickables()) {
-			View clickview = v.findViewById(i);;
-			if(clickview != null){
-				clickview.setOnClickListener(this);	
-			}
-		}
-		
-		setTitles();
 
 		return v;		 
 	}

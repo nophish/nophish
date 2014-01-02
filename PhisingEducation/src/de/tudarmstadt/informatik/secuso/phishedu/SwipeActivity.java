@@ -56,6 +56,8 @@ public abstract class SwipeActivity extends PhishBaseActivity implements ViewPag
 	}
 	
 	void updateUI(Activity v){
+		super.updateUI(v);
+		
 		mPager= (ViewPager) v.findViewById(R.id.pager);
 		mPageAdapter = new SwipePageAdapter(getFragmentManager(),this); 
 		mPager.setAdapter(mPageAdapter);
