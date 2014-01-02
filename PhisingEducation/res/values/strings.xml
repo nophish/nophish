@@ -171,11 +171,12 @@
     <string name="level_02_intro_05_text_01"><b>Angaben zum Standort</b>\n\nDer erste Block (von rechts) verrät dir den \"Standort\" deines Gesprächspartners. In diesem Fall \"de\" für Deutschland.</string>
     <string name="level_02_intro_06_text_01"><b>Angaben zum Unternehmen</b>\n\nDer zweite Block (von rechts) sagt dir, zu welchem \"Unternehmen\"" dein Gesprächspartner gehört.</string>
     <string name="level_02_intro_07_text_01"><b>Angaben zu Abteilungen</b>\n\nAb dem dritten Block (von rechts), beschreiben alle restlichen Blöcke (es können auch mehrere sein) verschiedene \"Abteilungen\" des Unternehmens deines Gesprächspartners.</string>
-    <string name="level_02_intro_08_text_01"><b>Der Wer-Bereich</b>\n\nDie wichtigsten zwei Blöcke einer Webadresse sind die ersten zwei Blöcke (von rechts betrachtet)  im Bereich \"Information über Gesprächspartner\". Wir nennen ihn \"Wer-Bereich\" (Unternehmen + Standort). Dieser Bereich muss von jedem Gesprächspartner, d.h. jeder Webseite, registriert werden. Bereits registrierte Namen können nicht noch einmal registriert werden. Diese zwei Blöcke sagen dir, <b>wer</b> dein Gesprächspartner <b>tatsächlich</b> ist, daher solltest du diese immer identifizieren und prüfen.</string>
+    <string name="level_02_intro_08_text_01"><b>Der Wer-Bereich</b>\n\nDie wichtigsten zwei Blöcke einer Webadresse sind die ersten zwei Blöcke (von rechts betrachtet)  im Bereich \"Information über Gesprächspartner\". Wir nennen ihn \"Wer-Bereich\" (Unternehmen + Standort). Dieser Bereich muss von jedem Gesprächspartner, d.h. jeder Webseite, bei einer zentralen Stelle registriert werden. Bereits registrierte Namen können nicht noch einmal registriert werden. Diese zwei Blöcke sagen dir, <b>wer</b> dein Gesprächspartner <b>tatsächlich</b> ist, daher solltest du diese immer identifizieren und prüfen.</string>
     <string name="level_02_intro_08_domain_description">Wer-Bereich\n(Unternehmen + Standort)</string>
     <string name="level_02_intro_08_subdomain_description">Abteilungen</string>
     <string name="level_02_intro_09_text_01"><b>Beispiele</b>\n\nIm Folgenden zeigen wir ein paar Beispiele für Webadressen. Überlege dir zunächst selbst, welcher Bereich in den angegebenen Webadressen der Wer-Bereich ist. Überprüfe im Anschluss deine Ergebnisse, indem du fortfährst.</string>
     <string name="level_02_intro_10_text_01"><b>Beispiele - Auflösung</b>\n\nIm Folgenden zeigen wir ein paar Beispiele für Webadressen. Überlege dir zunächst selbst, welcher Bereich in den angegebenen Webadressen der Wer-Bereich ist. Überprüfe im Anschluss deine Ergebnisse, indem du fortfährst.</string>
+    <string name="level_02_outro">Wenn du dir unsicher bist wie der Wer-Bereich eines Unternehmens aussieht, frage sicherheitshalber direkt bei diesem nach.</string>
     <string name="level_02_example_amazon">http://www.amazon.de</string>
     <string name="level_02_example_googlemail">https://mail.google.com/mail/?shva=1#inbox</string>
     <string name="level_02_example_ebay">http://pages.ebay.de/help/sell/quick-listing-tool.html</string>
@@ -219,15 +220,6 @@
     <string name="slash">/</string>
     <string name="reminder"><b>Zur Erinnerung - Webadressen</b></string>
     <string name="former_attacks"><b>Bisherige Angriffe</b></string>
-    <string name="reminder_subdomain">1.) Enthält der Bereich der Abteilungen dir bekannte Namen und entspricht der Wer-Bereich aber nicht dem Unternehmen deines Gesprächspartners, dann gebe hier keine Daten ein!</string>
-    <string name="reminder_ip">2.) Ist der Bereich zwischen \"http://\" und dem dritten Slash \"/\" eine IP-Adresse, ist diese der Wer-Bereich. Gib hier keine Daten ein!</string>
-    <string name="reminder_nonsense">3.) Enthält der Wer-Bereich Namen, die keinen Sinn ergeben oder nichts mit dem Dienst bzw. Unternehmen deines Gesprächspartners zu tun haben, dann gebe hier keine Daten ein! </string>
-    <string name="reminder_sounding_trustworthy">4.) Enthält der Wer-Bereich Namen, die vertrauenswürdig klingen, aber dennoch nichts mit dem Unternehmen deines Gesprächspartners zu tun haben, dann gebe hier keine Daten ein! </string>
-    <string name="reminder_brand_in_domain">5.) Enthält der Wer-Bereich nur eine ähnliche Abwandlung des dir bisher vertrauten Wer-Bereiches, dann gebe hier keine Daten ein!</string>
-    <string name="reminder_typo">6.) Enthält der Wer-Bereich einen Tippfehler, dann gebe hier keine Daten ein!</string>
-    <string name="reminder_typosquat">7.) Enthält der Wer-Bereich einen Buchstabendreher, dann gebe hier keine Daten ein!</string>
-    <string name="reminder_similar_chars">8.) Enthält der Wer-Bereich Ersetzungen von Buchstaben durch andere ähnliche Zeichen oder Zahlen, dann gebe hier keine Daten ein! </string>
-    <string name="reminder_deceiving_path">9.) Enthält der Bereich des Gesprächsthemas dir bekannte Namen oder Webadressen und entspricht der Wer-Bereich aber nicht dem Unternehmen deines Gesprächspartners, dann gebe hier keine Daten ein!</string>
     <string name="level_finished"><b>Geschafft!</b>\n\nGratulation! Du hast das Level erfolgreich abgeschlossen. Auf zum nächsten Level!</string>
 
     <!-- LEVEL 3 SUBDOMAIN -->
@@ -257,7 +249,7 @@
     <!-- LEVEL 5 - NONSENSE DOMAINS -->
     <string name="level_05_intro_00_text_01"><b>Angriff durch bezugslose oder unsinnige Namen im Wer-Bereich</b>\n\nEin weiterer Trick ist die Verwendung von bezugslosen oder gar unsinnigen Namen im Wer-Bereich einer Webadresse. Mit dieser Art des Angriffs beschäftigen wir uns in diesem Level.</string>
     <string name="level_05_intro_02_text_02"></string>
-    <string name="level_05_intro_02_text_03">Der wichtigste Bereich einer Webadresse, der Wer-Bereich, muss auch vom Phisher registriert werden. Schaue dir also auch immer die wichtigsten zwei Blöcke der Webadresse an, den Wer-Bereich. Enthält der Wer-Bereich Namen, die keinen Sinn ergeben oder nichts mit dem Dienst bzw. Unternehmen deines Gesprächspartners zu tun haben, dann <b>gebe hier keine Daten ein!</b>\n\nUnten sind zwei Beispiele für Phishing-Webadressen, die dieses Prinzip anwenden. In den Beispielen ist dein Gesprächspartner jeweils hsezis.de bzw. badcat.com (blau hinterlegt). Das sind jeweils die wichtigsten Wer-Bereiche der Webadressen. <b>Diese geben augenscheinlich keinen Sinn!</b></string>
+    <string name="level_05_intro_02_text_03">Der wichtigste Bereich einer Webadresse, der Wer-Bereich, muss auch vom Phisher registriert werden. Schaue dir also auch immer die wichtigsten zwei Blöcke der Webadresse an, den Wer-Bereich. Enthält der Wer-Bereich Namen, die keinen Sinn ergeben oder nichts mit dem Dienst bzw. Unternehmen deines Gesprächspartners zu tun haben, dann <b>gebe hier keine Daten ein!</b>\n\nUnten sind zwei Beispiele für Phishing-Webadressen, die dieses Prinzip anwenden. In den Beispielen ist dein Gesprächspartner jeweils hsezis.de bzw. badcat.com (blau hinterlegt). Das ist jeweils der Wer-Bereich der Webadresse. <b>Diese geben augenscheinlich keinen Sinn!</b></string>
     <string name="level_05_intro_02_nonsense_01">secure-login.mail.google.</string>
     <string name="level_05_intro_02_nonsense_02">com.</string>
     <string name="level_05_intro_02_nonsense_03">hsezis.de</string>
@@ -412,21 +404,31 @@
     <string name="wrong">Falsch</string>
     <string name="phish">Das ist ein Phish</string>
     <string name="select_part">Du musst einen Teil der Webadresse durch Klicken auswählen.</string>
+	
     <!-- subdomain -->
     <string name="level_03_reminder"><b>Erinnerung:</b> Enthält der Bereich der Abteilungen dir bekannte Namen und entspricht der Wer-Bereich aber nicht dem Unternehmen deines Gesprächspartners, dann gebe hier keine Daten ein!</string>
+	<string name="reminder_subdomain">1.) Enthält der Bereich der Abteilungen dir bekannte Namen und entspricht der Wer-Bereich aber nicht dem Unternehmen deines Gesprächspartners, dann gebe hier keine Daten ein!</string>
     <!-- ip -->
     <string name="level_04_reminder"><b>Erinnerung:</b> Enthält der Bereich zwischen \"http://\" und dem dritten Slash \"/\" eine IP-Adresse (4-stellige Zahlenfolge, durch Punkte getrennt) anstelle des Wer-Bereiches, dann gebe hier keine Daten ein!</string>
+    <string name="reminder_ip">2.) Ist der Bereich zwischen \"http://\" und dem dritten Slash \"/\" eine IP-Adresse, ist diese der Wer-Bereich. Gib hier keine Daten ein!</string>
     <!-- nonsense -->
     <string name="level_05_reminder"><b>Erinnerung:</b> Enthält der Wer-Bereich Namen, die keinen Sinn ergeben oder nichts mit dem Dienst bzw. Unternehmen deines Gesprächspartners zu tun haben, dann gebe hier keine Daten ein! </string>
+    <string name="reminder_nonsense">3.) Enthält der Wer-Bereich Namen, die keinen Sinn ergeben oder nichts mit dem Dienst bzw. Unternehmen deines Gesprächspartners zu tun haben, dann gebe hier keine Daten ein! </string>
     <!-- unrelated but trustworthy -->
     <string name="level_06_reminder"><b>Erinnerung:</b> Enthält der Wer-Bereich Namen, die vertrauenswürdig klingen, aber dennoch nichts mit dem Unternehmen deines Gesprächspartners zu tun haben, dann gebe hier keine Daten ein! </string>
+    <string name="reminder_sounding_trustworthy">4.) Enthält der Wer-Bereich Namen, die vertrauenswürdig klingen, aber dennoch nichts mit dem Unternehmen deines Gesprächspartners zu tun haben, dann gebe hier keine Daten ein! </string>
     <!-- misleading (facebook-login) -->
     <string name="level_07_reminder"><b>Erinnerung:</b> Enthält der Wer-Bereich nur eine ähnliche Abwandlung des dir bisher vertrauten Wer-Bereiches oder\nenthält der Wer-Bereich einen Tippfehler oder\nenthält der Wer-Bereich einen Buchstabendreher, dann gebe hier keine Daten ein!</string>
-
+    <string name="reminder_brand_in_domain">5.) Enthält der Wer-Bereich nur eine ähnliche Abwandlung des dir bisher vertrauten Wer-Bereiches, dann gebe hier keine Daten ein!</string>
+    <string name="reminder_typo">6.) Enthält der Wer-Bereich einen Tippfehler, dann gebe hier keine Daten ein!</string>
+    <string name="reminder_typosquat">7.) Enthält der Wer-Bereich einen Buchstabendreher, dann gebe hier keine Daten ein!</string>
     <!-- homographic -->
     <string name="level_08_reminder"><b>Erinnerung:</b> Enthält der Wer-Bereich Ersetzungen von Buchstaben durch andere ähnliche Zeichen oder Zahlen, dann gebe hier keine Daten ein!</string>
+    <string name="reminder_similar_chars">8.) Enthält der Wer-Bereich Ersetzungen von Buchstaben durch andere ähnliche Zeichen oder Zahlen, dann gebe hier keine Daten ein! </string>
+    
     <!-- hostname in path -->
     <string name="level_09_reminder"><b>Erinnerung:</b> Enthält der Bereich des Gesprächsthemas dir bekannte Namen oder Webadressen und entspricht der Wer-Bereich aber nicht dem Unternehmen deines Gesprächspartners, dann gebe hier keine Daten ein!</string>
+    <string name="reminder_deceiving_path">9.) Enthält der Bereich des Gesprächsthemas dir bekannte Namen oder Webadressen und entspricht der Wer-Bereich aber nicht dem Unternehmen deines Gesprächspartners, dann gebe hier keine Daten ein!</string>
     <!-- http/https -->
     <string name="level_10_reminder"><b>Erinnerung:</b> In diesem Level sollst prinzipiell Webadressen ablehnen, die kein https:// verwenden. Zusätzlich musst du selbstverständlich überprüfen, ob die Webadresse eine Phishing-Adresse ist.</string>
     <string name="level_10_reminder_http_legitimate"><b>Erinnerung:</b> Die Webadresse ist zwar legitim, aber verwendet nur http://. Daher kannst du dich hier nicht darauf verlassen, dass dein Gespräch von keinem Dritten mitgehört werden kann. Außerdem wird dir mit http:// nicht versichert, dass dein Gesprächspartner der ist, der er im Wer-Bereich vorgibt zu sein.</string>

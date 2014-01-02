@@ -18,6 +18,12 @@ import de.tudarmstadt.informatik.secuso.phishedu.backend.attacks.Unrelated;
 public class NoPhishLevelInfo {
 	private static final double LEVEL_DISTANCE = 1.5;
 	
+	private static final int[] levelOutros = {
+		0,
+		0,
+		R.string.level_02_outro
+	};
+	
 	private static final int[] levelTitlesIds = { R.string.level_title_00,
 			R.string.level_title_01, R.string.level_title_02,
 			R.string.level_title_03, R.string.level_title_04,
@@ -109,6 +115,7 @@ public class NoPhishLevelInfo {
 
 	public final int titleId;
 	public final int subTitleId;
+	public final int outroId;
 	public final int[] introLayouts;
 	public final int[] finishedLayouts;
 	public final int levelId;
@@ -131,6 +138,11 @@ public class NoPhishLevelInfo {
 			this.levelNumber = "E" + (levelid + 1);
 		} else {
 			this.levelNumber = Integer.toString(levelid - 1);
+		}
+		if(levelid < levelOutros.length){
+			this.outroId = levelOutros[levelid];
+		}else{
+			this.outroId = 0;
 		}
 	}
 	public int getlevelPoints(){
@@ -157,5 +169,5 @@ public class NoPhishLevelInfo {
 		}
 		return base_phishes;
 	}
-
+	
 }

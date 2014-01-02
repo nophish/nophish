@@ -16,7 +16,7 @@ public class MisleadingAttack extends AbstractAttack {
 	int attackpos=0;
 	int attack_domain=-1;
 	private static final String[] DOMAIN_ADDITIONS={
-		"-login",
+		"login",
 		"-anmelden",
 		"-secure",
 		"-sicher",
@@ -24,18 +24,18 @@ public class MisleadingAttack extends AbstractAttack {
 		"-konto",
 		"-verify",
 		"-verification",
-		"-verifizierung",
+		"verifizierung",
 		"-signin",
 		"-com",
 		"-de",
 		"-home",
-		"-update",
+		"update",
 		"-registration",
-		"-registrierung",
+		"registrierung",
 		"-settings",
 		"-einstellungen",
 		"-service",
-		"-support",
+		"support",
 		"-hilfe"
 	};
 	/**
