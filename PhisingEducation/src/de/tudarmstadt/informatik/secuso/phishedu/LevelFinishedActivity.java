@@ -72,12 +72,4 @@ public class LevelFinishedActivity extends SwipeActivity {
 			((TextView) view.findViewById(R.id.total_score)).setText(Integer.toString(BackendControllerImpl.getInstance().getTotalPoints()));
 		}
 	}
-	
-	/**
-	 * In Level0 back is not allowed to force the user to read the description.
-	 */
-	@Override
-	boolean enableHomeButton() {
-		return getLevel() != 0;
-	}
 }
