@@ -1,28 +1,15 @@
 package de.tudarmstadt.informatik.secuso.phishedu;
 
-import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
-import android.content.pm.ActivityInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager.NameNotFoundException;
-import android.graphics.Color;
-import android.graphics.Typeface;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
-import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController.BackendInitListener;
-import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController.Levelstate;
-import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController.OnLevelChangeListener;
-import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController.OnLevelstateChangeListener;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendControllerImpl;
-import de.tudarmstadt.informatik.secuso.phishedu.backend.FrontendController;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.MainActivity;
 
 /**
@@ -92,9 +79,8 @@ public class StartMenuActivity extends PhishBaseActivity {
 	}
 	
 	@Override
-	public boolean onBackPressed() {
+	public void onBackPressed() {
 		showExitPopup();
-		return false;
 	}
 
 	private void showExitPopup() {

@@ -36,18 +36,14 @@ public class FindAddressBarActivity extends PhishBaseActivity {
 	 * Going back not possible, only cancel level
 	 */
 	@Override
-	public boolean onBackPressed() {
+	public void onBackPressed() {
 		levelCanceldWarning();
-		return false;
 	}
 	
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 		// Respond to the action bar's Up/Home button
-		case android.R.id.home:
-			levelCanceldWarning();
-			return true;
 		case R.id.restart_level:
 			levelRestartWarning();
 			return true;
@@ -58,5 +54,10 @@ public class FindAddressBarActivity extends PhishBaseActivity {
 	@Override
 	public int getLayout() {
 		return R.layout.level_01_task;
+	}
+	
+	@Override
+	int getSubTitle() {
+		return R.string.exercise;
 	}
 }

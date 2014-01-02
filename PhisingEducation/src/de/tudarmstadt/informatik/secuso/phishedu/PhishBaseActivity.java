@@ -46,9 +46,10 @@ public abstract class PhishBaseActivity extends Fragment implements OnClickListe
 	 * If the fragment wants to react on the backpressed button it can implements this function
 	 * @return return true to continue with the back event. False otherwise. 
 	 */
-	public boolean onBackPressed(){
-		((MainActivity)getActivity()).switchToFragment(StartMenuActivity.class);
-		return false;
+	public void onBackPressed(){
+		if(enableHomeButton()){
+		  ((MainActivity)getActivity()).switchToFragment(StartMenuActivity.class);
+		}
 	};
 
 	/**
@@ -61,7 +62,7 @@ public abstract class PhishBaseActivity extends Fragment implements OnClickListe
 		return 0;
 	};
 	int getIcon(){return 0;}
-	public boolean enableHomeButton(){return true;};
+	boolean enableHomeButton(){return true;};
 	
 	public void onSwitchTo(){};
 	
@@ -231,8 +232,7 @@ public abstract class PhishBaseActivity extends Fragment implements OnClickListe
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 		case android.R.id.home:
-			((MainActivity)getActivity()).switchToFragment(StartMenuActivity.class);
-			return true;
+			onBackPressed();
 		}
 		return super.onOptionsItemSelected(item);
 	}

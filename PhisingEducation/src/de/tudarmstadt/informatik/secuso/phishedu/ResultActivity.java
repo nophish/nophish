@@ -102,9 +102,8 @@ public class ResultActivity extends SwipeActivity {
 	 * Going back not possible, only cancel level
 	 */
 	@Override
-	public boolean onBackPressed() {
+	public void onBackPressed() {
 		levelCanceldWarning();
-		return false;
 	}
 
 	@Override
@@ -216,26 +215,16 @@ public class ResultActivity extends SwipeActivity {
 
 	@Override
 	int getTitle() {
+		return BackendControllerImpl.getInstance().getLevelInfo().titleId;
+	}
+
+	@Override
+	int getSubTitle() {
 		if (this.result == PhishResult.Phish_Detected.getValue()
 				|| this.result == PhishResult.NoPhish_Detected.getValue()) {
 			return R.string.correct;
 		} else {
 			return R.string.wrong;
-		}
-	}
-
-	@Override
-	int getSubTitle() {
-		if(getLevel()==2 || getLevel() == 10){
-			//no subtitle in level2 and level10;
-			return 0;
-		}else if (this.result == PhishResult.Phish_Detected.getValue()
-				|| this.result == PhishResult.Phish_NotDetected.getValue()) {
-			return R.string.phish;
-		} else if(this.result == RESULT_GUESSED){
-			return R.string.marked_domain_wrongly;
-		}else{
-			return R.string.no_phish;
 		}
 	}
 

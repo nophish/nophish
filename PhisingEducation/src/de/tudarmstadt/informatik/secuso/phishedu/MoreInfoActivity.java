@@ -59,7 +59,7 @@ public class MoreInfoActivity extends PhishBaseActivity {
 	
 	@Override
 	int getTitle() {
-		return R.string.title_activity_about;
+		return R.string.button_more_info;
 	}
 
 }

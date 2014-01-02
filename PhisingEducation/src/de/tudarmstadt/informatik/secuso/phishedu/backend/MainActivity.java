@@ -85,9 +85,7 @@ public class MainActivity extends ActionBarActivity implements FrontendControlle
 	
 	@Override
 	public void onBackPressed() {
-		if(current_frag.onBackPressed()){
-			super.onBackPressed();
-		}
+		current_frag.onBackPressed();
 	}
 	
 	@Override
@@ -201,6 +199,7 @@ public class MainActivity extends ActionBarActivity implements FrontendControlle
 	
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
+		super.onOptionsItemSelected(item);
 		return current_frag.onOptionsItemSelected(item);
 	}
 	

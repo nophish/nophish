@@ -270,7 +270,7 @@ public class AwarenessActivity extends PhishBaseActivity {
 	
 	@Override
 	int getSubTitle() {
-		return R.string.exercise;
+		return R.string.title_activity_awareness;
 	}
 
 }

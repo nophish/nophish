@@ -1,13 +1,11 @@
 package de.tudarmstadt.informatik.secuso.phishedu;
 
 import android.os.Bundle;
-import android.support.v7.app.ActionBar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendControllerImpl;
-import de.tudarmstadt.informatik.secuso.phishedu.backend.NoPhishLevelInfo;
 
 public class LevelFinishedActivity extends SwipeActivity {
 	protected void onStartClick() {
@@ -17,6 +15,11 @@ public class LevelFinishedActivity extends SwipeActivity {
 	@Override
 	protected String startButtonText() {
 		return "Weiter zu " + getResources().getString(BackendControllerImpl.getInstance().getLevelInfo(this.getLevel()+1).titleId);
+	}
+	
+	@Override
+	int getIcon() {
+		return R.drawable.desktop;
 	}
 
 	@Override
@@ -51,10 +54,10 @@ public class LevelFinishedActivity extends SwipeActivity {
 	}
 	
 	/**
-	 * after finishing a level the user is not allowed to go back
+	 * In Level0 back is not allowed to force the user to read the description.
 	 */
 	@Override
-	public boolean onBackPressed() {
-		return false;
+	boolean enableHomeButton() {
+		return getLevel() != 0;
 	}
 }

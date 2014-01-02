@@ -33,14 +33,14 @@ public class URLTaskActivity extends PhishBaseActivity {
 
 		final HorizontalScrollView scroll = (HorizontalScrollView) v.findViewById(R.id.url_horizintal_sv);
 		scroll.post(new Runnable() {            
-		    @Override
-		    public void run() {
-		           scroll.fullScroll(View.FOCUS_RIGHT);              
-		    }
+			@Override
+			public void run() {
+				scroll.fullScroll(View.FOCUS_RIGHT);              
+			}
 		});
 
 		this.v=v;
-		
+
 		return v;
 	}
 
@@ -85,7 +85,9 @@ public class URLTaskActivity extends PhishBaseActivity {
 	int getTitle(){
 		return BackendControllerImpl.getInstance().getLevelInfo(getLevel()).titleId;
 	};
-	int getIcon(){return R.drawable.desktop;}
+	int getIcon(){
+		return R.drawable.desktop;
+	}
 
 	@Override
 	int getSubTitle() {
@@ -142,10 +144,6 @@ public class URLTaskActivity extends PhishBaseActivity {
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
-		// Respond to the action bar's Up/Home button
-		case android.R.id.home:
-			levelCanceldWarning();
-			return true;
 		case R.id.restart_level:
 			levelRestartWarning();
 			return true;
@@ -154,11 +152,10 @@ public class URLTaskActivity extends PhishBaseActivity {
 	}
 
 	@Override
-	public boolean onBackPressed() {
+	public void onBackPressed() {
 		levelCanceldWarning();
-		return false;
 	}
-	
+
 	@Override
 	public void onAttach(Activity activity) {
 		super.onAttach(activity);

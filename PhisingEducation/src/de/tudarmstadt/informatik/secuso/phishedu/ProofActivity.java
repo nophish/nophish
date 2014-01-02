@@ -79,9 +79,6 @@ public class ProofActivity extends SwipeActivity {
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 		// Respond to the action bar's Up/Home button
-		case android.R.id.home:
-			levelCanceldWarning();
-			return true;
 		case R.id.restart_level:
 			levelRestartWarning();
 			return true;
@@ -90,7 +87,6 @@ public class ProofActivity extends SwipeActivity {
 	}
 	
 	
-	@Override
 	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
 		inflater.inflate(R.menu.urltask_menu, menu);
 		super.onCreateOptionsMenu(menu, inflater);
@@ -100,9 +96,8 @@ public class ProofActivity extends SwipeActivity {
 	 * Going back not possible, only cancel level
 	 */
 	@Override
-	public boolean onBackPressed() {
+	public void onBackPressed() {
 		levelCanceldWarning();
-		return false;
 	}
 
 	@Override
