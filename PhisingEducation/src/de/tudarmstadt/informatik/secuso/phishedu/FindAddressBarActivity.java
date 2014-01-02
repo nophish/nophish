@@ -17,11 +17,6 @@ public class FindAddressBarActivity extends PhishBaseActivity {
 	}
 	
 	@Override
-	int getSubTitle() {
-		return R.string.exercise;
-	}
-	
-	@Override
 	public int[] getClickables() {
 		return new int[]{
 				R.id.level_01_exercise_button

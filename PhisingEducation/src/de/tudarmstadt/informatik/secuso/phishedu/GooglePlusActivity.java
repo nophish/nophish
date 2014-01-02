@@ -116,4 +116,9 @@ public class GooglePlusActivity extends PhishBaseActivity {
 				R.id.button_delete_remote_data
 		};
 	}
+	
+	@Override
+	int getTitle() {
+		return R.string.button_social;
+	}
 }

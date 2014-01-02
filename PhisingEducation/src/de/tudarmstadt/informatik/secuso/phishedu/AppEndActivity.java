@@ -26,5 +26,10 @@ public class AppEndActivity extends PhishBaseActivity {
 			break;
 		}
 	}
+	
+	@Override
+	int getTitle() {
+		return R.string.title_activity_app_end;
+	}
 
 }

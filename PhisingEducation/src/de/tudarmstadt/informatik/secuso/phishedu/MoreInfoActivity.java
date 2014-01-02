@@ -3,13 +3,9 @@ package de.tudarmstadt.informatik.secuso.phishedu;
 import java.util.LinkedHashMap;
 
 import android.content.Intent;
-import android.content.pm.ActivityInfo;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.app.NavUtils;
-import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -59,6 +55,11 @@ public class MoreInfoActivity extends PhishBaseActivity {
 		Intent browserIntent = new Intent(Intent.ACTION_VIEW);
 		browserIntent.setData(Uri.parse(url));
 		startActivity(browserIntent);
+	}
+	
+	@Override
+	int getTitle() {
+		return R.string.title_activity_about;
 	}
 
 }

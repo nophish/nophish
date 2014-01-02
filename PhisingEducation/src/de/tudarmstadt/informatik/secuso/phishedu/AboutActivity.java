@@ -2,14 +2,16 @@ package de.tudarmstadt.informatik.secuso.phishedu;
 
 import android.content.Intent;
 import android.net.Uri;
-import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.ViewGroup;
 
 public class AboutActivity extends PhishBaseActivity implements OnClickListener {
 
+	@Override
+	int getTitle() {
+		return R.string.title_activity_about;
+	}
+	
 	@Override
 	public int getLayout() {
 		return R.layout.about;

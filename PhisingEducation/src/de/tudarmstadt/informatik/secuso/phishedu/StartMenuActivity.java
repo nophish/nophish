@@ -131,9 +131,4 @@ public class StartMenuActivity extends PhishBaseActivity {
 	public boolean enableHomeButton() {
 		return false;
 	}
-	
-	@Override
-	int getTitle() {
-		return R.string.title_activity_start_menu;
-	}
 }

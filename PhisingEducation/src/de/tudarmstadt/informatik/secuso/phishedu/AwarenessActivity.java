@@ -262,5 +262,15 @@ public class AwarenessActivity extends PhishBaseActivity {
 				R.id.button_abschicken
 		};
 	}
+	
+	@Override
+	int getTitle() {
+		return BackendControllerImpl.getInstance().getLevelInfo().titleId;
+	}
+	
+	@Override
+	int getSubTitle() {
+		return R.string.exercise;
+	}
 
 }
