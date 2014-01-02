@@ -80,7 +80,7 @@ public class NoPhishLevelInfo {
 			{ R.layout.level_00_finish_00a, R.layout.level_00_finish_00, R.layout.level_00_finish_01,
 					R.layout.level_00_finish_02, R.layout.level_00_finish_03,
 					R.layout.level_00_finish_04, R.layout.level_00_finish_05,
-					R.layout.level_00_finish_06, R.layout.level_00_finish_07,
+					R.layout.level_00_finish_07, R.layout.level_00_finish_06,
 					R.layout.level_00_finish_08 },
 			{ R.layout.level_01_finish_00, }, { R.layout.level_02_finish_00, } };
 

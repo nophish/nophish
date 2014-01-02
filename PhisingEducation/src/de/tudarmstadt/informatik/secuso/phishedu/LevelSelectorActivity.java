@@ -1,13 +1,11 @@
 package de.tudarmstadt.informatik.secuso.phishedu;
 
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendControllerImpl;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.NoPhishLevelInfo;
 
@@ -75,10 +73,11 @@ public class LevelSelectorActivity extends SwipeActivity implements
 	@Override
 	public void onClickPage(int page) {
 		if (page <= BackendControllerImpl.getInstance().getMaxUnlockedLevel()) {
-			if (page == 0 && BackendControllerImpl.getInstance().getMaxUnlockedLevel() > 0 &&  !Constants.UNLOCK_ALL_LEVELS) {
+			if (page == 0 && BackendControllerImpl.getInstance().getMaxUnlockedLevel() > 0) {
 				// level 0 cannot be replayed show finished instead.
 				Bundle args = new Bundle();
 				args.putInt(Constants.ARG_LEVEL, 0);
+				args.putBoolean(Constants.ARG_ENABLE_HOME, true);
 				switchToFragment(LevelFinishedActivity.class, args);
 			} else {
 				BackendControllerImpl.getInstance().startLevel(page);

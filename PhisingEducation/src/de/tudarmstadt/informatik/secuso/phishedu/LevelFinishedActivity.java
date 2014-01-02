@@ -13,6 +13,7 @@ public class LevelFinishedActivity extends SwipeActivity {
 	}
 	
 	int level;
+	boolean enable_homebutton=false;
 	
 	@Override
 	public void onSwitchTo() {
@@ -20,8 +21,22 @@ public class LevelFinishedActivity extends SwipeActivity {
 			this.setLevel(getArguments().getInt(Constants.ARG_LEVEL));
 		}else{
 			this.setLevel(BackendControllerImpl.getInstance().getLevel());
+			
+		}
+		if(getArguments().containsKey(Constants.ARG_ENABLE_HOME)){
+			this.enable_homebutton = getArguments().getBoolean(Constants.ARG_ENABLE_HOME);
+		}else{
+			this.enable_homebutton = false;
 		}
 		super.onSwitchTo();
+	}
+	
+	private boolean getEnableHome(){
+		if(getLevel()==0 && !enable_homebutton){
+			return false;
+		}else{
+			return true;
+		}
 	}
 	
 	private void setLevel(int level){
@@ -71,5 +86,10 @@ public class LevelFinishedActivity extends SwipeActivity {
 			((TextView) view.findViewById(R.id.level_score)).setText(Integer.toString(BackendControllerImpl.getInstance().getLevelPoints()));
 			((TextView) view.findViewById(R.id.total_score)).setText(Integer.toString(BackendControllerImpl.getInstance().getTotalPoints()));
 		}
+	}
+	
+	@Override
+	boolean enableHomeButton() {
+		return getEnableHome();
 	}
 }
