@@ -365,7 +365,7 @@
     <string name="fake">Gefälscht</string>
     <string name="URLs">Korrekt:</string>
     <string name="level_failed_title">Level nicht bestanden!</string>
-    <string name="level_failed_text">Leider konntest du nicht genügend Punkte sammeln um das Level zu bestehen. Versuche es am besten erneut!</string>
+    <string name="level_failed_text">Leider hast du alle deine Leben verloren. Versuche es am besten erneut!</string>
     <string name="level_failed_button">Level neu starten</string>
     <string name="level_cancel_title">Level abbrechen?</string>
     <string name="level_cancel_text">Wenn du diese Seite verlässt wird dein Spielstand für dieses Level nicht gespeichert. Bist du dir sicher?</string>
