@@ -68,6 +68,25 @@
             android:layout_below="@+id/level_score_text"
             android:text="@string/number"
             android:textAppearance="?android:attr/textAppearanceMedium" />
+        
+        <TextView
+            android:id="@+id/level_max_score_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/total_score_text"
+            android:layout_below="@+id/level_score"
+            android:text="@string/level_max_score"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/level_max_score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/total_score_text"
+            android:layout_below="@+id/level_max_score_text"
+            android:text="@string/number"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
     </RelativeLayout>
 
 </ScrollView>

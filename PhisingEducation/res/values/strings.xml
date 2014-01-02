@@ -170,8 +170,8 @@
     <string name="level_02_intro_04_text_01"><b>Aufbau des Gesprächspartner-Bereiches</b>\n\nDieser Bereich wird durch Punkte in einzelne Blöcke eingeteilt.\n\n<b>Merke:</b> Diese Blöcke werden von rechts nach links gelesen.</string>
     <string name="level_02_intro_05_text_01"><b>Angaben zum Standort</b>\n\nDer erste Block (von rechts) verrät dir den \"Standort\" deines Gesprächspartners. In diesem Fall \"de\" für Deutschland.</string>
     <string name="level_02_intro_06_text_01"><b>Angaben zum Unternehmen</b>\n\nDer zweite Block (von rechts) sagt dir, zu welchem \"Unternehmen\"" dein Gesprächspartner gehört.</string>
-    <string name="level_02_intro_07_text_01"><b>Weitere Angaben</b>\n\nAb dem dritten Block (von rechts), beschreiben alle restlichen Blöcke (es können auch mehrere sein) verschiedene \"Abteilungen\" des Unternehmens deines Gesprächspartners.</string>
-    <string name="level_02_intro_08_text_01"><b>Zusammenfassung</b>\n\nDie wichtigsten zwei Blöcke einer Webadresse sind die ersten zwei Blöcke (von rechts betrachtet)  im Bereich \"Information über Gesprächspartner\". Wir nennen ihn \"Wer-Bereich\" (Unternehmen + Standort). Dieser Bereich muss von jedem Gesprächspartner, d.h. jeder Webseite, registriert werden. Bereits registrierte Namen können nicht noch einmal registriert werden. Diese zwei Blöcke sagen dir, <b>wer</b> dein Gesprächspartner <b>tatsächlich</b> ist, daher solltest du diese immer identifizieren und prüfen.</string>
+    <string name="level_02_intro_07_text_01"><b>Angaben zu Abteilungen</b>\n\nAb dem dritten Block (von rechts), beschreiben alle restlichen Blöcke (es können auch mehrere sein) verschiedene \"Abteilungen\" des Unternehmens deines Gesprächspartners.</string>
+    <string name="level_02_intro_08_text_01"><b>Der Wer-Bereich</b>\n\nDie wichtigsten zwei Blöcke einer Webadresse sind die ersten zwei Blöcke (von rechts betrachtet)  im Bereich \"Information über Gesprächspartner\". Wir nennen ihn \"Wer-Bereich\" (Unternehmen + Standort). Dieser Bereich muss von jedem Gesprächspartner, d.h. jeder Webseite, registriert werden. Bereits registrierte Namen können nicht noch einmal registriert werden. Diese zwei Blöcke sagen dir, <b>wer</b> dein Gesprächspartner <b>tatsächlich</b> ist, daher solltest du diese immer identifizieren und prüfen.</string>
     <string name="level_02_intro_08_domain_description">Wer-Bereich\n(Unternehmen + Standort)</string>
     <string name="level_02_intro_08_subdomain_description">Abteilungen</string>
     <string name="level_02_intro_09_text_01"><b>Beispiele</b>\n\nIm Folgenden zeigen wir ein paar Beispiele für Webadressen. Überlege dir zunächst selbst, welcher Bereich in den angegebenen Webadressen der Wer-Bereich ist. Überprüfe im Anschluss deine Ergebnisse, indem du fortfährst.</string>
@@ -386,6 +386,7 @@
     <string name="url">Beispiel URL</string>
     <string name="level_score">Levelpunkte:</string>
     <string name="total_score">Gesamtpunkte:</string>
+    <string name="level_max_score">Erreichbare Levelpunkte:</string>
     <string name="phish_proof_01">Ja, die Webadresse ist gefälscht. Nun zeige uns den Wer-Bereich. <b>Tippe</b> die Stelle an.</string>
     <string name="phish_proof_02">Klicke hierzu den entsprechenden Bereich der Webadresse an. <b>Wenn möglich, wähle nicht den Wer-Bereich!</b></string>
     <string name="title_level_finished">Level geschafft</string>

@@ -9,6 +9,16 @@ import java.util.List;
  *
  */
 public interface PhishURL{
+	
+	/**
+	 * The default points the user gets for correctly identifying URLS
+	 */
+	public static final int DEFAULT_CORRECT_POINTS = 15;
+	/**
+	 * The default points the user gets for falsly identifiying URLS
+	 */
+	public static final int DEFAULT_INCORRECT_POINTS = -10;
+	
 	/**
 	 * Return the parts of the URL.
 	 * When concardinatend they build up the whole url.

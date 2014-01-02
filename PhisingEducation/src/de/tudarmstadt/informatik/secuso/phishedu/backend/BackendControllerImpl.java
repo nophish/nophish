@@ -49,7 +49,6 @@ public class BackendControllerImpl implements BackendController, GameStateLoaded
 		KeepGenerator.class,
 	};
 	private static final int URL_CACHE_SIZE = 500;
-	private static final double LEVEL_DISTANCE = 1.5;
 
 	private static Random random = new Random();
 
@@ -406,7 +405,7 @@ public class BackendControllerImpl implements BackendController, GameStateLoaded
 		int offset=this.current_url.getPoints(result);
 		//with this function we ensure that the user gets more points per level
 		//This ensures that there is no point in running the same level multiple times to collect points
-		offset*=Math.pow(LEVEL_DISTANCE, this.getLevel());
+		offset=getLevelInfo().weightLevelPoints(offset);
 		this.frontend.displayToastScore(offset);
 		this.progress.setLevelPoints(this.getLevelPoints()+offset);
 
@@ -424,7 +423,7 @@ public class BackendControllerImpl implements BackendController, GameStateLoaded
 			}
 		}
 	}
-
+	
 	@Override
 	public boolean partClicked(int part) {
 		checkinited();
@@ -440,6 +439,14 @@ public class BackendControllerImpl implements BackendController, GameStateLoaded
 	public int getTotalPoints(){
 		checkinited();
 		return this.progress.getPoints();
+	}
+	
+	@Override
+	public int getLevelmaxPoints(){
+		//TODO: DEFAULT_CORRECT_POINTS is the standard value for correctly identified URLs
+		//The reset of the program is able to handle different Points per URL.
+		//When using this feature this function must be changed accordingly
+		return getLevelInfo().weightLevelPoints(PhishURL.DEFAULT_CORRECT_POINTS)*levelCorrectURLs();
 	}
 
 	public int getLevelPoints(){
@@ -511,10 +518,12 @@ public class BackendControllerImpl implements BackendController, GameStateLoaded
 
 	@Override
 	public int levelCorrectURLs() {
-		if(getLevel()==2){
-			return 5;
-		}
-		return 6+(2*this.getLevel());
+		return getLevelInfo().levelCorrectURLs();
+	}
+	
+	@Override
+	public int levelCorrectPhishes() {
+		return getLevelInfo().levelCorrectPhishes();
 	}
 
 	private int levelURLs() {
@@ -530,13 +539,7 @@ public class BackendControllerImpl implements BackendController, GameStateLoaded
 
 	private int levelPhishes() {
 		checkinited();
-		int base_phishes=0;
-		if(this.getLevel()==2){
-			base_phishes=levelCorrectURLs();
-		}else{
-			base_phishes=levelCorrectURLs()/2;
-		}
-		return base_phishes+progress.getLevelResults(PhishResult.Phish_NotDetected);
+		return levelCorrectPhishes()+progress.getLevelResults(PhishResult.Phish_NotDetected);
 	}
 
 	private int doneURLs() {

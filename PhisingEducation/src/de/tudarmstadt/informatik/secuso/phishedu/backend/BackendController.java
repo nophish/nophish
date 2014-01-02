@@ -104,6 +104,12 @@ public interface BackendController extends GameHelperListener{
 	public int getLevelPoints();
 	
 	/**
+	 * Get the maximum number of points the user might get in this level.
+	 * @return The maximum number of possible Points in this level.
+	 */
+	public int getLevelmaxPoints();
+	
+	/**
 	 * This function is called when the user chooses weather this URL is a phish or not 
 	 * @param accptance true of the user thinks this is a phish. false otherwise.
 	 * @return a {@link PhishResult} enum representing the state of the phish
@@ -143,6 +149,12 @@ public interface BackendController extends GameHelperListener{
 	 * @return An Integer representing the number of URLs in this level
 	 */
 	public int levelCorrectURLs();
+	
+	/**
+	 * How many Phishes must the user answer in this Level
+	 * @return An Integer representing the number of Phishes in this level
+	 */
+	public int levelCorrectPhishes();
 	
 	/**
 	 * How many URLs did the user correctly identfiy

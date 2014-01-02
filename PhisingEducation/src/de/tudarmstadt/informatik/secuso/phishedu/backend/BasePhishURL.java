@@ -18,7 +18,7 @@ public class BasePhishURL implements PhishURL{
 	 * 0: he got it right
 	 * 1: he did not get it right
 	 */
-	private int[] points = {15,-10};
+	private int[] points = {DEFAULT_CORRECT_POINTS, DEFAULT_INCORRECT_POINTS};
 	
 	public String[] getParts(){return parts;}
 	public PhishSiteType getSiteType(){return this.siteType;}

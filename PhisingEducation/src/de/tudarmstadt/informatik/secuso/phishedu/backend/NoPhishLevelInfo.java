@@ -16,6 +16,8 @@ import de.tudarmstadt.informatik.secuso.phishedu.backend.attacks.Unrelated;
  * This Class represents the information about a Level
  */
 public class NoPhishLevelInfo {
+	private static final double LEVEL_DISTANCE = 1.5;
+	
 	private static final int[] levelTitlesIds = { R.string.level_title_00,
 			R.string.level_title_01, R.string.level_title_02,
 			R.string.level_title_03, R.string.level_title_04,
@@ -133,6 +135,27 @@ public class NoPhishLevelInfo {
 	}
 	public int getlevelPoints(){
 		return BackendControllerImpl.getInstance().getLevelPoints(this.levelId);
+	}
+
+	public int weightLevelPoints(int base_points){
+		return (int) (base_points*Math.pow(LEVEL_DISTANCE, levelId));
+	}
+	
+	public int levelCorrectURLs() {
+		if(levelId==2){
+			return 5;
+		}
+		return 6+(2*this.levelId);
+	}
+	
+	public int levelCorrectPhishes() {
+		int base_phishes=0;
+		if(this.levelId==2){
+			base_phishes=levelCorrectURLs();
+		}else{
+			base_phishes=levelCorrectURLs()/2;
+		}
+		return base_phishes;
 	}
 
 }
