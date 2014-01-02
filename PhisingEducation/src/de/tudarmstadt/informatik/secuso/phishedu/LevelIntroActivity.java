@@ -101,7 +101,7 @@ public class LevelIntroActivity extends SwipeActivity {
 		}else if(this.getLevel() == BackendControllerImpl.getInstance().getLevelCount()-1){
 			next_activity = AppEndActivity.class;
 		}
-		((MainActivity)getActivity()).switchToFragment(next_activity);
+		switchToFragment(next_activity);
 	}
 
 	@Override

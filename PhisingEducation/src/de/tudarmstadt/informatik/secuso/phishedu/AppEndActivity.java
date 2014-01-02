@@ -22,7 +22,7 @@ public class AppEndActivity extends PhishBaseActivity {
 	public void onClick(View view) {
 		switch (view.getId()) {
 		case R.id.button1:
-			((MainActivity)getActivity()).switchToFragment(StartMenuActivity.class);
+			switchToFragment(StartMenuActivity.class);
 			break;
 		}
 	}

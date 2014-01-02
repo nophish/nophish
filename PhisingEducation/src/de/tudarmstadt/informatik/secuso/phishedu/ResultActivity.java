@@ -63,16 +63,12 @@ public class ResultActivity extends SwipeActivity {
 			this.levelFailed();
 			break;
 		case finished:
-			this.levelFinished();
+			switchToFragment(LevelFinishedActivity.class);
 			break;
 		default:
-			nextURL();
+			switchToFragment(URLTaskActivity.class);
 			break;
 		}
-	}
-
-	private void levelFinished() {
-		((MainActivity)getActivity()).switchToFragment(LevelFinishedActivity.class);
 	}
 
 	private void levelFailed() {
@@ -265,10 +261,6 @@ public class ResultActivity extends SwipeActivity {
 		if (urlText != null) {
 			urlText.setText(strBuilder);
 		}
-	}
-
-	private void nextURL(){
-		((MainActivity)getActivity()).switchToFragment(URLTaskActivity.class);
 	}
 
 	private int getLevel2Texts(int result){

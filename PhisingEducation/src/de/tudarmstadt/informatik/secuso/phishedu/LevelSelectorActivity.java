@@ -77,7 +77,9 @@ public class LevelSelectorActivity extends SwipeActivity implements
 		if (page <= BackendControllerImpl.getInstance().getMaxUnlockedLevel()) {
 			if (page == 0 && BackendControllerImpl.getInstance().getMaxUnlockedLevel() > 0 &&  !Constants.UNLOCK_ALL_LEVELS) {
 				// level 0 cannot be replayed show finished instead.
-				BackendControllerImpl.getInstance().onUrlReceive(Uri.parse("phishedu://maillink/"));
+				Bundle args = new Bundle();
+				args.putInt(Constants.ARG_LEVEL, 0);
+				switchToFragment(LevelFinishedActivity.class, args);
 			} else {
 				BackendControllerImpl.getInstance().startLevel(page);
 			}

@@ -160,7 +160,7 @@ public class URLTaskActivity extends PhishBaseActivity {
 	public void onAttach(Activity activity) {
 		super.onAttach(activity);
 		if (getLevel() == 2) {
-			((MainActivity)getActivity()).switchToFragment(ProofActivity.class);
+			switchToFragment(ProofActivity.class);
 		}
 	}
 

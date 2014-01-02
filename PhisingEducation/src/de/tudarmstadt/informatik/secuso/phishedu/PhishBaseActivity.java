@@ -65,7 +65,7 @@ public abstract class PhishBaseActivity extends Fragment implements OnClickListe
 	 */
 	public void onBackPressed(){
 		if(enableHomeButton()){
-		  ((MainActivity)getActivity()).switchToFragment(StartMenuActivity.class);
+		  switchToFragment(StartMenuActivity.class);
 		}
 	};
 
@@ -219,7 +219,7 @@ public abstract class PhishBaseActivity extends Fragment implements OnClickListe
 			
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
-				((MainActivity)getActivity()).switchToFragment(StartMenuActivity.class);
+				switchToFragment(StartMenuActivity.class);
 			}
 		});
 
@@ -262,6 +262,14 @@ public abstract class PhishBaseActivity extends Fragment implements OnClickListe
 	    } catch (IllegalAccessException e) {
 	        throw new RuntimeException(e);
 	    }
+	}
+	
+	protected void switchToFragment(Class<?extends PhishBaseActivity> target){
+		((MainActivity)getActivity()).switchToFragment(target);
+	}
+	
+	protected void switchToFragment(Class<?extends PhishBaseActivity> target, Bundle args){
+		((MainActivity)getActivity()).switchToFragment(target,args);
 	}
 	
 }
