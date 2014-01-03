@@ -34,14 +34,14 @@ public class LevelSelectorActivity extends SwipeActivity implements
 					R.drawable.levelicon_active_bg));
 			layoutView.findViewById(R.id.levelbutton_padlock).setVisibility(
 					View.INVISIBLE);
-			layoutView.findViewById(R.id.levelbutton_points).setVisibility(
-					View.VISIBLE);
-			layoutView.findViewById(R.id.levelbutton_points_text).setVisibility(
-					View.VISIBLE);
 			if(BackendControllerImpl.getInstance().getLevelCompleted(level)){
 				layoutView.findViewById(R.id.levelbutton_tick).setVisibility(View.VISIBLE);
+				layoutView.findViewById(R.id.levelbutton_points).setVisibility(View.VISIBLE);
+				layoutView.findViewById(R.id.levelbutton_points_text).setVisibility(View.VISIBLE);
 			}else{
 				layoutView.findViewById(R.id.levelbutton_tick).setVisibility(View.INVISIBLE);
+				layoutView.findViewById(R.id.levelbutton_points).setVisibility(View.INVISIBLE);
+				layoutView.findViewById(R.id.levelbutton_points_text).setVisibility(View.INVISIBLE);
 			}
 		} else {
 			button.setBackgroundDrawable(getResources().getDrawable(
@@ -62,7 +62,7 @@ public class LevelSelectorActivity extends SwipeActivity implements
 		TextView levelDescription = (TextView) layoutView.findViewById(R.id.level_description);
 		levelDescription.setText(level_info.subTitleId);
 		((TextView) layoutView.findViewById(R.id.levelbutton_points)).setText(Integer.toString(level_info.getlevelPoints()));
-		if((level<=1 || level==11) && !Constants.SHOW_POINTS_ON_ALL_LEVELS){
+		if(level<=1 || level==11){
 			layoutView.findViewById(R.id.levelbutton_points).setVisibility(View.INVISIBLE);
 			layoutView.findViewById(R.id.levelbutton_points_text).setVisibility(View.INVISIBLE);
 		}
