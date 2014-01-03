@@ -95,18 +95,18 @@ public class NoPhishLevelInfo {
 	// For each level we can define what Attacks are applied
 	// LEVEL 0-1 are empty because they don't
 	@SuppressWarnings("rawtypes")
-	public static final Class[][] levelAttackTypes = {
+	public static final PhishAttackType[][] levelAttackTypes = {
 			{}, // Level 0: Awareness
 			{}, // Level 1: Find URLBar in Browser
-			{ Level2Attack.class }, // Level 2
-			{ SubdomainAttack.class }, // Level 3
-			{ IPAttack.class }, // Level 4
-			{ NonsenseAttack.class }, // Level 5
-			{ UnrelatedAttack.class }, // Level 6
-			{ MisleadingAttack.class, TypoAttack.class }, // Level 7
-			{ HomoglyphicAttack.class }, // Level 8
-			{ HostInPathAttack.class }, // Level 9
-			{ HTTPAttack.class } // Level 10
+			{ PhishAttackType.Level2Attack }, // Level 2
+			{ PhishAttackType.Sudomains }, // Level 3
+			{ PhishAttackType.IP }, // Level 4
+			{ PhishAttackType.Nonsense }, // Level 5
+			{ PhishAttackType.Unrelated }, // Level 6
+			{ PhishAttackType.Misleading, PhishAttackType.Typo }, // Level 7
+			{ PhishAttackType.Homoglyphic }, // Level 8
+			{ PhishAttackType.HostInPath }, // Level 9
+			{ PhishAttackType.HTTP } // Level 10
 	};
 
 	public static int levelCount() {
@@ -120,7 +120,7 @@ public class NoPhishLevelInfo {
 	public final int[] finishedLayouts;
 	public final int levelId;
 	@SuppressWarnings("rawtypes")
-	public final Class[] attackTypes;
+	public final PhishAttackType[] attackTypes;
 	public final String levelNumber;
 
 	public NoPhishLevelInfo(int levelid) {

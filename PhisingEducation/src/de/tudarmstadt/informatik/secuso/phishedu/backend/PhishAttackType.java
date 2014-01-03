@@ -62,6 +62,10 @@ public enum PhishAttackType {
         return value;
     }
 	
+	/**
+	 * Get the Attack Class for this Attack
+	 * @return The Attacktype Class for this Attack
+	 */
 	public Class<? extends AbstractAttack> getAttackClass() {
         return attack_class;
     }

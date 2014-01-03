@@ -318,8 +318,8 @@ public class BackendControllerImpl implements BackendController, GameStateLoaded
 			int attack_level= getLevel() - current_url_level_offset;
 			NoPhishLevelInfo attack_level_info = BackendControllerImpl.getInstance().getLevelInfo(attack_level);
 			//choose a random attack from the selected Level
-			Class<? extends AbstractUrlDecorator>[] level_attacks = attack_level_info.attackTypes;
-			attack=level_attacks[random.nextInt(level_attacks.length)];
+			PhishAttackType[] level_attacks = attack_level_info.attackTypes;
+			attack=level_attacks[random.nextInt(level_attacks.length)].getAttackClass();
 		}
 		
 		return attack;
