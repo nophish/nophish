@@ -160,7 +160,7 @@ public class NoPhishLevelInfo {
 		return 6+(2*this.levelId);
 	}
 	
-	public int levelCorrectPhishes() {
+	public int levelPhishes() {
 		int base_phishes=0;
 		if(this.levelId==2){
 			base_phishes=levelCorrectURLs();
@@ -170,4 +170,7 @@ public class NoPhishLevelInfo {
 		return base_phishes;
 	}
 	
+	public int levelRepeats(){
+		return (int) Math.floor(this.levelPhishes()/2);
+	}
 }

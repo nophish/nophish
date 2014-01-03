@@ -229,7 +229,7 @@ public class BackendControllerImpl implements BackendController, GameStateLoaded
 			for(int i=1;i<=getLevel()-(FIRST_REPEAT_LEVEL-1);i++){
 				this.level_repeat_offsets.add(i);
 			}
-			fillLevelRepeats(this.levelRepeats());
+			fillLevelRepeats(getLevelInfo().levelRepeats());
 		}
 		this.progress.setLevel(level);
 		for (OnLevelChangeListener listener : onLevelChangeListeners) {
@@ -237,7 +237,7 @@ public class BackendControllerImpl implements BackendController, GameStateLoaded
 		}
 		notifyLevelStateChangedListener(Levelstate.running, level);
 	}
-
+	
 	/**
 	 * fill up the repeats to a given size
 	 * @param size The size the {@link #level_repeat_offsets} should have afterwards
@@ -270,9 +270,10 @@ public class BackendControllerImpl implements BackendController, GameStateLoaded
 
 	@SuppressWarnings("unchecked")
 	private Class<? extends AbstractUrlDecorator> findAttack(){
+		NoPhishLevelInfo level_info = getLevelInfo();
 		int remaining_urls = levelCorrectURLs() - (this.progress.getLevelResults(PhishResult.Phish_Detected) + this.progress.getLevelResults(PhishResult.NoPhish_Detected));
-		int remaining_phish = this.levelPhishes() - this.progress.getLevelResults(PhishResult.Phish_Detected);
-		int remaining_repeats = this.levelRepeats() - this.progress.getIdentifiedRepeats();
+		int remaining_phish = this.levelRemainingPhishes() - this.progress.getLevelResults(PhishResult.Phish_Detected);
+		int remaining_repeats = level_info.levelRepeats() - this.progress.getIdentifiedRepeats();
 
 		//we have to decide whether we want to present a phish or not
 		boolean present_phish=false;
@@ -354,10 +355,6 @@ public class BackendControllerImpl implements BackendController, GameStateLoaded
 		}
 		
 		this.current_url=base_url;
-	}
-
-	private int levelRepeats(){
-		return (int) Math.floor(this.levelPhishes()/2);
 	}
 
 	@Override
@@ -530,7 +527,7 @@ public class BackendControllerImpl implements BackendController, GameStateLoaded
 	
 	@Override
 	public int levelCorrectPhishes() {
-		return getLevelInfo().levelCorrectPhishes();
+		return getLevelInfo().levelPhishes();
 	}
 
 	private int levelURLs() {
@@ -544,7 +541,7 @@ public class BackendControllerImpl implements BackendController, GameStateLoaded
 		return progress.getLevelResults(PhishResult.Phish_Detected)+progress.getLevelResults(PhishResult.NoPhish_Detected);
 	}
 
-	private int levelPhishes() {
+	private int levelRemainingPhishes() {
 		checkinited();
 		return levelCorrectPhishes()+progress.getLevelResults(PhishResult.Phish_NotDetected);
 	}
