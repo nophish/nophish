@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
+import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendControllerImpl;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishAttackType;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishURL;
 
@@ -23,7 +24,7 @@ public class HostInPathAttack extends AbstractAttack {
 	 */
 	public HostInPathAttack(PhishURL object) {
 		super(object);
-		phish_domain=new Random().nextInt(PHISHER_DOMAINS.length);
+		phish_domain=BackendControllerImpl.getInstance().getRandom().nextInt(PHISHER_DOMAINS.length);
 	}
 
 	@Override

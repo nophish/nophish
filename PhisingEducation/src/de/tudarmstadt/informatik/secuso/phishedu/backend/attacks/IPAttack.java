@@ -3,6 +3,7 @@ package de.tudarmstadt.informatik.secuso.phishedu.backend.attacks;
 import java.util.List;
 import java.util.Random;
 
+import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendControllerImpl;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishAttackType;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishURL;
 
@@ -33,7 +34,7 @@ public class IPAttack extends AbstractAttack {
 	private String ip="";
 	
 	private String getRandomIP(){
-		Random rand = new Random();
+		Random rand = BackendControllerImpl.getInstance().getRandom();
 		String result = "";
 		for(int i=0; i<4; i++){
 			result+=rand.nextInt(255);

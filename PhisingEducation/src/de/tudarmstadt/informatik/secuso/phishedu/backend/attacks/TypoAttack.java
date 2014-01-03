@@ -22,11 +22,11 @@ public class TypoAttack extends AbstractAttack {
 	 */
 	public TypoAttack(PhishURL object) {
 		super(object);
-		attack_type=new Random().nextInt(2);
+		attack_type=BackendControllerImpl.getInstance().getRandom().nextInt(2);
 		String domain=super.getParts()[3];
 		int last_period_pos = domain.lastIndexOf(".");
 		do{
-			attack_pos=new Random().nextInt(domain.length()-1);
+			attack_pos=BackendControllerImpl.getInstance().getRandom().nextInt(domain.length()-1);
 		}while(domain.charAt(attack_pos)==domain.charAt(attack_pos+1) || attack_pos+1 >= last_period_pos);
 	}
 

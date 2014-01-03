@@ -59,21 +59,6 @@ public class GameProgress implements OnStateLoadedListener{
 
 	private GameStateLoadedListener listener;
 	private State state = new State();
-	private int identified_repeats = 0;
-
-	/**
-	 * Increment the number of presented Repeats
-	 */
-	public void incIdentifiedRepeats(){
-		this.identified_repeats++;
-	}
-	/**
-	 * Get the number of repeats we presented to the user in this level
-	 * @return Then number of repeated Attacks we presented to the user.
-	 */
-	public int getIdentifiedRepeats(){
-		return identified_repeats;
-	}
 
 	/**
 	 * Return the number of results of the given type the user had. 
@@ -232,7 +217,6 @@ public class GameProgress implements OnStateLoadedListener{
 			throw new IllegalStateException("The given level ("+level+") is not unlocked.");
 		}
 		this.level_results=new int[4];
-		this.identified_repeats=0;
 		this.level_points=0;
 		this.level_lives=LIFES_PER_LEVEL;
 

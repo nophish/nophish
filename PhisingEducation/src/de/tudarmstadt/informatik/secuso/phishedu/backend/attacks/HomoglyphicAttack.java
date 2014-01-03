@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
+import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendControllerImpl;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishAttackType;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishURL;
 
@@ -50,7 +51,7 @@ public class HomoglyphicAttack extends AbstractAttack {
 		String domain = getsecondleveldomain();
 		ArrayList<String[]> replacements = new ArrayList<String[]>();
 		List<String[]> options = new ArrayList<String[]>(Arrays.asList(REPLACEMENTS));
-		Random random = new Random();
+		Random random = BackendControllerImpl.getInstance().getRandom();
 		while(options.size()>0){
 			replacements.add(options.remove(random.nextInt(options.size())));
 		}

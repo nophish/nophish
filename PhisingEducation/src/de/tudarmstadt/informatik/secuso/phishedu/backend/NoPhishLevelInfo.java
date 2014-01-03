@@ -17,6 +17,7 @@ import de.tudarmstadt.informatik.secuso.phishedu.backend.attacks.UnrelatedAttack
  */
 public class NoPhishLevelInfo {
 	private static final double LEVEL_DISTANCE = 1.5;
+	public static final int FIRST_REPEAT_LEVEL = 4;
 	
 	private static final int[] levelOutros = {
 		0,
@@ -171,6 +172,10 @@ public class NoPhishLevelInfo {
 	}
 	
 	public int levelRepeats(){
-		return (int) Math.floor(this.levelPhishes()/2);
+		int result = 0;
+		if(levelId>=FIRST_REPEAT_LEVEL){
+			result = (int) Math.floor(this.levelPhishes()/2);
+		}
+		return result;
 	}
 }

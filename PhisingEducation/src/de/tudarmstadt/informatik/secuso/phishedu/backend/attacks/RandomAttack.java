@@ -4,6 +4,7 @@ package de.tudarmstadt.informatik.secuso.phishedu.backend.attacks;
 import java.util.Random;
 
 import de.tudarmstadt.informatik.secuso.phishedu.backend.AbstractUrlDecorator;
+import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendControllerImpl;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishAttackType;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishURL;
 
@@ -29,7 +30,7 @@ public class RandomAttack extends AbstractAttack {
 		PhishAttackType[] types = PhishAttackType.values();
 		Class<? extends AbstractAttack> attack;
 		do {
-			attack=types[new Random().nextInt(types.length)].getAttackClass();
+			attack=types[BackendControllerImpl.getInstance().getRandom().nextInt(types.length)].getAttackClass();
 		} while (attack.equals(RandomAttack.class) || attack.equals(KeepAttack.class));
 		return attack;
 	}

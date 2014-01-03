@@ -37,7 +37,7 @@ public class SubdomainAttack extends AbstractAttack {
 	 */
 	public SubdomainAttack(PhishURL object) {
 		super(object);
-		attack_url=new Random().nextInt(getPhisherDomains().length);
+		attack_url=BackendControllerImpl.getInstance().getRandom().nextInt(getPhisherDomains().length);
 	}
 
 	@Override

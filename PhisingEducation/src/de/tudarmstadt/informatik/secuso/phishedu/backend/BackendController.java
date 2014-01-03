@@ -1,5 +1,7 @@
 package de.tudarmstadt.informatik.secuso.phishedu.backend;
 
+import java.util.Random;
+
 import android.net.Uri;
 
 import com.google.example.games.basegameutils.GameHelper;
@@ -297,5 +299,11 @@ public interface BackendController extends GameHelperListener{
 			return value;
 		}
 	}
+	
+	/**
+	 * Get a Random object. Backendcontroller chaches this Object for all Uses in this app.
+	 * @return The global random object
+	 */
+	public Random getRandom();
 }
 

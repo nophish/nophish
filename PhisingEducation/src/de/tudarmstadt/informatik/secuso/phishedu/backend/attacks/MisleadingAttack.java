@@ -44,7 +44,7 @@ public class MisleadingAttack extends AbstractAttack {
 	 */
 	public MisleadingAttack(PhishURL object) {
 		super(object);
-		attack_domain=new Random().nextInt(DOMAIN_ADDITIONS.length);
+		attack_domain=BackendControllerImpl.getInstance().getRandom().nextInt(DOMAIN_ADDITIONS.length);
 	}
 
 	@Override

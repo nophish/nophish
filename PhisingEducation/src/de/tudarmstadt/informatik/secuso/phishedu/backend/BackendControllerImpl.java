@@ -23,7 +23,6 @@ import com.google.gson.JsonSyntaxException;
 
 import de.tudarmstadt.informatik.secuso.phishedu.Constants;
 import de.tudarmstadt.informatik.secuso.phishedu.R;
-import de.tudarmstadt.informatik.secuso.phishedu.backend.attacks.Level2Attack;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.generator.KeepGenerator;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.generator.SudomainGenerator;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.networkTasks.GetUrlsTask;
@@ -41,7 +40,6 @@ public class BackendControllerImpl implements BackendController, GameStateLoaded
 	private static final String PREFS_NAME = "PhisheduState";
 	private static final String URL_CACHE_NAME ="urlcache";
 	private static final String LEVEL1_URL = "https://pages.no-phish.de/level1.php";
-	private static final int FIRST_REPEAT_LEVEL = 4;
 	private static final PhishAttackType[] CACHE_TYPES = {PhishAttackType.AnyPhish, PhishAttackType.NoPhish};
 	@SuppressWarnings("rawtypes")
 	private static Class[] GENERATORS = {
@@ -51,7 +49,7 @@ public class BackendControllerImpl implements BackendController, GameStateLoaded
 	};
 	private static final int URL_CACHE_SIZE = 500;
 
-	private static Random random = new Random();
+	private Random random;
 
 	//singleton instance
 	private static BackendControllerImpl instance = new BackendControllerImpl();
@@ -90,19 +88,13 @@ public class BackendControllerImpl implements BackendController, GameStateLoaded
 		if(this.urlCache.containsKey(type)){
 			throw new IllegalArgumentException("This phish type is not cached.");
 		}
-		return urlCache.get(type)[random.nextInt(urlCache.get(type).length)].clone();
+		return urlCache.get(type)[getRandom().nextInt(urlCache.get(type).length)].clone();
 	}
 
 	/**
 	 * This holds the current URL returned by the last {@link BackendController}{@link #getNextUrl()} call
 	 */
 	private PhishURL current_url;
-
-	/**
-	 * save the current repeat offset of the attack.
-	 * This is needed to reinsert the offset into the {@link #level_repeat_offsets} list on fail.
-	 */
-	private int current_url_level_offset=0;
 
 	/**
 	 * Private constructor for singelton.
@@ -220,38 +212,53 @@ public class BackendControllerImpl implements BackendController, GameStateLoaded
 		new SendMailTask(from, to, usermessage).execute();
 	}
 
-	private List<Integer> level_repeat_offsets;
+	private List<PhishAttackType> level_attacks;
 	@Override
 	public void startLevel(int level) {
 		checkinited();
-		this.level_repeat_offsets=new ArrayList<Integer>();
-		this.current_url_level_offset=0;
-		if(getLevel()>=FIRST_REPEAT_LEVEL){
-			for(int i=1;i<=getLevel()-(FIRST_REPEAT_LEVEL-1);i++){
-				this.level_repeat_offsets.add(i);
-			}
-			fillLevelRepeats(getLevelInfo().levelRepeats());
-		}
+		this.level_attacks=generateLevelAttacks(level);
 		this.progress.setLevel(level);
 		for (OnLevelChangeListener listener : onLevelChangeListeners) {
 			listener.onLevelChange(level);
 		}
 		notifyLevelStateChangedListener(Levelstate.running, level);
 	}
-	
-	
-	
-	/**
-	 * fill up the repeats to a given size
-	 * @param size The size the {@link #level_repeat_offsets} should have afterwards
-	 */
-	private void fillLevelRepeats(int size){
-		while(this.level_repeat_offsets.size()<size){
+		
+	private List<PhishAttackType> generateLevelAttacks(int level){
+		List<PhishAttackType> attacks = new ArrayList<PhishAttackType>();
+		NoPhishLevelInfo level_info = getLevelInfo(level);
+		int this_level_attacks = level_info.levelPhishes() - level_info.levelRepeats();
+		
+		//first add the attacks from this level;
+		fillAttacksfromSet(attacks, level_info.attackTypes, this_level_attacks);
+		//then add one for each previous Level
+		for(int i=2;i<level-1 && attacks.size() < level_info.levelPhishes();i++){
+			fillAttacksfromSet(attacks, getLevelInfo(i).attackTypes, attacks.size()+1);
+		}
+		//then fill up repeats from random previous levels
+		while(attacks.size() < level_info.levelPhishes()){
 			//select a random earlier Level 
 			//"-(FIRST_REPEAT_LEVEL-1)" is to prevent levels 0-2 from being repeated
 			//"+1" is to prevent "repeating" the current level
-			int level_offset = (random.nextInt(getLevel()-(FIRST_REPEAT_LEVEL-1)))+1;
-			this.level_repeat_offsets.add(level_offset);
+			int level_offset = (getRandom().nextInt(level-(NoPhishLevelInfo.FIRST_REPEAT_LEVEL-1)))+1;
+			fillAttacksfromSet(attacks, getLevelInfo(level-level_offset).attackTypes, attacks.size()+1);
+		}
+		//The rest are valid urls
+		while(attacks.size() < level_info.levelCorrectURLs()){
+			attacks.add(PhishAttackType.NoPhish);
+		}
+		
+		return attacks;
+	}
+	
+	private void fillAttacksfromSet(List<PhishAttackType> target, PhishAttackType[] set, int target_size){
+		//first try to add each once
+		for(int i=0; i<set.length && target.size() < target_size; i++){
+			target.add(set[i]);
+		}
+		//then fill up randomly
+		while(target.size() < target_size){
+			target.add(set[getRandom().nextInt(set.length)]);
 		}
 	}
 
@@ -262,67 +269,13 @@ public class BackendControllerImpl implements BackendController, GameStateLoaded
 
 	@Override
 	public void redirectToLevel1URL(){
-		Random random = new Random();
+		Random random = BackendControllerImpl.getInstance().getRandom();
 		char[] buf=new char[4];
 		for(int i=0;i<buf.length;i++){
 			buf[i]=(char) ('a'+random.nextInt(26));
 		}
 		String random_string=new String(buf);
 		this.frontend.startBrowser(Uri.parse(LEVEL1_URL+"?frag="+random_string+"#bottom-"+random_string));
-	}
-
-	@SuppressWarnings("unchecked")
-	private PhishAttackType findAttack(){
-		NoPhishLevelInfo level_info = getLevelInfo();
-		int remaining_urls = levelCorrectURLs() - (this.progress.getLevelResults(PhishResult.Phish_Detected) + this.progress.getLevelResults(PhishResult.NoPhish_Detected));
-		int remaining_phish = this.levelRemainingPhishes() - this.progress.getLevelResults(PhishResult.Phish_Detected);
-		int remaining_repeats = level_info.levelRepeats() - this.progress.getIdentifiedRepeats();
-
-		//we have to decide whether we want to present a phish or not
-		boolean present_phish=false;
-		if(remaining_phish > 0){
-			if(remaining_urls<=remaining_phish){
-				present_phish=true;
-			}else{
-				present_phish=random.nextBoolean();
-			}
-		}
-
-		//In Level 2 we always present the phish because The test is implemented as Attack
-		if(this.getLevel() == 2){
-			present_phish=true;
-		}
-
-		current_url_level_offset=0;
-		PhishAttackType attack = null;
-		if(present_phish){
-			boolean present_repeat = false;
-			if(getLevel() < FIRST_REPEAT_LEVEL){
-				//Up until level FIRST_REPEAT_LEVEL we don't repeat because levels 0-2 are special. 
-				present_repeat = false;
-			}else if(remaining_urls <= remaining_repeats){
-				//we have to present a repeat
-				present_repeat = true;
-			}else if( remaining_repeats > 0 ){
-				//we might present a repeat
-				present_repeat = random.nextBoolean();
-			}
-
-			if(present_repeat){
-				//something went wrong and we are out of repeats.
-				if(this.level_repeat_offsets.size()==0){
-					fillLevelRepeats(1);
-				}
-				current_url_level_offset=this.level_repeat_offsets.remove(random.nextInt(this.level_repeat_offsets.size()));
-			}
-			int attack_level= getLevel() - current_url_level_offset;
-			NoPhishLevelInfo attack_level_info = BackendControllerImpl.getInstance().getLevelInfo(attack_level);
-			//choose a random attack from the selected Level
-			PhishAttackType[] level_attacks = attack_level_info.attackTypes;
-			attack=level_attacks[random.nextInt(level_attacks.length)];
-		}
-		
-		return attack;
 	}
 
 	@SuppressWarnings("unchecked")
@@ -333,7 +286,7 @@ public class BackendControllerImpl implements BackendController, GameStateLoaded
 			throw new IllegalStateException("This function is not defined for level 0 and 1 as these do not need URLs");
 		}
 		
-		PhishAttackType attack = findAttack();
+		PhishAttackType attack = this.level_attacks.remove(getRandom().nextInt(this.level_attacks.size()));
 		
 		PhishURL base_url;
 		String before_url = "",after_url = "";
@@ -342,7 +295,7 @@ public class BackendControllerImpl implements BackendController, GameStateLoaded
 			//First we choose a random start URL
 			base_url=getPhishURL(PhishAttackType.NoPhish);
 			//then we decorate the URL with a random generator
-			base_url=AbstractUrlDecorator.decorate(base_url, GENERATORS[random.nextInt(GENERATORS.length)]);
+			base_url=AbstractUrlDecorator.decorate(base_url, GENERATORS[getRandom().nextInt(GENERATORS.length)]);
 			//Lastly we might apply a attack
 			if(attack != null){
 				//decorate the current url with this attack
@@ -393,14 +346,13 @@ public class BackendControllerImpl implements BackendController, GameStateLoaded
 		Levelstate oldstate = getLevelState();
 		this.progress.addResult(result);
 		if(result == PhishResult.Phish_NotDetected){
-			if(current_url_level_offset>0){
-				level_repeat_offsets.add(current_url_level_offset);
-			}
 			progress.decLives();
 			Vibrator v = (Vibrator) frontend.getContext().getSystemService(Context.VIBRATOR_SERVICE);
 			v.vibrate(500);
-		}else if(result == PhishResult.Phish_Detected && current_url_level_offset > 0){
-			this.progress.incIdentifiedRepeats();
+		}
+		//if we did not correctly identify we have to readd.
+		if(result==PhishResult.Phish_NotDetected || result == PhishResult.NoPhish_NotDetected){
+			this.level_attacks.add(current_url.getAttackType());
 		}
 		int offset=this.current_url.getPoints(result);
 		//with this function we ensure that the user gets more points per level
@@ -556,7 +508,7 @@ public class BackendControllerImpl implements BackendController, GameStateLoaded
 
 	@Override
 	public Levelstate getLevelState() {
-		int remaining_urls = levelURLs()-doneURLs();
+		int remaining_urls = level_attacks.size();
 		Levelstate result;
 		if(this.getLifes() <= 0){
 			result = Levelstate.failed;
@@ -649,5 +601,13 @@ public class BackendControllerImpl implements BackendController, GameStateLoaded
 	@Override
 	public boolean getLevelCompleted(int level) {
 		return level<getMaxUnlockedLevel();
+	}
+	
+	@Override
+	public Random getRandom() {
+		if(this.random==null){
+			this.random=new Random();
+		}
+		return random;
 	}
 }
