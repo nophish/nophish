@@ -270,7 +270,7 @@
     <!-- LEVEL 7 - SIMILAR DOMAINS -->
     <string name="level_07_intro_00_text_01"><b>Angriff durch ähnliche Namen im Wer-Bereich</b>\n\nEin weiterer Trick dich hinters Licht zu führen, ist die Verwendung von Namen im Wer-Bereich, die dem Namen des dir vertrauten Unternehmens sehr ähnlich sind. Mit dieser Art des Angriffs beschäftigen wir uns in diesem Level.</string>
     <string name="level_07_intro_02_text_01"><b>Angriff durch ähnliche Namen im Wer-Bereich</b>\n\nEin weiterer Trick dich hinters Licht zu führen, ist bei der Registrierung des Wer-Bereiches Namen zu verwenden, die dem Namen des dir vertrauten Unternehmens sehr ähnlich sind. Dabei hat der Phisher verschiedene Möglichkeiten, die wir dir in diesem Level erläutern werden.</string>
-    <string name="level_07_intro_03_text_02">Du musst dir merken, wie der Wer-Bereich der Webadressen, die du normalerweise besuchst, aussieht. Der Phisher kann nämlich Namen registrieren, die dem dir vertrauten Unternehmen sehr ähneln. Schaue dir deswegen immer die wichtigsten zwei Blöcke der Webadresse an, den Wer-Bereich. Enthält der Wer-Bereich nur eine ähnliche Abwandlung des dir bisher vertrauten Wer-Bereiches, dann gebe hier keine Daten ein!\n\nUnten sind drei Beispiele für Phishing-Webadressen, die dieses Prinzip anwenden. In den Beispielen ist dein Gesprächspartner jeweils facebook-login.com, apple-support.com bzw. ebay-verify.com (blau hinterlegt). Das sind jeweils die wichtigsten Wer-Bereiche der Webadressen. Die Wer-Bereiche ähneln facebook.com, apple.com und ebay.com, sie sind aber gefälscht!</string>
+    <string name="level_07_intro_03_text_02">Du musst dir merken, wie der Wer-Bereich der Webadressen, die du normalerweise besuchst, aussieht. Der Phisher kann nämlich Namen registrieren, die dem dir vertrauten Unternehmen sehr ähneln. Schaue dir deswegen immer die wichtigsten zwei Blöcke der Webadresse an, den Wer-Bereich. Enthält der Wer-Bereich nur eine ähnliche Abwandlung des dir bisher vertrauten Wer-Bereiches, dann <b>gebe hier keine Daten ein!</b>\n\nUnten sind drei Beispiele für Phishing-Webadressen, die dieses Prinzip anwenden. In den Beispielen ist dein Gesprächspartner jeweils facebook-login.com, apple-support.com bzw. ebay-verify.com (blau hinterlegt). Das sind jeweils die wichtigsten Wer-Bereiche der Webadressen. <b>Die Wer-Bereiche ähneln dem Original, sie sind aber gefälscht!</b></string>
     <string name="level_07_intro_03_text_03"><b>1. Unternehmensname kommt im Wer-Bereich vor</b></string>
     <string name="level_07_intro_03_facebook_login">facebook-login.com</string>
     <string name="level_07_intro_03_apple_support">apple-support.com</string>
@@ -290,9 +290,9 @@
     <string name="level_07_intro_05_path_01">/en-us</string>
     <string name="level_07_intro_05_path_02">/default.aspx</string>
     <string name="level_07_intro_06_text_01"><b>Zusammenfassung</b></string>
-    <string name="level_07_intro_06_text_02">1.) Enthält der Wer-Bereich nur eine ähnliche Abwandlung des dir bisher vertrauten Wer-Bereiches, dann <b>gebe hier keine Daten ein!</b></string>
-    <string name="level_07_intro_06_text_03">2.) Enthält der Wer-Bereich einen Tippfehler, dann <b>gebe hier keine Daten ein!</b></string>
-    <string name="level_07_intro_06_text_04">3.) Enthält der Wer-Bereich einen Buchstabendreher, <b>dann gebe hier keine Daten ein!</b></string>
+    <string name="level_07_intro_06_text_02">1.) Enthält der Wer-Bereich nur eine ähnliche Abwandlung des dir bisher vertrauten Wer-Bereiches, dann gebe hier keine Daten ein!</string>
+    <string name="level_07_intro_06_text_03">2.) Enthält der Wer-Bereich einen Tippfehler, dann gebe hier keine Daten ein!</string>
+    <string name="level_07_intro_06_text_04">3.) Enthält der Wer-Bereich einen Buchstabendreher, dann gebe hier keine Daten ein!</string>
 
     <!-- LEVEL 8 - similar characters/digits in domain -->
     <string name="level_08_intro_00_text_01"><b>Angriff durch ähnliche Zeichen im Wer-Bereich</b>\n\nEin weiterer Trick dich hinters Licht zu führen, ist das Ersetzen von Buchstaben im Wer-Bereich durch andere sehr ähnlich aussehende Zeichen oder Zahlen. Mit dieser Art des Angriffs beschäftigen wir uns in diesem Level.</string>
