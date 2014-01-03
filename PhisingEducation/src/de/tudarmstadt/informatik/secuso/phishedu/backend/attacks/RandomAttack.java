@@ -31,7 +31,7 @@ public class RandomAttack extends AbstractAttack {
 		Class<? extends AbstractAttack> attack;
 		do {
 			attack=types[BackendControllerImpl.getInstance().getRandom().nextInt(types.length)].getAttackClass();
-		} while (attack.equals(RandomAttack.class) || attack.equals(KeepAttack.class));
+		} while (attack.equals(RandomAttack.class) || attack.equals(NoPhishAttack.class));
 		return attack;
 	}
 	

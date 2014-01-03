@@ -3,6 +3,7 @@ package de.tudarmstadt.informatik.secuso.phishedu.backend;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.EnumMap;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -59,7 +60,7 @@ public class BackendControllerImpl implements BackendController, GameStateLoaded
 	private GameHelper gamehelper;
 	private boolean inited = false;
 	//indexed by UrlType
-	private HashMap<PhishAttackType, PhishURL[]> urlCache;
+	private EnumMap<PhishAttackType, PhishURL[]> urlCache=new EnumMap<PhishAttackType, PhishURL[]>(PhishAttackType.class);
 	private boolean gamestate_loaded = false;
 	private GameProgress progress;
 	private List<OnLevelstateChangeListener> onLevelstateChangeListeners=new ArrayList<BackendController.OnLevelstateChangeListener>();
@@ -85,7 +86,7 @@ public class BackendControllerImpl implements BackendController, GameStateLoaded
 	 * @return A PhishURL of the given type
 	 */
 	public PhishURL getPhishURL(PhishAttackType type){
-		if(this.urlCache.containsKey(type)){
+		if(!this.urlCache.containsKey(type)){
 			throw new IllegalArgumentException("This phish type is not cached.");
 		}
 		return urlCache.get(type)[getRandom().nextInt(urlCache.get(type).length)].clone();
@@ -199,7 +200,7 @@ public class BackendControllerImpl implements BackendController, GameStateLoaded
 		for (PhishAttackType attacktype : CACHE_TYPES) {
 			all_attacks_cached &= this.urlCache.get(attacktype)!=null && this.urlCache.get(attacktype).length>0; 
 		}
-		
+
 		if (all_attacks_cached &&  this.gamestate_loaded){
 			this.inited=true;
 			this.initListener.onInitDone();
@@ -223,35 +224,41 @@ public class BackendControllerImpl implements BackendController, GameStateLoaded
 		}
 		notifyLevelStateChangedListener(Levelstate.running, level);
 	}
-		
+
 	private List<PhishAttackType> generateLevelAttacks(int level){
 		List<PhishAttackType> attacks = new ArrayList<PhishAttackType>();
 		NoPhishLevelInfo level_info = getLevelInfo(level);
 		int this_level_attacks = level_info.levelPhishes() - level_info.levelRepeats();
-		
+
 		//first add the attacks from this level;
 		fillAttacksfromSet(attacks, level_info.attackTypes, this_level_attacks);
-		//then add one for each previous Level
-		for(int i=2;i<level-1 && attacks.size() < level_info.levelPhishes();i++){
-			fillAttacksfromSet(attacks, getLevelInfo(i).attackTypes, attacks.size()+1);
-		}
-		//then fill up repeats from random previous levels
-		while(attacks.size() < level_info.levelPhishes()){
-			//select a random earlier Level 
-			//"-(FIRST_REPEAT_LEVEL-1)" is to prevent levels 0-2 from being repeated
-			//"+1" is to prevent "repeating" the current level
-			int level_offset = (getRandom().nextInt(level-(NoPhishLevelInfo.FIRST_REPEAT_LEVEL-1)))+1;
-			fillAttacksfromSet(attacks, getLevelInfo(level-level_offset).attackTypes, attacks.size()+1);
+		//second add the repeats
+		if(level_info.levelRepeats()>0){
+			//then add one for each previous Level
+			for(int i=2;i<level-1 && attacks.size() < level_info.levelPhishes();i++){
+				fillAttacksfromSet(attacks, getLevelInfo(i).attackTypes, attacks.size()+1);
+			}
+			//then fill up repeats from random previous levels
+			while(attacks.size() < level_info.levelPhishes()){
+				//select a random earlier Level 
+				//"-(FIRST_REPEAT_LEVEL-1)" is to prevent levels 0-2 from being repeated
+				//"+1" is to prevent "repeating" the current level
+				int level_offset = (getRandom().nextInt(level-(NoPhishLevelInfo.FIRST_REPEAT_LEVEL-1)))+1;
+				fillAttacksfromSet(attacks, getLevelInfo(level-level_offset).attackTypes, attacks.size()+1);
+			}
 		}
 		//The rest are valid urls
 		while(attacks.size() < level_info.levelCorrectURLs()){
 			attacks.add(PhishAttackType.NoPhish);
 		}
-		
+
 		return attacks;
 	}
-	
+
 	private void fillAttacksfromSet(List<PhishAttackType> target, PhishAttackType[] set, int target_size){
+		if(set.length==0){
+			return;
+		}
 		//first try to add each once
 		for(int i=0; i<set.length && target.size() < target_size; i++){
 			target.add(set[i]);
@@ -285,9 +292,9 @@ public class BackendControllerImpl implements BackendController, GameStateLoaded
 			//Level 0 and 1 do not have repeats
 			throw new IllegalStateException("This function is not defined for level 0 and 1 as these do not need URLs");
 		}
-		
+
 		PhishAttackType attack = this.level_attacks.remove(getRandom().nextInt(this.level_attacks.size()));
-		
+
 		PhishURL base_url;
 		String before_url = "",after_url = "";
 		int tries = Constants.ATTACK_RETRY_URLS;
@@ -304,12 +311,12 @@ public class BackendControllerImpl implements BackendController, GameStateLoaded
 				after_url=Arrays.toString(base_url.getParts());
 			}
 			tries--;
-		}while(attack !=null && before_url.equals(after_url) && attack != PhishAttackType.Level2 && tries > 0); //The attack might not change the URL so we try again.
-		
+		}while(attack !=null && before_url.equals(after_url) && attack != PhishAttackType.NoPhish && attack != PhishAttackType.Level2 && tries > 0); //The attack might not change the URL so we try again.
+
 		if(tries == 0){
 			throw new IllegalStateException("Could not find attackable URL. Attack:"+attack.getName());
 		}
-		
+
 		this.current_url=base_url;
 	}
 
@@ -382,7 +389,7 @@ public class BackendControllerImpl implements BackendController, GameStateLoaded
 			}
 		}
 	}
-	
+
 	@Override
 	public boolean partClicked(int part) {
 		checkinited();
@@ -399,7 +406,7 @@ public class BackendControllerImpl implements BackendController, GameStateLoaded
 		checkinited();
 		return this.progress.getPoints();
 	}
-	
+
 	@Override
 	public int getLevelmaxPoints(){
 		//TODO: DEFAULT_CORRECT_POINTS is the standard value for correctly identified URLs
@@ -479,7 +486,7 @@ public class BackendControllerImpl implements BackendController, GameStateLoaded
 	public int levelCorrectURLs() {
 		return getLevelInfo().levelCorrectURLs();
 	}
-	
+
 	@Override
 	public int levelCorrectPhishes() {
 		return getLevelInfo().levelPhishes();
@@ -602,7 +609,7 @@ public class BackendControllerImpl implements BackendController, GameStateLoaded
 	public boolean getLevelCompleted(int level) {
 		return level<getMaxUnlockedLevel();
 	}
-	
+
 	@Override
 	public Random getRandom() {
 		if(this.random==null){
