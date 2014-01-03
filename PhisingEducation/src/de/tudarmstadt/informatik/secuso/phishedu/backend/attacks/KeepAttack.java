@@ -11,13 +11,13 @@ import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishURL;
  * @author Clemens Bergmann <cbergmann@schuhklassert.de>
  *
  */
-public class NoPhishAttack extends AbstractAttack {
+public class KeepAttack extends AbstractAttack {
 
 	/**
 	 * See {@link AbstractAttack#AbstractAttack(PhishURL)}
 	 * @param object See {@link AbstractAttack#AbstractAttack(PhishURL)}
 	 */
-	public NoPhishAttack(PhishURL object) {super(object);}
+	public KeepAttack(PhishURL object) {super(object);}
 	
 	public PhishAttackType getAttackType() {
 		return object.getAttackType();
@@ -25,11 +25,7 @@ public class NoPhishAttack extends AbstractAttack {
 	
 	@Override
 	public PhishResult getResult(boolean acceptance) {
-		if(acceptance){
-			return PhishResult.NoPhish_Detected;
-		}else{
-			return PhishResult.NoPhish_NotDetected;
-		}
+		return this.object.getResult(acceptance);
 	}
 	
 }

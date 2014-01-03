@@ -5,7 +5,7 @@ import de.tudarmstadt.informatik.secuso.phishedu.backend.attacks.HTTPAttack;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.attacks.HomoglyphicAttack;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.attacks.HostInPathAttack;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.attacks.IPAttack;
-import de.tudarmstadt.informatik.secuso.phishedu.backend.attacks.NoPhishAttack;
+import de.tudarmstadt.informatik.secuso.phishedu.backend.attacks.KeepAttack;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.attacks.Level2Attack;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.attacks.MisleadingAttack;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.attacks.NonsenseAttack;
@@ -21,7 +21,7 @@ import de.tudarmstadt.informatik.secuso.phishedu.backend.attacks.UnrelatedAttack
  */
 public enum PhishAttackType {
 	/** It has no Attack. It is no phishing website */
-	NoPhish(0,NoPhishAttack.class),
+	NoPhish(0,KeepAttack.class),
 	/** It is a phish but not specified */
 	AnyPhish(1, PhishTankURLAttack.class),
 	/** The Attack for level 2 */
