@@ -36,10 +36,10 @@ public class HostInPathAttack extends AbstractAttack {
 	public String[] getParts() {
 		String[] parts = super.getParts().clone();
 		ArrayList<String> adder = new ArrayList<String>(Arrays.asList(parts));
-		String address = parts[0]+parts[1]+parts[2]+parts[3];
-		adder.set(3, PHISHER_DOMAINS[phish_domain]);
+		String[] address = new String[]{parts[0],parts[1],parts[2],parts[3]};
 		adder.set(2, "");
-		adder.add(5,address+"/");
+		adder.set(3, PHISHER_DOMAINS[phish_domain]);
+		adder.addAll(5, Arrays.asList(address));
 		return adder.toArray(new String[0]);
 	}
 	
