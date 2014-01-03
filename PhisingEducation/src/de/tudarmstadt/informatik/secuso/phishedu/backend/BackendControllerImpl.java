@@ -3,6 +3,7 @@ package de.tudarmstadt.informatik.secuso.phishedu.backend;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Random;
@@ -60,7 +61,7 @@ public class BackendControllerImpl implements BackendController, GameStateLoaded
 	private GameHelper gamehelper;
 	private boolean inited = false;
 	//indexed by UrlType
-	private PhishURL[][] urlCache;
+	private HashMap<PhishAttackType, PhishURL[]> urlCache;
 	private boolean gamestate_loaded = false;
 	private GameProgress progress;
 	private List<OnLevelstateChangeListener> onLevelstateChangeListeners=new ArrayList<BackendController.OnLevelstateChangeListener>();
@@ -86,10 +87,10 @@ public class BackendControllerImpl implements BackendController, GameStateLoaded
 	 * @return A PhishURL of the given type
 	 */
 	public PhishURL getPhishURL(PhishAttackType type){
-		if(type.getValue() >= this.urlCache.length || this.urlCache[type.getValue()].length == 0){
+		if(this.urlCache.containsKey(type)){
 			throw new IllegalArgumentException("This phish type is not cached.");
 		}
-		return urlCache[type.getValue()][random.nextInt(urlCache[type.getValue()].length)].clone();
+		return urlCache.get(type)[random.nextInt(urlCache.get(type).length)].clone();
 	}
 
 	/**
@@ -106,12 +107,7 @@ public class BackendControllerImpl implements BackendController, GameStateLoaded
 	/**
 	 * Private constructor for singelton.
 	 */
-	private BackendControllerImpl() {
-		this.urlCache=new PhishURL[CACHE_TYPES.length][];
-		for(PhishAttackType type: CACHE_TYPES){
-			this.urlCache[type.getValue()]=new PhishURL[0];
-		}
-	}
+	private BackendControllerImpl() {}
 
 	/**
 	 * Getter for singleton.
@@ -182,14 +178,14 @@ public class BackendControllerImpl implements BackendController, GameStateLoaded
 			}
 		}
 		if(result.size()>0){
-			this.urlCache[type.getValue()] = result.toArray(new PhishURL[0]);
+			this.urlCache.put(type, urls);
 		}
 	}
 
 	public void urlsReturned(PhishURL[] urls, PhishAttackType type){
 		if(urls.length > 0){
 			this.setURLs(type, urls);
-			this.CacheUrls(this.frontend.getContext().getSharedPreferences(URL_CACHE_NAME, Context.MODE_PRIVATE),type, this.urlCache[type.getValue()]);
+			this.CacheUrls(this.frontend.getContext().getSharedPreferences(URL_CACHE_NAME, Context.MODE_PRIVATE),type, this.urlCache.get(type));
 			this.checkInitDone();
 		}
 	}
@@ -207,7 +203,12 @@ public class BackendControllerImpl implements BackendController, GameStateLoaded
 		if(isInitDone()){
 			return;
 		}
-		if (this.urlCache[PhishAttackType.NoPhish.getValue()].length >0 && this.urlCache[PhishAttackType.AnyPhish.getValue()].length > 0 &&  this.gamestate_loaded){
+		boolean all_attacks_cached=true;
+		for (PhishAttackType attacktype : CACHE_TYPES) {
+			all_attacks_cached &= this.urlCache.get(attacktype)!=null && this.urlCache.get(attacktype).length>0; 
+		}
+		
+		if (all_attacks_cached &&  this.gamestate_loaded){
 			this.inited=true;
 			this.initListener.onInitDone();
 			this.progress.StartFinished();	
@@ -219,7 +220,7 @@ public class BackendControllerImpl implements BackendController, GameStateLoaded
 		new SendMailTask(from, to, usermessage).execute();
 	}
 
-	private ArrayList<Integer> level_repeat_offsets;
+	private List<Integer> level_repeat_offsets;
 	@Override
 	public void startLevel(int level) {
 		checkinited();
@@ -237,6 +238,8 @@ public class BackendControllerImpl implements BackendController, GameStateLoaded
 		}
 		notifyLevelStateChangedListener(Levelstate.running, level);
 	}
+	
+	
 	
 	/**
 	 * fill up the repeats to a given size

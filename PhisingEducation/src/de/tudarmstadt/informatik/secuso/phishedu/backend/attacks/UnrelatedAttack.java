@@ -8,13 +8,13 @@ import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishURL;
  * @author Clemens Bergmann <cbergmann@schuhklassert.de>
  *
  */
-public class Unrelated extends SubdomainAttack {
+public class UnrelatedAttack extends SubdomainAttack {
 	
 	/**
 	 * To build an attack we need a url to decorate
 	 * @param object the decorated URL
 	 */
-	public Unrelated(PhishURL object) {
+	public UnrelatedAttack(PhishURL object) {
 		super(object);
 	}
 
