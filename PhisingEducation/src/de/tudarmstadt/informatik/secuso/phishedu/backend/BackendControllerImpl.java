@@ -272,7 +272,7 @@ public class BackendControllerImpl implements BackendController, GameStateLoaded
 	}
 
 	@SuppressWarnings("unchecked")
-	private Class<? extends AbstractUrlDecorator> findAttack(){
+	private PhishAttackType findAttack(){
 		NoPhishLevelInfo level_info = getLevelInfo();
 		int remaining_urls = levelCorrectURLs() - (this.progress.getLevelResults(PhishResult.Phish_Detected) + this.progress.getLevelResults(PhishResult.NoPhish_Detected));
 		int remaining_phish = this.levelRemainingPhishes() - this.progress.getLevelResults(PhishResult.Phish_Detected);
@@ -294,7 +294,7 @@ public class BackendControllerImpl implements BackendController, GameStateLoaded
 		}
 
 		current_url_level_offset=0;
-		Class<? extends AbstractUrlDecorator> attack = null;
+		PhishAttackType attack = null;
 		if(present_phish){
 			boolean present_repeat = false;
 			if(getLevel() < FIRST_REPEAT_LEVEL){
@@ -319,7 +319,7 @@ public class BackendControllerImpl implements BackendController, GameStateLoaded
 			NoPhishLevelInfo attack_level_info = BackendControllerImpl.getInstance().getLevelInfo(attack_level);
 			//choose a random attack from the selected Level
 			PhishAttackType[] level_attacks = attack_level_info.attackTypes;
-			attack=level_attacks[random.nextInt(level_attacks.length)].getAttackClass();
+			attack=level_attacks[random.nextInt(level_attacks.length)];
 		}
 		
 		return attack;
@@ -333,8 +333,8 @@ public class BackendControllerImpl implements BackendController, GameStateLoaded
 			throw new IllegalStateException("This function is not defined for level 0 and 1 as these do not need URLs");
 		}
 		
-		Class<? extends AbstractUrlDecorator> attack = findAttack();
-
+		PhishAttackType attack = findAttack();
+		
 		PhishURL base_url;
 		String before_url = "",after_url = "";
 		int tries = Constants.ATTACK_RETRY_URLS;
@@ -347,11 +347,11 @@ public class BackendControllerImpl implements BackendController, GameStateLoaded
 			if(attack != null){
 				//decorate the current url with this attack
 				before_url=Arrays.toString(base_url.getParts());
-				base_url=AbstractUrlDecorator.decorate(base_url,attack);
+				base_url=AbstractUrlDecorator.decorate(base_url,attack.getAttackClass());
 				after_url=Arrays.toString(base_url.getParts());
 			}
 			tries--;
-		}while(attack !=null && before_url.equals(after_url) && attack != Level2Attack.class && tries > 0); //The attack might not change the URL so we try again.
+		}while(attack !=null && before_url.equals(after_url) && attack != PhishAttackType.Level2 && tries > 0); //The attack might not change the URL so we try again.
 		
 		if(tries == 0){
 			throw new IllegalStateException("Could not find attackable URL. Attack:"+attack.getName());

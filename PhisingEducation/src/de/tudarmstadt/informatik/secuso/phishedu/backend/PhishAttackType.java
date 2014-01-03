@@ -25,7 +25,7 @@ public enum PhishAttackType {
 	/** It is a phish but not specified */
 	AnyPhish(1, PhishTankURLAttack.class),
 	/** The Attack for level 2 */
-	Level2Attack(2, Level2Attack.class),
+	Level2(2, Level2Attack.class),
 	/** Subdomains */
 	Sudomains(3, SubdomainAttack.class),
 	/** IP */
@@ -69,4 +69,12 @@ public enum PhishAttackType {
 	public Class<? extends AbstractAttack> getAttackClass() {
         return attack_class;
     }
+	
+	/**
+	 * Gets a short name for this attack.
+	 * @return A Attack name String
+	 */
+	public String getName(){
+		return super.toString()+"Attack";
+	}
 }

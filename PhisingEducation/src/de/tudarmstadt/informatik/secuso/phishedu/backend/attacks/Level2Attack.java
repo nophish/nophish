@@ -19,7 +19,7 @@ public class Level2Attack extends AbstractAttack {
 	public Level2Attack(PhishURL object) {super(object);}
 	
 	public PhishAttackType getAttackType() {
-		return PhishAttackType.Level2Attack;
+		return PhishAttackType.Level2;
 	}
 	
 }
