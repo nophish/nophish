@@ -8,6 +8,7 @@ import de.tudarmstadt.informatik.secuso.phishedu.backend.attacks.IPAttack;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.attacks.KeepAttack;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.attacks.Level2Attack;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.attacks.MisleadingAttack;
+import de.tudarmstadt.informatik.secuso.phishedu.backend.attacks.NoPhishAttack;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.attacks.NonsenseAttack;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.attacks.PhishTankURLAttack;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.attacks.SubdomainAttack;
@@ -20,8 +21,11 @@ import de.tudarmstadt.informatik.secuso.phishedu.backend.attacks.UnrelatedAttack
  *
  */
 public enum PhishAttackType {
-	/** It has no Attack. It is no phishing website */
-	NoPhish(0,KeepAttack.class),
+	/**
+	 *  This Attack forces the URL to be a noPhish URL.
+	 *  This is something different then the KeepAttack which just passes to the decorated object.
+	 */
+	NoPhish(0,NoPhishAttack.class),
 	/** It is a phish but not specified */
 	AnyPhish(1, PhishTankURLAttack.class),
 	/** The Attack for level 2 */
@@ -43,7 +47,9 @@ public enum PhishAttackType {
 	/** https -> http */
 	HTTP(10, HTTPAttack.class),
 	/** typo */
-	Typo(11, TypoAttack.class);
+	Typo(11, TypoAttack.class),
+	/** This Attack keeps the supplied PhishURL */
+	Keep(12, KeepAttack.class);
 	
 	private int value;
 	private Class<? extends AbstractAttack> attack_class;

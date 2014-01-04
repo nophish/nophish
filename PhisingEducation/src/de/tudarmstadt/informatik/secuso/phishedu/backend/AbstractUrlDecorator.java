@@ -17,13 +17,6 @@ public abstract class AbstractUrlDecorator implements PhishURL {
 	protected PhishURL object;
 	
 	/**
-	 * This constructor takes a random Valid URL and decorates it.
-	 */
-	public AbstractUrlDecorator(){
-		this.object=BackendControllerImpl.getInstance().getPhishURL(PhishAttackType.NoPhish);
-	}
-	
-	/**
 	 * To build an attack we need a url to decorate
 	 * @param object the decorated URL
 	 */

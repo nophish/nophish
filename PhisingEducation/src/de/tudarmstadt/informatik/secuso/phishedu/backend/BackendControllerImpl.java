@@ -4,7 +4,6 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.EnumMap;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Random;
@@ -24,8 +23,7 @@ import com.google.gson.JsonSyntaxException;
 
 import de.tudarmstadt.informatik.secuso.phishedu.Constants;
 import de.tudarmstadt.informatik.secuso.phishedu.R;
-import de.tudarmstadt.informatik.secuso.phishedu.backend.generator.KeepGenerator;
-import de.tudarmstadt.informatik.secuso.phishedu.backend.generator.SudomainGenerator;
+import de.tudarmstadt.informatik.secuso.phishedu.backend.generator.BaseGenerator;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.networkTasks.GetUrlsTask;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.networkTasks.SendMailTask;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.networkTasks.UrlsLoadedListener;
@@ -43,11 +41,6 @@ public class BackendControllerImpl implements BackendController, GameStateLoaded
 	private static final String LEVEL1_URL = "https://pages.no-phish.de/level1.php";
 	private static final PhishAttackType[] CACHE_TYPES = {PhishAttackType.AnyPhish, PhishAttackType.NoPhish};
 	@SuppressWarnings("rawtypes")
-	private static Class[] GENERATORS = {
-		//Currently we use the same generators for all levels
-		SudomainGenerator.class,
-		KeepGenerator.class,
-	};
 	private static final int URL_CACHE_SIZE = 500;
 
 	private Random random;
@@ -217,8 +210,8 @@ public class BackendControllerImpl implements BackendController, GameStateLoaded
 	@Override
 	public void startLevel(int level) {
 		checkinited();
-		this.level_attacks=generateLevelAttacks(level);
 		this.progress.setLevel(level);
+		this.level_attacks=generateLevelAttacks(level);
 		for (OnLevelChangeListener listener : onLevelChangeListeners) {
 			listener.onLevelChange(level);
 		}
@@ -234,39 +227,50 @@ public class BackendControllerImpl implements BackendController, GameStateLoaded
 		fillAttacksfromSet(attacks, level_info.attackTypes, this_level_attacks);
 		//second add the repeats
 		if(level_info.levelRepeats()>0){
-			//then add one for each previous Level
-			for(int i=2;i<level-1 && attacks.size() < level_info.levelPhishes();i++){
-				fillAttacksfromSet(attacks, getLevelInfo(i).attackTypes, attacks.size()+1);
+			//first add one for each previous Level
+			for(int repeat_level=NoPhishLevelInfo.FIRST_REPEAT_LEVEL-1;repeat_level<level && attacks.size() < level_info.levelPhishes(); repeat_level++){
+				fillAttacksfromSet(attacks, getLevelInfo(repeat_level).attackTypes, attacks.size()+1, true);
 			}
 			//then fill up repeats from random previous levels
 			while(attacks.size() < level_info.levelPhishes()){
 				//select a random earlier Level 
 				//"-(FIRST_REPEAT_LEVEL-1)" is to prevent levels 0-2 from being repeated
 				//"+1" is to prevent "repeating" the current level
-				int level_offset = (getRandom().nextInt(level-(NoPhishLevelInfo.FIRST_REPEAT_LEVEL-1)))+1;
-				fillAttacksfromSet(attacks, getLevelInfo(level-level_offset).attackTypes, attacks.size()+1);
+				int random_level_offset = (getRandom().nextInt(level-(NoPhishLevelInfo.FIRST_REPEAT_LEVEL-1)))+1;
+				int repeat_level = level-random_level_offset;
+				fillAttacksfromSet(attacks, getLevelInfo(repeat_level).attackTypes, attacks.size()+1, true);
 			}
 		}
 		//The rest are valid urls
 		while(attacks.size() < level_info.levelCorrectURLs()){
-			attacks.add(PhishAttackType.NoPhish);
+			attacks.add(PhishAttackType.Keep);
 		}
 
 		return attacks;
 	}
 
 	private void fillAttacksfromSet(List<PhishAttackType> target, PhishAttackType[] set, int target_size){
+		fillAttacksfromSet(target, set, target_size,false);
+	}
+
+	private void fillAttacksfromSet(List<PhishAttackType> target, PhishAttackType[] set, int target_size, boolean random){
 		if(set.length==0){
 			return;
 		}
-		//first try to add each once
-		for(int i=0; i<set.length && target.size() < target_size; i++){
-			target.add(set[i]);
+
+		if(random){
+			//then fill up randomly
+			while(target.size() < target_size){
+				target.add(set[getRandom().nextInt(set.length)]);
+			}			
+		}else{
+			//first try to add each once
+			for(int i=0; i<set.length && target.size() < target_size; i++){
+				target.add(set[i]);
+			}
+			fillAttacksfromSet(target, set, target_size,true);
 		}
-		//then fill up randomly
-		while(target.size() < target_size){
-			target.add(set[getRandom().nextInt(set.length)]);
-		}
+
 	}
 
 	@Override
@@ -297,24 +301,27 @@ public class BackendControllerImpl implements BackendController, GameStateLoaded
 
 		PhishURL base_url;
 		String before_url = "",after_url = "";
+		Class<? extends BaseGenerator>[] level_generators = getLevelInfo().generators;
 		int tries = Constants.ATTACK_RETRY_URLS;
 		do{
 			//First we choose a random start URL
 			base_url=getPhishURL(PhishAttackType.NoPhish);
 			//then we decorate the URL with a random generator
-			base_url=AbstractUrlDecorator.decorate(base_url, GENERATORS[getRandom().nextInt(GENERATORS.length)]);
-			//Lastly we might apply a attack
-			if(attack != null){
-				//decorate the current url with this attack
-				before_url=Arrays.toString(base_url.getParts());
-				base_url=AbstractUrlDecorator.decorate(base_url,attack.getAttackClass());
-				after_url=Arrays.toString(base_url.getParts());
-			}
+			Class<? extends BaseGenerator> random_generator=level_generators[getRandom().nextInt(level_generators.length)];
+			base_url=AbstractUrlDecorator.decorate(base_url, random_generator);
+			//Lastly we decorate the current url with one attack
+			before_url=Arrays.toString(base_url.getParts());
+			base_url=AbstractUrlDecorator.decorate(base_url,attack.getAttackClass());
+			after_url=Arrays.toString(base_url.getParts());
 			tries--;
-		}while(attack !=null && before_url.equals(after_url) && attack != PhishAttackType.NoPhish && attack != PhishAttackType.Level2 && tries > 0); //The attack might not change the URL so we try again.
+		}while(	before_url.equals(after_url)
+				&& tries > 0
+				&& attack != PhishAttackType.Keep
+				&& attack != PhishAttackType.Level2
+				); //The attack might not change the URL so we try again.
 
 		if(tries == 0){
-			throw new IllegalStateException("Could not find attackable URL. Attack:"+attack.getName());
+			throw new IllegalStateException("Could not find attackable URL. Attack:"+attack.getAttackClass().getName());
 		}
 
 		this.current_url=base_url;
@@ -515,11 +522,11 @@ public class BackendControllerImpl implements BackendController, GameStateLoaded
 
 	@Override
 	public Levelstate getLevelState() {
-		int remaining_urls = level_attacks.size();
+		int remaining_urls_to_identify = level_attacks.size();
 		Levelstate result;
 		if(this.getLifes() <= 0){
 			result = Levelstate.failed;
-		}else if(remaining_urls <= 0){
+		}else if(remaining_urls_to_identify <= 0){
 			result = Levelstate.finished;
 		}else{
 			result = Levelstate.running;

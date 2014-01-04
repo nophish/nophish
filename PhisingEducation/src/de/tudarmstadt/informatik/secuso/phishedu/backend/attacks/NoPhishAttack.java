@@ -1,6 +1,7 @@
 package de.tudarmstadt.informatik.secuso.phishedu.backend.attacks;
 
 
+import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendControllerImpl;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishAttackType;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishResult;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishURL;
@@ -11,18 +12,19 @@ import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishURL;
  * @author Clemens Bergmann <cbergmann@schuhklassert.de>
  *
  */
-public class KeepAttack extends AbstractAttack {
+public class NoPhishAttack extends AbstractAttack {
 
 	/**
 	 * See {@link AbstractAttack#AbstractAttack(PhishURL)}
 	 * @param object See {@link AbstractAttack#AbstractAttack(PhishURL)}
 	 */
-	public KeepAttack(PhishURL object) {
+	public NoPhishAttack(PhishURL object) {
 		super(object);
+		this.object=BackendControllerImpl.getInstance().getPhishURL(PhishAttackType.NoPhish);
 	}
 
 	public PhishAttackType getAttackType() {
-		return object.getAttackType();
+		return PhishAttackType.NoPhish;
 	}
 
 	@Override

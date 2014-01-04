@@ -1,7 +1,6 @@
 package de.tudarmstadt.informatik.secuso.phishedu.backend.attacks;
 
 import java.util.List;
-import java.util.Random;
 
 import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendControllerImpl;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishAttackType;

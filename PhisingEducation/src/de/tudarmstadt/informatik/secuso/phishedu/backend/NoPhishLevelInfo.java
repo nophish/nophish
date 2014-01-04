@@ -1,5 +1,6 @@
 package de.tudarmstadt.informatik.secuso.phishedu.backend;
 
+import de.tudarmstadt.informatik.secuso.phishedu.PhishBaseActivity;
 import de.tudarmstadt.informatik.secuso.phishedu.R;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.attacks.HTTPAttack;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.attacks.HomoglyphicAttack;
@@ -11,6 +12,8 @@ import de.tudarmstadt.informatik.secuso.phishedu.backend.attacks.NonsenseAttack;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.attacks.SubdomainAttack;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.attacks.TypoAttack;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.attacks.UnrelatedAttack;
+import de.tudarmstadt.informatik.secuso.phishedu.backend.generator.BaseGenerator;
+import de.tudarmstadt.informatik.secuso.phishedu.backend.generator.KeepGenerator;
 
 /**
  * This Class represents the information about a Level
@@ -109,6 +112,12 @@ public class NoPhishLevelInfo {
 			{ PhishAttackType.HostInPath }, // Level 9
 			{ PhishAttackType.HTTP } // Level 10
 	};
+	
+	private static Class[][] levelGenerators = {
+		//Currently we use the same generators for all levels
+		{KeepGenerator.class},
+	};
+	
 
 	public static int levelCount() {
 		return levelIntroLayoutIds.length;
@@ -122,8 +131,10 @@ public class NoPhishLevelInfo {
 	public final int levelId;
 	@SuppressWarnings("rawtypes")
 	public final PhishAttackType[] attackTypes;
+	public final Class<? extends BaseGenerator>[] generators;
 	public final String levelNumber;
 
+	@SuppressWarnings("unchecked")
 	public NoPhishLevelInfo(int levelid) {
 		this.levelId = levelid;
 		this.titleId = levelTitlesIds[levelid];
@@ -145,6 +156,8 @@ public class NoPhishLevelInfo {
 		}else{
 			this.outroId = 0;
 		}
+		int geneator_index = Math.min(levelid, levelGenerators.length - 1);
+		this.generators= levelGenerators[geneator_index];
 	}
 	public int getlevelPoints(){
 		return BackendControllerImpl.getInstance().getLevelPoints(this.levelId);
