@@ -22,8 +22,11 @@ public class HomoglyphicAttack extends AbstractAttack {
 	public static final String[][] REPLACEMENTS={
 			{"l","1"},
 			{"1", "l"},
-			{"l","I"},
-			{"I", "l"},
+			//These letters are indistinguishable in the default font used on the testing devices.
+			//Therefore it might frustrate the user because he is not able to identify a phish even 
+			//if he tries hard.
+			//{"l","I"}, 
+			//{"I", "l"},
 			{"i","1"},
 			{"1", "i"},
 			{"o","0"},
