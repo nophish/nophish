@@ -22,7 +22,6 @@ public class LevelFinishedActivity extends SwipeActivity {
 			this.setLevel(getArguments().getInt(Constants.ARG_LEVEL));
 		}else{
 			this.setLevel(BackendControllerImpl.getInstance().getLevel());
-
 		}
 		if(getArguments().containsKey(Constants.ARG_ENABLE_HOME)){
 			this.enable_homebutton = getArguments().getBoolean(Constants.ARG_ENABLE_HOME);

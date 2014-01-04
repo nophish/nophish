@@ -73,6 +73,7 @@ public class MainActivity extends ActionBarActivity implements FrontendControlle
 		}
 		newFrag = fragCache.get(fragClass);
 		if(newFrag.getArguments()!=null){
+			newFrag.getArguments().clear();
 			newFrag.getArguments().putAll(arguments);
 		}else{
 			newFrag.setArguments(arguments);
@@ -194,8 +195,6 @@ public class MainActivity extends ActionBarActivity implements FrontendControlle
 
 	@Override
 	public void onLevelstateChange(Levelstate new_state, int level) {
-		//The Intend only works when the user actually is in this activity.
-		//This is only the case when he clicked an phishedu URL
 		Uri data = getIntent().getData();
 		if(new_state == Levelstate.finished && data != null && data.getScheme().equals("phishedu")){
 			Bundle args = new Bundle();
