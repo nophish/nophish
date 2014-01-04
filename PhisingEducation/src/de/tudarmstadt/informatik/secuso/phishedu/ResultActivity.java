@@ -223,17 +223,8 @@ public class ResultActivity extends SwipeActivity {
 					bgc = new BackgroundColorSpan(getResources().getColor(R.color.phish_domain));
 				}
 			}else if(i==domainPart) {
-				// make attacked part background red
-				if (BackendControllerImpl.getInstance().getLevel() == 2) {
-					bgc = new BackgroundColorSpan(getResources().getColor(R.color.domain));
-				} else {
-					PhishAttackType attack_type = BackendControllerImpl.getInstance().getUrl().getAttackType();
-					if(attack_type==PhishAttackType.NoPhish || attack_type==PhishAttackType.HTTP){
-						bgc = new BackgroundColorSpan(getResources().getColor(R.color.nophish_domain));
-					}else{
-						bgc = new BackgroundColorSpan(getResources().getColor(R.color.phish_domain));
-					}
-				}
+				// make attacked part background blue
+				bgc = new BackgroundColorSpan(getResources().getColor(R.color.domain));
 			}
 			if(bgc!=null){
 				strBuilder.setSpan(bgc, wordStart, wordEnd, 0);
