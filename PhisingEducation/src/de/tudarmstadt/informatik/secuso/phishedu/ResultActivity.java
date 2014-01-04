@@ -178,26 +178,8 @@ public class ResultActivity extends SwipeActivity {
 
 		return 0;
 	}
-
-	@Override
-	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-		inflater.inflate(R.menu.urltask_menu, menu);
-		super.onCreateOptionsMenu(menu, inflater);
-	}
-
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		switch (item.getItemId()) {
-		// Respond to the action bar's Up/Home button
-		case android.R.id.home:
-			levelCanceldWarning();
-			return true;
-		case R.id.restart_level:
-			levelRestartWarning();
-			return true;
-		}
-		return super.onOptionsItemSelected(item);
-	}
+	
+	boolean enableRestartButton(){return true;};
 
 	@Override
 	int getTitle() {

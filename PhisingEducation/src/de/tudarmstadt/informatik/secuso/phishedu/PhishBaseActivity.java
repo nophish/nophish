@@ -9,6 +9,8 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -80,6 +82,7 @@ public abstract class PhishBaseActivity extends Fragment implements OnClickListe
 	};
 	int getIcon(){return 0;}
 	boolean enableHomeButton(){return true;};
+	boolean enableRestartButton(){return false;};
 	
 	public void onSwitchTo(){};
 	
@@ -103,6 +106,8 @@ public abstract class PhishBaseActivity extends Fragment implements OnClickListe
 		}else{
 			v = getLayout(inflater, container, savedInstanceState);
 		}
+		
+		setHasOptionsMenu(true);
 
 		return v;		 
 	}
@@ -236,10 +241,27 @@ public abstract class PhishBaseActivity extends Fragment implements OnClickListe
 	}
 	
 	@Override
+	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+		super.onCreateOptionsMenu(menu, inflater);
+		inflater.inflate(R.menu.urltask_menu, menu);
+	}
+	
+	@Override
+	public void onPrepareOptionsMenu(Menu menu) {
+		super.onPrepareOptionsMenu(menu);
+		MenuItem restart = menu.findItem(R.id.restart_level);
+		restart.setVisible(enableRestartButton());
+	}
+	
+	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 		case android.R.id.home:
 			onBackPressed();
+			break;
+		case R.id.restart_level:
+			levelRestartWarning();
+			return true;
 		}
 		return super.onOptionsItemSelected(item);
 	}

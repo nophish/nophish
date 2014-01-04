@@ -41,17 +41,6 @@ public class FindAddressBarActivity extends PhishBaseActivity {
 	}
 	
 	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		switch (item.getItemId()) {
-		// Respond to the action bar's Up/Home button
-		case R.id.restart_level:
-			levelRestartWarning();
-			return true;
-		}
-		return super.onOptionsItemSelected(item);
-	}
-
-	@Override
 	public int getLayout() {
 		return R.layout.level_01_task;
 	}

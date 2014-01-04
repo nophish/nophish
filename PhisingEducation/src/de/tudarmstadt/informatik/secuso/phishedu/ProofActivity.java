@@ -28,6 +28,8 @@ public class ProofActivity extends SwipeActivity {
 		selectedPart=-1;
 		super.onSwitchTo();
 	}
+	
+	boolean enableRestartButton(){return true;};
 
 	@Override
 	int getTitle(){
@@ -65,23 +67,6 @@ public class ProofActivity extends SwipeActivity {
 			ds.setColor(Color.BLACK);
 			ds.setUnderlineText(false);
 		}
-	}
-
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		switch (item.getItemId()) {
-		// Respond to the action bar's Up/Home button
-		case R.id.restart_level:
-			levelRestartWarning();
-			return true;
-		}
-		return super.onOptionsItemSelected(item);
-	}
-	
-	
-	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-		inflater.inflate(R.menu.urltask_menu, menu);
-		super.onCreateOptionsMenu(menu, inflater);
 	}
 
 	/**

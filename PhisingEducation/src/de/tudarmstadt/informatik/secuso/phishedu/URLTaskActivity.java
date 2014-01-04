@@ -22,6 +22,8 @@ public class URLTaskActivity extends PhishBaseActivity {
 
 	private TextView urlText;
 	private View v;
+	
+	boolean enableRestartButton(){return true;};
 
 	@Override
 	public View getLayout(LayoutInflater inflater, ViewGroup container,	Bundle savedInstanceState) {
@@ -142,16 +144,6 @@ public class URLTaskActivity extends PhishBaseActivity {
 	}
 
 	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		switch (item.getItemId()) {
-		case R.id.restart_level:
-			levelRestartWarning();
-			return true;
-		}
-		return super.onOptionsItemSelected(item);
-	}
-
-	@Override
 	public void onBackPressed() {
 		levelCanceldWarning();
 	}
@@ -162,12 +154,5 @@ public class URLTaskActivity extends PhishBaseActivity {
 		if (getLevel() == 2) {
 			switchToFragment(ProofActivity.class);
 		}
-	}
-
-	@Override
-	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-		// Inflate the menu items for use in the action bar
-		inflater.inflate(R.menu.urltask_menu, menu);
-		super.onCreateOptionsMenu(menu, inflater);
 	}
 }
