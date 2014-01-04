@@ -52,21 +52,21 @@ public class HomoglyphicAttack extends AbstractAttack {
 	public HomoglyphicAttack(PhishURL object) {
 		super(object);
 		String domain = getsecondleveldomain();
-		ArrayList<String[]> replacements = new ArrayList<String[]>();
-		List<String[]> options = new ArrayList<String[]>(Arrays.asList(REPLACEMENTS));
+
 		Random random = BackendControllerImpl.getInstance().getRandom();
-		while(options.size()>0){
-			replacements.add(options.remove(random.nextInt(options.size())));
-		}
+		List<Integer> indexes = new ArrayList<Integer>();
+		for (int i = 0; i < REPLACEMENTS.length; i++) {indexes.add(i);}
 		
-		//with this implementation the string might not be changed if it does not contain a match
-		for (int i=0;i < replacements.size(); i++) {
-			int location = domain.indexOf(replacements.get(i)[0]);
+		while(indexes.size()>0){
+			int i=indexes.remove(random.nextInt(indexes.size()));
+			String[] replacement = REPLACEMENTS[i];
+			int location = domain.indexOf(replacement[0]);
 			if(location>=0){
 				attack_replacement=i;
 				break;
 			}
 		}
+		
 	}
 
 	private String getsecondleveldomain(){
