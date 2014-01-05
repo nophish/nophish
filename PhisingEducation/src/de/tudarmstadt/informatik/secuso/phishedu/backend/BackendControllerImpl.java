@@ -353,7 +353,7 @@ public class BackendControllerImpl implements BackendController, GameStateLoaded
 				result=PhishResult.Phish_Detected;
 			}
 		}
-		if(result != PhishResult.Phish_Detected || getLevel() == 10){
+		if(result != PhishResult.Phish_Detected || !showProof()){
 			this.addResult(result);
 		}
 		return result;
@@ -627,5 +627,10 @@ public class BackendControllerImpl implements BackendController, GameStateLoaded
 			this.random=new Random();
 		}
 		return random;
+	}
+
+	@Override
+	public boolean showProof() {
+		return getLevel()<=Constants.PROOF_UPTO_LEVEL && getLevel() != 10;
 	}
 }

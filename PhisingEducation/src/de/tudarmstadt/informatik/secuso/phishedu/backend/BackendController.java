@@ -305,5 +305,11 @@ public interface BackendController extends GameHelperListener{
 	 * @return The global random object
 	 */
 	public Random getRandom();
+	
+	/**
+	 * Return whether to show the proof activity 
+	 * @return true to show, false if not.
+	 */
+	public boolean showProof();
 }
 

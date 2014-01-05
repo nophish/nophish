@@ -21,6 +21,7 @@ import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishResult;
 
 public class ResultActivity extends SwipeActivity {
 	public static final int RESULT_GUESSED = PhishResult.getMax() + 1;
+	public static final int PHISH_DETECTED_NO_PROOF = PhishResult.getMax() + 2;
 	protected static int[] reminderIDs = { R.string.level_03_reminder,
 		R.string.level_04_reminder, R.string.level_05_reminder,
 		R.string.level_06_reminder, R.string.level_07_reminder,
@@ -40,19 +41,22 @@ public class ResultActivity extends SwipeActivity {
 
 	public ResultActivity() {
 		// We need one layout for each PhishResult + You guessed
-		resultTextIDs = new int[PhishResult.values().length + 1];
+		resultTextIDs = new int[PhishResult.values().length + 2];
+		
 		resultTextIDs[PhishResult.Phish_Detected.getValue()] = R.string.you_found_the_phish;
 		resultTextIDs[PhishResult.NoPhish_Detected.getValue()] = R.string.you_are_correct;
 		resultTextIDs[PhishResult.Phish_NotDetected.getValue()] = R.string.you_are_wrong;
 		resultTextIDs[PhishResult.NoPhish_NotDetected.getValue()] = R.string.oversafe_text;
 		resultTextIDs[RESULT_GUESSED] = R.string.you_guessed;
+		resultTextIDs[PHISH_DETECTED_NO_PROOF] = R.string.you_found_the_phish_noproof;
 
-		resultSmileyIDs = new int[PhishResult.values().length + 1];
+		resultSmileyIDs = new int[PhishResult.values().length + 2];
 		resultSmileyIDs[PhishResult.Phish_Detected.getValue()] = R.drawable.small_smiley_smile;
 		resultSmileyIDs[PhishResult.NoPhish_Detected.getValue()] = R.drawable.small_smiley_smile;
 		resultSmileyIDs[PhishResult.Phish_NotDetected.getValue()] = R.drawable.small_smiley_not_smile;
 		resultSmileyIDs[PhishResult.NoPhish_NotDetected.getValue()] = R.drawable.small_smiley_o;
 		resultSmileyIDs[RESULT_GUESSED] = R.drawable.small_smiley_you_guessed;
+		resultSmileyIDs[PHISH_DETECTED_NO_PROOF] = R.drawable.small_smiley_smile;
 	}
 
 	protected void onStartClick() {

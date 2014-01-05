@@ -135,11 +135,17 @@ public class URLTaskActivity extends PhishBaseActivity {
 				acceptance);
 		Class followActivity = ResultActivity.class;
 		//In Level 10 (HTTP) we don't show proof activity.
-		if (result == PhishResult.Phish_Detected && getLevel() != 10) {
-			followActivity = ProofActivity.class;
+		boolean show_proof = BackendControllerImpl.getInstance().showProof();
+		int result_value=result.getValue();
+		if(result == PhishResult.Phish_Detected ){
+			if (show_proof) {
+				followActivity = ProofActivity.class;
+			}else{
+				result_value=ResultActivity.PHISH_DETECTED_NO_PROOF;
+			}
 		}
 		Bundle args = new Bundle();
-		args.putInt(Constants.ARG_RESULT, result.getValue());
+		args.putInt(Constants.ARG_RESULT, result_value);
 		((MainActivity)getActivity()).switchToFragment(followActivity,args);
 	}
 
