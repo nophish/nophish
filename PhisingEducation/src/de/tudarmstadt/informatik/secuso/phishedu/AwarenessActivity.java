@@ -207,6 +207,16 @@ public class AwarenessActivity extends PhishBaseActivity {
 			}
 
 		});
+
+		if(Constants.ALLOW_SKIP_AWARENESS){
+			alertDialog.setNegativeButton(R.string.awareness_skip,
+					new DialogInterface.OnClickListener() {
+				public void onClick(DialogInterface dialog, int which) {
+					BackendControllerImpl.getInstance().startLevel(1);
+				}
+
+			});
+		}
 		// Showing Alert Message
 		alertDialog.show();
 

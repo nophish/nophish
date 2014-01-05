@@ -210,6 +210,9 @@ public class BackendControllerImpl implements BackendController, GameStateLoaded
 	@Override
 	public void startLevel(int level) {
 		checkinited();
+		if(level==1 && Constants.SKIP_LEVEL1){
+			level=2;
+		}
 		this.progress.setLevel(level);
 		this.level_attacks=generateLevelAttacks(level);
 		for (OnLevelChangeListener listener : onLevelChangeListeners) {
