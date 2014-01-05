@@ -1,5 +1,6 @@
 package de.tudarmstadt.informatik.secuso.phishedu;
 
+import java.util.List;
 import java.util.regex.Pattern;
 
 import android.accounts.Account;
@@ -9,6 +10,8 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.DialogInterface.OnShowListener;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -60,7 +63,7 @@ public class AwarenessActivity extends PhishBaseActivity {
 		toView.setOnClickListener(listener);
 		return v;
 	}
-	
+
 	private class PopupListener implements View.OnFocusChangeListener, View.OnClickListener{
 		@Override
 		public void onClick(View v) {
@@ -73,10 +76,10 @@ public class AwarenessActivity extends PhishBaseActivity {
 				((AutoCompleteTextView) v).showDropDown();
 			}
 		}
-		
+
 	}
-	
-	
+
+
 	public void skipSendEmail(View view){
 		BackendControllerImpl.getInstance().skipLevel0();
 	}
@@ -152,8 +155,7 @@ public class AwarenessActivity extends PhishBaseActivity {
 		dialogbuilder.setIcon(R.drawable.e_mail);
 
 		// button for resend
-		dialogbuilder.setNeutralButton(R.string.awareness_resend_email,
-
+		dialogbuilder.setNegativeButton(R.string.awareness_resend_email,
 				new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int which) {
 				dialog.dismiss();
@@ -161,7 +163,21 @@ public class AwarenessActivity extends PhishBaseActivity {
 			}
 
 		});
-		
+
+		if(Constants.SHOW_GMAIL_BUTTON){
+			// button for resend
+			dialogbuilder.setNeutralButton(R.string.awareness_to_mail,
+					new DialogInterface.OnClickListener() {
+				public void onClick(DialogInterface dialog, int which) {
+					PackageManager manager = getActivity().getPackageManager();
+					Intent i = manager.getLaunchIntentForPackage("com.google.android.gm");
+					i.addCategory(Intent.CATEGORY_LAUNCHER);
+					startActivity(i);
+				}
+
+			});
+		}
+
 		AlertDialog dialog = dialogbuilder.create();
 		Alertenabler enabler = new Alertenabler();
 		dialog.setOnShowListener(enabler);
@@ -206,17 +222,17 @@ public class AwarenessActivity extends PhishBaseActivity {
 		private Button button=null;
 		private static final int TIMEOUT=5;
 		private String basetext;
-		
+
 		@Override
 		protected void onProgressUpdate(Integer... values) {
 			button.setText(basetext+" ("+values[0].toString()+")");
 		}
-		
+
 		protected void onPostExecute(Integer result) {
 			button.setText(basetext);
 			button.setEnabled(true);
 		};
-		
+
 		@Override
 		protected Integer doInBackground(Integer... params) {
 			//wait a little until the dialog is shown.
@@ -242,19 +258,19 @@ public class AwarenessActivity extends PhishBaseActivity {
 		@Override
 		public void onShow(DialogInterface dialog) {
 			AlertDialog adialog=(AlertDialog) dialog;
-			this.button=adialog.getButton(AlertDialog.BUTTON_NEUTRAL);
+			this.button=adialog.getButton(AlertDialog.BUTTON_NEGATIVE);
 			this.basetext=this.button.getText().toString();
 			this.button.setEnabled(false);
 		}
 	}
 
 	@Override
-    public void onClick(View view) {
-        switch (view.getId()) {
-        case R.id.button_abschicken:
-        	sendEmail(view);
-        }
-    }
+	public void onClick(View view) {
+		switch (view.getId()) {
+		case R.id.button_abschicken:
+			sendEmail(view);
+		}
+	}
 
 	@Override
 	public int[] getClickables() {
@@ -262,12 +278,12 @@ public class AwarenessActivity extends PhishBaseActivity {
 				R.id.button_abschicken
 		};
 	}
-	
+
 	@Override
 	int getTitle() {
 		return BackendControllerImpl.getInstance().getLevelInfo().titleId;
 	}
-	
+
 	@Override
 	int getSubTitle() {
 		return R.string.title_activity_awareness;

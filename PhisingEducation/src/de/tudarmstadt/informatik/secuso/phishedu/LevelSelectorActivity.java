@@ -73,7 +73,7 @@ public class LevelSelectorActivity extends SwipeActivity implements
 	@Override
 	public void onClickPage(int page) {
 		if (page <= BackendControllerImpl.getInstance().getMaxUnlockedLevel()) {
-			if (page == 0 && BackendControllerImpl.getInstance().getMaxUnlockedLevel() > 0) {
+			if (page == 0 && BackendControllerImpl.getInstance().getMaxUnlockedLevel() > 0 && !Constants.ALLOW_REPEAT_AWARENESS) {
 				// level 0 cannot be replayed show finished instead.
 				Bundle args = new Bundle();
 				args.putInt(Constants.ARG_LEVEL, 0);

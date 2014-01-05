@@ -215,7 +215,7 @@ public class BackendControllerImpl implements BackendController, GameStateLoaded
 		for (OnLevelChangeListener listener : onLevelChangeListeners) {
 			listener.onLevelChange(level);
 		}
-		notifyLevelStateChangedListener(Levelstate.running, level);
+		levelStarted(level);
 	}
 
 	private List<PhishAttackType> generateLevelAttacks(int level){
@@ -357,7 +357,6 @@ public class BackendControllerImpl implements BackendController, GameStateLoaded
 	}
 
 	private void addResult(PhishResult result){
-		Levelstate oldstate = getLevelState();
 		this.progress.addResult(result);
 		if(result == PhishResult.Phish_NotDetected){
 			progress.decLives();
@@ -383,17 +382,15 @@ public class BackendControllerImpl implements BackendController, GameStateLoaded
 		this.progress.setLevelPoints(new_levelpoints);
 
 		Levelstate newstate = getLevelState();
-		if(oldstate != newstate){
-			switch (newstate) {
-			case finished:
-				levelFinished(this.getLevel());
-				break;
-			case failed:
-				levelFailed(this.getLevel());
-				break;
-			default:
-				break;
-			}
+		switch (newstate) {
+		case finished:
+			levelFinished(this.getLevel());
+			break;
+		case failed:
+			levelFailed(this.getLevel());
+			break;
+		default:
+			break;
 		}
 	}
 
@@ -448,6 +445,10 @@ public class BackendControllerImpl implements BackendController, GameStateLoaded
 
 	private void levelFailed(int level){
 		notifyLevelStateChangedListener(Levelstate.failed, level);
+	}
+	
+	private void levelStarted(int level){
+		notifyLevelStateChangedListener(Levelstate.running, level);
 	}
 
 	private void levelFinished(int level){
