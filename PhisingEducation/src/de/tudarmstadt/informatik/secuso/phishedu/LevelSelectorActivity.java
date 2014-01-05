@@ -19,12 +19,19 @@ public class LevelSelectorActivity extends SwipeActivity implements
 	
 	@Override
 	protected int getPageCount() {
-		return BackendControllerImpl.getInstance().getLevelCount();
+		int levels=BackendControllerImpl.getInstance().getLevelCount();
+		if(Constants.SKIP_LEVEL1){
+			levels--;
+		}
+		return levels;
 	}
 
 	@Override
 	protected View getPage(int level, LayoutInflater inflater,
 			ViewGroup container, Bundle savedInstanceState) {
+		if(level>0 && Constants.SKIP_LEVEL1){
+			level++;
+		}
 		NoPhishLevelInfo level_info = BackendControllerImpl.getInstance().getLevelInfo(level);
 		View layoutView = inflater.inflate(R.layout.fragment_level_overview_template, container, false);
 		int userlevel = BackendControllerImpl.getInstance().getMaxUnlockedLevel();
@@ -71,16 +78,19 @@ public class LevelSelectorActivity extends SwipeActivity implements
 	}
 
 	@Override
-	public void onClickPage(int page) {
-		if (page <= BackendControllerImpl.getInstance().getMaxUnlockedLevel()) {
-			if (page == 0 && BackendControllerImpl.getInstance().getMaxUnlockedLevel() > 0 && !Constants.ALLOW_REPEAT_AWARENESS) {
+	public void onClickPage(int level) {
+		if(level>0 && Constants.SKIP_LEVEL1){
+			level++;
+		}
+		if (level <= BackendControllerImpl.getInstance().getMaxUnlockedLevel()) {
+			if (level == 0 && BackendControllerImpl.getInstance().getMaxUnlockedLevel() > 0 && !Constants.ALLOW_REPEAT_AWARENESS) {
 				// level 0 cannot be replayed show finished instead.
 				Bundle args = new Bundle();
 				args.putInt(Constants.ARG_LEVEL, 0);
 				args.putBoolean(Constants.ARG_ENABLE_HOME, true);
 				switchToFragment(LevelFinishedActivity.class, args);
 			} else {
-				BackendControllerImpl.getInstance().startLevel(page);
+				BackendControllerImpl.getInstance().startLevel(level);
 			}
 		}
 	};
