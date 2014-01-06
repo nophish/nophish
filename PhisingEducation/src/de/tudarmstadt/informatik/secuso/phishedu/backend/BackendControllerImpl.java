@@ -24,6 +24,7 @@ import com.google.gson.JsonSyntaxException;
 import de.tudarmstadt.informatik.secuso.phishedu.Constants;
 import de.tudarmstadt.informatik.secuso.phishedu.LevelIntroActivity;
 import de.tudarmstadt.informatik.secuso.phishedu.R;
+import de.tudarmstadt.informatik.secuso.phishedu.backend.attacks.HTTPAttack;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.generator.BaseGenerator;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.networkTasks.GetUrlsTask;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.networkTasks.SendMailTask;
@@ -322,6 +323,7 @@ public class BackendControllerImpl implements BackendController, GameStateLoaded
 				&& tries > 0
 				&& attack != PhishAttackType.Keep
 				&& attack != PhishAttackType.Level2
+				&& attack != PhishAttackType.HTTP
 				); //The attack might not change the URL so we try again.
 
 		if(tries == 0){
