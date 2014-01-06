@@ -150,6 +150,11 @@ public class ResultActivity extends SwipeActivity {
 
 	public void setResult(int result){
 		this.result=result;
+		boolean show_proof = BackendControllerImpl.getInstance().showProof();
+		
+		if(result == PhishResult.Phish_Detected.getValue() && !show_proof){
+			result = PHISH_DETECTED_NO_PROOF;
+		}
 	}
 
 	private int getReminderText(PhishAttackType attack_type, int level) {
@@ -255,7 +260,7 @@ public class ResultActivity extends SwipeActivity {
 			return R.string.level_10_you_are_correct;
 		} else if (this.result == PhishResult.Phish_NotDetected.getValue()) {
 			return R.string.level_10_you_are_wrong;
-		} else if (this.result == PhishResult.Phish_Detected.getValue()){
+		} else if (this.result == PhishResult.Phish_Detected.getValue() || this.result==PHISH_DETECTED_NO_PROOF){
 			return R.string.level_10_you_are_correct_phish;
 		} else {
 			return resultTextIDs[result];
