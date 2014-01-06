@@ -21,8 +21,6 @@
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="@string/level_00_intro_02_text_01" />
         
-        <requestFocus />
-
         <TextView
             android:id="@+id/level_00_intro_02_text_02"
             android:layout_width="wrap_content"
@@ -42,8 +40,9 @@
             android:layout_below="@+id/level_00_intro_02_text_02"
             android:layout_marginTop="@dimen/margin_small"
             android:ems="10"
-            android:hint="@string/example_email"
-            android:inputType="textEmailAddress" />
+            android:inputType="textEmailAddress" >
+            <requestFocus />
+		</AutoCompleteTextView>
 
         <TextView
             android:id="@+id/level_00_intro_02_text_03"
@@ -76,7 +75,6 @@
             android:layout_below="@+id/awareness_hint"
             android:layout_marginTop="@dimen/margin_small"
             android:ems="10"
-            android:hint="@string/example_email"
             android:inputType="textEmailAddress" />
 
         <TextView
