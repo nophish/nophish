@@ -213,6 +213,7 @@ public class BackendControllerImpl implements BackendController, GameStateLoaded
 	public void startLevel(int level) {
 		checkinited();
 		if(level==1 && Constants.SKIP_LEVEL1){
+			this.progress.unlockLevel(2);
 			level=2;
 		}
 		this.progress.setLevel(level);
@@ -462,11 +463,6 @@ public class BackendControllerImpl implements BackendController, GameStateLoaded
 			this.progress.commitPoints();
 		}
 		this.progress.unlockLevel(level+1);
-		if(level==0 && Constants.SKIP_LEVEL1){
-			//if we don't unlock level 2 here the app will crash
-			//because it it trying to start an locked level.
-			this.progress.unlockLevel(level+2);
-		}
 		notifyLevelStateChangedListener(Levelstate.finished, level);
 	}
 
