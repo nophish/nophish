@@ -80,7 +80,8 @@ public class StartMenuActivity extends PhishBaseActivity {
 	
 	@Override
 	public void onBackPressed() {
-		showExitPopup();
+		((MainActivity)getActivity()).displayToast("Die App kann über den Home-Button beendet werden.");
+		//showExitPopup();
 	}
 
 	private void showExitPopup() {
