@@ -115,7 +115,7 @@ public class NoPhishLevelInfo {
 	
 	public boolean hasAttack(PhishAttackType attack){
 		for (PhishAttackType attacktype : this.attackTypes) {
-			if(attack==attack){
+			if(attacktype==attack){
 				return true;
 			}
 		}

@@ -632,6 +632,6 @@ public class BackendControllerImpl implements BackendController, GameStateLoaded
 
 	@Override
 	public boolean showProof() {
-		return getLevel()<=Constants.PROOF_UPTO_LEVEL && getLevelInfo().hasAttack(PhishAttackType.HTTP);
+		return getLevel()<=Constants.PROOF_UPTO_LEVEL && !getLevelInfo().hasAttack(PhishAttackType.HTTP);
 	}
 }
