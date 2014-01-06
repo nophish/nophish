@@ -143,6 +143,7 @@ public class AwarenessActivity extends PhishBaseActivity {
 	}
 
 	private void showAlertDialog() {
+
 		AlertDialog.Builder dialogbuilder = new AlertDialog.Builder(getActivity());
 
 		// Setting Dialog Title
@@ -158,7 +159,6 @@ public class AwarenessActivity extends PhishBaseActivity {
 		dialogbuilder.setNegativeButton(R.string.awareness_resend_email,
 				new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int which) {
-				dialog.dismiss();
 				showSecondAlertDialog();
 			}
 
@@ -166,19 +166,11 @@ public class AwarenessActivity extends PhishBaseActivity {
 
 		if(Constants.SHOW_GMAIL_BUTTON){
 			// button for resend
-			dialogbuilder.setNeutralButton(R.string.awareness_to_mail,
-					new DialogInterface.OnClickListener() {
-				public void onClick(DialogInterface dialog, int which) {
-					PackageManager manager = getActivity().getPackageManager();
-					Intent i = manager.getLaunchIntentForPackage("com.google.android.gm");
-					i.addCategory(Intent.CATEGORY_LAUNCHER);
-					startActivity(i);
-				}
-
-			});
+			dialogbuilder.setNeutralButton(R.string.awareness_to_mail,null);
 		}
 
 		AlertDialog dialog = dialogbuilder.create();
+
 		Alertenabler enabler = new Alertenabler();
 		dialog.setOnShowListener(enabler);
 		// Showing Alert Message
@@ -200,12 +192,9 @@ public class AwarenessActivity extends PhishBaseActivity {
 
 		// button for resend
 		alertDialog.setNeutralButton(R.string.awareness_resend_email,
-
 				new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int which) {
-				dialog.dismiss();
 			}
-
 		});
 
 		if(Constants.ALLOW_SKIP_AWARENESS){
@@ -217,8 +206,11 @@ public class AwarenessActivity extends PhishBaseActivity {
 
 			});
 		}
+
+		AlertDialog dialog = alertDialog.create();
+
 		// Showing Alert Message
-		alertDialog.show();
+		dialog.show();
 
 	}
 
@@ -271,6 +263,18 @@ public class AwarenessActivity extends PhishBaseActivity {
 			this.button=adialog.getButton(AlertDialog.BUTTON_NEGATIVE);
 			this.basetext=this.button.getText().toString();
 			this.button.setEnabled(false);
+
+			adialog.getButton(AlertDialog.BUTTON_NEUTRAL).setOnClickListener(new View.OnClickListener() {
+
+				@Override
+				public void onClick(View v) {
+					PackageManager manager = getActivity().getPackageManager();
+					Intent i = manager.getLaunchIntentForPackage("com.google.android.gm");
+					i.addCategory(Intent.CATEGORY_LAUNCHER);
+					startActivity(i);							
+				}
+			});
+
 		}
 	}
 
