@@ -48,7 +48,7 @@ public class LevelIntroActivity extends SwipeActivity {
 				"http://", "www.my.", "ebay-verify.de",
 				"/account-verification/user", "https://", "www.",
 				"fracebook.com", "/login", "http://", "www.",
-				"mircosoft.com", "/en-us/default.aspx" },
+				"twitetr.com", "/en-us/default.aspx" },
 				{ "https://", "www.", "vvetter.com", "/wetter_aktuell/?code=EUDE",
 					"http://", "www.", "googie.de", "/services/?fg=1",
 					"http://", "www.", "paypa1.com",
