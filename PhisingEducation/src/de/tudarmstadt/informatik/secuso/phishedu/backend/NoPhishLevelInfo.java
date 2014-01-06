@@ -16,6 +16,36 @@ public class NoPhishLevelInfo {
 		0,
 		R.string.level_02_outro
 	};
+	
+	public float getURLTextsize(){
+		float textSize = 0;
+		
+		switch (this.levelId) {
+		case 0:
+			// should not reach this code, as urltask is called beginning from
+			// level 2
+			break;
+		case 1:
+			// should not reach this code, as urltask is called beginning from
+			// level 2
+			break;
+		case 2:
+			textSize = 25;
+			break;
+		case 3:
+			textSize = 25;
+			break;
+		case 4:
+			textSize = 20;
+			break;
+		default:
+			//this is the default for the android browser. We don't go below this.
+			textSize = 18;
+			break;
+		}
+		
+		return textSize;
+	}
 
 	private static final int[] levelTitlesIds = { R.string.level_title_00,
 		R.string.level_title_01, R.string.level_title_02,
