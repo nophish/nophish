@@ -365,8 +365,10 @@ public class BackendControllerImpl implements BackendController, GameStateLoaded
 
 	private void addResult(PhishResult result){
 		this.progress.addResult(result);
-		if((result == PhishResult.Phish_NotDetected || result == PhishResult.NoPhish_NotDetected) && !Constants.DISABLE_VIBRATE){
+		if(result == PhishResult.Phish_NotDetected){
 			progress.decLives();
+		}
+		if((result == PhishResult.Phish_NotDetected || result == PhishResult.NoPhish_NotDetected) && !Constants.DISABLE_VIBRATE){
 			Vibrator v = (Vibrator) frontend.getContext().getSystemService(Context.VIBRATOR_SERVICE);
 			v.vibrate(500);
 		}
