@@ -123,6 +123,7 @@
     <string name="level_00_finish_06_text_01"><b>Weiterer Spielverlauf</b>\n\nDa es bei der Überprüfung von Webadressen unterschiedlich schwierig zu erkennende Angriffe gibt, haben wir die Aufgaben in unterschiedliche Levels unterteilt.\n\nJedes Level besteht aus zwei Teilen:</string>
     <string name="level_00_finish_06_text_02">Einführung und Erklärung</string>
     <string name="level_00_finish_06_text_03">Aufgaben zum Punkte sammeln</string>
+    <string name="level_00_finish_06_text_04">Hier kannst du die Web-Adresse nach rechts und links verschieben um sie dir komplett anzusehen.</string>
     <string name="level_00_finish_07_text_01"><b>Hinweis:</b> Wir möchten dich an dieser Stelle darauf hinweisen, dass wir dir mit dieser App helfen, dich gegen eine sehr verbreitete Form des Phishings zu schützen. Leider gibt es auch noch einige andere Arten. Wenn du später hierzu mehr wissen möchtest, dann klicke im Menü auf \"Mehr Informationen\".</string>
     <string name="level_00_finish_08_text_01"><b>Na gut, los geht\'s!</b>\n\nBevor du uns noch vom Stuhl fällst vor Langeweile, lass uns das Ganze ein wenig interaktiver angehen und mit dem Spiel beginnen. In den ersten beiden Levels werden notwendige Grundkenntnisse vermittelt. In den darauffolgenden Levels wirst du lernen, Phishing-Angriffe anhand von Webadressen zu erkennen.</string>
 
