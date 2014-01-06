@@ -153,7 +153,7 @@ public class ResultActivity extends SwipeActivity {
 		boolean show_proof = BackendControllerImpl.getInstance().showProof();
 		
 		if(result == PhishResult.Phish_Detected.getValue() && !show_proof){
-			result = PHISH_DETECTED_NO_PROOF;
+			this.result = PHISH_DETECTED_NO_PROOF;
 		}
 	}
 
