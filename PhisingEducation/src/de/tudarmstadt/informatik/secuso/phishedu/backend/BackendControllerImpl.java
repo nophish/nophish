@@ -22,6 +22,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 
 import de.tudarmstadt.informatik.secuso.phishedu.Constants;
+import de.tudarmstadt.informatik.secuso.phishedu.LevelIntroActivity;
 import de.tudarmstadt.informatik.secuso.phishedu.R;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.generator.BaseGenerator;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.networkTasks.GetUrlsTask;
@@ -346,7 +347,7 @@ public class BackendControllerImpl implements BackendController, GameStateLoaded
 		checkinited();
 		PhishResult result=this.current_url.getResult(acceptance);
 		//When we are in the HTTPS level we only accept https urls even if these are not attacks.
-		if(getLevel() == 10 && !this.getUrl().getParts()[0].equals("https:")){
+		if(getLevelInfo().hasAttack(PhishAttackType.HTTP) && !this.getUrl().getParts()[0].equals("https:")){
 			if(acceptance){
 				result=PhishResult.Phish_NotDetected;
 			}else{
@@ -631,6 +632,6 @@ public class BackendControllerImpl implements BackendController, GameStateLoaded
 
 	@Override
 	public boolean showProof() {
-		return getLevel()<=Constants.PROOF_UPTO_LEVEL && getLevel() != 10;
+		return getLevel()<=Constants.PROOF_UPTO_LEVEL && getLevelInfo().hasAttack(PhishAttackType.HTTP);
 	}
 }

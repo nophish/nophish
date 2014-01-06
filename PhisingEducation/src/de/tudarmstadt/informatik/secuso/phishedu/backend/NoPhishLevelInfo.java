@@ -113,6 +113,15 @@ public class NoPhishLevelInfo {
 			{ PhishAttackType.HTTP } // Level 10
 	};
 	
+	public boolean hasAttack(PhishAttackType attack){
+		for (PhishAttackType attacktype : this.attackTypes) {
+			if(attack==attack){
+				return true;
+			}
+		}
+		return false;
+	}
+	
 	private static Class[][] levelGenerators = {
 		//Currently we use the same generators for all levels
 		{KeepGenerator.class},
