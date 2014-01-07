@@ -12,36 +12,6 @@ public class GooglePlusActivity extends PhishBaseActivity {
 		updateUI();
 	}
 
-	private void showPlusButtons(Activity v){
-		// show sign-out button, hide the sign-in button
-		v.findViewById(R.id.sign_in_button).setVisibility(View.GONE);
-		v.findViewById(R.id.sign_out_button).setVisibility(View.VISIBLE);
-
-		// findViewById(R.id.button_show_leaderboard_rate).setVisibility(View.VISIBLE);
-		// findViewById(R.id.button_show_leaderboard_total).setVisibility(View.VISIBLE);
-		v.findViewById(R.id.button_show_leaderboard_total_points).setVisibility(
-				View.VISIBLE);
-		v.findViewById(R.id.button_show_online_achievement).setVisibility(
-				View.VISIBLE);
-		v.findViewById(R.id.button_delete_remote_data).setVisibility(
-				View.VISIBLE);
-	}
-
-	private void hidePlusButtons(Activity v){
-		// show sign-out button, hide the sign-in button
-		v.findViewById(R.id.sign_in_button).setVisibility(View.VISIBLE);
-		v.findViewById(R.id.sign_out_button).setVisibility(View.GONE);
-
-		// findViewById(R.id.button_show_leaderboard_rate).setVisibility(View.VISIBLE);
-		// findViewById(R.id.button_show_leaderboard_total).setVisibility(View.VISIBLE);
-		v.findViewById(R.id.button_show_leaderboard_total_points).setVisibility(
-				View.GONE);
-		v.findViewById(R.id.button_show_online_achievement).setVisibility(
-				View.GONE);
-		v.findViewById(R.id.button_delete_remote_data).setVisibility(
-				View.GONE);
-	}
-
 	void updateUI(Activity v){
 		// show sign-out button, hide the sign-in button
 		v.findViewById(R.id.sign_in_button).setVisibility(showSignIn ? View.VISIBLE : View.GONE);

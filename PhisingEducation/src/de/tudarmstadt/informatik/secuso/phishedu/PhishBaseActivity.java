@@ -102,7 +102,6 @@ public abstract class PhishBaseActivity extends Fragment implements OnClickListe
 		}
 		
 		setHasOptionsMenu(true);
-		setRetainInstance(false);
 
 		return v;		 
 	}

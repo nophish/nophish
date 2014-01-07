@@ -66,26 +66,23 @@ public class MainActivity extends ActionBarActivity implements FrontendControlle
 	public void switchToFragment(Class<? extends PhishBaseActivity> fragClass, Bundle arguments) {
 		PhishBaseActivity  newFrag;
 		try {
-			//if(!fragCache.containsKey(fragClass)){
+			if(!fragCache.containsKey(fragClass)){
 				fragCache.put(fragClass, fragClass.newInstance());
-			//}
+			}
 		} catch (InstantiationException e) {
 			e.printStackTrace();
 		} catch (IllegalAccessException e) {
 			e.printStackTrace();
 		}
 		newFrag = fragCache.get(fragClass);
+		
 		if(newFrag.getArguments()!=null){
 			newFrag.getArguments().clear();
 			newFrag.getArguments().putAll(arguments);
 		}else{
 			newFrag.setArguments(arguments);
 		}
-		FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-		if(current_frag!=null){
-			transaction.remove(current_frag);
-		}
-		transaction.add(R.id.fragment_container, newFrag).commitAllowingStateLoss();
+		getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, newFrag).commitAllowingStateLoss();
 		/**
 		 * ensure that we only run onswitchto when attached.
 		 * this is also called in PhishBaseActivity.onAttack() 
