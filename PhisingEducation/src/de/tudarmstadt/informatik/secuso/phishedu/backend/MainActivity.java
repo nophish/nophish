@@ -10,6 +10,8 @@ import android.graphics.Color;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -36,43 +38,44 @@ import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController.OnLev
 public class MainActivity extends ActionBarActivity implements FrontendController, OnLevelChangeListener, BackendInitListener, OnLevelstateChangeListener {
 	Map<Class<? extends PhishBaseActivity>, PhishBaseActivity> fragCache = new HashMap<Class<? extends PhishBaseActivity>, PhishBaseActivity>();
 	PhishBaseActivity current_frag;
-	
+
 	GooglePlusActivity plusFragment;
-	
+
 	@Override
 	protected void onStart() {
 		super.onStart();
 		BackendControllerImpl.getInstance().getGameHelper().onStart(this);
 	}
-	
+
 	@Override
 	protected void onStop() {
 		super.onStop();
 		BackendControllerImpl.getInstance().getGameHelper().onStop();
 	}
-	
+
 	@Override
 	protected void onActivityResult(int requestCode, int responseCode, Intent intent) {
 		super.onActivityResult(requestCode, responseCode, intent);
 		BackendControllerImpl.getInstance().getGameHelper().onActivityResult(requestCode, responseCode, intent);
 	}
-	
+
 	public void switchToFragment(Class<? extends PhishBaseActivity> fragClass) {
 		switchToFragment(fragClass, new Bundle());
-    }
-	
+	}
+
 	public void switchToFragment(Class<? extends PhishBaseActivity> fragClass, Bundle arguments) {
 		PhishBaseActivity  newFrag;
-		if(!fragCache.containsKey(fragClass)){
-			try {
+		try {
+			if(!fragCache.containsKey(fragClass)){
 				fragCache.put(fragClass, fragClass.newInstance());
-			} catch (InstantiationException e) {
-				e.printStackTrace();
-			} catch (IllegalAccessException e) {
-				e.printStackTrace();
 			}
+		} catch (InstantiationException e) {
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			e.printStackTrace();
 		}
 		newFrag = fragCache.get(fragClass);
+		
 		if(newFrag.getArguments()!=null){
 			newFrag.getArguments().clear();
 			newFrag.getArguments().putAll(arguments);
@@ -88,13 +91,19 @@ public class MainActivity extends ActionBarActivity implements FrontendControlle
 			newFrag.onSwitchTo();
 		}
 		current_frag = (PhishBaseActivity)newFrag;
-    }
-	
+	}
+
+	@Override
+	public void onAttachFragment(Fragment fragment) {
+		super.onAttachFragment(fragment);
+		((PhishBaseActivity)fragment).onSwitchTo();
+	}
+
 	@Override
 	public void onBackPressed() {
 		current_frag.onBackPressed();
 	}
-	
+
 	@Override
 	protected void onCreate(Bundle b) {
 		super.onCreate(b);
@@ -105,12 +114,12 @@ public class MainActivity extends ActionBarActivity implements FrontendControlle
 		}
 		BackendControllerImpl.getInstance().addOnLevelChangeListener(this);
 		BackendControllerImpl.getInstance().addOnLevelstateChangeListener(this);
-		
+
 		plusFragment = new GooglePlusActivity();
 		fragCache.put(GooglePlusActivity.class, plusFragment);
-		
+
 		switchToFragment(StartMenuActivity.class);
-		
+
 		BackendControllerImpl.getInstance().onUrlReceive(getIntent().getData());
 	}
 
@@ -152,6 +161,7 @@ public class MainActivity extends ActionBarActivity implements FrontendControlle
 	public void onLevelChange(int level) {
 		switchToFragment(LevelIntroActivity.class);
 	}
+	
 	@Override
 	public void displayToastScore(int score) {
 		LayoutInflater inflater = getLayoutInflater();
@@ -203,11 +213,11 @@ public class MainActivity extends ActionBarActivity implements FrontendControlle
 			switchToFragment(LevelFinishedActivity.class, args);
 		}
 	}
-		
+
 	private GamesClient getGamesClient(){
 		return BackendControllerImpl.getInstance().getGameHelper().getGamesClient();
 	}
-	
+
 	private boolean isSignedIn(){
 		return BackendControllerImpl.getInstance().getGameHelper().isSignedIn();
 	}

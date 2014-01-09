@@ -29,7 +29,7 @@ public class URLTaskActivity extends PhishBaseActivity {
 	public View getLayout(LayoutInflater inflater, ViewGroup container,	Bundle savedInstanceState) {
 		View v = inflater.inflate(R.layout.urltask_task, container, false);
 		this.urlText = (TextView) v.findViewById(R.id.url_task_url);
-		setUrlSize();
+		urlText.setTextSize(BackendControllerImpl.getInstance().getLevelInfo().getURLTextsize());
 
 		nextURL();
 
@@ -44,44 +44,6 @@ public class URLTaskActivity extends PhishBaseActivity {
 		this.v=v;
 
 		return v;
-	}
-
-	private void setUrlSize() {
-		float textSize = urlText.getTextSize();
-
-		switch (getLevel()) {
-		case 0:
-			// should not reach this code, as urltask is called beginning from
-			// level 2
-			break;
-		case 1:
-			// should not reach this code, as urltask is called beginning from
-			// level 2
-			break;
-		case 2:
-			textSize = 25;
-			break;
-
-		case 3:
-			textSize = 25;
-			break;
-		case 4:
-			textSize = 20;
-			break;
-		case 5:
-			textSize = 18;
-			break;
-		case 6:
-			textSize = 15;
-			break;
-		case 7:
-			textSize = 13;
-			break;
-		default:
-			textSize = 13;
-			break;
-		}
-		urlText.setTextSize(textSize);
 	}
 
 	int getTitle(){
@@ -136,16 +98,13 @@ public class URLTaskActivity extends PhishBaseActivity {
 		Class followActivity = ResultActivity.class;
 		//In Level 10 (HTTP) we don't show proof activity.
 		boolean show_proof = BackendControllerImpl.getInstance().showProof();
-		int result_value=result.getValue();
 		if(result == PhishResult.Phish_Detected ){
 			if (show_proof) {
 				followActivity = ProofActivity.class;
-			}else{
-				result_value=ResultActivity.PHISH_DETECTED_NO_PROOF;
 			}
 		}
 		Bundle args = new Bundle();
-		args.putInt(Constants.ARG_RESULT, result_value);
+		args.putInt(Constants.ARG_RESULT, result.getValue());
 		((MainActivity)getActivity()).switchToFragment(followActivity,args);
 	}
 

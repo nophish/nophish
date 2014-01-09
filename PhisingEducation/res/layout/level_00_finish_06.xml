@@ -61,6 +61,25 @@
             android:layout_alignTop="@+id/level_00_finish_06_image_02"
             android:text="@string/level_00_finish_06_text_03"
             android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <ImageView
+            android:id="@+id/level_00_finish_06_image_03"
+            android:layout_width="@dimen/icon_small"
+            android:layout_height="@dimen/icon_small"
+            android:layout_alignLeft="@+id/level_00_finish_06_image_01"
+            android:layout_below="@+id/level_00_finish_06_text_03"
+            android:layout_marginTop="@dimen/margin_standard"
+            android:contentDescription="@string/content_desc_swipe_right"
+            android:src="@drawable/swipe_right" />
+
+        <TextView
+            android:id="@+id/level_00_finish_06_text_04"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/level_00_finish_06_text_02"
+            android:layout_alignTop="@+id/level_00_finish_06_image_03"
+            android:text="@string/level_00_finish_06_text_04"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
     </RelativeLayout>
 
 </ScrollView>

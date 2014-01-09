@@ -18,7 +18,7 @@ public class HTTPSGenerator extends BaseGenerator {
 	
 	@Override
 	public String[] getParts(){
-		String[] parts = this.object.getParts();
+		String[] parts = this.object.getParts().clone();
 		parts[0]="https:";
 		return parts;
 	}

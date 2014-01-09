@@ -23,12 +23,6 @@ import de.tudarmstadt.informatik.secuso.phishedu.backend.MainActivity;
 
 public abstract class PhishBaseActivity extends Fragment implements OnClickListener {
 	
-	@Override
-	public void onAttach(Activity activity) {
-		super.onAttach(activity);
-		this.onSwitchTo();
-	}
-	
 	void updateUI(){
 		if(getActivity()!=null){
 			

@@ -53,7 +53,7 @@ public class TypoAttack extends AbstractAttack {
 			//copy char
 			String first = domain.substring(0,attack_pos);
 			String last = domain.substring(attack_pos);
-			domain=first+first.charAt(first.length()-1)+last;
+			domain=first+last.charAt(0)+last;
 			break;
 		}
 		

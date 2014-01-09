@@ -20,16 +20,27 @@ import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendControllerImpl;
 public abstract class SwipeActivity extends PhishBaseActivity implements ViewPager.OnPageChangeListener
 {
 
-	protected ViewPager mPager;
-	protected PagerAdapter mPageAdapter;
-	
-	protected ImageView imgNext;
-	protected ImageView imgPrevious;
-	protected Button bStartLevel;
-	
 	//abstract functions
 	protected abstract int getPageCount();
 	protected abstract View getPage(int page, LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState);
+
+	private boolean gotostart=false;
+
+	@Override
+	public void onResume() {
+		super.onResume();
+		final ViewPager mPager= (ViewPager) getActivity().findViewById(R.id.pager);
+		if(mPager!=null && gotostart){
+			mPager.setCurrentItem(0);
+			gotostart=false;
+		}
+	}
+
+	@Override
+	public void onSwitchTo() {
+		gotostart=true;
+		super.onSwitchTo();
+	}
 
 	//hooks
 	protected void onClickPage(int page){}
@@ -37,48 +48,30 @@ public abstract class SwipeActivity extends PhishBaseActivity implements ViewPag
 	protected String startButtonText(){
 		return null;
 	}
-	
-	private boolean gotostart=false;
-	
-	@Override
-	public void onResume() {
-		super.onResume();
-		if(mPager!=null && gotostart){
-			mPager.setCurrentItem(0);
-			gotostart=false;
-		}
-	}
-			
-	@Override
-	public void onSwitchTo() {
-		gotostart=true;
-		super.onSwitchTo();
-	}
-	
+
 	void updateUI(Activity v){
 		super.updateUI(v);
-		
-		mPager= (ViewPager) v.findViewById(R.id.pager);
-		mPageAdapter = new SwipePageAdapter(getFragmentManager(),this); 
-		mPager.setAdapter(mPageAdapter);
+
+		final ViewPager mPager= (ViewPager) v.findViewById(R.id.pager);
+		mPager.setAdapter(new SwipePageAdapter(getFragmentManager(),this));
 		mPager.setOnPageChangeListener(this);
 
-		this.imgPrevious = (ImageView) v.findViewById(R.id.game_intro_arrow_back);
+		ImageView imgPrevious = (ImageView) v.findViewById(R.id.game_intro_arrow_back);
 		imgPrevious.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				previousPage();				
+				mPager.setCurrentItem(mPager.getCurrentItem()-1);			
 			}
 		});
-		this.imgNext = (ImageView) v.findViewById(R.id.game_intro_arrow_forward);
+		ImageView imgNext = (ImageView) v.findViewById(R.id.game_intro_arrow_forward);
 		imgNext.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				nextPage();				
+				mPager.setCurrentItem(mPager.getCurrentItem()+1);
 			}
 		});
 
-		this.bStartLevel = (Button) v.findViewById(R.id.game_intro_start_button);
+		Button bStartLevel = (Button) v.findViewById(R.id.game_intro_start_button);
 		bStartLevel.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -89,35 +82,20 @@ public abstract class SwipeActivity extends PhishBaseActivity implements ViewPag
 
 		checkAndHideButtons(0);
 	}
-	
+
 	@Override
 	public int getLayout() {
 		return R.layout.fragment_pager;
 	}
-	
-	private void nextPage() {
-		int currentPage = mPager.getCurrentItem();
-		int nextPage = currentPage + 1;
-
-		checkAndHideButtons(nextPage);
-
-		mPager.setCurrentItem(nextPage, true);
-	}
-
-	private void previousPage() {
-		int currentPage = mPager.getCurrentItem();
-		int previousPage = currentPage - 1;
-
-		checkAndHideButtons(previousPage);
-
-		mPager.setCurrentItem(previousPage, true);
-	}
 
 	protected void checkAndHideButtons(int page) {
+		ImageView imgPrevious = (ImageView) getActivity().findViewById(R.id.game_intro_arrow_back);
+		ImageView imgNext = (ImageView) getActivity().findViewById(R.id.game_intro_arrow_forward);
+		Button bStartLevel = (Button) getActivity().findViewById(R.id.game_intro_start_button);
 		imgNext.setVisibility(View.VISIBLE);
 		imgPrevious.setVisibility(View.VISIBLE);
 		bStartLevel.setVisibility(View.INVISIBLE);
-		if (page == this.mPager.getAdapter().getCount() - 1) {
+		if (page == getPageCount() - 1) {
 			imgNext.setVisibility(View.INVISIBLE);
 			if(this.startButtonText()!=null){
 				bStartLevel.setVisibility(View.VISIBLE);
@@ -127,16 +105,16 @@ public abstract class SwipeActivity extends PhishBaseActivity implements ViewPag
 			imgPrevious.setVisibility(View.INVISIBLE);
 		}
 	}
-	
+
 	protected void setUrlText(TextView urlText) {
 		String[] urlParts = BackendControllerImpl.getInstance().getUrl().getParts();
 		StringBuilder builder = new StringBuilder();
-		
+
 		for(int i=0; i< urlParts.length; i++){
 			String urlpart = urlParts[i];
 			builder.append(urlpart);
 		}
-		
+
 		urlText.setText(builder.toString());
 	}
 
@@ -147,20 +125,20 @@ public abstract class SwipeActivity extends PhishBaseActivity implements ViewPag
 			public ClickListener(int level){
 				this.page=level;
 			}
-			
+
 			@Override
 			public void onClick(View v) {
 				SwipeActivity.this.onClickPage(page);
 			}
 
 		}
-		
+
 		SwipeActivity activity;
 		public SwipePageAdapter(FragmentManager fragmentManager, SwipeActivity activity) {
 			super();
 			this.activity = activity;
 		}
-		
+
 		@Override
 		public Object instantiateItem(ViewGroup container, int position) {
 			View view = activity.getPage(position, activity.getLayoutInflater(getArguments()), container, getArguments());
@@ -174,25 +152,25 @@ public abstract class SwipeActivity extends PhishBaseActivity implements ViewPag
 			}
 			container.addView(view);
 			return view;
-			
+
 		};
-		
+
 		@Override
 		public void destroyItem(ViewGroup container, int position, Object object) {
 			container.removeView((View) object);
 		}
-		
+
 		@Override
 		public int getCount() {
 			return activity.getPageCount();
 		}
-		
+
 		@Override
 		public boolean isViewFromObject(View view, Object object) {
 			return view==object;
 		}
 	}
-	
+
 
 	@Override
 	public void onPageScrollStateChanged(int arg0) {}

@@ -106,7 +106,7 @@
     <string name="awareness_invalid_email">Die Absender oder Empfänger E-Mail ist ungültig. Bitte überprüfe deine Eingaben.</string>
     <string name="alert_btn_proceed_no_awareness">Überspringen</string>
     <string name="awareness_email_sent">E-Mail versandt</string>
-    <string name="awareness_alert_message">Nun überprüfe bitte deine E-Mails über dein Smartphone. Über diese kommst du dann zurück in die App.</string>
+    <string name="awareness_alert_message">Nun überprüfe bitte deine E-Mails über dein Smartphone. Du solltest eine gefälschte E-Mail bekommen haben. Lese diese gründlich. Über diese kommst du dann zurück in die App.</string>
     <string name="awareness_second_alert_message">Bitte beachte, dass das Ankommen der E-Mail einige Minuten dauern kann. Ggf. musst du auch in deinem Junk/Spam-Ordner nachsehen.</string>
     <string name="start_game">Spiel starten</string>
     <string name="awareness_resend_email">E-Mail nicht erhalten</string>
@@ -123,6 +123,7 @@
     <string name="level_00_finish_06_text_01"><b>Weiterer Spielverlauf</b>\n\nDa es bei der Überprüfung von Webadressen unterschiedlich schwierig zu erkennende Angriffe gibt, haben wir die Aufgaben in unterschiedliche Levels unterteilt.\n\nJedes Level besteht aus zwei Teilen:</string>
     <string name="level_00_finish_06_text_02">Einführung und Erklärung</string>
     <string name="level_00_finish_06_text_03">Aufgaben zum Punkte sammeln</string>
+    <string name="level_00_finish_06_text_04">Hier kannst du die Web-Adresse nach rechts und links verschieben um sie dir komplett anzusehen.</string>
     <string name="level_00_finish_07_text_01"><b>Hinweis:</b> Wir möchten dich an dieser Stelle darauf hinweisen, dass wir dir mit dieser App helfen, dich gegen eine sehr verbreitete Form des Phishings zu schützen. Leider gibt es auch noch einige andere Arten. Wenn du später hierzu mehr wissen möchtest, dann klicke im Menü auf \"Mehr Informationen\".</string>
     <string name="level_00_finish_08_text_01"><b>Na gut, los geht\'s!</b>\n\nBevor du uns noch vom Stuhl fällst vor Langeweile, lass uns das Ganze ein wenig interaktiver angehen und mit dem Spiel beginnen. In den ersten beiden Levels werden notwendige Grundkenntnisse vermittelt. In den darauffolgenden Levels wirst du lernen, Phishing-Angriffe anhand von Webadressen zu erkennen.</string>
 
@@ -284,7 +285,7 @@
     <string name="level_07_intro_04_fracebook">fracebook.com</string>
     <string name="level_07_intro_04_path">/login</string>
     <string name="level_07_intro_05_text_03"><b>3. Buchstabendreher im Wer-Bereich</b></string>
-    <string name="level_07_intro_05_text_02">Der wichtigste Bereich einer Webadresse, der Wer-Bereich muss auch vom Phisher registriert werden. Der Phisher kann hierbei einfach einen Buchstabendreher in dir vertraute Wer-Bereiche einbauen und diesen Namen mit Buchstabendreher dann registrieren. Schaue dir also immer die wichtigsten zwei Blöcke der Webadresse, den Wer-Bereich, <b>ganz genau</b> an, denn Buchstabendreher sind schwer zu erkennen. Enthält der Wer-Bereich einen Buchstabendreher, dann <b>gebe hier keine Daten ein!</b>\n\nUnten ist ein Beispiel für eine Phishing-Webadresse, die dieses Prinzip anwendet. In dem Beispiel ist dein Gesprächspartner mircosoft.com (blau hinterlegt). <b>Der Wer-Bereich enthält einen Buchstabendreher.</b></string>
+    <string name="level_07_intro_05_text_02">Der wichtigste Bereich einer Webadresse, der Wer-Bereich muss auch vom Phisher registriert werden. Der Phisher kann hierbei einfach einen Buchstabendreher in dir vertraute Wer-Bereiche einbauen und diesen Namen mit Buchstabendreher dann registrieren. Schaue dir also immer die wichtigsten zwei Blöcke der Webadresse, den Wer-Bereich, <b>ganz genau</b> an, denn Buchstabendreher sind schwer zu erkennen. Enthält der Wer-Bereich einen Buchstabendreher, dann <b>gebe hier keine Daten ein!</b>\n\nUnten ist ein Beispiel für eine Phishing-Webadresse, die dieses Prinzip anwendet. In dem Beispiel ist dein Gesprächspartner twitetr.com (blau hinterlegt). <b>Der Wer-Bereich enthält einen Buchstabendreher.</b></string>
     <string name="level_07_intro_05_mircosoft">mircosoft.com</string>
     <string name="level_07_intro_05_path_01">/en-us</string>
     <string name="level_07_intro_05_path_02">/default.aspx</string>

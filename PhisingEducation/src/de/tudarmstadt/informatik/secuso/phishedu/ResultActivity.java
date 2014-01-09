@@ -21,7 +21,6 @@ import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishResult;
 
 public class ResultActivity extends SwipeActivity {
 	public static final int RESULT_GUESSED = PhishResult.getMax() + 1;
-	public static final int PHISH_DETECTED_NO_PROOF = PhishResult.getMax() + 2;
 	protected static int[] reminderIDs = { R.string.level_03_reminder,
 		R.string.level_04_reminder, R.string.level_05_reminder,
 		R.string.level_06_reminder, R.string.level_07_reminder,
@@ -48,7 +47,6 @@ public class ResultActivity extends SwipeActivity {
 		resultTextIDs[PhishResult.Phish_NotDetected.getValue()] = R.string.you_are_wrong;
 		resultTextIDs[PhishResult.NoPhish_NotDetected.getValue()] = R.string.oversafe_text;
 		resultTextIDs[RESULT_GUESSED] = R.string.you_guessed;
-		resultTextIDs[PHISH_DETECTED_NO_PROOF] = R.string.you_found_the_phish_noproof;
 
 		resultSmileyIDs = new int[PhishResult.values().length + 2];
 		resultSmileyIDs[PhishResult.Phish_Detected.getValue()] = R.drawable.small_smiley_smile;
@@ -56,7 +54,6 @@ public class ResultActivity extends SwipeActivity {
 		resultSmileyIDs[PhishResult.Phish_NotDetected.getValue()] = R.drawable.small_smiley_not_smile;
 		resultSmileyIDs[PhishResult.NoPhish_NotDetected.getValue()] = R.drawable.small_smiley_o;
 		resultSmileyIDs[RESULT_GUESSED] = R.drawable.small_smiley_you_guessed;
-		resultSmileyIDs[PHISH_DETECTED_NO_PROOF] = R.drawable.small_smiley_smile;
 	}
 
 	protected void onStartClick() {
@@ -111,12 +108,15 @@ public class ResultActivity extends SwipeActivity {
 	protected View getPage(int page, LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View view = inflater.inflate(R.layout.result, container, false);
 		int level = BackendControllerImpl.getInstance().getLevel(); 
+		boolean show_proof = BackendControllerImpl.getInstance().showProof();
 
 		TextView text1 = (TextView) view.findViewById(R.id.result_text1);
 		if(level == 2){
 			text1.setText(getLevel2Texts(result));
 		}else if(level == 10){
 			text1.setText(getLevel10Texts(result));
+		}else if(result == PhishResult.Phish_Detected.getValue() && !show_proof){
+			text1.setText(R.string.you_found_the_phish_noproof);
 		}else{
 			text1.setText(resultTextIDs[result]);
 		}
@@ -150,6 +150,7 @@ public class ResultActivity extends SwipeActivity {
 
 	public void setResult(int result){
 		this.result=result;
+		boolean show_proof = BackendControllerImpl.getInstance().showProof();
 	}
 
 	private int getReminderText(PhishAttackType attack_type, int level) {
