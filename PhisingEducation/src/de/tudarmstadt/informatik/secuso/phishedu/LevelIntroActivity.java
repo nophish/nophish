@@ -36,7 +36,7 @@ public class LevelIntroActivity extends SwipeActivity {
 	protected static String[][] exampleUrlPartId = {
 		// level 3
 		// TODO: auslagern in strings.xml
-		{ "http://", "google.com.", "phishers-seite.de",
+		{ "http://", "google.com.", "phisher-seite.de",
 		"/search/online+banking+postbank" },
 		{ "http://", "", "192.168.160.02", "/secure-login" },
 		{ "https://", "secure-login.mail.google.com.", "hsezis.de",
