@@ -141,6 +141,8 @@ public class AwarenessActivity extends PhishBaseActivity {
 		Toast.makeText(getActivity().getApplicationContext(), message, Toast.LENGTH_LONG)
 		.show();
 	}
+	
+	private AlertDialog current_dialog=null;
 
 	private void showAlertDialog() {
 
@@ -175,6 +177,7 @@ public class AwarenessActivity extends PhishBaseActivity {
 		dialog.setOnShowListener(enabler);
 		// Showing Alert Message
 		dialog.show();
+		this.current_dialog=dialog;
 		enabler.execute();
 	}
 
@@ -191,14 +194,14 @@ public class AwarenessActivity extends PhishBaseActivity {
 		alertDialog.setIcon(R.drawable.e_mail);
 
 		// button for resend
-		alertDialog.setNeutralButton(R.string.awareness_resend_email,
+		alertDialog.setNegativeButton(R.string.awareness_resend_email,
 				new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int which) {
 			}
 		});
 
 		if(Constants.ALLOW_SKIP_AWARENESS){
-			alertDialog.setNegativeButton(R.string.awareness_skip,
+			alertDialog.setNeutralButton(R.string.awareness_skip,
 					new DialogInterface.OnClickListener() {
 				public void onClick(DialogInterface dialog, int which) {
 					BackendControllerImpl.getInstance().startLevel(1);
@@ -208,9 +211,10 @@ public class AwarenessActivity extends PhishBaseActivity {
 		}
 
 		AlertDialog dialog = alertDialog.create();
-
+		
 		// Showing Alert Message
 		dialog.show();
+		this.current_dialog = dialog;
 
 	}
 
@@ -301,6 +305,13 @@ public class AwarenessActivity extends PhishBaseActivity {
 	@Override
 	int getSubTitle() {
 		return R.string.title_activity_awareness;
+	}
+	
+	@Override
+	public void onLevelChange(int new_levelid) {
+		if(current_dialog.isShowing()){
+			current_dialog.dismiss();
+		}
 	}
 
 }

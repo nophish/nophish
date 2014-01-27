@@ -23,6 +23,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.games.GamesClient;
 
+import de.tudarmstadt.informatik.secuso.phishedu.AwarenessActivity;
 import de.tudarmstadt.informatik.secuso.phishedu.Constants;
 import de.tudarmstadt.informatik.secuso.phishedu.GooglePlusActivity;
 import de.tudarmstadt.informatik.secuso.phishedu.LevelFinishedActivity;
@@ -38,8 +39,6 @@ import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController.OnLev
 public class MainActivity extends ActionBarActivity implements FrontendController, OnLevelChangeListener, BackendInitListener, OnLevelstateChangeListener {
 	Map<Class<? extends PhishBaseActivity>, PhishBaseActivity> fragCache = new HashMap<Class<? extends PhishBaseActivity>, PhishBaseActivity>();
 	PhishBaseActivity current_frag;
-
-	GooglePlusActivity plusFragment;
 
 	@Override
 	protected void onStart() {
@@ -67,7 +66,10 @@ public class MainActivity extends ActionBarActivity implements FrontendControlle
 		PhishBaseActivity  newFrag;
 		try {
 			if(!fragCache.containsKey(fragClass)){
-				fragCache.put(fragClass, fragClass.newInstance());
+				PhishBaseActivity newinstance=fragClass.newInstance();
+				BackendControllerImpl.getInstance().addOnLevelChangeListener(newinstance);
+				BackendControllerImpl.getInstance().addOnLevelstateChangeListener(newinstance);
+				fragCache.put(fragClass, newinstance);
 			}
 		} catch (InstantiationException e) {
 			e.printStackTrace();
@@ -115,8 +117,7 @@ public class MainActivity extends ActionBarActivity implements FrontendControlle
 		BackendControllerImpl.getInstance().addOnLevelChangeListener(this);
 		BackendControllerImpl.getInstance().addOnLevelstateChangeListener(this);
 
-		plusFragment = new GooglePlusActivity();
-		fragCache.put(GooglePlusActivity.class, plusFragment);
+		fragCache.put(GooglePlusActivity.class, new GooglePlusActivity());
 
 		switchToFragment(StartMenuActivity.class);
 
@@ -195,12 +196,12 @@ public class MainActivity extends ActionBarActivity implements FrontendControlle
 
 	@Override
 	public void onSignInFailed() {
-		plusFragment.setShowSignIn(true);
+		((GooglePlusActivity)fragCache.get(GooglePlusActivity.class)).setShowSignIn(true);
 	}
 
 	@Override
 	public void onSignInSucceeded() {
-		plusFragment.setShowSignIn(false);
+		((GooglePlusActivity)fragCache.get(GooglePlusActivity.class)).setShowSignIn(false);
 		getGamesClient().unlockAchievement(getString(R.string.achievement_welcome));
 	}
 

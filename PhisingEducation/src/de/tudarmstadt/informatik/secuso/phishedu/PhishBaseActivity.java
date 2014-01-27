@@ -18,10 +18,13 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController.Levelstate;
+import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController.OnLevelChangeListener;
+import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController.OnLevelstateChangeListener;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendControllerImpl;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.MainActivity;
 
-public abstract class PhishBaseActivity extends Fragment implements OnClickListener {
+public abstract class PhishBaseActivity extends Fragment implements OnClickListener, OnLevelChangeListener, OnLevelstateChangeListener {
 	
 	void updateUI(){
 		if(getActivity()!=null){
@@ -287,5 +290,11 @@ public abstract class PhishBaseActivity extends Fragment implements OnClickListe
 	protected void switchToFragment(Class<?extends PhishBaseActivity> target, Bundle args){
 		((MainActivity)getActivity()).switchToFragment(target,args);
 	}
+	
+	@Override
+	public void onLevelChange(int new_levelid) {}
+
+	@Override
+	public void onLevelstateChange(Levelstate new_state, int level) {}
 	
 }
