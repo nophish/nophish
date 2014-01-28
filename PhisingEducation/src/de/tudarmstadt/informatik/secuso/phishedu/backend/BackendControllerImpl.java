@@ -321,13 +321,13 @@ public class BackendControllerImpl implements BackendController, GameStateLoaded
 			after_url=Arrays.toString(base_url.getParts());
 			tries--;
 		}while(	before_url.equals(after_url)
-				&& tries > 0
+				&& tries >= 0
 				&& attack != PhishAttackType.Keep
 				&& attack != PhishAttackType.Level2
 				&& attack != PhishAttackType.HTTP
 				); //The attack might not change the URL so we try again.
 
-		if(tries == 0){
+		if(tries == -1){
 			throw new IllegalStateException("Could not find attackable URL. Attack:"+attack.getAttackClass().getName());
 		}
 
