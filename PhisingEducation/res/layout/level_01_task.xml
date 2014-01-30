@@ -31,7 +31,6 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="@dimen/margin_large"
             android:minWidth="@dimen/btn_standard_width"
-            android:onClick="startBrowser"
             android:contentDescription="@string/content_desc_click_here_button"
             android:text="@string/level_01_exercise_button_click_here" />
     </RelativeLayout>

@@ -40,7 +40,6 @@
             android:layout_below="@+id/about_contact"
             android:layout_marginTop="@dimen/margin_small"
             android:contentDescription="@string/secuso_logo"
-            android:onClick="openSecusoLink"
             android:src="@drawable/secuso" />
 
     </RelativeLayout>

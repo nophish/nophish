@@ -49,7 +49,6 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:contentDescription="@string/content_desc_tik"
-        android:onClick="clickAccept"
         android:src="@drawable/checkmark" />
 
     <ImageView
@@ -59,7 +58,6 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:contentDescription="@string/content_desc_cross"
-        android:onClick="clickDecline"
         android:src="@drawable/cross" />
 
     <ImageView

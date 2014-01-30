@@ -38,8 +38,7 @@
         android:layout_marginTop="@dimen/margin_large"
         android:minWidth="@dimen/btn_menu_width"
         android:text="@string/button_show_online_achievement"
-        android:visibility="gone"
-        android:onClick="showAchievments" />
+        android:visibility="gone"/>
     
     <Button
         android:id="@+id/button_show_leaderboard_rate"
@@ -50,8 +49,7 @@
         android:layout_below="@+id/button_show_online_achievement"
         android:layout_marginTop="@dimen/margin_small"
         android:text="@string/button_show_leaderboard_rate"
-        android:visibility="gone"
-        android:onClick="showLeaderboardRate" />
+        android:visibility="gone" />
 
     <Button
         android:id="@+id/button_show_leaderboard_total"
@@ -62,8 +60,7 @@
         android:layout_below="@+id/button_show_leaderboard_rate"
         android:layout_marginTop="@dimen/margin_small"
         android:text="@string/button_show_leaderboard_total"
-        android:visibility="gone"
-        android:onClick="showLeaderboardTotal" />
+        android:visibility="gone" />
 	
 	<Button
         android:id="@+id/button_show_leaderboard_total_points"
@@ -74,8 +71,7 @@
         android:layout_below="@+id/button_show_leaderboard_total"
         android:layout_marginTop="@dimen/margin_small"
         android:text="@string/button_show_leaderboard_total_points"
-        android:visibility="gone"
-        android:onClick="showLeaderboardTotalPoints" />
+        android:visibility="gone" />
 	
 	<Button
         android:id="@+id/button_delete_remote_data"
@@ -86,8 +82,7 @@
         android:layout_below="@+id/button_show_leaderboard_total_points"
         android:layout_marginTop="@dimen/margin_small"
         android:text="@string/button_delete_remote_data"
-        android:visibility="gone"
-        android:onClick="deleteRemoteData" />
+        android:visibility="gone" />
 	
     <!-- sign-out button -->
     

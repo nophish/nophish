@@ -34,7 +34,6 @@
             android:background="@drawable/button_green"
             android:contentDescription="@string/content_desc_play"
             android:minWidth="@dimen/btn_standard_width"
-            android:onClick="startGame"
             android:text="@string/button_play" />
 
         <Button
@@ -47,7 +46,6 @@
             android:background="@drawable/button_grey"
             android:contentDescription="@string/content_desc_level_overview"
             android:minWidth="@dimen/btn_standard_width"
-            android:onClick="showLevelOverview"
             android:text="@string/button_level_overview" />
 
         <Button
@@ -60,7 +58,6 @@
             android:background="@drawable/button_grey"
             android:contentDescription="@string/content_desc_google_play"
             android:minWidth="@dimen/btn_standard_width"
-            android:onClick="goToGooglePlay"
             android:text="@string/button_social" />
 
         <Button
@@ -73,7 +70,6 @@
             android:background="@drawable/button_grey"
             android:contentDescription="@string/content_desc_more_info"
             android:minWidth="@dimen/btn_standard_width"
-            android:onClick="showMoreInfo"
             android:text="@string/button_more_info" />
 
         <Button
@@ -86,7 +82,6 @@
             android:background="@drawable/button_grey"
             android:contentDescription="@string/content_desc_about"
             android:minWidth="@dimen/btn_standard_width"
-            android:onClick="showAbout"
             android:text="@string/button_about" />
 
         <TextView
@@ -96,7 +91,7 @@
             android:layout_alignParentRight="true"
             android:layout_alignParentBottom="true"
             android:layout_below="@+id/menu_button_about"
-            android:text="version"
+            android:text="@string/number"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:textColor="@color/grey"
              />
