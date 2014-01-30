@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Random;
 import java.util.Scanner;
+import java.util.Vector;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -59,8 +60,8 @@ public class BackendControllerImpl implements BackendController, GameStateLoaded
 	private EnumMap<PhishAttackType, PhishURL[]> urlCache=new EnumMap<PhishAttackType, PhishURL[]>(PhishAttackType.class);
 	private boolean gamestate_loaded = false;
 	private GameProgress progress;
-	private List<OnLevelstateChangeListener> onLevelstateChangeListeners=new ArrayList<BackendController.OnLevelstateChangeListener>();
-	private List<OnLevelChangeListener> onLevelChangeListeners=new ArrayList<BackendController.OnLevelChangeListener>();
+	private Vector<OnLevelstateChangeListener> onLevelstateChangeListeners=new Vector<BackendController.OnLevelstateChangeListener>();
+	private Vector<OnLevelChangeListener> onLevelChangeListeners=new Vector<BackendController.OnLevelChangeListener>();
 	private BackendInitListener initListener;
 
 	private static BasePhishURL[] deserializeURLs(String serialized){
@@ -209,7 +210,7 @@ public class BackendControllerImpl implements BackendController, GameStateLoaded
 		new SendMailTask(from, to, usermessage).execute();
 	}
 
-	private List<PhishAttackType> level_attacks;
+	private Vector<PhishAttackType> level_attacks;
 	@Override
 	public void startLevel(int level) {
 		checkinited();
@@ -219,14 +220,14 @@ public class BackendControllerImpl implements BackendController, GameStateLoaded
 		}
 		this.progress.setLevel(level);
 		this.level_attacks=generateLevelAttacks(level);
-		for (OnLevelChangeListener listener : onLevelChangeListeners) {
-			listener.onLevelChange(level);
+		for(int i=0; i<onLevelChangeListeners.size();i++){
+			onLevelChangeListeners.get(i).onLevelChange(level);
 		}
 		levelStarted(level);
 	}
 
-	private List<PhishAttackType> generateLevelAttacks(int level){
-		List<PhishAttackType> attacks = new ArrayList<PhishAttackType>();
+	private Vector<PhishAttackType> generateLevelAttacks(int level){
+		Vector<PhishAttackType> attacks = new Vector<PhishAttackType>();
 		NoPhishLevelInfo level_info = getLevelInfo(level);
 		int this_level_attacks = level_info.levelPhishes() - level_info.levelRepeats();
 
@@ -473,8 +474,8 @@ public class BackendControllerImpl implements BackendController, GameStateLoaded
 	}
 
 	private void notifyLevelStateChangedListener(Levelstate newstate, int levelid){
-		for (OnLevelstateChangeListener listener : onLevelstateChangeListeners) {
-			listener.onLevelstateChange(newstate, levelid);
+		for(int i=0; i< onLevelstateChangeListeners.size(); i++){
+			onLevelstateChangeListeners.get(i).onLevelstateChange(newstate, levelid);
 		}
 	}
 
