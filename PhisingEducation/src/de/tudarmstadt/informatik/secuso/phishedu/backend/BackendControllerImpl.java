@@ -11,6 +11,7 @@ import java.util.Scanner;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.media.AudioManager;
 import android.net.Uri;
 import android.os.Vibrator;
 
@@ -368,9 +369,12 @@ public class BackendControllerImpl implements BackendController, GameStateLoaded
 		if(result == PhishResult.Phish_NotDetected){
 			progress.decLives();
 		}
-		if((result == PhishResult.Phish_NotDetected || result == PhishResult.NoPhish_NotDetected) && !Constants.DISABLE_VIBRATE){
-			Vibrator v = (Vibrator) frontend.getContext().getSystemService(Context.VIBRATOR_SERVICE);
-			v.vibrate(500);
+		if(result == PhishResult.Phish_NotDetected || result == PhishResult.NoPhish_NotDetected){
+			AudioManager audio = (AudioManager) frontend.getContext().getSystemService(Context.AUDIO_SERVICE);
+			if(audio.getRingerMode() != AudioManager.RINGER_MODE_SILENT){
+				Vibrator v = (Vibrator) frontend.getContext().getSystemService(Context.VIBRATOR_SERVICE);
+				v.vibrate(500);
+			}
 		}
 		//if we did not correctly identify we have to readd.
 		if(result==PhishResult.Phish_NotDetected || result == PhishResult.NoPhish_NotDetected){

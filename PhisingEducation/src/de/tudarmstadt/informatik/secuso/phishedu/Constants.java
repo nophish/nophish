@@ -11,7 +11,6 @@ public class Constants {
 	public static final boolean SHOW_GMAIL_BUTTON = false;
 	public static final boolean SKIP_LEVEL1 = false;
 	public static final int PROOF_UPTO_LEVEL = 4;
-	public static final boolean DISABLE_VIBRATE = true;
 
 	public static final String ARG_PAGE_NUMBER = "page";
 	public static final String ARG_RESULT = "result";
