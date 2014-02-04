@@ -1,6 +1,8 @@
 package de.tudarmstadt.informatik.secuso.phishedu;
 
+import android.content.Intent;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.SpannableStringBuilder;
 import android.text.style.BackgroundColorSpan;
@@ -77,7 +79,8 @@ public class LevelIntroActivity extends SwipeActivity {
 	@Override
 	public int[] getClickables() {
 		return new int[]{
-			R.id.level_01_intro_00_button_01
+			R.id.level_01_intro_00_button_01,
+			R.id.level_11_intro_07_text_01
 		};
 	}
 	
@@ -86,6 +89,11 @@ public class LevelIntroActivity extends SwipeActivity {
 		switch (view.getId()) {
 		case R.id.level_01_intro_00_button_01:
 			onStartClick();
+			break;
+		case R.id.level_11_intro_07_text_01:
+			Intent browserIntent = new Intent(Intent.ACTION_VIEW);
+    		browserIntent.setData(Uri.parse("https://www.bsi-fuer-buerger.de/BSIFB/DE/SicherheitImNetz/EinkaufenImInternet/OnlineShoppingbeachten/shopping_was_beachten.html#doc1102038bodyText4"));
+    		startActivity(browserIntent);
 			break;
 		}
 		super.onClick(view);

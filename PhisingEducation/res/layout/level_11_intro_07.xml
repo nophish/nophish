@@ -20,7 +20,8 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
             android:text="@string/level_11_intro_07_text_01"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:textAppearance="?android:attr/textAppearanceMedium"
+             />
     </RelativeLayout>
 
 </ScrollView>
