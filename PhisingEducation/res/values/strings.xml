@@ -88,7 +88,7 @@
     <string name="awareness_invalid_email">Die Absender oder Empfänger E-Mail ist ungültig. Bitte überprüfe deine Eingaben.</string>
     <string name="awareness_email_sent">E-Mail versandt</string>
     <string name="awareness_alert_message">Nun überprüfe bitte deine E-Mails über dein Smartphone. Du solltest eine gefälschte E-Mail bekommen haben. Lese diese gründlich. Über diese kommst du dann zurück in die App.</string>
-    <string name="awareness_second_alert_message">Bitte beachte, dass das Ankommen der E-Mail einige Minuten dauern kann. Ggf. musst du auch in deinem Junk/Spam-Ordner nachsehen. Sollte Die Mail dennoch nicht ankommen bitte versuche eine andere Absender-Adresse.</string>
+    <string name="awareness_second_alert_message">Bitte beachte, dass das Ankommen der E-Mail einige Minuten dauern kann. Ggf. musst du auch in deinem Junk/Spam-Ordner nachsehen. Sollte die E-Mail dennoch nicht ankommen, dann gebe bitte eine andere Absender-Adresse ein.</string>
     <string name="awareness_resend_email">E-Mail nicht erhalten</string>
     <string name="awareness_to_mail">Zur Mail Anwendung</string>
     <string name="awareness_skip">Überspringen</string>
