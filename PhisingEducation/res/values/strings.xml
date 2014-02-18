@@ -161,7 +161,7 @@
     <string name="level_00_finish_06_text_03">Aufgaben zum Punkte sammeln</string>
     <string name="level_00_finish_06_text_04">Hier kannst du die Web-Adresse nach rechts und links verschieben um sie dir komplett anzusehen.</string>
     <string name="level_00_finish_07_text_01"><b>Hinweis:</b> Wir möchten dich an dieser Stelle darauf hinweisen, dass wir dir mit dieser App helfen, dich gegen eine sehr verbreitete Form des Phishings zu schützen. Leider gibt es auch noch einige andere Arten. Wenn du später hierzu mehr wissen möchtest, dann klicke im Menü auf \"Mehr Informationen\".</string>
-    <string name="level_00_finish_08_text_01"><b>Na gut, los geht\'s!</b>\n\nBevor du uns noch vom Stuhl fällst vor Langeweile, lass uns das Ganze ein wenig interaktiver angehen und mit dem Spiel beginnen. In den ersten beiden Levels werden notwendige Grundkenntnisse vermittelt. In den darauffolgenden Levels wirst du lernen, Phishing-Angriffe anhand von Webadressen zu erkennen.</string>
+    <string name="level_00_finish_08_text_01"><b>Los geht\'s!</b>\n\nBevor du uns noch vom Stuhl fällst vor Langeweile, lass uns das Ganze ein wenig interaktiver angehen und mit dem Spiel beginnen. In den ersten beiden Levels werden notwendige Grundkenntnisse vermittelt. In den darauffolgenden Levels wirst du lernen, Phishing-Angriffe anhand von Webadressen zu erkennen.</string>
 
     <!-- Level 1 - ADRESSLEISTE -->
     <string name="level_01_intro_00_text_01"><b>Die Adressleiste</b>\n\nAls Erstes musst du wissen, wie du mit deinem Smartphone an die Webadresse kommst. Das ist bei jedem Android Browser gleich. Dazu sind zwei Dinge wichtig:\n\n1.) Die Adressleiste finden.\n2.) Die Webadresse vollständig ansehen.</string>
