@@ -115,7 +115,7 @@ public class LevelIntroActivity extends SwipeActivity {
 	@Override
 	protected String startButtonText() {
 		if (this.getLevel() == BackendControllerImpl.getInstance().getLevelCount()-1) {
-			return "Fertig";
+			return "Weiter";
 		}
 		return "Starte Übung";
 	}
