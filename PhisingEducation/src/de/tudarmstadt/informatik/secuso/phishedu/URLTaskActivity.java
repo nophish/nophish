@@ -22,34 +22,61 @@ public class URLTaskActivity extends PhishBaseActivity {
 
 	private TextView urlText;
 	private View v;
-	
-	boolean enableRestartButton(){return true;};
+	private TextView question;
+	private TextView cross;
+	private TextView checkmark;
+
+	boolean enableRestartButton() {
+		return true;
+	};
 
 	@Override
-	public View getLayout(LayoutInflater inflater, ViewGroup container,	Bundle savedInstanceState) {
+	public View getLayout(LayoutInflater inflater, ViewGroup container,
+			Bundle savedInstanceState) {
 		View v = inflater.inflate(R.layout.urltask_task, container, false);
 		this.urlText = (TextView) v.findViewById(R.id.url_task_url);
-		urlText.setTextSize(BackendControllerImpl.getInstance().getLevelInfo().getURLTextsize());
+		urlText.setTextSize(BackendControllerImpl.getInstance().getLevelInfo()
+				.getURLTextsize());
 
 		nextURL();
 
-		final HorizontalScrollView scroll = (HorizontalScrollView) v.findViewById(R.id.url_horizintal_sv);
-		scroll.post(new Runnable() {            
+		if (getLevel() == 10) {
+			this.question = (TextView) v
+					.findViewById(R.id.url_task_description);
+			this.cross = (TextView) v.findViewById(R.id.cross_text);
+			this.checkmark = (TextView) v.findViewById(R.id.tik_text);
+			// adjust texts
+			if (question != null) {
+				this.question.setText(getResources().getText(
+						R.string.url_task_desciription_level_10));
+			}
+			if (cross != null) {
+				this.cross.setText(getResources().getText(R.string.no));
+			}
+			if (checkmark != null) {
+				this.checkmark.setText(getResources().getText(R.string.yes));
+			}
+		}
+
+		final HorizontalScrollView scroll = (HorizontalScrollView) v
+				.findViewById(R.id.url_horizintal_sv);
+		scroll.post(new Runnable() {
 			@Override
 			public void run() {
-				scroll.fullScroll(View.FOCUS_RIGHT);              
+				scroll.fullScroll(View.FOCUS_RIGHT);
 			}
 		});
 
-		this.v=v;
+		this.v = v;
 
 		return v;
 	}
 
-	int getTitle(){
+	int getTitle() {
 		return BackendControllerImpl.getInstance().getLevelInfo(getLevel()).titleId;
 	};
-	int getIcon(){
+
+	int getIcon() {
 		return R.drawable.desktop;
 	}
 
@@ -60,7 +87,8 @@ public class URLTaskActivity extends PhishBaseActivity {
 
 	private void nextURL() {
 		BackendControllerImpl.getInstance().nextUrl();
-		String[] urlArray = BackendControllerImpl.getInstance().getUrl().getParts();
+		String[] urlArray = BackendControllerImpl.getInstance().getUrl()
+				.getParts();
 
 		// build string from array
 		StringBuilder sb = new StringBuilder();
@@ -74,10 +102,7 @@ public class URLTaskActivity extends PhishBaseActivity {
 
 	@Override
 	public int[] getClickables() {
-		return new int[]{
-				R.id.url_task_check_mark,
-				R.id.url_task_cross,
-		};
+		return new int[] { R.id.url_task_check_mark, R.id.url_task_cross, };
 	}
 
 	@Override
@@ -96,16 +121,16 @@ public class URLTaskActivity extends PhishBaseActivity {
 		PhishResult result = BackendControllerImpl.getInstance().userClicked(
 				acceptance);
 		Class followActivity = ResultActivity.class;
-		//In Level 10 (HTTP) we don't show proof activity.
+		// In Level 10 (HTTP) we don't show proof activity.
 		boolean show_proof = BackendControllerImpl.getInstance().showProof();
-		if(result == PhishResult.Phish_Detected ){
+		if (result == PhishResult.Phish_Detected) {
 			if (show_proof) {
 				followActivity = ProofActivity.class;
 			}
 		}
 		Bundle args = new Bundle();
 		args.putInt(Constants.ARG_RESULT, result.getValue());
-		((MainActivity)getActivity()).switchToFragment(followActivity,args);
+		((MainActivity) getActivity()).switchToFragment(followActivity, args);
 	}
 
 	@Override

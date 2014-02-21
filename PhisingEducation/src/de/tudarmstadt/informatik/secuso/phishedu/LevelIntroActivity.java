@@ -24,66 +24,64 @@ public class LevelIntroActivity extends SwipeActivity {
 	SpannableStringBuilder strBuilder = new SpannableStringBuilder();
 
 	protected static String[][] exampleReminderUrlPartId = {
-		{ "http://", "google.com.", "phisher-seite.de",
-		"/search/online+banking+postbank" },
-		{ "http://", "", "192.168.160.02", "/secure-login" },
-		{ "https://", "secure-login.mail.google.com.", "hsezis.de",
-		"/update-account" },
-		{ "https://", "microsoft.com.", "security-update.de", "/update" },
-		{ "http://", "www.", "facebook-login.com", "/" },
-		{ "https://", "www.", "fracebook.com", "/login" },
-		{ "http://", "www.", "mircosoft.com", "/en-us/default.aspx" },
-		{ "https://", "www.", "vvetter.com", "/wetter_aktuell/?code=EUDE" },
-		{ "http://", "phisher.de", "/http://mail.", "google.com", "/login" } };
+			{ "http://", "google.com.", "phisher-seite.de",
+					"/search/online+banking+postbank" },
+			{ "http://", "", "192.168.160.02", "/secure-login" },
+			{ "https://", "secure-login.mail.google.com.", "hsezis.de",
+					"/update-account" },
+			{ "https://", "microsoft.com.", "security-update.de", "/update" },
+			{ "http://", "www.", "facebook-login.com", "/" },
+			{ "https://", "www.", "fracebook.com", "/login" },
+			{ "http://", "www.", "mircosoft.com", "/en-us/default.aspx" },
+			{ "https://", "www.", "vvetter.com", "/wetter_aktuell/?code=EUDE" },
+			{ "http://", "phisher.de", "/http://mail.", "google.com", "/login" } };
 	protected static String[][] exampleUrlPartId = {
-		// level 3
-		// TODO: auslagern in strings.xml
-		{ "http://", "google.com.", "phisher-seite.de",
-		"/search/online+banking+postbank" },
-		{ "http://", "", "192.168.160.02", "/secure-login" },
-		{ "https://", "secure-login.mail.google.com.", "hsezis.de",
-			"/update-account", "http://",
-			"secure-login.mail.google.com.", "badcat.com", "/login" },
+			// level 3
+			// TODO: auslagern in strings.xml
+			{ "http://", "google.com.", "phisher-seite.de",
+					"/search/online+banking+postbank" },
+			{ "http://", "", "192.168.160.02", "/secure-login" },
+			{ "https://", "secure-login.mail.google.com.", "hsezis.de",
+					"/update-account", "http://",
+					"secure-login.mail.google.com.", "badcat.com", "/login" },
 			{ "https://", "microsoft.com.", "security-update.de", "/update" },
 			{ "http://", "www.", "facebook-login.com", "/", "http://", "www.",
-				"apple-support.com", "/ipodnano/troubleshooting",
-				"http://", "www.my.", "ebay-verify.de",
-				"/account-verification/user", "https://", "www.",
-				"fracebook.com", "/login", "http://", "www.",
-				"twitetr.com", "/en-us/default.aspx" },
-				{ "https://", "www.", "vvetter.com", "/wetter_aktuell/?code=EUDE",
+					"apple-support.com", "/ipodnano/troubleshooting",
+					"http://", "www.my.", "ebay-verify.de",
+					"/account-verification/user", "https://", "www.",
+					"fracebook.com", "/login", "http://", "www.",
+					"twitetr.com", "/en-us/default.aspx" },
+			{ "https://", "www.", "vvetter.com", "/wetter_aktuell/?code=EUDE",
 					"http://", "www.", "googie.de", "/services/?fg=1",
 					"http://", "www.", "paypa1.com",
-				"/de/webapps/mpp/privatkunden" },
-				{ "http://", "phisher.de", "/http://mail.", "google.com", "/login" },
-				{ "https://", "www.", "deutsche-bank.de", "/index.htm", "https://",
+					"/de/webapps/mpp/privatkunden" },
+			{ "http://", "phisher.de", "/http://mail.", "google.com", "/login",
+			  "http://", "phisher.de", "/", "google.com", "/login"},
+			{ "https://", "www.", "deutsche-bank.de", "/index.htm", "https://",
 					"www.", "deutsche-bank.de", "/index.htm", "https://",
 					"facebook.", "phisher.de", "/secure-login" },
-					{ "https://", "www.", "commerzbank.de", "/", "https://", "www.",
-						"commerzbanking.de",
-						"/P-Portal1/XML/IFILPortal/pgf.html?Tab=3&ifil=coba_pk",
-						"https://", "www.", "paypal.com", "/de", "https://",
-						"www.", "paypal-viewpoints.com", "/DE-Kontakt" } };
+			{ "https://", "www.", "commerzbank.de", "/", "https://", "www.",
+					"commerzbanking.de",
+					"/P-Portal1/XML/IFILPortal/pgf.html?Tab=3&ifil=coba_pk",
+					"https://", "www.", "paypal.com", "/de", "https://",
+					"www.", "paypal-viewpoints.com", "/DE-Kontakt" } };
 
 	@Override
-	int getTitle(){
+	int getTitle() {
 		return BackendControllerImpl.getInstance().getLevelInfo().titleId;
 	};
-	
+
 	@Override
 	int getSubTitle() {
 		return R.string.intro;
 	}
 
-	
 	@Override
 	public int[] getClickables() {
-		return new int[]{
-			R.id.level_01_intro_00_button_01,
-			R.id.level_11_intro_07_text_01
-		};
+		return new int[] { R.id.level_01_intro_00_button_01,
+				R.id.level_11_intro_07_text_01 };
 	}
-	
+
 	@Override
 	public void onClick(View view) {
 		switch (view.getId()) {
@@ -92,8 +90,10 @@ public class LevelIntroActivity extends SwipeActivity {
 			break;
 		case R.id.level_11_intro_07_text_01:
 			Intent browserIntent = new Intent(Intent.ACTION_VIEW);
-    		browserIntent.setData(Uri.parse("https://www.bsi-fuer-buerger.de/BSIFB/DE/SicherheitImNetz/EinkaufenImInternet/OnlineShoppingbeachten/shopping_was_beachten.html#doc1102038bodyText4"));
-    		startActivity(browserIntent);
+			browserIntent
+					.setData(Uri
+							.parse("https://www.bsi-fuer-buerger.de/BSIFB/DE/SicherheitImNetz/EinkaufenImInternet/OnlineShoppingbeachten/shopping_was_beachten.html#doc1102038bodyText4"));
+			startActivity(browserIntent);
 			break;
 		}
 		super.onClick(view);
@@ -106,7 +106,8 @@ public class LevelIntroActivity extends SwipeActivity {
 			next_activity = AwarenessActivity.class;
 		} else if (this.getLevel() == 1) {
 			next_activity = FindAddressBarActivity.class;
-		}else if(this.getLevel() == BackendControllerImpl.getInstance().getLevelCount()-1){
+		} else if (this.getLevel() == BackendControllerImpl.getInstance()
+				.getLevelCount() - 1) {
 			next_activity = AppEndActivity.class;
 		}
 		switchToFragment(next_activity);
@@ -114,8 +115,9 @@ public class LevelIntroActivity extends SwipeActivity {
 
 	@Override
 	protected String startButtonText() {
-		if (this.getLevel() == BackendControllerImpl.getInstance().getLevelCount()-1) {
-			return "Weiter";
+		if (this.getLevel() == BackendControllerImpl.getInstance()
+				.getLevelCount() - 1) {
+			return "Geschafft";
 		}
 		return "Starte Übung";
 	}
@@ -129,7 +131,8 @@ public class LevelIntroActivity extends SwipeActivity {
 	protected View getPage(int page, LayoutInflater inflater,
 			ViewGroup container, Bundle savedInstanceState) {
 
-		View view = inflater.inflate(BackendControllerImpl.getInstance().getLevelInfo(getLevel()).introLayouts[page], container, false);
+		View view = inflater.inflate(BackendControllerImpl.getInstance()
+				.getLevelInfo(getLevel()).introLayouts[page], container, false);
 
 		// when example screen is showns
 		if ((view.findViewById(R.id.recognize_attack) != null)
@@ -138,12 +141,12 @@ public class LevelIntroActivity extends SwipeActivity {
 		}
 		return view;
 	}
-	
+
 	@Override
 	int getIcon() {
 		if (getLevel() > 0) {
 			return R.drawable.emblem_library;
-		}else{
+		} else {
 			return 0;
 		}
 	}
@@ -349,44 +352,54 @@ public class LevelIntroActivity extends SwipeActivity {
 
 		for (int i = 0; i < url.length; i++) {
 
+			int spanIndex = (i % 5);
+			if (spanIndex == 0) {
+				strBuilder.clear();
+				strBuilder.clearSpans();
+			}
+			
 			String part = url[i];
 			// 0 at the beginning
 			int wordStart = strBuilder.length();
 			int wordEnd = wordStart + part.length();
 			strBuilder.append(part);
 
-			if (i == 1) {
-				// background of domain red
-				final BackgroundColorSpan bgc = new BackgroundColorSpan(
-						getResources().getColor(R.color.domain));
-				strBuilder.setSpan(bgc, wordStart, wordEnd, 0);
-			} else if (i == 0) {
+			if (spanIndex == 0) {
+
 				// make foregroundcolor of http grey
 				final ForegroundColorSpan fgc = new ForegroundColorSpan(
 						getResources().getColor(R.color.grey));
 				strBuilder.setSpan(fgc, wordStart, wordEnd, 0);
 
-			} else if (i == 2 || i == 4) {
+			} else if (spanIndex == 1) {
+
+				// background of domain blue
+				final BackgroundColorSpan bgc = new BackgroundColorSpan(
+						getResources().getColor(R.color.domain));
+				strBuilder.setSpan(bgc, wordStart, wordEnd, 0);
+
+			} else if (spanIndex == 2 || spanIndex == 4) {
 				final ForegroundColorSpan fgc = new ForegroundColorSpan(
 						Color.BLACK);
 				strBuilder.setSpan(fgc, wordStart, wordEnd, 0);
-			} else if (i == 3) {
+			} else if (spanIndex == 3) {
 				// make path part blue
 				final BackgroundColorSpan bgc = new BackgroundColorSpan(
 						getResources().getColor(R.color.path));
 				strBuilder.setSpan(bgc, wordStart, wordEnd, 0);
 			}
 
-			if (i == url.length - 1) {
-				// example needs to be set
+			if (i == 4) {
 				if (view.findViewById(R.id.recognize_attack) != null) {
 					// we are in recognize attack
 					setTextView(view, R.id.example_01);
 
-				} else {
+				} else if(view.findViewById(R.id.reminder_examples) != null){
 					// we are in reminder_examples
 					setTextView(view, R.id.example_09);
 				}
+			} else if (i == 9) {
+				setTextView(view, R.id.example_02);
 			}
 		}
 	}

@@ -40,7 +40,7 @@
             android:layout_alignBottom="@+id/level_09_intro_02_before_path"
             android:layout_toRightOf="@+id/level_09_intro_02_before_path"
             android:background="@color/path"
-            android:text="@string/level_09_intro_02_path"
+            android:text="@string/path"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <TextView
@@ -48,9 +48,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignRight="@+id/level_09_intro_02_path"
-            android:layout_below="@+id/level_09_intro_02_path"
-            android:layout_marginTop="@dimen/margin_small"
-            android:layout_toRightOf="@+id/level_09_intro_02_before_path"
+            android:layout_below="@+id/level_09_intro_02_before_path"
+            android:layout_marginTop="14dp"
             android:background="@color/path"
             android:gravity="center"
             android:padding="@dimen/mini_padding"

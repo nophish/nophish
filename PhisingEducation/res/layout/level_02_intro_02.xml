@@ -96,7 +96,6 @@
             android:id="@+id/level_02_intro_01_path_02"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/level_02_intro_01_path_01"
             android:layout_alignRight="@+id/level_02_intro_01_path_01"
             android:layout_below="@+id/level_02_intro_01_path_01"
             android:layout_marginTop="@dimen/margin_small"
