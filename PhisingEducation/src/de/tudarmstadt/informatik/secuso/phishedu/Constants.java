@@ -5,7 +5,7 @@ public class Constants {
 	/**
 	 * Game configuration
 	 */
-	public static final boolean UNLOCK_ALL_LEVELS = true;
+	public static final boolean UNLOCK_ALL_LEVELS = false;
 	public static final boolean ALLOW_REPEAT_AWARENESS = false;
 	public static final boolean ALLOW_SKIP_AWARENESS = false;
 	public static final boolean SHOW_GMAIL_BUTTON = false;
