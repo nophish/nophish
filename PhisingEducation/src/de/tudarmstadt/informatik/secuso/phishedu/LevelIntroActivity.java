@@ -84,17 +84,15 @@ public class LevelIntroActivity extends SwipeActivity {
 
 	@Override
 	public void onClick(View view) {
-		switch (view.getId()) {
-		case R.id.level_01_intro_00_button_01:
+		int id = view.getId();
+		if (id == R.id.level_01_intro_00_button_01) {
 			onStartClick();
-			break;
-		case R.id.level_11_intro_07_text_01:
+		} else if (id == R.id.level_11_intro_07_text_01) {
 			Intent browserIntent = new Intent(Intent.ACTION_VIEW);
 			browserIntent
 					.setData(Uri
 							.parse("https://www.bsi-fuer-buerger.de/BSIFB/DE/SicherheitImNetz/EinkaufenImInternet/OnlineShoppingbeachten/shopping_was_beachten.html#doc1102038bodyText4"));
 			startActivity(browserIntent);
-			break;
 		}
 		super.onClick(view);
 	}

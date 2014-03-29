@@ -252,11 +252,10 @@ public abstract class PhishBaseActivity extends Fragment implements OnClickListe
 	
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		switch (item.getItemId()) {
-		case android.R.id.home:
+		int itemId = item.getItemId();
+		if (itemId == R.id.home) {
 			onBackPressed();
-			break;
-		case R.id.restart_level:
+		} else if (itemId == R.id.restart_level) {
 			levelRestartWarning();
 			return true;
 		}

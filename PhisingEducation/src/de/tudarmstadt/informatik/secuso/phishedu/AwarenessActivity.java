@@ -284,8 +284,8 @@ public class AwarenessActivity extends PhishBaseActivity {
 
 	@Override
 	public void onClick(View view) {
-		switch (view.getId()) {
-		case R.id.button_abschicken:
+		int id = view.getId();
+		if (id == R.id.button_abschicken) {
 			sendEmail(view);
 		}
 	}

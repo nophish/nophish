@@ -25,10 +25,9 @@ public class FindAddressBarActivity extends PhishBaseActivity {
 	
 	@Override
 	public void onClick(View view) {
-		switch (view.getId()) {
-		case R.id.level_01_exercise_button:
+		int id = view.getId();
+		if (id == R.id.level_01_exercise_button) {
 			BackendControllerImpl.getInstance().redirectToLevel1URL();
-			break;
 		}
 	}
 	

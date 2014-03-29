@@ -16,8 +16,8 @@ import android.media.AudioManager;
 import android.net.Uri;
 import android.os.Vibrator;
 
-import com.google.android.gms.appstate.AppStateClient;
-import com.google.android.gms.games.GamesClient;
+import com.google.android.gms.appstate.AppState;
+import com.google.android.gms.games.Games;
 import com.google.example.games.basegameutils.BaseGameActivity;
 import com.google.example.games.basegameutils.GameHelper;
 import com.google.gson.Gson;
@@ -122,13 +122,10 @@ public class BackendControllerImpl implements BackendController, GameStateLoaded
 		}
 		this.frontend=frontend;
 		this.initListener=initlistener;
-		this.gamehelper=new GameHelper(frontend.getBaseActivity());
-		this.gamehelper.setup(this,BaseGameActivity.CLIENT_APPSTATE | BaseGameActivity.CLIENT_GAMES);
+		this.gamehelper=new GameHelper(frontend.getBaseActivity(),GameHelper.CLIENT_ALL);
 		SharedPreferences prefs = this.frontend.getContext().getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
-		GamesClient gamesclient = this.gamehelper.getGamesClient();
-		AppStateClient appstateclient = this.gamehelper.getAppStateClient();
 		Context context = this.frontend.getContext();
-		this.progress = new GameProgress(context, prefs, gamesclient,appstateclient,this);
+		this.progress = new GameProgress(context, prefs, this.gamehelper.getApiClient() ,this);
 		SharedPreferences url_cache = this.frontend.getContext().getSharedPreferences(URL_CACHE_NAME, Context.MODE_PRIVATE);
 		for(PhishAttackType type: CACHE_TYPES){
 			loadUrls(url_cache, type);
@@ -565,7 +562,7 @@ public class BackendControllerImpl implements BackendController, GameStateLoaded
 	public void onSignInSucceeded() {
 		frontend.onSignInSucceeded();
 		progress.loadState();
-		gamehelper.getGamesClient().unlockAchievement(frontend.getContext().getResources().getString(R.string.achievement_welcome));
+		Games.Achievements.unlock(gamehelper.getApiClient(), frontend.getContext().getResources().getString(R.string.achievement_welcome));
 	}
 
 	@Override
