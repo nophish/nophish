@@ -123,6 +123,7 @@ public class BackendControllerImpl implements BackendController, GameStateLoaded
 		this.frontend=frontend;
 		this.initListener=initlistener;
 		this.gamehelper=new GameHelper(frontend.getBaseActivity(),GameHelper.CLIENT_ALL);
+		this.gamehelper.setup(this);
 		SharedPreferences prefs = this.frontend.getContext().getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
 		Context context = this.frontend.getContext();
 		this.progress = new GameProgress(context, prefs, this.gamehelper.getApiClient() ,this);
