@@ -20,10 +20,9 @@ public class AppEndActivity extends PhishBaseActivity {
 	
 	@Override
 	public void onClick(View view) {
-		switch (view.getId()) {
-		case R.id.button1:
+		int id = view.getId();
+		if (id == R.id.button1) {
 			switchToFragment(StartMenuActivity.class);
-			break;
 		}
 	}
 	

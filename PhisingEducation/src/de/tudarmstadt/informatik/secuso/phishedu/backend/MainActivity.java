@@ -11,19 +11,16 @@ import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.games.GamesClient;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.games.Games;
 
-import de.tudarmstadt.informatik.secuso.phishedu.AwarenessActivity;
 import de.tudarmstadt.informatik.secuso.phishedu.Constants;
 import de.tudarmstadt.informatik.secuso.phishedu.GooglePlusActivity;
 import de.tudarmstadt.informatik.secuso.phishedu.LevelFinishedActivity;
@@ -202,7 +199,7 @@ public class MainActivity extends ActionBarActivity implements FrontendControlle
 	@Override
 	public void onSignInSucceeded() {
 		((GooglePlusActivity)fragCache.get(GooglePlusActivity.class)).setShowSignIn(false);
-		getGamesClient().unlockAchievement(getString(R.string.achievement_welcome));
+		Games.Achievements.unlock(getApiClient(),getString(R.string.achievement_welcome));
 	}
 
 	@Override
@@ -215,8 +212,8 @@ public class MainActivity extends ActionBarActivity implements FrontendControlle
 		}
 	}
 
-	private GamesClient getGamesClient(){
-		return BackendControllerImpl.getInstance().getGameHelper().getGamesClient();
+	private GoogleApiClient getApiClient(){
+		return BackendControllerImpl.getInstance().getGameHelper().getApiClient();
 	}
 
 	private boolean isSignedIn(){

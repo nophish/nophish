@@ -3,9 +3,13 @@ package de.tudarmstadt.informatik.secuso.phishedu.backend;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import com.google.android.gms.appstate.AppStateClient;
-import com.google.android.gms.appstate.OnStateLoadedListener;
-import com.google.android.gms.games.GamesClient;
+import com.google.android.gms.appstate.AppState;
+import com.google.android.gms.appstate.AppStateManager;
+import com.google.android.gms.appstate.AppStateManager.StateResult;
+import com.google.android.gms.appstate.AppStateStatusCodes;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.ResultCallback;
+import com.google.android.gms.games.Games;
 import com.google.android.gms.games.achievement.Achievement;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
@@ -20,11 +24,10 @@ import de.tudarmstadt.informatik.secuso.phishedu.R;
  * @author Clemens Bergmann <cbergmann@schuhklassert.de>
  *
  */
-public class GameProgress implements OnStateLoadedListener{
+public class GameProgress implements ResultCallback<StateResult>{
 	private Context context;
 	private SharedPreferences local_store;
-	private GamesClient game_store;
-	private AppStateClient remote_store;
+	private GoogleApiClient apiClient;
 	private static final int REMOTE_STORE_SLOT = 0;
 	private static final String LOCAL_STORE_KEY = "gamestate";
 	private static final int LIFES_PER_LEVEL = 3;
@@ -97,11 +100,10 @@ public class GameProgress implements OnStateLoadedListener{
 	 * @param remote_store This is the remote persistent database to save the gamestate.
 	 * @param listener
 	 */
-	public GameProgress(Context context, SharedPreferences local_store, GamesClient game_store, AppStateClient remote_store, GameStateLoadedListener listener) {
+	public GameProgress(Context context, SharedPreferences local_store, GoogleApiClient apiClient, GameStateLoadedListener listener) {
 		this.context=context;
 		this.local_store=local_store;
-		this.game_store=game_store;
-		this.remote_store=remote_store;
+		this.apiClient=apiClient;
 		this.listener = listener;
 		this.loadState();
 	}
@@ -112,8 +114,9 @@ public class GameProgress implements OnStateLoadedListener{
 	 */
 	public void loadState(){
 		this.loadLocalState(this.local_store.getString(LOCAL_STORE_KEY, "{}"));
-		if(this.remote_store.isConnected()){
-			this.remote_store.loadState(this, REMOTE_STORE_SLOT);
+
+		if(this.apiClient.isConnected()){
+			AppStateManager.load(apiClient, REMOTE_STORE_SLOT).setResultCallback(this);
 		}else{
 			//If we are not connected notify the listener that we are finished loading.
 			//If we are conneted this is done in onStateLoaded()
@@ -137,14 +140,14 @@ public class GameProgress implements OnStateLoadedListener{
 		this.level_results[result.getValue()]+=1;
 		this.state.results[result.getValue()]+=1;
 		//update Leaderboards
-		if(game_store.isConnected()){
+		if(apiClient.isConnected()){
 			if(result == PhishResult.Phish_Detected){
-				game_store.submitScore(context.getResources().getString(R.string.leaderboard_detected_phishing_urls),this.state.results[result.getValue()] );
-				game_store.incrementAchievement(context.getResources().getString(R.string.achievement_plakton),this.state.detected_phish_behind+1);
-				game_store.incrementAchievement(context.getResources().getString(R.string.achievement_anchovy),this.state.detected_phish_behind+1);
-				game_store.incrementAchievement(context.getResources().getString(R.string.achievement_trout),this.state.detected_phish_behind+1);
-				game_store.incrementAchievement(context.getResources().getString(R.string.achievement_tuna),this.state.detected_phish_behind+1);
-				game_store.incrementAchievement(context.getResources().getString(R.string.achievement_whale_shark),this.state.detected_phish_behind+1);
+				Games.Leaderboards.submitScore(apiClient, context.getResources().getString(R.string.leaderboard_detected_phishing_urls),this.state.results[result.getValue()]);
+				Games.Achievements.increment(apiClient, context.getResources().getString(R.string.achievement_plakton),this.state.detected_phish_behind+1);
+				Games.Achievements.increment(apiClient, context.getResources().getString(R.string.achievement_anchovy),this.state.detected_phish_behind+1);
+				Games.Achievements.increment(apiClient, context.getResources().getString(R.string.achievement_trout),this.state.detected_phish_behind+1);
+				Games.Achievements.increment(apiClient, context.getResources().getString(R.string.achievement_tuna),this.state.detected_phish_behind+1);
+				Games.Achievements.increment(apiClient, context.getResources().getString(R.string.achievement_whale_shark),this.state.detected_phish_behind+1);
 				this.state.detected_phish_behind=0;
 			}
 		}else{
@@ -177,8 +180,8 @@ public class GameProgress implements OnStateLoadedListener{
 	 */
 	public void commitPoints(){
 		this.state.points+=this.level_points;
-		if(this.game_store.isConnected()){
-			game_store.submitScore(context.getResources().getString(R.string.leaderboard_total_points), this.state.points );
+		if(this.apiClient.isConnected()){
+			Games.Leaderboards.submitScore(apiClient, context.getResources().getString(R.string.leaderboard_total_points), this.state.points);
 		}
 		if(this.getPoints() > this.state.levelPoints[this.getLevel()]){
 			this.state.levelPoints[this.getLevel()]=this.getPoints();
@@ -246,10 +249,10 @@ public class GameProgress implements OnStateLoadedListener{
 	private void unlockAchievements(){
 		//unlock Achievements
 		if(this.state.level>1){
-			game_store.unlockAchievement(context.getResources().getString(R.string.achievement_search_and_rescue));
+			Games.Achievements.unlock(apiClient, context.getResources().getString(R.string.achievement_search_and_rescue));
 		}
 		if(this.state.level>2){
-			game_store.unlockAchievement(context.getResources().getString(R.string.achievement_know_your_poison));
+			Games.Achievements.unlock(apiClient, context.getResources().getString(R.string.achievement_know_your_poison));
 		}
 	}
 
@@ -276,23 +279,34 @@ public class GameProgress implements OnStateLoadedListener{
 		String serialized = this.serializeState(this.state);
 		this.local_store.edit().putString(LOCAL_STORE_KEY, serialized).commit();
 
-		if(this.game_store.isConnected()){
+		if(this.apiClient.isConnected()){
 			unlockAchievements();
 		}
 
-		if(this.remote_store.isConnected()){
-			this.remote_store.updateState(REMOTE_STORE_SLOT, serialized.getBytes());
+		if(this.apiClient.isConnected()){
+			AppStateManager.update(apiClient, REMOTE_STORE_SLOT, serialized.getBytes());
 		}
 	}
 
 	@Override
-	public void onStateConflict(int stateKey, String resolvedVersion,
-			byte[] localData, byte[] serverData) {
-		if(stateKey != REMOTE_STORE_SLOT){
+	public void onResult(StateResult result) {
+		AppStateManager.StateConflictResult conflictResult = result.getConflictResult();
+		AppStateManager.StateLoadedResult loadedResult 
+		= result.getLoadedResult();
+		if (loadedResult != null) {
+			processStateLoaded(loadedResult);
+		} else if (conflictResult != null) {
+			processStateConflict(conflictResult);
+		}	
+	}
+
+
+	private void processStateConflict(AppStateManager.StateConflictResult result) {
+		if(result.getStateKey() != REMOTE_STORE_SLOT){
 			return;
 		}
-		State local_game = this.deserializeState(new String(localData));
-		State server_game = this.deserializeState(new String(serverData));
+		State local_game = this.deserializeState(new String(result.getLocalData()));
+		State server_game = this.deserializeState(new String(result.getServerData()));
 
 		//Current resolving strategy: get the most of all values
 		State resolved_game = new State();
@@ -312,22 +326,21 @@ public class GameProgress implements OnStateLoadedListener{
 				resolved_game.levelPoints[level]=Math.max(local_game.levelPoints[level],server_game.levelPoints[level]);
 			}
 		}
-		this.remote_store.resolveState(this, REMOTE_STORE_SLOT, resolvedVersion, resolved_game.toString().getBytes());
+		AppStateManager.resolve(apiClient, REMOTE_STORE_SLOT, result.getResolvedVersion(), resolved_game.toString().getBytes());
 	}
 
-	@Override
-	public void onStateLoaded(int statusCode, int stateKey, byte[] localData) {
-		if(stateKey != REMOTE_STORE_SLOT){
+	private void processStateLoaded(AppStateManager.StateLoadedResult result) {
+		if(result.getStateKey() != REMOTE_STORE_SLOT){
 			return;
 		}
-		if (statusCode == AppStateClient.STATUS_OK) {
+		if (result.getStatus().getStatusCode() == AppStateStatusCodes.STATUS_OK) {
 			// successfully loaded/saved data
-			this.loadLocalState(new String(localData));
-		}else if (statusCode == AppStateClient.STATUS_NETWORK_ERROR_STALE_DATA) {
+			this.loadLocalState(new String(result.getLocalData()));
+		}else if (result.getStatus().getStatusCode() == AppStateStatusCodes.STATUS_NETWORK_ERROR_STALE_DATA) {
 			// could not connect to get fresh data,
 			// but loaded (possibly out-of-sync) cached data instead
-			this.loadLocalState(new String(localData));
-		} else if(statusCode == AppStateClient.STATUS_STATE_KEY_NOT_FOUND) {
+			this.loadLocalState(new String(result.getLocalData()));
+		} else if(result.getStatus().getStatusCode() == AppStateStatusCodes.STATUS_STATE_KEY_NOT_FOUND) {
 			// this error can be ignored because we have the local store.
 			// The next time we save this will be fixed.
 		} else {
@@ -378,8 +391,8 @@ public class GameProgress implements OnStateLoadedListener{
 	 * remove the game Data that was stored in Googles Cloud Save Storage
 	 */
 	public void deleteRemoteData(){
-		if(this.remote_store.isConnected()){
-			this.remote_store.updateState(REMOTE_STORE_SLOT, new byte[0]);
+		if(this.apiClient.isConnected()){
+			AppStateManager.update(apiClient, REMOTE_STORE_SLOT, new byte[0]);
 		}
 	}
 }

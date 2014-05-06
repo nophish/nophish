@@ -20,13 +20,12 @@ public class AboutActivity extends PhishBaseActivity implements OnClickListener 
 	
 	@Override
     public void onClick(View view) {
-        switch (view.getId()) {
-        case R.id.secuso_logo:
-        	Intent browserIntent = new Intent(Intent.ACTION_VIEW);
-    		browserIntent.setData(Uri.parse("https://www.secuso.informatik.tu-darmstadt.de"));
-    		startActivity(browserIntent);
-            break;
-        }
+        int id = view.getId();
+		if (id == R.id.secuso_logo) {
+			Intent browserIntent = new Intent(Intent.ACTION_VIEW);
+			browserIntent.setData(Uri.parse("https://www.secuso.informatik.tu-darmstadt.de"));
+			startActivity(browserIntent);
+		}
     }
 
 	@Override

@@ -53,28 +53,22 @@ public class StartMenuActivity extends PhishBaseActivity {
 	
 	@Override
 	public void onClick(View view) {
-		switch (view.getId()) {
-		case R.id.menu_button_about:
+		int id = view.getId();
+		if (id == R.id.menu_button_about) {
 			switchToFragment(AboutActivity.class);
-			break;
-		case R.id.menu_button_level_overview:
+		} else if (id == R.id.menu_button_level_overview) {
 			switchToFragment(LevelSelectorActivity.class);
-			break;
-		case R.id.menu_button_more_info:
+		} else if (id == R.id.menu_button_more_info) {
 			switchToFragment(MoreInfoActivity.class);
-			break;
-		case R.id.menu_button_play:
+		} else if (id == R.id.menu_button_play) {
 			int userlevel = BackendControllerImpl.getInstance().getMaxUnlockedLevel();
 			if(userlevel == BackendControllerImpl.getInstance().getLevelCount() - 1){
 				switchToFragment(AppEndActivity.class);
 			}else{
 				BackendControllerImpl.getInstance().startLevel(userlevel);
 			}
-			break;
-		case R.id.menu_button_social:
+		} else if (id == R.id.menu_button_social) {
 			switchToFragment(GooglePlusActivity.class);
-			break;
-			
 		}
 	}
 	

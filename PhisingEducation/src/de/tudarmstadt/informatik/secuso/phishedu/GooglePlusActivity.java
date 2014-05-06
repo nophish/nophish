@@ -1,5 +1,7 @@
 package de.tudarmstadt.informatik.secuso.phishedu;
 
+import com.google.android.gms.games.Games;
+
 import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendControllerImpl;
 import android.app.Activity;
 import android.view.View;
@@ -29,34 +31,28 @@ public class GooglePlusActivity extends PhishBaseActivity {
 
 	@Override
 	public void onClick(View view) {
-		switch (view.getId()) {
-		case R.id.sign_in_button:
+		int id = view.getId();
+		if (id == R.id.sign_in_button) {
 			BackendControllerImpl.getInstance().signIn();
-			break;
-		case R.id.sign_out_button:
+		} else if (id == R.id.sign_out_button) {
 			BackendControllerImpl.getInstance().signOut();
 			setShowSignIn(true);
-			break;
-		case R.id.button_show_leaderboard_total:
+		} else if (id == R.id.button_show_leaderboard_total) {
 			onShowLeaderboardsRequested(R.string.leaderboard_detected_phishing_urls);
-			break;
-		case R.id.button_show_leaderboard_total_points:
+		} else if (id == R.id.button_show_leaderboard_total_points) {
 			onShowLeaderboardsRequested(R.string.leaderboard_total_points);
-			break;
-		case R.id.button_show_online_achievement:
+		} else if (id == R.id.button_show_online_achievement) {
 			if (BackendControllerImpl.getInstance().getGameHelper().isSignedIn()) {
-	            startActivityForResult(BackendControllerImpl.getInstance().getGameHelper().getGamesClient().getAchievementsIntent(), 0);
+	            startActivityForResult(Games.Achievements.getAchievementsIntent(BackendControllerImpl.getInstance().getGameHelper().getApiClient()),0);
 	        }
-			break;
-		case R.id.button_delete_remote_data:
+		} else if (id == R.id.button_delete_remote_data) {
 			BackendControllerImpl.getInstance().deleteRemoteData();
-			break;
 		}
 	}
 	
 	private void onShowLeaderboardsRequested(int leaderboard) {
 		if (BackendControllerImpl.getInstance().getGameHelper().isSignedIn()) {
-            startActivityForResult(BackendControllerImpl.getInstance().getGameHelper().getGamesClient().getLeaderboardIntent(getString(leaderboard)), 0);
+            startActivityForResult(Games.Leaderboards.getLeaderboardIntent(BackendControllerImpl.getInstance().getGameHelper().getApiClient(), getString(leaderboard)), 0);
         }
 	}
 

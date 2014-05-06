@@ -107,13 +107,11 @@ public class URLTaskActivity extends PhishBaseActivity {
 
 	@Override
 	public void onClick(View view) {
-		switch (view.getId()) {
-		case R.id.url_task_check_mark:
+		int id = view.getId();
+		if (id == R.id.url_task_check_mark) {
 			clicked(true);
-			break;
-		case R.id.url_task_cross:
+		} else if (id == R.id.url_task_cross) {
 			clicked(false);
-			break;
 		}
 	}
 

@@ -1,5 +1,8 @@
 bin
 gen
+<<<<<<< HEAD
 project.properties
 .settings
 .classpath
+=======
+>>>>>>> 19d18160a9baf657b18acc4586467724a8908189
