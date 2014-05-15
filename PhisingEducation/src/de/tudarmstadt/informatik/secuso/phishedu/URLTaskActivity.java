@@ -17,10 +17,12 @@ import android.widget.TextView;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendControllerImpl;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.MainActivity;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishResult;
+import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishURL;
 
 public class URLTaskActivity extends PhishBaseActivity {
 
 	private TextView urlText;
+	private TextView providerText;
 	private View v;
 	private TextView question;
 	private TextView cross;
@@ -37,6 +39,7 @@ public class URLTaskActivity extends PhishBaseActivity {
 		this.urlText = (TextView) v.findViewById(R.id.url_task_url);
 		urlText.setTextSize(BackendControllerImpl.getInstance().getLevelInfo()
 				.getURLTextsize());
+		this.providerText = (TextView) v.findViewById(R.id.url_task_providername);
 
 		nextURL();
 
@@ -87,8 +90,8 @@ public class URLTaskActivity extends PhishBaseActivity {
 
 	private void nextURL() {
 		BackendControllerImpl.getInstance().nextUrl();
-		String[] urlArray = BackendControllerImpl.getInstance().getUrl()
-				.getParts();
+		PhishURL url = BackendControllerImpl.getInstance().getUrl();
+		String[] urlArray = url.getParts();
 
 		// build string from array
 		StringBuilder sb = new StringBuilder();
@@ -98,6 +101,9 @@ public class URLTaskActivity extends PhishBaseActivity {
 		}
 
 		urlText.setText(sb.toString());
+		
+		String providertext = getResources().getString(R.string.url_task_providername);
+		this.providerText.setText(providertext.replace("${providername}", url.getProviderName()));
 	}
 
 	@Override

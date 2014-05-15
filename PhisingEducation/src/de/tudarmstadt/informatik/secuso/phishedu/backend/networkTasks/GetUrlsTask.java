@@ -57,6 +57,9 @@ public class GetUrlsTask extends AsyncTask<Integer, Integer, PhishURL[]>{
 				BasePhishURL[] result = new BasePhishURL[0];
 				try {
 					result = (new Gson()).fromJson(out.toString(), BasePhishURL[].class);
+					for (BasePhishURL newurl : result) {
+						newurl.validateProviderName();
+					}
 				} catch (JsonSyntaxException e) {
 					// TODO: handle exception
 				}

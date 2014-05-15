@@ -300,6 +300,7 @@
     <string name="level_restart_positive_button">Level neu starten</string>
     <string name="level_restart_negative_button">Weiterspielen</string>
     <string name="ok">OK</string>
+    <string name="url_task_providername">Du willst die Webseite von \"${providername}\" besuchen.</string>
     <string name="url_task_description">Vertraust du der Webadresse?</string>
     <string name="url_task_desciription_level_10">Würdest du hier Daten eingeben?</string>
     <string name="url">Beispiel URL</string>

@@ -16,17 +16,13 @@ import android.media.AudioManager;
 import android.net.Uri;
 import android.os.Vibrator;
 
-import com.google.android.gms.appstate.AppState;
 import com.google.android.gms.games.Games;
-import com.google.example.games.basegameutils.BaseGameActivity;
 import com.google.example.games.basegameutils.GameHelper;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 
 import de.tudarmstadt.informatik.secuso.phishedu.Constants;
-import de.tudarmstadt.informatik.secuso.phishedu.LevelIntroActivity;
 import de.tudarmstadt.informatik.secuso.phishedu.R;
-import de.tudarmstadt.informatik.secuso.phishedu.backend.attacks.HTTPAttack;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.generator.BaseGenerator;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.networkTasks.GetUrlsTask;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.networkTasks.SendMailTask;
@@ -43,7 +39,7 @@ public class BackendControllerImpl implements BackendController, GameStateLoaded
 	private static final String PREFS_NAME = "PhisheduState";
 	private static final String URL_CACHE_NAME ="urlcache";
 	private static final String LEVEL1_URL = "https://pages.no-phish.de/level1.php";
-	private static final PhishAttackType[] CACHE_TYPES = {PhishAttackType.AnyPhish, PhishAttackType.NoPhish};
+	private static final PhishAttackType[] CACHE_TYPES = {PhishAttackType.NoPhish};
 	@SuppressWarnings("rawtypes")
 	private static final int URL_CACHE_SIZE = 500;
 
@@ -68,6 +64,9 @@ public class BackendControllerImpl implements BackendController, GameStateLoaded
 		BasePhishURL[] result = new BasePhishURL[0];
 		try {
 			result = (new Gson()).fromJson(serialized, BasePhishURL[].class);
+			for (BasePhishURL url : result) {
+				url.validateProviderName();
+			}
 		} catch (JsonSyntaxException e) {
 		}
 		return result;
@@ -150,6 +149,9 @@ public class BackendControllerImpl implements BackendController, GameStateLoaded
 			String json = new Scanner(input,"UTF-8").useDelimiter("\\A").next();
 			try {
 				urls = (new Gson()).fromJson(json, BasePhishURL[].class);
+				for (BasePhishURL url : urls) {
+					url.validateProviderName();
+				}
 			} catch (JsonSyntaxException e) {
 			}
 		}

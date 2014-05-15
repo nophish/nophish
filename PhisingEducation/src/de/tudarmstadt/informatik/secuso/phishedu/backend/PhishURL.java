@@ -82,4 +82,10 @@ public interface PhishURL{
 	 * @return deep clone
 	 */
 	public PhishURL clone();
+	
+	/**
+	 * get the name of the provider
+	 * @return Provider name
+	 */
+	public String getProviderName();
 }

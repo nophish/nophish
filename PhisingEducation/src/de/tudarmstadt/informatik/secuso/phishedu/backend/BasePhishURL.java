@@ -2,6 +2,7 @@ package de.tudarmstadt.informatik.secuso.phishedu.backend;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 /**
  * this is for internally holding the phishing urls
@@ -12,6 +13,7 @@ public class BasePhishURL implements PhishURL{
 	private String[] parts = new String[0];
 	private PhishSiteType siteType = PhishSiteType.AnyPhish;
 	private PhishAttackType attackType = PhishAttackType.NoPhish;
+	private String providerName = "";
 	protected int[] correctparts = new int[0];
 	/**
 	 * This stores the points the user gets for his detection.
@@ -23,6 +25,7 @@ public class BasePhishURL implements PhishURL{
 	public String[] getParts(){return parts;}
 	public PhishSiteType getSiteType(){return this.siteType;}
 	public PhishAttackType getAttackType(){return this.attackType;}
+	public String getProviderName() {return this.providerName;}
 		
 	public final boolean validate(){
 		return this.points[0] > 0; //if we get no points on success we can not progress.
@@ -63,6 +66,7 @@ public class BasePhishURL implements PhishURL{
 		clone.points=this.points.clone();
 		clone.siteType=this.siteType;
 		clone.correctparts=this.correctparts.clone();
+		clone.validateProviderName();
 		return clone;
 	}
 	
@@ -70,4 +74,12 @@ public class BasePhishURL implements PhishURL{
 	public int getDomainPart() {
 		return 3;
 	}
+	
+	public void validateProviderName() {
+		if(this.providerName.equals("")){
+			this.providerName = this.getParts()[3].split("\\.")[0];
+			this.providerName = this.providerName.substring(0,1).toUpperCase(Locale.GERMANY) + this.providerName.substring(1);
+		}
+	}
+	
 }

@@ -15,12 +15,22 @@
     <!-- URLS -->
 
     <TextView
-        android:id="@+id/url_task_description"
+        android:id="@+id/url_task_providername"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/score_relative"
         android:layout_marginTop="@dimen/margin_small"
         android:layout_below="@+id/score_relative"
+        android:text="@string/url_task_providername"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/url_task_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/score_relative"
+        android:layout_marginTop="@dimen/margin_small"
+        android:layout_below="@+id/url_task_providername"
         android:text="@string/url_task_description"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
