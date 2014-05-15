@@ -9,11 +9,10 @@ import de.tudarmstadt.informatik.secuso.phishedu.backend.attacks.KeepAttack;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.attacks.Level2Attack;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.attacks.MisleadingAttack;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.attacks.NoPhishAttack;
-import de.tudarmstadt.informatik.secuso.phishedu.backend.attacks.NonsenseAttack;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.attacks.PhishTankURLAttack;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.attacks.SubdomainAttack;
+import de.tudarmstadt.informatik.secuso.phishedu.backend.attacks.TotallyUnrelatedAttack;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.attacks.TypoAttack;
-import de.tudarmstadt.informatik.secuso.phishedu.backend.attacks.UnrelatedAttack;
 
 /**
  * This enum shows what type of attack {@link BackendController#getNextUrl()} call returned.
@@ -31,13 +30,9 @@ public enum PhishAttackType {
 	/** The Attack for level 2 */
 	Level2(2, Level2Attack.class),
 	/** Subdomains */
-	Sudomains(3, SubdomainAttack.class),
+	Subdomain(3, SubdomainAttack.class),
 	/** IP */
 	IP(4, IPAttack.class),
-	/** Nonsense Attack */
-	Nonsense(5, NonsenseAttack.class),
-	/** unrelated Attack */
-	Unrelated(6, UnrelatedAttack.class),
 	/** misleading */
 	Misleading(7, MisleadingAttack.class),
 	/** homographic */
@@ -49,7 +44,10 @@ public enum PhishAttackType {
 	/** typo */
 	Typo(11, TypoAttack.class),
 	/** This Attack keeps the supplied PhishURL */
-	Keep(12, KeepAttack.class);
+	Keep(12, KeepAttack.class),
+	/** This Attack replaces the urls with something totally different */
+	TotallyUnrelated(13, TotallyUnrelatedAttack.class)
+	;
 	
 	private int value;
 	private Class<? extends AbstractAttack> attack_class;
@@ -83,4 +81,5 @@ public enum PhishAttackType {
 	public String getName(){
 		return super.toString()+"Attack";
 	}
+
 }

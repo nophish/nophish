@@ -15,7 +15,7 @@ import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishURL;
  */
 public class HostInPathAttack extends AbstractAttack {
 	
-	protected static final String[] PHISHER_DOMAINS = UnrelatedAttack.PHISHER_DOMAINS;
+	protected static final String[] PHISHER_DOMAINS = SubdomainAttack.PHISHER_DOMAINS;
 	
 	/**
 	 * To build an attack we need a url to decorate

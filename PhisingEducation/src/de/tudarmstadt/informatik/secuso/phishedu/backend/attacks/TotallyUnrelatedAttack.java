@@ -1,5 +1,7 @@
 package de.tudarmstadt.informatik.secuso.phishedu.backend.attacks;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendControllerImpl;
@@ -11,56 +13,33 @@ import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishURL;
  * @author Clemens Bergmann <cbergmann@schuhklassert.de>
  *
  */
-public class MisleadingAttack extends AbstractAttack {
-	int attackpos=0;
-	int attack_domain=-1;
-	private static final String[] DOMAIN_ADDITIONS={
-		"login",
-		"-anmelden",
-		"-secure",
-		"-sicher",
-		"-accounts",
-		"-konto",
-		"-verify",
-		"-verification",
-		"verifizierung",
-		"-signin",
-		"-com",
-		"-de",
-		"-home",
-		"update",
-		"-registration",
-		"registrierung",
-		"-settings",
-		"-einstellungen",
-		"-service",
-		"support",
-		"-hilfe",
-		"shopping",
-	};
+public class TotallyUnrelatedAttack extends AbstractAttack {
+	int attack_url=-1;
+	
+	protected static final String[] PHISHER_DOMAINS = SubdomainAttack.PHISHER_DOMAINS;
+	
+	protected String[] getPhisherDomains(){
+		return PHISHER_DOMAINS;
+	}
+	
 	/**
 	 * This constructor is required because of the implementation in {@link BackendControllerImpl#getNextUrl()}
 	 * @param object This Parmeter is discarded. It is replaced by a PhishTank URL
 	 */
-	public MisleadingAttack(PhishURL object) {
+	public TotallyUnrelatedAttack(PhishURL object) {
 		super(object);
-		attack_domain=BackendControllerImpl.getInstance().getRandom().nextInt(DOMAIN_ADDITIONS.length);
+		attack_url=BackendControllerImpl.getInstance().getRandom().nextInt(getPhisherDomains().length);
 	}
 
 	@Override
 	public PhishAttackType getAttackType() {
-		return PhishAttackType.Misleading;
+		return PhishAttackType.Subdomain;
 	}
 	
 	@Override
 	public String[] getParts() {
-		String[] parts = super.getParts().clone();
-		String domain = parts[3];
-		int period = domain.lastIndexOf(".");
-		String before=domain.substring(0,period);
-		String after=domain.substring(period);
-		domain=before+DOMAIN_ADDITIONS[attack_domain]+after;
-		parts[3]=domain;
+		String[] parts = super.getParts();
+		parts[3] = getPhisherDomains()[attack_url];
 		return parts;
 	}
 	

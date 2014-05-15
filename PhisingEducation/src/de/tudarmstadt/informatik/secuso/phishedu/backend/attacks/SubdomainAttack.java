@@ -17,13 +17,41 @@ public class SubdomainAttack extends AbstractAttack {
 	int attack_url=-1;
 	
 	protected static final String[] PHISHER_DOMAINS ={
-		"phisher.com",
-		"phisher.de",
-		"fischerei.com",
-		"fischmarkt.de",
-		"ich-bin-ein-phisher.de",
-		"want-phish.com",
-		"phishers-seite.de"
+		"yxtar.com",//nonsense
+		"badcat.de",
+		"myponyfarm.com",
+		"kjshkd.de",
+		"ddffgh.de",
+		"qieoqq.com",
+		"events-ma.de",
+		"hitrakstaffing.com",
+		"friendsoflight.com",
+		"comil11cenepa.de",
+		"birdsnbeesbaby.com",
+		"mabaatiroofings.com",
+		"jshk.de",
+		"login.com",//unrelated
+		"anmeldung.de",
+		"security.com",
+		"security-update.com",
+		"sicherheit.de",
+		"accounts.com",
+		"konto.de",
+		"verify.com",
+		"verification.com",
+		"verifizierung.de",
+		"signin.com",
+		"home.com",
+		"update.de",
+		"registration.com",
+		"registrierung.com",
+		"settings.com",
+		"einstellungen.de",
+		"service.de",
+		"support.com",
+		"hilfe.de",
+		"abo.net",
+		"abonnement.biz"
 	};
 	
 	protected String[] getPhisherDomains(){
@@ -41,7 +69,7 @@ public class SubdomainAttack extends AbstractAttack {
 
 	@Override
 	public PhishAttackType getAttackType() {
-		return PhishAttackType.Sudomains;
+		return PhishAttackType.Subdomain;
 	}
 	
 	@Override
