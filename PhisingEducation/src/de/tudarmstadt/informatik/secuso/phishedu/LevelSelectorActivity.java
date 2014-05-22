@@ -19,7 +19,7 @@ public class LevelSelectorActivity extends SwipeActivity implements
 	
 	@Override
 	protected int getPageCount() {
-		int levels=BackendControllerImpl.getInstance().getLevelCount();
+		int levels=BackendControllerImpl.getInstance().getLevelCount()-2;
 		if(Constants.SKIP_LEVEL1){
 			levels--;
 		}

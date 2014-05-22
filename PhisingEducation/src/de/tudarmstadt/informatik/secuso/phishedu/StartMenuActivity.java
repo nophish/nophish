@@ -65,7 +65,7 @@ public class StartMenuActivity extends PhishBaseActivity {
 			break;
 		case R.id.menu_button_play:
 			int userlevel = BackendControllerImpl.getInstance().getMaxUnlockedLevel();
-			if(userlevel == BackendControllerImpl.getInstance().getLevelCount() - 1){
+			if(userlevel == BackendControllerImpl.getInstance().getLevelCount()-2){
 				switchToFragment(AppEndActivity.class);
 			}else{
 				BackendControllerImpl.getInstance().startLevel(userlevel);

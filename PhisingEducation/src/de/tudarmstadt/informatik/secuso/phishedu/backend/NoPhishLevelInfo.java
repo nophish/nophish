@@ -52,8 +52,11 @@ public class NoPhishLevelInfo {
 		R.string.level_title_03, R.string.level_title_04,
 		R.string.level_title_05, R.string.level_title_06,
 		R.string.level_title_07, R.string.level_title_08,
-		R.string.level_title_09, R.string.level_title_10,
-		R.string.level_title_11 };
+		R.string.level_title_09
+		, 
+		R.string.level_title_10,
+		R.string.level_title_11 
+		};
 
 	private static final int[] levelSubtitlesIds = {
 		R.string.level_subtitle_00, R.string.level_subtitle_01,
@@ -61,7 +64,8 @@ public class NoPhishLevelInfo {
 		R.string.level_subtitle_04, R.string.level_subtitle_05,
 		R.string.level_subtitle_06, R.string.level_subtitle_07,
 		R.string.level_subtitle_08, R.string.level_subtitle_09,
-		R.string.level_subtitle_10, R.string.level_subtitle_11 };
+		R.string.level_subtitle_10, R.string.level_subtitle_11
+		};
 
 	private static final int[][] levelIntroLayoutIds = {
 		{ R.layout.level_00_intro_00, R.layout.level_00_intro_01 },
@@ -105,7 +109,8 @@ public class NoPhishLevelInfo {
 													R.layout.level_11_intro_05, R.layout.level_11_intro_06,
 													R.layout.level_11_intro_07
 
-												} };
+												} 
+												};
 
 	private static final int[][] levelFinishedLayoutIds = {
 		{ R.layout.level_00_finish_00a, R.layout.level_00_finish_00, R.layout.level_00_finish_01,

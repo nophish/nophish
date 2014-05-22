@@ -98,7 +98,7 @@ public class LevelIntroActivity extends SwipeActivity {
 			next_activity = AwarenessActivity.class;
 		} else if (this.getLevel() == 1) {
 			next_activity = FindAddressBarActivity.class;
-		}else if(this.getLevel() == BackendControllerImpl.getInstance().getLevelCount()-1){
+		}else if(this.getLevel() == BackendControllerImpl.getInstance().getLevelCount()-2){
 			next_activity = AppEndActivity.class;
 		}
 		switchToFragment(next_activity);
@@ -106,7 +106,7 @@ public class LevelIntroActivity extends SwipeActivity {
 
 	@Override
 	protected String startButtonText() {
-		if (this.getLevel() == BackendControllerImpl.getInstance().getLevelCount()-1) {
+		if (this.getLevel() == BackendControllerImpl.getInstance().getLevelCount()-2) {
 			return "Fertig";
 		}
 		return "Starte Übung";

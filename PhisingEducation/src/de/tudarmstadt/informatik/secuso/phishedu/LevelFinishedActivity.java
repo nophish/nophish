@@ -10,8 +10,14 @@ import de.tudarmstadt.informatik.secuso.phishedu.backend.NoPhishLevelInfo;
 
 public class LevelFinishedActivity extends SwipeActivity {
 	protected void onStartClick() {
-		BackendControllerImpl.getInstance().startLevel(getLevel() + 1);
-	}
+		int level = BackendControllerImpl.getInstance().getLevel();
+		int levelCount = BackendControllerImpl.getInstance().getLevelCount();
+		if(level == levelCount-3 && Constants.SKIP_HTTPS){
+			switchToFragment(AppEndActivity.class);
+		}else{
+			BackendControllerImpl.getInstance().startLevel(getLevel() + 1);
+		}
+		}
 
 	int level;
 	boolean enable_homebutton=false;
@@ -49,6 +55,9 @@ public class LevelFinishedActivity extends SwipeActivity {
 
 	@Override
 	protected String startButtonText() {
+		if(BackendControllerImpl.getInstance().getLevel() == BackendControllerImpl.getInstance().getLevelCount()-3){
+			return "Weiter";
+		}
 		return "Weiter zu " + getResources().getString(BackendControllerImpl.getInstance().getLevelInfo(this.getLevel()+1).titleId);
 	}
 

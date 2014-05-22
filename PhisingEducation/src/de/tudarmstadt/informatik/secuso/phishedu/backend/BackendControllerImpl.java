@@ -575,10 +575,11 @@ public class BackendControllerImpl implements BackendController, GameStateLoaded
 
 	@Override
 	public NoPhishLevelInfo getLevelInfo(int levelid) {
-		if(levelid >= getLevelCount()){
+		if(levelid <= getLevelCount()){
+			return new NoPhishLevelInfo(levelid);
+		}else{
 			throw new IllegalArgumentException("Invalid level ID. levelid>= getLevelCount()");
 		}
-		return new NoPhishLevelInfo(levelid);
 	}
 
 	@Override

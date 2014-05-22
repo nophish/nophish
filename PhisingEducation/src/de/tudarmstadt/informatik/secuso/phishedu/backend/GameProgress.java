@@ -212,7 +212,8 @@ public class GameProgress implements OnStateLoadedListener{
 	 * @param level The current level
 	 */
 	public void setLevel(int level){
-		this.state.level=level;
+		
+			this.state.level=level;
 		if(getMaxUnlockedLevel()<level){
 			throw new IllegalStateException("The given level ("+level+") is not unlocked.");
 		}
