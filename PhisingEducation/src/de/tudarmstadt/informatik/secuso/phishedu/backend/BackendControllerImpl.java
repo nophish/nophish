@@ -105,7 +105,7 @@ public class BackendControllerImpl implements BackendController, GameStateLoaded
 	 * Getter for singleton.
 	 * @return The singleton Object of this class
 	 */
-	public static BackendController getInstance(){
+	public static BackendControllerImpl getInstance(){
 		return instance;
 	}
 
@@ -212,7 +212,7 @@ public class BackendControllerImpl implements BackendController, GameStateLoaded
 	public void startLevel(int level) {
 		checkinited();
 		if(level==1 && Constants.SKIP_LEVEL1){
-			this.progress.unlockLevel(2);
+			this.progress.finishlevel(1);
 			level=2;
 		}
 		this.progress.setLevel(level);
@@ -466,7 +466,7 @@ public class BackendControllerImpl implements BackendController, GameStateLoaded
 		if(getLevel()==level){
 			this.progress.commitPoints();
 		}
-		this.progress.unlockLevel(level+1);
+		this.progress.finishlevel(level);
 		notifyLevelStateChangedListener(Levelstate.finished, level);
 	}
 
@@ -485,6 +485,11 @@ public class BackendControllerImpl implements BackendController, GameStateLoaded
 	@Override
 	public int getMaxUnlockedLevel() {
 		return this.progress.getMaxUnlockedLevel();
+	}
+	
+	@Override
+	public int getMaxFinishedLevel(){
+		return this.progress.getMaxFinishedLevel();
 	}
 
 	@Override
@@ -626,7 +631,7 @@ public class BackendControllerImpl implements BackendController, GameStateLoaded
 
 	@Override
 	public boolean getLevelCompleted(int level) {
-		return level<getMaxUnlockedLevel();
+		return level<=getMaxFinishedLevel();
 	}
 
 	@Override

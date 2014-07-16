@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager.NameNotFoundException;
+import android.opengl.Visibility;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,8 +24,10 @@ public class StartMenuActivity extends PhishBaseActivity {
 			Bundle savedInstanceState) {
 		View v = inflater.inflate(R.layout.start_menu, container,false);
 		
-		if (BackendControllerImpl.getInstance().getMaxUnlockedLevel() > 0) {
-			TextView startbutton = (TextView) v.findViewById(R.id.menu_button_play);
+		TextView startbutton = (TextView) v.findViewById(R.id.menu_button_play);
+		if (BackendControllerImpl.getInstance().getLevelCompleted(BackendControllerImpl.getInstance().getLevelCount()-1)){
+			startbutton.setVisibility(View.GONE);
+		}else if (BackendControllerImpl.getInstance().getMaxUnlockedLevel() > 0) {
 			startbutton.setText(R.string.button_play_on);
 		}
 		
@@ -62,11 +65,7 @@ public class StartMenuActivity extends PhishBaseActivity {
 			switchToFragment(MoreInfoActivity.class);
 		} else if (id == R.id.menu_button_play) {
 			int userlevel = BackendControllerImpl.getInstance().getMaxUnlockedLevel();
-			if(userlevel == BackendControllerImpl.getInstance().getLevelCount() - 1){
-				switchToFragment(AppEndActivity.class);
-			}else{
-				BackendControllerImpl.getInstance().startLevel(userlevel);
-			}
+			BackendControllerImpl.getInstance().startLevel(userlevel);
 		} else if (id == R.id.menu_button_social) {
 			switchToFragment(GooglePlusActivity.class);
 		}

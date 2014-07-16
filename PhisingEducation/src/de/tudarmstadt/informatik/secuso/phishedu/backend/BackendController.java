@@ -90,6 +90,12 @@ public interface BackendController extends GameHelperListener{
 	public int getMaxUnlockedLevel();
 	
 	/**
+	 * Get the level the user finished to play
+	 * @return Biggest finished level
+	 */
+	int getMaxFinishedLevel();
+	
+	/**
 	 * Get how many points the user collected.
 	 * The current level Points are not added here.
 	 * @return points the user has collected.

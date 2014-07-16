@@ -43,7 +43,7 @@ public class GameProgress implements ResultCallback<StateResult>{
 		public int[] results = {0,0,0,0};
 		public int[] levelPoints = new int[BackendControllerImpl.getInstance().getLevelCount()];
 		public int level = 0;
-		public int unlockedLevel = 0;
+		public int finishedLevel = -1;
 		public int detected_phish_behind = 0;
 		public boolean app_started = false;
 		public int points = 0;
@@ -233,9 +233,9 @@ public class GameProgress implements ResultCallback<StateResult>{
 	 * Unlock the given Level so that the user is able to play it.
 	 * @param level the level to unlock
 	 */
-	public void unlockLevel(int level){
-		if(level > this.state.unlockedLevel){
-			this.state.unlockedLevel=level;
+	public void finishlevel(int level){
+		if(level-1 > this.state.finishedLevel){
+			this.state.finishedLevel=level;
 		}
 		this.saveState();
 	}
@@ -354,14 +354,28 @@ public class GameProgress implements ResultCallback<StateResult>{
 
 
 	/**
-	 * This returns the maximum level the user is able to access
+	 * This returns the maximum level the user is able to access.
 	 * @return the max level
 	 */
 	public int getMaxUnlockedLevel() {
+		int result;
+		if(Constants.UNLOCK_ALL_LEVELS){
+			result = BackendControllerImpl.getInstance().getLevelCount();
+		}else{
+			result = this.state.finishedLevel+1;
+		}
+		return Math.min(result, BackendControllerImpl.getInstance().getLevelCount()-1);
+	}
+	
+	/**
+	 * This returns the maximum level the user finished
+	 * @return the max level
+	 */
+	public int getMaxFinishedLevel() {
 		if(Constants.UNLOCK_ALL_LEVELS){
 			return BackendControllerImpl.getInstance().getLevelCount()-1;
 		}else{
-			return this.state.unlockedLevel;
+			return this.state.finishedLevel;
 		}
 	}
 
