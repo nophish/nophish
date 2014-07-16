@@ -151,7 +151,7 @@ public abstract class PhishBaseActivity extends Fragment implements OnClickListe
 			TextView LevelScoreText = (TextView) scores.findViewById(R.id.level_score);
 
 			urlsText.setText(Integer.toString(BackendControllerImpl.getInstance().getCorrectlyFoundURLs()));
-			urlsGoalText.setText(Integer.toString(BackendControllerImpl.getInstance().levelCorrectURLs()));
+			urlsGoalText.setText(Integer.toString(BackendControllerImpl.getInstance().getLevelInfo().levelCorrectURLs()));
 			LevelScoreText.setText(Integer.toString(BackendControllerImpl.getInstance().getLevelPoints()));
 			
 			int remaininLives = BackendControllerImpl.getInstance().getLifes();

@@ -68,7 +68,7 @@ public class LevelSelectorActivity extends SwipeActivity implements
 		levelTitle.setText(level_info.titleId);
 		TextView levelDescription = (TextView) layoutView.findViewById(R.id.level_description);
 		levelDescription.setText(level_info.subTitleId);
-		((TextView) layoutView.findViewById(R.id.levelbutton_points)).setText(Integer.toString(level_info.getlevelPoints()));
+		((TextView) layoutView.findViewById(R.id.levelbutton_points)).setText(Integer.toString(BackendControllerImpl.getInstance().getLevelPoints(level)));
 		if(level<=1 || level==11){
 			layoutView.findViewById(R.id.levelbutton_points).setVisibility(View.INVISIBLE);
 			layoutView.findViewById(R.id.levelbutton_points_text).setVisibility(View.INVISIBLE);

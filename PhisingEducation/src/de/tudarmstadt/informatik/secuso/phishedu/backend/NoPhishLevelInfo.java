@@ -183,10 +183,13 @@ public class NoPhishLevelInfo {
 		this.generators = levelGenerators[geneator_index];
 	}
 
-	public int getlevelPoints() {
-		return BackendControllerImpl.getInstance().getLevelPoints(this.levelId);
+	public int getLevelmaxPoints(){
+		//TODO: DEFAULT_CORRECT_POINTS is the standard value for correctly identified URLs
+		//The backend of the program is able to handle different Points per URL.
+		//When using this feature this function must be changed accordingly
+		return this.weightLevelPoints(PhishURL.DEFAULT_CORRECT_POINTS)*levelCorrectURLs();
 	}
-
+	
 	public int weightLevelPoints(int base_points) {
 		return (int) (base_points * Math.pow(LEVEL_DISTANCE, levelId));
 	}

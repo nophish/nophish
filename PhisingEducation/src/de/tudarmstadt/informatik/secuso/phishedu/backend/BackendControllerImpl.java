@@ -422,14 +422,6 @@ public class BackendControllerImpl implements BackendController, GameStateLoaded
 		return this.progress.getPoints();
 	}
 
-	@Override
-	public int getLevelmaxPoints(){
-		//TODO: DEFAULT_CORRECT_POINTS is the standard value for correctly identified URLs
-		//The reset of the program is able to handle different Points per URL.
-		//When using this feature this function must be changed accordingly
-		return getLevelInfo().weightLevelPoints(PhishURL.DEFAULT_CORRECT_POINTS)*levelCorrectURLs();
-	}
-
 	public int getLevelPoints(){
 		checkinited();
 		return this.progress.getLevelPoints();
@@ -506,20 +498,10 @@ public class BackendControllerImpl implements BackendController, GameStateLoaded
 		this.gamehelper.signOut();
 	}
 
-	@Override
-	public int levelCorrectURLs() {
-		return getLevelInfo().levelCorrectURLs();
-	}
-
-	@Override
-	public int levelCorrectPhishes() {
-		return getLevelInfo().levelPhishes();
-	}
-
 	private int levelURLs() {
 		checkinited();
 		int failed_urls=progress.getLevelResults(PhishResult.Phish_NotDetected)+progress.getLevelResults(PhishResult.NoPhish_NotDetected);
-		return levelCorrectURLs()+failed_urls;
+		return getLevelInfo().levelCorrectURLs()+failed_urls;
 	}
 
 	@Override
@@ -529,7 +511,7 @@ public class BackendControllerImpl implements BackendController, GameStateLoaded
 
 	private int levelRemainingPhishes() {
 		checkinited();
-		return levelCorrectPhishes()+progress.getLevelResults(PhishResult.Phish_NotDetected);
+		return getLevelInfo().levelPhishes()-progress.getLevelResults(PhishResult.Phish_Detected);
 	}
 
 	private int doneURLs() {
