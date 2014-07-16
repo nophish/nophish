@@ -1,5 +1,7 @@
 package de.tudarmstadt.informatik.secuso.phishedu.backend;
 
+import java.util.Currency;
+
 import android.content.Context;
 import android.content.SharedPreferences;
 
@@ -16,6 +18,7 @@ import com.google.gson.JsonSyntaxException;
 
 import de.tudarmstadt.informatik.secuso.phishedu.Constants;
 import de.tudarmstadt.informatik.secuso.phishedu.R;
+import de.tudarmstadt.informatik.secuso.phishedu.backend.networkTasks.GetUrlsTask;
 
 /**
  * This is a internal class for the backend.
@@ -141,7 +144,7 @@ public class GameProgress implements ResultCallback<StateResult>{
 		this.state.results[result.getValue()]+=1;
 		//update Leaderboards
 		if(apiClient.isConnected()){
-			if(result == PhishResult.Phish_Detected){
+			if(result == PhishResult.Phish_Detected && BackendControllerImpl.getInstance().getUrl().getAttackType() != PhishAttackType.NoPhish){
 				Games.Leaderboards.submitScore(apiClient, context.getResources().getString(R.string.leaderboard_detected_phishing_urls),this.state.results[result.getValue()]);
 				Games.Achievements.increment(apiClient, context.getResources().getString(R.string.achievement_plakton),this.state.detected_phish_behind+1);
 				Games.Achievements.increment(apiClient, context.getResources().getString(R.string.achievement_anchovy),this.state.detected_phish_behind+1);

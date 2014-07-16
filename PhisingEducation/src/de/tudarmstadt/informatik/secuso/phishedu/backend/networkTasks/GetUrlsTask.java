@@ -1,7 +1,6 @@
 package de.tudarmstadt.informatik.secuso.phishedu.backend.networkTasks;
 
 import java.io.ByteArrayOutputStream;
-
 import java.io.IOException;
 import java.util.Arrays;
 
@@ -14,10 +13,10 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 
+import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendControllerImpl;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishAttackType;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.BasePhishURL;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishURL;
-
 import android.os.AsyncTask;
 
 /**
@@ -54,15 +53,7 @@ public class GetUrlsTask extends AsyncTask<Integer, Integer, PhishURL[]>{
 				ByteArrayOutputStream out = new ByteArrayOutputStream();
 				response.getEntity().writeTo(out);
 				out.close();
-				BasePhishURL[] result = new BasePhishURL[0];
-				try {
-					result = (new Gson()).fromJson(out.toString(), BasePhishURL[].class);
-					for (BasePhishURL newurl : result) {
-						newurl.validateProviderName();
-					}
-				} catch (JsonSyntaxException e) {
-					// TODO: handle exception
-				}
+				BasePhishURL[] result = BackendControllerImpl.deserializeURLs(out.toString());
 				if(result.length > count){
 					result = Arrays.copyOf(result, count);
 				}

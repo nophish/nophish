@@ -66,6 +66,7 @@ public class BasePhishURL implements PhishURL{
 		clone.points=this.points.clone();
 		clone.siteType=this.siteType;
 		clone.correctparts=this.correctparts.clone();
+		clone.providerName=this.providerName;
 		clone.validateProviderName();
 		return clone;
 	}
@@ -76,7 +77,7 @@ public class BasePhishURL implements PhishURL{
 	}
 	
 	public void validateProviderName() {
-		if(this.providerName.equals("")){
+		if(this.providerName.length()==0){
 			this.providerName = this.getParts()[3].split("\\.")[0];
 			this.providerName = this.providerName.substring(0,1).toUpperCase(Locale.GERMANY) + this.providerName.substring(1);
 		}

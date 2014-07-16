@@ -60,7 +60,7 @@ public class BackendControllerImpl implements BackendController, GameStateLoaded
 	private Vector<OnLevelChangeListener> onLevelChangeListeners=new Vector<BackendController.OnLevelChangeListener>();
 	private BackendInitListener initListener;
 
-	private static BasePhishURL[] deserializeURLs(String serialized){
+	public static BasePhishURL[] deserializeURLs(String serialized){
 		BasePhishURL[] result = new BasePhishURL[0];
 		try {
 			result = (new Gson()).fromJson(serialized, BasePhishURL[].class);
@@ -85,7 +85,10 @@ public class BackendControllerImpl implements BackendController, GameStateLoaded
 		if(!this.urlCache.containsKey(type)){
 			throw new IllegalArgumentException("This phish type is not cached.");
 		}
-		return urlCache.get(type)[getRandom().nextInt(urlCache.get(type).length)].clone();
+		PhishURL random = urlCache.get(type)[getRandom().nextInt(urlCache.get(type).length)];
+		
+		PhishURL result = random.clone();
+		return result;
 	}
 
 	/**
@@ -147,13 +150,7 @@ public class BackendControllerImpl implements BackendController, GameStateLoaded
 			int resource = frontend.getContext().getResources().getIdentifier(type.toString().toLowerCase(Locale.US), "raw", frontend.getContext().getPackageName());
 			InputStream input = frontend.getContext().getResources().openRawResource(resource);
 			String json = new Scanner(input,"UTF-8").useDelimiter("\\A").next();
-			try {
-				urls = (new Gson()).fromJson(json, BasePhishURL[].class);
-				for (BasePhishURL url : urls) {
-					url.validateProviderName();
-				}
-			} catch (JsonSyntaxException e) {
-			}
+			urls = deserializeURLs(json);
 		}
 		this.setURLs(type, urls);
 		//then we get the value from the online store
