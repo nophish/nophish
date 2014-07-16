@@ -234,7 +234,7 @@ public class GameProgress implements ResultCallback<StateResult>{
 	 * @param level the level to unlock
 	 */
 	public void finishlevel(int level){
-		if(level-1 > this.state.finishedLevel){
+		if(level > this.state.finishedLevel){
 			this.state.finishedLevel=level;
 		}
 		this.saveState();

@@ -5,12 +5,12 @@ public class Constants {
 	/**
 	 * Game configuration
 	 */
-	public static final boolean UNLOCK_ALL_LEVELS = true;
+	public static final boolean UNLOCK_ALL_LEVELS = false;
 	public static final boolean ALLOW_REPEAT_AWARENESS = false;
 	public static final boolean ALLOW_SKIP_AWARENESS = false;
 	public static final boolean SHOW_GMAIL_BUTTON = false;
 	public static final boolean SKIP_LEVEL1 = false;
-	public static final int PROOF_UPTO_LEVEL = 4;
+	public static final int PROOF_UPTO_LEVEL = 6;
 
 	public static final String ARG_PAGE_NUMBER = "page";
 	public static final String ARG_RESULT = "result";
