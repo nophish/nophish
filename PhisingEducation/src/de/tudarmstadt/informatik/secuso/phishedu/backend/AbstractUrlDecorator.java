@@ -83,4 +83,9 @@ public abstract class AbstractUrlDecorator implements PhishURL {
 	public String getProviderName(){
 		return object.getProviderName();
 	}
+	
+	@Override
+	public String toString() {
+		return this.getClass().getSimpleName()+"+"+this.object.toString();
+	}
 }

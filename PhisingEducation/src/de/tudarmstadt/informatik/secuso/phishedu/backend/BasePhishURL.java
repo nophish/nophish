@@ -1,6 +1,7 @@
 package de.tudarmstadt.informatik.secuso.phishedu.backend;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 
@@ -81,6 +82,11 @@ public class BasePhishURL implements PhishURL{
 			this.providerName = this.getParts()[3].split("\\.")[0];
 			this.providerName = this.providerName.substring(0,1).toUpperCase(Locale.GERMANY) + this.providerName.substring(1);
 		}
+	}
+	
+	@Override
+	public String toString() {
+		return Arrays.toString(this.parts);
 	}
 	
 }
