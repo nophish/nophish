@@ -1,21 +1,16 @@
 package de.tudarmstadt.informatik.secuso.phishedu;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.text.SpannableStringBuilder;
 import android.text.style.BackgroundColorSpan;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendControllerImpl;
-import de.tudarmstadt.informatik.secuso.phishedu.backend.MainActivity;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishAttackType;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishResult;
 
@@ -30,7 +25,6 @@ public class ResultActivity extends SwipeActivity {
 	protected static int[] resultTextIDs;
 	protected static int[] resultSmileyIDs;
 	private int result = PhishResult.Phish_Detected.getValue();
-	private View layout;
 
 	@Override
 	public void onSwitchTo() {
@@ -150,7 +144,6 @@ public class ResultActivity extends SwipeActivity {
 
 	public void setResult(int result){
 		this.result=result;
-		boolean show_proof = BackendControllerImpl.getInstance().showProof();
 	}
 
 	private int getReminderText(PhishAttackType attack_type, int level) {

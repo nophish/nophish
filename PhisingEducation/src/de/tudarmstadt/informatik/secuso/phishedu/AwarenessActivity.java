@@ -1,6 +1,5 @@
 package de.tudarmstadt.informatik.secuso.phishedu;
 
-import java.util.List;
 import java.util.regex.Pattern;
 
 import android.accounts.Account;
@@ -8,15 +7,11 @@ import android.accounts.AccountManager;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.content.DialogInterface.OnShowListener;
-import android.content.pm.ApplicationInfo;
+import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;

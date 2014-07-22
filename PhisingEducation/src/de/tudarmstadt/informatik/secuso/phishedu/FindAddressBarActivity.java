@@ -1,6 +1,5 @@
 package de.tudarmstadt.informatik.secuso.phishedu;
 
-import android.view.MenuItem;
 import android.view.View;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendControllerImpl;
 

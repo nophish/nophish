@@ -2,7 +2,6 @@ package de.tudarmstadt.informatik.secuso.phishedu.backend;
 
 import java.util.Random;
 
-import android.R.bool;
 import android.net.Uri;
 
 import com.google.example.games.basegameutils.GameHelper;

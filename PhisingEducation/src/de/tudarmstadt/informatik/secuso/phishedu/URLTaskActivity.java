@@ -1,15 +1,8 @@
 package de.tudarmstadt.informatik.secuso.phishedu;
 
 import android.app.Activity;
-import android.content.Intent;
-import android.content.pm.ActivityInfo;
 import android.os.Bundle;
-import android.os.Handler;
-import android.support.v7.app.ActionBar;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.HorizontalScrollView;
@@ -23,7 +16,6 @@ public class URLTaskActivity extends PhishBaseActivity {
 
 	private TextView urlText;
 	private TextView providerText;
-	private View v;
 	private TextView question;
 	private TextView cross;
 	private TextView checkmark;
@@ -69,8 +61,6 @@ public class URLTaskActivity extends PhishBaseActivity {
 				scroll.fullScroll(View.FOCUS_RIGHT);
 			}
 		});
-
-		this.v = v;
 
 		return v;
 	}
@@ -124,7 +114,7 @@ public class URLTaskActivity extends PhishBaseActivity {
 	private void clicked(boolean acceptance) {
 		PhishResult result = BackendControllerImpl.getInstance().userClicked(
 				acceptance);
-		Class followActivity = ResultActivity.class;
+		Class<? extends PhishBaseActivity> followActivity = ResultActivity.class;
 		// In Level 10 (HTTP) we don't show proof activity.
 		boolean show_proof = BackendControllerImpl.getInstance().showProof();
 		if (result == PhishResult.Phish_Detected) {

@@ -40,7 +40,6 @@ public class BackendControllerImpl implements BackendController, GameStateLoaded
 	private static final String URL_CACHE_NAME ="urlcache";
 	private static final String LEVEL1_URL = "https://pages.no-phish.de/level1.php";
 	private static final PhishAttackType[] CACHE_TYPES = {PhishAttackType.NoPhish};
-	@SuppressWarnings("rawtypes")
 	private static final int URL_CACHE_SIZE = 500;
 
 	private Random random;
@@ -149,7 +148,10 @@ public class BackendControllerImpl implements BackendController, GameStateLoaded
 		if(urls.length==0){
 			int resource = frontend.getContext().getResources().getIdentifier(type.toString().toLowerCase(Locale.US), "raw", frontend.getContext().getPackageName());
 			InputStream input = frontend.getContext().getResources().openRawResource(resource);
-			String json = new Scanner(input,"UTF-8").useDelimiter("\\A").next();
+			Scanner scanner = new Scanner(input,"UTF-8");
+			scanner.useDelimiter("\\A");
+			String json = scanner.next();
+			scanner.close();
 			urls = deserializeURLs(json);
 		}
 		this.setURLs(type, urls);
@@ -300,7 +302,6 @@ public class BackendControllerImpl implements BackendController, GameStateLoaded
 		this.frontend.startBrowser(Uri.parse(LEVEL1_URL+"?frag="+random_string+"#bottom-"+random_string));
 	}
 
-	@SuppressWarnings("unchecked")
 	public void nextUrl() {
 		checkinited();
 		if(getLevel() <= 1){
@@ -504,25 +505,9 @@ public class BackendControllerImpl implements BackendController, GameStateLoaded
 		this.gamehelper.signOut();
 	}
 
-	private int levelURLs() {
-		checkinited();
-		int failed_urls=progress.getLevelResults(PhishResult.Phish_NotDetected)+progress.getLevelResults(PhishResult.NoPhish_NotDetected);
-		return getLevelInfo().levelCorrectURLs()+failed_urls;
-	}
-
 	@Override
 	public int getCorrectlyFoundURLs() {
 		return progress.getLevelResults(PhishResult.Phish_Detected)+progress.getLevelResults(PhishResult.NoPhish_Detected);
-	}
-
-	private int levelRemainingPhishes() {
-		checkinited();
-		return getLevelInfo().levelPhishes()-progress.getLevelResults(PhishResult.Phish_Detected);
-	}
-
-	private int doneURLs() {
-		checkinited();
-		return this.progress.getDoneUrls();
 	}
 
 	@Override

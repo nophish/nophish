@@ -4,14 +4,12 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager.NameNotFoundException;
-import android.opengl.Visibility;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendControllerImpl;
-import de.tudarmstadt.informatik.secuso.phishedu.backend.MainActivity;
 
 /**
  * 
@@ -73,8 +71,8 @@ public class StartMenuActivity extends PhishBaseActivity {
 	
 	@Override
 	public void onBackPressed() {
-		((MainActivity)getActivity()).displayToast("Die App kann über den Home-Button beendet werden.");
-		//showExitPopup();
+		//((MainActivity)getActivity()).displayToast("Die App kann über den Home-Button beendet werden.");
+		showExitPopup();
 	}
 
 	private void showExitPopup() {

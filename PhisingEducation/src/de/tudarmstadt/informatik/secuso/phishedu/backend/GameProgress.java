@@ -1,11 +1,8 @@
 package de.tudarmstadt.informatik.secuso.phishedu.backend;
 
-import java.util.Currency;
-
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import com.google.android.gms.appstate.AppState;
 import com.google.android.gms.appstate.AppStateManager;
 import com.google.android.gms.appstate.AppStateManager.StateResult;
 import com.google.android.gms.appstate.AppStateStatusCodes;
@@ -18,7 +15,6 @@ import com.google.gson.JsonSyntaxException;
 
 import de.tudarmstadt.informatik.secuso.phishedu.Constants;
 import de.tudarmstadt.informatik.secuso.phishedu.R;
-import de.tudarmstadt.informatik.secuso.phishedu.backend.networkTasks.GetUrlsTask;
 
 /**
  * This is a internal class for the backend.

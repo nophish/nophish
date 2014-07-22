@@ -218,7 +218,4 @@ public class MainActivity extends ActionBarActivity implements FrontendControlle
 		return BackendControllerImpl.getInstance().getGameHelper().getApiClient();
 	}
 
-	private boolean isSignedIn(){
-		return BackendControllerImpl.getInstance().getGameHelper().isSignedIn();
-	}
 }

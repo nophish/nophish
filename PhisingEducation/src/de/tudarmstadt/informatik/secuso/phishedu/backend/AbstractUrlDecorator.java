@@ -2,12 +2,6 @@ package de.tudarmstadt.informatik.secuso.phishedu.backend;
 
 import java.util.List;
 
-import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendControllerImpl;
-import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishAttackType;
-import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishResult;
-import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishSiteType;
-import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishURL;
-
 /**
  * This is the abstract implementation for following Attacks.
  * @author Clemens Bergmann <cbergmann@schuhklassert.de>

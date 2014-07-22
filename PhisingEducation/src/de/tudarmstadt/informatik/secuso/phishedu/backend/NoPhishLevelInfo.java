@@ -137,7 +137,6 @@ public class NoPhishLevelInfo {
 
 	// For each level we can define what Attacks are applied
 	// LEVEL 0-1 are empty because they don't
-	@SuppressWarnings("rawtypes")
 	public static final PhishAttackType[][] levelAttackTypes = { {}, // Level 0:
 																		// Awareness
 			{}, // Level 1: Find URLBar in Browser
@@ -160,6 +159,7 @@ public class NoPhishLevelInfo {
 		return false;
 	}
 
+	@SuppressWarnings("rawtypes")
 	private static Class[][] levelGenerators = {
 	// Currently we use the same generators for all levels
 	{ KeepGenerator.class }, };
@@ -176,7 +176,6 @@ public class NoPhishLevelInfo {
 	public final Integer[] introLayouts;
 	public final Integer[] finishedLayouts;
 	public final int levelId;
-	@SuppressWarnings("rawtypes")
 	public final PhishAttackType[] attackTypes;
 	public final Class<? extends BaseGenerator>[] generators;
 	public final String levelNumber;

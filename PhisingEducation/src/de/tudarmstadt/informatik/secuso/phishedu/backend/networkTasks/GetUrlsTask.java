@@ -10,14 +10,11 @@ import org.apache.http.StatusLine;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonSyntaxException;
-
-import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendControllerImpl;
-import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishAttackType;
-import de.tudarmstadt.informatik.secuso.phishedu.backend.BasePhishURL;
-import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishURL;
 import android.os.AsyncTask;
+import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendControllerImpl;
+import de.tudarmstadt.informatik.secuso.phishedu.backend.BasePhishURL;
+import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishAttackType;
+import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishURL;
 
 /**
  * This Task gets URLs from the backend server.
