@@ -1,5 +1,7 @@
 package de.tudarmstadt.informatik.secuso.phishedu.backend;
 
+import java.util.Iterator;
+
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
@@ -9,6 +11,8 @@ import com.google.android.gms.games.Games;
 import com.google.android.gms.games.GamesStatusCodes;
 import com.google.android.gms.games.achievement.Achievement;
 import com.google.android.gms.games.snapshot.Snapshot;
+import com.google.android.gms.games.snapshot.SnapshotMetadata;
+import com.google.android.gms.games.snapshot.SnapshotMetadataBuffer;
 import com.google.android.gms.games.snapshot.SnapshotMetadataChange;
 import com.google.android.gms.games.snapshot.Snapshots;
 
@@ -388,14 +392,24 @@ public class GameProgress{
 	public int getLevelPoints(int level){
 		return this.mSaveGame.levelPoints[level];
 	}
-
+	
 	/**
 	 * remove the game Data that was stored in Googles Cloud Save Storage
 	 */
 	public void deleteRemoteData(){
-		if(this.getApiClient().isConnected()){
-			//AppStateManager.update(apiClient, REMOTE_STORE_SLOT, new byte[0]);
-		}
+		Snapshots.LoadSnapshotsResult lresult = Games.Snapshots.load(getApiClient(), true).await();
+
+        int status = lresult.getStatus().getStatusCode();
+
+        if (status == GamesStatusCodes.STATUS_OK){
+            SnapshotMetadataBuffer smdb = lresult.getSnapshots();
+            Iterator<SnapshotMetadata> snapsIt = smdb.iterator();
+
+            while(snapsIt.hasNext()){
+                Games.Snapshots.delete(getApiClient(), snapsIt.next());
+            }
+            smdb.close();
+        }
 	}
 	
     private GoogleApiClient getApiClient() {

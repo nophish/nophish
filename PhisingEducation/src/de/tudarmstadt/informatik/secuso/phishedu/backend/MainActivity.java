@@ -1,7 +1,6 @@
 package de.tudarmstadt.informatik.secuso.phishedu.backend;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import android.app.Activity;

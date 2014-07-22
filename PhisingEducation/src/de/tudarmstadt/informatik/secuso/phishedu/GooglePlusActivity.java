@@ -48,10 +48,7 @@ public class GooglePlusActivity extends PhishBaseActivity {
 	            startActivityForResult(Games.Achievements.getAchievementsIntent(BackendControllerImpl.getInstance().getGameHelper().getApiClient()),0);
 	        }
 		} else if (id == R.id.button_delete_remote_data) {
-			//BackendControllerImpl.getInstance().deleteRemoteData();
-			 int maxNumberOfSavedGamesToShow = 5;
-			    Intent savedGamesIntent = Games.Snapshots.getSelectSnapshotIntent(this.getApiClient(),"See My Saves", true, true, maxNumberOfSavedGamesToShow);
-			    startActivityForResult(savedGamesIntent, 0);
+			BackendControllerImpl.getInstance().deleteRemoteData();
 		}
 	}
 	

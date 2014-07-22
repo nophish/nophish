@@ -55,7 +55,6 @@ public class BackendControllerImpl implements BackendController, UrlsLoadedListe
 	private boolean inited = false;
 	//indexed by UrlType
 	private EnumMap<PhishAttackType, PhishURL[]> urlCache=new EnumMap<PhishAttackType, PhishURL[]>(PhishAttackType.class);
-	private boolean gamestate_loaded = false;
 	private GameProgress progress;
 	private Vector<OnLevelstateChangeListener> onLevelstateChangeListeners=new Vector<BackendController.OnLevelstateChangeListener>();
 	private Vector<OnLevelChangeListener> onLevelChangeListeners=new Vector<BackendController.OnLevelChangeListener>();
@@ -205,7 +204,7 @@ public class BackendControllerImpl implements BackendController, UrlsLoadedListe
 			all_attacks_cached &= this.urlCache.get(attacktype)!=null && this.urlCache.get(attacktype).length>0; 
 		}
 
-		if (all_attacks_cached &&  this.gamestate_loaded){
+		if (all_attacks_cached){
 			this.inited=true;
 			this.initListener.onInitDone();
 			this.progress.StartFinished();	
@@ -541,7 +540,6 @@ public class BackendControllerImpl implements BackendController, UrlsLoadedListe
 	@Override
 	public void onSignInSucceeded() {
 		progress.onSignInSucceeded();
-		frontend.onSignInSucceeded();
 		Games.Achievements.unlock(gamehelper.getApiClient(), frontend.getContext().getResources().getString(R.string.achievement_welcome));
 	}
 
