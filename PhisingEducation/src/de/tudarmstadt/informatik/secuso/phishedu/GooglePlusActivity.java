@@ -1,12 +1,11 @@
 package de.tudarmstadt.informatik.secuso.phishedu;
 
-import com.google.android.gms.common.api.GoogleApiClient;
+import android.app.Activity;
+import android.view.View;
+
 import com.google.android.gms.games.Games;
 
 import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendControllerImpl;
-import android.app.Activity;
-import android.content.Intent;
-import android.view.View;
 
 public class GooglePlusActivity extends PhishBaseActivity {
 	private boolean showSignIn=true;
@@ -50,10 +49,6 @@ public class GooglePlusActivity extends PhishBaseActivity {
 		} else if (id == R.id.button_delete_remote_data) {
 			BackendControllerImpl.getInstance().deleteRemoteData();
 		}
-	}
-	
-	private GoogleApiClient getApiClient(){
-		return BackendControllerImpl.getInstance().getGameHelper().getApiClient();
 	}
 	
 	private void onShowLeaderboardsRequested(int leaderboard) {
