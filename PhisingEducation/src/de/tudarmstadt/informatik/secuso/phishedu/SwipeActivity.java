@@ -63,11 +63,25 @@ public abstract class SwipeActivity extends PhishBaseActivity implements ViewPag
 				mPager.setCurrentItem(mPager.getCurrentItem()-1);			
 			}
 		});
+		imgPrevious.setOnLongClickListener(new View.OnLongClickListener() {
+			@Override
+			public boolean onLongClick(View v) {
+				mPager.setCurrentItem(0);	
+				return true;
+			}
+		});
 		ImageView imgNext = (ImageView) v.findViewById(R.id.game_intro_arrow_forward);
 		imgNext.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				mPager.setCurrentItem(mPager.getCurrentItem()+1);
+			}
+		});
+		imgNext.setOnLongClickListener(new View.OnLongClickListener() {
+			@Override
+			public boolean onLongClick(View v) {
+				mPager.setCurrentItem(getPageCount()-1);	
+				return true;
 			}
 		});
 
