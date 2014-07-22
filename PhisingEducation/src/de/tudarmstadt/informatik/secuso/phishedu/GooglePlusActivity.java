@@ -1,9 +1,11 @@
 package de.tudarmstadt.informatik.secuso.phishedu;
 
+import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.games.Games;
 
 import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendControllerImpl;
 import android.app.Activity;
+import android.content.Intent;
 import android.view.View;
 
 public class GooglePlusActivity extends PhishBaseActivity {
@@ -46,8 +48,15 @@ public class GooglePlusActivity extends PhishBaseActivity {
 	            startActivityForResult(Games.Achievements.getAchievementsIntent(BackendControllerImpl.getInstance().getGameHelper().getApiClient()),0);
 	        }
 		} else if (id == R.id.button_delete_remote_data) {
-			BackendControllerImpl.getInstance().deleteRemoteData();
+			//BackendControllerImpl.getInstance().deleteRemoteData();
+			 int maxNumberOfSavedGamesToShow = 5;
+			    Intent savedGamesIntent = Games.Snapshots.getSelectSnapshotIntent(this.getApiClient(),"See My Saves", true, true, maxNumberOfSavedGamesToShow);
+			    startActivityForResult(savedGamesIntent, 0);
 		}
+	}
+	
+	private GoogleApiClient getApiClient(){
+		return BackendControllerImpl.getInstance().getGameHelper().getApiClient();
 	}
 	
 	private void onShowLeaderboardsRequested(int leaderboard) {

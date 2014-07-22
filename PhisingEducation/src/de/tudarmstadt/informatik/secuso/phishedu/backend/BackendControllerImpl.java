@@ -16,6 +16,8 @@ import android.media.AudioManager;
 import android.net.Uri;
 import android.os.Vibrator;
 
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.drive.Drive;
 import com.google.android.gms.games.Games;
 import com.google.example.games.basegameutils.GameHelper;
 import com.google.gson.Gson;
@@ -34,7 +36,7 @@ import de.tudarmstadt.informatik.secuso.phishedu.backend.networkTasks.UrlsLoaded
  * @author Clemens Bergmann <cbergmann@schuhklassert.de>
  *
  */
-public class BackendControllerImpl implements BackendController, GameStateLoadedListener, UrlsLoadedListener {
+public class BackendControllerImpl implements BackendController, UrlsLoadedListener {
 	//constants
 	private static final String PREFS_NAME = "PhisheduState";
 	private static final String URL_CACHE_NAME ="urlcache";
@@ -124,10 +126,16 @@ public class BackendControllerImpl implements BackendController, GameStateLoaded
 		this.frontend=frontend;
 		this.initListener=initlistener;
 		this.gamehelper=new GameHelper(frontend.getBaseActivity(),GameHelper.CLIENT_ALL);
-		this.gamehelper.setup(this);
+		// Add the Drive API and scope to the builder:
+		GoogleApiClient.Builder builder = this.gamehelper.createApiClientBuilder();
+	    builder.addScope(Drive.SCOPE_APPFOLDER);
+	    builder.addApi(Drive.API);
+	    
+	    this.gamehelper.setup(this);
+				
 		SharedPreferences prefs = this.frontend.getContext().getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
 		Context context = this.frontend.getContext();
-		this.progress = new GameProgress(context, prefs, this.gamehelper.getApiClient() ,this);
+		this.progress = new GameProgress(context, prefs, this.gamehelper.getApiClient());
 		SharedPreferences url_cache = this.frontend.getContext().getSharedPreferences(URL_CACHE_NAME, Context.MODE_PRIVATE);
 		for(PhishAttackType type: CACHE_TYPES){
 			loadUrls(url_cache, type);
@@ -476,12 +484,6 @@ public class BackendControllerImpl implements BackendController, GameStateLoaded
 	}
 
 	@Override
-	public void onGameStateLoaded() {
-		this.gamestate_loaded=true;
-		this.checkInitDone();
-	}
-
-	@Override
 	public int getMaxUnlockedLevel() {
 		return this.progress.getMaxUnlockedLevel();
 	}
@@ -538,8 +540,8 @@ public class BackendControllerImpl implements BackendController, GameStateLoaded
 
 	@Override
 	public void onSignInSucceeded() {
+		progress.onSignInSucceeded();
 		frontend.onSignInSucceeded();
-		progress.loadState();
 		Games.Achievements.unlock(gamehelper.getApiClient(), frontend.getContext().getResources().getString(R.string.achievement_welcome));
 	}
 

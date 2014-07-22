@@ -2,16 +2,15 @@ package de.tudarmstadt.informatik.secuso.phishedu.backend;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.os.AsyncTask;
 
-import com.google.android.gms.appstate.AppStateManager;
-import com.google.android.gms.appstate.AppStateManager.StateResult;
-import com.google.android.gms.appstate.AppStateStatusCodes;
 import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.games.Games;
+import com.google.android.gms.games.GamesStatusCodes;
 import com.google.android.gms.games.achievement.Achievement;
-import com.google.gson.Gson;
-import com.google.gson.JsonSyntaxException;
+import com.google.android.gms.games.snapshot.Snapshot;
+import com.google.android.gms.games.snapshot.SnapshotMetadataChange;
+import com.google.android.gms.games.snapshot.Snapshots;
 
 import de.tudarmstadt.informatik.secuso.phishedu.Constants;
 import de.tudarmstadt.informatik.secuso.phishedu.R;
@@ -23,35 +22,12 @@ import de.tudarmstadt.informatik.secuso.phishedu.R;
  * @author Clemens Bergmann <cbergmann@schuhklassert.de>
  *
  */
-public class GameProgress implements ResultCallback<StateResult>{
+public class GameProgress{
 	private Context context;
 	private SharedPreferences local_store;
-	private GoogleApiClient apiClient;
-	private static final int REMOTE_STORE_SLOT = 0;
+	private static final String REMOTE_STORE_GAME = "autosave";
 	private static final String LOCAL_STORE_KEY = "gamestate";
 	private static final int LIFES_PER_LEVEL = 3;
-
-	private class State{
-		public State(){
-			this.results = new int[4];
-			this.levelPoints = new int[BackendControllerImpl.getInstance().getLevelCount()];
-		}
-		public int[] results = {0,0,0,0};
-		public int[] levelPoints = new int[BackendControllerImpl.getInstance().getLevelCount()];
-		public int level = 0;
-		public int finishedLevel = -1;
-		public int detected_phish_behind = 0;
-		public boolean app_started = false;
-		public int points = 0;
-
-		/**
-		 * This function checks a loaded state for validity
-		 * @return if the state is valid true, otherwise false
-		 */
-		private boolean validate(){
-			return this.results != null && this.levelPoints != null;
-		}		
-	}
 
 	private int[] level_results = {0,0,0,0};
 	//This is for saving the points per level. 
@@ -59,9 +35,138 @@ public class GameProgress implements ResultCallback<StateResult>{
 	private int level_points;
 	private int level_lives=LIFES_PER_LEVEL;
 
-	private GameStateLoadedListener listener;
-	private State state = new State();
+	private SaveGame mSaveGame = new SaveGame();
 
+	/**
+	 * This is the default constructor.
+	 * @param context We need this for getting the resources for the achievements 
+	 * @param local_store This is the local persistent database where we save the gamestate.
+	 * @param game_store This is the GamesClient for unlocking Achievements and Leaderboards.
+	 * @param remote_store This is the remote persistent database to save the gamestate.
+	 * @param listener
+	 */
+	public GameProgress(Context context, SharedPreferences local_store, GoogleApiClient apiClient) {
+		this.context=context;
+		this.local_store=local_store;
+		this.loadLocal();
+	}
+	
+	/**
+     * Loads a Snapshot from the user's synchronized storage.
+     */
+    void loadFromSnapshot() {
+        AsyncTask<Void, Void, Integer> task = new AsyncTask<Void, Void, Integer>() {
+            @Override
+            protected Integer doInBackground(Void... params) {
+                Snapshots.OpenSnapshotResult result = Games.Snapshots.open(getApiClient(), REMOTE_STORE_GAME, true).await();
+
+                int status = result.getStatus().getStatusCode();
+
+                if (status == GamesStatusCodes.STATUS_OK) {
+                    Snapshot snapshot = result.getSnapshot();
+                    mSaveGame = new SaveGame(snapshot.readFully());
+                }
+
+                return status;
+            }
+
+			@Override
+            protected void onPostExecute(Integer status){
+				//TODO: 
+                // Note that showing a toast is done here for debugging. Your application should
+                // resolve the error appropriately to your app.
+                if (status == GamesStatusCodes.STATUS_SNAPSHOT_NOT_FOUND){
+                    //TODO: BacToast.makeText(getBaseContext(), "Error: Snapshot not found", Toast.LENGTH_SHORT);
+                }else if (status == GamesStatusCodes.STATUS_SNAPSHOT_CONTENTS_UNAVAILABLE) {
+                	//TODO: Toast.makeText(getBaseContext(), "Error: Snapshot contents unavailable", Toast.LENGTH_SHORT);
+                }else if (status == GamesStatusCodes.STATUS_SNAPSHOT_FOLDER_UNAVAILABLE){
+                	//TODO: Toast.makeText(getBaseContext(), "Error: Snapshot folder unavailable.", Toast.LENGTH_SHORT);
+                }
+            }
+        };
+
+        task.execute();
+    }
+		
+    /**
+     * Conflict resolution for when Snapshots are opened.
+     * @param result The open snapshot result to resolve on open.
+     * @return The opened Snapshot on success; otherwise, returns null.
+     */
+    Snapshot processSnapshotOpenResult(Snapshots.OpenSnapshotResult result, int retryCount){
+        retryCount++;
+        int status = result.getStatus().getStatusCode();
+
+        if (status == GamesStatusCodes.STATUS_OK) {
+            return result.getSnapshot();
+        } else if (status == GamesStatusCodes.STATUS_SNAPSHOT_CONTENTS_UNAVAILABLE) {
+            return result.getSnapshot();
+        } else if (status == GamesStatusCodes.STATUS_SNAPSHOT_CONFLICT){
+            Snapshot snapshot = result.getSnapshot();
+            Snapshot conflictSnapshot = result.getConflictingSnapshot();
+            SaveGame resolved = new SaveGame(snapshot.readFully());
+            resolved = resolved.unionWith(new SaveGame(conflictSnapshot.readFully()));
+            
+            Snapshot resolvedSnapshot = snapshot;
+            resolvedSnapshot.writeBytes(resolved.toBytes());
+            
+            Games.Snapshots.resolveConflict(getApiClient(), result.getConflictId(), resolvedSnapshot).await();
+        }
+        // Fail, return null.
+        return null;
+    }
+    
+    /**
+     * Prepares saving Snapshot to the user's synchronized storage, conditionally resolves errors,
+     * and stores the Snapshot.
+     */
+    void saveSnapshot() {
+        AsyncTask<Void, Void, Snapshots.OpenSnapshotResult> task =
+                new AsyncTask<Void, Void, Snapshots.OpenSnapshotResult>() {
+                    @Override
+                    protected Snapshots.OpenSnapshotResult doInBackground(Void... params) {
+                        Snapshots.OpenSnapshotResult result = Games.Snapshots.open(getApiClient(),REMOTE_STORE_GAME, true).await();
+                        return result;
+                    }
+                    
+                    @Override
+                    protected void onPostExecute(Snapshots.OpenSnapshotResult result) {
+                        Snapshot toWrite = processSnapshotOpenResult(result, 0);
+                        writeSnapshot(toWrite);
+                    }
+                };
+
+        task.execute();
+    }
+    
+    /**
+     * Generates metadata, takes a screenshot, and performs the write operation for saving a
+     * snapshot.
+     */
+    private String writeSnapshot(Snapshot snapshot){
+        // Set the data payload for the snapshot.
+        snapshot.writeBytes(mSaveGame.toBytes());
+
+        // Save the snapshot.
+        SnapshotMetadataChange metadataChange = new SnapshotMetadataChange.Builder()
+                .setDescription("The default autosafe for the game.")
+                .build();
+        Games.Snapshots.commitAndClose(getApiClient(), snapshot, metadataChange);
+        return snapshot.toString();
+    }
+    
+    private void loadLocal() {
+        mSaveGame = new SaveGame(local_store, LOCAL_STORE_KEY);
+    }
+
+    private void saveLocal() {
+        mSaveGame.save(local_store, LOCAL_STORE_KEY);
+    }
+
+	public void onSignInSucceeded() {
+      loadFromSnapshot();
+	}
+    
 	/**
 	 * Return the number of results of the given type the user had. 
 	 * @param type The type of result
@@ -92,66 +197,27 @@ public class GameProgress implements ResultCallback<StateResult>{
 	}
 
 	/**
-	 * This is the default constructor.
-	 * @param context We need this for getting the resources for the achievements 
-	 * @param local_store This is the local persistent database where we save the gamestate.
-	 * @param game_store This is the GamesClient for unlocking Achievements and Leaderboards.
-	 * @param remote_store This is the remote persistent database to save the gamestate.
-	 * @param listener
-	 */
-	public GameProgress(Context context, SharedPreferences local_store, GoogleApiClient apiClient, GameStateLoadedListener listener) {
-		this.context=context;
-		this.local_store=local_store;
-		this.apiClient=apiClient;
-		this.listener = listener;
-		this.loadState();
-	}
-
-	/**
-	 * Load the game state.
-	 * This function loads the local state and the remote state and tries to get them into sync.
-	 */
-	public void loadState(){
-		this.loadLocalState(this.local_store.getString(LOCAL_STORE_KEY, "{}"));
-
-		if(this.apiClient.isConnected()){
-			AppStateManager.load(apiClient, REMOTE_STORE_SLOT).setResultCallback(this);
-		}else{
-			//If we are not connected notify the listener that we are finished loading.
-			//If we are conneted this is done in onStateLoaded()
-			this.listener.onGameStateLoaded();
-		}
-	}
-
-	private void loadLocalState(String state){
-		State newState = this.deserializeState(state);
-		if(newState != null && newState.validate()){
-			this.state=newState;
-		}
-	}
-
-	/**
 	 * Add a game Result to the persistend state.
 	 * If we have google+ connected the related Achivements and leaderboards are updated as well.
 	 * @param result What kind of outcome did the user have.
 	 */
 	public void addResult(PhishResult result){
 		this.level_results[result.getValue()]+=1;
-		this.state.results[result.getValue()]+=1;
+		this.mSaveGame.results[result.getValue()]+=1;
 		//update Leaderboards
-		if(apiClient.isConnected()){
+		if(getApiClient().isConnected()){
 			if(result == PhishResult.Phish_Detected && BackendControllerImpl.getInstance().getUrl().getAttackType() != PhishAttackType.NoPhish){
-				Games.Leaderboards.submitScore(apiClient, context.getResources().getString(R.string.leaderboard_detected_phishing_urls),this.state.results[result.getValue()]);
-				Games.Achievements.increment(apiClient, context.getResources().getString(R.string.achievement_plakton),this.state.detected_phish_behind+1);
-				Games.Achievements.increment(apiClient, context.getResources().getString(R.string.achievement_anchovy),this.state.detected_phish_behind+1);
-				Games.Achievements.increment(apiClient, context.getResources().getString(R.string.achievement_trout),this.state.detected_phish_behind+1);
-				Games.Achievements.increment(apiClient, context.getResources().getString(R.string.achievement_tuna),this.state.detected_phish_behind+1);
-				Games.Achievements.increment(apiClient, context.getResources().getString(R.string.achievement_whale_shark),this.state.detected_phish_behind+1);
-				this.state.detected_phish_behind=0;
+				Games.Leaderboards.submitScore(getApiClient(), context.getResources().getString(R.string.leaderboard_detected_phishing_urls),this.mSaveGame.results[result.getValue()]);
+				Games.Achievements.increment(getApiClient(), context.getResources().getString(R.string.achievement_plakton),this.mSaveGame.detected_phish_behind+1);
+				Games.Achievements.increment(getApiClient(), context.getResources().getString(R.string.achievement_anchovy),this.mSaveGame.detected_phish_behind+1);
+				Games.Achievements.increment(getApiClient(), context.getResources().getString(R.string.achievement_trout),this.mSaveGame.detected_phish_behind+1);
+				Games.Achievements.increment(getApiClient(), context.getResources().getString(R.string.achievement_tuna),this.mSaveGame.detected_phish_behind+1);
+				Games.Achievements.increment(getApiClient(), context.getResources().getString(R.string.achievement_whale_shark),this.mSaveGame.detected_phish_behind+1);
+				this.mSaveGame.detected_phish_behind=0;
 			}
 		}else{
 			if(result == PhishResult.Phish_Detected){
-				this.state.detected_phish_behind+=1;
+				this.mSaveGame.detected_phish_behind+=1;
 			}
 		}
 		this.saveState();
@@ -163,7 +229,7 @@ public class GameProgress implements ResultCallback<StateResult>{
 	 * @return the currently saved points
 	 */
 	public int getPoints(){
-		return this.state.points;
+		return this.mSaveGame.points;
 	}
 
 	/**
@@ -178,12 +244,12 @@ public class GameProgress implements ResultCallback<StateResult>{
 	 * Save the level Points to the persistend state.
 	 */
 	public void commitPoints(){
-		this.state.points+=this.level_points;
-		if(this.apiClient.isConnected()){
-			Games.Leaderboards.submitScore(apiClient, context.getResources().getString(R.string.leaderboard_total_points), this.state.points);
+		this.mSaveGame.points+=this.level_points;
+		if(this.getApiClient().isConnected()){
+			Games.Leaderboards.submitScore(getApiClient(), context.getResources().getString(R.string.leaderboard_total_points), this.mSaveGame.points);
 		}
-		if(this.getPoints() > this.state.levelPoints[this.getLevel()]){
-			this.state.levelPoints[this.getLevel()]=this.getPoints();
+		if(this.getPoints() > this.mSaveGame.levelPoints[this.getLevel()]){
+			this.mSaveGame.levelPoints[this.getLevel()]=this.getPoints();
 		}
 		saveState();
 	}
@@ -206,7 +272,7 @@ public class GameProgress implements ResultCallback<StateResult>{
 	 * @return the level number.
 	 */
 	public int getLevel() {
-		return this.state.level;
+		return this.mSaveGame.level;
 	}
 	/**
 	 * This Function sets the current level of the user.
@@ -214,7 +280,7 @@ public class GameProgress implements ResultCallback<StateResult>{
 	 * @param level The current level
 	 */
 	public void setLevel(int level){
-		this.state.level=level;
+		this.mSaveGame.level=level;
 		if(getMaxUnlockedLevel()<level){
 			throw new IllegalStateException("The given level ("+level+") is not unlocked.");
 		}
@@ -230,8 +296,8 @@ public class GameProgress implements ResultCallback<StateResult>{
 	 * @param level the level to unlock
 	 */
 	public void finishlevel(int level){
-		if(level > this.state.finishedLevel){
-			this.state.finishedLevel=level;
+		if(level > this.mSaveGame.finishedLevel){
+			this.mSaveGame.finishedLevel=level;
 		}
 		this.saveState();
 	}
@@ -241,32 +307,18 @@ public class GameProgress implements ResultCallback<StateResult>{
 	 * This allows us to react to that event and unlock a {@link Achievement}
 	 */
 	public void StartFinished(){
-		this.state.app_started = true;
+		this.mSaveGame.app_started = true;
 		saveState();
 	}
 
 	private void unlockAchievements(){
 		//unlock Achievements
-		if(this.state.level>1){
-			Games.Achievements.unlock(apiClient, context.getResources().getString(R.string.achievement_search_and_rescue));
+		if(this.mSaveGame.level>1){
+			Games.Achievements.unlock(getApiClient(), context.getResources().getString(R.string.achievement_search_and_rescue));
 		}
-		if(this.state.level>2){
-			Games.Achievements.unlock(apiClient, context.getResources().getString(R.string.achievement_know_your_poison));
+		if(this.mSaveGame.level>2){
+			Games.Achievements.unlock(getApiClient(), context.getResources().getString(R.string.achievement_know_your_poison));
 		}
-	}
-
-	private String serializeState(State state){
-		return new Gson().toJson(state);
-	}
-
-	private State deserializeState(String state){
-		State result = null;
-		try {
-			result = (new Gson()).fromJson(state,State.class);
-		} catch (JsonSyntaxException e) {
-			//Json SyntaxException
-		}
-		return result;
 	}
 
 	/**
@@ -275,79 +327,16 @@ public class GameProgress implements ResultCallback<StateResult>{
 	 * If we are connected to the remote_store we also save it online.
 	 */
 	public void saveState(){
-		String serialized = this.serializeState(this.state);
-		this.local_store.edit().putString(LOCAL_STORE_KEY, serialized).commit();
-
-		if(this.apiClient.isConnected()){
+		saveLocal();
+		
+		if(this.getApiClient().isConnected()){
 			unlockAchievements();
 		}
 
-		if(this.apiClient.isConnected()){
-			AppStateManager.update(apiClient, REMOTE_STORE_SLOT, serialized.getBytes());
+		if(this.getApiClient().isConnected()){
+			saveSnapshot();
 		}
 	}
-
-	@Override
-	public void onResult(StateResult result) {
-		AppStateManager.StateConflictResult conflictResult = result.getConflictResult();
-		AppStateManager.StateLoadedResult loadedResult 
-		= result.getLoadedResult();
-		if (loadedResult != null) {
-			processStateLoaded(loadedResult);
-		} else if (conflictResult != null) {
-			processStateConflict(conflictResult);
-		}	
-	}
-
-
-	private void processStateConflict(AppStateManager.StateConflictResult result) {
-		if(result.getStateKey() != REMOTE_STORE_SLOT){
-			return;
-		}
-		State local_game = this.deserializeState(new String(result.getLocalData()));
-		State server_game = this.deserializeState(new String(result.getServerData()));
-
-		//Current resolving strategy: get the most of all values
-		State resolved_game = new State();
-
-		if(local_game == null && server_game != null){
-			resolved_game = server_game;
-		}else if(server_game == null && local_game != null){
-			resolved_game = local_game;
-		}else if(server_game != null && local_game != null){
-			resolved_game.level= Math.max(local_game.level, server_game.level);
-			resolved_game.app_started = local_game.app_started || server_game.app_started;
-			resolved_game.points = Math.max(local_game.points, server_game.points);
-			for(PhishResult value: PhishResult.values()){
-				resolved_game.results[value.getValue()]=Math.max(local_game.results[value.getValue()], server_game.results[value.getValue()]);
-			}
-			for(int level=0;level<BackendControllerImpl.getInstance().getLevelCount();level++){
-				resolved_game.levelPoints[level]=Math.max(local_game.levelPoints[level],server_game.levelPoints[level]);
-			}
-		}
-		AppStateManager.resolve(apiClient, REMOTE_STORE_SLOT, result.getResolvedVersion(), resolved_game.toString().getBytes());
-	}
-
-	private void processStateLoaded(AppStateManager.StateLoadedResult result) {
-		if(result.getStateKey() != REMOTE_STORE_SLOT){
-			return;
-		}
-		if (result.getStatus().getStatusCode() == AppStateStatusCodes.STATUS_OK) {
-			// successfully loaded/saved data
-			this.loadLocalState(new String(result.getLocalData()));
-		}else if (result.getStatus().getStatusCode() == AppStateStatusCodes.STATUS_NETWORK_ERROR_STALE_DATA) {
-			// could not connect to get fresh data,
-			// but loaded (possibly out-of-sync) cached data instead
-			this.loadLocalState(new String(result.getLocalData()));
-		} else if(result.getStatus().getStatusCode() == AppStateStatusCodes.STATUS_STATE_KEY_NOT_FOUND) {
-			// this error can be ignored because we have the local store.
-			// The next time we save this will be fixed.
-		} else {
-			// handle error
-		}
-		this.listener.onGameStateLoaded();
-	}
-
 
 	/**
 	 * This returns the maximum level the user is able to access.
@@ -358,7 +347,7 @@ public class GameProgress implements ResultCallback<StateResult>{
 		if(Constants.UNLOCK_ALL_LEVELS){
 			result = BackendControllerImpl.getInstance().getLevelCount();
 		}else{
-			result = this.state.finishedLevel+1;
+			result = this.mSaveGame.finishedLevel+1;
 		}
 		return Math.min(result, BackendControllerImpl.getInstance().getLevelCount()-1);
 	}
@@ -371,7 +360,7 @@ public class GameProgress implements ResultCallback<StateResult>{
 		if(Constants.UNLOCK_ALL_LEVELS){
 			return BackendControllerImpl.getInstance().getLevelCount()-1;
 		}else{
-			return this.state.finishedLevel;
+			return this.mSaveGame.finishedLevel;
 		}
 	}
 
@@ -397,15 +386,20 @@ public class GameProgress implements ResultCallback<StateResult>{
 	 * @return  the points for the given level.
 	 */
 	public int getLevelPoints(int level){
-		return this.state.levelPoints[level];
+		return this.mSaveGame.levelPoints[level];
 	}
 
 	/**
 	 * remove the game Data that was stored in Googles Cloud Save Storage
 	 */
 	public void deleteRemoteData(){
-		if(this.apiClient.isConnected()){
-			AppStateManager.update(apiClient, REMOTE_STORE_SLOT, new byte[0]);
+		if(this.getApiClient().isConnected()){
+			//AppStateManager.update(apiClient, REMOTE_STORE_SLOT, new byte[0]);
 		}
 	}
+	
+    private GoogleApiClient getApiClient() {
+    	return BackendControllerImpl.getInstance().getGameHelper().getApiClient();
+	}
+
 }

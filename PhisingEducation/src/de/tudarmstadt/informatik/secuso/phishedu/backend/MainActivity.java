@@ -207,6 +207,7 @@ public class MainActivity extends ActionBarActivity implements FrontendControlle
 	@Override
 	public void onSignInSucceeded() {
 		((GooglePlusActivity)fragCache.get(GooglePlusActivity.class)).setShowSignIn(false);
+		BackendControllerImpl.getInstance().onSignInSucceeded();
 		Games.Achievements.unlock(getApiClient(),getString(R.string.achievement_welcome));
 	}
 
