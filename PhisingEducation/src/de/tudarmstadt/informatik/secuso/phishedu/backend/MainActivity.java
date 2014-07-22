@@ -1,6 +1,7 @@
 package de.tudarmstadt.informatik.secuso.phishedu.backend;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import android.app.Activity;
@@ -74,14 +75,14 @@ public class MainActivity extends ActionBarActivity implements FrontendControlle
 			e.printStackTrace();
 		}
 		newFrag = fragCache.get(fragClass);
-		
+
 		if(newFrag.getArguments()!=null){
 			newFrag.getArguments().clear();
 			newFrag.getArguments().putAll(arguments);
 		}else{
 			newFrag.setArguments(arguments);
 		}
-		getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, newFrag).commitAllowingStateLoss();
+		getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, newFrag).commit();
 		/**
 		 * ensure that we only run onswitchto when attached.
 		 * this is also called in PhishBaseActivity.onAttack() 
@@ -114,12 +115,17 @@ public class MainActivity extends ActionBarActivity implements FrontendControlle
 		BackendControllerImpl.getInstance().addOnLevelChangeListener(this);
 		BackendControllerImpl.getInstance().addOnLevelstateChangeListener(this);
 
-		fragCache.put(GooglePlusActivity.class, new GooglePlusActivity());
-		fragCache.put(LevelIntroActivity.class, new LevelIntroActivity());
+		clearFragCache();
 
 		switchToFragment(StartMenuActivity.class);
 
 		BackendControllerImpl.getInstance().onUrlReceive(getIntent().getData());
+	}
+
+	private void clearFragCache(){
+		this.fragCache = new HashMap<Class<? extends PhishBaseActivity>, PhishBaseActivity>();
+		fragCache.put(GooglePlusActivity.class, new GooglePlusActivity());
+		fragCache.put(LevelIntroActivity.class, new LevelIntroActivity());
 	}
 
 	@Override
@@ -161,7 +167,7 @@ public class MainActivity extends ActionBarActivity implements FrontendControlle
 		((LevelIntroActivity)fragCache.get(LevelIntroActivity.class)).setShowRepeat(showRepeat);
 		switchToFragment(LevelIntroActivity.class);
 	}
-	
+
 	@Override
 	public void displayToastScore(int score) {
 		LayoutInflater inflater = getLayoutInflater();
