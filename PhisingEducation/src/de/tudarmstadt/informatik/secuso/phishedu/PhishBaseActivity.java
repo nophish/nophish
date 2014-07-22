@@ -291,7 +291,7 @@ public abstract class PhishBaseActivity extends Fragment implements OnClickListe
 	}
 	
 	@Override
-	public void onLevelChange(int new_levelid) {}
+	public void onLevelChange(int new_levelid, boolean showRepeat) {}
 
 	@Override
 	public void onLevelstateChange(Levelstate new_state, int level) {}

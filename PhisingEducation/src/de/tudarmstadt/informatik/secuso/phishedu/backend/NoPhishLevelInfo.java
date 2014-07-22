@@ -60,43 +60,65 @@ public class NoPhishLevelInfo {
 			R.string.level_subtitle_08, R.string.level_subtitle_09,
 			R.string.level_subtitle_10, R.string.level_subtitle_11 };
 
-	private static final int[][] levelIntroLayoutIds = {
+	private static final Integer[][] levelSplashLayoutIds = {
+		{},
+		{ R.layout.level_01_splash},
+		{ R.layout.level_02_splash},
+		{ R.layout.level_03_splash},
+		{ R.layout.level_04_splash},
+		{ R.layout.level_05_splash},
+		{ R.layout.level_06_splash},
+		{ R.layout.level_07_splash},
+		{ R.layout.level_08_splash},
+		{ R.layout.level_09_splash},
+		{ R.layout.level_10_splash},
+		{ R.layout.level_11_splash_00}
+	};
+	
+	private static final Integer[][] levelRepeatLayoutIds = {
+		{},
+		{},
+		{},
+		{R.layout.level_03_intro_01},
+		{R.layout.level_04_intro_02},
+		{R.layout.level_05_intro_01},
+		{R.layout.level_06_intro_01},
+		{R.layout.level_07_intro_01},
+		{R.layout.level_08_intro_01},
+		{R.layout.level_09_intro_01},
+		{R.layout.level_10_intro_01},
+		{}
+	};
+	
+	private static final Integer[][] levelIntroLayoutIds = {
 			{ R.layout.level_00_intro_00, R.layout.level_00_intro_01 },
-			{ R.layout.level_01_splash, R.layout.level_01_intro_00,
+			{R.layout.level_01_intro_00,
 					R.layout.level_01_intro_01, R.layout.level_01_intro_02,
 					R.layout.level_01_intro_03 },
-			{ R.layout.level_02_splash, R.layout.level_02_intro_00,
+			{R.layout.level_02_intro_00,
 					R.layout.level_02_intro_01, R.layout.level_02_intro_02,
 					R.layout.level_02_intro_03, R.layout.level_02_intro_04,
 					R.layout.level_02_intro_05, R.layout.level_02_intro_06,
 					R.layout.level_02_intro_07, R.layout.level_02_intro_08,
 					R.layout.level_02_intro_09, R.layout.level_02_intro_10, },
-			{ R.layout.level_03_splash, R.layout.level_03_intro_01,
-					R.layout.level_03_intro_00, R.layout.level_03_intro_02,
+			{ R.layout.level_03_intro_00, R.layout.level_03_intro_02,
 					R.layout.level_03_intro_03 },
-			{ R.layout.level_04_splash, R.layout.level_04_intro_02,
-					R.layout.level_04_intro_00, R.layout.level_04_intro_01,
+			{ R.layout.level_04_intro_00, R.layout.level_04_intro_01,
 					R.layout.level_04_intro_03 },
-			{ R.layout.level_05_splash, R.layout.level_05_intro_01,
-					R.layout.level_05_intro_00, R.layout.level_05_intro_02 },
-			{ R.layout.level_06_splash, R.layout.level_06_intro_01,
-					R.layout.level_06_intro_00, R.layout.level_06_intro_02 },
-			{ R.layout.level_07_splash, R.layout.level_07_intro_01,
-					R.layout.level_07_intro_02, R.layout.level_07_intro_03,
+			{ R.layout.level_05_intro_00, R.layout.level_05_intro_02 },
+			{ R.layout.level_06_intro_00, R.layout.level_06_intro_02 },
+			{ R.layout.level_07_intro_02, R.layout.level_07_intro_03,
 					R.layout.level_07_intro_04, R.layout.level_07_intro_05,
 					R.layout.level_07_intro_06 },
-			{ R.layout.level_08_splash, R.layout.level_08_intro_01,
-					R.layout.level_08_intro_00, R.layout.level_08_intro_02 },
-			{ R.layout.level_09_splash, R.layout.level_09_intro_01,
-					R.layout.level_09_intro_00, R.layout.level_09_intro_02,
+			{ R.layout.level_08_intro_00, R.layout.level_08_intro_02 },
+			{ R.layout.level_09_intro_00, R.layout.level_09_intro_02,
 					R.layout.level_09_intro_03 },
-			{ R.layout.level_10_splash, R.layout.level_10_intro_01,
-					R.layout.level_10_intro_00, R.layout.level_10_intro_02,
+			{ R.layout.level_10_intro_00, R.layout.level_10_intro_02,
 					R.layout.level_10_intro_03, R.layout.level_10_intro_04,
 					R.layout.level_10_intro_05, R.layout.level_10_intro_06,
 					R.layout.level_10_intro_07, R.layout.level_10_intro_08,
 					R.layout.level_10_intro_09, },
-			{ R.layout.level_11_splash_00, R.layout.level_11_intro_00,
+			{ R.layout.level_11_intro_00,
 					R.layout.level_11_splash_01, R.layout.level_11_intro_01,
 					R.layout.level_11_intro_02, R.layout.level_11_intro_04,
 					R.layout.level_11_intro_03, R.layout.level_11_splash_02,
@@ -105,7 +127,7 @@ public class NoPhishLevelInfo {
 
 			} };
 
-	private static final int[][] levelFinishedLayoutIds = {
+	private static final Integer[][] levelFinishedLayoutIds = {
 			{ R.layout.level_00_finish_00a, R.layout.level_00_finish_00,
 					R.layout.level_00_finish_01, R.layout.level_00_finish_02,
 					R.layout.level_00_finish_03, R.layout.level_00_finish_04,
@@ -149,8 +171,10 @@ public class NoPhishLevelInfo {
 	public final int titleId;
 	public final int subTitleId;
 	public final int outroId;
-	public final int[] introLayouts;
-	public final int[] finishedLayouts;
+	public final Integer[] splashLayouts;
+	public final Integer[] repeatLayouts;
+	public final Integer[] introLayouts;
+	public final Integer[] finishedLayouts;
 	public final int levelId;
 	@SuppressWarnings("rawtypes")
 	public final PhishAttackType[] attackTypes;
@@ -163,6 +187,8 @@ public class NoPhishLevelInfo {
 		this.titleId = levelTitlesIds[levelid];
 		this.subTitleId = levelSubtitlesIds[levelid];
 		int intro_index = Math.min(levelid, levelIntroLayoutIds.length - 1);
+		this.splashLayouts = levelSplashLayoutIds[intro_index];
+		this.repeatLayouts = levelRepeatLayoutIds[intro_index];
 		this.introLayouts = levelIntroLayoutIds[intro_index];
 		int finished_index = Math.min(levelid,
 				levelFinishedLayoutIds.length - 1);

@@ -10,7 +10,7 @@ import de.tudarmstadt.informatik.secuso.phishedu.backend.NoPhishLevelInfo;
 
 public class LevelFinishedActivity extends SwipeActivity {
 	protected void onStartClick() {
-		BackendControllerImpl.getInstance().startLevel(getLevel() + 1);
+		BackendControllerImpl.getInstance().startLevel(getLevel() + 1,false);
 	}
 
 	int level;

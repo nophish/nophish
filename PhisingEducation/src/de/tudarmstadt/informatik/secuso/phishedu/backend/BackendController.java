@@ -2,6 +2,7 @@ package de.tudarmstadt.informatik.secuso.phishedu.backend;
 
 import java.util.Random;
 
+import android.R.bool;
 import android.net.Uri;
 
 import com.google.example.games.basegameutils.GameHelper;
@@ -58,6 +59,14 @@ public interface BackendController extends GameHelperListener{
 	 * @param level The level you want to start
 	 */
 	public void startLevel(int level);
+	
+	/**
+	 * This starts a level and initilizes the backend state.
+	 * This variant allows you to skip the repeat pages of the started level.
+	 * @param level The level you want to start
+	 * @param showRepeat true if you want to show the repeat pages
+	 */
+	public void startLevel(int level, boolean showRepeat);
 	
 	/**
 	 * This function start the browser at the leve1 URL
@@ -245,8 +254,9 @@ public interface BackendController extends GameHelperListener{
 		/**
 		 * This function is called when the level changes
 		 * @param new_levelid the new level ID
+		 * @param showRepeats Show the repeat pages for the started level
 		 */
-		public void onLevelChange(int new_levelid);
+		public void onLevelChange(int new_levelid, boolean showRepeats);
 	}
 	
 	/**

@@ -208,8 +208,14 @@ public class BackendControllerImpl implements BackendController, GameStateLoaded
 	}
 
 	private Vector<PhishAttackType> level_attacks;
+	
 	@Override
 	public void startLevel(int level) {
+		startLevel(level, true);
+	}
+	
+	@Override
+	public void startLevel(int level, boolean showRepeats) {
 		checkinited();
 		if(level==1 && Constants.SKIP_LEVEL1){
 			this.progress.finishlevel(1);
@@ -218,7 +224,7 @@ public class BackendControllerImpl implements BackendController, GameStateLoaded
 		this.progress.setLevel(level);
 		this.level_attacks=generateLevelAttacks(level);
 		for(int i=0; i<onLevelChangeListeners.size();i++){
-			onLevelChangeListeners.get(i).onLevelChange(level);
+			onLevelChangeListeners.get(i).onLevelChange(level, showRepeats);
 		}
 		levelStarted(level);
 	}

@@ -1,5 +1,8 @@
 package de.tudarmstadt.informatik.secuso.phishedu;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
@@ -12,7 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendControllerImpl;
-import de.tudarmstadt.informatik.secuso.phishedu.backend.MainActivity;
+import de.tudarmstadt.informatik.secuso.phishedu.backend.NoPhishLevelInfo;
 
 /**
  * 
@@ -21,8 +24,14 @@ import de.tudarmstadt.informatik.secuso.phishedu.backend.MainActivity;
  *         before
  */
 public class LevelIntroActivity extends SwipeActivity {
+	private boolean show_repeat=true;
 	SpannableStringBuilder strBuilder = new SpannableStringBuilder();
 
+	public void setShowRepeat(boolean showRepeat){
+		this.show_repeat=showRepeat;
+		updateUI();
+	}
+	
 	protected static String[][] exampleReminderUrlPartId = {
 			{ "http://", "google.com.", "phisher-seite.de",
 					"/search/online+banking+postbank" },
@@ -122,15 +131,27 @@ public class LevelIntroActivity extends SwipeActivity {
 
 	@Override
 	protected int getPageCount() {
-		return BackendControllerImpl.getInstance().getLevelInfo(getLevel()).introLayouts.length;
+		NoPhishLevelInfo info = BackendControllerImpl.getInstance().getLevelInfo(getLevel());
+		int pagecount = info.splashLayouts.length+info.introLayouts.length;
+		if(show_repeat){
+			pagecount+= info.repeatLayouts.length;
+		}
+		return pagecount;
 	}
 
 	@Override
 	protected View getPage(int page, LayoutInflater inflater,
 			ViewGroup container, Bundle savedInstanceState) {
+		
+		NoPhishLevelInfo info = BackendControllerImpl.getInstance().getLevelInfo(getLevel());
+		ArrayList<Integer> layouts=new ArrayList<Integer>();
+		layouts.addAll(Arrays.asList(info.splashLayouts));
+		if(this.show_repeat){
+		  layouts.addAll(Arrays.asList(info.repeatLayouts));
+		}
+		layouts.addAll(Arrays.asList(info.introLayouts));
 
-		View view = inflater.inflate(BackendControllerImpl.getInstance()
-				.getLevelInfo(getLevel()).introLayouts[page], container, false);
+		View view = inflater.inflate(layouts.get(page), container, false);
 
 		// when example screen is showns
 		if ((view.findViewById(R.id.recognize_attack) != null)

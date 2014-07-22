@@ -115,6 +115,7 @@ public class MainActivity extends ActionBarActivity implements FrontendControlle
 		BackendControllerImpl.getInstance().addOnLevelstateChangeListener(this);
 
 		fragCache.put(GooglePlusActivity.class, new GooglePlusActivity());
+		fragCache.put(LevelIntroActivity.class, new LevelIntroActivity());
 
 		switchToFragment(StartMenuActivity.class);
 
@@ -156,7 +157,8 @@ public class MainActivity extends ActionBarActivity implements FrontendControlle
 	}
 
 	@Override
-	public void onLevelChange(int level) {
+	public void onLevelChange(int level, boolean showRepeat) {
+		((LevelIntroActivity)fragCache.get(LevelIntroActivity.class)).setShowRepeat(showRepeat);
 		switchToFragment(LevelIntroActivity.class);
 	}
 	
