@@ -540,6 +540,7 @@ public class BackendControllerImpl implements BackendController, UrlsLoadedListe
 	@Override
 	public void onSignInSucceeded() {
 		progress.onSignInSucceeded();
+		frontend.onSignInSucceeded();
 		Games.Achievements.unlock(gamehelper.getApiClient(), frontend.getContext().getResources().getString(R.string.achievement_welcome));
 	}
 

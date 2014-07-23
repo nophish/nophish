@@ -304,7 +304,7 @@ public class AwarenessActivity extends PhishBaseActivity {
 	
 	@Override
 	public void onLevelChange(int new_levelid, boolean showRepeats) {
-		if(current_dialog.isShowing()){
+		if(current_dialog != null && current_dialog.isShowing()){
 			current_dialog.dismiss();
 		}
 	}
