@@ -378,6 +378,13 @@ public class BackendControllerImpl implements BackendController, UrlsLoadedListe
 
 	private void addResult(PhishResult result){
 		this.progress.addResult(result);
+		
+		if(result == PhishResult.Phish_Detected && !BackendControllerImpl.getInstance().getLevelInfo().hasAttack(PhishAttackType.Level2)){
+			this.progress.incProofRightInRow();
+		}else if(result == PhishResult.Phish_NotDetected){
+			this.progress.resetProofRightInRow();
+		}
+		
 		if(result == PhishResult.Phish_NotDetected){
 			progress.decLives();
 		}
@@ -618,7 +625,15 @@ public class BackendControllerImpl implements BackendController, UrlsLoadedListe
 
 	@Override
 	public boolean showProof() {
-		return getLevel()<=Constants.PROOF_UPTO_LEVEL && !getLevelInfo().hasAttack(PhishAttackType.HTTP);
+		if(getLevelInfo().hasAttack(PhishAttackType.Level2)){
+			return true;
+		}
+		
+		if(progress.getProofRightInRow() >= Constants.PROOF_IN_ROW){
+			return this.random.nextInt(100) < Constants.RANDOM_PROOF_PERCENTAGE;
+		}else{
+			return true;
+		}
 	}
 
 	@Override

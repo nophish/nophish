@@ -25,7 +25,7 @@ class SaveGame{
 	/** Constructs a SaveGame object from serialized data. */
     public SaveGame(byte[] data) {
     	super();
-        if (data == null) return; // default progress
+        if (data == null || data.length==0) return; // default progress
         loadFromJson(new String(data));
     }
 

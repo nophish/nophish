@@ -38,6 +38,7 @@ public class GameProgress{
 	//Once the level is done the points get commited to the persistend state.
 	private int level_points;
 	private int level_lives=LIFES_PER_LEVEL;
+	private int proof_right_in_row=0;
 
 	private SaveGame mSaveGame = new SaveGame();
 
@@ -62,13 +63,15 @@ public class GameProgress{
         AsyncTask<Void, Void, Integer> task = new AsyncTask<Void, Void, Integer>() {
             @Override
             protected Integer doInBackground(Void... params) {
-                Snapshots.OpenSnapshotResult result = Games.Snapshots.open(getApiClient(), REMOTE_STORE_GAME, true).await();
+                Snapshots.OpenSnapshotResult result = Games.Snapshots.open(getApiClient(), REMOTE_STORE_GAME, false).await();
 
                 int status = result.getStatus().getStatusCode();
 
                 if (status == GamesStatusCodes.STATUS_OK) {
                     Snapshot snapshot = result.getSnapshot();
-                    mSaveGame = new SaveGame(snapshot.readFully());
+                    if(snapshot.readFully().length>0){
+                      mSaveGame = new SaveGame(snapshot.readFully());
+                    }
                 }
 
                 return status;
@@ -217,7 +220,22 @@ public class GameProgress{
 				this.mSaveGame.detected_phish_behind+=1;
 			}
 		}
+		
 		this.saveState();
+	}
+	
+	/**
+	 * Increment the proof right in row counter
+	 */
+	public void incProofRightInRow(){
+		this.proof_right_in_row++;
+	}
+	
+	/**
+	 * reset the proof right in row counter
+	 */
+	public void resetProofRightInRow(){
+		this.proof_right_in_row=0;
 	}
 
 	/**
@@ -277,10 +295,10 @@ public class GameProgress{
 	 * @param level The current level
 	 */
 	public void setLevel(int level){
-		this.mSaveGame.level=level;
 		if(getMaxUnlockedLevel()<level){
 			throw new IllegalStateException("The given level ("+level+") is not unlocked.");
 		}
+		this.mSaveGame.level=level;
 		this.level_results=new int[4];
 		this.level_points=0;
 		this.level_lives=LIFES_PER_LEVEL;
@@ -344,7 +362,7 @@ public class GameProgress{
 		if(Constants.UNLOCK_ALL_LEVELS){
 			result = BackendControllerImpl.getInstance().getLevelCount();
 		}else{
-			result = this.mSaveGame.finishedLevel+1;
+			result = this.getMaxFinishedLevel()+1;
 		}
 		return Math.min(result, BackendControllerImpl.getInstance().getLevelCount()-1);
 	}
@@ -422,5 +440,13 @@ public class GameProgress{
     private GoogleApiClient getApiClient() {
     	return BackendControllerImpl.getInstance().getGameHelper().getApiClient();
 	}
+    
+    /**
+     * How often in a row got the user the proof right.
+     * @return number of right proofs in row.
+     */
+    public int getProofRightInRow(){
+    	return this.proof_right_in_row;
+    }
 
 }
