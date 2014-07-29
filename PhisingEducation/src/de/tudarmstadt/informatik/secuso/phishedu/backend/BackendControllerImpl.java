@@ -132,10 +132,10 @@ public class BackendControllerImpl implements BackendController, UrlsLoadedListe
 	    
 	    this.gamehelper.setup(this);
 				
-		SharedPreferences prefs = this.frontend.getContext().getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
-		Context context = this.frontend.getContext();
+		SharedPreferences prefs = this.getFrontend().getContext().getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+		Context context = this.getFrontend().getContext();
 		this.progress = new GameProgress(context, prefs, this.gamehelper.getApiClient());
-		SharedPreferences url_cache = this.frontend.getContext().getSharedPreferences(URL_CACHE_NAME, Context.MODE_PRIVATE);
+		SharedPreferences url_cache = this.getFrontend().getContext().getSharedPreferences(URL_CACHE_NAME, Context.MODE_PRIVATE);
 		for(PhishAttackType type: CACHE_TYPES){
 			loadUrls(url_cache, type);
 		}
@@ -153,8 +153,8 @@ public class BackendControllerImpl implements BackendController, UrlsLoadedListe
 		BasePhishURL[] urls=deserializeURLs(cache.getString(type.toString(), "[]"));
 		//If the values are still empty we load the factory defaults 
 		if(urls.length==0){
-			int resource = frontend.getContext().getResources().getIdentifier(type.toString().toLowerCase(Locale.US), "raw", frontend.getContext().getPackageName());
-			InputStream input = frontend.getContext().getResources().openRawResource(resource);
+			int resource = getFrontend().getContext().getResources().getIdentifier(type.toString().toLowerCase(Locale.US), "raw", getFrontend().getContext().getPackageName());
+			InputStream input = getFrontend().getContext().getResources().openRawResource(resource);
 			Scanner scanner = new Scanner(input,"UTF-8");
 			scanner.useDelimiter("\\A");
 			String json = scanner.next();
@@ -181,7 +181,7 @@ public class BackendControllerImpl implements BackendController, UrlsLoadedListe
 	public void urlsReturned(PhishURL[] urls, PhishAttackType type){
 		if(urls.length > 0){
 			this.setURLs(type, urls);
-			this.CacheUrls(this.frontend.getContext().getSharedPreferences(URL_CACHE_NAME, Context.MODE_PRIVATE),type, this.urlCache.get(type));
+			this.CacheUrls(this.getFrontend().getContext().getSharedPreferences(URL_CACHE_NAME, Context.MODE_PRIVATE),type, this.urlCache.get(type));
 			this.checkInitDone();
 		}
 	}
@@ -306,7 +306,7 @@ public class BackendControllerImpl implements BackendController, UrlsLoadedListe
 			buf[i]=(char) ('a'+random.nextInt(26));
 		}
 		String random_string=new String(buf);
-		this.frontend.startBrowser(Uri.parse(LEVEL1_URL+"?frag="+random_string+"#bottom-"+random_string));
+		this.getFrontend().startBrowser(Uri.parse(LEVEL1_URL+"?frag="+random_string+"#bottom-"+random_string));
 	}
 
 	public void nextUrl() {
@@ -382,9 +382,9 @@ public class BackendControllerImpl implements BackendController, UrlsLoadedListe
 			progress.decLives();
 		}
 		if(result == PhishResult.Phish_NotDetected || result == PhishResult.NoPhish_NotDetected){
-			AudioManager audio = (AudioManager) frontend.getContext().getSystemService(Context.AUDIO_SERVICE);
+			AudioManager audio = (AudioManager) getFrontend().getContext().getSystemService(Context.AUDIO_SERVICE);
 			if(audio.getRingerMode() != AudioManager.RINGER_MODE_SILENT){
-				Vibrator v = (Vibrator) frontend.getContext().getSystemService(Context.VIBRATOR_SERVICE);
+				Vibrator v = (Vibrator) getFrontend().getContext().getSystemService(Context.VIBRATOR_SERVICE);
 				v.vibrate(500);
 			}
 		}
@@ -398,7 +398,7 @@ public class BackendControllerImpl implements BackendController, UrlsLoadedListe
 		offset=getLevelInfo().weightLevelPoints(offset);
 		if(!(offset<0 && getLevelPoints() <= 0)){
 			//don't display toast when not removing points
-			this.frontend.displayToastScore(offset);
+			this.getFrontend().displayToastScore(offset);
 		}
 		int new_levelpoints = this.getLevelPoints()+offset;
 		if(new_levelpoints<=0){
@@ -534,14 +534,14 @@ public class BackendControllerImpl implements BackendController, UrlsLoadedListe
 
 	@Override
 	public void onSignInFailed() {
-		frontend.onSignInFailed();
+		getFrontend().onSignInFailed();
 	}
 
 	@Override
 	public void onSignInSucceeded() {
 		progress.onSignInSucceeded();
-		frontend.onSignInSucceeded();
-		Games.Achievements.unlock(gamehelper.getApiClient(), frontend.getContext().getResources().getString(R.string.achievement_welcome));
+		getFrontend().onSignInSucceeded();
+		Games.Achievements.unlock(gamehelper.getApiClient(), getFrontend().getContext().getResources().getString(R.string.achievement_welcome));
 	}
 
 	@Override
@@ -619,5 +619,10 @@ public class BackendControllerImpl implements BackendController, UrlsLoadedListe
 	@Override
 	public boolean showProof() {
 		return getLevel()<=Constants.PROOF_UPTO_LEVEL && !getLevelInfo().hasAttack(PhishAttackType.HTTP);
+	}
+
+	@Override
+	public FrontendController getFrontend() {
+		return this.frontend;
 	}
 }

@@ -308,5 +308,11 @@ public interface BackendController extends GameHelperListener{
 	 * @return true to show, false if not.
 	 */
 	public boolean showProof();
+	
+	/**
+	 * Get the currently assigned frontend
+	 * @return the currently assigned frontend
+	 */
+	public FrontendController getFrontend();
 }
 

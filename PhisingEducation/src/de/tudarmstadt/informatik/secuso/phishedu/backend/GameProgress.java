@@ -76,15 +76,8 @@ public class GameProgress{
 
 			@Override
             protected void onPostExecute(Integer status){
-				//TODO: 
-                // Note that showing a toast is done here for debugging. Your application should
-                // resolve the error appropriately to your app.
-                if (status == GamesStatusCodes.STATUS_SNAPSHOT_NOT_FOUND){
-                    //TODO: BacToast.makeText(getBaseContext(), "Error: Snapshot not found", Toast.LENGTH_SHORT);
-                }else if (status == GamesStatusCodes.STATUS_SNAPSHOT_CONTENTS_UNAVAILABLE) {
-                	//TODO: Toast.makeText(getBaseContext(), "Error: Snapshot contents unavailable", Toast.LENGTH_SHORT);
-                }else if (status == GamesStatusCodes.STATUS_SNAPSHOT_FOLDER_UNAVAILABLE){
-                	//TODO: Toast.makeText(getBaseContext(), "Error: Snapshot folder unavailable.", Toast.LENGTH_SHORT);
+				if (status != GamesStatusCodes.STATUS_OK && status != GamesStatusCodes.STATUS_SNAPSHOT_NOT_FOUND) {
+					BackendControllerImpl.getInstance().getFrontend().displayToast(BackendControllerImpl.getInstance().getFrontend().getContext().getResources().getString(R.string.google_plus_snapshot_load_problem)+status.toString());
                 }
             }
         };
@@ -397,19 +390,33 @@ public class GameProgress{
 	 * remove the game Data that was stored in Googles Cloud Save Storage
 	 */
 	public void deleteRemoteData(){
-		Snapshots.LoadSnapshotsResult lresult = Games.Snapshots.load(getApiClient(), true).await();
+		AsyncTask<Void, Void, Integer> task = new AsyncTask<Void, Void, Integer>() {
+            @Override
+            protected Integer doInBackground(Void... params) {
+            	Snapshots.LoadSnapshotsResult lresult = Games.Snapshots.load(getApiClient(), true).await();
 
-        int status = lresult.getStatus().getStatusCode();
+                int status = lresult.getStatus().getStatusCode();
 
-        if (status == GamesStatusCodes.STATUS_OK){
-            SnapshotMetadataBuffer smdb = lresult.getSnapshots();
-            Iterator<SnapshotMetadata> snapsIt = smdb.iterator();
+                if (status == GamesStatusCodes.STATUS_OK){
+                    SnapshotMetadataBuffer smdb = lresult.getSnapshots();
+                    Iterator<SnapshotMetadata> snapsIt = smdb.iterator();
 
-            while(snapsIt.hasNext()){
-                Games.Snapshots.delete(getApiClient(), snapsIt.next());
+                    while(snapsIt.hasNext()){
+                        Games.Snapshots.delete(getApiClient(), snapsIt.next());
+                    }
+                    smdb.close();
+                }
+                
+                return status;
             }
-            smdb.close();
-        }
+
+			@Override
+            protected void onPostExecute(Integer status){
+				BackendControllerImpl.getInstance().getFrontend().displayToast(R.string.google_plus_data_deleted);
+            }
+        };
+
+        task.execute();
 	}
 	
     private GoogleApiClient getApiClient() {
