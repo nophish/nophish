@@ -4,7 +4,7 @@ import de.tudarmstadt.informatik.secuso.phishedu.backend.attacks.AbstractAttack;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.attacks.HTTPAttack;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.attacks.HomoglyphicAttack;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.attacks.HostInPathAttack;
-import de.tudarmstadt.informatik.secuso.phishedu.backend.attacks.IPAttack;
+import de.tudarmstadt.informatik.secuso.phishedu.backend.attacks.IPAttackNoBrand;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.attacks.KeepAttack;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.attacks.Level2Attack;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.attacks.MisleadingAttack;
@@ -32,7 +32,7 @@ public enum PhishAttackType {
 	/** Subdomains */
 	Subdomain(3, SubdomainAttack.class),
 	/** IP */
-	IP(4, IPAttack.class),
+	IPNoBrand(4, IPAttackNoBrand.class),
 	/** misleading */
 	Misleading(7, MisleadingAttack.class),
 	/** homographic */

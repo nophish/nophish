@@ -141,7 +141,7 @@ public class NoPhishLevelInfo {
 																		// Awareness
 			{}, // Level 1: Find URLBar in Browser
 			{ PhishAttackType.Level2 }, // Level 2
-			{ PhishAttackType.IP }, // Level 3
+			{ PhishAttackType.IPNoBrand }, // Level 3
 			{ PhishAttackType.TotallyUnrelated }, // Level 4
 			{ PhishAttackType.Subdomain}, // Level 5
 			{ PhishAttackType.HostInPath }, // Level 6
