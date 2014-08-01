@@ -54,8 +54,8 @@ public class NoPhishLevelInfo {
 
 	private static final int[] levelSubtitlesIds = {
 			R.string.level_subtitle_00, R.string.level_subtitle_01,
-			R.string.level_subtitle_02, R.string.level_subtitle_03,
-			R.string.level_subtitle_04, R.string.level_subtitle_05,
+			R.string.level_subtitle_02, R.string.level_subtitle_04,
+			R.string.level_subtitle_03, R.string.level_subtitle_05,
 			R.string.level_subtitle_06, R.string.level_subtitle_07,
 			R.string.level_subtitle_08, R.string.level_subtitle_09,
 			R.string.level_subtitle_10, R.string.level_subtitle_11 };
@@ -64,8 +64,8 @@ public class NoPhishLevelInfo {
 		{},
 		{ R.layout.level_01_splash},
 		{ R.layout.level_02_splash},
-		{ R.layout.level_03_splash},
 		{ R.layout.level_04_splash},
+		{ R.layout.level_03_splash},
 		{ R.layout.level_05_splash},
 		{ R.layout.level_06_splash},
 		{ R.layout.level_07_splash},
@@ -80,7 +80,7 @@ public class NoPhishLevelInfo {
 		{},
 		{},
 		{R.layout.level_03_intro_01},
-		{R.layout.level_04_intro_02},
+		{R.layout.level_04_intro_02}, //hier muss IP repeat rein.
 		{R.layout.level_05_intro_01},
 		{R.layout.level_06_intro_01},
 		{R.layout.level_07_intro_01},
@@ -101,10 +101,10 @@ public class NoPhishLevelInfo {
 					R.layout.level_02_intro_05, R.layout.level_02_intro_06,
 					R.layout.level_02_intro_07, R.layout.level_02_intro_08,
 					R.layout.level_02_intro_09, R.layout.level_02_intro_10, },
+			{ R.layout.level_04_intro_00, R.layout.level_04_intro_01,
+						R.layout.level_04_intro_03 },
 			{ R.layout.level_03_intro_00, R.layout.level_03_intro_02,
 					R.layout.level_03_intro_03 },
-			{ R.layout.level_04_intro_00, R.layout.level_04_intro_01,
-					R.layout.level_04_intro_03 },
 			{ R.layout.level_05_intro_00, R.layout.level_05_intro_02 },
 			{ R.layout.level_06_intro_00, R.layout.level_06_intro_02 },
 			{ R.layout.level_07_intro_02, R.layout.level_07_intro_03,
