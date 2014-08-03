@@ -70,7 +70,7 @@ public class NoPhishLevelInfo {
 		{ R.layout.level_05_splash},
 		{ R.layout.level_06_splash},
 		{ R.layout.level_07_splash},
-		
+		{ R.layout.level_08_splash},
 		{ R.layout.level_10_splash},
 		{ R.layout.level_11_splash_00},
 		{ R.layout.level_112_splash}
@@ -116,8 +116,9 @@ public class NoPhishLevelInfo {
 			{ R.layout.level_06_intro_02, R.layout.level_06_intro_03,		//typo
 						R.layout.level_06_intro_04, R.layout.level_06_intro_05,
 						R.layout.level_06_intro_06 },	
-					
 			{ R.layout.level_08_intro_00, R.layout.level_08_intro_02 },
+			
+			
 			{ R.layout.level_10_intro_00, R.layout.level_10_intro_02,
 					R.layout.level_10_intro_03, R.layout.level_10_intro_04,
 					R.layout.level_10_intro_05, R.layout.level_10_intro_06,

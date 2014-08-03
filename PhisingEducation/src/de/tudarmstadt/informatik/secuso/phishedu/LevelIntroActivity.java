@@ -44,7 +44,6 @@ public class LevelIntroActivity extends SwipeActivity {
 			{ "http://", "www.", "facebook-login.com", "/" },
 			{ "https://", "www.", "fracebook.com", "/login" },
 			{ "http://", "www.", "mircosoft.com", "/en-us/default.aspx" },
-			
 			{ "https://", "www.", "vvetter.com", "/wetter_aktuell/?code=EUDE" }
 			 };
 	protected static String[][] exampleUrlPartId = {
@@ -62,11 +61,8 @@ public class LevelIntroActivity extends SwipeActivity {
 				"/account-verification/user" },
 			{"https://", "www.",
 					"fracebook.com", "/login", "http://", "www.",
-					"twitetr.com", "/en-us/default.aspx"},
-					
-					
-					
-			{ "https://", "microsoft.com.", "security-update.de", "/update" },
+					"twitetr.com", "/en-us/default.aspx"},	
+		//	{ "https://", "microsoft.com.", "security-update.de", "/update" },
 			{ "https://", "www.", "vvetter.com", "/wetter_aktuell/?code=EUDE",
 					"http://", "www.", "googie.de", "/services/?fg=1",
 					"http://", "www.", "paypa1.com",
@@ -252,12 +248,12 @@ public class LevelIntroActivity extends SwipeActivity {
 
 		// total different span pattern
 		int level = BackendControllerImpl.getInstance().getLevel();
-		if (level == 9) {
+		if (level == 5) {
 			setLevelHostInPathSpan(url, view);
 			return;
 		}
-		if (level == 10) {
-			setLevel10Span(url, view);
+		if (level == 9) {
+			setSpanLevelHttps(url, view);
 			return;
 		}
 
@@ -328,7 +324,7 @@ public class LevelIntroActivity extends SwipeActivity {
 		}
 	}
 
-	private void setLevel10Span(String[] url, View view) {
+	private void setSpanLevelHttps(String[] url, View view) {
 
 		for (int i = 0; i < url.length; i++) {
 

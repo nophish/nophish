@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:text="@string/level_title_08"
+        android:text="@string/level_title_09"
         android:textSize="@dimen/font_size_xlarge" />
 
     <TextView
@@ -25,7 +25,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/margin_standard"
         android:gravity="center"
-        android:text="@string/level_08_splash_subtitle"
+        android:text="@string/level_09_splash_subtitle"
         android:textSize="@dimen/font_size_large" />
 
     <ImageView
@@ -34,7 +34,16 @@
         android:layout_height="@dimen/security_icons"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:contentDescription="@string/content_desc_seven"
+        android:contentDescription="@string/content_desc_speech_balloon_amazon"
         android:src="@drawable/number_seven" />
+
+    <ImageView
+        android:id="@+id/ImageView01"
+        android:layout_width="@dimen/security_icons"
+        android:layout_height="@dimen/security_icons"
+        android:layout_alignLeft="@+id/level_09_title"
+        android:layout_alignTop="@+id/imageView1"
+        android:contentDescription="@string/content_desc_one"
+        android:src="@drawable/number_one" />
 
 </RelativeLayout>
