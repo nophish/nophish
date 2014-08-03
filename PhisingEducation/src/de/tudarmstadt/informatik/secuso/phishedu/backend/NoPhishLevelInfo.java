@@ -68,9 +68,10 @@ public class NoPhishLevelInfo {
 		{R.layout.level_04_a_splash},
 		{ R.layout.level_04_b_splash},
 		{ R.layout.level_05_splash},
+		
 		{ R.layout.level_06_splash},
 		{ R.layout.level_07_splash},
-		{ R.layout.level_08_splash},
+		{ R.layout.level_05_splash},
 		{ R.layout.level_09_splash},
 		{ R.layout.level_10_splash},
 		{ R.layout.level_11_splash_00}
@@ -83,11 +84,12 @@ public class NoPhishLevelInfo {
 		{R.layout.level_03_intro_02}, //IP Adressen-Level
 		{R.layout.level_04_a_intro_01}, // Totally unrelated level: hier muss IPErinnerung rein repeat rein.
 		{R.layout.level_04_b_intro_01},	//Erinnerung: Subdomains, IP, totally unrelated
-		{R.layout.level_05_intro_01},
+		{R.layout.level_05_intro_01}, 
+		
+		{R.layout.level_12_intro_01},
 		{R.layout.level_06_intro_01},
 		{R.layout.level_07_intro_01},
 		{R.layout.level_08_intro_01},
-		{R.layout.level_09_intro_01},
 		{R.layout.level_10_intro_01},
 		{}
 	};
@@ -108,14 +110,16 @@ public class NoPhishLevelInfo {
 			{ R.layout.level_04_a_intro_00, R.layout.level_04_a_intro_02},
 			{ R.layout.level_04_b_intro_00, R.layout.level_04_b_intro_02,
 					R.layout.level_04_b_intro_03 },
-			{ R.layout.level_05_intro_00, R.layout.level_05_intro_02 },
+			{ R.layout.level_05_intro_00, R.layout.level_05_intro_02,
+						R.layout.level_05_intro_03 },
+						
+			{ R.layout.level_12_intro_00, R.layout.level_12_intro_02 },
+			
 			{ R.layout.level_06_intro_00, R.layout.level_06_intro_02 },
 			{ R.layout.level_07_intro_02, R.layout.level_07_intro_03,
 					R.layout.level_07_intro_04, R.layout.level_07_intro_05,
 					R.layout.level_07_intro_06 },
 			{ R.layout.level_08_intro_00, R.layout.level_08_intro_02 },
-			{ R.layout.level_09_intro_00, R.layout.level_09_intro_02,
-					R.layout.level_09_intro_03 },
 			{ R.layout.level_10_intro_00, R.layout.level_10_intro_02,
 					R.layout.level_10_intro_03, R.layout.level_10_intro_04,
 					R.layout.level_10_intro_05, R.layout.level_10_intro_06,

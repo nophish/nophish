@@ -17,10 +17,9 @@ import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishResult;
 public class ResultActivity extends SwipeActivity {
 	public static final int RESULT_GUESSED = PhishResult.getMax() + 1;
 	protected static int[] reminderIDs = { R.string.level_04_reminder,
-		R.string.level_04_a_reminder, R.string.level_03_reminder, R.string.level_05_reminder,
+		R.string.level_04_a_reminder, R.string.level_03_reminder, R.string.level_05_reminder, R.string.level_12_reminder,
 		R.string.level_06_reminder, R.string.level_07_reminder,
-		R.string.level_08_reminder, R.string.level_09_reminder,
-		R.string.level_10_reminder };
+		R.string.level_08_reminder, R.string.level_10_reminder };
 
 	protected static int[] resultTextIDs;
 	protected static int[] resultSmileyIDs;

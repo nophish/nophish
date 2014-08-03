@@ -35,26 +35,30 @@ public class LevelIntroActivity extends SwipeActivity {
 	protected static String[][] exampleReminderUrlPartId = {
 			{ "http://", "", "192.168.160.02", "/secure-login" },
 			{ "https://", "www.", "reicht hier", "/ein Beispiel? hin TODO"},
-			{ "http://", "google.com.", "phisher-seite.de",
-			"/search/online+banking+postbank" },
+			
 			{ "https://", "secure-login.mail.google.com.", "hsezis.de",
-					"/update-account" },
-			{ "https://", "microsoft.com.", "security-update.de", "/update" },
+			"/update-account" },
+			//{ "http://", "google.com.", "phisher-seite.de",
+			//"/search/online+banking+postbank" },
+			{ "http://", "phisher.de", "/http://mail.", "google.com", "/login" },
+			
+			
+			//{ "https://", "microsoft.com.", "security-update.de", "/update" },
 			{ "http://", "www.", "facebook-login.com", "/" },
 			{ "https://", "www.", "fracebook.com", "/login" },
 			{ "http://", "www.", "mircosoft.com", "/en-us/default.aspx" },
-			{ "https://", "www.", "vvetter.com", "/wetter_aktuell/?code=EUDE" },
-			{ "http://", "phisher.de", "/http://mail.", "google.com", "/login" } };
+			{ "https://", "www.", "vvetter.com", "/wetter_aktuell/?code=EUDE" }
+			 };
 	protected static String[][] exampleUrlPartId = {
 			// level 3
-			// TODO: auslagern in strings.xml
 			{ "http://", "", "192.168.160.02", "/secure-login" },
 			{ "https://", "www.", "mach hier mehrere", "/Beispiele hin TODO"},
-			{ "http://", "google.com.", "phisher-seite.de",
-			"/search/online+banking+postbank" },
+			//{ "http://", "google.com.", "phisher-seite.de",
+			//"/search/online+banking+postbank" },
 			{ "https://", "secure-login.mail.google.com.", "hsezis.de",
-					"/update-account", "http://",
-					"secure-login.mail.google.com.", "badcat.com", "/login" },
+					"/update-account", "http://", "secure-login.mail.google.com.", "badcat.com", "/login" },
+			{ "http://", "phisher.de", "/http://mail.", "google.com", "/login", "http://", "phisher.de", "/", "google.com", "/login"},
+					
 			{ "https://", "microsoft.com.", "security-update.de", "/update" },
 			{ "http://", "www.", "facebook-login.com", "/", "http://", "www.",
 					"apple-support.com", "/ipodnano/troubleshooting",
@@ -66,8 +70,6 @@ public class LevelIntroActivity extends SwipeActivity {
 					"http://", "www.", "googie.de", "/services/?fg=1",
 					"http://", "www.", "paypa1.com",
 					"/de/webapps/mpp/privatkunden" },
-			{ "http://", "phisher.de", "/http://mail.", "google.com", "/login",
-			  "http://", "phisher.de", "/", "google.com", "/login"},
 			{ "https://", "www.", "deutsche-bank.de", "/index.htm", "https://",
 					"www.", "deutsche-bank.de", "/index.htm", "https://",
 					"facebook.", "phisher.de", "/secure-login" },
@@ -199,10 +201,10 @@ public class LevelIntroActivity extends SwipeActivity {
 			String[] currentUrl = exampleReminderUrlPartId[currentIndex];
 
 			// Example has other spans
-			if (level == 10 && currentIndex == 8) {
+			if (level == 6 && currentIndex == 3) {
 				strBuilder.clear();
 				strBuilder.clearSpans();
-				setLevel9Span(currentUrl, view);
+				setLevelHostInPathSpan(currentUrl, view);
 				return;
 			}
 
@@ -250,7 +252,7 @@ public class LevelIntroActivity extends SwipeActivity {
 		// total different span pattern
 		int level = BackendControllerImpl.getInstance().getLevel();
 		if (level == 9) {
-			setLevel9Span(url, view);
+			setLevelHostInPathSpan(url, view);
 			return;
 		}
 		if (level == 10) {
@@ -369,7 +371,7 @@ public class LevelIntroActivity extends SwipeActivity {
 		}
 	}
 
-	private void setLevel9Span(String[] url, View view) {
+	private void setLevelHostInPathSpan(String[] url, View view) {
 
 		for (int i = 0; i < url.length; i++) {
 

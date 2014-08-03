@@ -63,19 +63,19 @@
     <string name="level_subtitle_03">IP-Adressen</string>
     <string name="level_subtitle_04">Unternehmensname kommt nicht vor</string>
     <string name="level_subtitle_05">Bereich der Abteilungen</string>
-    <string name="level_subtitle_06">Vertrauenswürdig klingende Namen</string>
+    <string name="level_subtitle_06">Bereich des Gesprächsthemas</string>
     <string name="level_subtitle_07">Ähnliche Namen im Wer-Bereich</string>
     <string name="level_subtitle_08">Ähnliche Zeichen im Wer-Bereich</string>
-    <string name="level_subtitle_09">Bereich des Gesprächsthemas</string>
+    <string name="level_subtitle_09">..</string>
     <string name="level_subtitle_10">Bereich der Sicherheitsstufe</string>
     <string name="level_subtitle_11">Schlussbemerkung</string>
     <string name="level_03_splash_subtitle">Unternehmensname kommt in Webadresse überhaupt nicht vor</string>
     <string name="level_04_splash_subtitle">IP-Adresse als Wer-Bereich</string>
     <string name="level_05_splash_subtitle">Ähnliche Namen im Bereich der Abteilungen</string>
-    <string name="level_06_splash_subtitle">Vertrauenswürdig klingende Namen im Wer-Bereich</string>
+    <string name="level_06_splash_subtitle">Ähnliche Namen im Gesprächsthema-Bereich</string>
     <string name="level_07_splash_subtitle">Ähnliche Namen im Wer-Bereich</string>
     <string name="level_08_splash_subtitle">Ähnliche Zeichen im Wer-Bereich</string>
-    <string name="level_09_splash_subtitle">Bekannte Namen im Gesprächsthema-Bereich</string>
+    <string name="level_09_splash_subtitle">..</string>
     <string name="level_10_splash_subtitle">Der Bereich der Sicherheitsstufe</string>
     <string name="level_11_splash_subtitle">Schlussbemerkung</string>
     <string name="level_11_splash_01_subtitle">Verwirrende Webadressen</string>
@@ -344,7 +344,7 @@
     <string name="level_04_a_reminder"><b>Erinnerung: TODO</b> </string>
     
     <!-- nonsense -->
-    <string name="level_05_reminder"><b>Erinnerung:</b> Enthält der Wer-Bereich Namen, die keinen Sinn ergeben oder nichts mit dem Dienst bzw. Unternehmen deines Gesprächspartners zu tun haben, dann gebe hier keine Daten ein! </string>
+    <string name="level_12_reminder"><b>Erinnerung:</b> Enthält der Wer-Bereich Namen, die keinen Sinn ergeben oder nichts mit dem Dienst bzw. Unternehmen deines Gesprächspartners zu tun haben, dann gebe hier keine Daten ein! </string>
     <string name="reminder_nonsense">3.) Enthält der Wer-Bereich Namen, die keinen Sinn ergeben oder nichts mit dem Dienst bzw. Unternehmen deines Gesprächspartners zu tun haben, dann gebe hier keine Daten ein! </string>
     <!-- unrelated but trustworthy -->
     <string name="level_06_reminder"><b>Erinnerung:</b> Enthält der Wer-Bereich Namen, die vertrauenswürdig klingen, aber dennoch nichts mit dem Unternehmen deines Gesprächspartners zu tun haben, dann gebe hier keine Daten ein! </string>
@@ -359,7 +359,7 @@
     <string name="reminder_similar_chars">8.) Enthält der Wer-Bereich Ersetzungen von Buchstaben durch andere ähnliche Zeichen oder Zahlen, dann gebe hier keine Daten ein! </string>
     
     <!-- hostname in path -->
-    <string name="level_09_reminder"><b>Erinnerung:</b> Enthält der Bereich des Gesprächsthemas dir bekannte Namen oder Webadressen und entspricht der Wer-Bereich aber nicht dem Unternehmen deines Gesprächspartners, dann gebe hier keine Daten ein!</string>
+    <string name="level_05_reminder"><b>Erinnerung:</b> Enthält der Bereich des Gesprächsthemas dir bekannte Namen oder Webadressen und entspricht der Wer-Bereich aber nicht dem Unternehmen deines Gesprächspartners, dann gebe hier keine Daten ein!</string>
     <string name="reminder_deceiving_path">9.) Enthält der Bereich des Gesprächsthemas dir bekannte Namen oder Webadressen und entspricht der Wer-Bereich aber nicht dem Unternehmen deines Gesprächspartners, dann gebe hier keine Daten ein!</string>
     <!-- http/https -->
     <string name="level_10_reminder"><b>Erinnerung:</b> In diesem Level sollst prinzipiell Webadressen ablehnen, die kein https:// verwenden. Zusätzlich musst du selbstverständlich überprüfen, ob die Webadresse eine Phishing-Adresse ist.</string>
