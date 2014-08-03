@@ -40,7 +40,7 @@ public class LevelIntroActivity extends SwipeActivity {
 			//{ "http://", "google.com.", "phisher-seite.de",
 			//"/search/online+banking+postbank" },
 			{ "http://", "phisher.de", "/http://mail.", "google.com", "/login" },
-			//{ "https://", "microsoft.com.", "security-update.de", "/update" },
+			{ "https://", "microsoft.com.", "security-update.de", "/update" },
 			{ "http://", "www.", "facebook-login.com", "/" },
 			{ "https://", "www.", "fracebook.com", "/login" },
 			{ "http://", "www.", "mircosoft.com", "/en-us/default.aspx" },

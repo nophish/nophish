@@ -73,7 +73,6 @@ public class NoPhishLevelInfo {
 		{ R.layout.level_08_splash},
 		{ R.layout.level_10_splash},
 		{ R.layout.level_11_splash_00},
-		{ R.layout.level_112_splash}
 	};
 	
 	private static final Integer[][] levelRepeatLayoutIds = {
@@ -88,7 +87,6 @@ public class NoPhishLevelInfo {
 		{R.layout.level_07_intro_01},
 		{R.layout.level_08_intro_01},
 		{R.layout.level_10_intro_01},
-		{R.layout.level_12_intro_01},
 		{}
 	};
 	
@@ -117,8 +115,6 @@ public class NoPhishLevelInfo {
 						R.layout.level_06_intro_04, R.layout.level_06_intro_05,
 						R.layout.level_06_intro_06 },	
 			{ R.layout.level_08_intro_00, R.layout.level_08_intro_02 },
-			
-			
 			{ R.layout.level_10_intro_00, R.layout.level_10_intro_02,
 					R.layout.level_10_intro_03, R.layout.level_10_intro_04,
 					R.layout.level_10_intro_05, R.layout.level_10_intro_06,
@@ -129,11 +125,7 @@ public class NoPhishLevelInfo {
 					R.layout.level_11_intro_02, R.layout.level_11_intro_04,
 					R.layout.level_11_intro_03, R.layout.level_11_splash_02,
 					R.layout.level_11_intro_05, R.layout.level_11_intro_06,
-					R.layout.level_11_intro_07},
-					
-					
-			{ R.layout.level_12_intro_00, R.layout.level_12_intro_02 },
-			{ R.layout.level_13_intro_00, R.layout.level_13_intro_02 }};
+					R.layout.level_11_intro_07}};
 
 	private static final Integer[][] levelFinishedLayoutIds = {
 			{ R.layout.level_00_finish_00a, R.layout.level_00_finish_00,
