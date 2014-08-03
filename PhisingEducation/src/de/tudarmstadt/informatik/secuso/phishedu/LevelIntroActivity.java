@@ -35,18 +35,16 @@ public class LevelIntroActivity extends SwipeActivity {
 	protected static String[][] exampleReminderUrlPartId = {
 			{ "http://", "", "192.168.160.02", "/secure-login" },
 			{ "https://", "www.", "reicht hier", "/ein Beispiel? hin TODO"},
-			
 			{ "https://", "secure-login.mail.google.com.", "hsezis.de",
 			"/update-account" },
 			//{ "http://", "google.com.", "phisher-seite.de",
 			//"/search/online+banking+postbank" },
 			{ "http://", "phisher.de", "/http://mail.", "google.com", "/login" },
-			
-			
 			//{ "https://", "microsoft.com.", "security-update.de", "/update" },
 			{ "http://", "www.", "facebook-login.com", "/" },
 			{ "https://", "www.", "fracebook.com", "/login" },
 			{ "http://", "www.", "mircosoft.com", "/en-us/default.aspx" },
+			
 			{ "https://", "www.", "vvetter.com", "/wetter_aktuell/?code=EUDE" }
 			 };
 	protected static String[][] exampleUrlPartId = {
@@ -58,14 +56,17 @@ public class LevelIntroActivity extends SwipeActivity {
 			{ "https://", "secure-login.mail.google.com.", "hsezis.de",
 					"/update-account", "http://", "secure-login.mail.google.com.", "badcat.com", "/login" },
 			{ "http://", "phisher.de", "/http://mail.", "google.com", "/login", "http://", "phisher.de", "/", "google.com", "/login"},
+			{ "http://", "www.", "facebook-login.com", "/", "http://", "www.",
+				"apple-support.com", "/ipodnano/troubleshooting",
+				"http://", "www.my.", "ebay-verify.de",
+				"/account-verification/user" },
+			{"https://", "www.",
+					"fracebook.com", "/login", "http://", "www.",
+					"twitetr.com", "/en-us/default.aspx"},
+					
+					
 					
 			{ "https://", "microsoft.com.", "security-update.de", "/update" },
-			{ "http://", "www.", "facebook-login.com", "/", "http://", "www.",
-					"apple-support.com", "/ipodnano/troubleshooting",
-					"http://", "www.my.", "ebay-verify.de",
-					"/account-verification/user", "https://", "www.",
-					"fracebook.com", "/login", "http://", "www.",
-					"twitetr.com", "/en-us/default.aspx" },
 			{ "https://", "www.", "vvetter.com", "/wetter_aktuell/?code=EUDE",
 					"http://", "www.", "googie.de", "/services/?fg=1",
 					"http://", "www.", "paypa1.com",

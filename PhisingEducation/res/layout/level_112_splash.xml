@@ -9,32 +9,32 @@
     tools:context=".LevelIntroActivity" >
 
     <TextView
-        android:id="@+id/level_09_title"
+        android:id="@+id/level_06_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:text="@string/level_title_09"
+        android:text="@string/level_title_06"
         android:textSize="@dimen/font_size_xlarge" />
 
     <TextView
-        android:id="@+id/level_subtitle_09"
+        android:id="@+id/level_subtitle_06"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/level_09_title"
+        android:layout_below="@+id/level_06_title"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/margin_standard"
         android:gravity="center"
-        android:text="@string/level_09_splash_subtitle"
+        android:text="@string/level_06_splash_subtitle"
         android:textSize="@dimen/font_size_large" />
 
     <ImageView
         android:id="@+id/imageView1"
-        android:layout_width="@dimen/security_icons"
-        android:layout_height="@dimen/security_icons"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:contentDescription="@string/content_desc_speech_balloon_amazon"
-        android:src="@drawable/social_balloon" />
+        android:contentDescription="@string/content_desc_innocent_looking_smiley_angel"
+        android:src="@drawable/sweet_angel" />
 
 </RelativeLayout>

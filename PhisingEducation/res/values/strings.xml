@@ -65,8 +65,8 @@
     <string name="level_subtitle_05">Bereich der Abteilungen</string>
     <string name="level_subtitle_06">Bereich des Gesprächsthemas</string>
     <string name="level_subtitle_07">Ähnliche Namen im Wer-Bereich</string>
-    <string name="level_subtitle_08">Ähnliche Zeichen im Wer-Bereich</string>
-    <string name="level_subtitle_09">..</string>
+    <string name="level_subtitle_08">Tippfehler im Wer-Bereich</string>
+    <string name="level_subtitle_09">Ähnliche Zeichen im Wer-Bereich</string>
     <string name="level_subtitle_10">Bereich der Sicherheitsstufe</string>
     <string name="level_subtitle_11">Schlussbemerkung</string>
     <string name="level_03_splash_subtitle">Unternehmensname kommt in Webadresse überhaupt nicht vor</string>
@@ -74,8 +74,8 @@
     <string name="level_05_splash_subtitle">Ähnliche Namen im Bereich der Abteilungen</string>
     <string name="level_06_splash_subtitle">Ähnliche Namen im Gesprächsthema-Bereich</string>
     <string name="level_07_splash_subtitle">Ähnliche Namen im Wer-Bereich</string>
-    <string name="level_08_splash_subtitle">Ähnliche Zeichen im Wer-Bereich</string>
-    <string name="level_09_splash_subtitle">..</string>
+    <string name="level_08_splash_subtitle">Tippfehler im Wer-Bereich</string>
+    <string name="level_09_splash_subtitle">Ähnliche Zeichen im Wer-Bereich.</string>
     <string name="level_10_splash_subtitle">Der Bereich der Sicherheitsstufe</string>
     <string name="level_11_splash_subtitle">Schlussbemerkung</string>
     <string name="level_11_splash_01_subtitle">Verwirrende Webadressen</string>
@@ -347,10 +347,10 @@
     <string name="level_12_reminder"><b>Erinnerung:</b> Enthält der Wer-Bereich Namen, die keinen Sinn ergeben oder nichts mit dem Dienst bzw. Unternehmen deines Gesprächspartners zu tun haben, dann gebe hier keine Daten ein! </string>
     <string name="reminder_nonsense">3.) Enthält der Wer-Bereich Namen, die keinen Sinn ergeben oder nichts mit dem Dienst bzw. Unternehmen deines Gesprächspartners zu tun haben, dann gebe hier keine Daten ein! </string>
     <!-- unrelated but trustworthy -->
-    <string name="level_06_reminder"><b>Erinnerung:</b> Enthält der Wer-Bereich Namen, die vertrauenswürdig klingen, aber dennoch nichts mit dem Unternehmen deines Gesprächspartners zu tun haben, dann gebe hier keine Daten ein! </string>
+    <string name="level_13_reminder"><b>Erinnerung:</b> Enthält der Wer-Bereich Namen, die vertrauenswürdig klingen, aber dennoch nichts mit dem Unternehmen deines Gesprächspartners zu tun haben, dann gebe hier keine Daten ein! </string>
     <string name="reminder_sounding_trustworthy">4.) Enthält der Wer-Bereich Namen, die vertrauenswürdig klingen, aber dennoch nichts mit dem Unternehmen deines Gesprächspartners zu tun haben, dann gebe hier keine Daten ein! </string>
     <!-- misleading (facebook-login) -->
-    <string name="level_07_reminder"><b>Erinnerung:</b> Enthält der Wer-Bereich nur eine ähnliche Abwandlung des dir bisher vertrauten Wer-Bereiches oder\nenthält der Wer-Bereich einen Tippfehler oder\nenthält der Wer-Bereich einen Buchstabendreher, dann gebe hier keine Daten ein!</string>
+    <string name="level_06_reminder"><b>Erinnerung:</b> Enthält der Wer-Bereich nur eine ähnliche Abwandlung des dir bisher vertrauten Wer-Bereiches oder\nenthält der Wer-Bereich einen Tippfehler oder\nenthält der Wer-Bereich einen Buchstabendreher, dann gebe hier keine Daten ein!</string>
     <string name="reminder_brand_in_domain">5.) Enthält der Wer-Bereich nur eine ähnliche Abwandlung des dir bisher vertrauten Wer-Bereiches, dann gebe hier keine Daten ein!</string>
     <string name="reminder_typo">6.) Enthält der Wer-Bereich einen Tippfehler, dann gebe hier keine Daten ein!</string>
     <string name="reminder_typosquat">7.) Enthält der Wer-Bereich einen Buchstabendreher, dann gebe hier keine Daten ein!</string>
