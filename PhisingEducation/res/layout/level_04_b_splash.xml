@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:text="@string/level_title_04"
+        android:text="@string/level_title_05"
         android:textSize="@dimen/font_size_xlarge" />
 
     <TextView
@@ -25,7 +25,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/margin_standard"
         android:gravity="center"
-        android:text="@string/level_03_splash_subtitle"
+        android:text="@string/level_05_splash_subtitle"
         android:textSize="@dimen/font_size_large" />
 
     <ImageView

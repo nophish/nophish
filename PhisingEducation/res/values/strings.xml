@@ -60,9 +60,9 @@
     <string name="level_subtitle_00">Phishing</string>
     <string name="level_subtitle_01">Die Adressleiste</string>
     <string name="level_subtitle_02">Struktur von Webadressen</string>
-    <string name="level_subtitle_03">Unternehmensname kommt nicht vor</string>
-    <string name="level_subtitle_04">IP-Adressen</string>
-    <string name="level_subtitle_05">Bezugslose/unsinnige Namen</string>
+    <string name="level_subtitle_03">IP-Adressen</string>
+    <string name="level_subtitle_04">Unternehmensname kommt nicht vor</string>
+    <string name="level_subtitle_05">Bereich der Abteilungen</string>
     <string name="level_subtitle_06">Vertrauenswürdig klingende Namen</string>
     <string name="level_subtitle_07">Ähnliche Namen im Wer-Bereich</string>
     <string name="level_subtitle_08">Ähnliche Zeichen im Wer-Bereich</string>
@@ -71,7 +71,7 @@
     <string name="level_subtitle_11">Schlussbemerkung</string>
     <string name="level_03_splash_subtitle">Unternehmensname kommt in Webadresse überhaupt nicht vor</string>
     <string name="level_04_splash_subtitle">IP-Adresse als Wer-Bereich</string>
-    <string name="level_05_splash_subtitle">Bezugslose oder unsinnige Namen im Wer-Bereich</string>
+    <string name="level_05_splash_subtitle">Ähnliche Namen im Bereich der Abteilungen</string>
     <string name="level_06_splash_subtitle">Vertrauenswürdig klingende Namen im Wer-Bereich</string>
     <string name="level_07_splash_subtitle">Ähnliche Namen im Wer-Bereich</string>
     <string name="level_08_splash_subtitle">Ähnliche Zeichen im Wer-Bereich</string>

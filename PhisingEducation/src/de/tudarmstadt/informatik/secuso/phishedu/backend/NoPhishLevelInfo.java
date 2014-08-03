@@ -54,8 +54,8 @@ public class NoPhishLevelInfo {
 
 	private static final int[] levelSubtitlesIds = {
 			R.string.level_subtitle_00, R.string.level_subtitle_01,
-			R.string.level_subtitle_02, R.string.level_subtitle_04,
-			R.string.level_subtitle_03, R.string.level_subtitle_05,
+			R.string.level_subtitle_02, R.string.level_subtitle_03,
+			R.string.level_subtitle_04, R.string.level_subtitle_05,
 			R.string.level_subtitle_06, R.string.level_subtitle_07,
 			R.string.level_subtitle_08, R.string.level_subtitle_09,
 			R.string.level_subtitle_10, R.string.level_subtitle_11 };
@@ -82,6 +82,7 @@ public class NoPhishLevelInfo {
 		{},
 		{R.layout.level_03_intro_02}, //IP Adressen-Level
 		{R.layout.level_04_a_intro_01}, // Totally unrelated level: hier muss IPErinnerung rein repeat rein.
+		{R.layout.level_04_b_intro_01},	//Erinnerung: Subdomains, IP, totally unrelated
 		{R.layout.level_05_intro_01},
 		{R.layout.level_06_intro_01},
 		{R.layout.level_07_intro_01},
