@@ -17,11 +17,12 @@ import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishResult;
 public class ResultActivity extends SwipeActivity {
 	public static final int RESULT_GUESSED = PhishResult.getMax() + 1;
 	protected static int[] reminderIDs = { R.string.level_03_reminder,
-		R.string.level_04_reminder, R.string.level_05_reminder,
+		R.string.level_04_a_reminder, R.string.level_05_reminder,
 		R.string.level_06_reminder, R.string.level_07_reminder,
 		R.string.level_08_reminder, R.string.level_09_reminder,
 		R.string.level_10_reminder };
 
+	//TODO: Reihenfolge von attackTypes auf Reihenfolge von Attacken anpassen (damit es hiermit übereinasitmmt)
 	protected static int[] resultTextIDs;
 	protected static int[] resultSmileyIDs;
 	private int result = PhishResult.Phish_Detected.getValue();
@@ -167,7 +168,7 @@ public class ResultActivity extends SwipeActivity {
 				}
 			}
 		} else if (indexReminder >= 0) {
-			if (indexReminder == 8) {
+			if (indexReminder == 6) {
 				// typo and misleading are in one level (7)
 				indexReminder = 4;
 			}

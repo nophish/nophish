@@ -29,25 +29,26 @@ public enum PhishAttackType {
 	AnyPhish(1, PhishTankURLAttack.class),
 	/** The Attack for level 2 */
 	Level2(2, Level2Attack.class),
-	/** Subdomains */
-	Subdomain(3, SubdomainAttack.class),
 	/** IP */
-	IPNoBrand(4, IPAttackNoBrand.class),
+	IPNoBrand(3, IPAttackNoBrand.class),
+	/** This Attack replaces the urls with something totally different */
+	TotallyUnrelated(4, TotallyUnrelatedAttack.class),
+	/** Subdomains */
+	Subdomain(5, SubdomainAttack.class),
+	/** Hostname in Path */
+	HostInPath(6, HostInPathAttack.class),
 	/** misleading */
 	Misleading(7, MisleadingAttack.class),
+	/** typo */
+	Typo(8, TypoAttack.class),
 	/** homographic */
-	Homoglyphic(8, HomoglyphicAttack.class),
-	/** Hostname in Path */
-	HostInPath(9, HostInPathAttack.class),
+	Homoglyphic(9, HomoglyphicAttack.class),
 	/** https -> http */
 	HTTP(10, HTTPAttack.class),
-	/** typo */
-	Typo(11, TypoAttack.class),
 	/** This Attack keeps the supplied PhishURL */
-	Keep(12, KeepAttack.class),
-	/** This Attack replaces the urls with something totally different */
-	TotallyUnrelated(13, TotallyUnrelatedAttack.class)
+	Keep(11, KeepAttack.class)
 	;
+	
 	
 	private int value;
 	private Class<? extends AbstractAttack> attack_class;

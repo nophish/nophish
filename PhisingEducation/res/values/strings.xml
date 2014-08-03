@@ -60,7 +60,7 @@
     <string name="level_subtitle_00">Phishing</string>
     <string name="level_subtitle_01">Die Adressleiste</string>
     <string name="level_subtitle_02">Struktur von Webadressen</string>
-    <string name="level_subtitle_03">Bereich der Abteilungen</string>
+    <string name="level_subtitle_03">Unternehmensname kommt nicht vor</string>
     <string name="level_subtitle_04">IP-Adressen</string>
     <string name="level_subtitle_05">Bezugslose/unsinnige Namen</string>
     <string name="level_subtitle_06">Vertrauenswürdig klingende Namen</string>
@@ -69,7 +69,7 @@
     <string name="level_subtitle_09">Bereich des Gesprächsthemas</string>
     <string name="level_subtitle_10">Bereich der Sicherheitsstufe</string>
     <string name="level_subtitle_11">Schlussbemerkung</string>
-    <string name="level_03_splash_subtitle">Bekannte Namen im Bereich der Abteilungen</string>
+    <string name="level_03_splash_subtitle">Unternehmensname kommt in Webadresse überhaupt nicht vor</string>
     <string name="level_04_splash_subtitle">IP-Adresse als Wer-Bereich</string>
     <string name="level_05_splash_subtitle">Bezugslose oder unsinnige Namen im Wer-Bereich</string>
     <string name="level_06_splash_subtitle">Vertrauenswürdig klingende Namen im Wer-Bereich</string>
@@ -199,13 +199,14 @@
     <string name="level_02_you_are_correct">Sehr gut! Du konntest den Wer-Bereich identifizieren.</string>
     <string name="level_finished"><b>Geschafft!</b>\n\nGratulation! Du hast das Level erfolgreich abgeschlossen. Auf zum nächsten Level!</string>
 
-    <!-- LEVEL 3 SUBDOMAIN -->
+    <!-- SUBDOMAIN -->
     <string name="level_03_intro_00_text_01"><b>Angriff durch bekannte Namen im Bereich der Abteilungen</b>\n\n Ein weiterer Trick ist die Verwendung von bekannten Namen im Bereich der Abteilungen einer Webadresse. Mit dieser Art des Angriffs beschäftigen wir uns in diesem Level.</string>
     <string name="level_03_intro_01_text_01"><b>Zur Erinnerung</b>\n\nDer Bereich zwischen \"http://\" und dem dritten Slash \"/\" gibt dir Informationen über deinen Gesprächspartner, d.h. über die Webseite.\n\nDieser Bereich wird durch Punkte in Blöcke eingeteilt und die Blöcke werden von rechts nach links gelesen.</string>
     <string name="level_03_intro_02_text_01"><b>Benennung von Abteilungen</b>\n\nDer wichtigste Bereich einer Webadresse, der Wer-Bereich, muss auch vom Phisher registriert werden und bereits registrierte Namen können nicht noch einmal registriert werden. Den Bereich der Abteilungen (hellblau hinterlegt) einer Webadresse kann allerdings jeder nennen, wie er möchte.</string>
     <string name="level_03_intro_03_text_02">Phisher können problemlos bekannte Namen in ihren Abteilungen verwenden, um dich zu täuschen. Verlasse dich also nicht auf diesen Bereich. Schaue dir auch immer die wichtigsten zwei Blöcke der Webadresse an, den Wer-Bereich. Enthält der Bereich der Abteilungen dir bekannte Namen und entspricht der Wer-Bereich aber nicht dem Unternehmen deines Gesprächspartners, dann <b>gebe hier keine Daten ein!</b>\n\nUnten ist ein Beispiel für eine Phishing-Webadresse, die dieses Prinzip anwendet. In dem Beispiel ist dein Gesprächspartner phisher-seite.de (blau hinterlegt). Das ist der wichtigste Bereich der Webadresse, der Wer-Bereich. Dein Gesprächspartner ist nicht google.com (hellblau hinterlegt)! google.com ist hier nur der Name einer Abteilung des Unternehmens phisher-seite.de. Dieser Bereich hat damit keine Relevanz für deine Untersuchung der Webadresse. Das ist auch der Grund, warum wir Webadressen von rechts nach links lesen: <b>der Wer-Bereich ist wichtiger als die Abteilung!</b></string>
 
-    <!-- LEVEL 4 IP -->
+
+    <!-- IP NO BRAND-->
     <string name="level_04_intro_00_text_01"><b>Angriff durch IP-Adresse als Wer-Bereich</b>\n\nPhisher verwenden verschiedene Täuschungsmanöver, um Webadressen vertrauenswürdig aussehen zu lassen, obwohl sie das nicht sind.\n\nDu wirst nach und nach lernen, mit welchen Tricks sie versuchen, dich hinters Licht zu führen.\n\nIn diesem Level beschäftigen wir uns mit einem der einfachsten Tricks, der Verwendung von IP-Adressen statt Begriffen im Wer-Bereich der Webadresse.</string>
     <string name="level_04_intro_01_text_01"><b>IP-Adressen</b>\n\nGenau so wie unsere Häuser durch Straßennamen adressiert werden, werden Computer im Internet mit sogenannten IP-Adressen identifiziert.</string>
     <string name="level_04_intro_01_text_02">Eine IP-Adresse ist eine 4-stellige Zahlenfolge, die durch Punkte getrennt wird.</string>
@@ -214,6 +215,9 @@
     <string name="level_04_intro_01_img_descr_house">Hausadresse</string>
     <string name="level_04_intro_03_text_02">Ist der Bereich zwischen \"http://\" und dem dritten Slash \"/\" eine IP-Adresse, ist diese der Wer-Bereich. <b>Gib hier keine Daten ein!</b>\n\nBeispiel für eine Phishing-Webadresse, die dieses Prinzip anwendet: </string>
 
+    <!-- NO BRAND -->
+   <string name="level_04_a_intro_00_text_01"><b>Name des Unternehmens kommt gar nicht vor</b>\n\n Ein weiterer Trick ist die Verwendung von <b>TODO..</b></string>
+    <string name="level_04_a_intro_00_text_02"><b>TODO</b></string>
     <!-- LEVEL 5 - NONSENSE DOMAINS -->
     <string name="level_05_intro_00_text_01"><b>Angriff durch bezugslose oder unsinnige Namen im Wer-Bereich</b>\n\nEin weiterer Trick ist die Verwendung von bezugslosen oder gar unsinnigen Namen im Wer-Bereich einer Webadresse. Mit dieser Art des Angriffs beschäftigen wir uns in diesem Level.</string>
     <string name="level_05_intro_02_text_03">Der wichtigste Bereich einer Webadresse, der Wer-Bereich, muss auch vom Phisher registriert werden. Schaue dir also auch immer die wichtigsten zwei Blöcke der Webadresse an, den Wer-Bereich. Enthält der Wer-Bereich Namen, die keinen Sinn ergeben oder nichts mit dem Dienst bzw. Unternehmen deines Gesprächspartners zu tun haben, dann <b>gebe hier keine Daten ein!</b>\n\nUnten sind zwei Beispiele für Phishing-Webadressen, die dieses Prinzip anwenden. In den Beispielen ist dein Gesprächspartner jeweils hsezis.de bzw. badcat.com (blau hinterlegt). Das ist jeweils der Wer-Bereich der Webadresse. <b>Diese geben augenscheinlich keinen Sinn!</b></string>
@@ -335,7 +339,10 @@
 	<string name="reminder_subdomain">1.) Enthält der Bereich der Abteilungen dir bekannte Namen und entspricht der Wer-Bereich aber nicht dem Unternehmen deines Gesprächspartners, dann gebe hier keine Daten ein!</string>
     <!-- ip -->
     <string name="level_04_reminder"><b>Erinnerung:</b> Ist der Bereich zwischen \"http://\" und dem dritten Slash \"/\" eine IP-Adresse (4-stellige Zahlenfolge, durch Punkte getrennt), ist diese der Wer-Bereich. Gib hier keine Daten ein!</string>
-    <string name="reminder_ip">2.) Ist der Bereich zwischen \"http://\" und dem dritten Slash \"/\" eine IP-Adresse, ist diese der Wer-Bereich. Gib hier keine Daten ein!</string>
+    <string name="reminder_ip">1.) Ist der Bereich zwischen \"http://\" und dem dritten Slash \"/\" eine IP-Adresse, ist diese der Wer-Bereich. Gib hier keine Daten ein!</string>
+    <!-- totally unrelated -->
+    <string name="level_04_a_reminder"><b>Erinnerung: TODO</b> </string>
+    
     <!-- nonsense -->
     <string name="level_05_reminder"><b>Erinnerung:</b> Enthält der Wer-Bereich Namen, die keinen Sinn ergeben oder nichts mit dem Dienst bzw. Unternehmen deines Gesprächspartners zu tun haben, dann gebe hier keine Daten ein! </string>
     <string name="reminder_nonsense">3.) Enthält der Wer-Bereich Namen, die keinen Sinn ergeben oder nichts mit dem Dienst bzw. Unternehmen deines Gesprächspartners zu tun haben, dann gebe hier keine Daten ein! </string>

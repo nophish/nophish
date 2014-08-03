@@ -157,7 +157,7 @@
             android:layout_height="wrap_content"
             android:layout_alignLeft="@+id/level_04_warning"
             android:layout_below="@+id/level_04_warning"
-            android:text="@string/reminder_subdomain"
+            android:text="@string/reminder_ip"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <TextView

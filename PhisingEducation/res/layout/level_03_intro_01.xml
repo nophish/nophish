@@ -1,6 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/level_03_intro_01_sv"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/level_04_intro_01_sv"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fadeScrollbars="false" >
@@ -13,124 +13,72 @@
         android:paddingRight="@dimen/activity_horizontal_margin"
         android:paddingTop="@dimen/activity_vertical_margin" >
 
+        <ImageView
+            android:id="@+id/level_04_intro_01_image_house"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/level_04_intro_01_text_01"
+            android:layout_marginTop="@dimen/margin_standard"
+            android:contentDescription="@string/content_desc_house"
+            android:src="@drawable/gohome" />
+
         <TextView
-            android:id="@+id/level_03_intro_01_reminder_01"
+            android:id="@+id/level_04_intro_01_img_description_house"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/level_04_intro_01_img_description_computer"
+            android:layout_alignBottom="@+id/level_04_intro_01_img_description_computer"
+            android:text="@string/level_04_intro_01_img_descr_house"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/level_04_intro_01_text_01"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
-            android:text="@string/level_03_intro_01_text_01"
+            android:text="@string/level_04_intro_01_text_01"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <TextView
-            android:id="@+id/dot_02"
+            android:id="@+id/level_04_intro_01_example_ip"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/domain_01"
-            android:layout_alignBottom="@+id/domain_01"
+            android:layout_below="@+id/level_04_intro_01_text_02"
             android:layout_centerHorizontal="true"
-            android:layout_marginLeft="@dimen/margin_xxsmall"
-            android:layout_toRightOf="@+id/domain_01"
-            android:text="@string/dot"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textSize="@dimen/font_size_large"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/path"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/domain_02"
-            android:layout_alignBottom="@+id/domain_02"
-            android:layout_marginLeft="@dimen/margin_xxsmall"
-            android:layout_toRightOf="@+id/domain_02"
-            android:text="@string/path_dot_dot_dot"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="@color/grey" />
-
-        <TextView
-            android:id="@+id/dot_01"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/subdomain"
-            android:layout_alignBottom="@+id/subdomain"
-            android:layout_marginLeft="@dimen/margin_xxsmall"
-            android:layout_toRightOf="@+id/subdomain"
-            android:text="@string/dot"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textSize="@dimen/font_size_large"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/subdomain"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/http"
-            android:layout_alignBottom="@+id/http"
-            android:layout_marginLeft="@dimen/margin_xxsmall"
-            android:layout_toRightOf="@+id/http"
-            android:background="@color/subdomain"
-            android:text="@string/subdomain"
+            android:layout_marginTop="@dimen/margin_large"
+            android:text="@string/level_04_intro_01_example_ip"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <TextView
-            android:id="@+id/domain_02"
+            android:id="@+id/level_04_intro_01_text_02"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/dot_02"
-            android:layout_alignBottom="@+id/dot_02"
-            android:layout_marginLeft="@dimen/margin_xxsmall"
-            android:layout_toRightOf="@+id/dot_02"
-            android:background="@color/domain"
-            android:text="@string/domain_de"
+            android:layout_alignLeft="@+id/level_04_intro_01_img_description_house"
+            android:layout_below="@+id/level_04_intro_01_img_description_house"
+            android:layout_marginTop="@dimen/margin_large"
+            android:text="@string/level_04_intro_01_text_02"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <TextView
-            android:id="@+id/domain_01"
+            android:id="@+id/level_04_intro_01_img_description_computer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/dot_01"
-            android:layout_alignBottom="@+id/dot_01"
-            android:layout_marginLeft="@dimen/margin_xxsmall"
-            android:layout_toRightOf="@+id/dot_01"
-            android:background="@color/domain"
-            android:text="@string/domain_spiegel"
+            android:layout_alignLeft="@+id/level_04_intro_01_image_computer"
+            android:layout_below="@+id/level_04_intro_01_image_computer"
+            android:text="@string/level_04_intro_01_img_descr_computer"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
-        <TextView
-            android:id="@+id/level_02_intro_08_subdomain_description"
+        <ImageView
+            android:id="@+id/level_04_intro_01_image_computer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/http"
-            android:layout_marginTop="@dimen/margin_small"
-            android:background="@color/subdomain"
-            android:gravity="center"
-            android:padding="@dimen/padding"
-            android:text="@string/level_02_intro_08_subdomain_description"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:layout_alignBottom="@+id/level_04_intro_01_image_house"
+            android:layout_toRightOf="@+id/level_04_intro_01_image_house"
+            android:layout_marginLeft="@dimen/margin_small"
+            android:contentDescription="@string/content_desc_computer"
+            android:src="@drawable/mycomputer" />
 
-        <TextView
-            android:id="@+id/level_02_intro_08_domain_description"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/level_03_intro_01_reminder_01"
-            android:layout_marginTop="@dimen/margin_standard"
-            android:background="@color/domain"
-            android:gravity="center"
-            android:padding="@dimen/mini_padding"
-            android:text="@string/level_02_intro_08_domain_description"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
-
-        <TextView
-            android:id="@+id/http"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/level_02_intro_08_subdomain_description"
-            android:layout_below="@+id/level_02_intro_08_domain_description"
-            android:layout_marginTop="@dimen/margin_small"
-            android:text="@string/http"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="@color/grey" />
     </RelativeLayout>
 
 </ScrollView>

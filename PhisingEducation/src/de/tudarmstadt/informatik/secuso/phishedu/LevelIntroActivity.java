@@ -33,9 +33,10 @@ public class LevelIntroActivity extends SwipeActivity {
 	}
 	
 	protected static String[][] exampleReminderUrlPartId = {
-			{ "http://", "google.com.", "phisher-seite.de",
-					"/search/online+banking+postbank" },
 			{ "http://", "", "192.168.160.02", "/secure-login" },
+			{ "https://", "www.", "reicht hier", "/ein Beispiel? hin TODO"},
+			{ "http://", "google.com.", "phisher-seite.de",
+			"/search/online+banking+postbank" },
 			{ "https://", "secure-login.mail.google.com.", "hsezis.de",
 					"/update-account" },
 			{ "https://", "microsoft.com.", "security-update.de", "/update" },
@@ -47,9 +48,10 @@ public class LevelIntroActivity extends SwipeActivity {
 	protected static String[][] exampleUrlPartId = {
 			// level 3
 			// TODO: auslagern in strings.xml
-			{ "http://", "google.com.", "phisher-seite.de",
-					"/search/online+banking+postbank" },
 			{ "http://", "", "192.168.160.02", "/secure-login" },
+			{ "https://", "www.", "mach hier mehrere", "/Beispiele hin TODO"},
+			{ "http://", "google.com.", "phisher-seite.de",
+			"/search/online+banking+postbank" },
 			{ "https://", "secure-login.mail.google.com.", "hsezis.de",
 					"/update-account", "http://",
 					"secure-login.mail.google.com.", "badcat.com", "/login" },

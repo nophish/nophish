@@ -9,23 +9,23 @@
     tools:context=".LevelIntroActivity" >
 
     <TextView
-        android:id="@+id/level_04_title"
+        android:id="@+id/level_03_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:text="@string/level_title_03"
+        android:text="@string/level_title_04"
         android:textSize="@dimen/font_size_xlarge" />
 
     <TextView
-        android:id="@+id/level_subtitle_04"
+        android:id="@+id/level_subtitle_03"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/level_04_title"
+        android:layout_below="@+id/level_03_title"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/margin_standard"
         android:gravity="center"
-        android:text="@string/level_04_splash_subtitle"
+        android:text="@string/level_03_splash_subtitle"
         android:textSize="@dimen/font_size_large" />
 
     <ImageView
@@ -34,7 +34,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:contentDescription="@string/content_desc_computer"
-        android:src="@drawable/mycomputer" />
+        android:contentDescription="@string/content_desc_confused_pinguin"
+        android:src="@drawable/dialog_question" />
 
 </RelativeLayout>
