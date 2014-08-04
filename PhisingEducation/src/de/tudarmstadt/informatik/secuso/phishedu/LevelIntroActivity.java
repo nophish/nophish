@@ -35,11 +35,11 @@ public class LevelIntroActivity extends SwipeActivity {
 	protected static String[][] exampleReminderUrlPartId = {
 			{ "http://", "", "192.168.160.02", "/secure-login" },
 			{ "https://", "", "security-update.de", "/update" },
-			{ "https://", "secure-login.mail.google.com.", "hsezis.de",
+			{ "https://", "mail.google.com.", "secure-login.de",
 			"/update-account" },
 			//{ "http://", "google.com.", "phisher-seite.de",
 			//"/search/online+banking+postbank" },
-			{ "http://", "phisher.de", "/http://mail.", "google.com", "/login" },
+			
 			{ "http://", "www.", "facebook-login.com", "/" },
 			{ "https://", "www.", "fracebook.com", "/login" },
 			{ "http://", "www.", "mircosoft.com", "/en-us/default.aspx" },
@@ -51,8 +51,10 @@ public class LevelIntroActivity extends SwipeActivity {
 			//{ "http://", "google.com.", "phisher-seite.de",
 			//"/search/online+banking+postbank" },
 			{ "https://", "", "hsfskzis.de",
-					"/update-account", "http://", "", "secure-login.com", "/mail/online/login" },
-			{ "http://", "phisher.de", "/http://mail.", "google.com", "/login", "http://", "phisher.de", "/", "google.com", "/login"},
+					"/update-account", "http://", "", "secure-login.com", "/mail/online/login" },		
+			{"https://", "mail.google.com.", "badcat.de", "/",
+			 "http://", "microsoft.com.", "secure-upate.com", "/windows7"},
+			
 			{ "http://", "www.", "facebook-login.com", "/", "http://", "www.",
 				"apple-support.com", "/ipodnano/troubleshooting",
 				"http://", "www.my.", "ebay-verify.de",
@@ -246,7 +248,7 @@ public class LevelIntroActivity extends SwipeActivity {
 
 		// total different span pattern
 		int level = BackendControllerImpl.getInstance().getLevel();
-		if (level == 5) {
+		if (level == 6) {
 			setLevelHostInPathSpan(url, view);
 			return;
 		}

@@ -169,6 +169,8 @@
             android:layout_marginTop="@dimen/margin_xxsmall"
             android:text="@string/url"
             android:textAppearance="?android:attr/textAppearanceMedium" />
+        
+        
     </RelativeLayout>
 
 </ScrollView>

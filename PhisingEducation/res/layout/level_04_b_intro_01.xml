@@ -169,6 +169,26 @@
             android:layout_marginTop="@dimen/margin_xxsmall"
             android:text="@string/url"
             android:textAppearance="?android:attr/textAppearanceMedium" />
+        
+             <TextView
+            android:id="@+id/reminder_nonsense"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/example_01"
+            android:layout_marginTop="@dimen/margin_standard"
+            android:text="@string/reminder_no_brand"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/example_02"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/reminder_nonsense"
+            android:layout_below="@+id/reminder_nonsense"
+            android:layout_marginTop="@dimen/margin_xxsmall"
+            android:text="@string/url"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+        
     </RelativeLayout>
 
 </ScrollView>
