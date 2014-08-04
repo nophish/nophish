@@ -69,7 +69,7 @@
     <string name="level_subtitle_09">Ähnliche Zeichen im Wer-Bereich</string>
     <string name="level_subtitle_10">Bereich der Sicherheitsstufe</string>
     <string name="level_subtitle_11">Schlussbemerkung</string>
-    <string name="level_03_splash_subtitle">Unternehmensname kommt in Webadresse überhaupt nicht vor</string>
+    <string name="level_03_splash_subtitle">Unternehmensname kommt in der Webadresse überhaupt nicht vor</string>
     <string name="level_04_splash_subtitle">IP-Adresse als Wer-Bereich</string>
     <string name="level_05_splash_subtitle">Ähnliche Namen im Bereich der Abteilungen</string>
     <string name="level_06_splash_subtitle">Ähnliche Namen im Gesprächsthema-Bereich</string>
@@ -216,8 +216,9 @@
     <string name="level_04_intro_03_text_02">Ist der Bereich zwischen \"http://\" und dem dritten Slash \"/\" eine IP-Adresse, ist diese der Wer-Bereich. <b>Gib hier keine Daten ein!</b>\n\nBeispiel für eine Phishing-Webadresse, die dieses Prinzip anwendet: </string>
 
     <!-- NO BRAND -->
-   <string name="level_04_a_intro_00_text_01"><b>Name des Unternehmens kommt gar nicht vor</b>\n\n Ein weiterer Trick ist die Verwendung von <b>TODO..</b></string>
-    <string name="level_04_a_intro_00_text_02"><b>TODO</b></string>
+   <string name="level_04_a_intro_00_text_01"><b>Name des Unternehmens kommt gar nicht vor</b>\n\n Ein weiterer Trick ist den Unternehmensnamen überhaupt nicht in der Webadresse zu verwenden. Mit dieser Art des Angriffs beschäftigen wir uns in diesem Level.</string>
+   <string name="level_04_a_intro_00_text_02">Manche Phisher machen sich nicht einmal die Mühe, den Namen deines Gesprächspartners in der Webadresse zu erwähnen. Enthält die Webadresse den Namen deines Gesprächspartners nicht, dann <b>gebe hier keine Daten ein, auch dann nicht wenn der Wer-Bereich vertrauenswürdig klingt!</b>\n\nUnten ist ein Beispiel für eine Phishing-Webadresse, die dieses Prinzip anwendet. In dem zweiten Beispiel ist dein Gesprächspartner security-update.de (blau hinterlegt). Das ist der wichtigste Bereich der Webadresse, der Wer-Bereich. <b>Gebe hier keine Daten ein, auch wenn die Webadresse vertrauenswürdig klingt!</b> </string>
+   
     <!-- LEVEL 5 - NONSENSE DOMAINS -->
     <string name="level_05_intro_00_text_01"><b>Angriff durch bezugslose oder unsinnige Namen im Wer-Bereich</b>\n\nEin weiterer Trick ist die Verwendung von bezugslosen oder gar unsinnigen Namen im Wer-Bereich einer Webadresse. Mit dieser Art des Angriffs beschäftigen wir uns in diesem Level.</string>
     <string name="level_05_intro_02_text_03">Der wichtigste Bereich einer Webadresse, der Wer-Bereich, muss auch vom Phisher registriert werden. Schaue dir also auch immer die wichtigsten zwei Blöcke der Webadresse an, den Wer-Bereich. Enthält der Wer-Bereich Namen, die keinen Sinn ergeben oder nichts mit dem Dienst bzw. Unternehmen deines Gesprächspartners zu tun haben, dann <b>gebe hier keine Daten ein!</b>\n\nUnten sind zwei Beispiele für Phishing-Webadressen, die dieses Prinzip anwenden. In den Beispielen ist dein Gesprächspartner jeweils hsezis.de bzw. badcat.com (blau hinterlegt). Das ist jeweils der Wer-Bereich der Webadresse. <b>Diese geben augenscheinlich keinen Sinn!</b></string>
@@ -341,7 +342,7 @@
     <string name="level_04_reminder"><b>Erinnerung:</b> Ist der Bereich zwischen \"http://\" und dem dritten Slash \"/\" eine IP-Adresse (Folge von 4 Zahlenblöcken, durch Punkte getrennt), ist diese der Wer-Bereich. Gib hier keine Daten ein!</string>
     <string name="reminder_ip">1.) Ist der Bereich zwischen \"http://\" und dem dritten Slash \"/\" eine IP-Adresse, ist diese der Wer-Bereich. Gib hier keine Daten ein!</string>
     <!-- totally unrelated -->
-    <string name="level_04_a_reminder"><b>Erinnerung: TODO</b> </string>
+    <string name="level_04_a_reminder"><b>Erinnerung:</b> Enthält die Webadresse den Namen deines Gesprächspartners nicht, dann gebe hier keine Daten ein, auch dann nicht, wenn die Webadresse vertrauenswürdig klingt!</string>
     
     <!-- nonsense -->
     <string name="level_12_reminder"><b>Erinnerung:</b> Enthält der Wer-Bereich Namen, die keinen Sinn ergeben oder nichts mit dem Dienst bzw. Unternehmen deines Gesprächspartners zu tun haben, dann gebe hier keine Daten ein! </string>

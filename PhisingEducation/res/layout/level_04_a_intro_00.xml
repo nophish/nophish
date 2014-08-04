@@ -21,6 +21,8 @@
             android:layout_alignParentTop="true"
             android:text="@string/level_04_a_intro_00_text_01"
             android:textAppearance="?android:attr/textAppearanceMedium" />
+        
+    
     </RelativeLayout>
 
 </ScrollView>
