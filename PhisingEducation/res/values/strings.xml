@@ -209,7 +209,7 @@
     <!-- IP NO BRAND-->
     <string name="level_04_intro_00_text_01"><b>Angriff durch IP-Adresse als Wer-Bereich</b>\n\nPhisher verwenden verschiedene Täuschungsmanöver, um Webadressen vertrauenswürdig aussehen zu lassen, obwohl sie das nicht sind.\n\nDu wirst nach und nach lernen, mit welchen Tricks sie versuchen, dich hinters Licht zu führen.\n\nIn diesem Level beschäftigen wir uns mit einem der einfachsten Tricks, der Verwendung von IP-Adressen statt Begriffen im Wer-Bereich der Webadresse.</string>
     <string name="level_04_intro_01_text_01"><b>IP-Adressen</b>\n\nGenau so wie unsere Häuser durch Straßennamen adressiert werden, werden Computer im Internet mit sogenannten IP-Adressen identifiziert.</string>
-    <string name="level_04_intro_01_text_02">Eine IP-Adresse ist eine 4-stellige Zahlenfolge, die durch Punkte getrennt wird.</string>
+    <string name="level_04_intro_01_text_02">Eine IP-Adresse ist eine Folge von 4 Zahlenblöcken, die durch Punkte getrennt werden.</string>
     <string name="level_04_intro_01_example_ip">Beispiel: 192.168.10.15</string>
     <string name="level_04_intro_01_img_descr_computer">IP-Adresse</string>
     <string name="level_04_intro_01_img_descr_house">Hausadresse</string>
@@ -338,7 +338,7 @@
     <string name="level_03_reminder"><b>Erinnerung:</b> Enthält der Bereich der Abteilungen dir bekannte Namen und entspricht der Wer-Bereich aber nicht dem Unternehmen deines Gesprächspartners, dann gebe hier keine Daten ein!</string>
 	<string name="reminder_subdomain">1.) Enthält der Bereich der Abteilungen dir bekannte Namen und entspricht der Wer-Bereich aber nicht dem Unternehmen deines Gesprächspartners, dann gebe hier keine Daten ein!</string>
     <!-- ip -->
-    <string name="level_04_reminder"><b>Erinnerung:</b> Ist der Bereich zwischen \"http://\" und dem dritten Slash \"/\" eine IP-Adresse (4-stellige Zahlenfolge, durch Punkte getrennt), ist diese der Wer-Bereich. Gib hier keine Daten ein!</string>
+    <string name="level_04_reminder"><b>Erinnerung:</b> Ist der Bereich zwischen \"http://\" und dem dritten Slash \"/\" eine IP-Adresse (Folge von 4 Zahlenblöcken, durch Punkte getrennt), ist diese der Wer-Bereich. Gib hier keine Daten ein!</string>
     <string name="reminder_ip">1.) Ist der Bereich zwischen \"http://\" und dem dritten Slash \"/\" eine IP-Adresse, ist diese der Wer-Bereich. Gib hier keine Daten ein!</string>
     <!-- totally unrelated -->
     <string name="level_04_a_reminder"><b>Erinnerung: TODO</b> </string>
