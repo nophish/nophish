@@ -157,7 +157,7 @@
             android:layout_height="wrap_content"
             android:layout_alignLeft="@+id/warning"
             android:layout_below="@+id/warning"
-            android:text="@string/reminder_subdomain"
+            android:text="@string/reminder_ip"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <TextView
@@ -176,7 +176,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/example_01"
             android:layout_marginTop="@dimen/margin_standard"
-            android:text="@string/reminder_ip"
+            android:text="@string/reminder_no_brand"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <TextView
@@ -195,7 +195,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/example_02"
             android:layout_marginTop="@dimen/margin_standard"
-            android:text="@string/reminder_nonsense"
+            android:text="@string/reminder_subdomain"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <TextView
@@ -204,101 +204,6 @@
             android:layout_height="wrap_content"
             android:layout_alignLeft="@+id/reminder_nonsense"
             android:layout_below="@+id/reminder_nonsense"
-            android:layout_marginTop="@dimen/margin_xxsmall"
-            android:text="@string/url"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
-
-        <TextView
-            android:id="@+id/reminder_sounding_trustworthy"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/example_03"
-            android:layout_marginTop="@dimen/margin_standard"
-            android:text="@string/reminder_sounding_trustworthy"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
-
-        <TextView
-            android:id="@+id/example_04"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/reminder_sounding_trustworthy"
-            android:layout_below="@+id/reminder_sounding_trustworthy"
-            android:layout_marginTop="@dimen/margin_xxsmall"
-            android:text="@string/url"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
-
-        <TextView
-            android:id="@+id/reminder_brand_in_domain"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/example_04"
-            android:layout_marginTop="@dimen/margin_standard"
-            android:text="@string/reminder_brand_in_domain"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
-
-        <TextView
-            android:id="@+id/example_05"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/reminder_brand_in_domain"
-            android:layout_below="@+id/reminder_brand_in_domain"
-            android:layout_marginTop="@dimen/margin_xxsmall"
-            android:text="@string/url"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
-
-        <TextView
-            android:id="@+id/reminder_typo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/example_05"
-            android:layout_marginTop="@dimen/margin_standard"
-            android:text="@string/reminder_typo"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
-
-        <TextView
-            android:id="@+id/example_06"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/reminder_typo"
-            android:layout_below="@+id/reminder_typo"
-            android:layout_marginTop="@dimen/margin_xxsmall"
-            android:text="@string/url"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
-
-        <TextView
-            android:id="@+id/reminder_typoaquat"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/example_06"
-            android:layout_marginTop="@dimen/margin_standard"
-            android:text="@string/reminder_typosquat"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
-
-        <TextView
-            android:id="@+id/example_07"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/reminder_typoaquat"
-            android:layout_below="@+id/reminder_typoaquat"
-            android:layout_marginTop="@dimen/margin_xxsmall"
-            android:text="@string/url"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
-        
-        <TextView
-            android:id="@+id/reminder_similar_characters"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/example_07"
-            android:layout_marginTop="@dimen/margin_standard"
-            android:text="@string/reminder_similar_chars"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
-        
-        <TextView
-            android:id="@+id/example_08"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/reminder_similar_characters"
-            android:layout_below="@+id/reminder_similar_characters"
             android:layout_marginTop="@dimen/margin_xxsmall"
             android:text="@string/url"
             android:textAppearance="?android:attr/textAppearanceMedium" />

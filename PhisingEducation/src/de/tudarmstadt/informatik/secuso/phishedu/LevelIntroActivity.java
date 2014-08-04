@@ -33,12 +33,11 @@ public class LevelIntroActivity extends SwipeActivity {
 	}
 	
 	protected static String[][] exampleReminderUrlPartId = {
-			{ "http://", "", "192.168.160.02", "/secure-login" },
+			{ "http://", "", "95.130.22.98", "/secure-login" },
 			{ "https://", "", "security-update.de", "/update" },
 			{ "https://", "mail.google.com.", "secure-login.de",
 			"/update-account" },
-			//{ "http://", "google.com.", "phisher-seite.de",
-			//"/search/online+banking+postbank" },
+			{ "http://", "account-settings.de/", "", "facebook.com", "/settings" },
 			
 			{ "http://", "www.", "facebook-login.com", "/" },
 			{ "https://", "www.", "fracebook.com", "/login" },
@@ -47,14 +46,17 @@ public class LevelIntroActivity extends SwipeActivity {
 			 };
 	protected static String[][] exampleUrlPartId = {
 			// level 3
-			{ "http://", "", "192.168.160.02", "/secure-login" },
+			{ "http://", "", "95.130.22.98", "/secure-login" },
 			//{ "http://", "google.com.", "phisher-seite.de",
 			//"/search/online+banking+postbank" },
 			{ "https://", "", "hsfskzis.de",
 					"/update-account", "http://", "", "secure-login.com", "/mail/online/login" },		
 			{"https://", "mail.google.com.", "badcat.de", "/",
 			 "http://", "microsoft.com.", "secure-upate.com", "/windows7"},
-			
+			{  "http://", "95.130.22.98/", "search/online+banking+postbank/", "https://www.google.de", "",
+			   "http://", "account-settings.de/", "", "facebook.com", "/settings"},
+
+			 
 			{ "http://", "www.", "facebook-login.com", "/", "http://", "www.",
 				"apple-support.com", "/ipodnano/troubleshooting",
 				"http://", "www.my.", "ebay-verify.de",
