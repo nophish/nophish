@@ -81,7 +81,8 @@ public class MainActivity extends ActionBarActivity implements FrontendControlle
 		}else{
 			newFrag.setArguments(arguments);
 		}
-		getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, newFrag).commit();
+		//TODO: commitAllowingStateLoss should not be needed.
+		getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, newFrag).commitAllowingStateLoss();
 		/**
 		 * ensure that we only run onswitchto when attached.
 		 * this is also called in PhishBaseActivity.onAttack() 
@@ -221,6 +222,11 @@ public class MainActivity extends ActionBarActivity implements FrontendControlle
 
 	private GoogleApiClient getApiClient(){
 		return BackendControllerImpl.getInstance().getGameHelper().getApiClient();
+	}
+
+	@Override
+	protected void onSaveInstanceState(Bundle outState) {
+		//No call for super(). Bug on API Level > 11.
 	}
 
 }

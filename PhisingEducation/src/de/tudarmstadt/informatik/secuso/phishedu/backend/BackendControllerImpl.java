@@ -640,4 +640,10 @@ public class BackendControllerImpl implements BackendController, UrlsLoadedListe
 	public FrontendController getFrontend() {
 		return this.frontend;
 	}
+
+	@Override
+	public void showSaveGames() {
+		 android.content.Intent snapshotIntent = Games.Snapshots.getSelectSnapshotIntent(getGameHelper().getApiClient(), "Select a snap", true, true, 5);
+		 getFrontend().getBaseActivity().startActivityForResult(snapshotIntent, 0);
+	}
 }

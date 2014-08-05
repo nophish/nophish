@@ -32,6 +32,7 @@ public class GameProgress{
 	private static final String REMOTE_STORE_GAME = "autosave";
 	private static final String LOCAL_STORE_KEY = "gamestate";
 	private static final int LIFES_PER_LEVEL = 3;
+	private static final int MAX_SNAPSHOT_RESOLVE_RETRIES = 3;
 
 	private int[] level_results = {0,0,0,0};
 	//This is for saving the points per level. 
@@ -79,7 +80,7 @@ public class GameProgress{
 
 			@Override
             protected void onPostExecute(Integer status){
-				if (status != GamesStatusCodes.STATUS_OK && status != GamesStatusCodes.STATUS_SNAPSHOT_NOT_FOUND) {
+				if (status != GamesStatusCodes.STATUS_OK && status != GamesStatusCodes.STATUS_SNAPSHOT_NOT_FOUND &&  status != GamesStatusCodes.STATUS_SNAPSHOT_CONFLICT) {
 					BackendControllerImpl.getInstance().getFrontend().displayToast(BackendControllerImpl.getInstance().getFrontend().getContext().getResources().getString(R.string.google_plus_snapshot_load_problem)+status.toString());
                 }
             }
@@ -94,8 +95,8 @@ public class GameProgress{
      * @return The opened Snapshot on success; otherwise, returns null.
      */
     Snapshot processSnapshotOpenResult(Snapshots.OpenSnapshotResult result, int retryCount){
-        retryCount++;
         int status = result.getStatus().getStatusCode();
+        retryCount++;
 
         if (status == GamesStatusCodes.STATUS_OK) {
             return result.getSnapshot();
@@ -110,7 +111,16 @@ public class GameProgress{
             Snapshot resolvedSnapshot = snapshot;
             resolvedSnapshot.writeBytes(resolved.toBytes());
             
-            Games.Snapshots.resolveConflict(getApiClient(), result.getConflictId(), resolvedSnapshot).await();
+            Snapshots.OpenSnapshotResult resolveResult = Games.Snapshots.resolveConflict(
+                    getApiClient(), result.getConflictId(), resolvedSnapshot)
+                    .await();
+            
+            if (retryCount < MAX_SNAPSHOT_RESOLVE_RETRIES){
+                return processSnapshotOpenResult(resolveResult, retryCount);
+            }else{
+                String message = "Could not resolve snapshot conflicts";
+                BackendControllerImpl.getInstance().getFrontend().displayToast(message);
+            }
         }
         // Fail, return null.
         return null;
@@ -126,13 +136,9 @@ public class GameProgress{
                     @Override
                     protected Snapshots.OpenSnapshotResult doInBackground(Void... params) {
                         Snapshots.OpenSnapshotResult result = Games.Snapshots.open(getApiClient(),REMOTE_STORE_GAME, true).await();
-                        return result;
-                    }
-                    
-                    @Override
-                    protected void onPostExecute(Snapshots.OpenSnapshotResult result) {
-                        Snapshot toWrite = processSnapshotOpenResult(result, 0);
+                        Snapshot toWrite = processSnapshotOpenResult(result,0);
                         writeSnapshot(toWrite);
+                        return result;
                     }
                 };
 

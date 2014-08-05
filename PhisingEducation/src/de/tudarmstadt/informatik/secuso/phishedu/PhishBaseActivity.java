@@ -296,4 +296,9 @@ public abstract class PhishBaseActivity extends Fragment implements OnClickListe
 	@Override
 	public void onLevelstateChange(Levelstate new_state, int level) {}
 	
+	@Override
+	public void onSaveInstanceState(Bundle outState) {
+	    //No call for super(). Bug on API Level > 11.
+	}
+	
 }

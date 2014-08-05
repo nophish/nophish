@@ -25,7 +25,8 @@
     <string name="button_show_leaderboard_rate">Leaderboard Rate</string>
     <string name="button_show_leaderboard_total">Leaderboard Found Phishes</string>
 	<string name="button_show_leaderboard_total_points">Highscore</string>
-	<string name="button_delete_remote_data">Online Daten Löschen</string>    
+	<string name="button_delete_remote_data">Online Daten Löschen</string>
+	<string name="button_show_snapshots">Alle Snapshots anzeigen</string>    
     <string name="google_plus_text">Wenn du deine Spielleistung online speichern möchtest, melde dich bei Google+ an.</string>
     <string name="google_plus_data_deleted">Alle deine Daten wurden bei google Plus gelöscht.</string>
     <string name="google_plus_snapshot_load_problem">Es gab ein Problem beim laden ihres Spielstandes:</string>

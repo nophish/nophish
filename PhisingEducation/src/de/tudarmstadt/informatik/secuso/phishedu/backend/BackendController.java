@@ -314,5 +314,10 @@ public interface BackendController extends GameHelperListener{
 	 * @return the currently assigned frontend
 	 */
 	public FrontendController getFrontend();
+	
+	/**
+	 * Show the currently saved savegames
+	 */
+	public void showSaveGames();
 }
 

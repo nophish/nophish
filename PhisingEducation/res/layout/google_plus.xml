@@ -84,12 +84,23 @@
         android:text="@string/button_delete_remote_data"
         android:visibility="gone" />
 	
+	<Button
+        android:id="@+id/button_show_snapshots"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/btn_standard_height"
+        android:minWidth="@dimen/btn_menu_width"
+        android:layout_alignLeft="@+id/button_show_online_achievement"
+        android:layout_below="@+id/button_delete_remote_data"
+        android:layout_marginTop="@dimen/margin_small"
+        android:text="@string/button_show_snapshots"
+        android:visibility="gone" />
+	
     <!-- sign-out button -->
     
     <Button
         android:id="@+id/sign_out_button"
         android:layout_width="wrap_content"
-        android:layout_below="@+id/button_delete_remote_data"
+        android:layout_below="@+id/button_show_snapshots"
         android:layout_alignLeft="@+id/button_show_online_achievement"
         android:layout_height="@dimen/btn_standard_height"
         android:layout_marginTop="@dimen/margin_small"
