@@ -200,7 +200,7 @@ public class LevelIntroActivity extends SwipeActivity {
 			String[] currentUrl = exampleReminderUrlPartId[currentIndex];
 
 			// Example has other spans
-			if (level == 6 && currentIndex == 3) {
+			if (level == 7 && currentIndex == 3) {
 				strBuilder.clear();
 				strBuilder.clearSpans();
 				setLevelHostInPathSpan(currentUrl, view);
@@ -418,7 +418,7 @@ public class LevelIntroActivity extends SwipeActivity {
 
 				} else if(view.findViewById(R.id.reminder_examples) != null){
 					// we are in reminder_examples
-					setTextView(view, R.id.example_09);
+					setTextView(view, R.id.example_04);
 				}
 			} else if (i == 9) {
 				setTextView(view, R.id.example_02);

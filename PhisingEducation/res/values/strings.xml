@@ -230,7 +230,7 @@
 
     <!-- LEVEL 7 - SIMILAR DOMAINS -->
     <string name="level_07_intro_00_text_01"><b>Angriff durch ähnliche Namen im Wer-Bereich</b>\n\nEin weiterer Trick dich hinters Licht zu führen, ist die Verwendung von Namen im Wer-Bereich, die dem Namen des dir vertrauten Unternehmens sehr ähnlich sind. Mit dieser Art des Angriffs beschäftigen wir uns in diesem Level.</string>
-    <string name="level_07_intro_02_text_01"><b>Angriff durch ähnliche Namen im Wer-Bereich</b>\n\nEin weiterer Trick dich hinters Licht zu führen, ist bei der Registrierung des Wer-Bereiches Namen zu verwenden, die dem Namen des dir vertrauten Unternehmens sehr ähnlich sind. Dabei hat der Phisher verschiedene Möglichkeiten, die wir dir in diesem Level erläutern werden.</string>
+    <string name="level_07_intro_02_text_01"><b>Angriff durch ähnliche Namen im Wer-Bereich</b>\n\nEin weiterer Trick dich hinters Licht zu führen, ist bei der Registrierung des Wer-Bereiches Namen zu verwenden, die dem Namen des dir vertrauten Unternehmens sehr ähnlich sind. Mit dieser Art des Angriffs beschäftigen wir uns in diesem Level.</string>
     <string name="level_07_intro_03_text_02">Du musst dir merken, wie der Wer-Bereich der Webadressen, die du normalerweise besuchst, aussieht. Der Phisher kann nämlich Namen registrieren, die dem dir vertrauten Unternehmen sehr ähneln. Schaue dir deswegen immer die wichtigsten zwei Blöcke der Webadresse an, den Wer-Bereich. Enthält der Wer-Bereich nur eine ähnliche Abwandlung des dir bisher vertrauten Wer-Bereiches, dann <b>gebe hier keine Daten ein!</b>\n\nUnten sind drei Beispiele für Phishing-Webadressen, die dieses Prinzip anwenden. In den Beispielen ist dein Gesprächspartner jeweils facebook-login.com, apple-support.com bzw. ebay-verify.com (blau hinterlegt). Das sind jeweils die Wer-Bereiche der Webadressen. <b>Die Wer-Bereiche ähneln dem Original, sie sind aber gefälscht!</b></string>
     <string name="level_07_intro_03_text_03"><b>1. Unternehmensname kommt im Wer-Bereich vor</b></string>
     <string name="level_07_intro_03_facebook_login">facebook-login.com</string>
@@ -352,9 +352,14 @@
     <string name="level_13_reminder"><b>Erinnerung:</b> Enthält der Wer-Bereich Namen, die vertrauenswürdig klingen, aber dennoch nichts mit dem Unternehmen deines Gesprächspartners zu tun haben, dann gebe hier keine Daten ein! </string>
     <string name="reminder_sounding_trustworthy">4.) Enthält der Wer-Bereich Namen, die vertrauenswürdig klingen, aber dennoch nichts mit dem Unternehmen deines Gesprächspartners zu tun haben, dann gebe hier keine Daten ein! </string>
     <!-- misleading (facebook-login) -->
-    <string name="level_06_reminder"><b>Erinnerung:</b> Enthält der Wer-Bereich nur eine ähnliche Abwandlung des dir bisher vertrauten Wer-Bereiches oder\nenthält der Wer-Bereich einen Tippfehler oder\nenthält der Wer-Bereich einen Buchstabendreher, dann gebe hier keine Daten ein!</string>
-    <string name="reminder_brand_in_domain">5.) Enthält der Wer-Bereich nur eine ähnliche Abwandlung des dir bisher vertrauten Wer-Bereiches, dann gebe hier keine Daten ein!</string>
+    <string name="level_06_reminder"><b>Erinnerung:</b> Enthält der Wer-Bereich nur eine ähnliche Abwandlung des dir bisher vertrauten Wer-Bereiches, dann gebe hier keine Daten ein!</string>
+    <string name="reminder_misleading">5.) Enthält der Wer-Bereich nur eine ähnliche Abwandlung des dir bisher vertrauten Wer-Bereiches, dann gebe hier keine Daten ein!</string>
+  
+    <!-- typo -->
+  	<string name="level_07_reminder"><b>Erinnerung: Enthält der Wer-Bereich einen Tippfehler, dann gebe hier keine Daten ein!</b></string>
     <string name="reminder_typo">6.) Enthält der Wer-Bereich einen Tippfehler, dann gebe hier keine Daten ein!</string>
+    
+    <string name="reminder_brand_in_domain">5.) Enthält der Wer-Bereich nur eine ähnliche Abwandlung des dir bisher vertrauten Wer-Bereiches, dann gebe hier keine Daten ein!</string>
     <string name="reminder_typosquat">7.) Enthält der Wer-Bereich einen Buchstabendreher, dann gebe hier keine Daten ein!</string>
     <!-- homographic -->
     <string name="level_08_reminder"><b>Erinnerung:</b> Enthält der Wer-Bereich Ersetzungen von Buchstaben durch andere ähnliche Zeichen oder Zahlen, dann gebe hier keine Daten ein!</string>
