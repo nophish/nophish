@@ -200,7 +200,7 @@ public class LevelIntroActivity extends SwipeActivity {
 			String[] currentUrl = exampleReminderUrlPartId[currentIndex];
 
 			// Example has other spans
-			if (level == 7 && currentIndex == 3) {
+			if (level >= 7 && currentIndex == 3) {
 				strBuilder.clear();
 				strBuilder.clearSpans();
 				setLevelHostInPathSpan(currentUrl, view);
