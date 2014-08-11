@@ -38,9 +38,9 @@ public class LevelIntroActivity extends SwipeActivity {
 			{ "https://", "mail.google.com.", "secure-login.de",
 			"/update-account" },
 			{ "http://", "account-settings.de/", "", "facebook.com", "/settings" },
-			
 			{ "http://", "www.", "facebook-login.com", "/" },
 			{ "https://", "www.", "fracebook.com", "/login" },
+			
 			{ "http://", "www.", "mircosoft.com", "/en-us/default.aspx" },
 			{ "https://", "www.", "vvetter.com", "/wetter_aktuell/?code=EUDE" }
 			 };
@@ -54,9 +54,7 @@ public class LevelIntroActivity extends SwipeActivity {
 			{"https://", "mail.google.com.", "badcat.de", "/",
 			 "http://", "microsoft.com.", "secure-upate.com", "/windows7"},
 			{  "http://", "95.130.22.98/", "search/online+banking+postbank/", "https://www.google.de", "",
-			   "http://", "account-settings.de/", "", "facebook.com", "/settings"},
-
-			 
+			   "http://", "account-settings.de/", "", "facebook.com", "/settings"},			 
 			{ "http://", "www.", "facebook-login.com", "/", "http://", "www.",
 				"apple-support.com", "/ipodnano/troubleshooting",
 				"http://", "www.my.", "ebay-verify.de",
@@ -193,19 +191,13 @@ public class LevelIntroActivity extends SwipeActivity {
 		int level = BackendControllerImpl.getInstance().getLevel();
 		if (level > 7) {
 			// two more urls displayed from there
-			reminderIndex = reminderIndex + 2;
+			 reminderIndex = reminderIndex + 2;
 		}
 
 		for (int currentIndex = 0; currentIndex < reminderIndex; currentIndex++) {
 			String[] currentUrl = exampleReminderUrlPartId[currentIndex];
 
-			// Example has other spans
-			if (level >= 7 && currentIndex == 3) {
-				strBuilder.clear();
-				strBuilder.clearSpans();
-				setLevelHostInPathSpan(currentUrl, view);
-				return;
-			}
+			
 
 			for (int i = 0; i < currentUrl.length; i++) {
 
@@ -239,6 +231,14 @@ public class LevelIntroActivity extends SwipeActivity {
 					setTextView(view, R.id.example_08);
 				}
 
+				// This example has other spans
+				// must stay here, will be overwritten otherwise
+				if (level >= 7 && currentIndex == 3) {
+					strBuilder.clear();
+					strBuilder.clearSpans();
+					setLevelHostInPathSpan(currentUrl, view);
+					//return;
+				}
 			}
 		}
 	}

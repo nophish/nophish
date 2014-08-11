@@ -35,6 +35,6 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:contentDescription="@string/content_desc_seven"
-        android:src="@drawable/number_seven" />
+        android:src="@drawable/font_type1" />
 
 </RelativeLayout>

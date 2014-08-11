@@ -166,10 +166,11 @@ public class ResultActivity extends SwipeActivity {
 				}
 			}
 		} else if (indexReminder >= 0) {
-			if (attack_type == PhishAttackType.Misleading || attack_type == PhishAttackType.Typo) {
-				// typo and misleading are in one level (7) (noch)
-				indexReminder = 4;
-			}
+			//these are not handled together anymore
+//			if (attack_type == PhishAttackType.Misleading || attack_type == PhishAttackType.Typo) {
+//				// typo and misleading are in one level (7) (noch)
+//				indexReminder = 4;
+//			}
 			return reminderIDs[indexReminder];
 		}
 

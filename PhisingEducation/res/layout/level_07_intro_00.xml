@@ -19,7 +19,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
-            android:text="@string/level_07_intro_00_text_01"
+            android:text="@string/level_07_intro_02_text_01"
             android:textAppearance="?android:attr/textAppearanceMedium" />
     </RelativeLayout>
 
