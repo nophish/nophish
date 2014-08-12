@@ -42,14 +42,20 @@ class SaveGame{
         loadFromJson(sp.getString(key, ""));
     }
     
-	private SaveGame loadFromJson(String state){
+	private void loadFromJson(String state){
 		SaveGame result = null;
 		try {
 			result = (new Gson()).fromJson(state,SaveGame.class);
+			this.level = result.level;
+			this.app_started = result.app_started;
+			this.points = result.points;
+			this.finishedLevel = result.finishedLevel;
+			this.detected_phish_behind = result.detected_phish_behind;
+			this.results = result.results;
+			this.levelPoints = result.levelPoints;
 		} catch (JsonSyntaxException e) {
 			//Json SyntaxException
 		}
-		return result;
 	}
 	
 	public byte[] toBytes() {
