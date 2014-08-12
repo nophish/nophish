@@ -71,7 +71,8 @@ public class GameProgress{
                 if (status == GamesStatusCodes.STATUS_OK) {
                     Snapshot snapshot = result.getSnapshot();
                     if(snapshot.readFully().length>0){
-                      mSaveGame = new SaveGame(snapshot.readFully());
+                      SaveGame newSaveGame = new SaveGame(snapshot.readFully());
+                      mSaveGame = mSaveGame.unionWith(newSaveGame);
                     }
                 }
 
@@ -162,7 +163,8 @@ public class GameProgress{
     }
     
     private void loadLocal() {
-        mSaveGame = new SaveGame(local_store, LOCAL_STORE_KEY);
+        SaveGame newSaveGame = new SaveGame(local_store, LOCAL_STORE_KEY);
+        mSaveGame = mSaveGame.unionWith(newSaveGame);
     }
 
     private void saveLocal() {

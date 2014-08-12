@@ -67,6 +67,8 @@ class SaveGame{
 		union.level= Math.max(this.level, other.level);
 		union.app_started = this.app_started || other.app_started;
 		union.points = Math.max(this.points, other.points);
+		union.finishedLevel = Math.max(this.finishedLevel, other.finishedLevel);
+		union.detected_phish_behind = Math.max(this.detected_phish_behind, other.detected_phish_behind);
 		for(PhishResult value: PhishResult.values()){
 			union.results[value.getValue()]=Math.max(this.results[value.getValue()], other.results[value.getValue()]);
 		}
@@ -79,7 +81,7 @@ class SaveGame{
 	
 	/** Returns a clone of this SaveGame object. */
     public SaveGame clone() {
-    	 SaveGame result = new SaveGame();
+    	SaveGame result = new SaveGame();
     	 
     	result.level=this.level;
     	result.app_started = this.app_started;

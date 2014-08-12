@@ -202,6 +202,9 @@ public class MainActivity extends ActionBarActivity implements FrontendControlle
 	@Override
 	public void onSignInFailed() {
 		((GooglePlusActivity)fragCache.get(GooglePlusActivity.class)).setShowSignIn(true);
+		if(BackendControllerImpl.getInstance().getGameHelper().hasSignInError()){
+			BackendControllerImpl.getInstance().getFrontend().displayToast("Signin failed!");
+		}
 	}
 
 	@Override

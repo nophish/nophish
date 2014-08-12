@@ -125,11 +125,6 @@ public class BackendControllerImpl implements BackendController, UrlsLoadedListe
 		this.frontend=frontend;
 		this.initListener=initlistener;
 		this.gamehelper=new GameHelper(frontend.getBaseActivity(),GameHelper.CLIENT_ALL);
-		// Add the Drive API and scope to the builder:
-		GoogleApiClient.Builder builder = this.gamehelper.createApiClientBuilder();
-	    builder.addScope(Drive.SCOPE_APPFOLDER);
-	    builder.addApi(Drive.API);
-	    
 	    this.gamehelper.setup(this);
 				
 		SharedPreferences prefs = this.getFrontend().getContext().getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
