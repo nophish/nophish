@@ -39,9 +39,8 @@ public class LevelIntroActivity extends SwipeActivity {
 			"/update-account" },
 			{ "http://", "account-settings.de/", "", "facebook.com", "/settings" },
 			{ "http://", "www.", "facebook-login.com", "/" },
-			{ "https://", "www.", "fracebook.com", "/login" },
+			{ "https://", "www.", "mircosoft.com", "/login" },
 			
-			{ "http://", "www.", "mircosoft.com", "/en-us/default.aspx" },
 			{ "https://", "www.", "vvetter.com", "/wetter_aktuell/?code=EUDE" }
 			 };
 	protected static String[][] exampleUrlPartId = {
@@ -60,7 +59,7 @@ public class LevelIntroActivity extends SwipeActivity {
 				"http://", "www.my.", "ebay-verify.de",
 				"/account-verification/user" },
 			{"https://", "www.",
-					"fracebook.com", "/login", "http://", "www.",
+					"mircosoft.com", "/login", "http://", "www.",
 					"twitetr.com", "/en-us/default.aspx"},	
 		//	{ "https://", "microsoft.com.", "security-update.de", "/update" },
 			{ "https://", "www.", "vvetter.com", "/wetter_aktuell/?code=EUDE",
@@ -189,10 +188,10 @@ public class LevelIntroActivity extends SwipeActivity {
 	private void setReminderSpans(View view, int reminderIndex) {
 
 		int level = BackendControllerImpl.getInstance().getLevel();
-		if (level > 7) {
-			// two more urls displayed from there
-			 reminderIndex = reminderIndex + 2;
-		}
+//		if (level > 7) {
+//			// two more urls displayed from there
+//			 reminderIndex = reminderIndex + 2;
+//		}
 
 		for (int currentIndex = 0; currentIndex < reminderIndex; currentIndex++) {
 			String[] currentUrl = exampleReminderUrlPartId[currentIndex];
@@ -254,7 +253,7 @@ public class LevelIntroActivity extends SwipeActivity {
 			setLevelHostInPathSpan(url, view);
 			return;
 		}
-		if (level == 9) {
+		if (level == 10) {
 			setSpanLevelHttps(url, view);
 			return;
 		}

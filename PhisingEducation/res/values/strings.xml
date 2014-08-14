@@ -75,7 +75,7 @@
     <string name="level_05_splash_subtitle">Ähnliche Namen im Bereich der Abteilungen</string>
     <string name="level_06_splash_subtitle">Ähnliche Namen im Gesprächsthema-Bereich</string>
     <string name="level_07_splash_subtitle">Ähnliche Namen im Wer-Bereich</string>
-    <string name="level_08_splash_subtitle">Tippfehler im Wer-Bereich</string>
+    <string name="level_08_splash_subtitle">Tippfehler/Buchstabendreher im Wer-Bereich</string>
     <string name="level_09_splash_subtitle">Ähnliche Zeichen im Wer-Bereich.</string>
     <string name="level_10_splash_subtitle">Der Bereich der Sicherheitsstufe</string>
     <string name="level_11_splash_subtitle">Schlussbemerkung</string>
@@ -230,12 +230,12 @@
 
     <!-- LEVEL 7 - SIMILAR DOMAINS -->
     <string name="level_07_intro_00_text_01"><b>Angriff durch ähnliche Namen im Wer-Bereich</b>\n\nEin weiterer Trick dich hinters Licht zu führen, ist die Verwendung von Namen im Wer-Bereich, die dem Namen des dir vertrauten Unternehmens sehr ähnlich sind. Mit dieser Art des Angriffs beschäftigen wir uns in diesem Level.</string>
-    <string name="level_07_intro_02_text_01"><b>Angriff durch Tippfehler im Wer-Bereich</b>\n\nEin weiterer Trick dich hinters Licht zu führen, ist bei der Registrierung des Wer-Bereiches einen Tippfehler im Wer-Bereich einzubauen. Mit dieser Art des Angriffs beschäftigen wir uns in diesem Level.</string>
+    <string name="level_07_intro_02_text_01"><b>Angriff durch Tippfehler/Buchstabendreher im Wer-Bereich</b>\n\nEin weiterer Trick dich hinters Licht zu führen, ist bei der Registrierung des Wer-Bereiches einen Tippfehler/Buchstabendreher im Wer-Bereich einzubauen. Mit dieser Art des Angriffs beschäftigen wir uns in diesem Level.</string>
     <string name="level_07_intro_03_text_02">Du musst dir merken, wie der Wer-Bereich der Webadressen, die du normalerweise besuchst, aussieht. Der Phisher kann nämlich Namen registrieren, die dem dir vertrauten Unternehmen sehr ähneln. Schaue dir deswegen immer die wichtigsten zwei Blöcke der Webadresse an, den Wer-Bereich. Enthält der Wer-Bereich nur eine ähnliche Abwandlung des dir bisher vertrauten Wer-Bereiches, dann <b>gebe hier keine Daten ein!</b>\n\nUnten sind drei Beispiele für Phishing-Webadressen, die dieses Prinzip anwenden. In den Beispielen ist dein Gesprächspartner jeweils facebook-login.com, apple-support.com bzw. ebay-verify.com (blau hinterlegt). Das sind jeweils die Wer-Bereiche der Webadressen. <b>Die Wer-Bereiche ähneln dem Original, sie sind aber gefälscht!</b></string>
     <string name="level_07_intro_03_text_03"><b>1. Unternehmensname kommt im Wer-Bereich vor</b></string>
     <string name="level_07_intro_03_facebook_login">facebook-login.com</string>
-    <string name="level_07_intro_04_text_02">Der wichtigste Bereich einer Webadresse, der Wer-Bereich, muss auch vom Phisher registriert werden. Der Phisher kann hierbei einen dir vertrauten Wer-Bereich einer Webseite nehmen, in den Namen einen Tippfehler einbauen und diesen Namen dann als seinen Wer-Bereich registrieren. Schaue dir also immer die wichtigsten zwei Blöcke der Webadresse an, den Wer-Bereich. Enthält der Wer-Bereich einen Tippfehler, dann <b>gebe hier keine Daten ein!</b>\n\nUnten ist ein Beispiel für eine Phishing-Webadresse, die dieses Prinzip anwendet. In dem Beispiel ist dein Gesprächspartner fracebook.com (blau hinterlegt). <b>Der Wer-Bereich enthält einen Tippfehler.</b></string>
-    <string name="level_07_intro_04_text_03"><b>Tippfehler im Wer-Bereich</b></string>
+    <string name="level_07_intro_04_text_02">Der wichtigste Bereich einer Webadresse, der Wer-Bereich, muss auch vom Phisher registriert werden. Der Phisher kann hierbei einen dir vertrauten Wer-Bereich einer Webseite nehmen, in den Namen einen Tippfehler oder sogar einen Buchstabendreher einbauen und diesen Namen dann als seinen Wer-Bereich registrieren. Schaue dir also immer die wichtigsten zwei Blöcke der Webadresse an, den Wer-Bereich. Enthält der Wer-Bereich einen Tippfehler oder einen Buchstabendreher, dann <b>gebe hier keine Daten ein!</b>\n\nUnten ist ein Beispiel für eine Phishing-Webadresse, die dieses Prinzip anwendet. In dem ersten Beispiel ist dein Gesprächspartner mircosoft.com (blau hinterlegt). <b>Der Wer-Bereich enthält einen Buchstabendreher.</b></string>
+    <string name="level_07_intro_04_text_03"><b>Tippfehler/Buchstabendreher im Wer-Bereich</b></string>
     <string name="level_07_intro_04_fracebook">fracebook.com</string>
     <string name="level_07_intro_04_path">/login</string>
     <string name="level_07_intro_05_text_03"><b>3. Buchstabendreher im Wer-Bereich</b></string>
@@ -356,8 +356,8 @@
     <string name="reminder_misleading">5.) Enthält der Wer-Bereich nur eine ähnliche Abwandlung des dir bisher vertrauten Wer-Bereiches, dann gebe hier keine Daten ein!</string>
   
     <!-- typo -->
-  	<string name="level_07_reminder"><b>Erinnerung:</b> Enthält der Wer-Bereich einen Tippfehler, dann gebe hier keine Daten ein!</string>
-    <string name="reminder_typo">6.) Enthält der Wer-Bereich einen Tippfehler, dann gebe hier keine Daten ein!</string>
+  	<string name="level_07_reminder"><b>Erinnerung:</b> Enthält der Wer-Bereich einen Tippfehler oder Buchstabendreher, dann gebe hier keine Daten ein!</string>
+    <string name="reminder_typo">6.) Enthält der Wer-Bereich einen Tippfehler oder Buchstabendreher, dann gebe hier keine Daten ein!</string>
     
     <string name="reminder_brand_in_domain">5.) Enthält der Wer-Bereich nur eine ähnliche Abwandlung des dir bisher vertrauten Wer-Bereiches, dann gebe hier keine Daten ein!</string>
     <string name="reminder_typosquat">7.) Enthält der Wer-Bereich einen Buchstabendreher, dann gebe hier keine Daten ein!</string>
