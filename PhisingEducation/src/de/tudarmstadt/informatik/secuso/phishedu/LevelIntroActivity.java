@@ -226,9 +226,9 @@ public class LevelIntroActivity extends SwipeActivity {
 					setTextView(view, R.id.example_06);
 				} else if (currentIndex == 6) {
 					setTextView(view, R.id.example_07);
-				} else if (currentIndex == 7) {
-					setTextView(view, R.id.example_08);
-				}
+				} //else if (currentIndex == 7) {
+				//	setTextView(view, R.id.example_08);
+				//}
 
 				// This example has other spans
 				// must stay here, will be overwritten otherwise
