@@ -46,6 +46,10 @@ class SaveGame{
 		SaveGame result = null;
 		try {
 			result = (new Gson()).fromJson(state,SaveGame.class);
+			
+			if(result == null){
+				return;
+			}
 			this.level = result.level;
 			this.app_started = result.app_started;
 			this.points = result.points;
