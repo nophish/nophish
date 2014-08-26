@@ -81,6 +81,8 @@
     <string name="level_11_splash_subtitle">Schlussbemerkung</string>
     <string name="level_11_splash_01_subtitle">Verwirrende Webadressen</string>
     <string name="level_11_splash_02_subtitle">Zusatz zu https://</string>
+    <string name="level_11_splash_03_subtitle">Gefahren beim Anklicken von Links</string>
+    
     
     <!-- Awareness activity -->
     <string name="awareness_text_hint">Hier kannst du einen beliebigen Text eingeben, der in  der E-Mail erscheinen soll.</string>
@@ -284,7 +286,9 @@
     <string name="level_11_intro_05_text_01"><b>https://</b>\n\nDu hast gelernt, dass das https:// einer Webadresse zwei Dinge versichert:\n\n1.) Dein Gespräch bekommt kein anderer mit (Verschlüsselung der Kommunikation)\n\n2.) Dein Gesprächspartner kann sich gegenüber einer dritten vertrauenswürdigen Partei ausweisen (Authentifikation des Gesprächspartners)</string>
     <string name="level_11_intro_06_text_01"><b>https:// - Authentifikation des Gesprächspartners</b>\n\nDies bedeutet, dass eine sogenannte vertrauenswürdige Zertifizierungsstelle zusichert, dass der Gesprächspartner wirklich derjenige ist, für den er sich ausgibt. Diese Zertifizierungsstelle führt bestimmte Identitätsprüfungen durch und stellt bei einer erfolgreichen Überprüfung dem Wer-Bereich ein sogenanntes Zertifikat aus. Dieses Zertifikat versichert dir, dass dein Gesprächspartner wirklich der ist, der im Wer-Bereich angegeben ist.</string>
     <string name="level_11_intro_07_text_01"><b>https:// - Unsaubere Identitätsprüfungen</b>\n\nDie große Konkurrenz und der Preisdruck unter den Zertifizierungsstellen führt leider teilweise zu oberflächlichen und vereinfachten Zertifikatsvergaben. Es ist dadurch möglich, dass Zertifikate Identitäten bestätigen, die sie gar nicht bestätigen sollten! Aus diesem Grund wurden zusätzlich spezielle Zertifikate (Extended Validation SSL Zertifikate) eingeführt, die unter einer noch strengeren Identitätsprüfung von speziellen Zertifizierungsstellen ausgestellt werden. Einige Internetbrowser (leider nicht der Android-Browser) bieten die Möglichkeit Webseiten mit solchen speziellen Zertifikaten, auf den ersten Blick zu erkennen.\n\nMehr Informationen kannst du unter <b>bsi-fuer-buerger.de</b> erhalten.\n\nViel Erfolg beim Aufdecken von Phishing-Webseiten. Lass dich nicht austricksen!</string>
-
+    <string name="level_11_intro_08_text_01"><b>Anklicken von Links kann gefährlich sein!</b>\n\nIn diesem Spiel hast du gelernt, wie du anhand von Webadressen erkennen kannst, ob du dich auf einer Phishing-Webseite befindest. Dabei haben wir uns darauf konzentriert, den Angriff zu erkennen, wenn du dich auf der Webseite befindest, da auch Links gefälscht sein können.\n\nDu solltest dennoch nicht, unüberlegt auf Links klicken, wenn du von vorne herein einer Nachricht nicht vertraust. Es ist nämlich möglich durch den Klick auf bösartige Links, Schadsoftware herunterzuladen.</string>
+    
+    
     <!-- FINAL APP SCREEN -->
     <string name="congrats">Glückwunsch</string>
     <string name="text_final_app_screen">Du hast das Spiel komplett durchgespielt. Dabei hast du viel gelernt und bist nun gegen gänginge Phishing-Tricks gewappnet. Wenn du weiterhin üben möchtest, vor allem um das Gelernte mal wieder aufzufrischen, kannst du über den Level-Überblick in die einzelnen Levels springen.\n\nViele Grüße,\nDein NoPhish Team</string>
@@ -424,6 +428,7 @@
     <string name="content_desc_disappointed_face">Enttäuschtes Gesicht</string>
     <string name="content_desc_speech_balloon_amazon">Sprechblase mit Amazon-Logo</string>
     <string name="content_desc_security_level_high">Sicherheitsmann</string>
+    <string name="content_desc_link">Zeigefinger - Klick auf Link</string>
     <string name="content_desc_swipe_right">Nach rechts swipen</string>
     <string name="content_desc_start_level_button">Starte Level</string>
     <string name="content_desc_single_tip">Entsprechende Stelle der Webadresse antippen</string>
