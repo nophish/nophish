@@ -84,6 +84,17 @@
             android:minWidth="@dimen/btn_standard_width"
             android:text="@string/button_about" />
 
+               <Button
+            android:id="@+id/menu_button_credits"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/btn_standard_height"
+            android:layout_below="@+id/menu_button_about"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/margin_small"
+            android:background="@drawable/button_grey"
+            android:contentDescription="@string/content_desc_credits"
+            android:minWidth="@dimen/btn_standard_width"
+            android:text="@string/button_credits" />
         <TextView
             android:id="@+id/version"
             android:layout_width="wrap_content"

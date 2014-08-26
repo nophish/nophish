@@ -6,7 +6,8 @@
 
     <!-- titles -->
     <string name="title_activity_awareness">E-Mail Fälschung</string>
-
+	<string name="title_activity_credits">Credits</string>
+	
     <!-- splash -->
 
     <!-- menu buttons -->
@@ -31,6 +32,7 @@
     <string name="google_plus_data_deleted">Alle deine Daten wurden bei google Plus gelöscht.</string>
     <string name="google_plus_snapshot_load_problem">Es gab ein Problem beim laden ihres Spielstandes:</string>
     <string name="button_social">Google Play</string>
+    <string name="button_credits">Credits</string>
 
     <!-- More Info -->
     <string name="info_apwg">Anti-Phishing Working Group</string>
@@ -385,6 +387,7 @@
     <string name="level_description">Level Description</string>
 
     <!-- CONTENT DESCRIPTIONS FOR ACCESSIBILITY -->
+	<string name="content_desc_credits">Credits</string>
     <string name="content_desc_back_button">Button Zurück</string>
     <string name="content_desc_forward_button">Button Weiter</string>
     <string name="content_desc_facebook_screenshot_original">Facebook Screenshot - original</string>
