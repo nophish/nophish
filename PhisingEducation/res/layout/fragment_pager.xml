@@ -42,12 +42,11 @@
             android:id="@+id/game_intro_start_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBaseline="@id/game_intro_arrow_back"
-            android:layout_alignBottom="@id/game_intro_arrow_back"
             android:layout_alignParentRight="true"
-            android:layout_alignRight="@+id/game_intro_arrow_forward"
+            android:layout_alignParentTop="true"
             android:contentDescription="@string/content_desc_start_level_button"
             android:text="Starte Level" />
+
     </RelativeLayout>
 
 </LinearLayout>

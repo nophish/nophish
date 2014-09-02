@@ -57,6 +57,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
+        android:layout_marginBottom="40dp"
         android:layout_alignParentLeft="true"
         android:contentDescription="@string/content_desc_tik"
         android:src="@drawable/checkmark" />
@@ -66,6 +67,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
+        android:layout_marginBottom="40dp"
         android:layout_alignParentRight="true"
         android:contentDescription="@string/content_desc_cross"
         android:src="@drawable/cross" />
