@@ -50,4 +50,9 @@ public interface FrontendController extends GameHelperListener {
 	 * @param score the current score
 	 */
 	void displayToastScore(int score);
+	
+	/**
+	 * update the current layout.
+	 */
+	void updateUI();
 }

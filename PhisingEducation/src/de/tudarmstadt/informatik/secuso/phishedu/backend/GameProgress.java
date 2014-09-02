@@ -5,6 +5,8 @@ import java.util.Iterator;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
+import android.view.View;
+import android.view.ViewGroup;
 
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.games.Games;
@@ -81,9 +83,13 @@ public class GameProgress{
 
 			@Override
             protected void onPostExecute(Integer status){
-				if (status != GamesStatusCodes.STATUS_OK && status != GamesStatusCodes.STATUS_SNAPSHOT_NOT_FOUND &&  status != GamesStatusCodes.STATUS_SNAPSHOT_CONFLICT) {
+				if (status == GamesStatusCodes.STATUS_OK ){
+					BackendControllerImpl.getInstance().getFrontend().displayToast(BackendControllerImpl.getInstance().getFrontend().getContext().getResources().getString(R.string.google_plus_snapshot_load_ok));
+					BackendControllerImpl.getInstance().getFrontend().updateUI();
+				}else if (status != GamesStatusCodes.STATUS_SNAPSHOT_NOT_FOUND &&  status != GamesStatusCodes.STATUS_SNAPSHOT_CONFLICT) {
 					BackendControllerImpl.getInstance().getFrontend().displayToast(BackendControllerImpl.getInstance().getFrontend().getContext().getResources().getString(R.string.google_plus_snapshot_load_problem)+status.toString());
                 }
+				
             }
         };
 

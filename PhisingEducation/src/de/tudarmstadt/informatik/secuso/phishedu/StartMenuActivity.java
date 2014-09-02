@@ -19,16 +19,21 @@ import de.tudarmstadt.informatik.secuso.phishedu.backend.MainActivity;
 public class StartMenuActivity extends PhishBaseActivity {
 	
 	@Override
-	public View getLayout(LayoutInflater inflater, ViewGroup container,
-			Bundle savedInstanceState) {
-		View v = inflater.inflate(R.layout.start_menu, container,false);
+	public void updateUI() {
+		super.updateUI();
 		
-		TextView startbutton = (TextView) v.findViewById(R.id.menu_button_play);
+		TextView startbutton = (TextView) this.getActivity().findViewById(R.id.menu_button_play);
 		if (BackendControllerImpl.getInstance().getLevelCompleted(BackendControllerImpl.getInstance().getLevelCount()-1)){
 			startbutton.setVisibility(View.GONE);
 		}else if (BackendControllerImpl.getInstance().getMaxUnlockedLevel() > 0) {
 			startbutton.setText(R.string.button_play_on);
 		}
+	}
+	
+	@Override
+	public View getLayout(LayoutInflater inflater, ViewGroup container,
+			Bundle savedInstanceState) {
+		View v = inflater.inflate(R.layout.start_menu, container,false);
 		
 		TextView version = (TextView) v.findViewById(R.id.version);
 		PackageInfo pInfo;

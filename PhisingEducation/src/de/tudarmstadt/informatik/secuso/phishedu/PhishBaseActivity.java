@@ -26,7 +26,7 @@ import de.tudarmstadt.informatik.secuso.phishedu.backend.MainActivity;
 
 public abstract class PhishBaseActivity extends Fragment implements OnClickListener, OnLevelChangeListener, OnLevelstateChangeListener {
 	
-	void updateUI(){
+	public void updateUI(){
 		if(getActivity()!=null){
 			
 			for (int i : getClickables()) {
