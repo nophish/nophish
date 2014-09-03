@@ -12,12 +12,9 @@ import java.util.Vector;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.media.AudioManager;
 import android.net.Uri;
-import android.os.Vibrator;
+import android.os.CountDownTimer;
 
-import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.drive.Drive;
 import com.google.android.gms.games.Games;
 import com.google.example.games.basegameutils.GameHelper;
 import com.google.gson.Gson;
@@ -45,6 +42,25 @@ public class BackendControllerImpl implements BackendController, UrlsLoadedListe
 	private static final int URL_CACHE_SIZE = 500;
 
 	private Random random;
+	
+	private class PhishCountDownTimer extends CountDownTimer{
+		public long remaining = 0;
+
+		public PhishCountDownTimer(long millisInFuture, long countDownInterval) {
+			super(millisInFuture, countDownInterval);
+			remaining = millisInFuture;
+		}
+		
+		public void onTick(long millisUntilFinished) {
+	    	 this.remaining=millisUntilFinished;
+	    	 getFrontend().updateUI();
+	     }
+
+	     public void onFinish() {
+	    	getFrontend().timeoutExceeded();
+	    	addResult(PhishResult.TimedOut);
+	     }
+	}
 
 	//singleton instance
 	private static BackendControllerImpl instance = new BackendControllerImpl();
@@ -59,7 +75,7 @@ public class BackendControllerImpl implements BackendController, UrlsLoadedListe
 	private Vector<OnLevelstateChangeListener> onLevelstateChangeListeners=new Vector<BackendController.OnLevelstateChangeListener>();
 	private Vector<OnLevelChangeListener> onLevelChangeListeners=new Vector<BackendController.OnLevelChangeListener>();
 	private BackendInitListener initListener;
-
+	
 	public static BasePhishURL[] deserializeURLs(String serialized){
 		BasePhishURL[] result = new BasePhishURL[0];
 		try {
@@ -95,6 +111,7 @@ public class BackendControllerImpl implements BackendController, UrlsLoadedListe
 	 * This holds the current URL returned by the last {@link BackendController}{@link #getNextUrl()} call
 	 */
 	private PhishURL current_url;
+	private PhishCountDownTimer current_timer;
 
 	/**
 	 * Private constructor for singelton.
@@ -340,6 +357,12 @@ public class BackendControllerImpl implements BackendController, UrlsLoadedListe
 		}
 
 		this.current_url=base_url;
+		
+		int countdown = BackendControllerImpl.getInstance().getLevelInfo().getLevelTime();
+		if( countdown > 0){
+			this.current_timer = new PhishCountDownTimer(countdown*1000,1000);
+			this.current_timer.start();
+		}
 	}
 
 	@Override
@@ -356,6 +379,9 @@ public class BackendControllerImpl implements BackendController, UrlsLoadedListe
 	@Override
 	public PhishResult userClicked(boolean acceptance) {
 		checkinited();
+		
+		this.current_timer.cancel();
+		
 		PhishResult result=this.current_url.getResult(acceptance);
 		//When we are in the HTTPS level we only accept https urls even if these are not attacks.
 		if(getLevelInfo().hasAttack(PhishAttackType.HTTP) && !this.getUrl().getParts()[0].equals("https:")){
@@ -380,25 +406,11 @@ public class BackendControllerImpl implements BackendController, UrlsLoadedListe
 			this.progress.resetProofRightInRow();
 		}
 		
-		if(result == PhishResult.Phish_NotDetected){
-			progress.decLives();
-		}
-		if(result == PhishResult.Phish_NotDetected || result == PhishResult.NoPhish_NotDetected){
-			AudioManager audio = (AudioManager) getFrontend().getContext().getSystemService(Context.AUDIO_SERVICE);
-			if(audio.getRingerMode() != AudioManager.RINGER_MODE_SILENT){
-				Vibrator v = (Vibrator) getFrontend().getContext().getSystemService(Context.VIBRATOR_SERVICE);
-				v.vibrate(500);
-			}
-		}
-		//if we did not correctly identify we have to readd.
-		if(result==PhishResult.Phish_NotDetected || result == PhishResult.NoPhish_NotDetected){
-			this.level_attacks.add(current_url.getAttackType());
-		}
 		int offset=this.current_url.getPoints(result);
 		//with this function we ensure that the user gets more points per level
 		//This ensures that there is no point in running the same level multiple times to collect points
 		offset=getLevelInfo().weightLevelPoints(offset);
-		if(!(offset<0 && getLevelPoints() <= 0)){
+		if(!(offset<=0 && getLevelPoints() <= 0)){
 			//don't display toast when not removing points
 			this.getFrontend().displayToastScore(offset);
 		}
@@ -408,6 +420,20 @@ public class BackendControllerImpl implements BackendController, UrlsLoadedListe
 		}
 		this.progress.setLevelPoints(new_levelpoints);
 
+		//if we did not correctly identify we have to readd.
+		if(result==PhishResult.Phish_NotDetected ||
+		   result == PhishResult.NoPhish_NotDetected || 
+		   result == PhishResult.TimedOut
+		   ){
+			if(result == PhishResult.Phish_NotDetected || result == PhishResult.TimedOut){
+				progress.decLives();
+			}
+			this.level_attacks.add(current_url.getAttackType());
+		}
+		this.checkLevelState();
+	}
+
+	private void checkLevelState(){
 		Levelstate newstate = getLevelState();
 		switch (newstate) {
 		case finished:
@@ -420,7 +446,7 @@ public class BackendControllerImpl implements BackendController, UrlsLoadedListe
 			break;
 		}
 	}
-
+	
 	@Override
 	public boolean partClicked(int part) {
 		checkinited();
@@ -640,5 +666,10 @@ public class BackendControllerImpl implements BackendController, UrlsLoadedListe
 	public void showSaveGames() {
 		 android.content.Intent snapshotIntent = Games.Snapshots.getSelectSnapshotIntent(getGameHelper().getApiClient(), "Select a snap", true, true, 5);
 		 getFrontend().getBaseActivity().startActivityForResult(snapshotIntent, 0);
+	}
+
+	@Override
+	public int remainingSeconds() {
+		return (int)(this.current_timer.remaining/1000);
 	}
 }

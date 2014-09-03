@@ -33,6 +33,9 @@ public class BasePhishURL implements PhishURL{
 	}
 	
 	public int getPoints(PhishResult result){
+		if(result == PhishResult.TimedOut){
+			return DEFAULT_TIMEOUT_POINTS;
+		}
 		boolean correct = (result == PhishResult.NoPhish_Detected || result==PhishResult.Phish_Detected);
 		return points[correct ? 0 : 1];
 	}

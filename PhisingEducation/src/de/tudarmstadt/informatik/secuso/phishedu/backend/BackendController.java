@@ -3,6 +3,7 @@ package de.tudarmstadt.informatik.secuso.phishedu.backend;
 import java.util.Random;
 
 import android.net.Uri;
+import android.os.CountDownTimer;
 
 import com.google.example.games.basegameutils.GameHelper;
 import com.google.example.games.basegameutils.GameHelper.GameHelperListener;
@@ -319,5 +320,11 @@ public interface BackendController extends GameHelperListener{
 	 * Show the currently saved savegames
 	 */
 	public void showSaveGames();
+	
+	/**
+	 * The number of seconds remaining for this URL 
+	 * @return 
+	 */
+	public int remainingSeconds();
 }
 

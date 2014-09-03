@@ -4,7 +4,9 @@ import java.util.Iterator;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.media.AudioManager;
 import android.os.AsyncTask;
+import android.os.Vibrator;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -406,6 +408,7 @@ public class GameProgress{
 	 */
 	public void decLives(){
 		this.level_lives--;
+		BackendControllerImpl.getInstance().getFrontend().vibrate(500);
 	}
 
 	/**

@@ -18,6 +18,10 @@ public interface PhishURL{
 	 * The default points the user gets for falsly identifiying URLS
 	 */
 	public static final int DEFAULT_INCORRECT_POINTS = -10;
+	/**
+	 * The default points the user gets for timing out
+	 */
+	public static final int DEFAULT_TIMEOUT_POINTS = 0;
 	
 	/**
 	 * Return the parts of the URL.

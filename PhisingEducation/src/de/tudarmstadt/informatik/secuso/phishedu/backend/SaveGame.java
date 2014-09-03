@@ -11,7 +11,7 @@ class SaveGame{
 	// serialization format version
     private static final String SERIAL_VERSION = "1.1";
    
-	public int[] results = {0,0,0,0};
+	public int[] results = {0,0,0,0,0};
 	public int[] levelPoints = new int[BackendControllerImpl.getInstance().getLevelCount()];
 	public int level = 0;
 	public int finishedLevel = -1;
@@ -55,7 +55,9 @@ class SaveGame{
 			this.points = result.points;
 			this.finishedLevel = result.finishedLevel;
 			this.detected_phish_behind = result.detected_phish_behind;
-			this.results = result.results;
+			for(int i=0; i<result.results.length; i++){
+				this.results[i]=result.results[i];
+			}
 			this.levelPoints = result.levelPoints;
 		} catch (JsonSyntaxException e) {
 			//Json SyntaxException

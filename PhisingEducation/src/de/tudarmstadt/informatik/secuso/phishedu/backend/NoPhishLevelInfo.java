@@ -12,6 +12,10 @@ public class NoPhishLevelInfo {
 	public static final int FIRST_REPEAT_LEVEL = 4;
 
 	private static final int[] levelOutros = { 0, 0, R.string.level_02_outro };
+	
+	public int getLevelTime(){
+		return levelTimes[Math.min(this.levelId, levelTimes.length-1)];
+	}
 
 	public float getURLTextsize() {
 		float textSize = 0;
@@ -43,6 +47,21 @@ public class NoPhishLevelInfo {
 
 		return textSize;
 	}
+	
+	private static final Integer[] levelTimes = {
+		0,
+		0,
+		0,
+		0,
+		90,
+		90,
+		60, 
+		60,
+		30,
+		30,
+		15,
+		15
+	};
 
 	private static final int[] levelTitlesIds = { R.string.level_title_00,
 			R.string.level_title_01, R.string.level_title_02,

@@ -307,6 +307,9 @@
     <string name="level_failed_title">Level nicht bestanden!</string>
     <string name="level_failed_text">Leider hast du alle deine Leben verloren. Versuche es am besten erneut!</string>
     <string name="level_failed_button">Level neu starten</string>
+    <string name="url_timeout_title">Die Zeit ist abgelaufen!</string>
+    <string name="url_timeout_text">Du warst zu langsam. Du verlierst ein Leben!</string>
+    <string name="url_timeout_button">Weiter</string>
     <string name="level_cancel_title">Level abbrechen?</string>
     <string name="level_cancel_text">Wenn du diese Seite verlässt wird dein Spielstand für dieses Level nicht gespeichert. Bist du dir sicher?</string>
     <string name="level_cancel_positive_button">Level verlassen</string>

@@ -22,7 +22,11 @@ public enum PhishResult {
 	/**
 	 * The user identified a no-phish URL as phishy
 	 */
-	NoPhish_NotDetected(3);
+	NoPhish_NotDetected(3),
+	/**
+	 * The user did not click in time
+	 */
+	TimedOut(4);
 	
 	private int value;
 

@@ -69,6 +69,16 @@
         android:text="@string/number"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
+    <TextView
+        android:id="@+id/time_couter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/margin_small"
+        android:layout_toLeftOf="@+id/life_1"
+        android:layout_centerVertical="true"
+        android:textAppearance="?android:attr/textAppearanceLarge" 
+        android:text="@string/number"/>
+    
     <ImageView
         android:id="@+id/life_1"
         android:layout_width="wrap_content"

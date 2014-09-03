@@ -5,12 +5,16 @@ import java.util.HashMap;
 import java.util.Map;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.media.AudioManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
@@ -252,5 +256,23 @@ public class MainActivity extends ActionBarActivity implements FrontendControlle
 	@Override
 	public void updateUI() {
 		this.current_frag.updateUI();
+	}
+
+	@Override
+	public void timeoutExceeded() {
+		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		builder.setTitle(R.string.url_timeout_title);
+		builder.setMessage(R.string.url_timeout_text);
+		builder.setNeutralButton(R.string.url_timeout_button,null);
+		builder.show();
+	}
+
+	@Override
+	public void vibrate(long miliseconds) {
+		AudioManager audio = (AudioManager) BackendControllerImpl.getInstance().getFrontend().getContext().getSystemService(Context.AUDIO_SERVICE);
+		if(audio.getRingerMode() != AudioManager.RINGER_MODE_SILENT){
+			Vibrator v = (Vibrator) BackendControllerImpl.getInstance().getFrontend().getContext().getSystemService(Context.VIBRATOR_SERVICE);
+			v.vibrate(miliseconds);
+		}
 	}
 }

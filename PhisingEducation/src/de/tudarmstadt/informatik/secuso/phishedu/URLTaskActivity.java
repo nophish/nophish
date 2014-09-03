@@ -2,6 +2,7 @@ package de.tudarmstadt.informatik.secuso.phishedu;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,7 @@ import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishURL;
 public class URLTaskActivity extends PhishBaseActivity {
 
 	private TextView urlText;
+	private TextView countdownText;
 	private TextView providerText;
 	private TextView question;
 	private TextView cross;
@@ -32,7 +34,8 @@ public class URLTaskActivity extends PhishBaseActivity {
 		urlText.setTextSize(BackendControllerImpl.getInstance().getLevelInfo()
 				.getURLTextsize());
 		this.providerText = (TextView) v.findViewById(R.id.url_task_providername);
-
+		this.countdownText = (TextView) v.findViewById(R.id.time_couter);
+		
 		nextURL();
 
 		if (getLevel() == 10) {
@@ -138,5 +141,11 @@ public class URLTaskActivity extends PhishBaseActivity {
 		if (getLevel() == 2) {
 			switchToFragment(ProofActivity.class);
 		}
+	}
+	
+	@Override
+	public void updateUI() {
+		super.updateUI();
+		countdownText.setText(""+BackendControllerImpl.getInstance().remainingSeconds());
 	}
 }

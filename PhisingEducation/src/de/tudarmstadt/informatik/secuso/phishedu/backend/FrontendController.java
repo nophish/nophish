@@ -55,4 +55,15 @@ public interface FrontendController extends GameHelperListener {
 	 * update the current layout.
 	 */
 	void updateUI();
+	
+	/**
+	 * Display a popup when the user did not decide on the URL fast enough.
+	 */
+	void timeoutExceeded();
+	
+	/**
+	 * vibrate for milisecods miliseconds
+	 * @param miliseconds how long should we vibrate
+	 */
+	void vibrate(long miliseconds);
 }
