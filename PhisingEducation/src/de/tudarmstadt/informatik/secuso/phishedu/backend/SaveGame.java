@@ -81,8 +81,8 @@ class SaveGame{
 		union.points = Math.max(this.points, other.points);
 		union.finishedLevel = Math.max(this.finishedLevel, other.finishedLevel);
 		union.detected_phish_behind = Math.max(this.detected_phish_behind, other.detected_phish_behind);
-		for(PhishResult value: PhishResult.values()){
-			union.results[value.getValue()]=Math.max(this.results[value.getValue()], other.results[value.getValue()]);
+		for(int i=0;i<this.results.length;i++){
+			union.results[i]=Math.max(this.results[i], other.results[i]);
 		}
 		for(int level=0;level<BackendControllerImpl.getInstance().getLevelCount();level++){
 			union.levelPoints[level]=Math.max(this.levelPoints[level],other.levelPoints[level]);
@@ -98,8 +98,8 @@ class SaveGame{
     	result.level=this.level;
     	result.app_started = this.app_started;
     	result.points = this.points;
- 		for(PhishResult value: PhishResult.values()){
- 			result.results[value.getValue()]=this.results[value.getValue()];
+ 		for(int i=0; i<this.results.length;i++){
+ 			result.results[i]=this.results[i];
  		}
  		for(int level=0;level<BackendControllerImpl.getInstance().getLevelCount();level++){
  			result.levelPoints[level]=this.levelPoints[level];
