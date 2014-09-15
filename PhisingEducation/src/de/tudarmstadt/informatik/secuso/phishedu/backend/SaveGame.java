@@ -9,7 +9,8 @@ import com.google.gson.JsonSyntaxException;
 
 class SaveGame{
 	// serialization format version
-    private static final String SERIAL_VERSION = "1.1";
+    @SuppressWarnings("unused")
+	private static final String SERIAL_VERSION = "1.1";
    
 	public int[] results = {0,0,0,0,0};
 	public int[] levelPoints = new int[BackendControllerImpl.getInstance().getLevelCount()];
@@ -110,13 +111,13 @@ class SaveGame{
 	
     /** Resets this SaveGame object to be empty. Empty means no stars on no levels. */
     public void zero() {
-    	this.results = new int[4];
+    	this.results = new int[PhishResult.getMax()+1];
 		this.levelPoints = new int[BackendControllerImpl.getInstance().getLevelCount()];
     }
 
     /** Returns whether or not this SaveGame is empty. Empty means no stars on no levels. */
     public boolean isZero() {
-        return Arrays.equals(this.results, new int[4]) && Arrays.equals(this.levelPoints, new int[BackendControllerImpl.getInstance().getLevelCount()]);
+        return Arrays.equals(this.results, new int[PhishResult.getMax()+1]) && Arrays.equals(this.levelPoints, new int[BackendControllerImpl.getInstance().getLevelCount()]);
     }
     
     /** Save this SaveGame object to a SharedPreferences. */

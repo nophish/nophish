@@ -359,7 +359,9 @@ public class BackendControllerImpl implements BackendController, UrlsLoadedListe
 		this.current_url=base_url;
 		
 		int countdown = BackendControllerImpl.getInstance().getLevelInfo().getLevelTime();
-		if( countdown > 0){
+		if( countdown == 0){
+			this.current_timer = null;
+		} else {
 			this.current_timer = new PhishCountDownTimer(countdown*1000,1000);
 			this.current_timer.start();
 		}
@@ -380,7 +382,9 @@ public class BackendControllerImpl implements BackendController, UrlsLoadedListe
 	public PhishResult userClicked(boolean acceptance) {
 		checkinited();
 		
-		this.current_timer.cancel();
+		if(this.current_timer != null){
+			this.current_timer.cancel();
+		}
 		
 		PhishResult result=this.current_url.getResult(acceptance);
 		//When we are in the HTTPS level we only accept https urls even if these are not attacks.
@@ -670,6 +674,10 @@ public class BackendControllerImpl implements BackendController, UrlsLoadedListe
 
 	@Override
 	public int remainingSeconds() {
-		return (int)(this.current_timer.remaining/1000);
+		if(this.current_timer==null){
+			return -1;
+		}else{
+		  return (int)(this.current_timer.remaining/1000);
+		}
 	}
 }

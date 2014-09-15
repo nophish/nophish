@@ -39,6 +39,7 @@ public class ResultActivity extends SwipeActivity {
 		resultTextIDs[PhishResult.NoPhish_Detected.getValue()] = R.string.you_are_correct;
 		resultTextIDs[PhishResult.Phish_NotDetected.getValue()] = R.string.you_are_wrong;
 		resultTextIDs[PhishResult.NoPhish_NotDetected.getValue()] = R.string.oversafe_text;
+		resultTextIDs[PhishResult.TimedOut.getValue()] = R.string.url_timeout_text;
 		resultTextIDs[RESULT_GUESSED] = R.string.you_guessed;
 
 		resultSmileyIDs = new int[PhishResult.values().length + 2];
@@ -46,6 +47,7 @@ public class ResultActivity extends SwipeActivity {
 		resultSmileyIDs[PhishResult.NoPhish_Detected.getValue()] = R.drawable.small_smiley_smile;
 		resultSmileyIDs[PhishResult.Phish_NotDetected.getValue()] = R.drawable.small_smiley_not_smile;
 		resultSmileyIDs[PhishResult.NoPhish_NotDetected.getValue()] = R.drawable.small_smiley_o;
+		resultSmileyIDs[PhishResult.TimedOut.getValue()] = R.drawable.small_smiley_not_smile;
 		resultSmileyIDs[RESULT_GUESSED] = R.drawable.small_smiley_you_guessed;
 	}
 

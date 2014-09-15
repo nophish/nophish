@@ -1,6 +1,7 @@
 package de.tudarmstadt.informatik.secuso.phishedu;
 
 import android.app.Activity;
+import android.opengl.Visibility;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.LayoutInflater;
@@ -9,7 +10,6 @@ import android.view.ViewGroup;
 import android.widget.HorizontalScrollView;
 import android.widget.TextView;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendControllerImpl;
-import de.tudarmstadt.informatik.secuso.phishedu.backend.MainActivity;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishResult;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishURL;
 
@@ -64,7 +64,7 @@ public class URLTaskActivity extends PhishBaseActivity {
 				scroll.fullScroll(View.FOCUS_RIGHT);
 			}
 		});
-
+		
 		return v;
 	}
 
@@ -115,21 +115,10 @@ public class URLTaskActivity extends PhishBaseActivity {
 	}
 
 	private void clicked(boolean acceptance) {
-		PhishResult result = BackendControllerImpl.getInstance().userClicked(
-				acceptance);
-		Class<? extends PhishBaseActivity> followActivity = ResultActivity.class;
-		// In Level 10 (HTTP) we don't show proof activity.
-		boolean show_proof = BackendControllerImpl.getInstance().showProof();
-		if (result == PhishResult.Phish_Detected) {
-			if (show_proof) {
-				followActivity = ProofActivity.class;
-			}
-		}
-		Bundle args = new Bundle();
-		args.putInt(Constants.ARG_RESULT, result.getValue());
-		((MainActivity) getActivity()).switchToFragment(followActivity, args);
+		PhishResult result = BackendControllerImpl.getInstance().userClicked(acceptance);
+		((MainActivity)BackendControllerImpl.getInstance().getFrontend()).resultView(result);
 	}
-
+	
 	@Override
 	public void onBackPressed() {
 		levelCanceldWarning();
@@ -146,6 +135,13 @@ public class URLTaskActivity extends PhishBaseActivity {
 	@Override
 	public void updateUI() {
 		super.updateUI();
-		countdownText.setText(""+BackendControllerImpl.getInstance().remainingSeconds());
+		int remaining_seconds = BackendControllerImpl.getInstance().remainingSeconds();
+		if(remaining_seconds>=0){
+			countdownText.setText(Integer.toString(remaining_seconds));
+			countdownText.setVisibility(View.VISIBLE);
+		}else{
+			countdownText.setVisibility(View.INVISIBLE);
+		}
+		
 	}
 }

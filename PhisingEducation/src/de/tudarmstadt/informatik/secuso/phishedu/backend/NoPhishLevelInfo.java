@@ -49,18 +49,18 @@ public class NoPhishLevelInfo {
 	}
 	
 	private static final Integer[] levelTimes = {
+		0, //not used; intro level
+		0, //not used; intro level
 		0,
 		0,
-		0,
-		0,
-		90,
-		90,
-		60, 
-		60,
 		30,
 		30,
-		15,
-		15
+		20, 
+		20,
+		10,
+		10,
+		5,
+		5
 	};
 
 	private static final int[] levelTitlesIds = { R.string.level_title_00,

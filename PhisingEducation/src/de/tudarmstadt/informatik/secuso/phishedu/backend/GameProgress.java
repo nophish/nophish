@@ -4,11 +4,7 @@ import java.util.Iterator;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.media.AudioManager;
 import android.os.AsyncTask;
-import android.os.Vibrator;
-import android.view.View;
-import android.view.ViewGroup;
 
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.games.Games;
@@ -38,7 +34,7 @@ public class GameProgress{
 	private static final int LIFES_PER_LEVEL = 3;
 	private static final int MAX_SNAPSHOT_RESOLVE_RETRIES = 3;
 
-	private int[] level_results = {0,0,0,0};
+	private int[] level_results = new int[PhishResult.getMax()+1];
 	//This is for saving the points per level. 
 	//Once the level is done the points get commited to the persistend state.
 	private int level_points;
@@ -86,7 +82,6 @@ public class GameProgress{
 			@Override
             protected void onPostExecute(Integer status){
 				if (status == GamesStatusCodes.STATUS_OK ){
-					BackendControllerImpl.getInstance().getFrontend().displayToast(BackendControllerImpl.getInstance().getFrontend().getContext().getResources().getString(R.string.google_plus_snapshot_load_ok));
 					BackendControllerImpl.getInstance().getFrontend().updateUI();
 				}else if (status != GamesStatusCodes.STATUS_SNAPSHOT_NOT_FOUND &&  status != GamesStatusCodes.STATUS_SNAPSHOT_CONFLICT) {
 					BackendControllerImpl.getInstance().getFrontend().displayToast(BackendControllerImpl.getInstance().getFrontend().getContext().getResources().getString(R.string.google_plus_snapshot_load_problem)+status.toString());
@@ -315,7 +310,7 @@ public class GameProgress{
 			throw new IllegalStateException("The given level ("+level+") is not unlocked.");
 		}
 		this.mSaveGame.level=level;
-		this.level_results=new int[4];
+		this.level_results=new int[PhishResult.getMax()+1];
 		this.level_points=0;
 		this.level_lives=LIFES_PER_LEVEL;
 

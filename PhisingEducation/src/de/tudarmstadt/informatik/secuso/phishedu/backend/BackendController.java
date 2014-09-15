@@ -3,7 +3,6 @@ package de.tudarmstadt.informatik.secuso.phishedu.backend;
 import java.util.Random;
 
 import android.net.Uri;
-import android.os.CountDownTimer;
 
 import com.google.example.games.basegameutils.GameHelper;
 import com.google.example.games.basegameutils.GameHelper.GameHelperListener;
