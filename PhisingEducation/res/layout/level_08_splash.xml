@@ -35,15 +35,6 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:contentDescription="@string/content_desc_speech_balloon_amazon"
-        android:src="@drawable/number_seven" />
-
-    <ImageView
-        android:id="@+id/ImageView01"
-        android:layout_width="@dimen/security_icons"
-        android:layout_height="@dimen/security_icons"
-        android:layout_alignLeft="@+id/level_09_title"
-        android:layout_alignTop="@+id/imageView1"
-        android:contentDescription="@string/content_desc_one"
         android:src="@drawable/number_one" />
 
 </RelativeLayout>
