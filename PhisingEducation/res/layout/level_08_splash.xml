@@ -29,6 +29,7 @@
         android:textSize="@dimen/font_size_large" />
 
     <ImageView
+<<<<<<< HEAD
         android:id="@+id/ImageView01"
         android:layout_width="@dimen/security_icons"
         android:layout_height="@dimen/security_icons"
@@ -36,6 +37,14 @@
         android:layout_below="@+id/level_subtitle_09"
         android:layout_marginTop="62dp"
         android:contentDescription="@string/content_desc_one"
+=======
+        android:id="@+id/imageView1"
+        android:layout_width="@dimen/security_icons"
+        android:layout_height="@dimen/security_icons"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:contentDescription="@string/content_desc_speech_balloon_amazon"
+>>>>>>> c5c2ae89d46e8f5468313ecd215801c9c9324755
         android:src="@drawable/number_one" />
 
 </RelativeLayout>
