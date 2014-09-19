@@ -1,9 +1,5 @@
 package de.tudarmstadt.informatik.secuso.phishedu;
 
-import java.util.regex.Pattern;
-
-import android.accounts.Account;
-import android.accounts.AccountManager;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -12,7 +8,6 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,14 +30,6 @@ public class AwarenessActivity extends PhishBaseActivity {
 	@Override
 	public View getLayout(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View v = inflater.inflate(R.layout.awareness, container, false);
-		Pattern emailPattern = Patterns.EMAIL_ADDRESS; // API level 8+
-		Account[] accounts = AccountManager.get(getActivity().getApplicationContext()).getAccounts();
-		ArrayAdapter<String> toAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_dropdown_item_1line);
-		for (Account account : accounts) {
-			if (emailPattern.matcher(account.name).matches()) {
-				toAdapter.add(account.name);
-			}
-		}
 		final String[] fromMails = getResources().getStringArray(R.array.fromMails);
 		ArrayAdapter<String> fromAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_dropdown_item_1line,fromMails);
 		AutoCompleteTextView fromView = (AutoCompleteTextView) v.findViewById(R.id.awareness_edit_sender_email);
@@ -51,11 +38,6 @@ public class AwarenessActivity extends PhishBaseActivity {
 		PopupListener listener = new PopupListener();
 		fromView.setOnFocusChangeListener(listener);
 		fromView.setOnClickListener(listener);
-		AutoCompleteTextView toView = (AutoCompleteTextView) v.findViewById(R.id.awareness_edit_receiver_email);
-		toView.setAdapter(toAdapter);
-		toView.setThreshold(1);
-		toView.setOnFocusChangeListener(listener);
-		toView.setOnClickListener(listener);
 		return v;
 	}
 
