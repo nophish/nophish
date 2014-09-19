@@ -28,8 +28,6 @@ public class GooglePlusActivity extends PhishBaseActivity {
 				showSignIn ? View.GONE : View.VISIBLE);
 		v.findViewById(R.id.button_delete_remote_data).setVisibility(
 				showSignIn ? View.GONE : View.VISIBLE);
-		v.findViewById(R.id.button_show_snapshots).setVisibility(
-				showSignIn ? View.GONE : View.VISIBLE);
 	}
 
 	@Override
@@ -50,8 +48,6 @@ public class GooglePlusActivity extends PhishBaseActivity {
 	        }
 		} else if (id == R.id.button_delete_remote_data) {
 			BackendControllerImpl.getInstance().deleteRemoteData();
-		} else if (id == R.id.button_show_snapshots) {
-			BackendControllerImpl.getInstance().showSaveGames();
 		}
 	}
 	
@@ -75,8 +71,7 @@ public class GooglePlusActivity extends PhishBaseActivity {
 				R.id.button_show_leaderboard_rate,
 				R.id.button_show_leaderboard_total,
 				R.id.button_show_leaderboard_total_points,
-				R.id.button_delete_remote_data,
-				R.id.button_show_snapshots
+				R.id.button_delete_remote_data
 		};
 	}
 	
