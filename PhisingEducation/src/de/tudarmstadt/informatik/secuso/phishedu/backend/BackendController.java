@@ -220,6 +220,13 @@ public interface BackendController extends GameHelperListener{
 	 * @return the number of points for the given level
 	 */
 	public int getLevelPoints(int level);
+	
+	/**
+	 * Get the number of stars the user got in the given level
+	 * @param level The level for which you want to get the stars
+	 * @return the number of stars for the given level
+	 */
+	public int getLevelStars(int level);
 
 	/**
 	 * Test whether a given leve was completed successfully 

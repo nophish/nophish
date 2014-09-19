@@ -265,6 +265,19 @@ public class GameProgress{
 	public int getLevelPoints(){
 		return this.level_points;
 	}
+	
+	/**
+	 * Return the number of stars the user achieved for a given level.
+	 * @param level the level to get the stars for
+	 * @return the number of stars
+	 */
+	public int getLevelStars(int level){
+		int levelpoints = getLevelPoints(level);
+		int maxlevelpoints = BackendControllerImpl.getInstance().getLevelInfo(level).getLevelmaxPoints();
+		int maxstars=3;
+		
+		return (int) Math.floor(levelpoints/(maxlevelpoints/maxstars));
+	}
 
 	/**
 	 * Save the level Points to the persistend state.
@@ -415,6 +428,8 @@ public class GameProgress{
 	public int getLevelPoints(int level){
 		return this.mSaveGame.levelPoints[level];
 	}
+	
+	
 	
 	/**
 	 * remove the game Data that was stored in Googles Cloud Save Storage

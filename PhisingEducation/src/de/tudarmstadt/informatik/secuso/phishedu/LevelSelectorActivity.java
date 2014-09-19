@@ -5,18 +5,19 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendControllerImpl;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.NoPhishLevelInfo;
 
 public class LevelSelectorActivity extends SwipeActivity implements
-		ViewPager.OnPageChangeListener {
+ViewPager.OnPageChangeListener {
 
 	@Override
 	int getTitle(){
 		return R.string.button_level_overview;
 	}
-	
+
 	@Override
 	protected int getPageCount() {
 		int levels=BackendControllerImpl.getInstance().getLevelCount();
@@ -50,6 +51,11 @@ public class LevelSelectorActivity extends SwipeActivity implements
 				layoutView.findViewById(R.id.levelbutton_points).setVisibility(View.INVISIBLE);
 				layoutView.findViewById(R.id.levelbutton_points_text).setVisibility(View.INVISIBLE);
 			}
+			if(level_info.showStars()){
+				showStars(layoutView, BackendControllerImpl.getInstance().getLevelStars(level));
+			}else {
+				hideStars(layoutView);
+			}
 		} else {
 			button.setBackgroundDrawable(getResources().getDrawable(
 					R.drawable.levelicon_inactive_bg));
@@ -61,9 +67,14 @@ public class LevelSelectorActivity extends SwipeActivity implements
 					View.INVISIBLE);
 			layoutView.findViewById(R.id.levelbutton_points_text).setVisibility(
 					View.INVISIBLE);
+			if(level_info.showStars()){
+				showStars(layoutView, 0);
+			}else {
+				hideStars(layoutView);
+			}
 		}
 		TextView levelnumber = (TextView) layoutView.findViewById(R.id.levelbutton_text);
-		levelnumber.setText(level_info.levelNumber);
+		levelnumber.setText(level_info.getLevelNumber());
 		TextView levelTitle = (TextView) layoutView.findViewById(R.id.level_title);
 		levelTitle.setText(level_info.titleId);
 		TextView levelDescription = (TextView) layoutView.findViewById(R.id.level_description);

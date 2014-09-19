@@ -423,6 +423,7 @@
     <string name="content_desc_one">Zahl Eins</string>
     <string name="content_desc_seven">Zahl Sieben</string>
     <string name="content_desc_padlock">Vorhängeschloss</string>
+    <string name="content_desc_star">Stern</string>
     <string name="content_desc_tik">Häkchen</string>
     <string name="content_desc_play">Button Spielen</string>
     <string name="content_desc_level_overview">Button Level-Überblick</string>

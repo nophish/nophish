@@ -680,4 +680,9 @@ public class BackendControllerImpl implements BackendController, UrlsLoadedListe
 		  return (int)(this.current_timer.remaining/1000);
 		}
 	}
+
+	@Override
+	public int getLevelStars(int level) {
+		return this.progress.getLevelStars(level);
+	}
 }

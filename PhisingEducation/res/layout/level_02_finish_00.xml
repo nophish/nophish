@@ -93,7 +93,33 @@
             android:text="@string/number"
             android:textAppearance="?android:attr/textAppearanceMedium" />
         
+        <ImageView
+            android:id="@+id/star1"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:contentDescription="@string/content_desc_star"
+            android:layout_below="@+id/level_max_score"
+            android:src="@drawable/star_gold" />
         
+        <ImageView
+            android:id="@+id/star2"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="10dp"
+            android:layout_toRightOf="@+id/star1"
+            android:contentDescription="@string/content_desc_star"
+            android:src="@drawable/star_gold" />
+        
+        <ImageView
+            android:id="@+id/star3"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginBottom="10dp"
+            android:layout_alignParentBottom="true"
+            android:layout_toRightOf="@+id/star2"
+            android:contentDescription="@string/content_desc_star"
+            android:src="@drawable/star_gold" />
         
     </RelativeLayout>
     <TextView

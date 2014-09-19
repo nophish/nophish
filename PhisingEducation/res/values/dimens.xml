@@ -38,7 +38,7 @@
     <!-- icons -->
 
     <dimen name="leveicon_corner">50dp</dimen>
-    <dimen name="leveicon_textsize">150dp</dimen>
+    <dimen name="leveicon_textsize">130dp</dimen>
     <dimen name="icon_small">30dp</dimen>
     <dimen name="icon_xsmall">25dp</dimen>
     <dimen name="icon_medium">35dp</dimen>

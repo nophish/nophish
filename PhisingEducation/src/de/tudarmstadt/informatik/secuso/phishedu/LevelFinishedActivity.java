@@ -78,6 +78,11 @@ public class LevelFinishedActivity extends SwipeActivity {
 		NoPhishLevelInfo levelinfo = BackendControllerImpl.getInstance().getLevelInfo(getLevel());
 		View view = inflater.inflate(levelinfo.finishedLayouts[page], container, false);
 		setScoreText(view);
+		if(levelinfo.showStars()){
+			showStars(view, BackendControllerImpl.getInstance().getLevelStars(getLevel()));
+		}else{
+			hideStars(view);
+		}
 
 		TextView outroText = (TextView) view.findViewById(R.id.level_outro_text);
 		if(outroText != null){

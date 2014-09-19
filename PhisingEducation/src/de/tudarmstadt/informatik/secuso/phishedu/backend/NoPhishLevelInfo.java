@@ -1,5 +1,6 @@
 package de.tudarmstadt.informatik.secuso.phishedu.backend;
 
+import de.tudarmstadt.informatik.secuso.phishedu.Constants;
 import de.tudarmstadt.informatik.secuso.phishedu.R;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.generator.BaseGenerator;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.generator.KeepGenerator;
@@ -198,7 +199,22 @@ public class NoPhishLevelInfo {
 	public final int levelId;
 	public final PhishAttackType[] attackTypes;
 	public final Class<? extends BaseGenerator>[] generators;
-	public final String levelNumber;
+	
+	public String getLevelNumber(){
+		if (this.isIntroLevel()) {
+			return "E" + (this.levelId + 1);
+		} else {
+			return Integer.toString(this.levelId - 1);
+		}
+	}
+	
+	public boolean isOutroLevel(){
+		return (this.levelId == BackendControllerImpl.getInstance().getLevelCount()-1);
+	}
+	
+	public boolean showStars(){
+		return Constants.SHOW_STARS && (! (isIntroLevel() || isOutroLevel()));
+	}
 
 	@SuppressWarnings("unchecked")
 	public NoPhishLevelInfo(int levelid) {
@@ -214,11 +230,7 @@ public class NoPhishLevelInfo {
 		this.finishedLayouts = levelFinishedLayoutIds[finished_index];
 		int attacktype_index = Math.min(levelid, levelAttackTypes.length - 1);
 		this.attackTypes = levelAttackTypes[attacktype_index];
-		if (levelid < 2) {
-			this.levelNumber = "E" + (levelid + 1);
-		} else {
-			this.levelNumber = Integer.toString(levelid - 1);
-		}
+		
 		if (levelid < levelOutros.length) {
 			this.outroId = levelOutros[levelid];
 		} else {
@@ -226,6 +238,10 @@ public class NoPhishLevelInfo {
 		}
 		int geneator_index = Math.min(levelid, levelGenerators.length - 1);
 		this.generators = levelGenerators[geneator_index];
+	}
+	
+	public boolean isIntroLevel(){
+		return this.levelId < 2;
 	}
 
 	public int getLevelmaxPoints(){

@@ -56,6 +56,36 @@
             android:layout_alignParentRight="true"
             android:contentDescription="@string/content_desc_padlock"
             android:src="@drawable/padlock" />
+        
+        <ImageView
+            android:id="@+id/star1"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_alignParentBottom="true"
+            android:contentDescription="@string/content_desc_star"
+            android:src="@drawable/star_gold" />
+        
+        <ImageView
+            android:id="@+id/star2"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="10dp"
+            android:layout_toRightOf="@+id/star1"
+            android:contentDescription="@string/content_desc_star"
+            android:src="@drawable/star_gold" />
+        
+        <ImageView
+            android:id="@+id/star3"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginBottom="10dp"
+            android:layout_alignParentBottom="true"
+            android:layout_toRightOf="@+id/star2"
+            android:contentDescription="@string/content_desc_star"
+            android:src="@drawable/star_gold" />
     </RelativeLayout>
 
     <TextView

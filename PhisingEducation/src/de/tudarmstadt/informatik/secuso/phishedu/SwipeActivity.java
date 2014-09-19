@@ -23,6 +23,38 @@ public abstract class SwipeActivity extends PhishBaseActivity implements ViewPag
 	protected abstract View getPage(int page, LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState);
 
 	private boolean gotostart=false;
+	
+	private ImageView[] getStars(View layout){
+		ImageView[] stars = new ImageView[3];
+		stars[0] = (ImageView) layout.findViewById(R.id.star1);
+		stars[1] = (ImageView) layout.findViewById(R.id.star2);
+		stars[2] = (ImageView) layout.findViewById(R.id.star3);
+		return stars;
+	}
+	
+	protected void hideStars(View layout){
+		ImageView[] stars = getStars(layout);
+		for (ImageView star : stars) {
+			if(star != null){
+				star.setVisibility(View.INVISIBLE);
+			}
+		}
+	}
+
+	protected void showStars(View layout, int number){
+		ImageView[] stars = getStars(layout);
+		
+		for(int i=0; i<stars.length;i++){
+			if(stars[i]!=null){
+				if(number>=i+1){
+					stars[i].setImageResource(R.drawable.star_gold);
+				}else{
+					stars[i].setImageResource(R.drawable.star_silver);
+				}
+				stars[i].setVisibility(View.VISIBLE);
+			}
+		}
+	}
 
 	@Override
 	public void onResume() {
