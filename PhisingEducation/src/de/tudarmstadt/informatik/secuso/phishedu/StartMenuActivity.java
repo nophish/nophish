@@ -53,8 +53,7 @@ public class StartMenuActivity extends PhishBaseActivity {
 			R.id.menu_button_level_overview,
 			R.id.menu_button_more_info,
 			R.id.menu_button_play,
-			R.id.menu_button_social,
-			R.id.menu_button_credits
+			R.id.menu_button_social
 		};
 	}
 	
@@ -72,8 +71,6 @@ public class StartMenuActivity extends PhishBaseActivity {
 			BackendControllerImpl.getInstance().startLevel(userlevel);
 		} else if (id == R.id.menu_button_social) {
 			switchToFragment(GooglePlusActivity.class);
-		}else if (id == R.id.menu_button_credits) {
-			switchToFragment(Credits.class);
 		}
 	}
 	
