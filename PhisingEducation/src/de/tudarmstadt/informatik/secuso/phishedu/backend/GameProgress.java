@@ -122,8 +122,13 @@ public class GameProgress{
             if (retryCount < MAX_SNAPSHOT_RESOLVE_RETRIES){
                 return processSnapshotOpenResult(resolveResult, retryCount);
             }else{
-                String message = "Could not resolve snapshot conflicts";
-                BackendControllerImpl.getInstance().getFrontend().displayToast(message);
+                BackendControllerImpl.getInstance().getFrontend().getBaseActivity().runOnUiThread(new Runnable() {
+					@Override
+					public void run() {
+						String message = "Could not resolve snapshot conflicts";
+						BackendControllerImpl.getInstance().getFrontend().displayToast(message);
+					}
+				});
             }
         }
         // Fail, return null.
