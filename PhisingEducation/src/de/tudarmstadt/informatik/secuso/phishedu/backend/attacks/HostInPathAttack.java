@@ -46,20 +46,20 @@ public class HostInPathAttack extends AbstractAttack {
 	public String[] getParts() {
 		String[] parts = super.getParts().clone();
 		
-		ArrayList<String> adder = new ArrayList<String>(Arrays.asList(parts));
+		ArrayList<String> adder = new ArrayList<String>();
 		//host to be added to path
-		String[] address = new String[] { parts[0], parts[1], parts[2],
-				parts[3] };
-		adder.set(2, "");
-		
+		adder.add(parts[0]);
+		adder.add(parts[1]);
+		adder.add("");
 		if (phish_domain < PHISHER_DOMAINS.length) {
 			//a real domain is picked, no IP
-			adder.set(3, PHISHER_DOMAINS[phish_domain]);
+			adder.add(PHISHER_DOMAINS[phish_domain]);
 		}else{
 			//IP Address to be generated for parts[3]
-			adder.set(3, ip);
+			adder.add(ip);
 		}
-		adder.addAll(5, Arrays.asList(address));
+		adder.add("/");
+		adder.addAll(Arrays.asList(parts));
 		return adder.toArray(new String[0]);
 	}
 	

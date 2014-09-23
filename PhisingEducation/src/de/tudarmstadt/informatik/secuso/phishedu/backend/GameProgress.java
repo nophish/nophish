@@ -146,7 +146,9 @@ public class GameProgress{
                     protected Snapshots.OpenSnapshotResult doInBackground(Void... params) {
                         Snapshots.OpenSnapshotResult result = Games.Snapshots.open(getApiClient(),REMOTE_STORE_GAME, true).await();
                         Snapshot toWrite = processSnapshotOpenResult(result,0);
-                        writeSnapshot(toWrite);
+                        if(toWrite != null){
+                          writeSnapshot(toWrite);
+                        }
                         return result;
                     }
                 };
