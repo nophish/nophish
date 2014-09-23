@@ -238,8 +238,6 @@ public class GameProgress{
 				this.mSaveGame.detected_phish_behind+=1;
 			}
 		}
-		
-		this.saveState();
 	}
 	
 	/**
