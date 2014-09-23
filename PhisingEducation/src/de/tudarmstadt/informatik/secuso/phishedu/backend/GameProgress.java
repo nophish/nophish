@@ -1,5 +1,7 @@
 package de.tudarmstadt.informatik.secuso.phishedu.backend;
 
+import java.io.IOException;
+import java.io.OutputStream;
 import java.util.Iterator;
 
 import android.content.Context;
@@ -7,6 +9,9 @@ import android.content.SharedPreferences;
 import android.os.AsyncTask;
 
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.Status;
+import com.google.android.gms.drive.Contents;
+import com.google.android.gms.drive.MetadataChangeSet;
 import com.google.android.gms.games.Games;
 import com.google.android.gms.games.GamesStatusCodes;
 import com.google.android.gms.games.achievement.Achievement;
@@ -14,6 +19,7 @@ import com.google.android.gms.games.snapshot.Snapshot;
 import com.google.android.gms.games.snapshot.SnapshotMetadata;
 import com.google.android.gms.games.snapshot.SnapshotMetadataBuffer;
 import com.google.android.gms.games.snapshot.SnapshotMetadataChange;
+import com.google.android.gms.games.snapshot.SnapshotMetadataChangeCreator;
 import com.google.android.gms.games.snapshot.Snapshots;
 
 import de.tudarmstadt.informatik.secuso.phishedu.Constants;
@@ -38,6 +44,7 @@ public class GameProgress{
 	//This is for saving the points per level. 
 	//Once the level is done the points get commited to the persistend state.
 	private int level_points;
+	private int level;
 	private int level_lives=LIFES_PER_LEVEL;
 	private int proof_right_in_row=0;
 
@@ -111,13 +118,9 @@ public class GameProgress{
             Snapshot conflictSnapshot = result.getConflictingSnapshot();
             SaveGame resolved = new SaveGame(snapshot.readFully());
             resolved = resolved.unionWith(new SaveGame(conflictSnapshot.readFully()));
-            
-            Snapshot resolvedSnapshot = snapshot;
-            resolvedSnapshot.writeBytes(resolved.toBytes());
-            
-            Snapshots.OpenSnapshotResult resolveResult = Games.Snapshots.resolveConflict(
-                    getApiClient(), result.getConflictId(), resolvedSnapshot)
-                    .await();
+            snapshot.writeBytes(resolved.toBytes());
+
+            Snapshots.OpenSnapshotResult resolveResult = Games.Snapshots.resolveConflict(getApiClient(), result.getConflictId(), snapshot).await();
             
             if (retryCount < MAX_SNAPSHOT_RESOLVE_RETRIES){
                 return processSnapshotOpenResult(resolveResult, retryCount);
@@ -238,6 +241,8 @@ public class GameProgress{
 				this.mSaveGame.detected_phish_behind+=1;
 			}
 		}
+		
+		this.saveState();
 	}
 	
 	/**
@@ -259,8 +264,8 @@ public class GameProgress{
 	 * These are the total points of the user. They only change when the user successfully finishes a level.
 	 * @return the currently saved points
 	 */
-	public int getPoints(){
-		return this.mSaveGame.points;
+	public int getTotalPoints(){
+		return this.mSaveGame.getPoints();
 	}
 
 	/**
@@ -288,12 +293,11 @@ public class GameProgress{
 	 * Save the level Points to the persistend state.
 	 */
 	public void commitPoints(){
-		this.mSaveGame.points+=this.level_points;
-		if(this.getApiClient().isConnected()){
-			Games.Leaderboards.submitScore(getApiClient(), context.getResources().getString(R.string.leaderboard_total_points), this.mSaveGame.points);
+		if(this.getLevelPoints() > this.mSaveGame.levelPoints[this.getLevel()]){
+			this.mSaveGame.levelPoints[this.getLevel()]=this.getLevelPoints();
 		}
-		if(this.getPoints() > this.mSaveGame.levelPoints[this.getLevel()]){
-			this.mSaveGame.levelPoints[this.getLevel()]=this.getPoints();
+		if(this.getApiClient().isConnected()){
+			Games.Leaderboards.submitScore(getApiClient(), context.getResources().getString(R.string.leaderboard_total_points), this.mSaveGame.getPoints());
 		}
 		saveState();
 	}
@@ -316,7 +320,7 @@ public class GameProgress{
 	 * @return the level number.
 	 */
 	public int getLevel() {
-		return this.mSaveGame.level;
+		return this.level;
 	}
 	/**
 	 * This Function sets the current level of the user.
@@ -327,7 +331,7 @@ public class GameProgress{
 		if(getMaxUnlockedLevel()<level){
 			throw new IllegalStateException("The given level ("+level+") is not unlocked.");
 		}
-		this.mSaveGame.level=level;
+		this.level=level;
 		this.level_results=new int[PhishResult.getMax()+1];
 		this.level_points=0;
 		this.level_lives=LIFES_PER_LEVEL;
@@ -357,10 +361,10 @@ public class GameProgress{
 
 	private void unlockAchievements(){
 		//unlock Achievements
-		if(this.mSaveGame.level>1){
+		if(this.level>1){
 			Games.Achievements.unlock(getApiClient(), context.getResources().getString(R.string.achievement_search_and_rescue));
 		}
-		if(this.mSaveGame.level>2){
+		if(this.level>2){
 			Games.Achievements.unlock(getApiClient(), context.getResources().getString(R.string.achievement_know_your_poison));
 		}
 	}

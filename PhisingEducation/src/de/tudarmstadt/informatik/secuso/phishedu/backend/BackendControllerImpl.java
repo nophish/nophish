@@ -465,7 +465,7 @@ public class BackendControllerImpl implements BackendController, UrlsLoadedListe
 
 	public int getTotalPoints(){
 		checkinited();
-		return this.progress.getPoints();
+		return this.progress.getTotalPoints();
 	}
 
 	public int getLevelPoints(){

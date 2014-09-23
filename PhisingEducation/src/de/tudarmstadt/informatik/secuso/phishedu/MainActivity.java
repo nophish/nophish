@@ -14,6 +14,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -35,7 +36,6 @@ import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishResult;
 public class MainActivity extends ActionBarActivity implements FrontendController, OnLevelChangeListener, BackendInitListener, OnLevelstateChangeListener {
 	Map<Class<? extends PhishBaseActivity>, PhishBaseActivity> fragCache = new HashMap<Class<? extends PhishBaseActivity>, PhishBaseActivity>();
 	PhishBaseActivity current_frag;
-
 	@Override
 	protected void onStart() {
 		super.onStart();
@@ -229,22 +229,6 @@ public class MainActivity extends ActionBarActivity implements FrontendControlle
 	@Override
 	protected void onSaveInstanceState(Bundle outState) {
 		//No call for super(). Bug on API Level > 11.
-	}
-	
-	@Override
-	public void onDetachedFromWindow() {
-		super.onDetachedFromWindow();
-
-	    try {
-	        Field childFragmentManager = Fragment.class.getDeclaredField("mChildFragmentManager");
-	        childFragmentManager.setAccessible(true);
-	        childFragmentManager.set(this, null);
-
-	    } catch (NoSuchFieldException e) {
-	        throw new RuntimeException(e);
-	    } catch (IllegalAccessException e) {
-	        throw new RuntimeException(e);
-	    }
 	}
 
 	@Override

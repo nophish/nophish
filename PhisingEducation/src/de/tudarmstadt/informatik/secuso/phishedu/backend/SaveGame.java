@@ -14,11 +14,9 @@ class SaveGame{
    
 	public int[] results = {0,0,0,0,0};
 	public int[] levelPoints = new int[BackendControllerImpl.getInstance().getLevelCount()];
-	public int level = 0;
 	public int finishedLevel = -1;
 	public int detected_phish_behind = 0;
 	public boolean app_started = false;
-	public int points = 0;
 		
 	public SaveGame(){
 		zero();
@@ -51,9 +49,7 @@ class SaveGame{
 			if(result == null){
 				return;
 			}
-			this.level = result.level;
 			this.app_started = result.app_started;
-			this.points = result.points;
 			this.finishedLevel = result.finishedLevel;
 			this.detected_phish_behind = result.detected_phish_behind;
 			for(int i=0; i<result.results.length; i++){
@@ -63,6 +59,14 @@ class SaveGame{
 		} catch (JsonSyntaxException e) {
 			//Json SyntaxException
 		}
+	}
+	
+	public int getPoints(){
+		int result = 0;
+		for (int points : this.levelPoints) {
+			result += points;
+		}
+		return result;
 	}
 	
 	public byte[] toBytes() {
@@ -77,9 +81,7 @@ class SaveGame{
 		//Current resolving strategy: get the most of all values
 		SaveGame union = clone();
 		
-		union.level= Math.max(this.level, other.level);
 		union.app_started = this.app_started || other.app_started;
-		union.points = Math.max(this.points, other.points);
 		union.finishedLevel = Math.max(this.finishedLevel, other.finishedLevel);
 		union.detected_phish_behind = Math.max(this.detected_phish_behind, other.detected_phish_behind);
 		for(int i=0;i<this.results.length;i++){
@@ -96,9 +98,7 @@ class SaveGame{
     public SaveGame clone() {
     	SaveGame result = new SaveGame();
     	 
-    	result.level=this.level;
     	result.app_started = this.app_started;
-    	result.points = this.points;
  		for(int i=0; i<this.results.length;i++){
  			result.results[i]=this.results[i];
  		}
