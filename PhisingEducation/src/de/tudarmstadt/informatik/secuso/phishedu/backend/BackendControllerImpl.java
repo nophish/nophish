@@ -57,7 +57,6 @@ public class BackendControllerImpl implements BackendController, UrlsLoadedListe
 	     }
 
 	     public void onFinish() {
-	    	getFrontend().timeoutExceeded();
 	    	addResult(PhishResult.TimedOut);
 	     }
 	}
@@ -305,9 +304,22 @@ public class BackendControllerImpl implements BackendController, UrlsLoadedListe
 
 	}
 
+	private void cancelTimer(){
+		if(this.current_timer!=null){
+			this.current_timer.cancel();
+		}
+	}
+	
 	@Override
 	public void restartLevel(){
+		cancelTimer();
 		this.startLevel(this.getLevel());
+	}
+	
+	@Override
+	public void abortLevel(){
+		cancelTimer();
+		this.frontend.showMainMenu();
 	}
 
 	@Override
@@ -382,9 +394,7 @@ public class BackendControllerImpl implements BackendController, UrlsLoadedListe
 	public PhishResult userClicked(boolean acceptance) {
 		checkinited();
 		
-		if(this.current_timer != null){
-			this.current_timer.cancel();
-		}
+		cancelTimer();
 		
 		PhishResult result=this.current_url.getResult(acceptance);
 		//When we are in the HTTPS level we only accept https urls even if these are not attacks.
@@ -395,7 +405,9 @@ public class BackendControllerImpl implements BackendController, UrlsLoadedListe
 				result=PhishResult.Phish_Detected;
 			}
 		}
-		if(result != PhishResult.Phish_Detected || !showProof()){
+		if(showProof(result)){
+		    this.frontend.showProofActivity();
+		}else{
 			this.addResult(result);
 		}
 		return result;
@@ -435,6 +447,7 @@ public class BackendControllerImpl implements BackendController, UrlsLoadedListe
 			this.level_attacks.add(current_url.getAttackType());
 		}
 		this.checkLevelState();
+		frontend.resultView(result);
 	}
 
 	private void checkLevelState(){
@@ -647,11 +660,15 @@ public class BackendControllerImpl implements BackendController, UrlsLoadedListe
 		}
 		return random;
 	}
-
+	
 	@Override
-	public boolean showProof() {
+	public boolean showProof(PhishResult result) {
 		if(getLevelInfo().hasAttack(PhishAttackType.Level2)){
 			return true;
+		}
+		
+		if(result != PhishResult.Phish_Detected){
+			return false;
 		}
 		
 		if(progress.getProofRightInRow() >= Constants.PROOF_IN_ROW){

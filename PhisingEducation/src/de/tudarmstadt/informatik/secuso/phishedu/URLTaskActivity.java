@@ -1,9 +1,7 @@
 package de.tudarmstadt.informatik.secuso.phishedu;
 
 import android.app.Activity;
-import android.opengl.Visibility;
 import android.os.Bundle;
-import android.os.CountDownTimer;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -115,8 +113,7 @@ public class URLTaskActivity extends PhishBaseActivity {
 	}
 
 	private void clicked(boolean acceptance) {
-		PhishResult result = BackendControllerImpl.getInstance().userClicked(acceptance);
-		((MainActivity)BackendControllerImpl.getInstance().getFrontend()).resultView(result);
+		BackendControllerImpl.getInstance().userClicked(acceptance);
 	}
 	
 	@Override

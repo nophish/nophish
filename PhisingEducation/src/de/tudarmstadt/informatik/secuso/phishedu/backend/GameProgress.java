@@ -1,7 +1,5 @@
 package de.tudarmstadt.informatik.secuso.phishedu.backend;
 
-import java.io.IOException;
-import java.io.OutputStream;
 import java.util.Iterator;
 
 import android.content.Context;
@@ -9,9 +7,6 @@ import android.content.SharedPreferences;
 import android.os.AsyncTask;
 
 import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.common.api.Status;
-import com.google.android.gms.drive.Contents;
-import com.google.android.gms.drive.MetadataChangeSet;
 import com.google.android.gms.games.Games;
 import com.google.android.gms.games.GamesStatusCodes;
 import com.google.android.gms.games.achievement.Achievement;
@@ -19,7 +14,6 @@ import com.google.android.gms.games.snapshot.Snapshot;
 import com.google.android.gms.games.snapshot.SnapshotMetadata;
 import com.google.android.gms.games.snapshot.SnapshotMetadataBuffer;
 import com.google.android.gms.games.snapshot.SnapshotMetadataChange;
-import com.google.android.gms.games.snapshot.SnapshotMetadataChangeCreator;
 import com.google.android.gms.games.snapshot.Snapshots;
 
 import de.tudarmstadt.informatik.secuso.phishedu.Constants;

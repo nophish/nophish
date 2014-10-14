@@ -54,6 +54,8 @@ public class MainActivity extends ActionBarActivity implements FrontendControlle
 		BackendControllerImpl.getInstance().getGameHelper().onActivityResult(requestCode, responseCode, intent);
 	}
 
+	
+	
 	public void switchToFragment(Class<? extends PhishBaseActivity> fragClass) {
 		switchToFragment(fragClass, new Bundle());
 	}
@@ -116,7 +118,7 @@ public class MainActivity extends ActionBarActivity implements FrontendControlle
 
 		clearFragCache();
 
-		switchToFragment(StartMenuActivity.class);
+		showMainMenu();
 
 		BackendControllerImpl.getInstance().onUrlReceive(getIntent().getData());
 	}
@@ -246,21 +248,20 @@ public class MainActivity extends ActionBarActivity implements FrontendControlle
 	}
 
 	@Override
-	public void timeoutExceeded() {
-		resultView(PhishResult.TimedOut);	
-	}
-
-	protected void resultView(PhishResult result){
+	public void resultView(PhishResult result){
 		Class<? extends PhishBaseActivity> followActivity = ResultActivity.class;
-		// In Level 10 (HTTP) we don't show proof activity.
-		boolean show_proof = BackendControllerImpl.getInstance().showProof();
-		if (result == PhishResult.Phish_Detected) {
-			if (show_proof) {
-				followActivity = ProofActivity.class;
-			}
-		}
 		Bundle args = new Bundle();
 		args.putInt(Constants.ARG_RESULT, result.getValue());
 		this.switchToFragment(followActivity, args);
+	}
+	
+	@Override
+	public void showMainMenu() {
+		switchToFragment(StartMenuActivity.class);		
+	}
+
+	@Override
+	public void showProofActivity() {
+		switchToFragment(ProofActivity.class);
 	}
 }

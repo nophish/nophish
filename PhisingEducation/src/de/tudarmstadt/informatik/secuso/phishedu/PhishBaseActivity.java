@@ -22,6 +22,7 @@ import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController.Level
 import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController.OnLevelChangeListener;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController.OnLevelstateChangeListener;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendControllerImpl;
+import de.tudarmstadt.informatik.secuso.phishedu.backend.FrontendController;
 
 public abstract class PhishBaseActivity extends Fragment implements OnClickListener, OnLevelChangeListener, OnLevelstateChangeListener {
 	
@@ -40,6 +41,10 @@ public abstract class PhishBaseActivity extends Fragment implements OnClickListe
 			
 			updateUI(getActivity());
 		}
+	}
+	
+	FrontendController getFrontedController(){
+		return BackendControllerImpl.getInstance().getFrontend();
 	}
 	
 	void updateUI(Activity activity){};
@@ -63,7 +68,7 @@ public abstract class PhishBaseActivity extends Fragment implements OnClickListe
 	 */
 	public void onBackPressed(){
 		if(enableHomeButton()){
-		  switchToFragment(StartMenuActivity.class);
+			getFrontedController().showMainMenu();
 		}
 	};
 
@@ -220,7 +225,7 @@ public abstract class PhishBaseActivity extends Fragment implements OnClickListe
 			
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
-				switchToFragment(StartMenuActivity.class);
+				BackendControllerImpl.getInstance().abortLevel();
 			}
 		});
 

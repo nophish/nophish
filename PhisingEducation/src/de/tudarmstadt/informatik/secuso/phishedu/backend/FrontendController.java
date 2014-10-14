@@ -57,13 +57,17 @@ public interface FrontendController extends GameHelperListener {
 	void updateUI();
 	
 	/**
-	 * Display a popup when the user did not decide on the URL fast enough.
+	 * Show the result view for the given result
 	 */
-	void timeoutExceeded();
+	void resultView(PhishResult result);
 	
 	/**
 	 * vibrate for milisecods miliseconds
 	 * @param miliseconds how long should we vibrate
 	 */
 	void vibrate(long miliseconds);
+	
+	void showMainMenu();
+	
+	void showProofActivity();
 }

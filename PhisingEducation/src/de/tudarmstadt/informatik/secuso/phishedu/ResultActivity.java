@@ -103,15 +103,12 @@ public class ResultActivity extends SwipeActivity {
 	protected View getPage(int page, LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View view = inflater.inflate(R.layout.result, container, false);
 		int level = BackendControllerImpl.getInstance().getLevel(); 
-		boolean show_proof = BackendControllerImpl.getInstance().showProof();
 
 		TextView text1 = (TextView) view.findViewById(R.id.result_text1);
 		if(level == 2){
 			text1.setText(getLevel2Texts(result));
 		}else if(level == 10){
 			text1.setText(getLevel10Texts(result));
-		}else if(result == PhishResult.Phish_Detected.getValue() && !show_proof){
-			text1.setText(R.string.you_found_the_phish_noproof);
 		}else{
 			text1.setText(resultTextIDs[result]);
 		}

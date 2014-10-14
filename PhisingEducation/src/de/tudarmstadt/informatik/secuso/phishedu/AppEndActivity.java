@@ -1,5 +1,6 @@
 package de.tudarmstadt.informatik.secuso.phishedu;
 
+import de.tudarmstadt.informatik.secuso.phishedu.backend.FrontendController;
 import android.view.View;
 
 
@@ -21,7 +22,7 @@ public class AppEndActivity extends PhishBaseActivity {
 	public void onClick(View view) {
 		int id = view.getId();
 		if (id == R.id.button1) {
-			switchToFragment(StartMenuActivity.class);
+			getFrontedController().showMainMenu();
 		}
 	}
 	

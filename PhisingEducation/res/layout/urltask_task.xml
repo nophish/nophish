@@ -20,7 +20,7 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/score_relative"
         android:layout_marginTop="@dimen/margin_small"
-        android:layout_below="@+id/score_relative"
+        android:layout_below="@+id/spacer"
         android:text="@string/url_task_providername"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
@@ -30,7 +30,7 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/score_relative"
         android:layout_marginTop="@dimen/margin_small"
-        android:layout_below="@+id/url_task_providername"
+        android:layout_below="@+id/score_relative"
         android:text="@string/url_task_description"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
@@ -38,7 +38,7 @@
         android:id="@+id/url_horizintal_sv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/feedback_smiley"
+        android:layout_below="@+id/url_task_providername"
         android:gravity="center"
         android:layout_marginTop="@dimen/margin_small" >
 
@@ -73,7 +73,7 @@
         android:src="@drawable/cross" />
 
     <ImageView
-        android:id="@+id/feedback_smiley"
+        android:id="@+id/spacer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignRight="@+id/score_relative"

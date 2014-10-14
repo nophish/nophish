@@ -87,7 +87,7 @@ public class ProofActivity extends SwipeActivity {
 			TextView text = (TextView) v.findViewById(R.id.phish_proof_text);
 			text.setText(R.string.level_02_task);
 
-			ImageView image = (ImageView) v.findViewById(R.id.feedback_smiley);
+			ImageView image = (ImageView) v.findViewById(R.id.spacer);
 			image.setVisibility(View.INVISIBLE);
 		}
 

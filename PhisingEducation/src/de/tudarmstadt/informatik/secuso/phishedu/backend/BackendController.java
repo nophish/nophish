@@ -314,7 +314,7 @@ public interface BackendController extends GameHelperListener{
 	 * Return whether to show the proof activity 
 	 * @return true to show, false if not.
 	 */
-	public boolean showProof();
+	public boolean showProof(PhishResult result);
 	
 	/**
 	 * Get the currently assigned frontend
@@ -332,5 +332,7 @@ public interface BackendController extends GameHelperListener{
 	 * @return 
 	 */
 	public int remainingSeconds();
+
+	void abortLevel();
 }
 
