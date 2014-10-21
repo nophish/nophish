@@ -335,7 +335,7 @@
     <string name="level_10_you_are_correct">Gut gemacht. Dieser Webadresse kannst du voll und ganz vertrauen.</string>
     <string name="level_10_you_are_wrong">Das war leider falsch.</string>
     <string name="level_10_you_are_correct_phish">Gut gemacht. Das war richtig. Bei dieser Webadresse ist Vorsicht angesagt!</string>
-    <string name="you_found_the_phish">Du hast den Phish erkannt. Herzlichen Glückwunsch. Du bist jetzt etwas sicherer.</string>
+    <string name="you_found_the_phish">Du hast den Phish erkannt. Herzlichen Glückwunsch.</string>
     <string name="exercise">Übung</string>
     <string name="intro">Einführung und Erklärung</string>
     <string name="finished">Abgeschlossen</string>
