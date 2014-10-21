@@ -15,7 +15,11 @@ import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.CountDownTimer;
 
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.Api.ApiOptions.NoOptions;
 import com.google.android.gms.games.Games;
+import com.google.android.gms.games.Games.GamesOptions;
+import com.google.android.gms.plus.Plus.PlusOptions;
 import com.google.example.games.basegameutils.GameHelper;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
@@ -37,6 +41,7 @@ public class BackendControllerImpl implements BackendController, UrlsLoadedListe
 	//constants
 	private static final String PREFS_NAME = "PhisheduState";
 	private static final String URL_CACHE_NAME ="urlcache";
+	private static final String KEY_AUTO_SIGN_IN = "KEY_AUTO_SIGN_IN";
 	private static final String LEVEL1_URL = "https://pages.no-phish.de/level1.php";
 	private static final PhishAttackType[] CACHE_TYPES = {PhishAttackType.NoPhish};
 	private static final int URL_CACHE_SIZE = 500;
@@ -140,10 +145,14 @@ public class BackendControllerImpl implements BackendController, UrlsLoadedListe
 		}
 		this.frontend=frontend;
 		this.initListener=initlistener;
-		this.gamehelper=new GameHelper(frontend.getBaseActivity(),GameHelper.CLIENT_ALL);
-	    this.gamehelper.setup(this);
-				
+		this.gamehelper=new GameHelper(frontend.getBaseActivity(),GameHelper.CLIENT_GAMES|GameHelper.CLIENT_SNAPSHOT);
+		this.gamehelper.setup(this);
 		SharedPreferences prefs = this.getFrontend().getContext().getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+		
+		
+		boolean wasSignedIn = prefs.getBoolean(KEY_AUTO_SIGN_IN, false);
+	    this.gamehelper.setConnectOnStart(wasSignedIn);
+				
 		Context context = this.getFrontend().getContext();
 		this.progress = new GameProgress(context, prefs, this.gamehelper.getApiClient());
 		SharedPreferences url_cache = this.getFrontend().getContext().getSharedPreferences(URL_CACHE_NAME, Context.MODE_PRIVATE);
@@ -541,6 +550,9 @@ public class BackendControllerImpl implements BackendController, UrlsLoadedListe
 	public void signIn() {
 		checkinited();
 		if(!this.gamehelper.isSignedIn()){
+			SharedPreferences.Editor editor = frontend.getBaseActivity().getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE).edit();
+	        editor.putBoolean(KEY_AUTO_SIGN_IN, true);
+	        editor.commit();
 			this.gamehelper.beginUserInitiatedSignIn();
 		}
 	}
@@ -548,6 +560,9 @@ public class BackendControllerImpl implements BackendController, UrlsLoadedListe
 	@Override
 	public void signOut() {
 		checkinited();
+		SharedPreferences.Editor editor = frontend.getBaseActivity().getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE).edit();
+        editor.putBoolean(KEY_AUTO_SIGN_IN, false);
+        editor.commit();
 		this.gamehelper.signOut();
 	}
 

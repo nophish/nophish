@@ -65,6 +65,11 @@ public class GameProgress{
         AsyncTask<Void, Void, Integer> task = new AsyncTask<Void, Void, Integer>() {
             @Override
             protected Integer doInBackground(Void... params) {
+            	//The user might have signed out while we waited for the result.
+            	//In this case it is OK
+            	if(!getApiClient().isConnected()){
+            		return GamesStatusCodes.STATUS_OK;
+            	}
                 Snapshots.OpenSnapshotResult result = Games.Snapshots.open(getApiClient(), REMOTE_STORE_GAME, false).await();
 
                 int status = result.getStatus().getStatusCode();
@@ -149,7 +154,6 @@ public class GameProgress{
                         return result;
                     }
                 };
-
         task.execute();
     }
     
