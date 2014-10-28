@@ -121,15 +121,7 @@ public class ProofActivity extends SwipeActivity {
 					Toast.LENGTH_SHORT).show();
 			return;
 		}
-		boolean clicked_right = BackendControllerImpl.getInstance().partClicked(
-				selectedPart);
-		int result = PhishResult.Phish_Detected.getValue();
-		if (!clicked_right) {
-			result = ResultActivity.RESULT_GUESSED;
-		}
-		Bundle args = new Bundle();
-		args.putInt(Constants.ARG_RESULT, result);
-		((MainActivity)getActivity()).switchToFragment(ResultActivity.class,args);
+		BackendControllerImpl.getInstance().partClicked(selectedPart);
 	}
 
 	@Override

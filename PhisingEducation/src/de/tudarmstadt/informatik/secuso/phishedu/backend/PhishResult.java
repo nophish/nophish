@@ -26,7 +26,11 @@ public enum PhishResult {
 	/**
 	 * The user did not click in time
 	 */
-	TimedOut(4);
+	TimedOut(4),
+	/**
+	 * The user did not click in time
+	 */
+	Guessed(5);
 	
 	private int value;
 

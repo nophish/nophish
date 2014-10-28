@@ -480,7 +480,7 @@ public class BackendControllerImpl implements BackendController, UrlsLoadedListe
 		if(clickedright){
 			addResult(PhishResult.Phish_Detected);
 		}else{
-			addResult(PhishResult.Phish_NotDetected);
+			addResult(PhishResult.Guessed);
 		}
 		return clickedright;
 	}
