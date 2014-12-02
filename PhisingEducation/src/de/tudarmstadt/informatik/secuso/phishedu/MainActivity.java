@@ -1,7 +1,9 @@
 package de.tudarmstadt.informatik.secuso.phishedu;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
+import java.util.Set;
 
 import android.app.Activity;
 import android.content.Context;
@@ -32,8 +34,9 @@ import de.tudarmstadt.informatik.secuso.phishedu.backend.FrontendController;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishResult;
 
 public class MainActivity extends ActionBarActivity implements FrontendController, OnLevelChangeListener, BackendInitListener, OnLevelstateChangeListener {
-	Map<Class<? extends PhishBaseActivity>, PhishBaseActivity> fragCache = new HashMap<Class<? extends PhishBaseActivity>, PhishBaseActivity>();
-	PhishBaseActivity current_frag;
+    Map<String, PhishBaseActivity> fragCache = new HashMap<String, PhishBaseActivity>();
+	String current_frag;
+	
 	@Override
 	protected void onStart() {
 		super.onStart();
@@ -65,7 +68,7 @@ public class MainActivity extends ActionBarActivity implements FrontendControlle
 				PhishBaseActivity newinstance=fragClass.newInstance();
 				BackendControllerImpl.getInstance().addOnLevelChangeListener(newinstance);
 				BackendControllerImpl.getInstance().addOnLevelstateChangeListener(newinstance);
-				fragCache.put(fragClass, newinstance);
+				fragCache.put(fragClass.toString(), newinstance);
 			}
 		} catch (InstantiationException e) {
 			e.printStackTrace();
@@ -81,7 +84,7 @@ public class MainActivity extends ActionBarActivity implements FrontendControlle
 			newFrag.setArguments(arguments);
 		}
 		//TODO: commitAllowingStateLoss should not be needed.
-		getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, newFrag).commitAllowingStateLoss();
+		getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, newFrag).commit();
 		/**
 		 * ensure that we only run onswitchto when attached.
 		 * this is also called in PhishBaseActivity.onAttack() 
@@ -89,7 +92,7 @@ public class MainActivity extends ActionBarActivity implements FrontendControlle
 		if(newFrag.getActivity()!=null){
 			newFrag.onSwitchTo();
 		}
-		current_frag = (PhishBaseActivity)newFrag;
+		current_frag = newFrag.getClass().toString();
 	}
 
 	@Override
@@ -100,12 +103,37 @@ public class MainActivity extends ActionBarActivity implements FrontendControlle
 
 	@Override
 	public void onBackPressed() {
-		current_frag.onBackPressed();
+		fragCache.get(current_frag).onBackPressed();
 	}
 
 	@Override
 	protected void onCreate(Bundle b) {
 		super.onCreate(b);
+		
+		this.current_frag=b.getString("current_frag");
+		
+		clearFragCache();
+		Bundle fragcache_bundle=b.getBundle("fragCache");
+		Set<String> keyset = fragcache_bundle.keySet();
+		for (String key : keyset) {
+			try {
+				@SuppressWarnings("unchecked")
+				Class<PhishBaseActivity> fragClass=(Class<PhishBaseActivity>)Class.forName(key);
+				PhishBaseActivity newinstance = fragClass.newInstance();
+				Bundle current_bundle = fragcache_bundle.getBundle(key);
+				newinstance.onCreate(current_bundle);
+				fragCache.put(key, newinstance);
+			} catch (InstantiationException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IllegalAccessException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}		
 		setContentView(R.layout.main);
 
 		if(!BackendControllerImpl.getInstance().isInitDone()){
@@ -122,9 +150,9 @@ public class MainActivity extends ActionBarActivity implements FrontendControlle
 	}
 
 	private void clearFragCache(){
-		this.fragCache = new HashMap<Class<? extends PhishBaseActivity>, PhishBaseActivity>();
-		fragCache.put(GooglePlusActivity.class, new GooglePlusActivity());
-		fragCache.put(LevelIntroActivity.class, new LevelIntroActivity());
+		this.fragCache = new HashMap<String, PhishBaseActivity>();
+		fragCache.put(GooglePlusActivity.class.toString(), new GooglePlusActivity());
+		fragCache.put(LevelIntroActivity.class.toString(), new LevelIntroActivity());
 	}
 
 	@Override
@@ -229,11 +257,23 @@ public class MainActivity extends ActionBarActivity implements FrontendControlle
 	@Override
 	protected void onSaveInstanceState(Bundle outState) {
 		//No call for super(). Bug on API Level > 11.
+		outState.putString("current_frag", current_frag);
+		Bundle fragcache_bundle = new Bundle();
+		
+		Iterator<Map.Entry<String, PhishBaseActivity>> it = fragCache.entrySet().iterator();
+	    while (it.hasNext()) {
+	        Map.Entry<String, PhishBaseActivity> pairs = it.next();
+	        Bundle current_bundle = new Bundle();
+	        pairs.getValue().onSaveInstanceState(current_bundle);
+	        fragcache_bundle.putBundle(pairs.getKey(), current_bundle);
+	    }
+		
+		outState.putBundle("fragCache", fragcache_bundle);
 	}
 
 	@Override
 	public void updateUI() {
-		this.current_frag.updateUI();
+		this.fragCache.get(current_frag).updateUI();
 	}
 
 	@Override
@@ -262,4 +302,6 @@ public class MainActivity extends ActionBarActivity implements FrontendControlle
 	public void showProofActivity() {
 		switchToFragment(ProofActivity.class);
 	}
+	
+	
 }
