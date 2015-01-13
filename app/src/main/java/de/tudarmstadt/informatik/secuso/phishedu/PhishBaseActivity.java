@@ -44,7 +44,7 @@ public abstract class PhishBaseActivity extends Fragment implements OnClickListe
 	}
 	
 	FrontendController getFrontedController(){
-		return BackendControllerImpl.getInstance().getFrontend();
+		return (FrontendController) getActivity();
 	}
 	
 	void updateUI(Activity activity){};

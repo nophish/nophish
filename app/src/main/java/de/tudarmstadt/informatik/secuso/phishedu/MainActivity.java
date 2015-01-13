@@ -64,7 +64,7 @@ public class MainActivity extends ActionBarActivity implements FrontendControlle
 	public void switchToFragment(Class<? extends PhishBaseActivity> fragClass, Bundle arguments) {
 		PhishBaseActivity  newFrag;
 		try {
-			if(!fragCache.containsKey(fragClass)){
+			if(!fragCache.containsKey(fragClass.toString())){
 				PhishBaseActivity newinstance=fragClass.newInstance();
 				BackendControllerImpl.getInstance().addOnLevelChangeListener(newinstance);
 				BackendControllerImpl.getInstance().addOnLevelstateChangeListener(newinstance);
@@ -75,7 +75,7 @@ public class MainActivity extends ActionBarActivity implements FrontendControlle
 		} catch (IllegalAccessException e) {
 			e.printStackTrace();
 		}
-		newFrag = fragCache.get(fragClass);
+		newFrag = fragCache.get(fragClass.toString());
 
 		if(newFrag.getArguments()!=null){
 			newFrag.getArguments().clear();
@@ -194,7 +194,7 @@ public class MainActivity extends ActionBarActivity implements FrontendControlle
 
 	@Override
 	public void onLevelChange(int level, boolean showRepeat) {
-		((LevelIntroActivity)fragCache.get(LevelIntroActivity.class)).setShowRepeat(showRepeat);
+		((LevelIntroActivity)fragCache.get(LevelIntroActivity.class.toString())).setShowRepeat(showRepeat);
 		switchToFragment(LevelIntroActivity.class);
 	}
 
@@ -231,7 +231,7 @@ public class MainActivity extends ActionBarActivity implements FrontendControlle
 
 	@Override
 	public void onSignInFailed() {
-		((GooglePlusActivity)fragCache.get(GooglePlusActivity.class)).setShowSignIn(true);
+		((GooglePlusActivity)fragCache.get(GooglePlusActivity.class.toString())).setShowSignIn(true);
 		if(BackendControllerImpl.getInstance().getGameHelper().hasSignInError()){
 			BackendControllerImpl.getInstance().getFrontend().displayToast("Signin failed!");
 		}
@@ -239,7 +239,7 @@ public class MainActivity extends ActionBarActivity implements FrontendControlle
 
 	@Override
 	public void onSignInSucceeded() {
-		((GooglePlusActivity)fragCache.get(GooglePlusActivity.class)).setShowSignIn(false);
+		((GooglePlusActivity)fragCache.get(GooglePlusActivity.class.toString())).setShowSignIn(false);
 		Games.Achievements.unlock(getApiClient(),getString(R.string.achievement_welcome));
 	}
 

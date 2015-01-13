@@ -2,18 +2,18 @@
 <items version="2" >
 
     <item
-        jar="/home/clb/Dokumente/Projects/nophish/app/build/intermediates/exploded-aar/com.google.android.gms/play-services/6.5.87/classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="dd9247ea0fabe8ee479638c4b4a23e93752be256">
-        <dex dex="/home/clb/Dokumente/Projects/nophish/app/build/intermediates/pre-dexed/debug/classes-a4a0024e976bf2db953070e6848f1629d223b147.jar" />
-    </item>
-    <item
         jar="/home/clb/Dokumente/Projects/nophish/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.3/classes.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="2c91c949a45a21cdecf26e03951e46c7beec9ad8">
         <dex dex="/home/clb/Dokumente/Projects/nophish/app/build/intermediates/pre-dexed/debug/classes-d80cd8638df60767fbf7558a8f6d8df23e3df430.jar" />
+    </item>
+    <item
+        jar="/home/clb/Dokumente/Projects/nophish/app/build/intermediates/exploded-aar/com.google.android.gms/play-services/6.5.87/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="dd9247ea0fabe8ee479638c4b4a23e93752be256">
+        <dex dex="/home/clb/Dokumente/Projects/nophish/app/build/intermediates/pre-dexed/debug/classes-a4a0024e976bf2db953070e6848f1629d223b147.jar" />
     </item>
     <item
         jar="/home/clb/Dokumente/Projects/nophish/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/classes.jar"
@@ -47,7 +47,7 @@
         jar="/home/clb/Dokumente/Projects/nophish/app/build/intermediates/exploded-aar/nophish/BaseGameUtils/unspecified/classes.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="038c5bd7719f88b98d4eaa534e3ead4688ad80cb">
+        sha1="7e46e30ccd402d054a79d67e22a2dedb0c1b8d72">
         <dex dex="/home/clb/Dokumente/Projects/nophish/app/build/intermediates/pre-dexed/debug/classes-a69376aa0973810c56176f3dddbb9b940ab71da7.jar" />
     </item>
     <item
