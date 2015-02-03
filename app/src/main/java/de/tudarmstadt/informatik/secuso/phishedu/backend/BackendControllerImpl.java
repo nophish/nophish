@@ -112,7 +112,7 @@ public class BackendControllerImpl implements BackendController, UrlsLoadedListe
 	}
 
 	/**
-	 * This holds the current URL returned by the last {@link BackendController}{@link #getNextUrl()} call
+	 * This holds the current URL returned by the last {@link BackendController}#nextUrl call
 	 */
 	private PhishURL current_url;
 	private PhishCountDownTimer current_timer;
@@ -331,7 +331,12 @@ public class BackendControllerImpl implements BackendController, UrlsLoadedListe
 		this.frontend.showMainMenu();
 	}
 
-	@Override
+    @Override
+    public int getDoneURLs() {
+        return this.progress.getDoneUrls();
+    }
+
+    @Override
 	public void redirectToLevel1URL(){
 		Random random = BackendControllerImpl.getInstance().getRandom();
 		char[] buf=new char[4];
@@ -369,7 +374,7 @@ public class BackendControllerImpl implements BackendController, UrlsLoadedListe
 		}while(	before_url.equals(after_url)
 				&& tries >= 0
 				&& attack != PhishAttackType.Keep
-				&& attack != PhishAttackType.Level2
+				&& attack != PhishAttackType.FindDomain
 				&& attack != PhishAttackType.HTTP
 				); //The attack might not change the URL so we try again.
 
@@ -425,7 +430,7 @@ public class BackendControllerImpl implements BackendController, UrlsLoadedListe
 	private void addResult(PhishResult result){
 		this.progress.addResult(result);
 		
-		if(result == PhishResult.Phish_Detected && !BackendControllerImpl.getInstance().getLevelInfo().hasAttack(PhishAttackType.Level2)){
+		if(result == PhishResult.Phish_Detected && !BackendControllerImpl.getInstance().getLevelInfo().hasAttack(PhishAttackType.FindDomain)){
 			this.progress.incProofRightInRow();
 		}else if(result == PhishResult.Phish_NotDetected){
 			this.progress.resetProofRightInRow();
@@ -446,11 +451,8 @@ public class BackendControllerImpl implements BackendController, UrlsLoadedListe
 		this.progress.setLevelPoints(new_levelpoints);
 
 		//if we did not correctly identify we have to readd.
-		if(result==PhishResult.Phish_NotDetected ||
-		   result == PhishResult.NoPhish_NotDetected || 
-		   result == PhishResult.TimedOut
-		   ){
-			if(result == PhishResult.Phish_NotDetected || result == PhishResult.TimedOut){
+		if(result != PhishResult.Phish_Detected && result != PhishResult.NoPhish_Detected){
+			if(result == PhishResult.Phish_NotDetected || result == PhishResult.TimedOut || result == PhishResult.Guessed){
 				progress.decLives();
 			}
 			this.level_attacks.add(current_url.getAttackType());
@@ -645,12 +647,16 @@ public class BackendControllerImpl implements BackendController, UrlsLoadedListe
 	}
 
 	@Override
-	public void removeOnLevelstateChangeListener(
-			OnLevelstateChangeListener listener) {
+	public void removeOnLevelstateChangeListener(OnLevelstateChangeListener listener) {
 		this.onLevelstateChangeListeners.remove(listener);
 	}
 
-	@Override
+    @Override
+    public void clearOnLevelstateChangeListener() {
+        this.onLevelstateChangeListeners.clear();
+    }
+
+    @Override
 	public void addOnLevelChangeListener(OnLevelChangeListener listener) {
 		if(!this.onLevelChangeListeners.contains(listener)){
 			this.onLevelChangeListeners.add(listener);
@@ -658,12 +664,16 @@ public class BackendControllerImpl implements BackendController, UrlsLoadedListe
 	}
 
 	@Override
-	public void removeOnLevelChangeListener(
-			OnLevelChangeListener listener) {
+	public void removeOnLevelChangeListener(OnLevelChangeListener listener) {
 		this.onLevelChangeListeners.remove(listener);
 	}
 
-	@Override
+    @Override
+    public void clearOnLevelChangeListener() {
+        this.onLevelChangeListeners.clear();
+    }
+
+    @Override
 	public boolean getLevelCompleted(int level) {
 		return level<=getMaxFinishedLevel();
 	}
@@ -678,7 +688,7 @@ public class BackendControllerImpl implements BackendController, UrlsLoadedListe
 	
 	@Override
 	public boolean showProof(PhishResult result) {
-		if(getLevelInfo().hasAttack(PhishAttackType.Level2)){
+		if(getLevelInfo().hasAttack(PhishAttackType.FindDomain)){
 			return true;
 		}
 		
@@ -717,4 +727,6 @@ public class BackendControllerImpl implements BackendController, UrlsLoadedListe
 	public int getLevelStars(int level) {
 		return this.progress.getLevelStars(level);
 	}
+
+
 }

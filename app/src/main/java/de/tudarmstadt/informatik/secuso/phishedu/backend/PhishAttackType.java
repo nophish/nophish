@@ -1,12 +1,12 @@
 package de.tudarmstadt.informatik.secuso.phishedu.backend;
 
 import de.tudarmstadt.informatik.secuso.phishedu.backend.attacks.AbstractAttack;
+import de.tudarmstadt.informatik.secuso.phishedu.backend.attacks.FindDomainAttack;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.attacks.HTTPAttack;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.attacks.HomoglyphicAttack;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.attacks.HostInPathAttack;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.attacks.IPAttackNoBrand;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.attacks.KeepAttack;
-import de.tudarmstadt.informatik.secuso.phishedu.backend.attacks.Level2Attack;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.attacks.MisleadingAttack;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.attacks.NoPhishAttack;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.attacks.PhishTankURLAttack;
@@ -15,7 +15,7 @@ import de.tudarmstadt.informatik.secuso.phishedu.backend.attacks.TotallyUnrelate
 import de.tudarmstadt.informatik.secuso.phishedu.backend.attacks.TypoAttack;
 
 /**
- * This enum shows what type of attack {@link BackendController#getNextUrl()} call returned.
+ * This enum shows what type of attack {@link BackendController} call returned.
  * @author Clemens Bergmann <cbergmann@schuhklassert.de>
  *
  */
@@ -27,8 +27,8 @@ public enum PhishAttackType {
 	NoPhish(0,NoPhishAttack.class),
 	/** It is a phish but not specified */
 	AnyPhish(1, PhishTankURLAttack.class),
-	/** The Attack for level 2 */
-	Level2(2, Level2Attack.class),
+	/** The Attack for level 1 */
+	FindDomain(2, FindDomainAttack.class),
 	/** IP */
 	IPNoBrand(3, IPAttackNoBrand.class),
 	/** This Attack replaces the urls with something totally different */

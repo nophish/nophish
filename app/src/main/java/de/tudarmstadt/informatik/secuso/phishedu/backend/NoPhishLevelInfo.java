@@ -160,7 +160,7 @@ public class NoPhishLevelInfo {
 	public static final PhishAttackType[][] levelAttackTypes = { {}, // Level 0:
 																		// Awareness
 			{}, // Level 1: Find URLBar in Browser
-			{ PhishAttackType.Level2 }, // Level 1
+			{ PhishAttackType.FindDomain }, // Level 1
 			{ PhishAttackType.IPNoBrand }, // Level 2
 			{ PhishAttackType.TotallyUnrelated }, // Level 3
 			{ PhishAttackType.Subdomain}, // Level 4

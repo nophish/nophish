@@ -100,7 +100,9 @@ public class LevelFinishedActivity extends SwipeActivity {
 
 	private void setScoreText(View view) {
 		if (getLevel() > 1) {
-			((TextView) view.findViewById(R.id.level_score)).setText(Integer.toString(BackendControllerImpl.getInstance().getLevelPoints()));
+            ((TextView) view.findViewById(R.id.shown_urls_count)).setText(Integer.toString(BackendControllerImpl.getInstance().getDoneURLs()));
+            ((TextView) view.findViewById(R.id.correct_urls_count)).setText(Integer.toString(BackendControllerImpl.getInstance().getCorrectlyFoundURLs()));
+            ((TextView) view.findViewById(R.id.level_score)).setText(Integer.toString(BackendControllerImpl.getInstance().getLevelPoints()));
 			((TextView) view.findViewById(R.id.total_score)).setText(Integer.toString(BackendControllerImpl.getInstance().getTotalPoints()));
 			((TextView) view.findViewById(R.id.level_max_score)).setText(Integer.toString(BackendControllerImpl.getInstance().getLevelInfo().getLevelmaxPoints()));
 		}

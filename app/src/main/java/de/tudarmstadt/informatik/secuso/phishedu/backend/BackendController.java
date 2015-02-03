@@ -32,6 +32,8 @@ public interface BackendController extends GameHelperListener{
 	 * @param listener the listener to unregister
 	 */
 	public void removeOnLevelstateChangeListener(OnLevelstateChangeListener listener);
+
+    public void clearOnLevelstateChangeListener();
 	
 	/**
 	 * This Function allows the frontend to be notified whenever the level changes.
@@ -44,6 +46,8 @@ public interface BackendController extends GameHelperListener{
 	 * @param listener the listener to unregister
 	 */
 	public void removeOnLevelChangeListener(OnLevelChangeListener listener);
+
+    public void clearOnLevelChangeListener();
 		
 	/**
 	 * This function sends a Mail to a custom Mail Adress-
@@ -334,5 +338,7 @@ public interface BackendController extends GameHelperListener{
 	public int remainingSeconds();
 
 	void abortLevel();
+
+    public int getDoneURLs();
 }
 

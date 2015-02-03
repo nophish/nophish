@@ -446,7 +446,9 @@
     <string name="title_activity_app_end">Spielende</string>
     <string name="secuso_logo">Secuso Logo</string>
     <string name="content_desc_confetti">Konfetti</string>
-    
+    <string name="shown_urls">Angezeigte Adressen:</string>
+    <string name="correct_urls">Erkannte Adressen:</string>
+
     <string-array name="fromMails">
     <!-- no examples until we decide to do it again -->
     <!-- <item>phish@no-phish.de</item>  -->

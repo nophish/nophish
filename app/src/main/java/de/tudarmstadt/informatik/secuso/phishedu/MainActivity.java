@@ -65,10 +65,8 @@ public class MainActivity extends ActionBarActivity implements FrontendControlle
 		PhishBaseActivity  newFrag;
 		try {
 			if(!fragCache.containsKey(fragClass.toString())){
-				PhishBaseActivity newinstance=fragClass.newInstance();
-				BackendControllerImpl.getInstance().addOnLevelChangeListener(newinstance);
-				BackendControllerImpl.getInstance().addOnLevelstateChangeListener(newinstance);
-				fragCache.put(fragClass.toString(), newinstance);
+                PhishBaseActivity newinstance=fragClass.newInstance();
+                addToFragCache(newinstance);
 			}
 		} catch (InstantiationException e) {
 			e.printStackTrace();
@@ -123,7 +121,7 @@ public class MainActivity extends ActionBarActivity implements FrontendControlle
                     PhishBaseActivity newinstance = fragClass.newInstance();
                     Bundle current_bundle = fragcache_bundle.getBundle(key);
                     newinstance.onCreate(current_bundle);
-                    fragCache.put(key, newinstance);
+                    addToFragCache(newinstance);
                 } catch (InstantiationException e) {
                     // TODO Auto-generated catch block
                     e.printStackTrace();
@@ -142,6 +140,8 @@ public class MainActivity extends ActionBarActivity implements FrontendControlle
 		if(!BackendControllerImpl.getInstance().isInitDone()){
 			BackendControllerImpl.getInstance().init(this,this);
 		}
+        BackendControllerImpl.getInstance().clearOnLevelChangeListener();
+        BackendControllerImpl.getInstance().clearOnLevelstateChangeListener();
 		BackendControllerImpl.getInstance().addOnLevelChangeListener(this);
 		BackendControllerImpl.getInstance().addOnLevelstateChangeListener(this);
 
@@ -152,10 +152,22 @@ public class MainActivity extends ActionBarActivity implements FrontendControlle
 		BackendControllerImpl.getInstance().onUrlReceive(getIntent().getData());
 	}
 
+    private void addToFragCache(PhishBaseActivity activity){
+        BackendControllerImpl.getInstance().addOnLevelChangeListener(activity);
+        BackendControllerImpl.getInstance().addOnLevelstateChangeListener(activity);
+        fragCache.put(activity.getClass().toString(),activity);
+    }
+
 	private void clearFragCache(){
-		this.fragCache = new HashMap<String, PhishBaseActivity>();
-		fragCache.put(GooglePlusActivity.class.toString(), new GooglePlusActivity());
-		fragCache.put(LevelIntroActivity.class.toString(), new LevelIntroActivity());
+        Iterator<Map.Entry<String, PhishBaseActivity>> it = fragCache.entrySet().iterator();
+        while (it.hasNext()) {
+            Map.Entry<String, PhishBaseActivity> entry = it.next();
+            BackendControllerImpl.getInstance().removeOnLevelChangeListener(entry.getValue());
+            BackendControllerImpl.getInstance().removeOnLevelstateChangeListener(entry.getValue());
+        }
+        this.fragCache = new HashMap<String, PhishBaseActivity>();
+        addToFragCache(new GooglePlusActivity());
+        addToFragCache(new LevelIntroActivity());
 	}
 
 	@Override
@@ -305,6 +317,4 @@ public class MainActivity extends ActionBarActivity implements FrontendControlle
 	public void showProofActivity() {
 		switchToFragment(ProofActivity.class);
 	}
-	
-	
 }
