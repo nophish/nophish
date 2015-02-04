@@ -97,7 +97,8 @@ public class GameProgress{
 				}else if (status != GamesStatusCodes.STATUS_SNAPSHOT_NOT_FOUND &&  status != GamesStatusCodes.STATUS_SNAPSHOT_CONFLICT) {
 					BackendControllerImpl.getInstance().getFrontend().displayToast(BackendControllerImpl.getInstance().getFrontend().getContext().getResources().getString(R.string.google_plus_snapshot_load_problem)+status.toString());
                 }
-				
+
+                GameProgress.this.saveState();
             }
         };
 
