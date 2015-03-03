@@ -28,6 +28,10 @@ public class GooglePlusActivity extends PhishBaseActivity {
 				showSignIn ? View.GONE : View.VISIBLE);
 		v.findViewById(R.id.button_delete_remote_data).setVisibility(
 				showSignIn ? View.GONE : View.VISIBLE);
+        v.findViewById(R.id.google_plus_text).setVisibility(
+                showSignIn ? View.VISIBLE : View.GONE);
+        v.findViewById(R.id.google_plus_disclaimer).setVisibility(
+                showSignIn ? View.VISIBLE : View.GONE);
 	}
 
 	@Override

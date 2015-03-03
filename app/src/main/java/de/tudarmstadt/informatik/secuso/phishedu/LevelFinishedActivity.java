@@ -67,7 +67,7 @@ public class LevelFinishedActivity extends SwipeActivity {
 		return R.string.finished;
 	}
 
-	@Override
+    @Override
 	protected int getPageCount() {
 		return BackendControllerImpl.getInstance().getLevelInfo(getLevel()).finishedLayouts.length;
 	}

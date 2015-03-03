@@ -26,12 +26,13 @@
     <string name="button_show_leaderboard_rate">Leaderboard Rate</string>
     <string name="button_show_leaderboard_total">Leaderboard Found Phishes</string>
 	<string name="button_show_leaderboard_total_points">Highscore</string>
-	<string name="button_delete_remote_data">Online Daten Löschen</string>
+	<string name="button_delete_remote_data">Online Spielstand Löschen</string>
 	<string name="button_show_snapshots">Alle Snapshots anzeigen</string>    
-    <string name="google_plus_text">Wenn du deine Spielleistung online speichern möchtest, melde dich bei Google+ an.</string>
-    <string name="google_plus_data_deleted">Alle deine Daten wurden bei google Plus gelöscht.</string>
-    <string name="google_plus_snapshot_load_problem">Es gab ein Problem beim laden ihres Spielstandes:</string>
-    <string name="google_plus_snapshot_load_ok">Ihr online Spielstand wurde geladen.</string>
+    <string name="google_plus_text">Wenn du deine Spielleistungen mit deinen Freunden auf google+ teilen willst und deinen Spielstand online speichern möchtest, melde dich mit Google+ an.</string>
+    <string name="google_plus_disclaimer">Bitte beachte, dass es zur zeit nicht möglich ist die Leistungen und Ranglistenpositionen zu löschen. Der Spielstand kann gelöscht werden.</string>
+    <string name="google_plus_data_deleted">Dein online Spielstand wurde gelöscht.</string>
+    <string name="google_plus_snapshot_load_problem">Es gab ein Problem beim laden deines Spielstandes:</string>
+    <string name="google_plus_snapshot_load_ok">Dein online Spielstand wurde geladen.</string>
     <string name="button_social">Google Play</string>
     <string name="button_credits">Credits</string>
 

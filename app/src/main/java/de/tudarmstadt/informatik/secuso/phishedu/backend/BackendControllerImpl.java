@@ -19,12 +19,14 @@ import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.Api.ApiOptions.NoOptions;
 import com.google.android.gms.games.Games;
 import com.google.android.gms.games.Games.GamesOptions;
+import com.google.android.gms.plus.Plus;
 import com.google.android.gms.plus.Plus.PlusOptions;
 import com.google.example.games.basegameutils.GameHelper;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 
 import de.tudarmstadt.informatik.secuso.phishedu.Constants;
+import de.tudarmstadt.informatik.secuso.phishedu.GooglePlusActivity;
 import de.tudarmstadt.informatik.secuso.phishedu.R;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.generator.BaseGenerator;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.networkTasks.GetUrlsTask;
@@ -565,7 +567,7 @@ public class BackendControllerImpl implements BackendController, UrlsLoadedListe
 		SharedPreferences.Editor editor = frontend.getBaseActivity().getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE).edit();
         editor.putBoolean(KEY_AUTO_SIGN_IN, false);
         editor.commit();
-		this.gamehelper.signOut();
+        this.gamehelper.signOut();
 	}
 
 	@Override
