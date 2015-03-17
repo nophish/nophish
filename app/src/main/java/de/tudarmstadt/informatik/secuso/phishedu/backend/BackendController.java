@@ -337,6 +337,16 @@ public interface BackendController extends GameHelperListener{
 	 */
 	public int remainingSeconds();
 
+    /**
+     * Pause the currently running timer.
+     */
+    public void pauseTimer();
+
+    /**
+     * Continue with the currently running timer.
+     */
+    public void resumeTimer();
+
 	void abortLevel();
 
     public int getDoneURLs();

@@ -10,6 +10,8 @@ import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.widget.HorizontalScrollView;
 import android.widget.TextView;
+
+import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendControllerImpl;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishResult;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishURL;
@@ -156,4 +158,16 @@ public class URLTaskActivity extends PhishBaseActivity {
 		}
 		
 	}
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        BackendControllerImpl.getInstance().pauseTimer();
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        BackendControllerImpl.getInstance().resumeTimer();
+    }
 }

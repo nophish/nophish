@@ -42,54 +42,67 @@
       <file leaf-file-name="PhishBaseActivity.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/de/tudarmstadt/informatik/secuso/phishedu/PhishBaseActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1350" max-vertical-offset="4215">
+            <state vertical-scroll-proportion="0.0" vertical-offset="1035" max-vertical-offset="4275">
               <caret line="135" column="25" selection-start-line="135" selection-start-column="25" selection-end-line="135" selection-end-column="25" />
-              <folding />
+              <folding>
+                <element signature="e#3646#3663#0" expanded="true" />
+                <element signature="e#5673#5712#0" expanded="true" />
+                <element signature="e#5769#5807#0" expanded="true" />
+                <element signature="e#5843#5881#0" expanded="true" />
+                <element signature="e#5883#6064#0" expanded="true" />
+                <element signature="e#6059#6060#0" expanded="true" />
+                <element signature="e#6100#6138#0" expanded="true" />
+                <element signature="e#6144#6286#0" expanded="true" />
+                <element signature="e#6281#6282#0" expanded="true" />
+                <element signature="e#6510#6548#0" expanded="true" />
+                <element signature="e#6605#6642#0" expanded="true" />
+                <element signature="e#6678#6715#0" expanded="true" />
+                <element signature="e#6717#6896#0" expanded="true" />
+                <element signature="e#6891#6892#0" expanded="true" />
+                <element signature="e#6932#6969#0" expanded="true" />
+                <element signature="e#6975#7117#0" expanded="true" />
+                <element signature="e#7112#7113#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="fragment_score.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_score.xml">
-          <provider editor-type-id="android-designer">
-            <state />
-          </provider>
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-14.923077" vertical-offset="692" max-vertical-offset="1755">
-              <caret line="72" column="30" selection-start-line="72" selection-start-column="30" selection-end-line="72" selection-end-column="30" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="URLTaskActivity.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="URLTaskActivity.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/de/tudarmstadt/informatik/secuso/phishedu/URLTaskActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.2505241" vertical-offset="991" max-vertical-offset="2055">
-              <caret line="108" column="36" selection-start-line="108" selection-start-column="36" selection-end-line="108" selection-end-column="36" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Constants.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/de/tudarmstadt/informatik/secuso/phishedu/Constants.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="480">
-              <caret line="7" column="57" selection-start-line="7" selection-start-column="57" selection-end-line="7" selection-end-column="57" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AndroidManifest.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="855">
-              <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="1651" max-vertical-offset="2250">
+              <caret line="162" column="27" selection-start-line="162" selection-start-column="27" selection-end-line="162" selection-end-column="27" />
               <folding>
-                <element signature="e#868#884#0" expanded="true" />
+                <element signature="e#1778#1848#0" expanded="true" />
+                <element signature="e#1903#1938#0" expanded="true" />
+                <element signature="e#2001#2037#0" expanded="true" />
+                <element signature="e#2487#2504#0" expanded="true" />
+                <element signature="e#2939#2995#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BackendControllerImpl.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/de/tudarmstadt/informatik/secuso/phishedu/backend/BackendControllerImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.5746924" vertical-offset="4833" max-vertical-offset="10245">
+              <caret line="389" column="33" selection-start-line="389" selection-start-column="33" selection-end-line="389" selection-end-column="33" />
+              <folding>
+                <element signature="e#2880#2909#0" expanded="true" />
+                <element signature="e#22176#22177#0" expanded="true" />
+                <element signature="e#22224#22225#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BackendController.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/de/tudarmstadt/informatik/secuso/phishedu/backend/BackendController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-18.777779" vertical-offset="4458" max-vertical-offset="5265">
+              <caret line="340" column="36" selection-start-line="340" selection-start-column="36" selection-end-line="340" selection-end-column="36" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -1818,8 +1831,6 @@
         <option value="$PROJECT_DIR$/app/src/main/java/de/tudarmstadt/informatik/secuso/phishedu/backend/PhishAttackType.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/de/tudarmstadt/informatik/secuso/phishedu/backend/NoPhishLevelInfo.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/de/tudarmstadt/informatik/secuso/phishedu/backend/GameProgress.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/de/tudarmstadt/informatik/secuso/phishedu/backend/BackendController.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/de/tudarmstadt/informatik/secuso/phishedu/backend/BackendControllerImpl.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/google_plus.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/de/tudarmstadt/informatik/secuso/phishedu/GooglePlusActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
@@ -1832,7 +1843,9 @@
         <option value="$PROJECT_DIR$/app/src/main/java/de/tudarmstadt/informatik/secuso/phishedu/PhishBaseActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/de/tudarmstadt/informatik/secuso/phishedu/Constants.java" />
         <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/de/tudarmstadt/informatik/secuso/phishedu/backend/BackendController.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/de/tudarmstadt/informatik/secuso/phishedu/URLTaskActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/de/tudarmstadt/informatik/secuso/phishedu/backend/BackendControllerImpl.java" />
       </list>
     </option>
   </component>
@@ -1999,37 +2012,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="layout" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nophish" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nophish" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="phishedu" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -2269,7 +2256,7 @@
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32893497" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Android" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.07540057" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.4382658" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32984003" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24931054" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -2305,28 +2292,10 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/de/tudarmstadt/informatik/secuso/phishedu/backend/BackendControllerImpl.java</url>
-          <line>432</line>
-          <properties />
-          <option name="timeStamp" value="14" />
-        </line-breakpoint>
-      </breakpoints>
       <option name="time" value="18" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/awareness.xml">
-      <provider selected="true" editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2175">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/values/colors.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="255">
@@ -2498,13 +2467,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/de/tudarmstadt/informatik/secuso/phishedu/backend/BackendController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1944" max-vertical-offset="5115">
-          <caret line="152" column="7" selection-start-line="152" selection-start-column="7" selection-end-line="152" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/de/tudarmstadt/informatik/secuso/phishedu/backend/GameProgress.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="5889" max-vertical-offset="6840">
@@ -2513,18 +2475,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/de/tudarmstadt/informatik/secuso/phishedu/backend/BackendControllerImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1903" max-vertical-offset="10410">
-          <caret line="149" column="116" selection-start-line="149" selection-start-column="116" selection-end-line="149" selection-end-column="116" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/de/tudarmstadt/informatik/secuso/phishedu/GooglePlusActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1245">
           <caret line="33" column="55" selection-start-line="33" selection-start-column="55" selection-end-line="33" selection-end-column="55" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -2560,40 +2515,40 @@
         <state vertical-scroll-proportion="-23.423077" vertical-offset="786" max-vertical-offset="1725">
           <caret line="93" column="45" selection-start-line="93" selection-start-column="45" selection-end-line="93" selection-end-column="45" />
           <folding>
-            <element signature="e#272#305#0" expanded="true" />
-            <element signature="e#330#365#0" expanded="true" />
-            <element signature="e#391#426#0" expanded="true" />
-            <element signature="e#450#483#0" expanded="true" />
-            <element signature="e#746#770#0" expanded="true" />
-            <element signature="e#792#818#0" expanded="true" />
-            <element signature="e#1129#1153#0" expanded="true" />
-            <element signature="e#1175#1207#0" expanded="true" />
-            <element signature="e#1530#1558#0" expanded="true" />
-            <element signature="e#1639#1660#0" expanded="true" />
-            <element signature="e#1686#1709#0" expanded="true" />
-            <element signature="e#1897#1925#0" expanded="true" />
-            <element signature="e#2065#2086#0" expanded="true" />
-            <element signature="e#2112#2135#0" expanded="true" />
-            <element signature="e#2157#2197#0" expanded="true" />
-            <element signature="e#2380#2408#0" expanded="true" />
-            <element signature="e#2434#2457#0" expanded="true" />
-            <element signature="e#2629#2650#0" expanded="true" />
-            <element signature="e#2672#2710#0" expanded="true" />
-            <element signature="e#2891#2919#0" expanded="true" />
-            <element signature="e#2945#2968#0" expanded="true" />
-            <element signature="e#3138#3159#0" expanded="true" />
-            <element signature="e#3181#3220#0" expanded="true" />
-            <element signature="e#3406#3434#0" expanded="true" />
-            <element signature="e#3460#3483#0" expanded="true" />
-            <element signature="e#3654#3675#0" expanded="true" />
-            <element signature="e#3697#3743#0" expanded="true" />
-            <element signature="e#3918#3946#0" expanded="true" />
-            <element signature="e#3972#3995#0" expanded="true" />
-            <element signature="e#4173#4194#0" expanded="true" />
-            <element signature="e#4583#4611#0" expanded="true" />
-            <element signature="e#4645#4666#0" expanded="true" />
-            <element signature="e#4692#4715#0" expanded="true" />
-            <element signature="e#4737#4755#0" expanded="true" />
+            <element signature="e#272#305#0" expanded="false" />
+            <element signature="e#330#365#0" expanded="false" />
+            <element signature="e#391#426#0" expanded="false" />
+            <element signature="e#450#483#0" expanded="false" />
+            <element signature="e#746#770#0" expanded="false" />
+            <element signature="e#792#818#0" expanded="false" />
+            <element signature="e#1129#1153#0" expanded="false" />
+            <element signature="e#1175#1207#0" expanded="false" />
+            <element signature="e#1530#1558#0" expanded="false" />
+            <element signature="e#1639#1660#0" expanded="false" />
+            <element signature="e#1686#1709#0" expanded="false" />
+            <element signature="e#1897#1925#0" expanded="false" />
+            <element signature="e#2065#2086#0" expanded="false" />
+            <element signature="e#2112#2135#0" expanded="false" />
+            <element signature="e#2157#2197#0" expanded="false" />
+            <element signature="e#2380#2408#0" expanded="false" />
+            <element signature="e#2434#2457#0" expanded="false" />
+            <element signature="e#2629#2650#0" expanded="false" />
+            <element signature="e#2672#2710#0" expanded="false" />
+            <element signature="e#2891#2919#0" expanded="false" />
+            <element signature="e#2945#2968#0" expanded="false" />
+            <element signature="e#3138#3159#0" expanded="false" />
+            <element signature="e#3181#3220#0" expanded="false" />
+            <element signature="e#3406#3434#0" expanded="false" />
+            <element signature="e#3460#3483#0" expanded="false" />
+            <element signature="e#3654#3675#0" expanded="false" />
+            <element signature="e#3697#3743#0" expanded="false" />
+            <element signature="e#3918#3946#0" expanded="false" />
+            <element signature="e#3972#3995#0" expanded="false" />
+            <element signature="e#4173#4194#0" expanded="false" />
+            <element signature="e#4583#4611#0" expanded="false" />
+            <element signature="e#4645#4666#0" expanded="false" />
+            <element signature="e#4692#4715#0" expanded="false" />
+            <element signature="e#4737#4755#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -2618,6 +2573,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.11344538" vertical-offset="2142" max-vertical-offset="3510">
           <caret line="175" column="5" selection-start-line="175" selection-start-column="5" selection-end-line="175" selection-end-column="5" />
+          <folding>
+            <element signature="e#6659#6675#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -2626,7 +2584,7 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1530">
           <caret line="24" column="34" selection-start-line="24" selection-start-column="34" selection-end-line="24" selection-end-column="34" />
           <folding>
-            <element signature="e#2724#2751#0" expanded="true" />
+            <element signature="e#2724#2751#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -2642,6 +2600,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.27875647" vertical-offset="526" max-vertical-offset="1560">
           <caret line="69" column="0" selection-start-line="69" selection-start-column="0" selection-end-line="69" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -2655,8 +2614,8 @@
         <state vertical-scroll-proportion="0.24248704" vertical-offset="771" max-vertical-offset="6285">
           <caret line="86" column="0" selection-start-line="86" selection-start-column="0" selection-end-line="86" selection-end-column="0" />
           <folding>
-            <element signature="e#3421#3435#0" expanded="true" />
-            <element signature="e#4096#4142#0" expanded="true" />
+            <element signature="e#3421#3435#0" expanded="false" />
+            <element signature="e#4096#4142#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -2681,7 +2640,7 @@
         <state vertical-scroll-proportion="0.59067357" vertical-offset="0" max-vertical-offset="965">
           <caret line="49" column="0" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
           <folding>
-            <element signature="e#927#944#0" expanded="true" />
+            <element signature="e#927#944#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -2727,30 +2686,82 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/de/tudarmstadt/informatik/secuso/phishedu/PhishBaseActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1350" max-vertical-offset="4215">
-          <caret line="135" column="25" selection-start-line="135" selection-start-column="25" selection-end-line="135" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_score.xml">
       <provider editor-type-id="android-designer">
         <state />
       </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-14.923077" vertical-offset="692" max-vertical-offset="1755">
+        <state vertical-scroll-proportion="0.41810346" vertical-offset="692" max-vertical-offset="1755">
           <caret line="72" column="30" selection-start-line="72" selection-start-column="30" selection-end-line="72" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/de/tudarmstadt/informatik/secuso/phishedu/PhishBaseActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1350" max-vertical-offset="4215">
+          <caret line="135" column="25" selection-start-line="135" selection-start-column="25" selection-end-line="135" selection-end-column="25" />
+          <folding>
+            <element signature="e#3646#3663#0" expanded="true" />
+            <element signature="e#5673#5712#0" expanded="true" />
+            <element signature="e#5769#5807#0" expanded="true" />
+            <element signature="e#5843#5881#0" expanded="true" />
+            <element signature="e#5883#6064#0" expanded="true" />
+            <element signature="e#6059#6060#0" expanded="true" />
+            <element signature="e#6100#6138#0" expanded="true" />
+            <element signature="e#6144#6286#0" expanded="true" />
+            <element signature="e#6281#6282#0" expanded="true" />
+            <element signature="e#6510#6548#0" expanded="true" />
+            <element signature="e#6605#6642#0" expanded="true" />
+            <element signature="e#6678#6715#0" expanded="true" />
+            <element signature="e#6717#6896#0" expanded="true" />
+            <element signature="e#6891#6892#0" expanded="true" />
+            <element signature="e#6932#6969#0" expanded="true" />
+            <element signature="e#6975#7117#0" expanded="true" />
+            <element signature="e#7112#7113#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/de/tudarmstadt/informatik/secuso/phishedu/backend/BackendController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-18.777779" vertical-offset="4458" max-vertical-offset="5265">
+          <caret line="340" column="36" selection-start-line="340" selection-start-column="36" selection-end-line="340" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Android/Sdk/sources/android-21/android/os/CountDownTimer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.63596493" vertical-offset="0" max-vertical-offset="2085">
+          <caret line="43" column="36" selection-start-line="43" selection-start-column="0" selection-end-line="146" selection-end-column="1" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/de/tudarmstadt/informatik/secuso/phishedu/URLTaskActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2505241" vertical-offset="991" max-vertical-offset="2055">
-          <caret line="108" column="36" selection-start-line="108" selection-start-column="36" selection-end-line="108" selection-end-column="36" />
-          <folding />
+        <state vertical-scroll-proportion="0.0" vertical-offset="1651" max-vertical-offset="2250">
+          <caret line="162" column="27" selection-start-line="162" selection-start-column="27" selection-end-line="162" selection-end-column="27" />
+          <folding>
+            <element signature="e#1778#1848#0" expanded="true" />
+            <element signature="e#1903#1938#0" expanded="true" />
+            <element signature="e#2001#2037#0" expanded="true" />
+            <element signature="e#2487#2504#0" expanded="true" />
+            <element signature="e#2939#2995#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/de/tudarmstadt/informatik/secuso/phishedu/backend/BackendControllerImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5746924" vertical-offset="4833" max-vertical-offset="10245">
+          <caret line="389" column="33" selection-start-line="389" selection-start-column="33" selection-end-line="389" selection-end-column="33" />
+          <folding>
+            <element signature="e#2880#2909#0" expanded="true" />
+            <element signature="e#22176#22177#0" expanded="true" />
+            <element signature="e#22224#22225#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

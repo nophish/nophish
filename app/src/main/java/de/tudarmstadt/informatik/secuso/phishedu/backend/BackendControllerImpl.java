@@ -387,6 +387,7 @@ public class BackendControllerImpl implements BackendController, UrlsLoadedListe
 		this.current_url=base_url;
 		
 		int countdown = BackendControllerImpl.getInstance().getLevelInfo().getLevelTime();
+        this.paused_timer = null;
 		if( countdown == 0){
 			this.current_timer = null;
 		} else {
@@ -725,7 +726,24 @@ public class BackendControllerImpl implements BackendController, UrlsLoadedListe
 		}
 	}
 
-	@Override
+    private Long paused_timer=null;
+    @Override
+    public void pauseTimer() {
+        if(this.current_timer!=null) {
+            this.paused_timer=this.current_timer.remaining;
+            this.current_timer.cancel();
+        }
+    }
+
+    @Override
+    public void resumeTimer() {
+        if(this.paused_timer!=null) {
+            this.current_timer = new PhishCountDownTimer(paused_timer, 1000);
+            this.current_timer.start();
+        }
+    }
+
+    @Override
 	public int getLevelStars(int level) {
 		return this.progress.getLevelStars(level);
 	}
