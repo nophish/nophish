@@ -1,10 +1,13 @@
 package de.tudarmstadt.informatik.secuso.phishedu;
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
 import android.widget.HorizontalScrollView;
 import android.widget.TextView;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendControllerImpl;
@@ -135,6 +138,18 @@ public class URLTaskActivity extends PhishBaseActivity {
 		int remaining_seconds = BackendControllerImpl.getInstance().remainingSeconds();
 		if(remaining_seconds>=0){
 			countdownText.setText(Integer.toString(remaining_seconds));
+            if(remaining_seconds<=10){
+                Animation anim = new AlphaAnimation(0.0f, 1.0f);
+                anim.setDuration(250); //You can manage the time of the blink with this parameter
+                anim.setStartOffset(20);
+                anim.setRepeatMode(Animation.REVERSE);
+                anim.setRepeatCount(Animation.INFINITE);
+                countdownText.startAnimation(anim);
+                countdownText.setTextColor(Color.RED);
+            }else{
+                countdownText.clearAnimation();
+                countdownText.setTextColor(Color.BLACK);
+            }
 			countdownText.setVisibility(View.VISIBLE);
 		}else{
 			countdownText.setVisibility(View.INVISIBLE);
