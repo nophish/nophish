@@ -15,18 +15,12 @@ import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.CountDownTimer;
 
-import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.common.api.Api.ApiOptions.NoOptions;
 import com.google.android.gms.games.Games;
-import com.google.android.gms.games.Games.GamesOptions;
-import com.google.android.gms.plus.Plus;
-import com.google.android.gms.plus.Plus.PlusOptions;
 import com.google.example.games.basegameutils.GameHelper;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 
 import de.tudarmstadt.informatik.secuso.phishedu.Constants;
-import de.tudarmstadt.informatik.secuso.phishedu.GooglePlusActivity;
 import de.tudarmstadt.informatik.secuso.phishedu.R;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.generator.BaseGenerator;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.networkTasks.GetUrlsTask;
@@ -39,7 +33,7 @@ import de.tudarmstadt.informatik.secuso.phishedu.backend.networkTasks.UrlsLoaded
  * @author Clemens Bergmann <cbergmann@schuhklassert.de>
  *
  */
-public class BackendControllerImpl implements BackendController, UrlsLoadedListener {
+public class BackendControllerImpl implements BackendController, UrlsLoadedListener, SendMailTask.SendMailListener {
 	//constants
 	private static final String PREFS_NAME = "PhisheduState";
 	private static final String URL_CACHE_NAME ="urlcache";
@@ -49,8 +43,13 @@ public class BackendControllerImpl implements BackendController, UrlsLoadedListe
 	private static final int URL_CACHE_SIZE = 500;
 
 	private Random random;
-	
-	private class PhishCountDownTimer extends CountDownTimer{
+
+    @Override
+    public void returnedResult(String result) {
+        frontend.displayToast(result);
+    }
+
+    private class PhishCountDownTimer extends CountDownTimer{
 		public long remaining = 0;
 
 		public PhishCountDownTimer(long millisInFuture, long countDownInterval) {
@@ -235,7 +234,7 @@ public class BackendControllerImpl implements BackendController, UrlsLoadedListe
 
 	public void sendMail(String from, String to, String usermessage){
 		checkinited();
-		new SendMailTask(from, to, usermessage).execute();
+        new SendMailTask(from, to, usermessage, this).execute();
 	}
 
 	private Vector<PhishAttackType> level_attacks;

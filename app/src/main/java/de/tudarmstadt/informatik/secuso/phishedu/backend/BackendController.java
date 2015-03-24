@@ -51,10 +51,10 @@ public interface BackendController extends GameHelperListener{
 		
 	/**
 	 * This function sends a Mail to a custom Mail Adress-
-	 * @param from The Sender mail address
-	 * @param to The receiver mail address
-	 * @param usermessage Each send out mail contains a usermessage to maximize the awareness.
-	 */
+     * @param from The Sender mail address
+     * @param to The receiver mail address
+     * @param usermessage Each send out mail contains a usermessage to maximize the awareness.
+     */
 	public void sendMail(String from, String to, String usermessage);
 	
 	/**
