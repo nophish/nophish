@@ -251,6 +251,7 @@ public class BackendControllerImpl implements BackendController, UrlsLoadedListe
 			this.progress.finishlevel(1);
 			level=2;
 		}
+
 		this.progress.setLevel(level);
 		this.level_attacks=generateLevelAttacks(level);
 		for(int i=0; i<onLevelChangeListeners.size();i++){

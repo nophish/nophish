@@ -60,8 +60,8 @@ public class NoPhishLevelInfo {
 		20,
 		10,
 		10,
-		5,
-		5
+		10,
+		10
 	};
 
 	private static final int[] levelTitlesIds = { R.string.level_title_00,
