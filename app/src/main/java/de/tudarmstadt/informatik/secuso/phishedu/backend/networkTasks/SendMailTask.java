@@ -5,8 +5,6 @@ import org.alexd.jsonrpc.JSONRPCException;
 
 import android.os.AsyncTask;
 
-import de.tudarmstadt.informatik.secuso.phishedu.backend.PhishURL;
-
 /**
  * This Task sends out a mail via the backend server.
  * @author Clemens Bergmann <cbergmann@schuhklassert.de>

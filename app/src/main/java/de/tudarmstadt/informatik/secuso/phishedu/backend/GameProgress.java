@@ -337,7 +337,10 @@ public class GameProgress{
 	 */
 	public void setLevel(int level){
 		if(getMaxUnlockedLevel()<level){
-			throw new IllegalStateException("The given level ("+level+") is not unlocked.");
+            if(level==1 && Constants.ALLOW_SKIP_AWARENESS){
+                // skip
+            }else
+			    throw new IllegalStateException("The given level ("+level+") is not unlocked.");
 		}
 		this.level=level;
 		this.level_results=new int[PhishResult.getMax()+1];
@@ -400,8 +403,8 @@ public class GameProgress{
 	 */
 	public int getMaxUnlockedLevel() {
 		int result;
-		if(Constants.UNLOCK_ALL_LEVELS){
-			result = BackendControllerImpl.getInstance().getLevelCount();
+		if(Constants.UNLOCK_ALL_LEVELS) {
+            result = BackendControllerImpl.getInstance().getLevelCount();
 		}else{
 			result = this.getMaxFinishedLevel()+1;
 		}

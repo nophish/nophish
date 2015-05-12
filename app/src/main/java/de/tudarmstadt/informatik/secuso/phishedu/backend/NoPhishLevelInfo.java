@@ -60,8 +60,8 @@ public class NoPhishLevelInfo {
 		20,
 		10,
 		10,
-		5,
-		5
+		10,
+		10
 	};
 
 	private static final int[] levelTitlesIds = { R.string.level_title_00,
@@ -81,11 +81,11 @@ public class NoPhishLevelInfo {
 			R.string.level_subtitle_10, R.string.level_subtitle_11 };
 
 	private static final Integer[][] levelSplashLayoutIds = {
-		{},
+		{ R.layout.level_00_splash},
 		{ R.layout.level_01_splash},
 		{ R.layout.level_02_splash},
 		{ R.layout.level_03_splash},
-		{R.layout.level_04_a_splash},
+		{ R.layout.level_04_a_splash},
 		{ R.layout.level_04_b_splash},
 		{ R.layout.level_05_splash},
 		{ R.layout.level_06_splash},
@@ -114,7 +114,8 @@ public class NoPhishLevelInfo {
 			{ R.layout.level_00_intro_00, R.layout.level_00_intro_01 },
 			{R.layout.level_01_intro_00,
 					R.layout.level_01_intro_01, R.layout.level_01_intro_02,
-					R.layout.level_01_intro_03 },
+					R.layout.level_01_intro_03 ,
+                    R.layout.level_01_finish_00 },
 			{R.layout.level_02_intro_00,
 					R.layout.level_02_intro_01, R.layout.level_02_intro_02,
 					R.layout.level_02_intro_03, R.layout.level_02_intro_04,
