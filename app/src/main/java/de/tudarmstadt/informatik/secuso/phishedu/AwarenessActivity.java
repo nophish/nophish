@@ -29,6 +29,10 @@ public class AwarenessActivity extends PhishBaseActivity {
 
 	@Override
 	public View getLayout(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
+        if(Constants.FORCE_SKIP_AWARENESS)
+            BackendControllerImpl.getInstance().startLevel(1);
+
 		View v = inflater.inflate(R.layout.awareness, container, false);
 		final String[] fromMails = getResources().getStringArray(R.array.fromMails);
 		ArrayAdapter<String> fromAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_dropdown_item_1line,fromMails);

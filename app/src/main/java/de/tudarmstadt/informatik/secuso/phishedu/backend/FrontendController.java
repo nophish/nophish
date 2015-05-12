@@ -6,8 +6,6 @@ import android.net.Uri;
 
 import com.google.example.games.basegameutils.GameHelper.GameHelperListener;
 
-import de.tudarmstadt.informatik.secuso.phishedu.backend.networkTasks.SendMailTask;
-
 /**
  * This is the Interface that the frontend presents to the backend.
  * It mainly contains callback functions to inform the frontend about backend changes.

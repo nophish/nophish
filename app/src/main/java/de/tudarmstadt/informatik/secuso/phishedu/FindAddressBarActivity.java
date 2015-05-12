@@ -40,6 +40,9 @@ public class FindAddressBarActivity extends PhishBaseActivity {
 	
 	@Override
 	public int getLayout() {
+
+        BackendControllerImpl.getInstance().startLevel(2);
+
 		return R.layout.level_01_task;
 	}
 	
