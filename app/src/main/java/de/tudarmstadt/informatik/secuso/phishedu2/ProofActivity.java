@@ -110,6 +110,11 @@ public class ProofActivity extends SwipeActivity {
 			image.setVisibility(View.INVISIBLE);
 		}
 
+        if (getLevel() == 10) {
+            TextView text = (TextView) v.findViewById(R.id.phish_proof_text);
+            text.setText(R.string.phish_proof_09);
+        }
+
 		String[] urlparts = BackendControllerImpl.getInstance().getUrl().getParts();
 		SpannableStringBuilder builder = new SpannableStringBuilder();
 

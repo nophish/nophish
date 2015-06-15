@@ -330,6 +330,7 @@
     <string name="total_score">Gesamtpunkte:</string>
     <string name="level_max_score">Erreichbare Levelpunkte:</string>
     <string name="phish_proof_01">Ja, die Webadresse ist gefälscht. Nun zeige uns den Wer-Bereich. <b>Tippe</b> die entsprechende Stelle an.</string>
+    <string name="phish_proof_09">Ja, du hast dich richtig entschieden. Nun zeige uns den Wer-Bereich. <b>Tippe</b> die entsprechende Stelle an.</string>
     <string name="you_are_wrong">Falsch! Du wurdest ausgetrickst. Das ist eine gefälschte Webadresse. Daher verlierst du ein Leben.</string>
     <string name="oversafe_text">Diese Webadresse ist nicht gefälscht. Ihr kannst du ruhig vertrauen.</string>
     <string name="oversafe_02">Wenn man sich unsicher ist, ist es allerdings besser übervorsichtig zu sein und keine Daten einzugeben. In solchen Fällen ist es sinnvoll, das entsprechende Unternehmen zu kontaktieren und dort nach der Vertrauenswürdigkeit der verdächtigen Webadresse zu fragen. Alternativ kann man den Namen des Unternehmens in eine Suchmaschiene eingeben. Die ersten Ergebnisse zeigen wahrscheinlich die richtige Webseite.</string>

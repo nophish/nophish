@@ -443,7 +443,7 @@ MERGED from com.google.android.gms:play-services-base:7.0.0:21:9
 		ADDED from AndroidManifest.xml:30:13
 	android:name
 		ADDED from AndroidManifest.xml:29:13
-activity#de.tudarmstadt.informatik.secuso.phishedu.MainActivity
+activity#de.tudarmstadt.informatik.secuso.phishedu2.MainActivity
 ADDED from AndroidManifest.xml:32:9
 	android:screenOrientation
 		ADDED from AndroidManifest.xml:35:13
