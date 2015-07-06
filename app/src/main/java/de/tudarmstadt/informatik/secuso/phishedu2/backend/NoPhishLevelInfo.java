@@ -74,14 +74,14 @@ public class NoPhishLevelInfo {
 		0, //not used; intro level
 		0,
 		0,
-		30,
-		30,
-		20, 
-		20,
-		10,
-		10,
-		10,
-		10
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0
 	};
 
 	private static final int[] levelTitlesIds = { R.string.level_title_00,

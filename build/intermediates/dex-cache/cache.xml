@@ -2,186 +2,193 @@
 <items version="2" >
 
     <item
-        jar="D:\Programmig\Android\workspace\nophish\app\build\intermediates\exploded-aar\nophish\BaseGameUtils\unspecified\classes.jar"
+        jar="/Users/philipprack/Documents/nophish/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-location/7.3.0/classes.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="fa2909e3e96a3e27d9219689d412d477f1d8c960">
-        <dex dex="D:\Programmig\Android\workspace\nophish\app\build\intermediates\pre-dexed\debug\classes-bd4a371646aac1a84ac69e5f0957885d388e92d4.jar" />
+        sha1="b2c07cdb814fe988ad05f7b4d767a841514a5991">
+        <dex dex="/Users/philipprack/Documents/nophish/app/build/intermediates/pre-dexed/debug/classes-b0caf437027f4f24c39889328c007d9cc07b6de5.jar" />
     </item>
     <item
-        jar="D:\Programmig\Android\workspace\nophish\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.0.0\libs\internal_impl-22.0.0.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="b5b92f469d515a13d778900f6d50c03d12f35504">
-        <dex dex="D:\Programmig\Android\workspace\nophish\app\build\intermediates\pre-dexed\debug\internal_impl-22.0.0-3d8e5ec87b271b864b0761919bbadeea869b6ea8.jar" />
-    </item>
-    <item
-        jar="D:\Programmig\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\22.0.0\support-annotations-22.0.0.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="685d0b2c590447e85284ed84712cb363ba04eff8">
-        <dex dex="D:\Programmig\Android\workspace\nophish\app\build\intermediates\pre-dexed\debug\support-annotations-22.0.0-63489bf2594acdc08db263fca1e7d30b9bfcd77a.jar" />
-    </item>
-    <item
-        jar="D:\Programmig\Android\workspace\nophish\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-appindexing\7.0.0\classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="a08d65794b844d8e7540bf9a33859bf3b2482d7f">
-        <dex dex="D:\Programmig\Android\workspace\nophish\app\build\intermediates\pre-dexed\debug\classes-1161dbca536e492eff4c3e6a0ade32f440823900.jar" />
-    </item>
-    <item
-        jar="D:\Programmig\Android\workspace\nophish\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-identity\7.0.0\classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="fb04b12526b0073c7fb1ebb70c5842d82ee95596">
-        <dex dex="D:\Programmig\Android\workspace\nophish\app\build\intermediates\pre-dexed\debug\classes-5884f3bca5da657086ac44c35bcbcc213095bf93.jar" />
-    </item>
-    <item
-        jar="D:\Programmig\Android\workspace\nophish\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-ads\7.0.0\classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="e3d791b42eaa90416cd0b2d2e608092794a3baa4">
-        <dex dex="D:\Programmig\Android\workspace\nophish\app\build\intermediates\pre-dexed\debug\classes-eb22566ff4f228b0c3dcadc5d4aab198cce38165.jar" />
-    </item>
-    <item
-        jar="D:\Programmig\Android\workspace\nophish\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-appstate\7.0.0\classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="7ff613bf78ab057293892fdbd4169eda899c89b9">
-        <dex dex="D:\Programmig\Android\workspace\nophish\app\build\intermediates\pre-dexed\debug\classes-0e9b93f047edf5c113f360b9304140eeea2394f8.jar" />
-    </item>
-    <item
-        jar="D:\Programmig\Android\workspace\nophish\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-games\7.0.0\classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="055783146ba9654a725442563be78cad303aad1f">
-        <dex dex="D:\Programmig\Android\workspace\nophish\app\build\intermediates\pre-dexed\debug\classes-a26bf5cab074a4b310cc35232527359490007142.jar" />
-    </item>
-    <item
-        jar="D:\Programmig\Android\workspace\nophish\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-wearable\7.0.0\classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="3033cc3a2c68dff3e5b646d6d084bdbdf7d00b25">
-        <dex dex="D:\Programmig\Android\workspace\nophish\app\build\intermediates\pre-dexed\debug\classes-40c2302ae63fc06f1addce26acab360f0e2ba310.jar" />
-    </item>
-    <item
-        jar="D:\Programmig\Android\workspace\nophish\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-fitness\7.0.0\classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="3c0b099f9de16b265ecd6122fcb603e7d0d29f90">
-        <dex dex="D:\Programmig\Android\workspace\nophish\app\build\intermediates\pre-dexed\debug\classes-46137caabdc56e95629dd42af16881379037e1e4.jar" />
-    </item>
-    <item
-        jar="C:\Users\Philipp\.gradle\caches\modules-2\files-2.1\com.google.code.gson\gson\2.3\5fc52c41ef0239d1093a1eb7c3697036183677ce\gson-2.3.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="5fc52c41ef0239d1093a1eb7c3697036183677ce">
-        <dex dex="D:\Programmig\Android\workspace\nophish\app\build\intermediates\pre-dexed\debug\gson-2.3-ba9afacedb8b8199c42834893af0e688403c5b1e.jar" />
-    </item>
-    <item
-        jar="D:\Programmig\Android\workspace\nophish\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-safetynet\7.0.0\classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="c976518693e89ad44fbfccfc654941eaec198d08">
-        <dex dex="D:\Programmig\Android\workspace\nophish\app\build\intermediates\pre-dexed\debug\classes-4cfea16c35f9d8427ead60d1ed1e279c60d53398.jar" />
-    </item>
-    <item
-        jar="D:\Programmig\Android\workspace\nophish\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-drive\7.0.0\classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="41b3870cbe5fa546d8095b5b89d42cb69f3dd175">
-        <dex dex="D:\Programmig\Android\workspace\nophish\app\build\intermediates\pre-dexed\debug\classes-d8855f58da2e5859ab0062c43f9d1fec84908977.jar" />
-    </item>
-    <item
-        jar="D:\Programmig\Android\workspace\nophish\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-analytics\7.0.0\classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="29fd6d3794b71491c2789708cd8d03c71feb8954">
-        <dex dex="D:\Programmig\Android\workspace\nophish\app\build\intermediates\pre-dexed\debug\classes-9783d73d6e1bfca07c8e99364fb2bf992df84210.jar" />
-    </item>
-    <item
-        jar="D:\Programmig\Android\workspace\nophish\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-maps\7.0.0\classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="17f8750d5c0749e44dd7c54aa390d9c937803825">
-        <dex dex="D:\Programmig\Android\workspace\nophish\app\build\intermediates\pre-dexed\debug\classes-72c5633e20e977a10e3a75d9d3d7a58a62021169.jar" />
-    </item>
-    <item
-        jar="D:\Programmig\Android\workspace\nophish\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-nearby\7.0.0\classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="ef5f051e7308febe289dc93c67c5f32785b4260a">
-        <dex dex="D:\Programmig\Android\workspace\nophish\app\build\intermediates\pre-dexed\debug\classes-6b3e5d5adc008ace7df60285c5a6317b984381dc.jar" />
-    </item>
-    <item
-        jar="D:\Programmig\Android\workspace\nophish\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-cast\7.0.0\classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="4cd0b093824b3228fffc21ea369b98d0b1db6566">
-        <dex dex="D:\Programmig\Android\workspace\nophish\app\build\intermediates\pre-dexed\debug\classes-1d60a20a7a1703c8202fcd5466b38b043ac9432b.jar" />
-    </item>
-    <item
-        jar="D:\Programmig\Android\workspace\nophish\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-gcm\7.0.0\classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="9224bc4c54ba95147c7eabd874573763c07cb6be">
-        <dex dex="D:\Programmig\Android\workspace\nophish\app\build\intermediates\pre-dexed\debug\classes-9146af34302d84cc6ac3a158219c03e8e48b436d.jar" />
-    </item>
-    <item
-        jar="D:\Programmig\Android\workspace\nophish\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-base\7.0.0\classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="4c93d99d454c975536bbe3b42283eee847f03ea3">
-        <dex dex="D:\Programmig\Android\workspace\nophish\app\build\intermediates\pre-dexed\debug\classes-2063438b30eea0e14ec71d7f83d04067fade6c57.jar" />
-    </item>
-    <item
-        jar="D:\Programmig\Android\workspace\nophish\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-plus\7.0.0\classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="0e8228b4bc69c6a2c8d7c18498a77e53417d2574">
-        <dex dex="D:\Programmig\Android\workspace\nophish\app\build\intermediates\pre-dexed\debug\classes-1950e286541b8de4a78ba0cad4afa8bdaf8987e1.jar" />
-    </item>
-    <item
-        jar="D:\Programmig\Android\workspace\nophish\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.0.0\classes.jar"
+        jar="/Users/philipprack/Documents/nophish/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.0.0/classes.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="4e86306289ace4aa0cfec44a05ed2b410d36989d">
-        <dex dex="D:\Programmig\Android\workspace\nophish\app\build\intermediates\pre-dexed\debug\classes-45d38055a881ed08f8979053b32d2cc1370e707a.jar" />
+        <dex dex="/Users/philipprack/Documents/nophish/app/build/intermediates/pre-dexed/debug/classes-bfcf4e51548c582d2bd6325923de870946877cc7.jar" />
     </item>
     <item
-        jar="D:\Programmig\Android\workspace\nophish\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-panorama\7.0.0\classes.jar"
+        jar="/Users/philipprack/Documents/nophish/app/build/intermediates/exploded-aar/nophish/BaseGameUtils/unspecified/classes.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="1c5a76debf0c2857ccad422c4a80ed785982f8df">
-        <dex dex="D:\Programmig\Android\workspace\nophish\app\build\intermediates\pre-dexed\debug\classes-4733a22688efe31ef0d10204b972e5141a5d463d.jar" />
+        sha1="876fd791727630da3b29b7832c0e7b704c54e29c">
+        <dex dex="/Users/philipprack/Documents/nophish/app/build/intermediates/pre-dexed/debug/classes-c838b5be53fb1518a1482373afbcc24cba5d99e4.jar" />
     </item>
     <item
-        jar="D:\Programmig\Android\workspace\nophish\app\libs\android-json-rpc-0.2.jar"
+        jar="/Users/philipprack/Documents/nophish/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-games/7.3.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="3b4ff5c39dace8f3b4ab4cab8191785547a0815f">
+        <dex dex="/Users/philipprack/Documents/nophish/app/build/intermediates/pre-dexed/debug/classes-1430a1baed38c507e2b087b572937c9fa3700624.jar" />
+    </item>
+    <item
+        jar="/Users/philipprack/Documents/nophish/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-appstate/7.3.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="0180d031a7b54dabb93b4af3869468b55dc938bd">
+        <dex dex="/Users/philipprack/Documents/nophish/app/build/intermediates/pre-dexed/debug/classes-5d90f0714590944c88fddd437dd8944f043d6973.jar" />
+    </item>
+    <item
+        jar="/Users/philipprack/Documents/nophish/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-fitness/7.3.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="4f4fe3c23776540625f3c2844152a7510fddf9f1">
+        <dex dex="/Users/philipprack/Documents/nophish/app/build/intermediates/pre-dexed/debug/classes-d9039350037724a488f0deb0a05520a6d0f5d1be.jar" />
+    </item>
+    <item
+        jar="/Users/philipprack/Documents/nophish/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-panorama/7.3.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="565a01f90f1529f73362707c4c185d0623a68782">
+        <dex dex="/Users/philipprack/Documents/nophish/app/build/intermediates/pre-dexed/debug/classes-d0188b6c2d7bbcad6a7af5ffb3cca337cd98a51c.jar" />
+    </item>
+    <item
+        jar="/Users/philipprack/Documents/nophish/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.0.0/libs/internal_impl-22.0.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="b5b92f469d515a13d778900f6d50c03d12f35504">
+        <dex dex="/Users/philipprack/Documents/nophish/app/build/intermediates/pre-dexed/debug/internal_impl-22.0.0-cb02ee477e7756d9ff0f73276554fdc5e8e2a756.jar" />
+    </item>
+    <item
+        jar="/Users/philipprack/Documents/nophish/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-wallet/7.3.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="6046e5cdaf799120b7c56a5a061d80e8854c4d34">
+        <dex dex="/Users/philipprack/Documents/nophish/app/build/intermediates/pre-dexed/debug/classes-7274bf3c8b892b1f9c0b899b6cb94b0c6aee45fe.jar" />
+    </item>
+    <item
+        jar="/Users/philipprack/Documents/nophish/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-identity/7.3.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="b48d5c51a9a9e329005106b4667f54948de4d4d8">
+        <dex dex="/Users/philipprack/Documents/nophish/app/build/intermediates/pre-dexed/debug/classes-5a5b03b6f84c2183f4ab0b9a6003797b2d11c4f3.jar" />
+    </item>
+    <item
+        jar="/Users/philipprack/Documents/nophish/app/libs/android-json-rpc-0.2.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="247f6ed31f384d44ab125ff61efce17b61dad70b">
-        <dex dex="D:\Programmig\Android\workspace\nophish\app\build\intermediates\pre-dexed\debug\android-json-rpc-0.2-9dcfb3099a3dff03ac40e6730dc80ff68dadf438.jar" />
+        <dex dex="/Users/philipprack/Documents/nophish/app/build/intermediates/pre-dexed/debug/android-json-rpc-0.2-94520601729d29017a269a88cbf9d90825b0dcf9.jar" />
     </item>
     <item
-        jar="D:\Programmig\Android\workspace\nophish\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-wallet\7.0.0\classes.jar"
+        jar="/Users/philipprack/Documents/nophish/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-nearby/7.3.0/classes.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="a96b762bde4139de855735f175ec4d17dca55a6d">
-        <dex dex="D:\Programmig\Android\workspace\nophish\app\build\intermediates\pre-dexed\debug\classes-c8b94ec3dcc503b7ee0d7a8e9459a361e78f7849.jar" />
+        sha1="5ea948d825957be6c4358c48422bee60eef2d487">
+        <dex dex="/Users/philipprack/Documents/nophish/app/build/intermediates/pre-dexed/debug/classes-4647665f0931d45dd1dd1c8747f5badbfb0846a2.jar" />
     </item>
     <item
-        jar="D:\Programmig\Android\workspace\nophish\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\21.0.3\classes.jar"
+        jar="/Users/philipprack/Documents/nophish/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-appindexing/7.3.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="e35fae1b377c23aa5fd2d309a190c2d0f73d54ec">
+        <dex dex="/Users/philipprack/Documents/nophish/app/build/intermediates/pre-dexed/debug/classes-1c1cd49287e7af43765451077671401c8d40f08d.jar" />
+    </item>
+    <item
+        jar="/Users/philipprack/Documents/nophish/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-wearable/7.3.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="e5bf453b070c1e39297986144960e45afa0fdfad">
+        <dex dex="/Users/philipprack/Documents/nophish/app/build/intermediates/pre-dexed/debug/classes-d723928aa8c92f2d402726da926f80469a5bef65.jar" />
+    </item>
+    <item
+        jar="/Users/philipprack/.gradle/caches/modules-2/files-2.1/com.google.code.gson/gson/2.3/5fc52c41ef0239d1093a1eb7c3697036183677ce/gson-2.3.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="5fc52c41ef0239d1093a1eb7c3697036183677ce">
+        <dex dex="/Users/philipprack/Documents/nophish/app/build/intermediates/pre-dexed/debug/gson-2.3-af8efe0e2cf3ff7cfd669f3172aed234448e9b7b.jar" />
+    </item>
+    <item
+        jar="/Users/philipprack/Documents/nophish/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-cast/7.3.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="e5b9f5b0aa8dee788beb63d23832cb29ce771343">
+        <dex dex="/Users/philipprack/Documents/nophish/app/build/intermediates/pre-dexed/debug/classes-69490607d7bdad33e1b7946765df2825ba21e755.jar" />
+    </item>
+    <item
+        jar="/Users/philipprack/Documents/nophish/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-safetynet/7.3.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="0708ef60917bf94913fe9ef972a655b99462dca7">
+        <dex dex="/Users/philipprack/Documents/nophish/app/build/intermediates/pre-dexed/debug/classes-5d04227517e5eec448ea767b7b6a67886ba88ece.jar" />
+    </item>
+    <item
+        jar="/Users/philipprack/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/22.0.0/support-annotations-22.0.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="685d0b2c590447e85284ed84712cb363ba04eff8">
+        <dex dex="/Users/philipprack/Documents/nophish/app/build/intermediates/pre-dexed/debug/support-annotations-22.0.0-99c60d8e51fa4642a18258d1d24f2e8ca7b4d753.jar" />
+    </item>
+    <item
+        jar="/Users/philipprack/Documents/nophish/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/classes.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="81d42bf983a8741f4888a6e333e454e4a5e0eeb7">
-        <dex dex="D:\Programmig\Android\workspace\nophish\app\build\intermediates\pre-dexed\debug\classes-fa78599dec5f3b8d2e1d0579ca4fdeba4a7ef04c.jar" />
+        <dex dex="/Users/philipprack/Documents/nophish/app/build/intermediates/pre-dexed/debug/classes-1254386e103dc9624bde673502edcd693bef85bf.jar" />
     </item>
     <item
-        jar="D:\Programmig\Android\workspace\nophish\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-location\7.0.0\classes.jar"
+        jar="/Users/philipprack/Documents/nophish/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-drive/7.3.0/classes.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="73ccb92b70112f2e463e415ef8d7275de7da6516">
-        <dex dex="D:\Programmig\Android\workspace\nophish\app\build\intermediates\pre-dexed\debug\classes-461314f04ffe249d27dd65e154340ff96195b1d5.jar" />
+        sha1="a0ce76dfaccbfbd6c551ed2174280aaabe60fe47">
+        <dex dex="/Users/philipprack/Documents/nophish/app/build/intermediates/pre-dexed/debug/classes-56ceae0b4e3e76e27d37d782f91ee7be2d367642.jar" />
+    </item>
+    <item
+        jar="/Users/philipprack/Documents/nophish/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-analytics/7.3.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="9c9dea9e85aceb09d95df5e6f7bc8a43fc286068">
+        <dex dex="/Users/philipprack/Documents/nophish/app/build/intermediates/pre-dexed/debug/classes-dab833c2855810644040d09998b094ea27f1fa84.jar" />
+    </item>
+    <item
+        jar="/Users/philipprack/Documents/nophish/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/7.3.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="f2f7ec211ce4d244ee97a57523eeb4526dc3cf8a">
+        <dex dex="/Users/philipprack/Documents/nophish/app/build/intermediates/pre-dexed/debug/classes-d2bbd036c1b29f487920b649ce84c526a8f30184.jar" />
+    </item>
+    <item
+        jar="/Users/philipprack/Documents/nophish/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-ads/7.3.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="3988694bf9d8186ff97ad5cdfa4ed88b5010fe08">
+        <dex dex="/Users/philipprack/Documents/nophish/app/build/intermediates/pre-dexed/debug/classes-27468105c9326a051f59bc7519bb1ca3cea47901.jar" />
+    </item>
+    <item
+        jar="/Users/philipprack/Documents/nophish/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-appinvite/7.3.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="bb36004beb02b69562cbec9aa7d6a3cf16bf5d1b">
+        <dex dex="/Users/philipprack/Documents/nophish/app/build/intermediates/pre-dexed/debug/classes-720b49b19f30514fb2dac36a4551e93e4b7fbd4e.jar" />
+    </item>
+    <item
+        jar="/Users/philipprack/Documents/nophish/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-maps/7.3.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="fe3e0c6de7cceed888b277487238b6af9a1cc299">
+        <dex dex="/Users/philipprack/Documents/nophish/app/build/intermediates/pre-dexed/debug/classes-4bd2cfae992b0c127c0dafd3848f9bc4d3167f7f.jar" />
+    </item>
+    <item
+        jar="/Users/philipprack/Documents/nophish/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-gcm/7.3.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="7215ac1f2fca947b9415a6ee2a1bf991364aab24">
+        <dex dex="/Users/philipprack/Documents/nophish/app/build/intermediates/pre-dexed/debug/classes-8f97cb028b8f52388c7739e77debcd3d1c16b350.jar" />
+    </item>
+    <item
+        jar="/Users/philipprack/Documents/nophish/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-plus/7.3.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="59652857a825fff0de62166fca1bc9553cc01abb">
+        <dex dex="/Users/philipprack/Documents/nophish/app/build/intermediates/pre-dexed/debug/classes-0959c77a2b29ef9c5c04116eae035c1b86f45bf9.jar" />
     </item>
 
 </items>
