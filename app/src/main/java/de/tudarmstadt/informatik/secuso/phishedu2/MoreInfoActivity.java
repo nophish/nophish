@@ -50,6 +50,9 @@ public class MoreInfoActivity extends PhishBaseActivity {
 		entrysForMoreInfo.put(getString(R.string.info_how_phishing_works), new MoreInfo(){public void pressed(){openLink(getString(R.string.url_how_phishing_works));}});
 		entrysForMoreInfo.put(getString(R.string.info_apwg), new MoreInfo(){public void pressed(){openLink(getString(R.string.url_apwg));}});
 		entrysForMoreInfo.put(getString(R.string.info_security_comic),new MoreInfo() {public void pressed() {openLink(getString(R.string.url_securitycomic));}});
+        entrysForMoreInfo.put(getString(R.string.quiz_1),new MoreInfo() {public void pressed() {openLink(getString(R.string.url_quiz_1));}});
+        entrysForMoreInfo.put(getString(R.string.quiz_2),new MoreInfo() {public void pressed() {openLink(getString(R.string.url_quiz_2));}});
+        entrysForMoreInfo.put(getString(R.string.quiz_3),new MoreInfo() {public void pressed() {openLink(getString(R.string.url_quiz_3));}});
 		
 		adapterForMoreInfo = new ArrayAdapter<String>(getActivity(),
 				android.R.layout.simple_list_item_1, entrysForMoreInfo.keySet()

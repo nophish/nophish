@@ -503,7 +503,7 @@ public class GameProgress{
 
         task.execute();
 	}
-	
+
     private GoogleApiClient getApiClient() {
     	return BackendControllerImpl.getInstance().getGameHelper().getApiClient();
 	}

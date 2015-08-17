@@ -26,6 +26,7 @@ import java.util.Map;
 import java.util.Set;
 
 import android.app.Activity;
+import android.appwidget.AppWidgetProvider;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
