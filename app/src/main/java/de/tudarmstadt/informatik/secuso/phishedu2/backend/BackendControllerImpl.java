@@ -227,6 +227,10 @@ public class BackendControllerImpl implements BackendController, UrlsLoadedListe
 		}
 	}
 
+    public EnumMap<PhishAttackType, PhishURL[]> getURLCache (){
+        return this.urlCache;
+    }
+
 	public void urlDownloadProgress(int percent){
 		this.initListener.initProgress(percent);
 	}
