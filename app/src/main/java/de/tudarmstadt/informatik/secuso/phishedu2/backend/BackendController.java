@@ -214,7 +214,7 @@ public interface BackendController extends GameHelperListener{
 	public void skipLevel0();
 
 	/**
-	 * Get the current game Helper. Via this Object you can access leaderboards and achievements. 
+	 * Get the current game Helper. Via this Object you can access leaderboards and achievements.
 	 * @return The current gameHelper
 	 */
 	public GameHelper getGameHelper();

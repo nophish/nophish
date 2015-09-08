@@ -91,8 +91,10 @@ public class StartMenuActivity extends PhishBaseActivity {
 			R.id.menu_button_level_overview,
 			R.id.menu_button_more_info,
 			R.id.menu_button_play,
-			R.id.menu_button_social,
-            R.id.menu_button_reset
+//			R.id.menu_button_social,
+            R.id.menu_button_reset,
+            R.id.menu_button_quiz,
+            R.id.menu_button_close
 		};
 	}
 
@@ -108,10 +110,14 @@ public class StartMenuActivity extends PhishBaseActivity {
 		} else if (id == R.id.menu_button_play) {
 			int userlevel = BackendControllerImpl.getInstance().getMaxUnlockedLevel();
 			BackendControllerImpl.getInstance().startLevel(userlevel);
-		} else if (id == R.id.menu_button_social) {
-			switchToFragment(GooglePlusActivity.class);
+//		} else if (id == R.id.menu_button_social) {
+//			switchToFragment(GooglePlusActivity.class);
 		} else if (id == R.id.menu_button_reset) {
             showResetPopup();
+        } else if (id == R.id.menu_button_quiz) {
+            switchToFragment(QuizActivity.class);
+        } else if (id == R.id.menu_button_close) {
+            showExitPopup();
         }
 	}
 
@@ -198,6 +204,7 @@ public class StartMenuActivity extends PhishBaseActivity {
                                 getActivity().getBaseContext(), 0, new Intent(getActivity().getIntent()),
                                 getActivity().getIntent().getFlags());
                         mgr.set(AlarmManager.RTC, System.currentTimeMillis() + 1000, restartIntent);
+
                         System.exit(2);
                     }
                 });

@@ -20,8 +20,6 @@
 
 package de.tudarmstadt.informatik.secuso.phishedu2;
 
-import java.util.LinkedHashMap;
-
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -31,8 +29,11 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
-public class MoreInfoActivity extends PhishBaseActivity {
+import java.util.LinkedHashMap;
+
+public class QuizActivity extends PhishBaseActivity {
 
 	public interface MoreInfo {
 		void pressed();
@@ -47,9 +48,9 @@ public class MoreInfoActivity extends PhishBaseActivity {
 		View v = inflater.inflate(R.layout.more_info_list_view, container, false);
 		
 		entrysForMoreInfo = new LinkedHashMap<String, MoreInfo>();
-		entrysForMoreInfo.put(getString(R.string.info_how_phishing_works), new MoreInfo(){public void pressed(){openLink(getString(R.string.url_how_phishing_works));}});
-		entrysForMoreInfo.put(getString(R.string.info_apwg), new MoreInfo(){public void pressed(){openLink(getString(R.string.url_apwg));}});
-		entrysForMoreInfo.put(getString(R.string.info_security_comic),new MoreInfo() {public void pressed() {openLink(getString(R.string.url_securitycomic));}});
+        entrysForMoreInfo.put(getString(R.string.quiz_1),new MoreInfo() {public void pressed() {openLink(getString(R.string.url_quiz_1));}});
+        entrysForMoreInfo.put(getString(R.string.quiz_2),new MoreInfo() {public void pressed() {openLink(getString(R.string.url_quiz_2));}});
+        entrysForMoreInfo.put(getString(R.string.quiz_3),new MoreInfo() {public void pressed() {openLink(getString(R.string.url_quiz_3));}});
 		
 		adapterForMoreInfo = new ArrayAdapter<String>(getActivity(),
 				android.R.layout.simple_list_item_1, entrysForMoreInfo.keySet()
@@ -57,6 +58,9 @@ public class MoreInfoActivity extends PhishBaseActivity {
 
 		final ListView listview = (ListView) v.findViewById(R.id.more_info_listview);
 		listview.setAdapter(this.adapterForMoreInfo);
+
+        final TextView text = (TextView) v.findViewById(R.id.more_info_text);
+        text.setText(R.string.quiz_text);
 
 		listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 			@Override
@@ -79,7 +83,7 @@ public class MoreInfoActivity extends PhishBaseActivity {
 	
 	@Override
 	int getTitle() {
-		return R.string.button_more_info;
+		return R.string.button_quiz;
 	}
 
 }
