@@ -26,6 +26,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import de.tudarmstadt.informatik.secuso.phishedu2.backend.BackendControllerImpl;
 import de.tudarmstadt.informatik.secuso.phishedu2.backend.NoPhishLevelInfo;
 
@@ -120,7 +122,8 @@ ViewPager.OnPageChangeListener {
 				args.putBoolean(Constants.ARG_ENABLE_HOME, true);
 				switchToFragment(LevelFinishedActivity.class, args);
 			} else {
-				BackendControllerImpl.getInstance().startLevel(level);
+                //Toast.makeText(getActivity(),Integer.toString(level),Toast.LENGTH_LONG).show();
+                BackendControllerImpl.getInstance().startLevel(level);
 			}
 		}
 	};
