@@ -165,7 +165,7 @@ public abstract class SwipeActivity extends PhishBaseActivity implements ViewPag
 				bStartLevel.setVisibility(View.VISIBLE);
 			}
 		}
-		if (page == 0 ) {
+		if (page == 0) {
 			imgPrevious.setVisibility(View.INVISIBLE);
 		}
 	}

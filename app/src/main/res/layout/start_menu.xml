@@ -59,13 +59,14 @@
             android:layout_below="@+id/menu_button_quiz"
             android:layout_alignLeft="@+id/menu_button_quiz"
             android:layout_alignStart="@+id/menu_button_quiz"
-            android:layout_marginTop="@dimen/margin_small" />
+            android:layout_marginTop="@dimen/margin_small"
+            android:visibility="invisible" />
 
         <Button
             android:id="@+id/menu_button_about"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/btn_standard_height"
-            android:layout_below="@+id/menu_button_more_info"
+            android:layout_below="@+id/menu_button_quiz"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="@dimen/margin_small"
             android:background="@drawable/button_grey"

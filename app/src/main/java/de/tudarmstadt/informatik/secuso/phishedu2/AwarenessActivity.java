@@ -50,8 +50,10 @@ public class AwarenessActivity extends PhishBaseActivity {
 	@Override
 	public View getLayout(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        if(Constants.FORCE_SKIP_AWARENESS)
+        if(Constants.FORCE_SKIP_AWARENESS) {
             BackendControllerImpl.getInstance().startLevel(1);
+            //BackendControllerImpl.getInstance().skipLevel0();
+        }
 
 		View v = inflater.inflate(R.layout.awareness, container, false);
 		final String[] fromMails = getResources().getStringArray(R.array.fromMails);

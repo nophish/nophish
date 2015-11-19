@@ -25,6 +25,8 @@ import java.lang.reflect.Field;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBarActivity;
@@ -127,6 +129,20 @@ public abstract class PhishBaseActivity extends Fragment implements OnClickListe
 		}else{
 			v = getLayout(inflater, container, savedInstanceState);
 		}
+
+        if(getLayout() == R.layout.about) {
+            ImageView logo = (ImageView) v.findViewById(R.id.secuso_logo);
+            logo.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent();
+                    intent.setAction(Intent.ACTION_VIEW);
+                    intent.addCategory(Intent.CATEGORY_BROWSABLE);
+                    intent.setData(Uri.parse("http://secuso.org/nophish"));
+                    startActivity(intent);
+                }
+            });
+        }
 		
 		setHasOptionsMenu(true);
 
@@ -155,6 +171,10 @@ public abstract class PhishBaseActivity extends Fragment implements OnClickListe
 		}else{
 			ab.setIcon(R.drawable.appicon_small);
 		}
+
+        if(getLevel() == 11) {
+            ab.setSubtitle(getString(R.string.level_11_splash_subtitle));
+        }
 	}
 	
 	protected void updateScore(){

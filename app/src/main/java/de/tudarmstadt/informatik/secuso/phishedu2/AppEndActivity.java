@@ -20,7 +20,14 @@
 
 package de.tudarmstadt.informatik.secuso.phishedu2;
 
+import android.os.Bundle;
+import android.text.method.LinkMovementMethod;
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
 
 
 public class AppEndActivity extends PhishBaseActivity {
@@ -29,8 +36,15 @@ public class AppEndActivity extends PhishBaseActivity {
 	public int getLayout() {
 		return R.layout.final_app_screen;
 	}
-	
-	@Override
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        TextView quiz = (TextView) this.getView().findViewById(R.id.play_on);
+        quiz.setMovementMethod(LinkMovementMethod.getInstance());
+    }
+
+    @Override
 	public int[] getClickables() {
 		return new int[]{
 				R.id.button1

@@ -21,13 +21,18 @@
 package de.tudarmstadt.informatik.secuso.phishedu2;
 
 import android.content.Intent;
+import android.media.Image;
 import android.net.Uri;
+import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.ImageView;
 
 public class AboutActivity extends PhishBaseActivity implements OnClickListener {
 
-	@Override
+    @Override
 	int getTitle() {
 		return R.string.title_activity_about;
 	}

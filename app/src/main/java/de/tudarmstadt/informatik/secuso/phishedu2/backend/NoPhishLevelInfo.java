@@ -131,7 +131,7 @@ public class NoPhishLevelInfo {
 	};
 	
 	private static final Integer[][] levelIntroLayoutIds = {
-			{ R.layout.level_00_intro_00, R.layout.level_00_intro_01 },
+			{ R.layout.level_00_intro_00, R.layout.level_00_intro_01, R.layout.level_00_finish_00 },
 			{R.layout.level_01_intro_00,
 					R.layout.level_01_intro_01, R.layout.level_01_intro_02,
 					R.layout.level_01_intro_03 ,
@@ -147,7 +147,7 @@ public class NoPhishLevelInfo {
 			{ R.layout.level_04_a_intro_00, R.layout.level_04_a_intro_02},
 			{ R.layout.level_04_b_intro_00, R.layout.level_04_b_intro_02,
 					R.layout.level_04_b_intro_03 },
-			{ R.layout.level_05_intro_00, R.layout.level_05_intro_02,
+			{ /*R.layout.level_05_intro_00,*/ R.layout.level_05_intro_02,
 						R.layout.level_05_intro_03 },			
 			{ R.layout.level_06_intro_02, R.layout.level_06_intro_03 },
 			{ R.layout.level_07_intro_00, R.layout.level_07_intro_02},		//typo
@@ -169,7 +169,7 @@ public class NoPhishLevelInfo {
 					R.layout.level_11_intro_07}};
 
 	private static final Integer[][] levelFinishedLayoutIds = {
-			{ R.layout.level_00_finish_00a, R.layout.level_00_finish_00,
+			{ R.layout.level_00_finish_00a, R.layout.level_00_finish_00b,
 					R.layout.level_00_finish_01, R.layout.level_00_finish_02,
 					R.layout.level_00_finish_03, R.layout.level_00_finish_04,
 					R.layout.level_00_finish_05, R.layout.level_00_finish_07,
