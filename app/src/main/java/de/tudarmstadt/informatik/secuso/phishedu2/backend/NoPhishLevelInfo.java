@@ -296,7 +296,7 @@ public class NoPhishLevelInfo {
 	public int levelRepeats() {
 		int result = 0;
 		if (levelId >= FIRST_REPEAT_LEVEL) {
-			result = (int) Math.floor(this.levelPhishes() / 2);
+			result = levelCorrectURLs() - (levelPhishes() + (int) Math.floor(this.levelPhishes() / 2));
 		}
 		return result;
 	}
