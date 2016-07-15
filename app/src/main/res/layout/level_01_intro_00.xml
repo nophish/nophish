@@ -41,7 +41,8 @@
             android:layout_marginTop="@dimen/margin_large"
             android:contentDescription="@string/content_desc_i_know_that_btn"
             android:minWidth="@dimen/btn_standard_width"
-            android:text="@string/level_01_intro_00_button_01" />
+            android:text="@string/level_01_intro_00_button_01"
+            android:visibility="invisible" />
     </RelativeLayout>
 
 </ScrollView>

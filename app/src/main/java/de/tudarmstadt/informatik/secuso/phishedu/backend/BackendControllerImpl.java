@@ -251,6 +251,7 @@ public class BackendControllerImpl implements BackendController, UrlsLoadedListe
 			this.progress.finishlevel(1);
 			level=2;
 		}
+
 		this.progress.setLevel(level);
 		this.level_attacks=generateLevelAttacks(level);
 		for(int i=0; i<onLevelChangeListeners.size();i++){
@@ -517,6 +518,9 @@ public class BackendControllerImpl implements BackendController, UrlsLoadedListe
 	public void skipLevel0(){
 		this.levelFinished(0);
 	}
+    public void skipLevel1(){
+        this.levelFinished(1);
+    }
 
 	private void levelFailed(int level){
 		notifyLevelStateChangedListener(Levelstate.failed, level);

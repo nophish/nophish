@@ -4,16 +4,21 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.SpannableStringBuilder;
 import android.text.style.BackgroundColorSpan;
 import android.text.style.ForegroundColorSpan;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendController;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.BackendControllerImpl;
 import de.tudarmstadt.informatik.secuso.phishedu.backend.NoPhishLevelInfo;
 
@@ -110,14 +115,17 @@ public class LevelIntroActivity extends SwipeActivity {
 	protected void onStartClick() {
 		Class next_activity = URLTaskActivity.class;
 		if (this.getLevel() == 0) {
-			next_activity = AwarenessActivity.class;
+            BackendControllerImpl.getInstance().skipLevel0();
+            next_activity = AwarenessActivity.class;
 		} else if (this.getLevel() == 1) {
 			next_activity = FindAddressBarActivity.class;
+            BackendControllerImpl.getInstance().skipLevel1();
 		} else if (this.getLevel() == BackendControllerImpl.getInstance()
 				.getLevelCount() - 1) {
 			next_activity = AppEndActivity.class;
 		}
-		switchToFragment(next_activity);
+        //if(this.getLevel() != 1)
+            switchToFragment(next_activity);
 	}
 
 	@Override
@@ -126,7 +134,12 @@ public class LevelIntroActivity extends SwipeActivity {
 				.getLevelCount() - 1) {
 			return "Geschafft";
 		}
-		return "Starte Übung";
+        if(this.getLevel() == 0)
+            return "Fortfahren";
+        else if(this.getLevel() == 1)
+            return "WEITER ZU LEVEL 1";
+        else
+		    return "Starte Übung";
 	}
 
 	@Override

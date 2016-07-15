@@ -2,60 +2,186 @@
 <items version="2" >
 
     <item
-        jar="/home/clb/Dokumente/Projects/nophish/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.3/classes.jar"
+        jar="D:\Dropbox\MEINS\02 - Hiwi\workspace\nophish\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-appindexing\7.0.0\classes.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="2c91c949a45a21cdecf26e03951e46c7beec9ad8">
-        <dex dex="/home/clb/Dokumente/Projects/nophish/app/build/intermediates/pre-dexed/debug/classes-d80cd8638df60767fbf7558a8f6d8df23e3df430.jar" />
+        sha1="a08d65794b844d8e7540bf9a33859bf3b2482d7f">
+        <dex dex="D:\Dropbox\MEINS\02 - Hiwi\workspace\nophish\app\build\intermediates\pre-dexed\debug\classes-e060e4e9ebd8daaf48f34f3d4ae1d4e7bd588310.jar" />
     </item>
     <item
-        jar="/home/clb/Dokumente/Projects/nophish/app/build/intermediates/exploded-aar/com.google.android.gms/play-services/6.5.87/classes.jar"
+        jar="D:\Dropbox\MEINS\02 - Hiwi\workspace\nophish\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-ads\7.0.0\classes.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="dd9247ea0fabe8ee479638c4b4a23e93752be256">
-        <dex dex="/home/clb/Dokumente/Projects/nophish/app/build/intermediates/pre-dexed/debug/classes-a4a0024e976bf2db953070e6848f1629d223b147.jar" />
+        sha1="e3d791b42eaa90416cd0b2d2e608092794a3baa4">
+        <dex dex="D:\Dropbox\MEINS\02 - Hiwi\workspace\nophish\app\build\intermediates\pre-dexed\debug\classes-8a2c66099d9480af00b75f25efd7452e26633d28.jar" />
     </item>
     <item
-        jar="/home/clb/Dokumente/Projects/nophish/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/classes.jar"
+        jar="D:\Programmig\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\22.0.0\support-annotations-22.0.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="685d0b2c590447e85284ed84712cb363ba04eff8">
+        <dex dex="D:\Dropbox\MEINS\02 - Hiwi\workspace\nophish\app\build\intermediates\pre-dexed\debug\support-annotations-22.0.0-63489bf2594acdc08db263fca1e7d30b9bfcd77a.jar" />
+    </item>
+    <item
+        jar="D:\Dropbox\MEINS\02 - Hiwi\workspace\nophish\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-maps\7.0.0\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="17f8750d5c0749e44dd7c54aa390d9c937803825">
+        <dex dex="D:\Dropbox\MEINS\02 - Hiwi\workspace\nophish\app\build\intermediates\pre-dexed\debug\classes-41c2bb64fd6d24dc91af074ad8b6fa8d2851b6cf.jar" />
+    </item>
+    <item
+        jar="D:\Dropbox\MEINS\02 - Hiwi\workspace\nophish\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\21.0.3\classes.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="81d42bf983a8741f4888a6e333e454e4a5e0eeb7">
-        <dex dex="/home/clb/Dokumente/Projects/nophish/app/build/intermediates/pre-dexed/debug/classes-c9ec8e9a72504f0230b7c8f575198b0dc9847467.jar" />
+        <dex dex="D:\Dropbox\MEINS\02 - Hiwi\workspace\nophish\app\build\intermediates\pre-dexed\debug\classes-ea6c5ecc76d25ad7ed6cc47c2d2355fc384603c9.jar" />
     </item>
     <item
-        jar="/home/clb/.gradle/caches/modules-2/files-2.1/com.google.code.gson/gson/2.3/5fc52c41ef0239d1093a1eb7c3697036183677ce/gson-2.3.jar"
+        jar="D:\Dropbox\MEINS\02 - Hiwi\workspace\nophish\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-games\7.0.0\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="055783146ba9654a725442563be78cad303aad1f">
+        <dex dex="D:\Dropbox\MEINS\02 - Hiwi\workspace\nophish\app\build\intermediates\pre-dexed\debug\classes-1016e23851bb1f515f600a4d8665d106d8c61783.jar" />
+    </item>
+    <item
+        jar="D:\Dropbox\MEINS\02 - Hiwi\workspace\nophish\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-nearby\7.0.0\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="ef5f051e7308febe289dc93c67c5f32785b4260a">
+        <dex dex="D:\Dropbox\MEINS\02 - Hiwi\workspace\nophish\app\build\intermediates\pre-dexed\debug\classes-999f22607d23241a6268bddd636c056f195cf744.jar" />
+    </item>
+    <item
+        jar="D:\Dropbox\MEINS\02 - Hiwi\workspace\nophish\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-location\7.0.0\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="73ccb92b70112f2e463e415ef8d7275de7da6516">
+        <dex dex="D:\Dropbox\MEINS\02 - Hiwi\workspace\nophish\app\build\intermediates\pre-dexed\debug\classes-9e1a6a4f72075d1c06b2d5ec763f008fcad4a5fb.jar" />
+    </item>
+    <item
+        jar="D:\Dropbox\MEINS\02 - Hiwi\workspace\nophish\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-safetynet\7.0.0\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="c976518693e89ad44fbfccfc654941eaec198d08">
+        <dex dex="D:\Dropbox\MEINS\02 - Hiwi\workspace\nophish\app\build\intermediates\pre-dexed\debug\classes-35835da83a626af74ecde41f957c43310dfc1013.jar" />
+    </item>
+    <item
+        jar="D:\Dropbox\MEINS\02 - Hiwi\workspace\nophish\app\build\intermediates\exploded-aar\nophish\BaseGameUtils\unspecified\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="45985df35cbb7a2f16022e5adcfd955eaaf2dedb">
+        <dex dex="D:\Dropbox\MEINS\02 - Hiwi\workspace\nophish\app\build\intermediates\pre-dexed\debug\classes-77352bff4d2a202a26eeeb5c94a53630c1714386.jar" />
+    </item>
+    <item
+        jar="D:\Dropbox\MEINS\02 - Hiwi\workspace\nophish\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-plus\7.0.0\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="0e8228b4bc69c6a2c8d7c18498a77e53417d2574">
+        <dex dex="D:\Dropbox\MEINS\02 - Hiwi\workspace\nophish\app\build\intermediates\pre-dexed\debug\classes-4653f2c03040257924e669014e184cfede14c5be.jar" />
+    </item>
+    <item
+        jar="D:\Dropbox\MEINS\02 - Hiwi\workspace\nophish\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-wallet\7.0.0\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="a96b762bde4139de855735f175ec4d17dca55a6d">
+        <dex dex="D:\Dropbox\MEINS\02 - Hiwi\workspace\nophish\app\build\intermediates\pre-dexed\debug\classes-84fc3dd2d34d9a31916434c123d3e1aa772f3b4a.jar" />
+    </item>
+    <item
+        jar="D:\Dropbox\MEINS\02 - Hiwi\workspace\nophish\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-analytics\7.0.0\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="29fd6d3794b71491c2789708cd8d03c71feb8954">
+        <dex dex="D:\Dropbox\MEINS\02 - Hiwi\workspace\nophish\app\build\intermediates\pre-dexed\debug\classes-50609137fea923fe12f7e78a22c9a6caa329ecbb.jar" />
+    </item>
+    <item
+        jar="C:\Users\Philipp\.gradle\caches\modules-2\files-2.1\com.google.code.gson\gson\2.3\5fc52c41ef0239d1093a1eb7c3697036183677ce\gson-2.3.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="5fc52c41ef0239d1093a1eb7c3697036183677ce">
-        <dex dex="/home/clb/Dokumente/Projects/nophish/app/build/intermediates/pre-dexed/debug/gson-2.3-fd2e0a35e7e8bb35971c8286d69ce752b8c5285a.jar" />
+        <dex dex="D:\Dropbox\MEINS\02 - Hiwi\workspace\nophish\app\build\intermediates\pre-dexed\debug\gson-2.3-ba9afacedb8b8199c42834893af0e688403c5b1e.jar" />
     </item>
     <item
-        jar="/home/clb/Dokumente/Projects/nophish/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.3/libs/internal_impl-21.0.3.jar"
+        jar="D:\Dropbox\MEINS\02 - Hiwi\workspace\nophish\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-identity\7.0.0\classes.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="01ec05bfbafcc07646ba813000bf2ef11742dd03">
-        <dex dex="/home/clb/Dokumente/Projects/nophish/app/build/intermediates/pre-dexed/debug/internal_impl-21.0.3-7091bb337e6f68a2b0efec8c99219173ac66da63.jar" />
+        sha1="fb04b12526b0073c7fb1ebb70c5842d82ee95596">
+        <dex dex="D:\Dropbox\MEINS\02 - Hiwi\workspace\nophish\app\build\intermediates\pre-dexed\debug\classes-4f874af8d64f700e22c4c5b6dcfbc697e3766d3c.jar" />
     </item>
     <item
-        jar="/home/clb/Android/Sdk/extras/android/m2repository/com/android/support/support-annotations/21.0.3/support-annotations-21.0.3.jar"
+        jar="D:\Dropbox\MEINS\02 - Hiwi\workspace\nophish\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-appstate\7.0.0\classes.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="4b74cefe1f0c1b819e7260c8627a14674e37fd35">
-        <dex dex="/home/clb/Dokumente/Projects/nophish/app/build/intermediates/pre-dexed/debug/support-annotations-21.0.3-35b3c1b7a1404fe893386ecf9412f94266c9a24e.jar" />
+        sha1="7ff613bf78ab057293892fdbd4169eda899c89b9">
+        <dex dex="D:\Dropbox\MEINS\02 - Hiwi\workspace\nophish\app\build\intermediates\pre-dexed\debug\classes-5a1452c28599562177ae041f7f14ca1cff416041.jar" />
     </item>
     <item
-        jar="/home/clb/Dokumente/Projects/nophish/app/build/intermediates/exploded-aar/nophish/BaseGameUtils/unspecified/classes.jar"
+        jar="D:\Dropbox\MEINS\02 - Hiwi\workspace\nophish\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-drive\7.0.0\classes.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="7e46e30ccd402d054a79d67e22a2dedb0c1b8d72">
-        <dex dex="/home/clb/Dokumente/Projects/nophish/app/build/intermediates/pre-dexed/debug/classes-a69376aa0973810c56176f3dddbb9b940ab71da7.jar" />
+        sha1="41b3870cbe5fa546d8095b5b89d42cb69f3dd175">
+        <dex dex="D:\Dropbox\MEINS\02 - Hiwi\workspace\nophish\app\build\intermediates\pre-dexed\debug\classes-aead004f7e2a81572482d4d715e242196f8d2d20.jar" />
     </item>
     <item
-        jar="/home/clb/Dokumente/Projects/nophish/app/libs/android-json-rpc-0.2.jar"
+        jar="D:\Dropbox\MEINS\02 - Hiwi\workspace\nophish\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-base\7.0.0\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="4c93d99d454c975536bbe3b42283eee847f03ea3">
+        <dex dex="D:\Dropbox\MEINS\02 - Hiwi\workspace\nophish\app\build\intermediates\pre-dexed\debug\classes-674fff76441cba55c8c3b3f619a3e8aa53688ee4.jar" />
+    </item>
+    <item
+        jar="D:\Dropbox\MEINS\02 - Hiwi\workspace\nophish\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.0.0\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="4e86306289ace4aa0cfec44a05ed2b410d36989d">
+        <dex dex="D:\Dropbox\MEINS\02 - Hiwi\workspace\nophish\app\build\intermediates\pre-dexed\debug\classes-dc8c5f1e071f8dc6323265befd759e7c76ce0584.jar" />
+    </item>
+    <item
+        jar="D:\Dropbox\MEINS\02 - Hiwi\workspace\nophish\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-fitness\7.0.0\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="3c0b099f9de16b265ecd6122fcb603e7d0d29f90">
+        <dex dex="D:\Dropbox\MEINS\02 - Hiwi\workspace\nophish\app\build\intermediates\pre-dexed\debug\classes-7d83f062a70f7a5d8f2e2e77a67eef7d72298181.jar" />
+    </item>
+    <item
+        jar="D:\Dropbox\MEINS\02 - Hiwi\workspace\nophish\app\libs\android-json-rpc-0.2.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="247f6ed31f384d44ab125ff61efce17b61dad70b">
-        <dex dex="/home/clb/Dokumente/Projects/nophish/app/build/intermediates/pre-dexed/debug/android-json-rpc-0.2-71e1d820331162e8b15b589a81c720f195a60a9f.jar" />
+        <dex dex="D:\Dropbox\MEINS\02 - Hiwi\workspace\nophish\app\build\intermediates\pre-dexed\debug\android-json-rpc-0.2-00c9f5d043615a334eaeed72d43758874b6f9069.jar" />
+    </item>
+    <item
+        jar="D:\Dropbox\MEINS\02 - Hiwi\workspace\nophish\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-wearable\7.0.0\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="3033cc3a2c68dff3e5b646d6d084bdbdf7d00b25">
+        <dex dex="D:\Dropbox\MEINS\02 - Hiwi\workspace\nophish\app\build\intermediates\pre-dexed\debug\classes-d825551066078aa9917e2ef163f71320de77d0f0.jar" />
+    </item>
+    <item
+        jar="D:\Dropbox\MEINS\02 - Hiwi\workspace\nophish\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-panorama\7.0.0\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="1c5a76debf0c2857ccad422c4a80ed785982f8df">
+        <dex dex="D:\Dropbox\MEINS\02 - Hiwi\workspace\nophish\app\build\intermediates\pre-dexed\debug\classes-984fc8e50680085c94c8f849a06075168ffd5570.jar" />
+    </item>
+    <item
+        jar="D:\Dropbox\MEINS\02 - Hiwi\workspace\nophish\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-cast\7.0.0\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="4cd0b093824b3228fffc21ea369b98d0b1db6566">
+        <dex dex="D:\Dropbox\MEINS\02 - Hiwi\workspace\nophish\app\build\intermediates\pre-dexed\debug\classes-9cd45e09637854d5b87666d52a7040d034475144.jar" />
+    </item>
+    <item
+        jar="D:\Dropbox\MEINS\02 - Hiwi\workspace\nophish\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.0.0\libs\internal_impl-22.0.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="b5b92f469d515a13d778900f6d50c03d12f35504">
+        <dex dex="D:\Dropbox\MEINS\02 - Hiwi\workspace\nophish\app\build\intermediates\pre-dexed\debug\internal_impl-22.0.0-c70eb5214f152191a0cbc8359d28363146885b33.jar" />
+    </item>
+    <item
+        jar="D:\Dropbox\MEINS\02 - Hiwi\workspace\nophish\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-gcm\7.0.0\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="9224bc4c54ba95147c7eabd874573763c07cb6be">
+        <dex dex="D:\Dropbox\MEINS\02 - Hiwi\workspace\nophish\app\build\intermediates\pre-dexed\debug\classes-fd55d4f7539d04e5870f0b7f12397d09973524fa.jar" />
     </item>
 
 </items>
