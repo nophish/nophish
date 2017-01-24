@@ -89,16 +89,14 @@ public class NoPhishLevelInfo {
 			R.string.level_title_03, R.string.level_title_04,
 			R.string.level_title_05, R.string.level_title_06,
 			R.string.level_title_07, R.string.level_title_08,
-			R.string.level_title_09, R.string.level_title_10,
-			R.string.level_title_11 };
+			R.string.level_title_09, R.string.level_title_11 };
 
 	private static final int[] levelSubtitlesIds = {
 			R.string.level_subtitle_00, R.string.level_subtitle_01,
 			R.string.level_subtitle_02, R.string.level_subtitle_03,
 			R.string.level_subtitle_04, R.string.level_subtitle_05,
 			R.string.level_subtitle_06, R.string.level_subtitle_07,
-			R.string.level_subtitle_08, R.string.level_subtitle_09,
-			R.string.level_subtitle_10, R.string.level_subtitle_11 };
+			R.string.level_subtitle_08, R.string.level_subtitle_09, R.string.level_subtitle_11 };
 
 	private static final Integer[][] levelSplashLayoutIds = {
 		{ R.layout.level_00_splash},
@@ -111,7 +109,6 @@ public class NoPhishLevelInfo {
 		{ R.layout.level_06_splash},
 		{ R.layout.level_07_splash},
 		{ R.layout.level_08_splash},
-		{ R.layout.level_10_splash},
 		{ R.layout.level_11_splash_00},
 	};
 	
@@ -126,7 +123,6 @@ public class NoPhishLevelInfo {
 		{R.layout.level_06_intro_01},
 		{R.layout.level_07_intro_01},
 		{R.layout.level_08_intro_01},
-		{R.layout.level_10_intro_01},
 		{}
 	};
 	
@@ -140,8 +136,7 @@ public class NoPhishLevelInfo {
 					R.layout.level_02_intro_01, R.layout.level_02_intro_02,
 					R.layout.level_02_intro_03, R.layout.level_02_intro_04,
 					R.layout.level_02_intro_05, R.layout.level_02_intro_06,
-					R.layout.level_02_intro_07, R.layout.level_02_intro_08,
-					R.layout.level_02_intro_09, R.layout.level_02_intro_10, },
+					R.layout.level_02_intro_07, R.layout.level_02_intro_08},
 			{ R.layout.level_03_intro_00, R.layout.level_03_intro_01,
 						R.layout.level_03_intro_03 },
 			{ R.layout.level_04_a_intro_00, R.layout.level_04_a_intro_02},
@@ -154,11 +149,6 @@ public class NoPhishLevelInfo {
 						//R.layout.level_07_intro_02, R.layout.level_06_intro_05,
 						//R.layout.level_06_intro_06 },	
 			{ R.layout.level_08_intro_00, R.layout.level_08_intro_02 },
-			{ R.layout.level_10_intro_00, R.layout.level_10_intro_02,
-					R.layout.level_10_intro_03, R.layout.level_10_intro_04,
-					R.layout.level_10_intro_05, R.layout.level_10_intro_06,
-					R.layout.level_10_intro_07, R.layout.level_10_intro_08,
-					R.layout.level_10_intro_09, },
 			{ R.layout.level_11_intro_00,
 					R.layout.level_11_splash_04, R.layout.level_11_intro_09,
                     R.layout.level_11_intro_10, R.layout.level_11_intro_11,
@@ -189,8 +179,7 @@ public class NoPhishLevelInfo {
 			{ PhishAttackType.HostInPath }, // Level 5
 			{ PhishAttackType.Misleading }, // Level 6
 			{ PhishAttackType.Typo}, // Level 7
-			{ PhishAttackType.Homoglyphic}, // Level 8
-			{ PhishAttackType.HTTP } // Level 9
+			{ PhishAttackType.Homoglyphic} // Level 8
 	};
 
 	public boolean hasAttack(PhishAttackType attack) {
