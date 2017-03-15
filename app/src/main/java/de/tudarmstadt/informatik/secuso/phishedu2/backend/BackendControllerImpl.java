@@ -20,6 +20,14 @@
 
 package de.tudarmstadt.informatik.secuso.phishedu2.backend;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.net.Uri;
+import android.os.CountDownTimer;
+
+import com.google.gson.Gson;
+import com.google.gson.JsonSyntaxException;
+
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -30,22 +38,16 @@ import java.util.Random;
 import java.util.Scanner;
 import java.util.Vector;
 
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.net.Uri;
-import android.os.CountDownTimer;
-
-import com.google.android.gms.games.Games;
-import com.google.example.games.basegameutils.GameHelper;
-import com.google.gson.Gson;
-import com.google.gson.JsonSyntaxException;
-
 import de.tudarmstadt.informatik.secuso.phishedu2.Constants;
-import de.tudarmstadt.informatik.secuso.phishedu2.R;
 import de.tudarmstadt.informatik.secuso.phishedu2.backend.generator.BaseGenerator;
 import de.tudarmstadt.informatik.secuso.phishedu2.backend.networkTasks.GetUrlsTask;
 import de.tudarmstadt.informatik.secuso.phishedu2.backend.networkTasks.SendMailTask;
 import de.tudarmstadt.informatik.secuso.phishedu2.backend.networkTasks.UrlsLoadedListener;
+
+/*
+import com.google.android.gms.games.Games;
+import com.google.example.games.basegameutils.GameHelper;
+*/
 
 /**
  * This is the main backend logik.
@@ -58,7 +60,7 @@ public class BackendControllerImpl implements BackendController, UrlsLoadedListe
 	private static final String PREFS_NAME = "PhisheduState";
 	private static final String URL_CACHE_NAME ="urlcache";
 	private static final String KEY_AUTO_SIGN_IN = "KEY_AUTO_SIGN_IN";
-	private static final String LEVEL1_URL = "https://pages.no-phish.de/level1.php";
+	private static final String LEVEL1_URL = "";//"https://pages.no-phish.de/level1.php";
 	private static final PhishAttackType[] CACHE_TYPES = {PhishAttackType.NoPhish};
 	private static final int URL_CACHE_SIZE = 500;
 
@@ -92,7 +94,7 @@ public class BackendControllerImpl implements BackendController, UrlsLoadedListe
 
 	//instance variables
 	private FrontendController frontend;
-	private GameHelper gamehelper;
+	//private GameHelper gamehelper;
 	private boolean inited = false;
 	//indexed by UrlType
 	private EnumMap<PhishAttackType, PhishURL[]> urlCache=new EnumMap<PhishAttackType, PhishURL[]>(PhishAttackType.class);
@@ -166,16 +168,16 @@ public class BackendControllerImpl implements BackendController, UrlsLoadedListe
 		}
 		this.frontend=frontend;
 		this.initListener=initlistener;
-		this.gamehelper=new GameHelper(frontend.getBaseActivity(),GameHelper.CLIENT_GAMES|GameHelper.CLIENT_SNAPSHOT);
-		this.gamehelper.setup(this);
+		//this.gamehelper=new GameHelper(frontend.getBaseActivity(),GameHelper.CLIENT_GAMES|GameHelper.CLIENT_SNAPSHOT);
+		//this.gamehelper.setup(this);
 		SharedPreferences prefs = this.getFrontend().getContext().getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
 		
 		
-		boolean wasSignedIn = prefs.getBoolean(KEY_AUTO_SIGN_IN, false);
-	    this.gamehelper.setConnectOnStart(wasSignedIn);
+		//boolean wasSignedIn = prefs.getBoolean(KEY_AUTO_SIGN_IN, false);
+	    //this.gamehelper.setConnectOnStart(wasSignedIn);
 				
 		Context context = this.getFrontend().getContext();
-		this.progress = new GameProgress(context, prefs, this.gamehelper.getApiClient());
+		this.progress = new GameProgress(context, prefs /*, this.gamehelper.getApiClient()*/);
 		SharedPreferences url_cache = this.getFrontend().getContext().getSharedPreferences(URL_CACHE_NAME, Context.MODE_PRIVATE);
 		for(PhishAttackType type: CACHE_TYPES){
 			loadUrls(url_cache, type);
@@ -578,25 +580,29 @@ public class BackendControllerImpl implements BackendController, UrlsLoadedListe
 		return this.progress.getMaxFinishedLevel();
 	}
 
+	/*
 	@Override
 	public void signIn() {
 		checkinited();
+
 		if(!this.gamehelper.isSignedIn()){
 			SharedPreferences.Editor editor = frontend.getBaseActivity().getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE).edit();
 	        editor.putBoolean(KEY_AUTO_SIGN_IN, true);
 	        editor.commit();
 			this.gamehelper.beginUserInitiatedSignIn();
 		}
-	}
+	}*/
 
+	/*
 	@Override
 	public void signOut() {
 		checkinited();
+
 		SharedPreferences.Editor editor = frontend.getBaseActivity().getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE).edit();
         editor.putBoolean(KEY_AUTO_SIGN_IN, false);
         editor.commit();
         this.gamehelper.signOut();
-	}
+	}*/
 
 	@Override
 	public int getCorrectlyFoundURLs() {
@@ -624,23 +630,27 @@ public class BackendControllerImpl implements BackendController, UrlsLoadedListe
 		return this.progress.getRemainingLives();
 	}
 
-	@Override
+	/*@Override
 	public void onSignInFailed() {
 		getFrontend().onSignInFailed();
 	}
-
+    */
+    /*
 	@Override
 	public void onSignInSucceeded() {
+		/*
 		progress.onSignInSucceeded();
 		getFrontend().onSignInSucceeded();
 		Games.Achievements.unlock(gamehelper.getApiClient(), getFrontend().getContext().getResources().getString(R.string.achievement_welcome));
-	}
+		*/
+	//}*/
 
+	/*
 	@Override
 	public GameHelper getGameHelper() {
 		return this.gamehelper;
 	}
-
+	*/
 	@Override
 	public int getLevelCount() {
 		return NoPhishLevelInfo.levelCount();
@@ -664,10 +674,11 @@ public class BackendControllerImpl implements BackendController, UrlsLoadedListe
 		return this.progress.getLevelPoints(level);
 	}
 
+	/*
 	@Override
 	public void deleteRemoteData() {
 		this.progress.deleteRemoteData();
-	}
+	}*/
 
 	@Override
 	public void addOnLevelstateChangeListener(OnLevelstateChangeListener listener) {
@@ -740,8 +751,10 @@ public class BackendControllerImpl implements BackendController, UrlsLoadedListe
 
 	@Override
 	public void showSaveGames() {
+		/*
 		 android.content.Intent snapshotIntent = Games.Snapshots.getSelectSnapshotIntent(getGameHelper().getApiClient(), "Select a snap", true, true, 5);
 		 getFrontend().getBaseActivity().startActivityForResult(snapshotIntent, 0);
+		 */
 	}
 
 	@Override

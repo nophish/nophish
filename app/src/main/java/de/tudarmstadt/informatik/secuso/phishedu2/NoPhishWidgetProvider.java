@@ -7,16 +7,12 @@ import android.appwidget.AppWidgetProvider;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.net.Uri;
 import android.util.Log;
 import android.widget.RemoteViews;
 import android.widget.Toast;
 
 import java.util.EnumMap;
-import java.util.Map;
-import java.util.Random;
-import java.util.Set;
 
 import de.tudarmstadt.informatik.secuso.phishedu2.backend.BackendController;
 import de.tudarmstadt.informatik.secuso.phishedu2.backend.BackendControllerImpl;
@@ -167,7 +163,7 @@ public class NoPhishWidgetProvider extends AppWidgetProvider implements Frontend
     public void showProofActivity() {
 
     }
-
+    /*
     @Override
     public void onSignInFailed() {
 
@@ -177,6 +173,7 @@ public class NoPhishWidgetProvider extends AppWidgetProvider implements Frontend
     public void onSignInSucceeded() {
 
     }
+    */
 
     @Override
     public void initProgress(int percent) {

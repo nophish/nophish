@@ -25,11 +25,11 @@
         <ImageView
             android:id="@+id/level_01_intro_01_image"
             android:layout_width="wrap_content"
+            android:layout_height="@dimen/website_screenshot_height_small"
             android:layout_alignLeft="@+id/level_01_intro_01_text_01"
             android:layout_below="@+id/level_01_intro_01_text_01"
             android:contentDescription="@string/content_desc_find_addr_bar"
-            android:src="@drawable/click_dialog_android"
-            android:layout_height="400dp" />
+            android:src="@drawable/address_bar" />
 
     </RelativeLayout>
 

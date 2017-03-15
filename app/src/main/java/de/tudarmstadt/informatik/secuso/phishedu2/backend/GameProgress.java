@@ -27,6 +27,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 
+/*
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.games.Games;
 import com.google.android.gms.games.GamesStatusCodes;
@@ -35,7 +36,7 @@ import com.google.android.gms.games.snapshot.Snapshot;
 import com.google.android.gms.games.snapshot.SnapshotMetadata;
 import com.google.android.gms.games.snapshot.SnapshotMetadataBuffer;
 import com.google.android.gms.games.snapshot.SnapshotMetadataChange;
-import com.google.android.gms.games.snapshot.Snapshots;
+import com.google.android.gms.games.snapshot.Snapshots;*/
 
 import de.tudarmstadt.informatik.secuso.phishedu2.Constants;
 import de.tudarmstadt.informatik.secuso.phishedu2.R;
@@ -73,7 +74,7 @@ public class GameProgress{
 	 * @param remote_store This is the remote persistent database to save the gamestate.
 	 * @param listener
 	 */
-	public GameProgress(Context context, SharedPreferences local_store, GoogleApiClient apiClient) {
+	public GameProgress(Context context, SharedPreferences local_store/*, GoogleApiClient apiClient*/) {
 		this.context=context;
 		this.local_store=local_store;
 		this.loadLocal();
@@ -82,6 +83,7 @@ public class GameProgress{
 	/**
      * Loads a Snapshot from the user's synchronized storage.
      */
+    /*
     void loadFromSnapshot() {
         AsyncTask<Void, Void, Integer> task = new AsyncTask<Void, Void, Integer>() {
             @Override
@@ -124,12 +126,13 @@ public class GameProgress{
 
         task.execute();
     }
-		
+	*/
     /**
      * Conflict resolution for when Snapshots are opened.
      * @param result The open snapshot result to resolve on open.
      * @return The opened Snapshot on success; otherwise, returns null.
      */
+    /*
     Snapshot processSnapshotOpenResult(Snapshots.OpenSnapshotResult result, int retryCount){
         int status = result.getStatus().getStatusCode();
         retryCount++;
@@ -166,11 +169,12 @@ public class GameProgress{
         // Fail, return null.
         return null;
     }
-    
+    */
     /**
      * Prepares saving Snapshot to the user's synchronized storage, conditionally resolves errors,
      * and stores the Snapshot.
      */
+    /*
     void saveSnapshot() {
         AsyncTask<Void, Void, Snapshots.OpenSnapshotResult> task =
                 new AsyncTask<Void, Void, Snapshots.OpenSnapshotResult>() {
@@ -186,11 +190,12 @@ public class GameProgress{
                 };
         task.execute();
     }
-    
+    */
     /**
      * Generates metadata, takes a screenshot, and performs the write operation for saving a
      * snapshot.
      */
+    /*
     private String writeSnapshot(Snapshot snapshot){
         // Set the data payload for the snapshot.
         snapshot.getSnapshotContents().writeBytes(mSaveGame.toBytes());
@@ -202,7 +207,8 @@ public class GameProgress{
         Games.Snapshots.commitAndClose(getApiClient(), snapshot, metadataChange);
         return snapshot.toString();
     }
-    
+    */
+
     private void loadLocal() {
         SaveGame newSaveGame = new SaveGame(local_store, LOCAL_STORE_KEY);
         mSaveGame = mSaveGame.unionWith(newSaveGame);
@@ -212,9 +218,9 @@ public class GameProgress{
         mSaveGame.save(local_store, LOCAL_STORE_KEY);
     }
 
-	public void onSignInSucceeded() {
+	/*public void onSignInSucceeded() {
       loadFromSnapshot();
-	}
+	}*/
     
 	/**
 	 * Return the number of results of the given type the user had. 
@@ -254,6 +260,7 @@ public class GameProgress{
 		this.level_results[result.getValue()]+=1;
 		this.mSaveGame.results[result.getValue()]+=1;
 		//update Leaderboards
+        /*
 		if(getApiClient().isConnected()){
 			if(result == PhishResult.Phish_Detected && BackendControllerImpl.getInstance().getUrl().getAttackType() != PhishAttackType.NoPhish){
 				Games.Leaderboards.submitScore(getApiClient(), context.getResources().getString(R.string.leaderboard_detected_phishing_urls),this.mSaveGame.results[result.getValue()]);
@@ -268,7 +275,7 @@ public class GameProgress{
 			if(result == PhishResult.Phish_Detected){
 				this.mSaveGame.detected_phish_behind+=1;
 			}
-		}
+		}*/
 		
 		this.saveState();
 	}
@@ -324,9 +331,10 @@ public class GameProgress{
 		if(this.getLevelPoints() > this.mSaveGame.levelPoints[this.getLevel()]){
 			this.mSaveGame.levelPoints[this.getLevel()]=this.getLevelPoints();
 		}
+        /*
 		if(this.getApiClient().isConnected()){
 			Games.Leaderboards.submitScore(getApiClient(), context.getResources().getString(R.string.leaderboard_total_points), this.mSaveGame.getPoints());
-		}
+		}*/
 		saveState();
 	}
 
@@ -392,12 +400,13 @@ public class GameProgress{
 
 	private void unlockAchievements(){
 		//unlock Achievements
+        /*
 		if(this.level>1){
 			Games.Achievements.unlock(getApiClient(), context.getResources().getString(R.string.achievement_search_and_rescue));
 		}
 		if(this.level>2){
 			Games.Achievements.unlock(getApiClient(), context.getResources().getString(R.string.achievement_know_your_poison));
-		}
+		}*/
 	}
 
 	/**
@@ -408,13 +417,13 @@ public class GameProgress{
 	public void saveState(){
 		saveLocal();
 		
-		if(this.getApiClient().isConnected()){
+		/*if(this.getApiClient().isConnected()){
 			unlockAchievements();
 		}
 
 		if(this.getApiClient().isConnected()){
 			saveSnapshot();
-		}
+		}*/
 	}
 
 	/**
@@ -475,6 +484,7 @@ public class GameProgress{
 	 * remove the game Data that was stored in Googles Cloud Save Storage
 	 */
 	public void deleteRemoteData(){
+        /*
 		AsyncTask<Void, Void, Integer> task = new AsyncTask<Void, Void, Integer>() {
             @Override
             protected Integer doInBackground(Void... params) {
@@ -502,11 +512,13 @@ public class GameProgress{
         };
 
         task.execute();
+        */
 	}
 
+    /*
     private GoogleApiClient getApiClient() {
     	return BackendControllerImpl.getInstance().getGameHelper().getApiClient();
-	}
+	}*/
     
     /**
      * How often in a row got the user the proof right.

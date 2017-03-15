@@ -24,15 +24,17 @@ import java.util.Random;
 
 import android.net.Uri;
 
+/*
 import com.google.example.games.basegameutils.GameHelper;
 import com.google.example.games.basegameutils.GameHelper.GameHelperListener;
+*/
 
 /**
  * This is the interface that the backend presents to the frontend.
  * @author Clemens Bergmann <cbergmann@schuhklassert.de>
  *
  */
-public interface BackendController extends GameHelperListener{
+public interface BackendController {//extends GameHelperListener {
 	/**
 	 * This function must be called directly before the first start of the app.
 	 * It will register the caller with the backend for callbacks.
@@ -166,18 +168,24 @@ public interface BackendController extends GameHelperListener{
 	/**
 	 * The user clicks on the Google+ signin button.
 	 */
+	/*
 	public void signIn();
-	
+	*/
+
 	/**
 	 * The user clicks on the Google+ signout button.
 	 */
+	/*
 	public void signOut();
-	
+	*/
+
 	/**
 	 * Delete the Data saved in the Google+ Storage
 	 */
+	/*
 	public void deleteRemoteData();
-	
+	*/
+
 	/**
 	 * How many URLs did the user correctly identfiy
 	 * @return number of correct URLS
@@ -217,8 +225,10 @@ public interface BackendController extends GameHelperListener{
 	 * Get the current game Helper. Via this Object you can access leaderboards and achievements.
 	 * @return The current gameHelper
 	 */
+	/*
 	public GameHelper getGameHelper();
-	
+	*/
+
 	/**
 	 * Get the number of levels the game currently supports
 	 * @return number of supported levels

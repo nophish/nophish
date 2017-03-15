@@ -24,7 +24,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.net.Uri;
 
-import com.google.example.games.basegameutils.GameHelper.GameHelperListener;
+//import com.google.example.games.basegameutils.GameHelper.GameHelperListener;
 
 /**
  * This is the Interface that the frontend presents to the backend.
@@ -32,7 +32,7 @@ import com.google.example.games.basegameutils.GameHelper.GameHelperListener;
  * @author Clemens Bergmann <cbergmann@schuhklassert.de>
  *
  */
-public interface FrontendController extends GameHelperListener {
+public interface FrontendController {//extends GameHelperListener {
 	//Context functions
 	/**
 	 * For the local store of the game state we need the local store

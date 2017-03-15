@@ -23,10 +23,6 @@ package de.tudarmstadt.informatik.secuso.phishedu2;
 import android.app.Activity;
 import android.view.View;
 
-import com.google.android.gms.games.Games;
-
-import de.tudarmstadt.informatik.secuso.phishedu2.backend.BackendControllerImpl;
-
 public class GooglePlusActivity extends PhishBaseActivity {
 	private boolean showSignIn=true;
 	
@@ -56,6 +52,7 @@ public class GooglePlusActivity extends PhishBaseActivity {
 
 	@Override
 	public void onClick(View view) {
+        /*
 		int id = view.getId();
 		if (id == R.id.sign_in_button) {
 			BackendControllerImpl.getInstance().signIn();
@@ -73,12 +70,15 @@ public class GooglePlusActivity extends PhishBaseActivity {
 		} else if (id == R.id.button_delete_remote_data) {
 			BackendControllerImpl.getInstance().deleteRemoteData();
 		}
+		*/
 	}
 	
 	private void onShowLeaderboardsRequested(int leaderboard) {
+        /*
 		if (BackendControllerImpl.getInstance().getGameHelper().isSignedIn()) {
             startActivityForResult(Games.Leaderboards.getLeaderboardIntent(BackendControllerImpl.getInstance().getGameHelper().getApiClient(), getString(leaderboard)), 0);
         }
+        */
 	}
 
 	@Override

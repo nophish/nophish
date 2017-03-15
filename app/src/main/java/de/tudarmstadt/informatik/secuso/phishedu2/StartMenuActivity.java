@@ -23,9 +23,10 @@ package de.tudarmstadt.informatik.secuso.phishedu2;
 import android.annotation.SuppressLint;
 import android.app.AlarmManager;
 import android.app.AlertDialog;
-import android.app.Application;
 import android.app.PendingIntent;
+import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.os.Bundle;
@@ -35,10 +36,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import de.tudarmstadt.informatik.secuso.phishedu2.backend.BackendControllerImpl;
+
 import java.io.File;
-import android.content.Context;
-import android.content.Intent;
+
+import de.tudarmstadt.informatik.secuso.phishedu2.backend.BackendControllerImpl;
 
 /**
  * 
@@ -93,7 +94,7 @@ public class StartMenuActivity extends PhishBaseActivity {
 			R.id.menu_button_play,
 //			R.id.menu_button_social,
             R.id.menu_button_reset,
-            R.id.menu_button_quiz,
+//          R.id.menu_button_quiz,
             R.id.menu_button_close
 		};
 	}
@@ -114,8 +115,8 @@ public class StartMenuActivity extends PhishBaseActivity {
 //			switchToFragment(GooglePlusActivity.class);
 		} else if (id == R.id.menu_button_reset) {
             showResetPopup();
-        } else if (id == R.id.menu_button_quiz) {
-            switchToFragment(QuizActivity.class);
+//      } else if (id == R.id.menu_button_quiz) {
+//          switchToFragment(QuizActivity.class);
         } else if (id == R.id.menu_button_close) {
             showExitPopup();
         }

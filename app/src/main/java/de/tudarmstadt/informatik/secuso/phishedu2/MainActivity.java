@@ -20,13 +20,7 @@
 
 package de.tudarmstadt.informatik.secuso.phishedu2;
 
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
-
 import android.app.Activity;
-import android.appwidget.AppWidgetProvider;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -43,8 +37,10 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.games.Games;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
 import de.tudarmstadt.informatik.secuso.phishedu2.backend.BackendController.BackendInitListener;
 import de.tudarmstadt.informatik.secuso.phishedu2.backend.BackendController.Levelstate;
@@ -54,6 +50,9 @@ import de.tudarmstadt.informatik.secuso.phishedu2.backend.BackendControllerImpl;
 import de.tudarmstadt.informatik.secuso.phishedu2.backend.FrontendController;
 import de.tudarmstadt.informatik.secuso.phishedu2.backend.PhishResult;
 
+//import com.google.android.gms.common.api.GoogleApiClient;
+//import com.google.android.gms.games.Games;
+
 public class MainActivity extends ActionBarActivity implements FrontendController, OnLevelChangeListener, BackendInitListener, OnLevelstateChangeListener {
     Map<String, PhishBaseActivity> fragCache = new HashMap<String, PhishBaseActivity>();
 	String current_frag;
@@ -61,19 +60,19 @@ public class MainActivity extends ActionBarActivity implements FrontendControlle
 	@Override
 	protected void onStart() {
 		super.onStart();
-		BackendControllerImpl.getInstance().getGameHelper().onStart(this);
+		//BackendControllerImpl.getInstance().getGameHelper().onStart(this);
 	}
 
 	@Override
 	protected void onStop() {
 		super.onStop();
-		BackendControllerImpl.getInstance().getGameHelper().onStop();
+		//BackendControllerImpl.getInstance().getGameHelper().onStop();
 	}
 
 	@Override
 	protected void onActivityResult(int requestCode, int responseCode, Intent intent) {
 		super.onActivityResult(requestCode, responseCode, intent);
-		BackendControllerImpl.getInstance().getGameHelper().onActivityResult(requestCode, responseCode, intent);
+		//BackendControllerImpl.getInstance().getGameHelper().onActivityResult(requestCode, responseCode, intent);
 	}
 
 	
@@ -262,8 +261,10 @@ public class MainActivity extends ActionBarActivity implements FrontendControlle
 		return this;
 	}
 
+    /*
 	@Override
 	public void onSignInFailed() {
+
 		((GooglePlusActivity)fragCache.get(GooglePlusActivity.class.toString())).setShowSignIn(true);
 		if(BackendControllerImpl.getInstance().getGameHelper().hasSignInError()){
 			BackendControllerImpl.getInstance().getFrontend().displayToast("Signin failed!");
@@ -275,7 +276,7 @@ public class MainActivity extends ActionBarActivity implements FrontendControlle
 		((GooglePlusActivity)fragCache.get(GooglePlusActivity.class.toString())).setShowSignIn(false);
 		Games.Achievements.unlock(getApiClient(),getString(R.string.achievement_welcome));
 	}
-
+    */
 	@Override
 	public void onLevelstateChange(Levelstate new_state, int level) {
 		Uri data = getIntent().getData();
@@ -286,9 +287,10 @@ public class MainActivity extends ActionBarActivity implements FrontendControlle
 		}
 	}
 
+    /*
 	private GoogleApiClient getApiClient(){
 		return BackendControllerImpl.getInstance().getGameHelper().getApiClient();
-	}
+	}*/
 
 	@Override
 	protected void onSaveInstanceState(Bundle outState) {
