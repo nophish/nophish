@@ -22,16 +22,6 @@
             android:text="@string/level_01_intro_00_text_01"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
-        <ImageView
-            android:id="@+id/level_01_intro_00_image"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/level_01_intro_00_text_01"
-            android:layout_below="@+id/level_01_intro_00_text_01"
-            android:layout_marginTop="@dimen/margin_small"
-            android:contentDescription="@string/content_desc_addr_bar"
-            android:src="@drawable/address_bar_standalone" />
-
         <Button
             android:id="@+id/level_01_intro_00_button_01"
             android:layout_width="wrap_content"
@@ -41,7 +31,8 @@
             android:layout_marginTop="@dimen/margin_large"
             android:contentDescription="@string/content_desc_i_know_that_btn"
             android:minWidth="@dimen/btn_standard_width"
-            android:text="@string/level_01_intro_00_button_01" />
+            android:text="@string/level_01_intro_00_button_01"
+            android:visibility="invisible" />
     </RelativeLayout>
 
 </ScrollView>

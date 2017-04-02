@@ -1,0 +1,68 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="1dp">
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:id="@+id/viewContainer">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Large Text"
+            android:id="@+id/showPhishType"
+            android:layout_alignParentTop="true"
+            android:layout_alignLeft="@+id/showUrl"
+            android:layout_alignStart="@+id/showUrl" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Large Text"
+            android:id="@+id/showUrl"
+            android:editable="false"
+            android:gravity="center_horizontal"
+            android:nestedScrollingEnabled="false"
+            android:layout_below="@+id/showPhishType"
+            android:layout_centerHorizontal="true" />
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Phish"
+            android:id="@+id/phish"
+            android:layout_alignWithParentIfMissing="false"
+            android:layout_below="@+id/showUrl"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_toLeftOf="@+id/centerShim"
+            android:layout_toStartOf="@+id/centerShim" />
+
+        <ImageView
+            android:id="@+id/centerShim"
+            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:visibility="invisible"
+            android:layout_centerHorizontal="true"/>
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="No Phish"
+            android:id="@+id/nophish"
+            android:layout_below="@+id/showUrl"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_toRightOf="@+id/centerShim"
+            android:layout_toEndOf="@+id/centerShim" />
+
+    </RelativeLayout>
+
+</FrameLayout>

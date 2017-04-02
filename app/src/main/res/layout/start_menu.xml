@@ -49,34 +49,24 @@
             android:text="@string/button_level_overview" />
 
         <Button
-            android:id="@+id/menu_button_social"
-            android:layout_width="wrap_content"
-            android:layout_height="@dimen/btn_standard_height"
-            android:layout_below="@+id/menu_button_level_overview"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="@dimen/margin_small"
-            android:background="@drawable/button_grey"
-            android:contentDescription="@string/content_desc_google_play"
-            android:minWidth="@dimen/btn_standard_width"
-            android:text="@string/button_social" />
-
-        <Button
             android:id="@+id/menu_button_more_info"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/btn_standard_height"
-            android:layout_alignLeft="@+id/menu_button_social"
-            android:layout_below="@+id/menu_button_social"
-            android:layout_marginTop="@dimen/margin_large"
             android:background="@drawable/button_grey"
             android:contentDescription="@string/content_desc_more_info"
             android:minWidth="@dimen/btn_standard_width"
-            android:text="@string/button_more_info" />
+            android:text="@string/button_more_info"
+            android:layout_below="@+id/menu_button_reset"
+            android:layout_alignLeft="@+id/menu_button_reset"
+            android:layout_alignStart="@+id/menu_button_reset"
+            android:layout_marginTop="@dimen/margin_small"
+            android:visibility="invisible" />
 
         <Button
             android:id="@+id/menu_button_about"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/btn_standard_height"
-            android:layout_below="@+id/menu_button_more_info"
+            android:layout_below="@+id/menu_button_reset"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="@dimen/margin_small"
             android:background="@drawable/button_grey"
@@ -95,6 +85,45 @@
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:textColor="@color/grey"
              />
+
+        <Button
+            android:id="@+id/menu_button_reset"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/btn_standard_height"
+            android:background="@drawable/button_grey"
+            android:contentDescription="@string/content_desc_google_play"
+            android:minWidth="@dimen/btn_standard_width"
+            android:text="@string/button_reset"
+            android:enabled="true"
+            android:layout_below="@+id/menu_button_level_overview"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/margin_small"
+            android:clickable="false" />
+
+        <Button
+            android:id="@+id/menu_button_close"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/btn_standard_height"
+            android:background="@drawable/button_grey"
+            android:contentDescription="@string/content_desc_more_info"
+            android:minWidth="@dimen/btn_standard_width"
+            android:text="@string/button_close"
+            android:layout_below="@+id/menu_button_about"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/margin_large" />
+
+        <!--
+        <Button
+            android:id="@+id/menu_button_quiz"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/btn_standard_height"
+            android:background="@drawable/button_grey"
+            android:contentDescription="@string/content_desc_more_info"
+            android:minWidth="@dimen/btn_standard_width"
+            android:text="@string/button_quiz"
+            android:layout_below="@+id/menu_button_reset"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/margin_large" />-->
     </RelativeLayout>
 
 </ScrollView>
