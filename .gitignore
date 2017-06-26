@@ -16,6 +16,7 @@ local.properties
 
 # User-specific configurations
 .idea/*
+BaseGameUtils/.idea*
 *.iml
 
 # OS-specific files
