@@ -21,9 +21,6 @@
 package de.tudarmstadt.informatik.secuso.phishedu2;
 
 
-import android.text.method.LinkMovementMethod;
-import android.widget.TextView;
-
 public class AboutActivity extends PhishBaseActivity {
 
     @Override

@@ -20,9 +20,9 @@
 
 package de.tudarmstadt.informatik.secuso.phishedu2.backend;
 
-import java.util.Random;
-
 import android.net.Uri;
+
+import java.util.Random;
 
 /*
 import com.google.example.games.basegameutils.GameHelper;

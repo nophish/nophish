@@ -20,12 +20,10 @@
 
 package de.tudarmstadt.informatik.secuso.phishedu2.backend;
 
-import java.io.IOException;
-import java.util.Iterator;
-
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.os.AsyncTask;
+
+import de.tudarmstadt.informatik.secuso.phishedu2.Constants;
 
 /*
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -37,9 +35,6 @@ import com.google.android.gms.games.snapshot.SnapshotMetadata;
 import com.google.android.gms.games.snapshot.SnapshotMetadataBuffer;
 import com.google.android.gms.games.snapshot.SnapshotMetadataChange;
 import com.google.android.gms.games.snapshot.Snapshots;*/
-
-import de.tudarmstadt.informatik.secuso.phishedu2.Constants;
-import de.tudarmstadt.informatik.secuso.phishedu2.R;
 
 /**
  * This is a internal class for the backend.

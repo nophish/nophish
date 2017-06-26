@@ -20,9 +20,7 @@
 
 package de.tudarmstadt.informatik.secuso.phishedu2.backend.networkTasks;
 
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.util.Arrays;
+import android.os.AsyncTask;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
@@ -30,7 +28,10 @@ import org.apache.http.StatusLine;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
 
-import android.os.AsyncTask;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.util.Arrays;
+
 import de.tudarmstadt.informatik.secuso.phishedu2.backend.BackendControllerImpl;
 import de.tudarmstadt.informatik.secuso.phishedu2.backend.BasePhishURL;
 import de.tudarmstadt.informatik.secuso.phishedu2.backend.PhishAttackType;
