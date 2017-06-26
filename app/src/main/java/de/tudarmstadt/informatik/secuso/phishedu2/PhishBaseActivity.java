@@ -130,19 +130,19 @@ public abstract class PhishBaseActivity extends Fragment implements OnClickListe
 			v = getLayout(inflater, container, savedInstanceState);
 		}
 
-        if(getLayout() == R.layout.about) {
-            ImageView logo = (ImageView) v.findViewById(R.id.secuso_logo);
-            logo.setOnClickListener(new OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent();
-                    intent.setAction(Intent.ACTION_VIEW);
-                    intent.addCategory(Intent.CATEGORY_BROWSABLE);
-                    intent.setData(Uri.parse("http://secuso.org/nophish"));
-                    startActivity(intent);
-                }
-            });
-        }
+//        if(getLayout() == R.layout.about) {
+//            ImageView logo = (ImageView) v.findViewById(R.id.secuso_logo);
+//            logo.setOnClickListener(new OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    Intent intent = new Intent();
+//                    intent.setAction(Intent.ACTION_VIEW);
+//                    intent.addCategory(Intent.CATEGORY_BROWSABLE);
+//                    intent.setData(Uri.parse("http://secuso.org/nophish"));
+//                    startActivity(intent);
+//                }
+//            });
+//        }
 		
 		setHasOptionsMenu(true);
 
