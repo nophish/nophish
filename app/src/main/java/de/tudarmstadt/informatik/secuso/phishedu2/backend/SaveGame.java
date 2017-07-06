@@ -20,12 +20,12 @@
 
 package de.tudarmstadt.informatik.secuso.phishedu2.backend;
 
-import java.util.Arrays;
-
 import android.content.SharedPreferences;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
+
+import java.util.Arrays;
 
 class SaveGame{
 	// serialization format version

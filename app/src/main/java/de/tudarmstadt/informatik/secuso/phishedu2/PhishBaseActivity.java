@@ -2,7 +2,7 @@
  * The most reliable way to detect phishing is checking the URL
  * (web address) of a website. We developed an Android app to learn how
  * to detect Phishing URLs.
- * Copyright (C) 2015 SecUSo
+ * Copyright (C) 2015 SECUSO
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -20,13 +20,9 @@
 
 package de.tudarmstadt.informatik.secuso.phishedu2;
 
-import java.lang.reflect.Field;
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBarActivity;
@@ -40,6 +36,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import java.lang.reflect.Field;
+
 import de.tudarmstadt.informatik.secuso.phishedu2.backend.BackendController.Levelstate;
 import de.tudarmstadt.informatik.secuso.phishedu2.backend.BackendController.OnLevelChangeListener;
 import de.tudarmstadt.informatik.secuso.phishedu2.backend.BackendController.OnLevelstateChangeListener;
@@ -130,19 +129,19 @@ public abstract class PhishBaseActivity extends Fragment implements OnClickListe
 			v = getLayout(inflater, container, savedInstanceState);
 		}
 
-        if(getLayout() == R.layout.about) {
-            ImageView logo = (ImageView) v.findViewById(R.id.secuso_logo);
-            logo.setOnClickListener(new OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent();
-                    intent.setAction(Intent.ACTION_VIEW);
-                    intent.addCategory(Intent.CATEGORY_BROWSABLE);
-                    intent.setData(Uri.parse("http://secuso.org/nophish"));
-                    startActivity(intent);
-                }
-            });
-        }
+//        if(getLayout() == R.layout.about) {
+//            ImageView logo = (ImageView) v.findViewById(R.id.secuso_logo);
+//            logo.setOnClickListener(new OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    Intent intent = new Intent();
+//                    intent.setAction(Intent.ACTION_VIEW);
+//                    intent.addCategory(Intent.CATEGORY_BROWSABLE);
+//                    intent.setData(Uri.parse("http://secuso.org/nophish"));
+//                    startActivity(intent);
+//                }
+//            });
+//        }
 		
 		setHasOptionsMenu(true);
 

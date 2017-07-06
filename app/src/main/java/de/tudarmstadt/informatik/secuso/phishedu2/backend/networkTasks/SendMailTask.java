@@ -20,10 +20,10 @@
 
 package de.tudarmstadt.informatik.secuso.phishedu2.backend.networkTasks;
 
+import android.os.AsyncTask;
+
 import org.alexd.jsonrpc.JSONRPCClient;
 import org.alexd.jsonrpc.JSONRPCException;
-
-import android.os.AsyncTask;
 
 /**
  * This Task sends out a mail via the backend server.

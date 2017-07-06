@@ -2,7 +2,7 @@
  * The most reliable way to detect phishing is checking the URL
  * (web address) of a website. We developed an Android app to learn how
  * to detect Phishing URLs.
- * Copyright (C) 2015 SecUSo
+ * Copyright (C) 2015 SECUSO
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -37,6 +37,7 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
 import de.tudarmstadt.informatik.secuso.phishedu2.backend.BackendControllerImpl;
 
 /**
