@@ -45,16 +45,16 @@ public class ProofActivity extends SwipeActivity {
 		super.onSwitchTo();
 	}
 	
-	boolean enableRestartButton(){return true;};
+	boolean enableRestartButton(){return true;}
 
 	@Override
 	int getTitle(){
 		return BackendControllerImpl.getInstance().getLevelInfo().titleId;
-	};
+	}
 	@Override
 	int getSubTitle(){
 		return R.string.exercise;
-	};
+	}
 	@Override
 	int getIcon(){
 		return R.drawable.desktop;
@@ -151,6 +151,6 @@ public class ProofActivity extends SwipeActivity {
 
 	@Override
 	protected String startButtonText() {
-		return "Überprüfen";
+		return getString(R.string.check); // "Überprüfen"
 	}
 }

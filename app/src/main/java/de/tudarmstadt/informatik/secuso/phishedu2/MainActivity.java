@@ -248,7 +248,7 @@ public class MainActivity extends ActionBarActivity implements FrontendControlle
 			scoreString = "+ " + score;
 		}
 
-		text.setText(scoreString + " Punkte");
+		text.setText(getString(R.string.scoreString, scoreString)); // scoreString + " Punkte"
 		text.setTypeface(Typeface.DEFAULT_BOLD);
 		Toast toast = new Toast(getApplicationContext());
 		toast.setDuration(Toast.LENGTH_SHORT);

@@ -5,59 +5,59 @@
     <string name="action_restart">Restart</string>
 
     <!-- titles -->
-    <string name="title_activity_awareness">E-Mail Fälschung</string>
-	<string name="title_activity_credits">Credits</string>
-	
+    <string name="title_activity_awareness">E-Mail Forgery</string>
+    <string name="title_activity_credits">Credits</string>
+
     <!-- splash -->
 
     <!-- menu buttons -->
-    <string name="end_app">App beenden</string>
-    <string name="end_app_text">Möchtest du die App wirklich beenden?</string>
-    <string name="end_app_yes">Ja</string>
-    <string name="end_app_no">Nein</string>
+    <string name="end_app">Exit App</string>
+    <string name="end_app_text">Are you sure you want to quit the app?</string>
+    <string name="end_app_yes">Yes</string>
+    <string name="end_app_no">No</string>
     <string name="reset_app">Reset</string>
-    <string name="reset_app_text">Möchtest du die App wirklich zurücksetzen? \nHierbei geht sämtlicher Fortschritt verloren. \n\nDie App startet innerhalb weniger Sekunden neu.</string>
-    <string name="start_menu">Lerne, dich gegen die Internetgefahr \"Phishing\" zu schützen!</string>
+    <string name="reset_app_text">Are you sure you want to reset the app? \nHereby all progress is lost. \n\nThe app restarts within a few seconds.</string>
+    <string name="start_menu">Learn how to protect yourself against Internet \"Phishing\" dangers!</string>
     <string name="sign_out">Sign Out</string>
-    <string name="button_play">Spielen</string>
-    <string name="button_play_on">Weiterspielen</string>
+    <string name="button_play">Play</string>
+    <string name="button_play_on">Play on</string>
     <string name="button_level_overview">Levels</string>
-    <string name="button_more_info">Mehr Informationen</string>
-    <string name="button_about">Über uns</string>
-    <string name="button_show_online_achievement">Deine Erfolge</string>
+    <string name="button_more_info">More Information</string>
+    <string name="button_about">About us</string>
+    <string name="button_show_online_achievement">Your Successes</string>
     <string name="button_show_leaderboard_rate">Leaderboard Rate</string>
     <string name="button_show_leaderboard_total">Leaderboard Found Phishes</string>
-	<string name="button_show_leaderboard_total_points">Highscore</string>
-	<string name="button_delete_remote_data">Online Spielstand Löschen</string>
-	<string name="button_show_snapshots">Alle Snapshots anzeigen</string>    
-    <string name="google_plus_text">Wenn du deine Spielleistungen mit deinen Freunden auf google+ teilen willst und deinen Spielstand online speichern möchtest, melde dich mit Google+ an.</string>
-    <string name="google_plus_disclaimer">Bitte beachte, dass es zur zeit nicht möglich ist die Leistungen und Ranglistenpositionen zu löschen. Der Spielstand kann gelöscht werden.</string>
-    <string name="google_plus_data_deleted">Dein online Spielstand wurde gelöscht.</string>
-    <string name="google_plus_snapshot_load_problem">Es gab ein Problem beim laden deines Spielstandes:</string>
-    <string name="google_plus_snapshot_load_ok">Dein online Spielstand wurde geladen.</string>
+    <string name="button_show_leaderboard_total_points">Highscore</string>
+    <string name="button_delete_remote_data">Online Delete Game</string>
+    <string name="button_show_snapshots">Show all snapshots</string>
+    <string name="google_plus_text">If you want to share your gameplay with your friends on google + and save your score online, sign in with Google+.</string>
+    <string name="google_plus_disclaimer">Please note, that it is currently not possible to delete the services and rankings. The score can be deleted.</string>
+    <string name="google_plus_data_deleted">Your online score has been deleted.</string>
+    <string name="google_plus_snapshot_load_problem">There was a problem loading your score:</string>
+    <string name="google_plus_snapshot_load_ok">Your online score has been loaded.</string>
     <string name="button_social">Google Play</string>
-    <string name="button_reset">Alles zurücksetzen</string>
+    <string name="button_reset">Reset all</string>
     <string name="button_credits">Credits</string>
-    <string name="button_quiz">Tests zum Wissensstand</string>
-    <string name="button_close">App beenden</string>
-    <string name="quiz_text">Hier findest du drei Links, mit Hilfe dessen du deinen Wissensstand zu Phishing testen kannst. \nDiese Tests sind besser am Tablet durchzuführen (wegen der Darstellung der Beispiele). \n\nBei Klicken auf die Quiz-Links wirst du auf die Webseite von SoSciSurvey weitergeleitet. SoSciSurvey wurde zur Durchführung von Onlinebefragung im wissenschaftlichen Kontext konzipiert und ermöglicht die gleichzeitige Evaluation und damit Verbesserung von NoPhish.</string>
+    <string name="button_quiz">Tests on the state of knowledge</string>
+    <string name="button_close">Stop the app</string>
+    <string name="quiz_text">Here are three links, with the help of which you can test your knowledge of phishing. \nThese tests are better to perform on the tablet (because of the presentation of the examples). \n\nBy clicking on the quiz links you will be redirected to the website of SoSciSurvey. SoSciSurvey was designed to conduct an online survey in a scientific context, allowing for the simultaneous evaluation and improvement of NoPhish.</string>
 
     <!-- More Info -->
     <string name="info_apwg">Anti-Phishing Working Group</string>
-    <string name="info_security_comic">Comics zu Phishing</string>
-    <string name="info_how_phishing_works">Wie Phishing funktioniert</string>
+    <string name="info_security_comic">Comics about Phishing</string>
+    <string name="info_how_phishing_works">How Phishing works</string>
     <string name="url_apwg">http://www.antiphishing.org</string>
     <string name="url_securitycomic">http://www.securitycartoon.com</string>
     <string name="url_how_phishing_works">http://computer.howstuffworks.com/phishing.htm</string>
-    <string name="more_info_text">Hier findest du eine Sammlung mit externen Links zum Thema Phishing. Diese erhebt nicht den Anspruch vollständig zu sein.</string>
+    <string name="more_info_text">Here you will find a collection with external links to the topic on Phishing. This does not claim to be complete.</string>
 
     <!-- About -->
-    <string name="about_text">Diese App wurde von der Forschungsgruppe SECUSO  der TU Darmstadt entwickelt. Die erste Version dieser App wurde von Clemens Bergmann und Gamze Canova im Rahmen ihrer Masterarbeit entwickelt. Diese App wurde anhand von Benutzerstudien evaluiert und basierend auf den Ergebnissen der Evaluationen weiterentwickelt. Die Änderungen wurden von Philipp Rack durchgeführt.</string>
-    <string name="about_contact"><b>Technische Universität Darmstadt</b>\nFachbereich Informatik\nFachgebiet Security, Usability &amp; Society\nLeitung: Prof. Dr. Melanie Volkamer\nGebäude S4|14\nMornewegstr. 30\n64293 Darmstadt\n\nE-Mail: kontakt@secuso.org</string>
+    <string name="about_text">This app was developed by the research group SECUSO developed by the TU Darmstadt. The first version of this app was developed by Clemens Bergmann and Gamze Canova as part of their master\'s thesis. This app was evaluated based on user studies and developed based on the results of the evaluations. The changes were made by Philipp Rack. English translation by Chris Wilder</string>
+    <string name="about_contact"><b>Darmstadt University of Technology</b>\nDepartment of Computer Science\nSpecialization Security, Usability &amp; Society\nManagement: Prof. Dr. Melanie Volkamer\nbuilding S4|14\nMornewegstr. 30\n64293 Darmstadt\n\nE-Mail: kontakt@secuso.org</string>
 
     <!-- LEVEL TITLES -->
-    <string name="level_title_00">Einführung 1</string>
-    <string name="level_title_01">Einführung 2</string>
+    <string name="level_title_00">Introduction 1</string>
+    <string name="level_title_01">Introduction 2</string>
     <string name="level_title_02">Level 1</string>
     <string name="level_title_03">Level 2</string>
     <string name="level_title_04">Level 3</string>
@@ -67,51 +67,51 @@
     <string name="level_title_08">Level 7</string>
     <string name="level_title_09">Level 8</string>
     <string name="level_title_10">Level 9</string>
-    <string name="level_title_11">Schlussbemerkungen</string>
+    <string name="level_title_11">Closing remarks</string>
     <string name="level_subtitle_00">Phishing</string>
-    <string name="level_subtitle_01">Die Statuszeile</string>
-    <string name="level_subtitle_02">Struktur von Webadressen</string>
-    <string name="level_subtitle_03">IP-Adresse</string>
-    <string name="level_subtitle_04">Zufällige Gesrächspartner</string>
-    <string name="level_subtitle_05">Bereich der Abteilung</string>
-    <string name="level_subtitle_06">Bereich des Gesprächsthemas</string>
-    <string name="level_subtitle_07">Ergänzungen</string>
-    <string name="level_subtitle_08">Tippfehler</string>
-    <string name="level_subtitle_09">Ähnliche Zeichen</string>
-    <string name="level_subtitle_10">Die Sicherheitsstufe</string>
-    <string name="level_subtitle_11">Tricks &amp; Hinweise</string>
-    <string name="level_03_splash_subtitle">Gesprächspartner kommt in der Webadresse überhaupt nicht vor</string>
-    <string name="level_04_splash_subtitle">IP-Adresse als Wer-Bereich</string>
-    <string name="level_05_splash_subtitle">Ähnliche Gesprächspartner im Bereich der Abteilungen</string>
-    <string name="level_06_splash_subtitle">Ähnliche Gesprächspartner im Gesprächsthema-Bereich</string>
-    <string name="level_07_splash_subtitle">Ähnliche Gesprächspartner im Wer-Bereich</string>
-    <string name="level_08_splash_subtitle">Tippfehler/Buchstabendreher im Wer-Bereich</string>
-    <string name="level_09_splash_subtitle">Ähnliche Zeichen im Wer-Bereich.</string>
-    <string name="level_10_splash_subtitle">Der Bereich der Sicherheitsstufe</string>
-    <string name="level_11_splash_subtitle">Tricks &amp; Hinweise</string>
-    <string name="level_11_splash_01_subtitle">Verwirrende Webadressen</string>
-    <string name="level_11_splash_02_subtitle">Zusatz zu https://</string>
-    <string name="level_11_splash_03_subtitle">Gefahren beim Anklicken von Links</string>
-    <string name="level_11_splash_04_subtitle">Weitere Tricks</string>
-    
+    <string name="level_subtitle_01">The status bar</string>
+    <string name="level_subtitle_02">Structure of web addresses</string>
+    <string name="level_subtitle_03">IP-Address</string>
+    <string name="level_subtitle_04">Random brokers</string>
+    <string name="level_subtitle_05">Area of the department</string>
+    <string name="level_subtitle_06">Area of the topic of conversation</string>
+    <string name="level_subtitle_07">Additions</string>
+    <string name="level_subtitle_08">Typing error</string>
+    <string name="level_subtitle_09">Similar characters</string>
+    <string name="level_subtitle_10">The security level</string>
+    <string name="level_subtitle_11">Tricks &amp; Hints</string>
+    <string name="level_03_splash_subtitle">Interlocutor does not appear in the web address at all</string>
+    <string name="level_04_splash_subtitle">IP-Address as a who-area</string>
+    <string name="level_05_splash_subtitle">Similar conversation partners in the department area</string>
+    <string name="level_06_splash_subtitle">Similar conversation partners in the topic of conversation</string>
+    <string name="level_07_splash_subtitle">Similar conversation partners in the who area</string>
+    <string name="level_08_splash_subtitle">Typo / Spelling Errors in the Who area</string>
+    <string name="level_09_splash_subtitle">Similar characters in the Who area.</string>
+    <string name="level_10_splash_subtitle">The scope of the security level</string>
+    <string name="level_11_splash_subtitle">Tricks &amp; Hints</string>
+    <string name="level_11_splash_01_subtitle">Confusing web addresses</string>
+    <string name="level_11_splash_02_subtitle">Addition to https://</string>
+    <string name="level_11_splash_03_subtitle">Dangers when clicking on links</string>
+    <string name="level_11_splash_04_subtitle">More tricks</string>
+
     <!-- Awareness activity -->
-    <string name="awareness_text_hint">Hier kannst du einen beliebigen Text eingeben, der in  der E-Mail erscheinen soll.</string>
-    <string name="awareness_email_hint">Bitte gib an dieser Stelle eine möglichst authentische (oder bereits existierende) E-Mail Adresse ein, die als Absender erscheinen soll.</string>
-    <string name="btn_send">Abschicken</string>
-    <string name="hint_text">Hier Text eingeben.</string>
-    <string name="awareness_missing_email_sender_or_receiver">Bitte Absender und Empfänger eingeben.</string>
-    <string name="awareness_invalid_email">Die Absender oder Empfänger E-Mail ist ungültig. Bitte überprüfe deine Eingaben.</string>
-    <string name="awareness_email_sent">E-Mail versandt</string>
-    <string name="awareness_alert_message">Nun überprüfe bitte deine E-Mails über dein Smartphone. Du solltest eine gefälschte E-Mail bekommen haben. Lese diese gründlich. Über diese kommst du dann zurück in die App.</string>
-    <string name="awareness_second_alert_message">Bitte beachte, dass das Ankommen der E-Mail einige Minuten dauern kann. Ggf. musst du auch in deinem Junk/Spam-Ordner nachsehen. Sollte die E-Mail dennoch nicht ankommen, dann gib bitte eine andere Absender-Adresse ein.</string>
-    <string name="awareness_resend_email">E-Mail nicht erhalten</string>
-    <string name="awareness_to_mail">Zur Mail Anwendung</string>
-    <string name="awareness_skip">Überspringen</string>
-   
+    <string name="awareness_text_hint">Here you can enter any text, which should appear in the e-mail.</string>
+    <string name="awareness_email_hint">Please give as authentic as possible (or existing ones) E-Mail Address a, which should appear as the sender.</string>
+    <string name="btn_send">Send</string>
+    <string name="hint_text">Enter text here.</string>
+    <string name="awareness_missing_email_sender_or_receiver">Enter sender and recipient.</string>
+    <string name="awareness_invalid_email">The sender or recipient e-mail is invalid. Please check your entries.</string>
+    <string name="awareness_email_sent">E-mail sent</string>
+    <string name="awareness_alert_message"> Now please check your emails via your smartphone. You should have received a fake e-mail. Read this thoroughly. About this you will come back to the app.</string>
+    <string name="awareness_second_alert_message">Please note, that the arrival of the email can take a few minutes. Possibly, you also have to check your junk / spam folder. If the e-mail does not arrive, please enter a different sender address.</string>
+    <string name="awareness_resend_email">E-mail not received</string>
+    <string name="awareness_to_mail">To the mail application</string>
+    <string name="awareness_skip">Skip</string>
+
     <!-- Buttons -->
-    <string name="level_01_exercise_text_01"><b>Nun bist du an der Reihe</b>\n\n1. Klicke auf den Button \"Klicke hier\", um eine Übungswebseite zu öffnen.\n\n2. Warte bis die Webseite vollständig geladen ist.\n\n3. Löse die Aufgabe auf der Webseite. Wenn du die Aufgabe gelöst hast, wirst du automatisch zur App zurückgeleitet.</string>
-    <string name="level_01_exercise_button_click_here">Klicke hier</string>
-    
+    <string name="level_01_exercise_text_01"><b>Now it's your turn</b>\n\n1. Click on the button \"Click here\", to open a practice website.\n\n2. Wait until the website is fully loaded.\n\n3. Solve the task on the website. When you have completed the task, you will be automatically redirected to the app.</string>
+    <string name="level_01_exercise_button_click_here">Click here</string>
+
     <!-- Level 2 - Beispiele -->
     <string name="level_02_example_amazon">http://www.amazon.de</string>
     <string name="level_02_example_googlemail">https://mail.google.com/mail/?shva=1#inbox</string>
@@ -131,342 +131,341 @@
     <string name="level_02_example_facebook_02">facebook.com</string>
     <string name="level_02_example_facebook_03">/</string>
     <string name="level_02_example_facebook_04">settings?tab=payments</string>
-    <string name="location">Standort</string>
-    <string name="company">Unternehmen</string>
-    <string name="departments">Abteilungen</string>
+    <string name="location">Location</string>
+    <string name="company">Company</string>
+    <string name="departments">Department</string>
     <string name="http">http://</string>
     <string name="https">https://</string>
     <string name="www">www.</string>
-    <string name="http_description">Sicherheits-\nstufe</string>
+    <string name="http_description">Security-\nstep</string>
     <string name="domain">abo.spiegel.de</string>
     <string name="domain_spiegel">spiegel</string>
     <string name="subdomain">abo</string>
-    <string name="domain_description">Informationen über\nGesprächspartner selbst</string>
+    <string name="domain_description">Information about \nContacting party itself</string>
     <string name="path">/digital</string>
     <string name="path_dot_dot_dot">/&#8230;</string>
-    <string name="path_description">Gesprächs-\nthema</string>
+    <string name="path_description">Path-\ndescription</string>
     <string name="domain_de">de</string>
     <string name="dot">.</string>
-    <string name="first_attack"><b>Erster Angriff</b></string>
-    <string name="new_attack"><b>Neuer Angriff</b></string>
+    <string name="first_attack"><b>First Attack</b></string>
+    <string name="new_attack"><b>New Attack</b></string>
     <string name="slash">/</string>
-    <string name="reminder"><b>Zur Erinnerung - Webadressen</b></string>
-    <string name="former_attacks"><b>Bisherige Angriffe</b></string>
-    
+    <string name="reminder"><b>As a reminder - web addresses</b></string>
+    <string name="former_attacks"><b>Previous attacks</b></string>
+
     <!--
      Level Texts
     -->
     
     <!-- Level E1 - Awareness -->
-    <!--<string name="level_00_intro_00_text_01"><b>Phishing</b>\n\n\"Phishing\" ist eine Wortschöpfung, die eine Kombination der zwei englischen Begriffe \"phreaking\" (hacken) und \"fishing\" (angeln) darstellt. Es handelt sich hierbei um eine Technik, mit der Betrüger im Internet versuchen, deine sensiblen Daten, wie z.B. Passwörter, Kontodaten oder Kreditkartendaten, zu \"angeln\".\n\nDie Betrüger nutzen diese Daten, um dir zu schaden, z.B. um dein Konto zu plündern, in deinem Namen einzukaufen oder Freunde und Arbeitskollegen zu kontaktieren.\n\nUm an die sensiblen Daten zu kommen, schicken die Betrüger dir gefälschte Nachrichten (z.B. in Form von E-Mails, SMS, sozialen Netzwerken oder Skype). Diese Nachrichten sehen auf den ersten Blick aus wie Nachrichten von Personen oder Institutionen, denen du vertraust (z.B. von Amazon, Facebook oder deiner Bank). In der Nachricht wirst du gebeten, Daten entweder direkt zurückzuschicken oder über einen Link einzugeben. Der Link führt dabei in der Regel zu einer Webseite, die auf den ersten Blick vertrauenswürdig aussieht. Es handelt sich allerdings um eine gefälschte Kopie, eine sogenannte Phishing-Seite. Gibt man hier seine Daten ein, werden diese sofort vom Betrüger abgegriffen.</string>-->
-    <string name="level_00_intro_00_text_01"><b>Phishing</b>\n\n\"Phishing\" ist eine Wortschöpfung, die eine Kombination der zwei englischen Begriffe \"phreaking\" (hacken) und \"fishing\" (angeln) darstellt. Es handelt sich hierbei um eine Technik, mit der Betrüger mit Hilfe von gefälschten Nachrichten versuchen, Schadsoftware (z.B. Viren) zu verbreiten oder deine sensiblen Daten, wie z.B. Passwörter, Kontodaten oder Kreditkartendaten, zu \"angeln\".\n\nUm an die sensiblen Daten zu kommen, schicken die Betrüger dir gefälschte Nachrichten (z.B. in Form von E-Mails, SMS, sozialen Netzwerken oder Skype). Diese Nachrichten sehen auf den ersten Blick aus wie Nachrichten von Personen oder Institutionen, denen du vertraust (z.B. von Amazon, Facebook oder deiner Bank). Die Bandbreite betrügerischer Nachrichten reicht dabei von Nachrichten mit der Aufforderung zur Herausgabe privater Daten, über Nachrichten mit gefährlichen Dateianhängen bis hin zu \"klassischen Phishing\" Nachrichten, also Nachrichten mit gefährlichen Links. Mittels dieser klassischen Phishing Nachrichten wollen die Betrüger ihre potentiellen Opfer zum (voreiligen) Klicken auf solche gefährlichen Links bewegen. Folgt der Empfänger einem solchen Link, so lädt er entweder unmittelbar Schadsoftware auf das verwendete Gerät (z.B. PC oder Smartphone), oder er wird zu einer Webseite der Betrüger geleitet, die vorgibt die Webseite der imitierten Institution zu sein. Es handelt sich allerdings um eine gefälschte Kopie, eine sogenannte Phishing-Seite. Gibt man hier nun seine sensiblen Daten ein, werden diese sofort von den Betrügern abgegriffen.</string>
-    <string name="level_00_finish_00_text_01"><b>Geschafft!</b>\n\nDu hast die Einführung 1 erfolgreich abgeschlossen.</string>
-    <string name="level_00_intro_02_text_01"><b>Schicke dir selber eine E-Mail von einem beliebigen Absender</b></string>
-    <string name="level_00_intro_02_text_02">Deine E-Mail Adresse:</string>
-    <string name="level_00_intro_02_text_03">Absender E-Mail:</string>
-    <string name="level_00_intro_02_text_04">Optionaler Freitext:</string>
-    <string name="level_00_finish_00a_text_01"><b>Nicht bei Google angekommen?</b>\n\nDu dachtest vermutlich, dass du auf die Webseite von Google gelangst. Leider kann man aber den Links in einer E-Mail bzw. Links im Allgemeinen genauso wenig vertrauen wie dem angegebenen E-Mail Absender und dem restlichen Inhalt der E-Mail.</string>
-    <string name="level_00_intro_01_text_01"><b>Allgemeine Informationen:</b>\n\n1.) Es ist spielend leicht den Absender einer E-Mail zu fälschen. Dies kann jeder, auch ganz ohne großes Vorwissen. Entsprechend vorsichtig solltest du bei der Einschätzung der Vertrauenswürdigkeit von Nachrichten (Emails, Skype, soziale Netzwerke etc.) sein. Dies gilt insbesondere, wenn diese einen Link enthalten. Nicht nur bei Links, die dir bekannt zu sein scheinen, sondern auch bei solchen, die bspw. “Hier Klicken” heißen, solltest du aufpassen.\n\n2.) Des Weiteren wird man durch das Klicken auf Links nicht zwingend auf die Webadresse geführt, die im Link angegeben ist. Die meisten E-Mail Anwendungen bieten keine Möglichkeit das wirkliche Ziel von Links auf den ersten Blick zu erkennen. \n\nDas echte Ziel eines Links erfährst du, indem Du mit dem Finger auf dem Link verweilst. Je nach Mailprogramm wird das Ziel dann entweder in einem kleinen Fenster direkt neben dem Mauszeiger angezeigt, oder in der Statusleiste am unteren Ende der geöffneten Mail eingeblendet.\n\nPhishing-Emails und Phishing-Webseiten kann man <b>nur</b> anhand der Webadresse (des Links) erkennen. Daher erklären wir dir in dieser App, wie du die Authentizität von Webadressen vor dem Klicken überprüfen kannst.</string>
-    <string name="level_00_finish_01_text_01"><b>Übrigens, das gilt nicht nur für E-Mails!</b>\n\nGefahren lauern nicht nur hinter Links in E-Mails, sondern generell immer, wenn du auf einen Link klickst (bspw. auf einer anderen Webseite, in einer SMS oder in Nachrichten bei Facebook oder Twitter).</string>
-    <string name="level_00_finish_02_text_01"><b>Webadressen und Webseitenkopien erstellen kann jeder!</b>\n\nEine Webadresse kann heutzutage jeder anlegen. Eine identische Kopie einer Webseite dort anzuzeigen, bringt fast keinen Aufwand und auch fast keine Kosten mit sich. D.h., wenn du auf einer Webseite landest, kann die angezeigte Webseite zwar auf den ersten Blick korrekt aussehen, ist aber in Wirklichkeit die Kopie einer vertrauten Webseite, die angelegt wurde, um dir zu schaden.</string>
-    <string name="level_00_finish_03_text_01"><b>Original</b>\n\nIm Folgenden zeigen wir dir einen Ausschnitt der <b>originalen</b> Webseite von Facebook. An der Webadresse https://m.facebook.com/ (grün umrandet) kann man erkennen, dass es sich bei dieser Webseite um das Original handelt.</string>
-    <string name="level_00_finish_04_text_01"><b>Kopie/Phishing-Webseite</b>\n\nIm Folgenden zeigen wir dir einen Ausschnitt einer <b>kopierten</b> Webseite von Facebook oder \"<b>Phishing-Webseite</b>\", die unter der gefälschten Webadresse https://pages.no-phish.de/ (rot umrandet) angezeigt wird.</string>
-    <string name="level_00_finish_05_text_01"><b>Erkennen einer Phishing-Webseite</b>\n\nEs ist wichtig, dass du immer die Webadresse prüfst, bevor du Daten auf der Webseite eingibst, insbesondere dann, wenn du eine unerwartete E-Mail mit einem Link erhältst.\n\nMit dieser App lernst du, wie du die Überprüfung der Webadressen durchführen kannst.</string>
-    <string name="level_00_finish_06_text_01"><b>Weiterer Spielverlauf</b>\n\nDa es bei der Überprüfung von Webadressen unterschiedlich schwierig zu erkennende Angriffe gibt, haben wir die Aufgaben in unterschiedliche Levels unterteilt.\n\nJedes Level besteht aus zwei Teilen:</string>
-    <string name="level_00_finish_06_text_02">Einführung und Erklärung</string>
-    <string name="level_00_finish_06_text_03">Aufgaben zum Punkte sammeln</string>
-    <string name="level_00_finish_06_text_04">Hier kannst du die Web-Adresse nach rechts und links verschieben um sie dir komplett anzusehen.</string>
-    <string name="level_00_finish_07_text_01"><b>Hinweis:</b> Wir möchten dich an dieser Stelle darauf hinweisen, dass wir dir mit dieser App helfen, dich gegen eine sehr verbreitete Form des Phishings zu schützen. Leider gibt es auch noch einige andere Arten. Wenn du später hierzu mehr wissen möchtest, dann klicke im Menü auf \"Mehr Informationen\".</string>
-    <string name="level_00_finish_08_text_01"><b>Los geht\'s!</b>\n\nBevor du uns noch vom Stuhl fällst vor Langeweile, lass uns das Ganze ein wenig interaktiver angehen und mit dem Spiel beginnen. In den ersten beiden Levels werden notwendige Grundkenntnisse vermittelt. In den darauffolgenden Levels wirst du lernen, Phishing-Angriffe anhand von Webadressen zu erkennen.</string>
+    <!--<string name="level_00_intro_00_text_01"><b>Phishing</b>\n\n\"Phishing\" ist eine Wortsch�pfung, die eine Kombination der zwei englischen Begriffe \"phreaking\" (hacken) und \"fishing\" (angeln) darstellt. Es handelt sich hierbei um eine Technik, mit der Betr�ger im Internet versuchen, deine sensiblen Daten, wie z.B. Passw�rter, Kontodaten oder Kreditkartendaten, zu \"angeln\".\n\nDie Betr�ger nutzen diese Daten, um dir zu schaden, z.B. um dein Konto zu pl�ndern, in deinem Namen einzukaufen oder Freunde und Arbeitskollegen zu kontaktieren.\n\nUm an die sensiblen Daten zu kommen, schicken die Betr�ger dir gef�lschte Nachrichten (z.B. in Form von E-Mails, SMS, sozialen Netzwerken oder Skype). Diese Nachrichten sehen auf den ersten Blick aus wie Nachrichten von Personen oder Institutionen, denen du vertraust (z.B. von Amazon, Facebook oder deiner Bank). In der Nachricht wirst du gebeten, Daten entweder direkt zur�ckzuschicken oder �ber einen Link einzugeben. Der Link f�hrt dabei in der Regel zu einer Webseite, die auf den ersten Blick vertrauensw�rdig aussieht. Es handelt sich allerdings um eine gef�lschte Kopie, eine sogenannte Phishing-Seite. Gibt man hier seine Daten ein, werden diese sofort vom Betr�ger abgegriffen.</string>-->
+    <string name="level_00_intro_00_text_01"><b>Phishing</b>\n\n\"Phishing\" is a neologism that is a combination of the two English terms representing \"phreaking\" (hack) and \"fishing\" (fishing). This is a technique fraudsters use to try to use fake messages, Distribute malicious software (such as viruses) or such as your sensitive data. Passwords, account information or credit card information, too \"fishing\".\n\nTo get the sensitive data, the scammers send you fake messages (such as emails, text messages, social networks or Skype). At first glance, these messages look like messages from people or institutions you trust (such as Amazon, Facebook, or your bank). The range of fraudulent messages ranges from messages requesting the disclosure of private data, from messages with dangerous file attachments to \"classic Phishing\" News, that is news with dangerous links. Using these classic phishing scams, the scammers want to get their potential victims to (premature) click on such dangerous links. If the recipient follows such a link, he either directly loads malware onto the device used (e.g., PC or Smartphone), or he is directed to a website of the fraudsters who pretend to be the website of the imitated institution. However, it is a fake copy, a so-called phishing site. If you enter your sensitive data here, they will be immediately picked up by the fraudsters.</string>
+    <string name="level_00_finish_00_text_01"><b>Done!</b>\n\nYou have the introduction 1 successfully completed.</string>
+    <string name="level_00_intro_02_text_01"><b>Send yourself an e-mail from any sender</b></string>
+    <string name="level_00_intro_02_text_02">Your e-mail address:</string>
+    <string name="level_00_intro_02_text_03">Sender E-Mail:</string>
+    <string name="level_00_intro_02_text_04">Optional free text:</string>
+    <string name="level_00_finish_00a_text_01"><b>Not arrived at Google?</b>\n\nYou probably thought you were getting to Google\'s website. Unfortunately, you can but the links in an e-mail or. In general, trust links as well as the given email sender and the rest of the email content.</string>
+    <string name="level_00_intro_01_text_01"><b>General information:</b>\n\n1.) It is easy to fake the sender of an e-mail. Anyone can do this, even without much prior knowledge. Accordingly, you should be careful when evaluating the trustworthiness of news (Emails, Skype, Social Networks etc.). This is especially true if they contain a link. Not only for links that seem to be familiar to you, but also for those who, for example. �Click Here� mean, you should be careful.\n\n2.) Furthermore, clicking on links does not necessarily lead to the web address specified in the link. Most e-mail applications do not provide a way to see the real goal of links at first glance. \n\nThe real goal of a link is experienced by letting your finger on the link. Depending on the mail program, the destination is then displayed either in a small window directly next to the mouse pointer, or in the status bar at the bottom of the opened mail.\n\nPhishing-Emails and phishing websites you can <b>just</b> based on the web address (of the link) recognize. Therefore, in this app, we'll explain how to verify the authenticity of web addresses before clicking.</string>
+    <string name="level_00_finish_01_text_01"><b>By the way, that does not just apply to e-mails!</b>\n\nDangers do not just lurk behind links in emails, but generally whenever you click on a link (e.g., on another website, in an SMS or in messages on Facebook or Twitter).</string>
+    <string name="level_00_finish_02_text_01"><b>Anyone can create web addresses and website copies!</b>\n\nAnyone can create web addresses and website copies. Displaying an identical copy of a web page there is almost effortless and involves almost no cost. That, if you land on a website, the displayed website may look correct at first glance, but is actually the copy of a familiar website, which was created to harm you.</string>
+    <string name="level_00_finish_03_text_01"><b>Original</b>\n\nIn the following we show you a part of the <b>original</b> Website of Facebook. At the web address https://m.facebook.com/ (outlined in green) you can tell that this website is the original.</string>
+    <string name="level_00_finish_04_text_01"><b>Copy/Phishing website</b>\n\nIn the following we show you a part of a <b>copied</b> Website of Facebook or \"<b>Phishing-Website</b>\", the under the fake web address https://pages.no-phish.de/ (outlined in red) is shown.</string>
+    <string name="level_00_finish_05_text_01"><b>Detect a phishing website</b>\n\nIt is important that you always check the web address before entering data on the website, especially if you receive an unexpected email with a link.\n\nWith this app you learn how to use the Check web addresses.</string>
+    <string name="level_00_finish_06_text_01"><b>Further gameplay</b>\n\n,Because there are different types of attacks that can be detected when checking web addresses, we have divided the tasks into different levels. \n\nEach level consists of two parts:</string>
+    <string name="level_00_finish_06_text_02">Introduction and Explanation</string>
+    <string name="level_00_finish_06_text_03">Collect tasks to score</string>
+    <string name="level_00_finish_06_text_04">Here you can move the web address right and left to view it completely.</string>
+    <string name="level_00_finish_07_text_01"><b>Note:</b> We would like to point out to you that we help you with this app, to protect you against a very common form of phishing. Unfortunately there are some other species as well. If you want to know more about this later, then click in the menu \"More information\".</string>
+    <string name="level_00_finish_08_text_01"><b>Here we go!</b>\n\nBefore you drop us off the chair from boredom, Let\'s do it a bit more interactive and start the game. In the first two levels necessary basic knowledge is taught. In the following levels you will learn, Detect phishing attacks based on web addresses.</string>
 
     <!-- Level E2 - ADRESSLEISTE -->
-    <string name="level_01_intro_00_text_01_old"><b>Die Adressleiste</b>\n\nAls Erstes musst du wissen, wie du mit deinem Smartphone an die Webadresse kommst. Das ist bei jedem Android Browser gleich. Dazu sind zwei Dinge wichtig:\n\n1.) Die Adressleiste finden.\n2.) Die Webadresse vollständig ansehen.</string>
-    <string name="level_01_intro_00_text_01">Der Wer-Bereich ist der wichtigste Bereich für die Erkennung von Phishing URLs. In der Fachsprache wird er Domain genannt. Üblicherweise wird diese in der Statuszeile angezeigt.\n\nAn mobilen Geräten (Smartphones und Tablets) hängt das Vorgehen zum Identifizieren der Webadresse, die hinter einem Link steckt, allerdings stark vom Gerät ab. Meist ist es so, dass du für etwa 2 Sekunden leicht auf den Link drücken musst, ihn dabei jedoch nicht klicken.\n\nIm Folgenden sind die beiden meist vertretenen Systeme, Android und iOS, dargestellt.</string>
-    <string name="level_01_intro_00_button_01">Das kann ich schon!</string>
-    <string name="level_01_intro_01_text_01_old"><b>Die Adressleiste finden</b>\n\nViele Webseiten sind so umfangreich, dass die eigentliche Webseite auf dem ganzen Display angezeigt wird und daher die Adressleiste nicht zu sehen ist.\n\nDu kannst aber auf der Webseite den Finger so lange herunter ziehen (ggf. mehrmals), bis du ganz oben auf der Webseite angekommen bist und die Adressleiste erscheint.</string>
-    <string name="level_01_intro_02_text_01_old"><b>Die Webadresse vollständig ansehen</b>\n\nSobald die Adressleiste erscheint, siehst du leider nicht immer die vollständige Webadresse, da sie oft zu lang ist. Allerdings ist es sehr wichtig, diese als Ganzes zu betrachten.\n\nUm dir die gesamte Webadresse ansehen zu können, musst du mit dem Finger den Adresstext antippen.</string>
+    <string name="level_01_intro_00_text_01_old"><b>The address bar</b>\n\nFirst, you need to know how to get to the web address with your smartphone. This is the same with every Android browser. Two things are important for this:\n\n1.) Find the address bar.\n2.) View the web address completely.</string>
+    <string name="level_01_intro_00_text_01">The Who section is the most important area for detecting phishing URLs. In the jargon he is called domain. Usually this is displayed in the status bar.\n\nOn mobile devices (Smartphones und Tablets) the procedure depends on identifying the web address that is behind a link, however, strongly from the device. Mostly you have to press the link for about 2 seconds, but you do not click it.\n\nBelow are the two most commonly used systems, Android and iOS.</string>
+    <string name="level_01_intro_00_button_01">I can do that already!</string>
+    <string name="level_01_intro_01_text_01_old"><b>Find the address bar</b>\n\nMany websites are so extensive, that the actual website is displayed on the entire display and therefore the address bar is not visible.\n\nBut you can pull down the finger on the website so long (if necessary several times), until you arrive at the top of the web page and the address bar appears.</string>
+    <string name="level_01_intro_02_text_01_old"><b>View the web address completely</b>\n\nUnfortunately, once the address bar appears, you will not always see the full web address, as it is often too long. However, it is very important to look at them as a whole.\n\nTo view the entire web address, you have to tap the address text with your finger.</string>
     <string name="level_01_intro_01_text_01"><b>Android\n</b></string>
     <string name="level_01_intro_02_text_01"><b>iOS\n</b></string>
-    <string name="level_01_intro_03_text_01"><b>Die Webadresse vollständig ansehen</b>\n\nDies hat zur Folge, dass die Webadresse markiert wird und du das Ende der Webadresse siehst.</string>
-    <string name="level_01_intro_03_text_02">Jetzt musst du die Webadresse mit dem Finger nach rechts ziehen (ggf. mehrmals), bis du am Anfang der Webadresse angelangt bist.</string>
-    <string name="level_01_intro_03_text_03">Durch das nach links und rechts Ziehen, kannst du dir die gesamte Webadresse anschauen.</string>
-    <string name="level_01_finish_00_text_01"><b>Geschafft!</b>\n\nDu hast die Einführung 2 erfolgreich abgeschlossen.</string>
-    <string name="level_01_finish_00_text_02"><b>Hinweise:</b> In den folgenden Levels lernst du, wie man vertrauenswürdige Webadressen von Phishing-Webadressen (sogenannten Phishs) unterscheiden kann.</string>
+    <string name="level_01_intro_03_text_01"><b>View the web address completely</b>\n\nAs a result, the web address will be highlighted and you will see the end of the web address.</string>
+    <string name="level_01_intro_03_text_02">Now you have to drag the web address to the right with your finger (if necessary several times), until you reach the beginning of the web address.</string>
+    <string name="level_01_intro_03_text_03">By pulling left and right, you can look at the entire web address.</string>
+    <string name="level_01_finish_00_text_01"><b>Done!</b>\n\nYou have completed the Introduction 2 successfully.</string>
+    <string name="level_01_finish_00_text_02"><b>Hints:</b> In the following levels, you\'ll learn how to differentiate trusted web addresses from phishing web addresses (called phishs).</string>
 
-    <!-- Lasse dir die Webadressen zukünftig genau so anzeigen, wie du es hier gelernt hast, um die Webadresse zu überprüfen. Dies ist besonders dann wichtig, wenn du eine unerwartete E-Mail mit einem Link erhältst.
+    <!-- Lasse dir die Webadressen zuk�nftig genau so anzeigen, wie du es hier gelernt hast, um die Webadresse zu �berpr�fen. Dies ist besonders dann wichtig, wenn du eine unerwartete E-Mail mit einem Link erh�ltst.
     -->
     <!-- LEVEL 1 - WEB-ADRESSEN -->
-    <string name="level_02_intro_00_text_01"><b>Struktur von Webadressen</b>\n\nUm anhand von Webadressen eine gefälschte Webseite zu erkennen, ist es wichtig, den Aufbau einer Webadresse zu verstehen. In diesem und in den folgenden Levels wirst du dies nach und nach lernen.\n\nZunächst ein Beispiel für eine Webadresse:</string>
+    <string name="level_02_intro_00_text_01"><b>Structure of web addresses</b>\n\nTo recognize a fake website based on web addresses, It is important to understand the structure of a web address. In this and the following levels you will learn this gradually.\n\nFirst an example of a web address:</string>
     <string name="level_02_intro_00_text_02_url">http://abo.spiegel.de/spiegel-digital</string>
-    <string name="level_02_intro_01_text_01"><b>Die wichtigen Bestandteile einer Webadresse</b>\n\nWebadressen sind sehr komplex. Aus diesem Grund möchten wir alles möglichst vereinfacht erklären. Hierzu betrachten wir die Webseite, die du besuchst, von nun an als deinen \"Gesprächspartner\". Bereits in der Webadresse erfährst du (wie in einem Gespräch) die ersten wichtigen Informationen, auf die wir im weiteren Verlauf genauer eingehen.</string>
-    <string name="level_02_intro_02_text_01"><b>Die wichtigen Bestandteile einer Webadresse</b>\n\nDie folgende Grafik fasst zusammen, was die einzelnen Bestandteile einer Webadresse über das Gespräch aussagen.</string>
-    <string name="level_02_intro_02_text_02">Der violett hinterlegte Bereich stellt die Sicherheitsstufe des Gespräches dar. Möglichkeiten hierfür sind \"http://\" und \"https://\". Was der Unterschied ist, wirst du in einem fortgeschrittenen Level erfahren. Der blau hinterlegte Bereich gibt dir Informationen über deinen Gesprächspartner und der orange hinterlegte Bereich verrät dir das Gesprächsthema. Dieser Bereich kann auch fehlen.</string>
-    <string name="level_02_intro_03_text_01"><b>Fokus - Info über Gesprächspartner selbst</b>\n\nIn diesem und in den nächsten paar Levels werden wir uns hauptsächlich mit dem blau hinterlegten Bestandteil der Webadresse beschäftigen, da es sehr wichtig ist zu wissen, wer dein Gesprächspartner ist!\n\nDer Bereich <b>zwischen \""http://\" und dem dritten Slash \"/\"</b> gibt dir also Informationen über deinen Gesprächspartner, sprich über die Webseite. Die restlichen Bereiche kannst du jetzt erst einmal ignorieren.</string>
-    <string name="level_02_intro_04_text_01"><b>Aufbau des Gesprächspartner-Bereiches</b>\n\nDieser Bereich wird durch Punkte in einzelne Blöcke eingeteilt.\n\n<b>Merke:</b> Diese Blöcke werden von rechts nach links gelesen.</string>
-    <string name="level_02_intro_05_text_01"><b>Angaben zum Standort</b>\n\nDer erste Block (von rechts) verrät dir den \"Standort\" deines Gesprächspartners. In diesem Fall \"de\" für Deutschland.</string>
-    <string name="level_02_intro_06_text_01"><b>Angaben zum Gesprächspartner</b>\n\nDer zweite Block (von rechts) sagt dir, zu welchem \"Unternehmen\"" dein Gesprächspartner gehört.</string>
-    <string name="level_02_intro_07_text_01"><b>Angaben zu Abteilungen</b>\n\nAb dem dritten Block (von rechts), beschreiben alle restlichen Blöcke (es können auch mehrere sein) verschiedene \"Abteilungen\" des Unternehmens deines Gesprächspartners.</string>
-    <string name="level_02_intro_08_text_01"><b>Der Wer-Bereich</b>\n\nDie wichtigsten zwei Blöcke einer Webadresse sind die ersten zwei Blöcke (von rechts betrachtet)  im Bereich \"Information über Gesprächspartner\". Wir nennen ihn \"Wer-Bereich\" (Unternehmen + Standort). Dieser Bereich muss von jedem Gesprächspartner, d.h. jeder Webseite, bei einer zentralen Stelle registriert werden. Bereits registrierte Namen können nicht noch einmal registriert werden. Diese zwei Blöcke sagen dir, <b>wer</b> dein Gesprächspartner <b>tatsächlich</b> ist, daher solltest du diese immer identifizieren und prüfen.</string>
-    <string name="level_02_intro_08_domain_description">Wer-Bereich\n(Gesprächspartner + Standort)</string>
-    <string name="level_02_intro_08_subdomain_description">Abteilungen</string>
-    <string name="level_02_intro_09_text_01"><b>Beispiele</b>\n\nIm Folgenden zeigen wir ein paar Beispiele für Webadressen. Überlege dir zunächst selbst, welcher Bereich in den angegebenen Webadressen der Wer-Bereich ist. Überprüfe im Anschluss deine Ergebnisse, indem du fortfährst.</string>
-    <string name="level_02_intro_10_text_01"><b>Beispiele - Auflösung</b>\n\nIm Folgenden zeigen wir ein paar Beispiele für Webadressen. Überlege dir zunächst selbst, welcher Bereich in den angegebenen Webadressen der Wer-Bereich ist. Überprüfe im Anschluss deine Ergebnisse, indem du fortfährst.</string>
-    <string name="level_02_outro">Wenn du dir unsicher bist wie der Wer-Bereich deines Gesprächspartners aussieht, frage sicherheitshalber direkt bei diesem nach.</string>
-    <string name="level_02_exercise_text_01">Nun bist du an der Reihe:\n\nNach den vorherigen Beispielen, sollst du nun selber den Wer-Bereich der folgenden Webadressen bestimmen.\n\nBerühre hierzu die entsprechende Stelle und klicke auf \"Überprüfen\", wenn deine Antwort überprüft werden soll.</string>
-    <string name="level_02_task"><b>Tippe</b> nun den Wer-Bereich der folgenden Webadressen an.</string>
-    <string name="level_02_you_are_wrong">Leider konntest du den Wer-Bereich nicht identifizieren. Daher verlierst du ein Leben.</string>
-    <string name="level_02_you_are_correct">Sehr gut! Du konntest den Wer-Bereich identifizieren.</string>
-    <string name="level_finished"><b>Geschafft!</b>\n\nGratulation! Du hast das Level erfolgreich abgeschlossen. Auf zum nächsten Level!</string>
+    <string name="level_02_intro_01_text_01"><b>The important components of a web address</b>\n\nWeb addresses are very complex. For this reason, we would like to explain everything as simplified as possible. For this we look at the website, that you visit, from now on as yours \"Interlocutor\". Already in the web address you will learn (as in a conversation) the first important information, which we will discuss in more detail later.</string>
+    <string name="level_02_intro_02_text_01"><b>The important components of a web address</b>\n\nThe following graphic summarizes what the individual parts of a web address say about the conversation.</string>
+    <string name="level_02_intro_02_text_02">The purple area represents the security level of the conversation. Possibilities for this are \"http://\" and \"https://\". What the difference is, you will experience in an advanced level. The area highlighted in blue gives you information about the person you are talking to and the orange area tells you the topic of conversation. This area may also be missing.</string>
+    <string name="level_02_intro_03_text_01"><b>Focus - Information about the conversation partner himself</b>\n\nIn this and the next few levels, we will mainly deal with the blue-backed part of the web address, because it is very important to know who your interlocutor is! \ n \ nThe area <b>between \""http://\" and the third Slash \"/\"</b> So gives you information about your conversation partner, talk about the website. You can now ignore the remaining areas.</string>
+    <string name="level_02_intro_04_text_01"><b>Structure of the interlocutor area</b>\n\nThis area is divided into individual blocks by dots.\n\n<b>Remember:</b> These blocks are read from right to left.</string>
+    <string name="level_02_intro_05_text_01"><b>Location information</b>\n\nThe first block (from the right) tells you that \"Location\" your conversation partner. In this case \"de\" for Germany.</string>
+    <string name="level_02_intro_06_text_01"><b>Information about the conversation partner</b>\n\nThe second block (from the right) tells you which one \"Companies\"" your conversation partner belongs.</string>
+    <string name="level_02_intro_07_text_01"><b>Details of departments</b>\n\nFrom the third block (from the right), describe all remaining blocks (there may be several) different\"Departments\" of your conversation partner.</string>
+    <string name="level_02_intro_08_text_01"><b>The Who area</b>\n\nThe most important two blocks of a web address are the first two blocks (viewed from the right) in the area \"Information about conversation partners\". We call him \"Who area\" (Company + Location). This area must be from each interlocutor,(i.e. each website), to be registered at one central location. Already registered names can not be registered again. These two blocks tell you, <b>who</b> your conversation partner <b>really</b> is, so you should always identify and check them.</string>
+    <string name="level_02_intro_08_domain_description">Who area\n(Conversation partner + Location)</string>
+    <string name="level_02_intro_08_subdomain_description">Departments</string>
+    <string name="level_02_intro_09_text_01"><b>Examples</b>\n\nBelow are a few examples of web addresses. First, think about which area in the given web addresses is the who-area. Then check your results by continuing.</string>
+    <string name="level_02_intro_10_text_01"><b>Examples - Resolution</b>\n\nBelow are a few examples of web addresses. First, think about which area in the given web addresses is the who-area. Then check your results by continuing.</string>
+    <string name="level_02_outro">If you are unsure as to who your conversational partner is, ask for help directly with him.</string>
+    <string name="level_02_exercise_text_01">Now it\'s your turn:\n\nAfter the previous examples, you should now determine yourself who the Who-range of the following web addresses.\n\nTouch the appropriate place and click on \"�berpr�fen\", if your answer is to be checked.</string>
+    <string name="level_02_task"><b>Tap</b> now the who area of the following web addresses.</string>
+    <string name="level_02_you_are_wrong">Unfortunately, you could not identify the Who section. Therefore, you lose a life.</string>
+    <string name="level_02_you_are_correct">Very good! You were able to identify the who area.</string>
+    <string name="level_finished"><b>Done!</b>\n\nCongratulations! You have completed the level successfully. On to the next Level!</string>
 
     <!-- Level 2 - IP NO BRAND-->
-    <string name="level_04_intro_00_text_01"><b>Angriff durch IP-Adresse als Wer-Bereich</b>\n\nPhisher verwenden verschiedene Täuschungsmanöver, um Webadressen vertrauenswürdig aussehen zu lassen, obwohl sie das nicht sind.\n\nDu wirst nach und nach lernen, mit welchen Tricks sie versuchen, dich hinters Licht zu führen.\n\nIn diesem Level beschäftigen wir uns mit einem der einfachsten Tricks, der Verwendung von IP-Adressen statt Begriffen im Wer-Bereich der Webadresse.</string>
-    <string name="level_04_intro_01_text_01"><b>IP-Adressen</b>\n\nGenau so wie unsere Häuser durch Straßennamen adressiert werden, werden Computer im Internet mit sogenannten IP-Adressen identifiziert.</string>
-    <string name="level_04_intro_01_text_02">Eine IP-Adresse ist eine Folge von 4 Zahlenblöcken, die durch Punkte getrennt werden.</string>
-    <string name="level_04_intro_01_example_ip">Beispiel: 192.168.10.15</string>
-    <string name="level_04_intro_01_img_descr_computer">IP-Adresse</string>
-    <string name="level_04_intro_01_img_descr_house">Hausadresse</string>
-    <string name="level_04_intro_03_text_02"><b>Angriff durch bekannte Gesprächspartner im Bereich der Abteilungen</b></string>
+    <string name="level_04_intro_00_text_01"><b>Attack by IP address as the who area</b>\n\nPhishers use various deceptions, to make web addresses trustworthy, although they are not.\n\nYou will gradually learn with which tricks they try, to fool you.\n\nIn this level, we'll cover one of the simplest tricks of using IP addresses instead of terms in the who's area of the web address.</string>
+    <string name="level_04_intro_01_text_01"><b>IP-Addresses</b>\n\nJust as our homes are addressed by street names, computers are identified on the Internet with so-called IP-Address.</string>
+    <string name="level_04_intro_01_text_02">An IP address is a sequence of 4 blocks of numbers separated by dots.</string>
+    <string name="level_04_intro_01_example_ip">Example: 192.168.10.15</string>
+    <string name="level_04_intro_01_img_descr_computer">IP-Address</string>
+    <string name="level_04_intro_01_img_descr_house">Address</string>
+    <string name="level_04_intro_03_text_02"><b>Attack by known interlocutors in the department </b></string>
 
     <!-- Level 3 - NO BRAND -->
-    <string name="level_04_a_intro_00_text_01"><b>Name des Gesprächspartners kommt gar nicht vor</b>\n\nEin weiterer Trick ist den Gesprächspartner überhaupt nicht in der Webadresse zu verwenden. Mit dieser Art des Angriffs beschäftigen wir uns in diesem Level. \n\n<b>Bei der Überprüfung ob der Gesprächspartner in der Webadresse vorkommt ist folgendes gut zu Wissen::</b>\n\nIm Wer-Bereich können nur kleine Buchstaben und Zahlen verwendet werden sowie ein Bindestrich ( - )\n- Amazon wird zu amazon.de\n- VHS wird zu vhs.de\n- Deutsche Bank wird zu deutsche-bank.de\n-1&amp;1 wird zu 1und1.de\n\nWebadressen fangen nicht notwendigerweise mit www an (gilt für echte und Phishing URLs).\n\nWebadressen konnten früher keine Umlaute enthalten. Daher werden oft Umlaute umgewandelt, z.B. „ü“ in „ue“ bei www.muenchen.de.</string>
-    <string name="level_04_a_intro_00_text_02">Manche Phisher machen sich nicht einmal die Mühe, den Namen deines Gesprächspartners in der Webadresse zu erwähnen. Enthält die Webadresse den Namen deines Gesprächspartners nicht, dann <b>gib auf dieser Webseite keine Daten ein, selbst wenn der Wer-Bereich vertrauenswürdig klingt!</b>\n\nUnten ist ein Beispiel für eine Phishing-Webadresse, die dieses Prinzip anwendet. In dem zweiten Beispiel ist dein Gesprächspartner secure-login.com (blau hinterlegt). Das ist der wichtigste Bereich der Webadresse, der Wer-Bereich. <b>Gib auf dieser Webseite keine Daten ein, auch wenn die Webadresse vertrauenswürdig klingt!</b> </string>
+    <string name="level_04_a_intro_00_text_01"><b>Use of IP addresses may be legitimate, but you should remain suspisious of any web address containing only the IP address. Especially if the name of the conversation partner does not show at all</b>\n\nAnother trick is not to use the conversation partner in the web address. We are dealing with this kind of attack in this Level. \n\n<b>When checking whether the other party in the web address occurs the following is good to know::</b>\n\nIn the wer area, only small letters and numbers can be used, as well as a hyphen ( - )\n- Amazon becomes amazon.de\n- VHS becomes vhs.de\n- Deutsche Bank becomes deutsche-bank.de\n-1&amp;1 becomes 1und1.de\n\nWeb addresses do not necessarily begin with www (applies to real and Phishing URLs).\n\nWeb addresses could previously contain no mark ( � ) used over a vowel. Therefore ( � ) are often converted, (e.g., "�") in "ue" at www.muenchen.de.</string>
+    <string name="level_04_a_intro_00_text_02"> Some phishers do not even bother, mention the name of your correspondent in the web address. If the web address does not contain the name of your correspondent, then <b>Do not enter any data on this website, even if the who section sounds trustworthy!</b> <b>Note: During the quiz you may have to scroll from right to left to see the entire URL.</b>\n\nBelow is an example of a phishing web address that applies this principle. In the second example, your conversation partner is secure-login.com (highlighted in blue). This is the main area of the web address, the who area. <b>Do not enter any data on this website, even if the web address sounds trustworthy!</b></string>
 
     <!-- Level 4 - SUBDOMAIN -->
-    <string name="level_03_intro_00_text_01"><b>Angriff durch bekannte Gesprächspartner im Bereich der Abteilungen</b>\n\nEin weiterer Trick ist die Verwendung von bekannten Namen im Bereich der Abteilungen einer Webadresse. Mit dieser Art des Angriffs beschäftigen wir uns in diesem Level.</string>
-    <string name="level_03_intro_01_text_01"><b>Zur Erinnerung</b>\n\nDer Bereich zwischen \"http://\" und dem dritten Slash \"/\" gibt dir Informationen über deinen Gesprächspartner, d.h. über die Webseite.\n\nDieser Bereich wird durch Punkte in Blöcke eingeteilt und die Blöcke werden von rechts nach links gelesen.</string>
-    <string name="level_03_intro_02_text_01"><b>Benennung von Abteilungen</b>\n\nDer wichtigste Bereich einer Webadresse, der Wer-Bereich, muss auch vom Phisher registriert werden und bereits registrierte Namen können nicht noch einmal registriert werden. Den Bereich der Abteilungen (hellblau hinterlegt) einer Webadresse kann allerdings jeder nennen, wie er möchte.</string>
-    <string name="level_03_intro_03_text_02">Phisher können problemlos bekannte Gesprächspartner in ihren Abteilungen verwenden, um dich zu täuschen. Verlasse dich also nicht auf diesen Bereich. Schaue dir auch immer die wichtigsten zwei Blöcke der Webadresse an, den Wer-Bereich. Enthält der Bereich der Abteilungen dir bekannte Gesprächspartner und enthält der Wer-Bereich aber unsinnige, bezugslose oder gar vertrauensunwürdige Gesprächspartner anstelle des Namen deines Gesprächspartners, dann <b>gib auf dieser Webseite keine Daten ein!</b>\n\nUnten ist ein Beispiel für eine Phishing-Webadresse, die dieses Prinzip anwendet. In dem Beispiel ist dein Gesprächspartner jeweils badcat.de und secure-update.com (blau hinterlegt). Das ist der wichtigste Bereich der Webadresse, der Wer-Bereich. Dein Gesprächspartner ist nicht google.com oder microsoft.com! Diese zwei sind hier nur die Namen einer Abteilung des jeweiligen Unternehmens. Dieser Bereich hat damit keine Relevanz für deine Untersuchung der Webadresse. Das ist auch der Grund, warum wir Webadressen von rechts nach links lesen: <b>der Wer-Bereich ist wichtiger als die Abteilung!</b></string>
+    <string name="level_03_intro_00_text_01"><b>Attack by well-known interlocutors in the department area</b>\n\nAnother trick is the use of known names in the area of departments of a web address. We are dealing with this kind of attack in this level.</string>
+    <string name="level_03_intro_01_text_01"><b>In memory of</b>\n\nThe area between \"http://\" and the third Slash \"/\" Gives you information about your conversation partner, (i.e. via the website).\n\nThis area is divided into blocks by dots and the blocks are read from right to left.</string>
+    <string name="level_03_intro_02_text_01"><b>Designation of departments</b>\n\nThe most important part of a web address, the who-section must also be registered by the phisher, and already-registered names can not be re-registered. The area of the departments (highlighted in light blue) of a web address, however, anyone can call as he wants.</string>
+    <string name="level_03_intro_03_text_02">Phishers can easily use known interlocutors in their departments, to deceive you. So do not rely on this area. Also always look at the most important two blocks of the web address, the who-area. Does the section of the departments contain the well-known interlocutors and contains the Who section but nonsense, disinterested or even trustworthy interlocutors instead of the name of your interlocutor, then <b>Do not enter any data on this website!</b>\n\nBelow is an example of a phishing web address that applies this principle. In the example your partner is badcat.de and secure-update.com (blue). This is the main area of the web address, the who area. Your conversation partner is not google.com or microsoft.com! These two are just the names of a department of each company. This area is not relevant to your investigation of the web address. That\'s why we read web addresses from right to left:: <b>the who area is more important than the department!</b></string>
 
     <!-- LEVEL 5 - deceiving path part -->
-    <string name="level_09_intro_00_text_01"><b>Angriff durch Verwendung von bekannten Gesprächspartnern im Gesprächsthema</b>\n\nEin weiterer Trick dich hinters Licht zu führen, ist bekannte Gesprächspartner, im Gesprächsthema zu verwenden. Mit dieser Art des Angriffs beschäftigen wir uns in diesem Level.</string>
-    <string name="level_09_intro_02_text_01"><b>Bereich des Gesprächsthemas</b>\n\nNun möchten wir uns mit einem anderen Bereich der Webadresse beschäftigen, dem Gesprächsthema.\n\nDer Bereich <b>nach dem dritten Slash \"/\"</b> sagt dir, über was du mit deinem Gesprächspartner, also der Webseite, sprichst.</string>
+    <string name="level_09_intro_00_text_01"><b>Attack by using known interlocutors in the topic of conversation</b>\n\nAnother trick to fool you, is a well-known conversation partner, to use in the topic of conversation. We are dealing with this kind of attack in this level.</string>
+    <string name="level_09_intro_02_text_01"><b>Area of the topic of conversation</b>\n\nNow we would like to deal with another area of the web address, the topic of conversation.\n\nThe area<b> after the third Slash \"/\"</b> tell you about what you talk to your conversation partner, So the website, speak.</string>
     <string name="level_09_intro_02_before_path">http://abo.spiegel.de</string>
     <string name="level_09_intro_02_path">spiegel-digital</string>
-    <string name="level_09_intro_03_text_03">Der Bereich des Gesprächsthemas liegt in der Hand des Phishers. Das heißt, er kann diesen Bereich nennen, wie er möchte. Er kann darin auch dir bekannte Gesprächspartner oder sogar ganze Webadressen einbauen. Schaue dir also immer nur die wichtigsten zwei Blöcke einer Webadresse, den Wer-Bereich, an, um zu überprüfen, wer dein Gesprächspartner tatsächlich ist. Vertraue nicht dem Bereich des Gesprächsthemas. Enthält der Bereich des Gesprächsthemas dir bekannte Gesprächspartner oder Webadressen und enthält der Wer-Bereich aber eine IP-Adresse, unsinnige, bezugslose oder gar vertrauensunwürdige Gesprächspartner anstelle des Namen deines Gesprächspartners, <b>dann gib auf dieser Webseite keine Daten ein!</b>\n\nUnten ist ein Beispiel für eine Phishing-Webadresse, die dieses Prinzip anwendet. In dem Beispiel ist dein Gesprächspartner 95.130.22.98 (IP-Adresse) bzw. account-settings.de (blau hinterlegt). Das ist jeweils der wichtigste Bereich der Webadresse, der Wer-Bereich. Dein Gesprächspartner ist nicht google.de bzw. facebook.com (orange hinterlegt). Diese sind hier lediglich ein Teil des Gesprächsthemas. <b>Dieser Bereich hat damit keine Relevanz für deine Untersuchung der Webadresse.</b> Besonders wegen solcher Angriffe ist es sehr wichtig sicherzustellen, dass man bis zum Anfang der Webadresse gescrollt hat, wo http(s):// zum ersten mal auftaucht.</string>
+    <string name="level_09_intro_03_text_03">The area of the topic of conversation is in the hands of the Phishers. That is, he can call this area as he likes. He can also incorporate known interlocutors or even entire web addresses. So just look at the most important two blocks of a web address, the Who section, to check who your conversation partner actually is. Do not trust the topic or the topic of conversation. Does the topic of conversation contain known contacts or web addresses, and does the ad area contain an IP address?, nonsensical, disinterested or even unworthy of conversation partner instead of the name of your interlocutor, <b>then do not enter any data on this website!</b>\n\nBelow is an example of a phishing web address, which applies this principle. In the example is your conversation partner 95.130.22.98 (IP-Address) bzw. account-settings.de (blue background). This is the most important area of the web address, the who area. Your conversation partner is not google.com or facebook.com (orange background). These are just part of the topic of conversation here. <b>This area is not relevant to your investigation of the web address.</b> Especially for such attacks it is very important to make sure that you have scrolled to the beginning of the web address where http(s):// appears for the first time.</string>
 
     <!-- LEVEL 6 - SIMILAR DOMAINS -->
-    <string name="level_07_intro_00_text_01"><b>Angriff durch ähnliche Gesprächspartner im Wer-Bereich</b>\n\nEin weiterer Trick dich hinters Licht zu führen, ist die Verwendung von Namen im Wer-Bereich, die dem Namen des dir vertrauten Gesprächspartners sehr ähnlich sind. Mit dieser Art des Angriffs beschäftigen wir uns in diesem Level.</string>
-    <string name="level_07_intro_03_text_02">Du musst dir merken, wie der Wer-Bereich der Webadressen, die du normalerweise besuchst, aussieht. Der Phisher kann nämlich Namen registrieren, die dem dir vertrauten Gesprächspartner sehr ähneln. Schaue dir deswegen immer die wichtigsten zwei Blöcke der Webadresse an, den Wer-Bereich. Enthält der Wer-Bereich nur eine ähnliche Abwandlung des dir bisher vertrauten Wer-Bereiches, dann <b>gib auf dieser Webseite keine Daten ein!</b>\n\nUnten sind drei Beispiele für Phishing-Webadressen, die dieses Prinzip anwenden. In den Beispielen ist dein Gesprächspartner jeweils facebook-login.com, apple-support.com bzw. ebay-verify.de (blau hinterlegt). Das sind jeweils die Wer-Bereiche der Webadressen. <b>Die Wer-Bereiche ähneln dem Original, sie sind aber gefälscht!</b>\n\nVorsicht auch bei <b>englischen</b> Namen und Aussprache im Deutschen:\n\nappel.de statt apple.de\ngoogel.de anstatt google.de</string>
-    <string name="level_07_intro_03_text_03"><b>1. Gesprächspartner kommt im Wer-Bereich vor</b></string>
+    <string name="level_07_intro_00_text_01"><b>Attack by similar interlocutors in the Who area</b>\n\nAnother trick to fool you is the use of names in the who area, which are very similar to the name of the person you are familiar with. We are dealing with this kind of attack in this Level.</string>
+    <string name="level_07_intro_03_text_02">You have to remember how the Who section of the web addresses, you normally visit, looks like. Namely, the phisher can register names that are very similar to the one you are familiar with. Therefore always look at the most important two blocks of the web address, the Who section. Contains the Who-Area only a similar modification of you previously familiar Who-Area, then <b>Do not enter any data on this website!</b>\n\nBelow are three examples of phishing web addresses, who apply this principle. In the examples, your conversation partner is each facebook-login.com, apple-support.com or. ebay-verify.com (blue background). These are each the Who-areas of the web addresses. <b>The Who-areas are similar to the original, but they are fake!</b>\n\nBe careful <b>English words</b> Name and pronunciation:\n\nappel.de instead of apple.de\ngoogel.de instead of google.de</string>
+    <string name="level_07_intro_03_text_03"><b>1. Interlocutor occurs in the Who-area</b></string>
     <string name="level_07_intro_03_facebook_login">facebook-login.com</string>
-    <string name="level_07_intro_04_text_02">Der wichtigste Bereich einer Webadresse, der Wer-Bereich, muss auch vom Phisher registriert werden. Der Phisher kann hierbei einen dir vertrauten Wer-Bereich einer Webseite nehmen, in den Namen einen Tippfehler oder sogar einen Buchstabendreher einbauen und diesen Namen dann als seinen Wer-Bereich registrieren. Schaue dir also immer die wichtigsten zwei Blöcke der Webadresse an, den Wer-Bereich. Lies diesen Bereich also Buchstabe für Buchstabe. Enthält der Wer-Bereich einen Tippfehler oder einen Buchstabendreher, dann <b>gib auf dieser Webseite keine Daten ein!</b>\n\nUnten ist ein Beispiel für eine Phishing-Webadresse, die dieses Prinzip anwendet. In dem ersten Beispiel ist dein Gesprächspartner mircosoft.com, im zweiten twitetr.com (blau hinterlegt). <b>Der Wer-Bereich enthält einen Buchstabendreher.</b></string>
-    <string name="level_07_intro_04_text_03"><b>Tippfehler/Buchstabendreher im Wer-Bereich</b></string>
+    <string name="level_07_intro_04_text_02">The most important area of a web address, the Who-Area, must also be registered by the phisher. The phisher can take a familiar Who section of a website, incorporate a typo or even a misspelling in the name and then register that name as its creator. So always look at the most important two blocks of the web address, the Who section. So read this area letter by letter. Does the Who-Area contain a typo or a speller, then <b>Do not enter any data on this website!</b>\n\nBelow is an example of a phishing web address that applies this principle. In the first example is your conversation partner mircosoft.com, in the second twitetr.com (blue background). <b>The Who section contains a letter wheel.</b></string>
+    <string name="level_07_intro_04_text_03"><b>Typo / Spelling Errors in the Who-Aarea</b></string>
     <string name="level_07_intro_04_fracebook">fracebook.com</string>
     <string name="level_07_intro_04_path">/login</string>
-    <string name="level_07_intro_05_text_03"><b>3. Buchstabendreher im Wer-Bereich</b></string>
+    <string name="level_07_intro_05_text_03"><b>3. Spacing in the Who-area</b></string>
     <string name="level_07_intro_05_mircosoft">mircosoft.com</string>
     <string name="level_07_intro_05_path_01">/en-us</string>
     <string name="level_07_intro_05_path_02">/default.aspx</string>
-    <string name="level_07_intro_06_text_01"><b>Zusammenfassung</b></string>
-    <string name="level_07_intro_06_text_02">1.) Enthält der Wer-Bereich nur eine ähnliche Abwandlung des dir bisher vertrauten Wer-Bereiches, dann gib auf dieser Webseite keine Daten ein!</string>
-    <string name="level_07_intro_06_text_03">2.) Enthält der Wer-Bereich einen Tippfehler, dann gebe hier keine Daten ein!</string>
-    <string name="level_07_intro_06_text_04">3.) Enthält der Wer-Bereich einen Buchstabendreher, dann gib auf dieser Webseite keine Daten ein!</string>
+    <string name="level_07_intro_06_text_01"><b>Summary</b></string>
+    <string name="level_07_intro_06_text_02">1.) If the Who-Area contains only a similar modification of the previously familiar Who-Area, then do not enter any data on this website!</string>
+    <string name="level_07_intro_06_text_03">2.) Contains the Who-Area a typo, then enter here no data!</string>
+    <string name="level_07_intro_06_text_04">3.) If the Who-Area contains a spelling error, then do not enter any data on this website!</string>
 
     <!-- LEVEL 7 - TYPOS -->
-    <string name="level_07_intro_02_text_01"><b>Angriff durch Tippfehler/Buchstabendreher im Wer-Bereich</b>\n\nEin weiterer Trick dich hinters Licht zu führen, ist bei der Registrierung des Wer-Bereiches einen Tippfehler/Buchstabendreher im Wer-Bereich einzubauen. Mit dieser Art des Angriffs beschäftigen wir uns in diesem Level.\n\n<b>Beispieltext zur Verdeutlichung:</b>\nGmäeß eneir Sutide der Cabrmidge Uvinisterätist es nchit witihcg, in wlecehr Rneflogheie die Bstachuebn in eneim Wrot snid, das ezniige was wcthiig ist, dass der estre und der leztte Bstabchue an der ritihcegn Pstoiion snid.
-Der	Rset knan ein ttoaelr Bsinöldn sien, tedztormknan man ihn onhe Pemoblre lseen. Das istso, wiel wir ncihtjeedn Bstachuebn enzelin leesn, snderon das Wrot als gseatems.</string>
-    <string name="level_07_intro_05_text_02">Der wichtigste Bereich einer Webadresse, der Wer-Bereich muss auch vom Phisher registriert werden. Der Phisher kann hierbei einfach einen Buchstabendreher in dir vertraute Wer-Bereiche einbauen und diesen Namen mit Buchstabendreher dann registrieren. Schaue dir also immer die wichtigsten zwei Blöcke der Webadresse, den Wer-Bereich, <b>ganz genau</b> an, denn Buchstabendreher sind schwer zu erkennen. Enthält der Wer-Bereich einen Buchstabendreher, dann <b>gib auf dieser Webseite keine Daten ein!</b>\n\nUnten ist ein Beispiel für eine Phishing-Webadresse, die dieses Prinzip anwendet. In dem Beispiel ist dein Gesprächspartner twitetr.com (blau hinterlegt). <b>Der Wer-Bereich enthält einen Buchstabendreher.</b></string>
+    <string name="level_07_intro_02_text_01"><b>Attack by typos / spelling errors in the Who-Area</b>\n\nAnother trick to fool you, In the registration of the Who-Area you have to insert a typo / spelling error in the Who-Area. We are dealing with this kind of attack in this Level.\n\n<b>Example text for clarification:</b>\nAoccdrnig to a rscheearch of the Cabrmidge Uvinersity it deosn\'t mttaer, in waht oredr the ltteers in a wrod are, the olny iprmoetnt tihng is taht the frist and lsat ltteer be at the rghit pclae. The rest can be mses and you can sitll raed it wouthit porbelm. That is, bcuseae the huamn mnid deos not raed ervey lteter by istlef, but the wrod as a wlohe.</string>
+    <string name="level_07_intro_05_text_02">The most important part of a web address, the who-area must also be registered by the phisher. The phisher can simply insert a misspelling in familiar areas and then register that name with the misspelling. So always look at the most important two blocks of the web address, the Who-Area, <b>exactly</b> on, because letter turners are difficult to recognize. Contains the Who-Area a letter turn, then <b>Do not enter any data on this website!</b>\n\nBelow is an example of a phishing web address, which applies this principle. In the example is your conversation partner twitetr.com (blue background). <b>The Who section contains a letter wheel.</b></string>
 
     <!-- NONSENSE DOMAINS -->
-    <string name="level_05_intro_00_text_01"><b>Angriff durch bezugslose oder unsinnige Namen im Wer-Bereich</b>\n\nEin weiterer Trick ist die Verwendung von bezugslosen oder gar unsinnigen Namen im Wer-Bereich einer Webadresse. Mit dieser Art des Angriffs beschäftigen wir uns in diesem Level.</string>
-    <string name="level_05_intro_02_text_03">Der wichtigste Bereich einer Webadresse, der Wer-Bereich, muss auch vom Phisher registriert werden. Schaue dir also immer die wichtigsten zwei Blöcke der Webadresse an, den Wer-Bereich. Enthält der Wer-Bereich Namen, die keinen Sinn ergeben oder nichts mit dem Dienst bzw. Unternehmen deines Gesprächspartners zu tun haben, dann <b>gib auf dieser Webseite keine Daten ein!</b>\n\nUnten ist ein Beispiel für eine Phishing-Webadresse, die dieses Prinzip anwendet. In den Beispielen ist dein Gesprächspartner jeweils hsezis.de bzw. badcat.com (blau hinterlegt). Das ist jeweils der Wer-Bereich der Webadresse. <b>Diese geben augenscheinlich keinen Sinn!</b></string>
+    <string name="level_05_intro_00_text_01"><b>Attack by dispassionate or nonsensical names in the Who area</b>\n\nAnother trick is the use of non-referenced or even senseless names in the Who-Area of a web address. We are dealing with this kind of attack at this level.</string>
+    <string name="level_05_intro_02_text_03">The most important area of a web address, the Who-Area, must also be registered by the phisher. So always look at the most important two blocks of the web address, the Who-Area, contains the Who section name.  If it make\'s no sense or nothing with the service or, the business of your correspondent, then <b>Do Not enter any data on this website!</b>\n\nBelow is an example of a phishing web address that applies this principle. In the examples, your conversation partner is each hsezis.de or. badcat.com (blue background). This is the Who-Area of the web address. <b>These obviously do not make sense!</b></string>
 
     <!-- TRUSTWORTHY SOUNDING DOMAINS -->
-    <string name="level_06_intro_00_text_01"><b>Angriff durch vertrauenswürdig klingende Gesprächspartner im Wer-Bereich</b>\n\nEin weiterer Trick dich hinters Licht zu führen, ist die Verwendung von vertrauenswürdig klingenden Gesprächspartnern im Wer-Bereich einer Webadresse. Mit dieser Art des Angriffs beschäftigen wir uns in diesem Level.</string>
-    <string name="level_06_intro_02_text_03">Der wichtigste Bereich einer Webadresse, der Wer-Bereich, muss auch vom Phisher registriert werden. Schaue dir also auch immer die wichtigsten zwei Blöcke der Webadresse an, den Wer-Bereich. Enthält der Wer-Bereich Namen, die vertrauenswürdig klingen, aber dennoch nichts mit dem Namen deines Gesprächspartners zu tun haben, dann <b>gib auf dieser Webseite keine Daten ein!</b>\n\nUnten ist ein Beispiel für eine Phishing-Webadresse, die dieses Prinzip anwendet. In dem Beispiel ist dein Gesprächspartner security-update.de (blau hinterlegt). Das ist der wichtigste Bereich der Webadresse, der Wer-Bereich. <b>Gebe hier keine Daten ein, auch wenn die Webadresse vertrauenswürdig klingt!</b></string>
+    <string name="level_06_intro_00_text_01"><b>Attack by trustworthy-sounding conversation partners in the Who area</b>\n\nAnother trick to fool you, is the use of trustworthy-sounding interlocutors in the who-section of a web address. We are dealing with this kind of attack in this level.</string>
+    <string name="level_06_intro_02_text_03">The most important area of a web address, the Who Area, must also be registered by the phisher. So always look at the most important two blocks of the web address, the Who section. If the Who-area contains names that sound trustworthy, but still have nothing to do with the name of your correspondent, then <b>Do not enter any data on this website!</b>\n\nBelow is an example of a phishing web address that applies this principle. In the example is your conversation partner security-update.de (blue background). This is the main area of the web address, the who area. <b>Do not enter any data here, even if the web address sounds trustworthy!</b></string>
 
     <!-- LEVEL 8 - similar characters/digits in domain -->
-    <string name="level_08_intro_00_text_01"><b>Angriff durch ähnliche Zeichen im Wer-Bereich</b>\n\nEin weiterer Trick dich hinters Licht zu führen, ist das Ersetzen von Buchstaben im Wer-Bereich durch andere sehr ähnlich aussehende Zeichen oder Zahlen. Mit dieser Art des Angriffs beschäftigen wir uns in diesem Level.</string>
-    <string name="level_08_intro_02_text_03">Der wichtigste Bereich einer Webadresse, der Wer-Bereich, muss auch vom Phisher registriert werden. Der Phisher kann hierbei Buchstaben im dir vertrauten Namen mit anderen ähnlichen Zeichen oder Zahlen ersetzen, sodass der Wer-Bereich fast identisch zum dir vertrauten Namen aussieht. Schaue dir also immer die wichtigsten zwei Blöcke der Webadresse an, den Wer-Bereich. Enthält der Wer-Bereich Ersetzungen von Buchstaben durch andere ähnliche Zeichen oder Zahlen, dann <b>gib auf dieser Webseite keine Daten ein!</b>\n\nBeispiele für Phishing-Webadressen, die dieses Prinzip anwenden:     </string>
-    <string name="level_08_intro_02_text_04">Ein \"w\" wird durch 2x \"v\" ersetzt:</string>
-    <string name="level_08_intro_02_text_05">Ein \"l\" wird druch ein \"i\" ersetzt:</string>
-    <string name="level_08_intro_02_text_06">Ein \"l\" wird durch eine \"1\" ersetzt:</string>
-    <string name="level_08_intro_02_text_07">Weitere Beispiele:\nm --> rn\nh --> ln\nk --> lx\nd --> cl\nap --> qo\no --> 0 (Vorsicht: Es werden nur kleinbuchstaben verwendet)</string>
+    <string name="level_08_intro_00_text_01"><b>Attack by similar characters in the Who area</b>\n\nAnother trick to fool you is replacing letters in the Who domain with other very similar looking characters or numbers. We are dealing with this kind of attack in this level.</string>
+    <string name="level_08_intro_02_text_03">The most important area of a web address, the Who Area, must also be registered by the phisher. The phisher can replace letters in your familiar name with other similar characters or numbers, so the who-section looks almost identical to your familiar name. So always look at the most important two blocks of the web address, the Who section. If the who field contains replacements of letters by other similar characters or numbers, then<b>Do not enter any data on this website!</b>\n\nExamples of phishing web addresses that use this principle:     </string>
+    <string name="level_08_intro_02_text_04">A \"w\" is replaced by two \"v\":</string>
+    <string name="level_08_intro_02_text_05">An \"l\" is replaced by an \"i\":</string>
+    <string name="level_08_intro_02_text_06">An \"l\" is replaced by an \"1\":</string>
+    <string name="level_08_intro_02_text_07">Further examples:\nm --> rn\nh --> ln\nk --> lx\nd --> cl\nap --> qo\no --> 0 (Caution: only lowercase letters are used)</string>
 
     <!-- LEVEL 9 - https and http -->
-    <string name="level_10_intro_00_text_01"><b>Die Sicherheitsstufe des Gespräches</b>\n\nGespräche mit Unternehmen können eine niedrige oder hohe Sicherheitsstufe haben. Der erste Bereich einer Webadresse gibt dir Informationen über die Sicherheitsstufe. In diesem Level beschäftigen wir uns mit diesem Bereich.</string>
-    <string name="level_10_intro_02_text_01"><b>Der Bereich der Sicherheitsstufe</b>\n\nDu bist während des Spieles auf zwei verschiedene Varianten der Sicherheitsstufe gestoßen, deren Bedeutung du noch nicht kennen gelernt hast: https:// und http://. Der erste Bereich der Webadresse stellt die Sicherheitsstufe dar. Wir werden mit der Erläuterung von https:// beginnen und grenzen daran anschließend http:// ab.</string>
+    <string name="level_10_intro_00_text_01"><b>The security level of the conversation</b>\n\nDiscussions with companies can have a low or high security level. The first section of a web address gives you information about the security level. In this level we are dealing with this area.</string>
+    <string name="level_10_intro_02_text_01"><b>The scope of the security level</b>\n\nDuring the game you encountered two different variants of the security level, whose meaning you have not yet met: https:// and http://. The first section of the web address represents the security level. We will with the explanation of https:// begin and then border on it from http:// .</string>
     <string name="level_10_intro_02_after_http_01">www.deutsche-bank.de/</string>
-    <string name="level_10_intro_03_text_01"><b>https</b>\n\nFängt eine Webadresse mit https:// an, handelt es sich um ein Gespräch mit hoher Sicherheitsstufe (wenn der Browser keine Warnung zeigt). Das https:// versichert dir Folgendes:\n\n1.) Dein Gespräch bekommt kein anderer mit (Verschlüsselung der Kommunikation).\n\n2.) Dein Gesprächspartner kann sich gegenüber einer dritten vertrauenswürdigen Partei ausweisen (Authentifikation des Gesprächspartners).</string>
-    <string name="level_10_intro_04_text_01"><b>https - Verschlüsselung der Kommunikation</b>\n\nFängt eine Webadresse mit https:// an, bedeutet das quasi, dass das Gespräch in einem geschlossenen Raum stattfindet, fern von der Öffentlichkeit. D.h. niemand bekommt mit, worüber du mit der Webseite redest bzw. welche Benutzereingaben du abschickst (Benutzername, Passwort, Kontodaten, etc.). Die Kommunikation wird also verschlüsselt. Besonders bei der Eingabe von Passwörtern oder anderen sensiblen Daten ist Verschlüsselung sehr wichtig.\n\nIn dem folgenden Beispiel ist dein Gesprächspartner deutsche-bank.de (blau hinterlegt). Es wird https:// verwendet (violett hinterlegt), d.h. niemand kann mitlesen, welche Daten du an deutsche-bank.de schickst.</string>
-    <string name="level_10_intro_05_text_01"><b>https - Authentifikation des Gesprächspartners</b>\n\nDas https:// versichert dir außerdem, dass dein Gesprächspartner, der im Wer-Bereich angegeben ist, auch wirklich dieser ist. Im Detail wurde die Identität deines Gesprächspartners von einer sogenannten Zertifizierungstelle überprüft.\n\nIm folgenden Beispiel ist dein Gesprächspartner deutsche-bank.de (blau hinterlegt). Die Webadresse beginnt mit https (violett hinterlegt). Somit bestätigt dir eine Zertifizierungsstelle die Identität von deutsche-bank.de.</string>
-    <string name="level_10_intro_06_text_01"><b>http</b>\n\nFängt eine Webadresse mit http:// an, handelt es sich bei dem Gespräch um eine niedrige Sicherheitsstufe. Das http:// bedeutet Folgendes:\n\n1.) Dein Gespräch kann jeder mitbekommen, d.h. die Kommunikation wird <b>nicht</b> verschlüsselt\n\n2.) Dein Gesprächspartner hat sich nicht gegenüber einer dritten vertrauenswürdigen Partei ausgewiesen\n\nBei Benutzereingaben (Benutzername, Passwort, Kontodaten, etc.) befindest du dich in der Öffentlichkeit, jeder kann diese mitbekommen. Die Kommunikation wird also nicht verschlüsselt. Außerdem kannst du dir nicht sicher sein, dass der im Wer-Bereich angegebene Gesprächspartner tatsächlich derjenige ist, für den er sich ausgibt. Daher solltest du auf solchen Webseiten keine sensiblen Daten eingeben, auch wenn der Wer-Bereich in Ordnung ist. Stattdessen solltest du den Anbieter kontaktieren und ihn auf dieses Problem hinweisen.</string>
-    <string name="level_10_intro_07_text_01"><b>Gebe nur bei https:// Daten ein</b>\n\nWenn du Daten auf einer Webseite eingibst, solltest du immer darauf achten, dass https:// verwendet wird, damit niemand deine Daten mitlesen kann und sie auch nicht in falsche Hände geraten. Wenn du also den Wer-Bereich überprüft hast und zusätzlich https:// verwendet wird, kannst du sicher sein, dass niemand deine Eingaben mitlesen kann und dass sie nicht in die falschen Hände geraten.</string>
-    <string name="level_10_intro_08_text_01"><b>Achtung! Verlasse dich niemals alleine auf die Existenz von https://</b>, denn auch Phisher können https:// verwenden.  Schaue dir also immer zusätzlich den Wer-Bereich an, um sicher zu gehen, dass du auch wirklich mit genau dem Gesprächspartner kommunizierst, mit dem du kommunizieren wolltest.\n\nIm folgenden Beispiel ist dein Gesprächspartner phisher.de (blau hinterlegt), und nicht facebook. Das https:// bestätigt dir, dass dein Gesprächspartner wirklich phisher.de ist und dass kein anderer dein Gespräch mit ihm mitbekommen kann.<b>Lass dich nicht vom https:// täuschen, gebe hier keine Daten ein!</b></string>
-    <string name="level_10_intro_09_text_01"><b>Bemerkung</b>\n\nManche Webseiten verwenden nicht standardmäßig https://, wenn der Benutzer Daten eingeben muss. <b>Folglich solltest du besonders beim Eingeben von Daten immer darauf achten, wer dein Gesprächspartner ist und ob https:// verwendet wird. Falls kein https:// verwendet wird, kannst du versuchen das http:// der Webadresse mit https:// zu ersetzen und auf Enter zu drücken.</b> Mehr Informationen zu https:// findest du in Level 10.\n\nLehne in diesem Level bitte jegliche http:// Webadressen ab, auch wenn der Wer-Bereich in Ordnung ist. Achte auch auf Phishing-Webseiten, die https:// verwenden!</string>
+    <string name="level_10_intro_03_text_01"><b>https</b>\n\nCaptures a web address https:// on, is a high-security conversation (if the browser does not warn you). The https:// assures you the following:\n\n1.) Your conversation gets no other (encryption of communication).\n\n2.) Your interlocutor can identify himself to a third trustworthy party (authentication of the interlocutor).</string>
+    <string name="level_10_intro_04_text_01"><b>https - Encryption of communication</b>\n\nCaptures a web address https:// on, it means that the conversation takes place in a closed space, away from the public. That nobody gets to know what you are talking about with the website gets me what you talk about with the website or which user input you submit (Username, password, account information, etc.). The communication is thus encrypted. Especially when entering passwords or other sensitive data, encryption is very important.\n\nIn the following example is your conversation partner deutsche-bank.de (blue background). It will https:// used (purple background), i.e. nobody can read what data you send to deutsche-bank.de.</string>
+    <string name="level_10_intro_05_text_01"><b>https - Authentication of the conversation partner</b>\n\nThe https:// also assures you that your interlocutor, who is indicated in the Who area, is really this one. In detail, the identity of your interlocutor was checked by a so-called certification body.\n\nIn the following example is your conversation partner deutsche-bank.de (blue background). The web address starts with https (purple background). Thus, a certification authority confirms the identity of you deutsche-bank.de.</string>
+    <string name="level_10_intro_06_text_01"><b>http</b>\n\nCaptures a web address http:// On, the conversation is a low security level. The http:// means the following:\n\n1.) Everyone can hear your conversation, i.e. the communication becomes <b>Not</b> encoded\n\n2.) Your correspondent did not identify himself to a third trustworthy party\n\nFor user input (user name, password, account data, etc.) you are in public, everyone can hear this. The communication is therefore not encrypted. In addition, you can not be sure that the specified in the Wer-area conversation partner is actually the one, for which he pretends. Therefore, you should not enter sensitive data on such websites, even if the Who-area is in order. Instead, you should contact the provider and point out this problem.</string>
+    <string name="level_10_intro_07_text_01"><b>Only add https:// Data</b>\n\nWIf you enter data on a website, you should always make sure that https:// is used so that no one can read your data and they do not fall into the wrong hands. So, if you checked the who section and additionally https:// is used, you can be sure that no one can read your input and that they do not fall into the wrong hands.</string>
+    <string name="level_10_intro_08_text_01"><b>Danger! Never rely solely on the existence of https://</b>, because even phishers can use https:// .  So always look at the who\'s area to be sure, that you really communicate with exactly the person you wanted to communicate with.\n\nIn the following example your contact is phisher.de (blue background), and not facebook. The https:// confirms that your conversation partner really phisher.de is and that no one else can hear your conversation with him.<b>Do not let go of it https:// to deceive, do not enter any data here!</b></string>
+    <string name="level_10_intro_09_text_01"><b>Comment</b>\n\nSome websites do not use by default https://, when the user needs to enter data. <b>Consequently, you should always pay particular attention when entering data, who is your conversation partner and whether https:// is used. If no https:// used, you can try that http:// the web address with https:// to replace and press Enter.</b> More information about https:// you find in Level 10.\n\nPlease lean any in this level http:// Web addresses, even if the Who range is okay. Also pay attention to phishing websites that use https:// !</string>
 
     <!-- FINAL REMARKS LEVEL -->
-    <string name="level_11_intro_00_text_01"><b>Herzlichen Glückwunsch!</b>\n\nDu hast alle Levels geschafft. Zum Abschluss möchten wir dir noch einige wertvolle Hinweise mitgeben.</string>
-    <string name="level_11_intro_01_text_01"><b>Verwirrende, aber legitime Webadressen</b>\n\nIn diesem Spiel hast du gelernt, wie du anhand von Webadressen erkennen kannst, ob du dich auf einer Phishing-Webseite befindest. Um viele relevante Merkmale verständlich zu beschreiben, haben wir die Analogie eingeführt, die besuchte Webseite als dein Gesprächspartner zu betrachten. Die Webadresse liefert dir hierbei relevante Informationen über das Gespräch.\n\nLeider kommt es manchmal vor, dass die Webadressen von legitimen Webseiten, verdächtig nach Phishing-Webadressen aussehen.\n\nAuf den nächsten Seiten möchten wir dir hierzu zwei Beispiele geben.</string>
-    <string name="level_11_intro_02_text_01"><b>Verwirrende, aber legitime Webadressen</b>\n\nDie reguläre Webseite der Commerzbank ist unter der unten angegebenen Webadresse zu erreichen. Der Wer-Bereich lautet commerzbank.de (blau hinterlegt). Bislang sieht die Webadresse sehr vertrauenswürdig aus, was sie auch ist.</string>
-    <string name="level_11_intro_02_text_02">Möchte der Benutzer nun Online-Banking durchführen, gelangt er auf die unten angegebene Webadresse. Hier lautet der Wer-Bereich auf einmal commerzbanking.de (blau hinterlegt). Wie man sieht, ist der Wer-Bereich hier nur eine ähnliche Abwandlung des Wer-Bereiches der regulären Commerzbank-Webseite, d.h. man würde diese Webseite als Phishing identifizieren. Es handelt sich hierbei aber nicht um eine Phishing-Webadresse.</string>
-    <string name="level_11_intro_04_text_01"><b>Verwirrende, aber legitime Webadressen</b>\n\nHier noch einmal ein Beispiel von zwei legitimen Webadressen, wobei die zweite wie eine Phishing-Webadresse aussieht, aber keine ist:</string>
-    <string name="level_11_intro_03_text_01"><b>Hilf uns das Internet sicherer zu machen</b>\n\nManchmal können legitime Webadressen aussehen wie Phishing-Webadressen. Aus diesem Grund ist es wichtig, <b>genau zu wissen</b>, wie die Wer-Bereiche deiner besuchten Webseiten lauten!\nIn solchen verwirrenden Fällen möchten wir dir gerne nahelegen, das entsprechende Unternehmen oder die entsprechende Bank zu kontaktieren. Die Kontaktdaten kannst du zum Beispiel mit Hilfe der Suchmaschine von Google herausfinden. Verwende niemals die Kontaktdaten, die auf einer potentiellen Phishing-Webseite angegeben werden. Gib keine Daten ein bevor du dich nicht vergewissert hast! Erstens kannst du dir auf diese Weise sicher sein, dass du keine Daten auf gefälschten Webseiten eingibst. Zweitens kannst du dich beschweren, warum das Unternehmen oder die Bank so verwirrende Webadressen verwendet und auf diese Weise dazu beitragen, das Internet ein bisschen sicherer zu gestalten.</string>
-    <string name="level_11_intro_05_text_01"><b>https://</b>\n\nDu hast gelernt, dass das https:// einer Webadresse zwei Dinge versichert:\n\n1.) Dein Gespräch bekommt kein anderer mit (Verschlüsselung der Kommunikation).\n\n2.) Dein Gesprächspartner kann sich gegenüber einer dritten vertrauenswürdigen Partei ausweisen (Authentifikation des Gesprächspartners).</string>
-    <string name="level_11_intro_06_text_01"><b>https:// - Authentifikation des Gesprächspartners</b>\n\nDies bedeutet, dass eine sogenannte vertrauenswürdige Zertifizierungsstelle zusichert, dass der Gesprächspartner wirklich derjenige ist, für den er sich ausgibt. Diese Zertifizierungsstelle führt bestimmte Identitätsprüfungen durch und stellt bei einer erfolgreichen Überprüfung dem Wer-Bereich ein sogenanntes Zertifikat aus. Dieses Zertifikat versichert dir, dass dein Gesprächspartner wirklich der ist, der im Wer-Bereich angegeben ist.</string>
-    <string name="level_11_intro_07_text_01"><b>https:// - Identitätsprüfungen</b>\n\nDie große Konkurrenz und der Preisdruck unter den Zertifizierungsstellen führt leider teilweise zu oberflächlichen und vereinfachten Zertifikatsvergaben. Es ist dadurch möglich, dass Zertifikate Identitäten bestätigen, die sie gar nicht bestätigen sollten! Aus diesem Grund wurden zusätzlich spezielle Zertifikate (Extended Validation SSL Zertifikate) eingeführt, die unter einer noch strengeren Identitätsprüfung von speziellen Zertifizierungsstellen ausgestellt werden. Einige Internetbrowser (leider nicht der Android-Browser) bieten die Möglichkeit Webseiten mit solchen speziellen Zertifikaten, auf den ersten Blick zu erkennen. Hier zu erkennen am grün unterlegten Bereich (Schloss + gesondert dargestellter Unternehmensname)</string>
-    <string name="level_11_intro_07_text_02">Mehr Informationen kannst du unter <b>bsi-fuer-buerger.de</b> erhalten. Hier findest du im Allgemeinen einige weitere Informationen wie du dich sicher im Netz bewegst.\n\nViel Erfolg beim Aufdecken von Phishing-Webseiten. Lass dich nicht austricksen!</string>
-    <string name="level_11_intro_08_text_01"><b>Anklicken von Links kann gefährlich sein!</b>\n\nIn diesem Spiel hast du gelernt, wie du anhand von Webadressen erkennen kannst, ob du dich auf einer Phishing-Webseite befindest. Dabei haben wir uns darauf konzentriert, den Angriff zu erkennen, wenn du dich auf der Webseite befindest, da auch Links gefälscht sein können.\n\nDu solltest dennoch nicht, unüberlegt auf Links klicken, wenn du von vorne herein einer Nachricht nicht vertraust. Es ist nämlich möglich durch den Klick auf bösartige Links, Schadsoftware herunterzuladen. Daher solltest du vor dem Klicken die Webadresse überprüfen. Dabei ist es wichtig zu wissen, auf welche Informationen du dich verlassen kannst;  i.d.R. im Webkontext auf die Anzeige links unten im Browser. Kritisch sind Web-Adressen, die du mit einem QR Code Scanner scannst. Einige Scanner öffnen die Webseite direkt ohne die Webadresse angezeigt zu haben. Wir empfehlen daher den Privacy-Friendly QRC Code Scanner, den in der SECUSO Gruppe entwickelt worden ist.</string>
-    <string name="level_11_intro_09_text_01"><b>Weitere Tricks</b>\n\nDu hast verschiedene Tricks gelernt, die Phisher benutzen, um Internetbenutzer hinters Licht zu führen. Es gibt jedoch noch weitere Tricks, die wir im Spiel nicht behandelt haben. Folgende sind nur Beispiele:\n\n<u><i>Tiny-URL</i></u>\nEs kann vorkommen, dass ein Phisher einen sogenannten "Kurzlink" (Tiny-URL) verwendet, um das echte Ziel zu verschleiern. \n\nZ.B. führt http://tinyurl.com/nskuf85 \n\nzu der NoPhish Webseite \n\nhttps://www.secuso.informatik.tu-darmstadt.de/de/secuso-home/research/results/nophish \n\nKurzlinks sind verkürzte Formen von Webadressen, um bspw. das Abtippen von Webadressen zu erleichtern. Du kannst erst nach deren Auflösung die URL überprüfen. Dazu kannst du folgenden Dienst nutzen: \n\n <b>http://getlinkinfo.com/</b> \n\nAuf der sicheren Seite bist du, wenn du nicht auf den Link klicken sondern die Webadresse mit dem dir bekannten Wer-Bereich manuell eingibst.</string>
-    <string name="level_11_intro_10_text_01"><u><i>Referrer</i></u>\nEin Referrer wird immer dann übermittelt, wenn ein Nutzer eine Website über einen Link auf einer anderen Seite aufruft. Mittels eines sogenannten Dereferrers kann man nun “verschleiern”, von welcher Webseite man ursprünglich kommt. Ruft man beispielsweise über GMX einen Link auf, wird vor die eigentliche Ziel-URL ein Dereferer gesetzt. Die ursprüngliche Seite ist hierbei “<u>gmx.net</u>” und die Ziel-Seite "<u>info.allyouneed.com</u>".\n\nhttps://<b>deref-gmx.net</b>/mail/client/dereferrer/?redirectUrl=http%3A%2F%2F<b>info.allyouneed.com</b>%2Fgo%2F0%2F1LNSD479-1LM9YF2U-1L9EOOAX-VRYAL9.html%3Frid%3D12YEEUIW-19J53LF\n\nHier ruft der Webbrowser zunächst die gmx-Seite auf und wird dann auf <u>info.allyouneed.com</u> weitergeleitet. Der Wer-Bereich “<u>deref-gmx.net</u>” sagt hierbei leider nichts über das eigentliche Ziel des Links aus. Dieses Verfahren wird z.B. dazu angewandt, um geheime Daten in der ursprünglichen URL zu verbergen wie z.B. die Existenz der verweisenden Webseite.\n\n<u><i>ccTLD</i></u>\nDes Weiteren gibt es sogenannte ccTLDs (länderspezifische Top-Level-Domains). Die Top-Level-Domain stellt hierbei den Wer-Bereich dar. Es gibt viele legitime Webseiten, die dieses Verfahren nutzen, z.B. <u>www.amazon.co.uk</u>. Nach den vorher gelernten Regeln (“Betrachte nur die letzten beiden Bereich vor dem dritten Slash”) würde als Wer-Bereich nur <u>co.uk</u> betrachtet werden, hat in diesem Fall aber leider keine Aussagekraft über die tatsächliche Legitimität der Webseite. Das co steht hierbei lediglich für “commercial” also für ein komerzielles Unternehmen und uk für das Vereinigte Königreich.\n\n\nDiese beiden Tricks werden aktuell durch die Regeln von NoPhish leider noch nicht adressiert. In zukünftigen Versionen werden wir die Regeln jedoch um Input zu diesen Tricks erweitern.</string>
-    <string name="level_11_intro_11_text_01"><u><i>Länderkennung</i></u>\nPhisher versuchen auch andere Länderkennungen zu verwenden:\n\nhttps://www.amazon.ss\n\t\t\t\t\t\t\t\t\t\t\t\tstatt\nhttps://www.amazon.de\n\nIn dieser Schulung lag der Fokus auf dem Namen des Gesprächspartners. Oft reicht dies auch aus. Um ganz sicher zu sein, ist es auch notwendig, die Länderkennung zu prüfen. Hier gibt es nicht nur Länderkennungen sondern auch  solche für Städte (z.B. .Berlin) oder Organisationen (.org).\nEs ist daher wichtig, dass du dir bei der Anmeldung auf einer Seite nicht nur den Namen des Gesprächspartners im Wer-Bereich merken sondern auch die Länderkennung.\n\n<u><i>Psychologische Tricks</i></u>\nPhisher versuchen oft mit Tricks, dich dazu zu bringen, auf einen Link zu klicken. In der Vergangenheit ist das dadurch geschehen, dass (Zeit-)Druck aufgebaut wurde, etwa weil der Account sonst gesperrt wird. \nEin neuer Trick besteht darin, dir zwei Links anzubieten. Z.B. dass eine Banktransaktion durchgeführt wurde. Es wird dann ein Link angeboten für „Ich habe gar keine Transaktion durchgeführt“ und ein Link für „Ja, ich habe diese Transaktion veranlasst“.</string>
-    
+    <string name="level_11_intro_00_text_01"><b>Congratulations!</b>\n\nYou made it through all levels. Finally, we would like to give you some valuable hints.</string>
+    <string name="level_11_intro_01_text_01"><b>Confusing but legitimate web addresses</b>\n\nIn this game you have learned, as you can see from web addresses, if you are on a phishing website. To describe many relevant features in an understandable way, we introduced the analogy, to view the visited website as your conversation partner. The web address provides you with relevant information about the conversation.\n\nUnfortunately, sometimes it happens that the web addresses of legitimate websites, look suspiciously like phishing web addresses.\n\nOn the following pages we would like to give you two examples.</string>
+    <string name="level_11_intro_02_text_01"><b>Confusing but legitimate web addresses</b>\n\nThe regular website of Commerzbank can be reached at the web address given below. The Who-Area in commerzbank.com (highlighted in blue). So far, the web address looks very trustworthy, which it is.</string>
+    <string name="level_11_intro_02_text_02">If the user now wants to conduct online banking, he will reach the web address given below. Here is the Who-Area at once commerzbanking.de (highlighted in blue). As you can see, the Who section is just a similar variation of the Who section of the regular Commerzbank website, i.e. you would identify this website as phishing. This is not a phishing web address.</string>
+    <string name="level_11_intro_04_text_01"><b>Confusing but legitimate web addresses</b>\n\nHere\'s another example of two legitimate web addresses, the second looks like a phishing web address, but it\'s not:</string>
+    <string name="level_11_intro_03_text_01"><b>Help us to make the internet safer</b>\n\nSometimes legitimate web addresses can look like phishing web addresses. That\'s why it\'s important, <b>to know exactly</b>, What are the areas of your visited websites!\nIn such confusing cases, we would like to suggest that you contact the appropriate company or bank. For example, you can find the contact details using Google\'s search engine. Never use the contact information provided on a potential Phishing-Website. Do not enter any data before you have made sure! First, this way you can be sure that you will not enter data on fake websites. Second, you can complain why the company or bank is using and contributing to such confusing web addresses, to make the internet a bit safer.</string>
+    <string name="level_11_intro_05_text_01"><b>https://</b>\n\nYou have learned that https:// a web address assures two things:\n\n1.) Your conversation gets no other (encryption of communication).\n\n2.) Your interlocutor can identify himself to a third trustworthy party (authentication of the interlocutor).</string>
+    <string name="level_11_intro_06_text_01"><b>https:// - Authentication of the conversation partner</b>\n\nThis means that a so-called trusted certification authority assures that the interlocutor is really who he claims to be. This certification authority will perform certain identity checks and post on a successful review of the Who-Area a so-called certificate. This certificate assures you that the person you are talking to is really the person listed in the who\'s area.</string>
+    <string name="level_11_intro_07_text_01"><b>https:// - Identity Tests</b>\n\nUnfortunately, the great competition and the price pressure among the certification bodies leads in part to superficial and simplified awarding of certificates. It is possible for certificates to confirm identities that they should not confirm! For this reason special certificates (Extended Validation SSL Certificates) were introduced, issued under even more stringent identity verification by specialized certification bodies. Some internet browsers (unfortunately not the Android browser) offer the possibility of websites with such special certificates, to recognize at first glance. Recognizable here on the green area (lock + separately displayed company name)</string>
+    <string name="level_11_intro_07_text_02">More information can be found at <b>bsi-fuer-buerger.de (www.bsi-fuer-buerger.de).</b>  Here you will generally find some more information on how to safely navigate the web.\n\nGood luck revealing phishing websites. Do not let yourself be tricked!</string>
+    <string name="level_11_intro_08_text_01"><b>Clicking on links can be dangerous!</b>\n\nIn this game, you learned how to recognize by web addresses, if you are on a phishing website. We have focused on detecting the attack when you are on the website, as links can be fake as well.\n\nNevertheless, you should not, unreasonably, click on links if you do not trust a message from the beginning. It is possible to download malware by clicking on malicious links. Therefore, you should check the web address before clicking. It is important to know what information you can rely on;  i.d.R. in the web context on the display bottom left in the browser. Critical are web addresses that you scan with a QR code scanner. Some scanners open the web page directly without displaying the web address. We therefore recommend the Privacy-Friendly QR Code Scanner, developed in the SECUSO Group.</string>
+    <string name="level_11_intro_09_text_01"><b>More tricks</b>\n\nYou\'ve learned several tricks that phishers use to fool Internet users. However, there are other tricks that we have not dealt with in the game. The following are just examples:\n\n<u><i>Tiny-URL</i></u>\nIt can happen that a phisher calls a so-called "Short Link" (Tiny-URL) used to disguise the real goal. \n\nFor example, http://tinyurl.com/nskuf85 \n\to the NoPhish website \n\nhttps://www.secuso.informatik.tu-darmstadt.de/de/secuso-home/research/results/nophish \n\nShort links are abbreviated forms of web addresses. To facilitate the typing of web addresses. You can only check the URL after the resolution. You can use the following service for this: \n\n <b>http://getlinkinfo.com/</b> \n\nOn the safe side you are, if you do not click on the link but manually enter the web address with the known Who-Area.</string>
+    <string name="level_11_intro_10_text_01"><u><i>Referrer</i></u>\nA referrer is submitted whenever a user visits a website through a link on another page. By means of a so-called Dereferrers one can now "disguise", from which website you originally come. If, for example, a link is called via GMX, a dereferencer is set before the actual destination URL. The original page is here �<u>gmx.net</u>� and the destination page "<u>info.allyouneed.com</u>".\n\nhttps://<b>deref-gmx.net</b>/mail/client/dereferrer/?redirectUrl=http%3A%2F%2F<b>info.allyouneed.com</b>%2Fgo%2F0%2F1LNSD479-1LM9YF2U-1L9EOOAX-VRYAL9.html%3Frid%3D12YEEUIW-19J53LF\n\nHere the web browser first calls up the gmx page and then opens up<u>info.allyouneed.com</u> forwarded. The Who-Area �<u>deref-gmx.net</u>� Unfortunately this does not say anything about the actual destination of the link. This method is e.g. applied to it, to hide secret data in the original URL like e.g. the existence of the referring website.\n\n<u><i>ccTLD</i></u>\nFurthermore, there are so-called ccTLDs (country-specific Top-Level-Domains). The Top-Level-Domain represents here the Who-Area. There are many legitimate websites that use this method, e.g. <u>www.amazon.co.uk</u>. After the rules learned before (�Just look at the last two areas before the third slash�) would as a Who-Area only <u>co.uk</u> to be viewed as, In this case, unfortunately, has no significance for the actual legitimacy of the website. The co stands here only for "commercial" thus for a commercial enterprise and uk for the United Kingdom.\n\n\nThese two tricks are currently not addressed by the rules of NoPhish yet. In future releases, however, we will extend the rules to include input for these tricks.</string>
+    <string name="level_11_intro_11_text_01"><u><i>Country Code</i></u>\nPhishers also try to use other country codes:\n\nhttps://www.amazon.ss\n\t\t\t\t\t\t\t\t\t\t\t\tinstead of\nhttps://www.amazon.de\n\nIn this training, the focus was on the name of the interlocutor. Often this is enough. To be sure, it is also necessary to check the country code. Here there are not only country codes but also those for cities (e.g. .Berlin) or organizations (.org).\nIt is therefore important, When registering on a page, you not only remember the name of the person you are talking about in the Who section, but also the country code.\n\n<u><i>Psychological Tricks</i></u>\nPhishers often use tricks to get you to click on a link. That\'s what happened in the past, that (time) pressure was built up, because otherwise the account will be blocked. \nA new trick is to offer you two links. e.g. that a bank transaction has been carried out. It will then be offered a link for �I have not done any transaction� and a link for �Yes, I have initiated this transaction�.</string>
+
     <!-- FINAL APP SCREEN -->
-    <string name="congrats">Glückwunsch</string>
-    <string name="text_final_app_screen">Du hast das Spiel komplett durchgespielt. Dabei hast du viel gelernt und bist nun gegen gänginge Phishing-Tricks gewappnet. Wenn du weiterhin üben möchtest, vor allem um das Gelernte mal wieder aufzufrischen, kannst du über den Level-Überblick in die einzelnen Levels springen.\n\nZum Schluss nimm dir doch bitte die Zeit für ein Abschlussquiz:\n\n&#8226; <a href='https://www.soscisurvey.de/NoPhish-Survey/?q=Post'>App einmal durchgespielt</a>\n&#8226; <a href='https://www.soscisurvey.de/NoPhish-Survey/?q=Retention'>App zweimal durchgespielt</a>\n\nViele Grüße,\nDein NoPhish Team</string>
-    <string name="back_to_home">Zum Hauptmenü</string>
+    <string name="congrats">Congratulation</string>
+    <string name="text_final_app_screen">You have played through the game completely. We hope you have learned a lot and are now armed against common phishing tricks. If you want to continue practicing, especially to refresh what you have learned, you can jump over the level overview in each level.\n\nFinally, please take the time for a post quiz:\n\n&#8226; <a href='https://www.soscisurvey.de/NoPhish-Survey/?q=Post'>App once played through</a>\n&#8226; <a href='https://www.soscisurvey.de/NoPhish-Survey/?q=Retention'>App played through twice</a>\n\nBest regards,\nYour NoPhish Team</string>
+    <string name="back_to_home">To the main menu</string>
 
     <!-- TASKS AND SOLUTION SCREENS FROM LEVEL 3 -->
-    <string name="legitimate">Legitim</string>
-    <string name="yes">Ja</string>
-    <string name="no">Nein</string>
-    <string name="fake">Gefälscht</string>
-    <string name="URLs">Korrekt:</string>
-    <string name="level_failed_title">Level nicht bestanden!</string>
-    <string name="level_failed_text">Leider hast du alle deine Leben verloren. Versuche es am besten erneut!</string>
-    <string name="level_failed_button">Level neu starten</string>
-    <string name="url_timeout_title">Die Zeit ist abgelaufen!</string>
-    <string name="url_timeout_text">Du warst zu langsam. Du verlierst ein Leben!</string>
-    <string name="url_timeout_button">Weiter</string>
-    <string name="level_cancel_title">Level abbrechen?</string>
-    <string name="level_cancel_text">Wenn du diese Seite verlässt wird dein Spielstand für dieses Level nicht gespeichert. Bist du dir sicher?</string>
-    <string name="level_cancel_positive_button">Level verlassen</string>
-    <string name="level_cancel_negative_button">Weiterspielen</string>
-    <string name="level_restart_title">Level neu starten?</string>
-    <string name="level_restart_text">Wenn du das Level neu startest wird dein Spielstand für dieses Level nicht gespeichert. Bist du dir sicher?</string>
-    <string name="level_restart_positive_button">Level neu starten</string>
-    <string name="level_restart_negative_button">Weiterspielen</string>
+    <string name="legitimate">Legitimate</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="fake">Fake</string>
+    <string name="URLs">Correctly:</string>
+    <string name="level_failed_title">Level failed!</string>
+    <string name="level_failed_text">Unfortunately, you have lost all your lives. Please, try it again!</string>
+    <string name="level_failed_button">Restart level</string>
+    <string name="url_timeout_title">The time has expired!</string>
+    <string name="url_timeout_text">You were too slow. You lose a life!</string>
+    <string name="url_timeout_button">Continue</string>
+    <string name="level_cancel_title">Cancel level?</string>
+    <string name="level_cancel_text">If you leave this page your score will not be saved for that level. Are you sure?</string>
+    <string name="level_cancel_positive_button">Leave the level</string>
+    <string name="level_cancel_negative_button">Play On</string>
+    <string name="level_restart_title">Restart level?</string>
+    <string name="level_restart_text">When you restart the level your score will not be saved for that level. Are you sure?</string>
+    <string name="level_restart_positive_button">Restart level</string>
+    <string name="level_restart_negative_button">Play On</string>
     <string name="ok">OK</string>
-    <string name="url_task_providername">Du willst die Webseite von\n<b>\"${providername}\"</b> besuchen.</string>
-    <string name="url_task_description">Vertraust du der Webadresse?</string>
-    <string name="url_task_desciription_level_10">Würdest du hier Daten eingeben?</string>
-    <string name="url">Beispiel URL</string>
-    <string name="level_score">Levelpunkte:</string>
-    <string name="total_score">Gesamtpunkte:</string>
-    <string name="level_max_score">Erreichbare Levelpunkte:</string>
-    <string name="phish_proof_01">Ja, die Webadresse ist gefälscht. Nun zeige uns den Wer-Bereich. <b>Tippe</b> die entsprechende Stelle an.</string>
-    <string name="phish_proof_09">Ja, du hast dich richtig entschieden. Nun zeige uns den Wer-Bereich. <b>Tippe</b> die entsprechende Stelle an.</string>
-    <string name="you_are_wrong">Falsch! Du wurdest ausgetrickst. Das ist eine gefälschte Webadresse. Daher verlierst du ein Leben.</string>
-    <string name="oversafe_text">Diese Webadresse ist nicht gefälscht. Ihr kannst du ruhig vertrauen.</string>
-    <string name="oversafe_02">Wenn man sich unsicher ist, ist es allerdings besser übervorsichtig zu sein und keine Daten einzugeben. In solchen Fällen ist es sinnvoll, den entsprechenden Gesprächspartner zu kontaktieren und dort nach der Vertrauenswürdigkeit der verdächtigen Webadresse zu fragen. Alternativ kann man den Namen des Gesprächspartners in eine Suchmaschiene eingeben. Die ersten Ergebnisse zeigen wahrscheinlich die richtige Webseite.</string>
-    <string name="you_are_correct">Gut gemacht. Diese Webadresse ist nicht gefälscht, ihr kannst du vertrauen.</string>
-    <string name="you_guessed">Leider konntest du uns nicht den Wer-Bereich zeigen.</string>
-    <string name="level_10_you_are_correct">Gut gemacht. Dieser Webadresse kannst du voll und ganz vertrauen.</string>
-    <string name="level_10_you_are_wrong">Das war leider falsch.</string>
-    <string name="level_10_you_are_correct_phish">Gut gemacht. Das war richtig. Bei dieser Webadresse ist Vorsicht angesagt!</string>
-    <string name="you_found_the_phish">Du hast den Phish erkannt. Herzlichen Glückwunsch.</string>
-    <string name="exercise">Übung</string>
-    <string name="intro">Einführung und Erklärung</string>
-    <string name="finished">Abgeschlossen</string>
-    <string name="button_verify">Überprüfen</string>
-    <string name="attack_reminder"><b>Erinnerung:</b> Vertraue nicht..</string>
-    <string name="oversafe">Übervorsicht</string>
-    <string name="correct">Korrekt</string>
-    <string name="wrong">Falsch</string>
-    <string name="select_part">Du musst einen Teil der Webadresse durch Klicken auswählen.</string>
-	
+    <string name="url_task_providername">You want to visit the website of\n<b>\"${providername}\"</b>.</string>
+    <string name="url_task_description">Do you trust the web address?</string>
+    <string name="url_task_desciription_level_10">Would you enter data here?</string>
+    <string name="url">Example URL</string>
+    <string name="level_score">Level Score:</string>
+    <string name="total_score">Total Points:</string>
+    <string name="level_max_score">Achievable Tevel Points:</string>
+    <string name="phish_proof_01">Yes, the web address is fake. Now show us the Who area. <b>Tap</b> the appropriate place.</string>
+    <string name="phish_proof_09">Yes, you have decided correctly. Now show us the Who-Area. <b>Tap</b> the appropriate place.</string>
+    <string name="you_are_wrong">Not correct! You were tricked. This is a fake web address. Therefore, you lose a life.</string>
+    <string name="oversafe_text">This web address is not fake. You can trust it.</string>
+    <string name="oversafe_02">If you are unsure, however, it is better to be overcautious and not enter any data. In such cases, it makes sense, contact the correspondent and ask for the trustworthiness of the suspicious web address. Alternatively, you can enter the name of the conversation partner in a search engine. The first results probably show the right website.</string>
+    <string name="you_are_correct">Well done. This web address is not fake, you can trust it.</string>
+    <string name="you_guessed">Unfortunately, you could not show us the Who-Area.</string>
+    <string name="level_10_you_are_correct">Well done. You can fully trust this web address.</string>
+    <string name="level_10_you_are_wrong">Unfortunately that was wrong.</string>
+    <string name="level_10_you_are_correct_phish">Well done. That was right. Beware of this web address!</string>
+    <string name="you_found_the_phish">You recognized a Phish. Congratulations.</string>
+    <string name="exercise">Exercise</string>
+    <string name="intro">Introduction and Explanation</string>
+    <string name="finished">Completed</string>
+    <string name="button_verify">Check</string>
+    <string name="attack_reminder"><b>Remember:</b> Do not trust..</string>
+    <string name="oversafe">Overcautious</string>
+    <string name="correct">Correctly</string>
+    <string name="wrong">Not correct</string>
+    <string name="select_part">You must select a part of the web address by clicking.</string>
+
     <!-- subdomain -->
-    <string name="level_03_reminder"><b>Erinnerung:</b> Enthält der Bereich der Abteilungen dir bekannte Gesprächspartner und enthält der Wer-Bereich aber unsinnige, bezugslose oder gar vertrauensunwürdige Gesprächspartner anstelle des Namen deines Gesprächspartners, dann gib auf dieser Webseite keine Daten ein!</string>
-	<string name="reminder_subdomain">3.) Enthält der Bereich der Abteilungen dir bekannte Gesprächspartner und enthält der Wer-Bereich aber unsinnige, bezugslose oder gar vertrauensunwürdige Gesprächspartner anstelle des Namen deines Gesprächspartners, dann gib auf dieser Webseite keine Daten ein!</string>
+    <string name="level_03_reminder"><b>Remember:</b> Does the section of the departments contain the well-known interlocutors and contains the Who-Area but nonsense, disinterested or even untrustworthy interlocutors instead of the name of your interlocutor, then do not enter any data on this website!</string>
+    <string name="reminder_subdomain">3.) Does the section of the departments contain the well-known interlocutors and contains the Who section but nonsense, disinterested or even untrustworthy interlocutors instead of the name of your interlocutor, then do not enter any data on this website!</string>
     <!-- ip -->
-    <string name="level_04_reminder"><b>Erinnerung:</b> Ist der Bereich zwischen \"http://\" und dem dritten Slash \"/\" eine IP-Adresse (Folge von 4 Zahlenblöcken, durch Punkte getrennt), ist diese der Wer-Bereich. Gib auf dieser Webseite keine Daten ein!</string>
-    <string name="reminder_ip">1.) Ist der Bereich zwischen \"http://\" und dem dritten Slash \"/\" eine IP-Adresse, ist diese der Wer-Bereich. Gib auf dieser Webseite keine Daten ein!</string>
+    <string name="level_04_reminder"><b>Remember:</b> Is the area between \"http://\" and the third Slash \"/\" an IP address (sequence of 4 number blocks, separated by dots), this is the Who-Area. Do not enter any data on this website!</string>
+    <string name="reminder_ip">1.) Is the area between\"http://\" and the third Slash \"/\" an IP address, this is the who area. Do not enter any data on this website!</string>
     <!-- totally unrelated -->
-    <string name="level_04_a_reminder"><b>Erinnerung:</b> Enthält die Webadresse den Namen deines Gesprächspartners nicht, dann gib auf dieser Webseite keine Daten ein, selbst wenn der Wer-Bereich vertrauenswürdig klingt!</string>
-    <string name="reminder_no_brand">2.)  Enthält die Webadresse den Namen deines Gesprächspartners nicht, dann gib auf dieser Webseite keine Daten ein, selbst wenn der Wer-Bereich vertrauenswürdig klingt.</string>
+    <string name="level_04_a_reminder"><b>Remember:</b> If the web address does not contain the name of your correspondent, then do not enter any data on this website, even if the who-area sounds trustworthy!</string>
+    <string name="reminder_no_brand">2.)  If the web address does not contain the name of your correspondent, then do not enter any data on this website, even if the who\'s section sounds trustworthy.</string>
     <!-- nonsense -->
-    <string name="level_12_reminder"><b>Erinnerung:</b> Enthält der Wer-Bereich Gesprächspartner, die keinen Sinn ergeben oder nichts mit dem Dienst bzw. Unternehmen deines Gesprächspartners zu tun haben, dann gebe hier keine Daten ein! </string>
-    <string name="reminder_nonsense">3.) Enthält der Wer-Bereich Gesprächspartner, die keinen Sinn ergeben oder nichts mit dem Dienst bzw. Unternehmen deines Gesprächspartners zu tun haben, dann gib auf dieser Webseite keine Daten ein! </string>
+    <string name="level_12_reminder"><b>Remember:</b> Contains the Who-Area conversation partners who make no sense or nothing with the service. Companies of your correspondent, then do not enter any data here! </string>
+    <string name="reminder_nonsense">3.) Contains the Who-Area conversation partners who make no sense or nothing with the service. Companies of your correspondent, then do not enter any data on this website! </string>
     <!-- unrelated but trustworthy -->
-    <string name="level_13_reminder"><b>Erinnerung:</b> Enthält der Wer-Bereich Gesprächspartner, die vertrauenswürdig klingen, aber dennoch nichts mit dem Unternehmen deines Gesprächspartners zu tun haben, dann gebe hier keine Daten ein! </string>
-    <string name="reminder_sounding_trustworthy">4.) Enthält der Wer-Bereich Gesprächspartner, die vertrauenswürdig klingen, aber dennoch nichts mit dem Unternehmen deines Gesprächspartners zu tun haben, dann gebe hier keine Daten ein! </string>
+    <string name="level_13_reminder"><b>Remember:</b> Contains the Who-Area conversation partners who sound trustworthy, but still have nothing to do with the company of your interlocutor, then enter here no data! </string>
+    <string name="reminder_sounding_trustworthy">4.) Contains the Who-Area conversation partners who sound trustworthy, but still have nothing to do with the company of your interlocutor, then enter here no data! </string>
     <!-- misleading (facebook-login) -->
-    <string name="level_06_reminder"><b>Erinnerung:</b> Enthält der Wer-Bereich nur eine ähnliche Abwandlung des dir bisher vertrauten Wer-Bereiches, dann gib auf dieser Webseite keine Daten ein!</string>
-    <string name="reminder_misleading">5.) Enthält der Wer-Bereich nur eine ähnliche Abwandlung des dir bisher vertrauten Wer-Bereiches, dann gib auf dieser Webseite keine Daten ein!</string>
-  
+    <string name="level_06_reminder"><b>Remember:</b> Contains the Who-Area only a similar modification of you previously familiar Who-Area, then do not enter any data on this website!</string>
+    <string name="reminder_misleading">5.) Contains the Who-Area only a similar modification of you previously familiar Who-Area, then do not enter any data on this website!</string>
+
     <!-- typo -->
-  	<string name="level_07_reminder"><b>Erinnerung:</b> Enthält der Wer-Bereich einen Tippfehler oder Buchstabendreher, dann gib auf dieser Webseite keine Daten ein!</string>
-    <string name="reminder_typo">6.) Enthält der Wer-Bereich einen Tippfehler oder Buchstabendreher, dann gib auf dieser Webseite keine Daten ein!</string>
-    
-    <string name="reminder_brand_in_domain">5.) Enthält der Wer-Bereich nur eine ähnliche Abwandlung des dir bisher vertrauten Wer-Bereiches, dann gib auf dieser Webseite keine Daten ein!</string>
-    <string name="reminder_typosquat">7.) Enthält der Wer-Bereich einen Buchstabendreher, dann gib auf dieser Webseite keine Daten ein!</string>
+    <string name="level_07_reminder"><b>Remember:</b> If the Who-Area contains a typo or a speller, please do not enter any data on this website!</string>
+    <string name="reminder_typo">6.) If the Who-Area contains a typo or a speller, please do not enter any data on this website!</string>
+
+    <string name="reminder_brand_in_domain">5.) Contains the Who-Area only a similar modification of you previously familiar Who-Area, then do not enter any data on this website!</string>
+    <string name="reminder_typosquat">7.) If the Who-Area contains a speller, then do not enter any data on this website!</string>
     <!-- homographic -->
-    <string name="level_08_reminder"><b>Erinnerung:</b> Enthält der Wer-Bereich Ersetzungen von Buchstaben durch andere ähnliche Zeichen oder Zahlen, dann gib auf dieser Webseite keine Daten ein!</string>
-    <string name="reminder_similar_chars">7.) Enthält der Wer-Bereich Ersetzungen von Buchstaben durch andere ähnliche Zeichen oder Zahlen, dann gib auf dieser Webseite keine Daten ein! </string>
-    
+    <string name="level_08_reminder"><b>Remember:</b> If the who-area contains replacements of letters with other similar characters or numbers, then do not enter any data on this website!</string>
+    <string name="reminder_similar_chars">7.) If the who-area contains replacements of letters with other similar characters or numbers, then do not enter any data on this website! </string>
+
     <!-- hostname in path -->
-    <string name="level_05_reminder"><b>Erinnerung:</b> Enthält der Bereich des Gesprächsthemas dir bekannte Gesprächspartner oder Webadressen und enthält der Wer-Bereich aber eine IP-Adresse, unsinnige, bezugslose oder gar vertrauensunwürdige Gesprächspartner anstelle des Namen deines Gesprächspartners, dann gib auf dieser Webseite keine Daten ein!</string>
-    <string name="reminder_deceiving_path">4.) Enthält der Bereich des Gesprächsthemas dir bekannte Gesprächspartner oder Webadressen und enthält der Wer-Bereich aber eine IP-Adresse, unsinnige, bezugslose oder gar vertrauensunwürdige Gesprächspartner anstelle des Namen deines Gesprächspartners, dann gib auf dieser Webseite keine Daten ein!</string>
+    <string name="level_05_reminder"><b>Remember:</b> Contains the area of the topic of conversation to you known contacts or web addresses and contains the Who-Area but an IP address, nonsensical, unrelated or even trustworthy conversation partner instead of the name of your interlocutor, then enter on this website no data!</string>
+    <string name="reminder_deceiving_path">4.) Contains the area of the topic of conversation to you known contacts or web addresses and contains the Who-Area but an IP address, nonsensical, unrelated or even untrustworthy conversation partner instead of the name of your interlocutor, then enter no data on this website!</string>
     <!-- http/https -->
-    <string name="level_10_reminder"><b>Erinnerung:</b> In diesem Level sollst prinzipiell Webadressen ablehnen, die kein https:// verwenden. Zusätzlich musst du selbstverständlich überprüfen, ob die Webadresse eine Phishing-Adresse ist.</string>
-    <string name="level_10_reminder_http_legitimate"><b>Erinnerung:</b> Die Webadresse ist zwar legitim, aber verwendet nur http://. Daher kannst du dich hier nicht darauf verlassen, dass dein Gespräch von keinem Dritten mitgehört werden kann. Außerdem wird dir mit http:// nicht versichert, dass dein Gesprächspartner der ist, der er im Wer-Bereich vorgibt zu sein.</string>
-    <string name="level_10_reminder_http_phish"><b>Erinnerung: </b>Dies ist eine gefälschte Webadresse, die http:// verwendet. Wenn du dieser Webadresse vertraust, überlässt du nicht nur dem Phisher deine Daten, sondern auch einer potentiellen dritten Partei.</string>
-    <string name="level_10_reminder_https_phish"><b>Erinnerung: </b>Dies ist eine gefälschte Webadresse, die https:// verwendet. Hier wird dir versichert, dass deine Daten nur der Phisher mitlesen kann und kein Dritter. Außerdem wird dir versichert, dass der Phisher der ist, der er im Wer-Bereich vorgibt zu sein.</string>
-    <string name="title_activity_about">Über Uns</string>
+    <string name="level_10_reminder"><b>Remember:</b> In this level you should reject web addresses that are not https:// . Of course you also have to check if the web address is a phishing address.</string>
+    <string name="level_10_reminder_http_legitimate"><b>Remember:</b> The web address is legitimate but uses only http://. Therefore, you can not rely on the fact that your conversation can not be overheard by any third party. Besides, you will be with http:// not assured that your interlocutor is who he pretends to be in the Who-Area.</string>
+    <string name="level_10_reminder_http_phish"><b>Remember: </b>This is a fake web address that http:// . If you trust this web address, you will not only leave your data to the phisher, but also to a potential third party.</string>
+    <string name="level_10_reminder_https_phish"><b>Remember: </b>This is a fake web address that https:// . Here you are assured that your data only the phisher can read and no third party. In addition, you are assured that the phisher is the one he claims to be in the who-area.</string>
+    <string name="title_activity_about">About us</string>
     <string name="hello_world">Hello world!</string>
     <string name="number">10</string>
     <string name="title">Title</string>
     <string name="level_description">Level Description</string>
 
     <!-- CONTENT DESCRIPTIONS FOR ACCESSIBILITY -->
-	<string name="content_desc_credits">Credits</string>
-    <string name="content_desc_back_button">Button Zurück</string>
-    <string name="content_desc_forward_button">Button Weiter</string>
+    <string name="content_desc_credits">Credits</string>
+    <string name="content_desc_back_button">Back Button </string>
+    <string name="content_desc_forward_button">Continue Button </string>
     <string name="content_desc_facebook_screenshot_original">Facebook Screenshot - original</string>
     <string name="content_desc_facebook_screenshot_fake">Facebook Screenshot - fake</string>
-    <string name="content_desc_symbol_book">Buch</string>
-    <string name="content_desc_symbol_pen">Stift</string>
-    <string name="content_desc_smiley_bored">Gelangweiltes Gesicht</string>
-    <string name="content_desc_button_send">ButtonAbschicken</string>
-    <string name="content_desc_medal">Orden</string>
-    <string name="content_desc_addr_bar">Adressleiste</string>
-    <string name="content_desc_i_know_that_btn">Button das kann ich schon</string>
-    <string name="content_desc_suprised">Verblüfftes Gesicht</string>
-    <string name="content_desc_find_addr_bar">Screenshot Webseite mit Adressleiste</string>
-    <string name="content_desc_click_addr_bar">Adresstext antippen</string>
-    <string name="content_desc_slide_to_right">Adresse nach rechts schieben</string>
-    <string name="content_desc_start_of_address">Angekommen am Anfang der Webadresse</string>
-    <string name="content_desc_click_here_button">Button klicke hier</string>
-    <string name="content_desc_arrow_up_de">Pfeil zeigt auf \"de\"</string>
-    <string name="content_desc_arrow_up_spiegel">Pfeil zeigt auf \"spiegel\"</string>
-    <string name="content_desc_arrow_up_abo">Pfeil zeigt auf \"abo\"</string>
-    <string name="content_desc_globe">Globus</string>
-    <string name="content_desc_attention">Achtung</string>
-    <string name="content_desc_puzzle_units">Puzzleteile</string>
-    <string name="content_desc_house">Haus</string>
+    <string name="content_desc_symbol_book">Book</string>
+    <string name="content_desc_symbol_pen">Pen</string>
+    <string name="content_desc_smiley_bored">Bored face</string>
+    <string name="content_desc_button_send">Send Button</string>
+    <string name="content_desc_medal">Medal</string>
+    <string name="content_desc_addr_bar">Address strip</string>
+    <string name="content_desc_i_know_that_btn">I can already do that</string>
+    <string name="content_desc_suprised">Astonished face</string>
+    <string name="content_desc_find_addr_bar">Screenshot Website with address bar</string>
+    <string name="content_desc_click_addr_bar">Touch address text</string>
+    <string name="content_desc_slide_to_right">Move address to the right</string>
+    <string name="content_desc_start_of_address">Arrived at the beginning of the web address</string>
+    <string name="content_desc_click_here_button">Click here</string>
+    <string name="content_desc_arrow_up_de">Arrow points up \"de\"</string>
+    <string name="content_desc_arrow_up_spiegel">Arrow points up \"spiegel\"</string>
+    <string name="content_desc_arrow_up_abo">Arrow points up \"abo\"</string>
+    <string name="content_desc_globe">Globe</string>
+    <string name="content_desc_attention">Danger</string>
+    <string name="content_desc_puzzle_units">Puzzle pieces</string>
+    <string name="content_desc_house">House</string>
     <string name="content_desc_computer">Computer</string>
-    <string name="content_desc_confused_pinguin">Verwirrter Pinguin</string>
-    <string name="content_desc_innocent_looking_smiley_angel">Unschuldig aussehender Smiley-Engel</string>
-    <string name="content_desc_twitter_logo">Ein Twitterlogo</string>
-    <string name="content_desc_one">Zahl Eins</string>
-    <string name="content_desc_seven">Zahl Sieben</string>
-    <string name="content_desc_padlock">Vorhängeschloss</string>
-    <string name="content_desc_star">Stern</string>
-    <string name="content_desc_tik">Häkchen</string>
-    <string name="content_desc_play">Button Spielen</string>
-    <string name="content_desc_level_overview">Button Level-Überblick</string>
+    <string name="content_desc_confused_pinguin">Confused penguin</string>
+    <string name="content_desc_innocent_looking_smiley_angel">Innocent-looking smiley angel</string>
+    <string name="content_desc_twitter_logo">On Twitter logo</string>
+    <string name="content_desc_one">Number one</string>
+    <string name="content_desc_seven">Number seven</string>
+    <string name="content_desc_padlock">Padlock</string>
+    <string name="content_desc_star">Star</string>
+    <string name="content_desc_tik">Checkmark</string>
+    <string name="content_desc_play">Play Button</string>
+    <string name="content_desc_level_overview">Button Level-Overview</string>
     <string name="content_desc_google_play">Button Google Play</string>
-    <string name="content_desc_more_info">Button Mehr Informationen</string>
-    <string name="content_desc_about">Button Über Uns</string>
-    <string name="content_desc_cross">Kreuz</string>
-    <string name="content_desc_smiling_face">Lächelndes Gesicht</string>
-    <string name="content_desc_o_face">Neutrales Gesicht</string>
-    <string name="content_desc_sad_face">Trauriges Gesicht</string>
-    <string name="content_desc_disappointed_face">Enttäuschtes Gesicht</string>
-    <string name="content_desc_speech_balloon_amazon">Sprechblase mit Amazon-Logo</string>
-    <string name="content_desc_security_level_high">Sicherheitsmann</string>
-    <string name="content_desc_link">Zeigefinger - Klick auf Link</string>
-    <string name="content_desc_swipe_right">Nach rechts swipen</string>
-    <string name="content_desc_start_level_button">Starte Level</string>
-    <string name="content_desc_single_tip">Entsprechende Stelle der Webadresse antippen</string>
-    <string name="content_desc_life_1">Lebensherz 1</string>
-    <string name="content_desc_life_2">Lebensherz 2</string>
-    <string name="content_desc_life_3">Lebensherz 3</string>
-    <string name="title_activity_app_end">Schlussbemerkungen</string>
+    <string name="content_desc_more_info">More Informatio Button</string>
+    <string name="content_desc_about">About Us Button</string>
+    <string name="content_desc_cross">Back</string>
+    <string name="content_desc_smiling_face">Smiling face</string>
+    <string name="content_desc_o_face">Neutral face</string>
+    <string name="content_desc_sad_face">Sad face</string>
+    <string name="content_desc_disappointed_face">Disappointed face</string>
+    <string name="content_desc_speech_balloon_amazon">Speech bubble with Amazon-Logo</string>
+    <string name="content_desc_security_level_high">Security Guard</string>
+    <string name="content_desc_link">Forefinger - Click on Link</string>
+    <string name="content_desc_swipe_right">Swipe right</string>
+    <string name="content_desc_start_level_button">Start Level</string>
+    <string name="content_desc_single_tip">Touch the appropriate location of the web address</string>
+    <string name="content_desc_life_1">Life Heart 1</string>
+    <string name="content_desc_life_2">Life Heart 2</string>
+    <string name="content_desc_life_3">Life Heart 3</string>
+    <string name="title_activity_app_end">Closing remarks</string>
     <string name="secuso_logo">SECUSO Logo</string>
-    <string name="content_desc_confetti">Konfetti</string>
-    <string name="shown_urls">Angezeigte Adressen:</string>
-    <string name="correct_urls">Erkannte Adressen:</string>
+    <string name="content_desc_confetti">Confetti</string>
+    <string name="shown_urls">Displayed addresses:</string>
+    <string name="correct_urls">Detected addresses:</string>
 
     <string-array name="fromMails">
     <!-- no examples until we decide to do it again -->
@@ -475,14 +474,19 @@ Der	Rset knan ein ttoaelr Bsinöldn sien, tedztormknan man ihn onhe Pemoblre lse
 
     <!--###ABOUT###-->
     <string name="version_number">Version 1.3.3</string>
-    <string name="about_author">Autoren: </string>
-    <string name="about_author_names" translatable="false">Clemens Bergmann, Gamze Canova, Phlipp Rack</string>
-    <string name="about_author_contributors">und Mitwirkende.</string>
-    <string name="about_affiliation">In Zusammenarbeit mit</string>
-    <string name="privacy_friendly">Diese App wurde von der Forschungsgruppe SECUSO der Technischen Universität Darmstadt entwickelt. Quelltext lizenziert unter GPLv3. Bilder copyright TU Darmstadt und Google Inc.</string>
-    <string name="more_info">Weitere Infos unter:</string>
+    <string name="about_author">Authors: </string>
+    <string name="about_author_names" translatable="false">Clemens Bergmann, Gamze Canova, Phlipp Rack,</string>
+    <string name="about_author_contributors">Contributors and Chris Wilder for English translation.</string>
+    <string name="about_affiliation">In collaboration with</string>
+    <string name="privacy_friendly">This app was developed by the research group SECUSO developed by the Technical University of Darmstadt. Source code licensed under GPLv3.. Images copyright TU Darmstadt and Google In.</string>
+    <string name="more_info">Further information at:</string>
     <string name="github" translatable="false"><a href="https://github.com/SecUSo/nophish">Github-Repo</a></string>
     <string name="secusourl" translatable="false"><a href="https://www.secuso.org/pfa">SECUSO-Website</a></string>
-
+    <string name="cont">continue</string>
+    <string name="proceedToLevel">to level %s</string>
+    <string name="start">Start</string>
+    <string name="success">Success</string>
+    <string name="scoreString">%s Points</string>
+    <string name="check">check</string>
 
 </resources>

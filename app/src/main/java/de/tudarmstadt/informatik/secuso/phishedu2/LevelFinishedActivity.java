@@ -70,7 +70,7 @@ public class LevelFinishedActivity extends SwipeActivity {
 
 	@Override
 	protected String startButtonText() {
-		return "Weiter zu " + getResources().getString(BackendControllerImpl.getInstance().getLevelInfo(this.getLevel()+1).titleId);
+		return getString(R.string.proceedToLevel, getResources().getString(BackendControllerImpl.getInstance().getLevelInfo(this.getLevel()+1).titleId));
 	}
 
 	@Override

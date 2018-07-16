@@ -149,14 +149,14 @@ public class LevelIntroActivity extends SwipeActivity {
 	protected String startButtonText() {
 		if (this.getLevel() == BackendControllerImpl.getInstance()
 				.getLevelCount() - 1) {
-			return "Geschafft";
+			return getString(R.string.success); // "Geschafft"
 		}
         if(this.getLevel() == 0)
-            return "Fortfahren";
+            return getString(R.string.cont); // "Fortfahren"
         else if(this.getLevel() == 1)
-            return "WEITER ZU LEVEL 1";
+            return getString(R.string.proceedToLevel, "1"); // "WEITER ZU LEVEL 1"
         else
-		    return "Starte Übung";
+		    return getString(R.string.start); // "Starte Übung"
 	}
 
 	@Override
