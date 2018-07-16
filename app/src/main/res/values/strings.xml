@@ -473,7 +473,7 @@
     </string-array>
 
     <!--###ABOUT###-->
-    <string name="version_number">Version 1.3.3</string>
+    <string name="version_number" translatable="false">Version 1.4.0</string>
     <string name="about_author">Authors: </string>
     <string name="about_author_names" translatable="false">Clemens Bergmann, Gamze Canova, Phlipp Rack,</string>
     <string name="about_author_contributors">Contributors and Chris Wilder for English translation.</string>

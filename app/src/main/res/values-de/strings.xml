@@ -474,7 +474,6 @@ Der	Rset knan ein ttoaelr Bsinöldn sien, tedztormknan man ihn onhe Pemoblre lse
     </string-array>
 
     <!--###ABOUT###-->
-    <string name="version_number">Version 1.3.3</string>
     <string name="about_author">Autoren: </string>
     <string name="about_author_names" translatable="false">Clemens Bergmann, Gamze Canova, Phlipp Rack</string>
     <string name="about_author_contributors">und Mitwirkende.</string>
