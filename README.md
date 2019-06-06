@@ -13,12 +13,11 @@ The most reliable way to detect phishing is checking the URL (web address) of a 
 ## Download and more Information
 
 Further development requires Android Studio, we recommend to use at least version 3.1.1
-For more information about the app and how it works, please take a look at the Wiki section.
  
 ### API Reference
 
-Mininum SDK: 10
-Target SDK: 19
+- Mininum SDK: 10
+- Target SDK: 19
 
 ## License
 
