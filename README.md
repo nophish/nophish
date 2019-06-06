@@ -3,7 +3,7 @@ Phishing is a major issue of the Internet where users are tricked into disclosin
 
 The most reliable way to detect phishing is checking the URL (web address) of a website. We developed an **Android app** to learn how to detect Phishing URLs.
 
-**The app is avaliable here:** https://www.secuso.informatik.tu-darmstadt.de/de/research/results/nophish-android-app-deutsch/
+**The app is avaliable here:** https://secuso.org/nophish
 
 ## Contributions
 Bergmann and Gamze Canova (alumni of SecUSo) developed the original NoPhish Android App during their Master’s thesis and continued working on it afterwards. 
