@@ -96,6 +96,15 @@
             android:text="@string/url"
             android:textAppearance="?android:attr/textAppearanceMedium"
             />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/level_08_intro_02_text_07"
+            android:id="@+id/more_examples"
+            android:layout_below="@+id/example_03"
+            android:layout_marginTop="@dimen/margin_small" />
     </RelativeLayout>
 
 </ScrollView>

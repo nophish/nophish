@@ -1,47 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/about_sv"
+    android:id="@+id/main_content"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fadeScrollbars="false" >
+    android:background="#FFFFFF">
 
-    <RelativeLayout
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
+        android:background="#FFFFFF"
+        android:fitsSystemWindows="true"
+        android:orientation="vertical"
         android:paddingBottom="@dimen/activity_vertical_margin"
         android:paddingLeft="@dimen/activity_horizontal_margin"
         android:paddingRight="@dimen/activity_horizontal_margin"
         android:paddingTop="@dimen/activity_vertical_margin"
-        tools:context=".AboutActivity" >
+        android:weightSum="1"
+        tools:context=".backend.AboutActivity">
 
         <TextView
-            android:id="@+id/about_text"
+            android:id="@+id/appName"
+            android:textSize="25sp"
+            android:textStyle="bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:text="@string/about_text"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="15dp"
+            android:text="@string/app_name" />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="5dp"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/textFieldVersion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="@string/version_number" />
+
+            <TextView
+                android:id="@+id/textFieldVersionName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginLeft="4dp"
+                android:layout_toEndOf="@+id/textFieldVersion"
+                android:layout_toRightOf="@+id/textFieldVersion"/>
+
+        </RelativeLayout>
 
         <TextView
-            android:id="@+id/about_contact"
+            android:id="@+id/textFieldAuthor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/about_text"
-            android:layout_below="@+id/about_text"
-            android:layout_marginTop="@dimen/margin_standard"
-            android:text="@string/about_contact"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="5dp"
+            android:text="@string/about_author" />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="5dp"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/textFieldAuthorNames"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/about_author_names" />
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/textFieldContributors"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/about_author_contributors" />
+
+        <TextView
+            android:id="@+id/textFieldAffiliation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="30dp"
+            android:text="@string/about_affiliation"
+            android:textStyle="bold" />
 
         <ImageView
-            android:id="@+id/secuso_logo"
+            android:id="@+id/imageView1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/about_contact"
-            android:layout_marginTop="@dimen/margin_small"
-            android:contentDescription="@string/secuso_logo"
-            android:src="@drawable/secuso" />
+            android:adjustViewBounds="true"
+            android:src="@drawable/secuso_logo_blau_blau" />
 
-    </RelativeLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:gravity="center_horizontal"
+            android:text="@string/privacy_friendly" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="15dp"
+            android:gravity="center"
+            android:text="@string/more_info" />
+
+        <TextView
+            android:id="@+id/secusoWebsite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/secusourl"
+            android:autoLink="web"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/githubURL"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal"
+            android:textStyle="bold"
+            android:autoLink="web"
+            android:text="@string/github" />
+
+    </LinearLayout>
 
 </ScrollView>

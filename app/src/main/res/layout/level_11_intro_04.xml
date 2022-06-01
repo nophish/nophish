@@ -37,7 +37,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/example_03"
             android:layout_marginTop="@dimen/margin_standard"
-            android:text="@string/url"
+            android:text="https://gefahr.attacke.secuso.org/?kljfsdlkjhsfdkjhfsdk?redirect=www.google.de"
             android:textAppearance="?android:attr/textAppearanceMedium" />
     </RelativeLayout>
 

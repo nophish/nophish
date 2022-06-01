@@ -1,23 +1,10 @@
 package com.google.example.games.basegameutils;
 
-import android.app.Activity;
-import android.content.Context;
-import android.content.pm.PackageManager;
-import android.content.pm.Signature;
-import android.content.res.Resources;
-import android.util.Log;
-
-import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.games.GamesActivityResultCodes;
-
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-
 /**
  * Created by btco on 2/10/14.
  */
 class GameHelperUtils {
-    public static final int R_UNKNOWN_ERROR = 0;
+    /*public static final int R_UNKNOWN_ERROR = 0;
     public static final int R_SIGN_IN_FAILED = 1;
     public static final int R_APP_MISCONFIGURED = 2;
     public static final int R_LICENSE_FAILED = 3;
@@ -178,5 +165,5 @@ class GameHelperUtils {
                 "its resources. Using a fallback string.");
             return FALLBACK_STRINGS[whichString];
         }
-    }
+    }*/
 }

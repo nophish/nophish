@@ -3,14 +3,12 @@ package com.google.example.games.basegameutils;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.content.IntentSender;
-import android.util.Log;
 
-import com.google.android.gms.common.ConnectionResult;
+/*import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.games.GamesActivityResultCodes;
-
+*/
 public class BaseGameUtils {
 
     /**
@@ -36,6 +34,7 @@ public class BaseGameUtils {
      * @param fallbackErrorMessage a generic error message to display if the failure cannot be resolved.
      * @return true if the connection failure is resolved, false otherwise.
      */
+    /*
     public static boolean resolveConnectionFailure(Activity activity,
                                                    GoogleApiClient client, ConnectionResult result, int requestCode,
                                                    String fallbackErrorMessage) {
@@ -63,7 +62,7 @@ public class BaseGameUtils {
             }
             return false;
         }
-    }
+    }*/
 
     /**
      * For use in sample code only. Checks if the sample was set up correctly,
@@ -110,6 +109,7 @@ public class BaseGameUtils {
      * @param actResp the response code from onActivityResult.
      * @param errorDescription the resource id of a String for a generic error message.
      */
+    /*
     public static void showActivityResultError(Activity activity, int requestCode, int actResp, int errorDescription) {
         if (activity == null) {
             Log.e("BaseGameUtils", "*** No Activity. Can't show failure dialog!");
@@ -146,6 +146,7 @@ public class BaseGameUtils {
 
         errorDialog.show();
     }
+    */
 
     /**
      * Create a simple {@link Dialog} with an 'OK' button and a message.

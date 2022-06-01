@@ -22,6 +22,27 @@
             android:text="@string/level_11_intro_07_text_01"
             android:textAppearance="?android:attr/textAppearanceMedium"
              />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView"
+            android:layout_alignParentTop="false"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/ssl_bild"
+            android:layout_below="@+id/level_11_intro_07_text_01"
+            android:layout_marginTop="@dimen/margin_small" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/level_11_intro_07_text_02"
+            android:id="@+id/level_11_intro_07_text_02"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/imageView"
+            android:layout_marginTop="@dimen/margin_small" />
     </RelativeLayout>
 
 </ScrollView>
